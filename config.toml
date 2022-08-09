@@ -1,4 +1,29 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Haystack Home'
 theme = "ananke" 
+
+[menu]
+[[menu.main]]
+  identifier = 'about'
+  name = 'Documentation'
+  url = 'https:/haystack.deepset.ai'
+  weight = -100
+  
+[[menu.main]]
+  identifier = 'community'
+  name = 'Community'
+  url = '/community'
+  weight = 20
+
+[[menu.main]]
+  identifier = 'tutorials'
+  name = 'Tutorials'
+  url = '/tutorials'
+  weight = -90
+
+[[menu.main]]
+  identifier = 'overview'
+  name = 'Overview'
+  url = '/overview'
+  weight = -110

@@ -1,0 +1,8 @@
+<head>
+  <meta charset="utf-8" />
+  {{ $style := resources.Get "/sass/main.scss" | resources.ToCSS |
+    resources.Minify | resources.Fingerprint
+  }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
+  <title>{{ .Title | plainify }} | {{ .Site.Title }}</title>
+</head>

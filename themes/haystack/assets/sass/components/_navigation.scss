@@ -1,0 +1,96 @@
+#main-nav {
+  display: none;
+
+  @include md {
+    display: block;
+  }
+
+  //Main menu list
+  > ul {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    // Single link
+    li > a {
+      text-decoration: none;
+      color: var(--color-dark-grey);
+
+      &:hover {
+        color: var(--color-dark-blue);
+      }
+    }
+
+    // Dropdown menu parent
+    li.dropdown-menu {
+      position: relative;
+      display: flex;
+
+      &:hover {
+        > a {
+          color: var(--color-dark-blue);
+        }
+      }
+
+      // Hover buffer
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        align-self: center;
+        min-height: 3.5rem;
+      }
+
+      // Dropdown menu
+      ul.sub-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        padding: 2rem;
+        border-radius: 2px;
+        width: auto;
+        white-space: nowrap;
+        background-color: var(--color-bg-white);
+        box-shadow: var(--box-shadow);
+        opacity: 0;
+        transition: opacity var(--transition-fast) var(--ease);
+        pointer-events: none;
+        z-index: 1;
+
+        li a {
+          font-size: var(--text-small);
+        }
+
+        // Current page link
+        li.active a {
+          color: var(--color-nav-link-active);
+        }
+      }
+
+      // Show dropdown menu on hover
+      &:hover {
+        ul.sub-menu {
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+    }
+
+    // Prevent last dropdown menu from going out of page
+    li.dropdown-menu:last-of-type {
+      ul.sub-menu {
+        left: unset;
+        transform: unset;
+        right: 0%;
+      }
+    }
+  }
+}

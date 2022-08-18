@@ -1,0 +1,47 @@
+body {
+  font-family: var(--font-sans-serif);
+}
+
+/**
+ * Headings
+ */
+h1 {
+  font-size: var(--h1-size);
+}
+
+h2 {
+  font-size: var(--h2-size);
+  margin-top: var(--big-text-spacing);
+}
+
+h3 {
+  font-size: var(--h3-size);
+  margin-top: var(--big-text-spacing);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-dark-blue);
+}
+
+// Text
+p,
+a,
+li,
+button {
+  font-size: var(--text-body);
+  line-height: var(--line-height-base);
+}
+
+p {
+  margin-top: var(--small-text-spacing);
+  color: var(--color-dark-blue);
+}
+
+a {
+  transition: color var(--transition-fast) var(--ease);
+}

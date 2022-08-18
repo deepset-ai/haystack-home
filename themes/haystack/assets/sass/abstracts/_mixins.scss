@@ -1,0 +1,25 @@
+/**
+ * Breakpoints
+ */
+
+$bp-sm: 36em; // 576px
+$bp-md: 48em; // 768px
+$bp-lg: 72em; // 1152px
+
+@mixin sm {
+  @media (min-width: $bp-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $bp-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $bp-lg) {
+    @content;
+  }
+}

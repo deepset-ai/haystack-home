@@ -1,0 +1,9 @@
+{{ define "main" }}
+  <div class="container">
+    <div class="inner">
+      {{ range .Pages }}
+        {{ .Render "summary" }}
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

@@ -1,0 +1,41 @@
+// Mobile nav toggle
+button.nav-toggle {
+  background: none;
+  border: none;
+  display: flex;
+  cursor: pointer;
+
+  svg path {
+    stroke: var(--color-medium-grey);
+    transition: stroke var(--transition-fast) var(--ease);
+  }
+
+  &:hover {
+    svg path {
+      stroke: var(--color-dark-blue);
+    }
+  }
+
+  .nav-toggle-close svg {
+    width: 1.5rem;
+  }
+}
+
+button.nav-toggle-open {
+  @include md {
+    display: none;
+  }
+  svg {
+    width: 1.5rem;
+  }
+}
+
+button.nav-toggle-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+  padding: 0.5rem;
+  svg {
+    width: 0.75rem;
+  }
+}

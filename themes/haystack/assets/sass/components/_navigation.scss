@@ -1,4 +1,79 @@
-#main-nav {
+/**
+ * Shared nav styles
+ */
+.nav {
+  // Links
+  li > a {
+    text-decoration: none;
+    color: var(--color-dark-grey);
+
+    &:hover {
+      color: var(--color-dark-blue);
+    }
+  }
+
+  // Current page link
+  li.active > a {
+    color: var(--color-nav-link-active);
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  // Link font size
+  ul.sub-menu li a {
+    font-size: var(--text-small);
+  }
+}
+
+/**
+ * Mobile nav
+ */
+.mobile-nav {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 2rem;
+  border-radius: 2px;
+  background-color: var(--color-bg-white);
+  box-shadow: var(--box-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast) var(--ease);
+  z-index: 10;
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  @include md {
+    display: none;
+  }
+
+  .menu-label {
+    font-size: var(--text-small);
+    font-weight: 700;
+    color: var(--color-dark-grey);
+  }
+
+  li > a {
+    font-size: var(--text-small);
+  }
+}
+
+.mobile-nav.open {
+  opacity: 100;
+  pointer-events: auto;
+}
+
+/**
+ * Desktop nav
+ */
+.desktop-nav {
   display: none;
 
   @include md {
@@ -7,22 +82,9 @@
 
   //Main menu list
   > ul {
-    margin: 0;
-    padding: 0;
-
     display: flex;
     align-items: center;
     gap: 2rem;
-
-    // Single link
-    li > a {
-      text-decoration: none;
-      color: var(--color-dark-grey);
-
-      &:hover {
-        color: var(--color-dark-blue);
-      }
-    }
 
     // Dropdown menu parent
     li.dropdown-menu {
@@ -63,22 +125,13 @@
         opacity: 0;
         transition: opacity var(--transition-fast) var(--ease);
         pointer-events: none;
-        z-index: 1;
-
-        li a {
-          font-size: var(--text-small);
-        }
-
-        // Current page link
-        li.active a {
-          color: var(--color-nav-link-active);
-        }
+        z-index: 10;
       }
 
       // Show dropdown menu on hover
       &:hover {
         ul.sub-menu {
-          opacity: 1;
+          opacity: 100;
           pointer-events: auto;
         }
       }

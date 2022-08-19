@@ -1,0 +1,60 @@
+<nav class="nav mobile-nav">
+  <button class="nav-toggle nav-toggle-close" aria-label="Close menu">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 14 14"
+      role="img"
+      aria-label="Cross icon"
+      focusable="false"
+    >
+      <path
+        d="M1 1l12 12m0-12L1 13"
+        stroke="#000"
+        stroke-linecap="round"
+        stroke-width="2"
+      ></path>
+    </svg>
+  </button>
+  <ul role="list">
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+      {{ if .HasChildren }}
+        <li>
+          <span class="menu-label">
+            {{ .Name }}
+          </span>
+          <ul class="sub-menu" role="list">
+            {{ range .Children }}
+              <li
+                class="{{ if (eq $currentPage.RelPermalink .URL) }}
+                  active
+                {{ end }}"
+              >
+                <a href="{{ .URL }}">{{ .Name }}</a>
+              </li>
+            {{ end }}
+          </ul>
+        </li>
+      {{ else }}
+        <li>
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+</nav>
+
+<script>
+  {{/*  Open & close nav  */}}
+  const navOpenButton = document.querySelector("button.nav-toggle-open");
+  const navCloseButton = document.querySelector("button.nav-toggle-close");
+  const nav = document.querySelector("nav.mobile-nav");
+
+  navOpenButton.addEventListener("click", () => {
+    nav.classList.add("open");
+  });
+
+  navCloseButton.addEventListener("click", (e) => {
+    nav.classList.remove("open");
+  });
+</script>

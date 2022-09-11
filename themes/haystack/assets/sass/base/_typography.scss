@@ -37,10 +37,14 @@ button {
   line-height: var(--line-height-base);
 }
 
-p {
+p{
   margin-top: var(--small-text-spacing);
   color: var(--color-dark-blue);
 }
+
+li {
+  color: var(--color-dark-blue);
+} 
 
 a {
   transition: color var(--transition-fast) var(--ease);

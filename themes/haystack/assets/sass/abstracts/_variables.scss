@@ -16,6 +16,7 @@
   --color-yellow: #ffc55c;
 
   --color-bg-white: #fefefd;
+  --color-bg-light-grey: #f4f6f7;
   --color-bg-grey: #f3f3f7;
   --color-bg-dark-blue: #2b2f55;
 
@@ -46,9 +47,10 @@
     --h2-size: 2.1875rem;
     --h3-size: 1.5625rem;
   }
-
+  
   // Font weight
   --font-weight-base: 400;
+  --font-weight-links: 600;
   --font-weight-heading: 700;
 
   // Line height
@@ -64,8 +66,18 @@
 
   // Paddings
   --container-padding: 2rem; // Container right & left
-  --header-padding: 2rem; // Header top/bottom
-  --inner-padding: 3rem; // Inner section top/bottom
+  --header-padding: 1.5rem; // Header top/bottom
+  --inner-padding: 2rem; // Inner section top/bottom
+
+  @include md {
+    --header-padding: 2rem;
+    --inner-padding: 3rem;
+  }
+
+  @include lg {
+    --container-padding: 3rem;
+    --inner-padding: 4rem;
+  }
 
   // Transitions
   --transition-fast: 0.25s;

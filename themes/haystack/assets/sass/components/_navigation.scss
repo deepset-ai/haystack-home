@@ -22,10 +22,6 @@
     margin: 0;
   }
 
-  // Link font size
-  ul.sub-menu li a {
-    font-size: var(--text-small);
-  }
 }
 
 /**
@@ -47,7 +43,14 @@
   > ul {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+  }
+
+  ul.sub-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
   }
 
   @include md {
@@ -55,13 +58,8 @@
   }
 
   .menu-label {
-    font-size: var(--text-small);
-    font-weight: 700;
+    font-weight: var(--font-weight-links);
     color: var(--color-dark-grey);
-  }
-
-  li > a {
-    font-size: var(--text-small);
   }
 }
 

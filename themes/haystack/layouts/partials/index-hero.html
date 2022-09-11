@@ -1,0 +1,29 @@
+<section class="index-hero">
+    <div class="hero-img" style="background-image:url({{.Params.hero.image}})"></div>
+    
+    <div class="container">
+        <div class="inner hero-inner">
+            <div class="hero-text">
+
+                {{/*  Title & Subtitle  */}}
+                <h1>{{ .Params.hero.title }}</h1>
+                <p>{{ .Params.hero.subtitle }}</p>
+    
+                {{/*  Bullet points  */}}
+                <ul class="hero-list" role="list">
+                    {{ range .Params.hero.bulletPoints }}
+                    <li><span><img src="/images/check.svg"></span>{{ . }}</li>
+                    {{ end }}
+                </ul>
+    
+                {{/*  Buttons  */}}
+                <div class="hero-buttons">
+                    {{ range .Params.hero.buttons }}
+                        {{ partial "arrow-button" . }}
+                    {{ end }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -31,5 +31,27 @@ showcase:
       image:
         url: /images/card-placeholder-2.jpg
         alt: placeholder img
-      
+
+# Features
+features:
+  featureItems:
+    - title: Latest Models
+      text: Pick any Transformer model from Hugging Face's Model Hub, experiment, find the one that works.
+      icon: /images/transformer-models.svg
+    - title: Flexible Document Store
+      text: Use Haystack NLP components on top of Elasticsearch, OpenSearch, or plain SQL.
+      icon: /images/document-store.svg
+    - title: Vector Databases
+      text: Boost search performance with Pinecone, Milvus, FAISS, or Weaviate vector databases, and dense passage retrieval.
+      icon: /images/vector-databases.svg
+    - title: Scalable
+      text: Build semantic search and question answering applications that can scale to millions of documents.
+      icon: /images/scalable.svg
+    - title: End-to-end
+      text: Building blocks for the entire product development cycle such as file converters, indexing functions, models, labeling tools, domain adaptation modules, and REST API.
+      icon: /images/end-to-end.svg
+    - title: Pipelines
+      text: It's not one-size-fits-all! Combine nodes into flexible and scalable pipelines and launch powerful natural language processing systems.
+      icon: /images/pipelines.svg
+
 ---

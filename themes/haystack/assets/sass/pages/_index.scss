@@ -169,3 +169,43 @@
     }
   }
 }
+
+/**
+ * Features section
+ */
+.index-features {
+  background-color: var(--color-dark-blue);
+
+  // Feature items wrapper
+  .feature-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 5rem 4rem;
+
+    @include lg {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6rem 5rem;
+    }
+
+    // Individual feature items
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      > h3 {
+        color: var(--color-white);
+        margin-top: 1rem;
+      }
+
+      > p {
+        color: var(--color-dark-grey);
+      }
+
+      > img {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+  }
+}

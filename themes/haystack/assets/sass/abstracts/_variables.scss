@@ -23,6 +23,7 @@
   --color-nav-link-active: #f5a106;
 
   // Font Sizes
+  --text-base: 1rem;
   --text-body: 1.1875rem;
   --text-small: 1rem;
   --text-medium: 1.5rem;
@@ -47,7 +48,7 @@
     --h2-size: 2.1875rem;
     --h3-size: 1.5625rem;
   }
-  
+
   // Font weight
   --font-weight-base: 400;
   --font-weight-links: 600;
@@ -67,16 +68,19 @@
   // Paddings
   --container-padding: 2rem; // Container right & left
   --header-padding: 1.5rem; // Header top/bottom
-  --inner-padding: 2rem; // Inner section top/bottom
+  --inner-padding: 3rem; // Inner section top/bottom
+  --footer-padding: 2.5rem;
 
   @include md {
     --header-padding: 2rem;
-    --inner-padding: 3rem;
+    --inner-padding: 5rem;
+    --footer-padding: 4rem;
   }
 
   @include lg {
     --container-padding: 3rem;
-    --inner-padding: 4rem;
+    --inner-padding: 7.5rem;
+    --footer-padding: 5rem;
   }
 
   // Transitions

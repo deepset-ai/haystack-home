@@ -8,14 +8,13 @@
 /**
  * Base
  */
-@import "base/reset", "base/base", "base/typography";
+@import "base/reset", "base/base", "base/fonts", "base/typography";
 
 /**
  * Components
  */
 @import "components/header", "components/navigation", "components/article",
   "components/buttons", "components/footer";
-
 
 /**
  * Pages

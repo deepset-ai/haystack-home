@@ -1,0 +1,58 @@
+@import url("//hello.myfonts.net/count/3e82a5");
+
+@font-face {
+  font-display: swap;
+  font-family: "GreycliffCF";
+  font-weight: 400;
+  src: url("/fonts/GreycliffCFMedium/font.woff2") format("woff2"),
+    url("/fonts/GreycliffCFMedium/font.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "GreycliffCF";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/GreycliffCFMediumOblique/font.woff2") format("woff2"),
+    url("/fonts/GreycliffCFMediumOblique/font.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "GreycliffCF";
+  font-weight: 600;
+  src: url("/fonts/GreycliffCFDemiBold/font.woff2") format("woff2"),
+    url("/fonts/GreycliffCFDemiBold/font.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "GreycliffCF";
+  font-weight: 800;
+  src: url("/fonts/GreycliffCFBold/font.woff2") format("woff2"),
+    url("/fonts/GreycliffCFBold/font.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "GreycliffCF";
+  font-style: italic;
+  font-weight: 800;
+  src: url("/fonts//GreycliffCFBoldOblique/font.woff2") format("woff2"),
+    url("/fonts//GreycliffCFBoldOblique/font.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "CourierPrime";
+  font-weight: 400;
+  src: url("/fonts/CourierPrimeRegular/font.woff2") format("woff2"),
+    url("/fonts/CourierPrimeRegular/font.woff") format("woff");
+}
+
+@font-face {
+  font-family: "CourierPrime";
+  font-weight: 800;
+  src: url("/fonts/CourierPrimeBold/font.woff2") format("woff2"),
+    url("/fonts/CourierPrimeBold/font.woff") format("woff");
+}

@@ -26,7 +26,7 @@
   display: flex;
   flex-wrap: wrap;
   column-gap: 5rem;
-  row-gap: 0.5rem;
+  row-gap: 2rem;
 
   ul {
     display: flex;
@@ -34,10 +34,12 @@
     gap: 0.5rem;
 
     li.footer-label {
-      font-size: var(--text-small);
+      font-size: var(--text-base);
       font-weight: var(--font-weight-heading);
       color: var(--color-medium-grey);
-      margin-bottom: 0.5rem;
+      opacity: 0.7;
+      letter-spacing: 0.06rem;
+      margin-bottom: 1rem;
       text-transform: uppercase;
     }
   }
@@ -57,6 +59,7 @@
   .footer-tagline {
     color: var(--color-medium-grey);
     max-width: 14.5rem;
+    margin-top: 1rem;
   }
 
   // Socials
@@ -85,7 +88,7 @@
   .footer-legal {
     display: flex;
     gap: 1rem;
-    margin-top: 1.25rem;
+    margin-top: 1rem;
 
     a {
       font-size: var(--text-base);

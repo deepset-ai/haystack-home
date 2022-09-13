@@ -1,6 +1,7 @@
 ---
 layout: index
-title: What is Haystack?
+title: Haystack - the Open Source NLP framework
+
 # Hero
 hero:
   title: Haystack - the Open Source NLP framework
@@ -37,21 +38,29 @@ features:
   featureItems:
     - title: Latest Models
       text: Pick any Transformer model from Hugging Face's Model Hub, experiment, find the one that works.
-      icon: /images/transformer-models.svg
+      icon: /images/icons/transformer-models.svg
     - title: Flexible Document Store
       text: Use Haystack NLP components on top of Elasticsearch, OpenSearch, or plain SQL.
-      icon: /images/document-store.svg
+      icon: /images/icons/document-store.svg
     - title: Vector Databases
       text: Boost search performance with Pinecone, Milvus, FAISS, or Weaviate vector databases, and dense passage retrieval.
-      icon: /images/vector-databases.svg
+      icon: /images/icons/vector-databases.svg
     - title: Scalable
       text: Build semantic search and question answering applications that can scale to millions of documents.
-      icon: /images/scalable.svg
+      icon: /images/icons/scalable.svg
     - title: End-to-end
       text: Building blocks for the entire product development cycle such as file converters, indexing functions, models, labeling tools, domain adaptation modules, and REST API.
-      icon: /images/end-to-end.svg
+      icon: /images/icons/end-to-end.svg
     - title: Pipelines
       text: It's not one-size-fits-all! Combine nodes into flexible and scalable pipelines and launch powerful natural language processing systems.
-      icon: /images/pipelines.svg
+      icon: /images/icons/pipelines.svg
 
+# Github section
+github:
+  title: Start exploring Haystack!
+  buttons:
+    - buttonText: Check on Github
+      url: https://github.com/deepset-ai/haystack
+  contributors:
+    title: Most active contributors
 ---

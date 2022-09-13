@@ -60,14 +60,6 @@
           }
         }
       }
-
-      // Hero button container
-      .hero-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: left;
-        gap: 0.5rem;
-      }
     }
   }
 
@@ -208,4 +200,124 @@
       }
     }
   }
+}
+
+/**
+ * Github section
+ */
+.index-github {
+  .inner {
+    @include lg {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+
+  .top-section {
+    background-color: var(--color-bg-light-grey);
+    border-bottom: 0.125rem solid var(--color-light-grey);
+
+    .inner {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding-bottom: 3rem;
+
+      @include md {
+        flex-direction: row;
+
+        justify-content: space-between;
+      }
+
+      h2 {
+        margin-bottom: 2rem;
+      }
+
+      .stats-boxes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        li {
+          padding: 2rem;
+          border: 0.125rem solid var(--color-light-grey);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-grow: 1;
+
+          > span:first-of-type {
+            font-size: var(--text-large);
+
+            @include md {
+              font-size: var(--text-large);
+            }
+          }
+
+          > span:nth-of-type(2) {
+            font-size: var(--text-small);
+          }
+        }
+      }
+    }
+  }
+
+  // Contributors section
+  .bottom-section {
+    .inner {
+      padding-top: 3rem;
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .top-contributors-container-js {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+      gap: 2rem;
+
+      @include md {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 3rem;
+      }
+
+      // Contributor card
+      li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+          width: 4rem;
+          height: 4rem;
+          margin-bottom: 0.5rem;
+
+          @include lg {
+            width: 6rem;
+            height: 6rem;
+          }
+        }
+
+        // Text
+        > span {
+          font-size: var(--text-small);
+          text-align: center;
+          white-space: nowrap;
+        }
+
+        > span:first-of-type {
+          font-weight: var(--font-weight-heading);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Newsletter section
+ */
+.index-newsletter {
+  background-color: var(--color-bg-dark-blue);
 }

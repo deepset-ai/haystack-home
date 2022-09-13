@@ -6,6 +6,7 @@
   li > a {
     text-decoration: none;
     color: var(--color-dark-grey);
+    font-weight: var(--font-weight-links);
 
     &:hover {
       color: var(--color-dark-blue);
@@ -21,7 +22,6 @@
     padding: 0;
     margin: 0;
   }
-
 }
 
 /**

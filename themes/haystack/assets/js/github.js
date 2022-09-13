@@ -1,5 +1,7 @@
+import { kFormatter } from "./utils";
+
+// Fetch github stars
 export const fetchGithubStars = async (githubStarContainers) => {
-  // Fetch github stars
   const response = await fetch(
     "https://api.github.com/repos/deepset-ai/haystack",
     {
@@ -15,13 +17,13 @@ export const fetchGithubStars = async (githubStarContainers) => {
 
     // Populate elements with stars
     githubStarContainers.forEach((container) => {
-      container.innerHTML = data.stargazers_count;
+      container.innerHTML = kFormatter(data.stargazers_count);
     });
   }
 };
 
+// Fetch top contributors
 export const fetchTopContributors = async (topContributorsContainer) => {
-  // Fetch top contributors
   const response = await fetch(
     "https://api.github.com/repos/deepset-ai/haystack/contributors?per_page=10",
     {
@@ -42,6 +44,7 @@ export const fetchTopContributors = async (topContributorsContainer) => {
       const contributions = document.createElement("span");
 
       image.src = contributor.avatar_url;
+      image.alt = contributor.login;
       userName.innerHTML = contributor.login;
       contributions.innerHTML = `${contributor.contributions} contributions`;
 

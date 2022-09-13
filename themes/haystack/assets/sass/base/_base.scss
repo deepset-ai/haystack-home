@@ -1,0 +1,16 @@
+body {
+  background: var(--color-white);
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-padding);
+  margin: 0 auto;
+}
+
+// Inner content sections
+.inner {
+  padding: var(--inner-padding) 0;
+}

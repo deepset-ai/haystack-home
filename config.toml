@@ -1,29 +1,112 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'Haystack Home'
-theme = "ananke" 
+theme = "haystack" 
 
+
+# Main navigation
 [menu]
 [[menu.main]]
-  identifier = 'about'
-  name = 'Documentation'
-  url = 'https:/haystack.deepset.ai'
-  weight = -100
+  identifier = 'overview'
+  name = 'Overview'
+  url = '/overview'
+  weight = 1
   
 [[menu.main]]
-  identifier = 'community'
-  name = 'Community'
-  url = '/community'
-  weight = 20
+  identifier = 'documentation'
+  name = 'Documentation'
+  url = 'https:/haystack.deepset.ai'
+  weight = 2
 
 [[menu.main]]
   identifier = 'tutorials'
   name = 'Tutorials'
   url = '/tutorials'
-  weight = -90
+  weight = 3
+  
+[[menu.main]]
+  identifier = 'community'
+  name = 'Community'
+  url = '/community'
+  weight = 4
+
+# Overview children
+[[menu.main]]
+  name = 'What is Haystack?'
+  url = '/'
+  parent = 'overview'
+  weight = 1
 
 [[menu.main]]
-  identifier = 'overview'
-  name = 'Overview'
-  url = '/overview'
-  weight = -110
+  name = 'Get Started'
+  url = '/get-started/'
+  parent = 'overview'
+  weight = 2
+
+[[menu.main]]
+  name = 'Installation'
+  url = '/installation/'
+  parent = 'overview'
+  weight = 3
+
+[[menu.main]]
+  name = 'Quick Demo'
+  url = '/quick-demo/'
+  parent = 'overview'
+  weight = 4
+
+[[menu.main]]
+  name = 'NLP Resources'
+  url = '/nlp-resources/'
+  parent = 'overview'
+  weight = 5
+
+[[menu.main]]
+  name = 'Roadmap'
+  url = '/roadmap/'
+  parent = 'overview'
+  weight = 6
+
+[[menu.main]]
+  name = 'Use Cases'
+  url = '/use-cases/'
+  parent = 'overview'
+  weight = 7
+
+# Community children
+[[menu.main]]
+  name = 'Discord Community'
+  url = '/discord-community/'
+  parent = 'community'
+  weight = 1
+
+[[menu.main]]
+  name = 'Open NLP Meetup'
+  url = '/open-nlp-meetup/'
+  parent = 'community'
+  weight = 2
+
+[[menu.main]]
+  name = 'Open Source Community'
+  url = '/open-source-community/'
+  parent = 'community'
+  weight = 3
+
+[[menu.main]]
+  name = 'deepset on Hugging Face'
+  url = 'https://huggingface.co/deepset'
+  parent = 'community'
+  weight = 4
+
+# Tutorials children
+[[menu.main]]
+  name = 'Tutorial 1'
+  url = '/tutorial-1/'
+  parent = 'tutorials'
+  weight = 1
+
+[[menu.main]]
+  name = 'Tutorial 2'
+  url = '/tutorial-2/'
+  parent = 'tutorials'
+  weight = 1

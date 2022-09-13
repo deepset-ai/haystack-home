@@ -1,0 +1,97 @@
+@import "./mixins";
+
+:root {
+  // Fonts
+  --font-sans-serif: "GreycliffCF", "helvetica", "arial", "sans-serif";
+  --font-monospaced: "CourierPrime", "courier new", monospace;
+
+  // Colors
+  --color-white: #fefefd;
+  --color-light-grey: #d8d8e5;
+  --color-medium-grey: #a0a0c0;
+  --color-dark-grey: #9090b2;
+  --color-blue: #188bf5;
+  --color-dark-blue: #2b2f55;
+  --color-green: #03af9d;
+  --color-yellow: #ffc55c;
+
+  --color-bg-white: #fefefd;
+  --color-bg-light-grey: #f4f6f7;
+  --color-bg-grey: #f3f3f7;
+  --color-bg-dark-blue: #2b2f55;
+
+  --color-nav-link-active: #f5a106;
+
+  // Font Sizes
+  --text-base: 1rem;
+  --text-body: 1.1875rem;
+  --text-small: 1rem;
+  --text-medium: 1.5rem;
+  --text-large: 3.375rem;
+
+  --h1-size: 2.25rem;
+  --h2-size: 1.75rem;
+  --h3-size: 1.375rem;
+
+  @include md {
+    --h1-size: 2.625rem;
+    --h2-size: 1.9375rem;
+    --h3-size: 1.4375rem;
+  }
+
+  @include lg {
+    --text-body: 1.25rem;
+    --text-small: 1.15rem;
+    --text-medium: 2rem;
+    --text-large: 4rem;
+    --h1-size: 3.125rem;
+    --h2-size: 2.1875rem;
+    --h3-size: 1.5625rem;
+  }
+
+  // Font weight
+  --font-weight-base: 400;
+  --font-weight-links: 600;
+  --font-weight-heading: 800;
+
+  // Line height
+  --line-height-base: 1.5;
+  --line-height-heading: 1.2;
+
+  // Text spacing
+  --big-text-spacing: 1.25rem;
+  --small-text-spacing: 0.75rem;
+
+  // Site container
+  --container-max-width: 90rem; // 1440px
+
+  // Paddings
+  --container-padding: 2rem; // Container right & left
+  --header-padding: 1.5rem; // Header top/bottom
+  --inner-padding: 3rem; // Inner section top/bottom
+  --footer-padding: 2.5rem;
+
+  @include md {
+    --header-padding: 2rem;
+    --inner-padding: 5rem;
+    --footer-padding: 4rem;
+  }
+
+  @include lg {
+    --container-padding: 3rem;
+    --inner-padding: 7.5rem;
+    --footer-padding: 5rem;
+  }
+
+  // Transitions
+  --transition-fast: 0.25s;
+  --ease: cubic-bezier(0.25, 0, 0, 1);
+
+  // Shadows
+  --box-shadow: 0 9px 80px rgba(0, 0, 0, 0.06),
+    0 3.75998px 33.4221px rgba(0, 0, 0, 0.0431313),
+    0 2.01027px 17.869px rgba(0, 0, 0, 0.0357664),
+    0 1.12694px 10.0172px rgba(0, 0, 0, 0.03),
+    0 0.598509px 5.32008px rgba(0, 0, 0, 0.0242336),
+    0 0.249053px 2.21381px rgba(0, 0, 0, 0.0168687);
+}

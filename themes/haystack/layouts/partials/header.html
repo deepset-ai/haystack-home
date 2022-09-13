@@ -1,0 +1,27 @@
+<header class="site-header">
+  <div class="container">
+    <a class="site-title" href="/">{{ partial "site-logo" . }}</a>
+
+    {{/* Mobile nav toggle */}}
+    <button class="nav-toggle nav-toggle-open" aria-label="Open menu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 22"
+        role="presentation"
+        focusable="false"
+        class="header_hamburger-icon"
+      >
+        <path
+          stroke="#000"
+          stroke-linecap="round"
+          stroke-width="2"
+          d="M23 11H1M23 21H1M23 1H1"
+        ></path>
+      </svg>
+    </button>
+
+    {{ partial "navigation-mobile" . }}
+    {{ partial "navigation" . }}
+
+  </div>
+</header>

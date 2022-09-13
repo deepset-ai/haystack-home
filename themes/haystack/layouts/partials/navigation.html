@@ -1,0 +1,29 @@
+<nav class="nav desktop-nav">
+  <ul role="list">
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+      {{ if .HasChildren }}
+        <li class="dropdown-menu">
+          <a href="#" class="dropdown-button">
+            {{ .Name }}
+          </a>
+          <ul class="sub-menu" role="list">
+            {{ range .Children }}
+              <li
+                class="{{ if (eq $currentPage.RelPermalink .URL) }}
+                  active
+                {{ end }}"
+              >
+                <a href="{{ .URL }}">{{ .Name }}</a>
+              </li>
+            {{ end }}
+          </ul>
+        </li>
+      {{ else }}
+        <li>
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+</nav>

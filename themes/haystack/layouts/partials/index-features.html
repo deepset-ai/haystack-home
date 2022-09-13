@@ -1,0 +1,16 @@
+<section class="index-features">
+  <div class="container">
+    <div class="inner">
+      {{/* Feature items */}}
+      <div class="feature-items">
+        {{ range .Params.features.featureItems }}
+          <div class="feature-item">
+            <img src="{{ .icon }}" alt="{{ .title }}" />
+            <h3>{{ .title }}</h3>
+            <p>{{ .text }}</p>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

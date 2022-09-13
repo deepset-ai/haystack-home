@@ -1,0 +1,147 @@
+/**
+ * Shared nav styles
+ */
+.nav {
+  // Links
+  li > a {
+    text-decoration: none;
+    color: var(--color-dark-grey);
+    font-weight: var(--font-weight-links);
+
+    &:hover {
+      color: var(--color-dark-blue);
+    }
+  }
+
+  // Current page link
+  li.active > a {
+    color: var(--color-nav-link-active);
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/**
+ * Mobile nav
+ */
+.mobile-nav {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 2rem;
+  border-radius: 2px;
+  background-color: var(--color-bg-white);
+  box-shadow: var(--box-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast) var(--ease);
+  z-index: 10;
+
+  > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  ul.sub-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  @include md {
+    display: none;
+  }
+
+  .menu-label {
+    font-weight: var(--font-weight-links);
+    color: var(--color-dark-grey);
+  }
+}
+
+.mobile-nav.open {
+  opacity: 100;
+  pointer-events: auto;
+}
+
+/**
+ * Desktop nav
+ */
+.desktop-nav {
+  display: none;
+
+  @include md {
+    display: block;
+  }
+
+  //Main menu list
+  > ul {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    // Dropdown menu parent
+    li.dropdown-menu {
+      position: relative;
+      display: flex;
+
+      &:hover {
+        > a {
+          color: var(--color-dark-blue);
+        }
+      }
+
+      // Hover buffer
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        align-self: center;
+        min-height: 3.5rem;
+      }
+
+      // Dropdown menu
+      ul.sub-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        padding: 2rem;
+        border-radius: 2px;
+        width: auto;
+        white-space: nowrap;
+        background-color: var(--color-bg-white);
+        box-shadow: var(--box-shadow);
+        opacity: 0;
+        transition: opacity var(--transition-fast) var(--ease);
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      // Show dropdown menu on hover
+      &:hover {
+        ul.sub-menu {
+          opacity: 100;
+          pointer-events: auto;
+        }
+      }
+    }
+
+    // Prevent last dropdown menu from going out of page
+    li.dropdown-menu:last-of-type {
+      ul.sub-menu {
+        left: unset;
+        transform: unset;
+        right: 0%;
+      }
+    }
+  }
+}

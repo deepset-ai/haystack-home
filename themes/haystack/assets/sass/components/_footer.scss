@@ -1,0 +1,104 @@
+// Links
+.footer a {
+  text-decoration: none;
+  color: var(--color-dark-grey);
+
+  &:hover {
+    color: var(--color-dark-blue);
+  }
+}
+
+// Inner container
+.footer .inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: var(--footer-padding) 0;
+
+  @include md {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
+
+// Main links
+.footer-main-links {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 5rem;
+  row-gap: 2rem;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    li.footer-label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-heading);
+      color: var(--color-medium-grey);
+      opacity: 0.7;
+      letter-spacing: 0.06rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+  }
+}
+
+// Secondary links
+.footer-secondary-links {
+  // Logo
+  a.footer-deepset-logo {
+    svg {
+      height: 2rem;
+      fill: var(--color-dark-grey);
+    }
+  }
+
+  // Tagline
+  .footer-tagline {
+    color: var(--color-medium-grey);
+    max-width: 14.5rem;
+    margin-top: 1rem;
+  }
+
+  // Socials
+  .footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    svg {
+      height: 1.45rem;
+      fill: var(--color-medium-grey);
+      transition: all var(--transition-fast) var(--ease);
+      opacity: 0.5;
+    }
+
+    a:hover {
+      svg {
+        fill: var(--color-dark-grey);
+        opacity: 1;
+      }
+    }
+  }
+
+  // Legal
+  .footer-legal {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    a {
+      font-size: var(--text-base);
+    }
+  }
+
+  // Copyright
+  small.copyright {
+    display: block;
+    color: var(--color-medium-grey);
+    margin-top: 3rem;
+  }
+}

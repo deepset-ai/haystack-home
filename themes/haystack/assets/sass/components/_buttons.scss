@@ -41,15 +41,11 @@ button.nav-toggle-close {
 }
 
 // Arrow button
-.arrow-button {
+.arrow-button,
+.arrow-link {
   display: inline-block;
-  background-color: var(--color-green);
-  color: var(--color-white);
   text-decoration: none;
   font-weight: var(--font-weight-heading);
-  padding: 0.375rem 0.8125rem 0.3125rem;
-  border-radius: 2px;
-  overflow: hidden;
 
   .button-wrapper {
     display: flex;
@@ -63,7 +59,7 @@ button.nav-toggle-close {
 
     svg,
     .text-wrapper {
-      transition: transform var(--transition-fast) var(--ease);
+      transition: all var(--transition-fast) var(--ease);
     }
   }
 
@@ -72,6 +68,33 @@ button.nav-toggle-close {
       svg,
       .text-wrapper {
         transform: translate3d(1.7rem, 0px, 0px);
+      }
+    }
+  }
+}
+
+.arrow-button {
+  overflow: hidden;
+  background-color: var(--color-green);
+  padding: 0.375rem 0.8125rem 0.3125rem;
+  color: var(--color-white);
+  border-radius: 2px;
+}
+
+.arrow-link {
+  overflow: visible;
+
+  .button-wrapper {
+    margin-right: 1.7rem;
+    svg {
+      opacity: 0;
+    }
+  }
+
+  &:hover {
+    .button-wrapper {
+      svg {
+        opacity: 1;
       }
     }
   }

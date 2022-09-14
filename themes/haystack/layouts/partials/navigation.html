@@ -14,7 +14,7 @@
                   active
                 {{ end }}"
               >
-                <a href="{{ .URL }}">{{ .Name }}</a>
+                {{ partial "arrow-link" (dict "context" . "url" .URL "text" .Name) }}
               </li>
             {{ end }}
           </ul>

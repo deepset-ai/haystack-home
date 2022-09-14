@@ -58,8 +58,11 @@
   }
 
   .menu-label {
-    font-weight: var(--font-weight-links);
+    font-weight: var(--font-weight-heading);
     color: var(--color-dark-grey);
+    font-size: var(--text-label);
+    text-transform: uppercase;
+    letter-spacing: 0.06rem;
   }
 }
 
@@ -124,6 +127,19 @@
         transition: opacity var(--transition-fast) var(--ease);
         pointer-events: none;
         z-index: 10;
+
+        > li:not(.active) a {
+          color: var(--color-dark-blue);
+        }
+
+        li.active {
+          .text-wrapper {
+            transform: none !important;
+          }
+          svg {
+            visibility: hidden;
+          }
+        }
       }
 
       // Show dropdown menu on hover

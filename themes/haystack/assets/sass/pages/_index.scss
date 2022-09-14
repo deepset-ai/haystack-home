@@ -275,9 +275,17 @@
     }
 
     .top-contributors-container-js {
+      position: relative;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
       gap: 2rem;
+
+      .loader {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
 
       @include md {
         grid-template-columns: repeat(5, 1fr);

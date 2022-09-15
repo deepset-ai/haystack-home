@@ -1,5 +1,13 @@
-import { fetchGithubData } from "./github";
+import { fetchGithubData } from "./github-stats";
+import { newsletter } from "./newsletter";
 
+// Newsletters
+const newsletterForms = document.querySelectorAll(".js-newsletter-form");
+if (newsletterForms.length > 0) {
+  newsletter(newsletterForms);
+}
+
+// Github stats
 const starContainers = document.querySelectorAll(".github-stars-js");
 const contributorsContainers = document.querySelectorAll(
   ".github-contributors-js"

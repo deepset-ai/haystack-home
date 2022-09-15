@@ -1,0 +1,78 @@
+// Newsletter form
+.js-newsletter-form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  > input,
+  > button {
+    font-size: var(--text-body);
+    border: none;
+    line-height: 1;
+  }
+
+  > input {
+    appearance: none;
+    background: var(--color-white);
+    color: var(--color-dark-blue);
+    border-radius: 2px;
+    height: 2.45rem;
+    min-width: 6rem;
+    padding: 0 0.5rem;
+    flex-grow: 1;
+
+    &:focus-within {
+      outline: none;
+    }
+  }
+
+  > button {
+    height: 2.45rem;
+    flex-shrink: 0;
+    background-color: var(--color-dark-blue);
+    color: var(--color-white);
+    transition: opacity var(--transition-fast) var(--ease);
+    opacity: 1;
+  }
+
+  .success-message {
+    display: none;
+    opacity: 0;
+    transition: opacity var(--transition-fast) var(--ease);
+    font-weight: var(--font-weight-heading);
+    font-size: var(--text-body);
+    color: var(--color-dark-blue);
+  }
+}
+
+.js-newsletter-form.disabled {
+  > button {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    .button-wrapper {
+      svg,
+      .text-wrapper {
+        transform: unset;
+      }
+    }
+  }
+}
+
+.js-newsletter-form.success {
+  > input,
+  > button {
+    display: none;
+  }
+
+  .success-message {
+    display: block;
+  }
+}
+
+.js-newsletter-form.visible {
+  .success-message {
+    opacity: 1;
+  }
+}

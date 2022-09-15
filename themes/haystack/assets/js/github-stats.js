@@ -1,5 +1,6 @@
 import { kFormatter } from "./utils";
 
+// Fetches github data from api and populates html with stars and contributors
 export const fetchGithubData = async (
   starContainers,
   contributorsContainers,

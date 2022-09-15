@@ -23,7 +23,7 @@
         {{/* Buttons */}}
         <div class="button-container">
           {{ range .Params.hero.buttons }}
-            {{ partial "arrow-button" . }}
+            {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
           {{ end }}
         </div>
       </div>

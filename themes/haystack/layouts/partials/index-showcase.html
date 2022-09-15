@@ -1,25 +1,30 @@
 <section class="index-showcase">
-    <div class="container">
-        <div class="inner">
-            {{/*  Title  */}}
-            <h2>{{ .Params.showcase.title }}</h2>
+  <div class="container">
+    <div class="inner">
+      {{/* Title */}}
+      <h2>{{ .Params.showcase.title }}</h2>
 
-            {{/*  Showcase items  */}}
-            <div class="showcase-items">
-                {{ range .Params.showcase.showcaseItems }}
-                    <div class="showcase-item">
-                        <div>
-                            <h3>{{ .title }}</h3>
-                            <p>{{ .text }}</p>
-                            {{ partial "arrow-button" . }}
-                        </div>
-    
-                        <div>
-                            <img class="showcase-image" src="{{ .image.url }}" alt="{{ .image.alt }}">
-                        </div>
-                    </div>
-                {{ end }}
+      {{/* Showcase items */}}
+      <div class="showcase-items">
+        {{ range .Params.showcase.showcaseItems }}
+          <div class="showcase-item">
+            <div>
+              <h3>{{ .title }}</h3>
+              <p>{{ .text }}</p>
+              {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
+
             </div>
-        </div>
+
+            <div>
+              <img
+                class="showcase-image"
+                src="{{ .image.url }}"
+                alt="{{ .image.alt }}"
+              />
+            </div>
+          </div>
+        {{ end }}
+      </div>
     </div>
+  </div>
 </section>

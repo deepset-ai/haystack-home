@@ -46,6 +46,7 @@ button.nav-toggle-close {
   display: inline-block;
   text-decoration: none;
   font-weight: var(--font-weight-heading);
+  cursor: pointer;
 
   .button-wrapper {
     display: flex;
@@ -60,6 +61,7 @@ button.nav-toggle-close {
     svg,
     .text-wrapper {
       transition: all var(--transition-fast) var(--ease);
+      flex-shrink: 0;
     }
   }
 

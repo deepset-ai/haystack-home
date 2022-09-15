@@ -8,7 +8,7 @@
 
           <div class="button-container">
             {{ range .Params.github.buttons }}
-              {{ partial "arrow-button" . }}
+              {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
             {{ end }}
           </div>
         </div>
@@ -32,6 +32,7 @@
     </div>
   </div>
 
+  {{/* Top contributors */}}
   <div class="bottom-section">
     <div class="container">
       <div class="inner">

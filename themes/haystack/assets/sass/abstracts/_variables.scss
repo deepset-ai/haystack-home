@@ -71,11 +71,13 @@
 
   // Paddings
   --container-padding: 2rem; // Container right & left
+  --container-padding-lg: 2rem;
   --header-padding: 1.5rem; // Header top/bottom
   --inner-padding: 3rem; // Inner section top/bottom
   --footer-padding: 2.5rem;
 
   @include md {
+    --container-padding-lg: 5rem;
     --header-padding: 2rem;
     --inner-padding: 5rem;
     --footer-padding: 4rem;
@@ -83,6 +85,7 @@
 
   @include lg {
     --container-padding: 3rem;
+    --container-padding-lg: 8rem;
     --inner-padding: 7.5rem;
     --footer-padding: 5rem;
   }

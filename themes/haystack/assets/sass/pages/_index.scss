@@ -14,11 +14,6 @@
     position: relative;
     padding-top: 3rem;
 
-    @include lg {
-      width: 90%;
-      margin: 0 auto;
-    }
-
     // Hero text section
     .hero-text {
       position: relative;
@@ -154,13 +149,6 @@
       }
     }
   }
-
-  .inner {
-    @include lg {
-      width: 90%;
-      margin: 0 auto;
-    }
-  }
 }
 
 /**
@@ -207,13 +195,6 @@
  * Github section
  */
 .index-github {
-  .inner {
-    @include lg {
-      width: 90%;
-      margin: 0 auto;
-    }
-  }
-
   .top-section {
     background-color: var(--color-bg-light-grey);
     border-bottom: 0.125rem solid var(--color-light-grey);

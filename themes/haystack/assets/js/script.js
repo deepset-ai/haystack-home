@@ -1,5 +1,6 @@
 import { fetchGithubData } from "./github-stats";
 import { newsletter } from "./newsletter";
+import { Accordion } from "./accordion";
 
 // Newsletters
 const newsletterForms = document.querySelectorAll(".js-newsletter-form");
@@ -26,3 +27,7 @@ if (
     topContributorsContainer
   );
 }
+
+document.querySelectorAll(".accordion").forEach((el) => {
+  new Accordion(el);
+});

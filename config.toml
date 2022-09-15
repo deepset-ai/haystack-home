@@ -3,6 +3,10 @@ languageCode = 'en-us'
 title = 'Haystack Home'
 theme = "haystack" 
 
+# Allow html in markdown
+[markup.goldmark.renderer]
+  unsafe= true
+
 
 # Main navigation
 [menu]

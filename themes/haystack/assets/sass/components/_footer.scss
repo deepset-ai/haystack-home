@@ -48,10 +48,19 @@
 // Secondary links
 .footer-secondary-links {
   // Logo
-  a.footer-deepset-logo {
-    svg {
-      height: 2rem;
+  a.footer-deepset-logo svg {
+    height: 2rem;
+    path,
+    circle {
       fill: var(--color-dark-grey);
+      transition: fill var(--transition-fast) var(--ease);
+    }
+
+    &:hover {
+      path,
+      circle {
+        fill: var(--color-dark-blue);
+      }
     }
   }
 
@@ -100,5 +109,33 @@
     display: block;
     color: var(--color-medium-grey);
     margin-top: 3rem;
+  }
+}
+
+.footer-alt {
+  background-color: var(--color-bg-dark-blue);
+
+  a.footer-deepset-logo svg {
+    height: 2rem;
+    path,
+    circle {
+      fill: var(--color-light-grey);
+      transition: fill var(--transition-fast) var(--ease);
+    }
+
+    &:hover {
+      path,
+      circle {
+        fill: var(--color-medium-grey);
+      }
+    }
+  }
+
+  a {
+    color: var(--color-light-grey);
+
+    &:hover {
+      color: var(--color-medium-grey);
+    }
   }
 }

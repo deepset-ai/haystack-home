@@ -1,4 +1,6 @@
-<footer class="footer">
+<footer
+  class="footer {{ if eq .Params.layout "tutorials" }}footer-alt{{ end }}"
+>
   <div class="container">
     <div class="inner">
       <div class="footer-main-links">

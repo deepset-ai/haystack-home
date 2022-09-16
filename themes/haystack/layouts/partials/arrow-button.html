@@ -1,5 +1,5 @@
 {{ if eq .type "link" }}
-  <a class="arrow-button" href="{{ .url }}">
+  <a class="btn arrow-button" href="{{ .url }}">
     <div class="button-wrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@
 {{ end }}
 
 {{ if eq .type "submitButton" }}
-  <button type="submit" class="arrow-button" disabled>
+  <button type="submit" class="btn arrow-button" disabled>
     <div class="button-wrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"

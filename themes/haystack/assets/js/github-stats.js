@@ -1,52 +1,61 @@
 import { kFormatter } from "./utils";
 
 // Fetches github data from api and populates html with stars and contributors
-export const fetchGithubData = async (
-  starContainers,
-  contributorsContainers,
-  topContributorsContainer
-) => {
-  const response = await fetch("/api/github", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+export const githubStats = async () => {
+  const starContainers = document.querySelectorAll(".github-stars-js");
+  const contributorsContainers = document.querySelectorAll(
+    ".github-contributors-js"
+  );
+  const topContributorsContainer = document.querySelector(
+    ".top-contributors-container-js"
+  );
 
-  if (response.ok) {
-    const data = await response.json();
+  if (
+    [...starContainers, ...contributorsContainers].length > 0 ||
+    topContributorsContainer
+  ) {
+    const response = await fetch("/api/github", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-    // Populate stars
-    if (starContainers.length > 0) {
-      starContainers.forEach((container) => {
-        container.innerHTML = kFormatter(data.stars);
-      });
-    }
+    if (response.ok) {
+      const data = await response.json();
 
-    // Populate contributors
-    if (contributorsContainers.length > 0) {
-      contributorsContainers.forEach((container) => {
-        container.innerHTML = data.contributors;
-      });
-    }
+      // Populate stars
+      if (starContainers.length > 0) {
+        starContainers.forEach((container) => {
+          container.innerHTML = kFormatter(data.stars);
+        });
+      }
 
-    // Populate top contributors
-    if (topContributorsContainer) {
-      topContributorsContainer.innerHTML = "";
-      data.top_contributors.forEach((contributor) => {
-        const card = document.createElement("li");
-        const image = document.createElement("img");
-        const userName = document.createElement("span");
-        const contributions = document.createElement("span");
+      // Populate contributors
+      if (contributorsContainers.length > 0) {
+        contributorsContainers.forEach((container) => {
+          container.innerHTML = data.contributors;
+        });
+      }
 
-        image.src = contributor.image;
-        image.alt = contributor.name;
-        userName.innerHTML = contributor.name;
-        contributions.innerHTML = `${contributor.contributions} contributions`;
+      // Populate top contributors
+      if (topContributorsContainer) {
+        topContributorsContainer.innerHTML = "";
+        data.top_contributors.forEach((contributor) => {
+          const card = document.createElement("li");
+          const image = document.createElement("img");
+          const userName = document.createElement("span");
+          const contributions = document.createElement("span");
 
-        card.append(image, userName, contributions);
-        topContributorsContainer.append(card);
-      });
+          image.src = contributor.image;
+          image.alt = contributor.name;
+          userName.innerHTML = contributor.name;
+          contributions.innerHTML = `${contributor.contributions} contributions`;
+
+          card.append(image, userName, contributions);
+          topContributorsContainer.append(card);
+        });
+      }
     }
   }
 };

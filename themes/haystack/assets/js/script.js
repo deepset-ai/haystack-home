@@ -1,33 +1,18 @@
-import { fetchGithubData } from "./github-stats";
-import { newsletter } from "./newsletter";
-import { Accordion } from "./accordion";
+// Main js file loaded in the footer
+import { navigation } from "./navigation";
+import { accordions } from "./accordions";
+import { newsletters } from "./newsletters";
+import { githubStats } from "./github-stats";
 
-// Newsletters
-const newsletterForms = document.querySelectorAll(".js-newsletter-form");
-if (newsletterForms.length > 0) {
-  newsletter(newsletterForms);
-}
+const ready = (fn) => {
+  if (document.readyState != "loading") {
+    fn();
+  } else {
+    document.addEventListener("DOMContentLoaded", fn);
+  }
+};
 
-// Github stats
-const starContainers = document.querySelectorAll(".github-stars-js");
-const contributorsContainers = document.querySelectorAll(
-  ".github-contributors-js"
-);
-const topContributorsContainer = document.querySelector(
-  ".top-contributors-container-js"
-);
-
-if (
-  [...starContainers, ...contributorsContainers].length > 0 ||
-  topContributorsContainer
-) {
-  fetchGithubData(
-    starContainers,
-    contributorsContainers,
-    topContributorsContainer
-  );
-}
-
-document.querySelectorAll(".accordion").forEach((el) => {
-  new Accordion(el);
-});
+ready(navigation);
+ready(accordions);
+ready(newsletters);
+ready(githubStats);

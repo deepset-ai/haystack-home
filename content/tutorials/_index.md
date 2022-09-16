@@ -6,4 +6,9 @@ subtitle: We maintain these tutorials in an open source repository in GitHub. **
 contribute:
   text: Contribute
   url: /
+categoryFilters:
+  - QA
+  - Summarization
+  - Lorem
+  - Ipsum
 ---

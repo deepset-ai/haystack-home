@@ -1,3 +1,4 @@
+{{/* Tutorials page */}}
 {{ define "main" }}
   <div class="tutorials container container-padded">
     <div class="inner inner-top">
@@ -7,9 +8,10 @@
       </section>
 
       <section class="tutorials-buttons">
-        <div class="filter-buttons">
-          <button class="btn filter-btn">QA</button>
-          <button class="btn filter-btn">Summarization</button>
+        <div class="button-container">
+          {{ range .Params.categoryFilters }}
+            <button class="btn filter-btn enabled">{{ . }}</button>
+          {{ end }}
         </div>
         <a class="btn contribute-btn" href="{{ .Params.contribute.url }}">
           <svg
@@ -28,12 +30,12 @@
       </section>
       <div class="accordions">
         {{/* Beginner */}}
-        <details class="accordion" open>
+        <details class="accordion-js" open>
           <summary class="accordion-title">Beginner</summary>
           <div class="content">
-            {{ range where (where .Site.RegularPages ".Params.type" "tutorial") ".Params.level" "beginner" }}
+            {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "beginner" }}
               <a
-                class="tutorial-card category-{{ .Params.category }}"
+                class="tutorial-card category-{{ lower .Params.category }}"
                 href="{{ .RelPermalink }}"
               >
                 <h3>{{ .Params.title }}</h3>
@@ -44,12 +46,12 @@
         </details>
 
         {{/* Intermediate */}}
-        <details class="accordion">
+        <details class="accordion-js" open>
           <summary class="accordion-title">Intermediate</summary>
           <div class="content">
-            {{ range where (where .Site.RegularPages ".Params.type" "tutorial") ".Params.level" "intermediate" }}
+            {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "intermediate" }}
               <a
-                class="tutorial-card category-{{ .Params.category }}"
+                class="tutorial-card category-{{ lower .Params.category }}"
                 href="{{ .RelPermalink }}"
               >
                 <h3>{{ .Params.title }}</h3>
@@ -60,12 +62,12 @@
         </details>
 
         {{/* Expert */}}
-        <details class="accordion">
+        <details class="accordion-js" open>
           <summary class="accordion-title">Advanced</summary>
           <div class="content">
-            {{ range where (where .Site.RegularPages ".Params.type" "tutorial") ".Params.level" "advanced" }}
+            {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "advanced" }}
               <a
-                class="tutorial-card category-{{ .Params.category }}"
+                class="tutorial-card category-{{ lower .Params.category }}"
                 href="{{ .RelPermalink }}"
               >
                 <h3>{{ .Params.title }}</h3>

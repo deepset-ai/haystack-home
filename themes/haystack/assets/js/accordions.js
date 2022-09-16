@@ -1,4 +1,14 @@
-export class Accordion {
+export const accordions = () => {
+  const elements = document.querySelectorAll(".accordion-js");
+
+  if (elements.length > 0) {
+    elements.forEach((el) => {
+      new Accordion(el);
+    });
+  }
+};
+
+class Accordion {
   constructor(el) {
     this.el = el;
     this.summary = el.querySelector("summary");

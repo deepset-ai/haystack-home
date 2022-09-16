@@ -25,10 +25,11 @@
     gap: 3rem;
     align-items: center;
     justify-content: space-between;
-    margin-top: 3rem;
+    margin-top: 1rem;
 
     @include md {
       flex-direction: row;
+      margin-top: 3rem;
     }
 
     .btn {
@@ -43,18 +44,19 @@
       }
     }
 
-    .filter-buttons {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .filter-btn {
+      background-color: transparent;
+      color: var(--color-dark-blue);
+      border: 2px solid var(--color-yellow);
+      opacity: 1;
+      transition-property: opacity, border-color;
+      transition-duration: var(--transition-fast);
+      transition-timing-function: var(--ease);
+    }
 
-      .filter-btn {
-        background-color: transparent;
-        color: var(--color-dark-blue);
-        // font-weight: var(--font-weight-base);
-        border: 2px solid var(--color-yellow);
-        cursor: pointer;
-      }
+    .filter-btn.disabled {
+      opacity: 0.5;
+      border: 2px solid var(--color-light-grey);
     }
   }
 
@@ -66,7 +68,7 @@
     gap: 1rem;
 
     // Accordions
-    .accordion {
+    .accordion-js {
       border-radius: 5px;
       overflow: hidden;
 
@@ -96,6 +98,7 @@
           background: var(--color-white);
           padding: 1rem;
           transition: border-color var(--transition-fast) var(--ease);
+          user-select: none;
 
           @include md {
             padding: 2rem;
@@ -108,7 +111,7 @@
       }
     }
 
-    .accordion summary::-webkit-details-marker {
+    .accordion-js summary::-webkit-details-marker {
       display: none;
     }
 
@@ -117,12 +120,19 @@
       position: relative;
       background-color: var(--color-bg-dark-blue);
       color: var(--color-white);
+      opacity: 1;
       border: none;
       outline: none;
       font-size: var(--h3-size);
       font-weight: var(--font-weight-heading);
       padding: 1rem;
+      user-select: none;
       cursor: pointer;
+      transition: opacity var(--transition-fast) var(--ease);
+
+      &:hover {
+        opacity: 0.95;
+      }
 
       @include md {
         padding: 2rem;

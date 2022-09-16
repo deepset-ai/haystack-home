@@ -40,14 +40,29 @@ button.nav-toggle-close {
   }
 }
 
-// Arrow buttons
-.arrow-button,
-.arrow-link {
+// Base button
+.btn {
   display: inline-block;
   text-decoration: none;
   font-weight: var(--font-weight-heading);
+  background-color: var(--color-green);
+  color: var(--color-white);
+  opacity: 1;
+  padding: 0.375rem 0.8125rem 0.3125rem;
+  border: none;
+  overflow: hidden;
+  border-radius: 2px;
   cursor: pointer;
+  transition: opacity var(--transition-fast) var(--ease);
 
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+// Arrow buttons
+.arrow-button,
+.arrow-link {
   .button-wrapper {
     display: flex;
     align-items: center;
@@ -75,14 +90,6 @@ button.nav-toggle-close {
   }
 }
 
-.arrow-button {
-  overflow: hidden;
-  background-color: var(--color-green);
-  padding: 0.375rem 0.8125rem 0.3125rem;
-  color: var(--color-white);
-  border-radius: 2px;
-}
-
 .arrow-link {
   overflow: visible;
 
@@ -100,18 +107,6 @@ button.nav-toggle-close {
       }
     }
   }
-}
-
-// Regular button
-.btn {
-  display: inline-block;
-  text-decoration: none;
-  font-weight: var(--font-weight-heading);
-  background-color: var(--color-green);
-  padding: 0.375rem 0.8125rem 0.3125rem;
-  color: var(--color-white);
-  border: none;
-  border-radius: 2px;
 }
 
 // button container

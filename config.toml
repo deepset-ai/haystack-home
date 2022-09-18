@@ -7,6 +7,25 @@ theme = "haystack"
 [markup.goldmark.renderer]
   unsafe= true
 
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    noHl = false
+    style = 'solarized-light'
+    tabWidth = 4
+
+  [markup.tableOfContents]
+    endLevel = 2
+    startLevel = 2
 
 # Main navigation
 [menu]

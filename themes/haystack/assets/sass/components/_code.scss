@@ -1,0 +1,22 @@
+/**
+ * Codeblocks
+ */
+
+.highlight {
+  position: relative;
+  max-width: 100%;
+}
+code {
+  position: relative;
+  font-family: var(--font-monospaced);
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+}
+
+pre {
+  position: relative;
+  overflow: auto;
+  padding: 1rem;
+  background-color: var(--color-bg-light-grey) !important;
+}

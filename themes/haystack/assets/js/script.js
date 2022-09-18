@@ -1,4 +1,4 @@
-// Main js file loaded in the footer
+// Main js file loaded in the footer partial
 import { navigation } from "./navigation";
 import { accordions } from "./accordions";
 import { newsletters } from "./newsletters";

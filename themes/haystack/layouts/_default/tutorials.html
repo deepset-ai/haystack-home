@@ -2,17 +2,21 @@
 {{ define "main" }}
   <div class="tutorials container container-padded">
     <div class="inner inner-top">
+      {{/* Heading & subtitle */}}
       <section class="tutorials-heading">
         <h1>{{ .Params.title }}</h1>
         <p>{{ .Params.subtitle | markdownify }}</p>
       </section>
 
       <section class="tutorials-buttons">
+        {{/* Filter buttons */}}
         <div class="button-container">
           {{ range .Params.categoryFilters }}
             <button class="btn filter-btn enabled">{{ . }}</button>
           {{ end }}
         </div>
+
+        {{/* Contribute btn */}}
         <a class="btn contribute-btn" href="{{ .Params.contribute.url }}">
           <svg
             class="github-icon"
@@ -28,10 +32,20 @@
           {{ .Params.contribute.text }}
         </a>
       </section>
+
+      {{/* Tutorial accordions */}}
       <div class="accordions">
         {{/* Beginner */}}
         <details class="accordion-js" open>
-          <summary class="accordion-title">Beginner</summary>
+          <summary class="accordion-title">
+            Beginner
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill="#fefefd"
+                d="M98,190.06,237.78,353.18a24,24,0,0,0,36.44,0L414,190.06c13.34-15.57,2.28-39.62-18.22-39.62H116.18C95.68,150.44,84.62,174.49,98,190.06Z"
+              />
+            </svg>
+          </summary>
           <div class="content">
             {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "beginner" }}
               <a
@@ -46,8 +60,16 @@
         </details>
 
         {{/* Intermediate */}}
-        <details class="accordion-js" open>
-          <summary class="accordion-title">Intermediate</summary>
+        <details class="accordion-js">
+          <summary class="accordion-title">
+            Intermediate
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill="#fefefd"
+                d="M98,190.06,237.78,353.18a24,24,0,0,0,36.44,0L414,190.06c13.34-15.57,2.28-39.62-18.22-39.62H116.18C95.68,150.44,84.62,174.49,98,190.06Z"
+              />
+            </svg>
+          </summary>
           <div class="content">
             {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "intermediate" }}
               <a
@@ -62,8 +84,16 @@
         </details>
 
         {{/* Advanced */}}
-        <details class="accordion-js" open>
-          <summary class="accordion-title">Advanced</summary>
+        <details class="accordion-js">
+          <summary class="accordion-title">
+            Advanced
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill="#fefefd"
+                d="M98,190.06,237.78,353.18a24,24,0,0,0,36.44,0L414,190.06c13.34-15.57,2.28-39.62-18.22-39.62H116.18C95.68,150.44,84.62,174.49,98,190.06Z"
+              />
+            </svg>
+          </summary>
           <div class="content">
             {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "advanced" }}
               <a

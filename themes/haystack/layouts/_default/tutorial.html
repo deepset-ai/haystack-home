@@ -1,30 +1,33 @@
-{{/*  Single tutorial  */}}
+{{/* Single tutorial */}}
 {{ define "main" }}
   <div class="container">
-    <div class="inner inner-top article">
-      <section>
-        <div>
-          <article>
-            {{ .Content }}
-          </article>
-        </div>
-      </section>
-      {{/*  <aside>
-        <div>
-          <section>
-            <h4>{{ .Date.Format "Jan 2, 2006" }}</h4>
-            <h5>{{ .WordCount }} Words</h5>
-          </section>
-        </div>
-        <div>
-          {{ with .PrevInSection }}
-            <a class="previous" href="{{ .Permalink }}"> {{ .Title }}</a>
-          {{ end }}
-          {{ with .NextInSection }}
-            <a class="next" href="{{ .Permalink }}"> {{ .Title }}</a>
-          {{ end }}
-        </div>
-      </aside>  */}}
+    <div class="inner inner-top">
+      <div class="tutorial">
+        {{/* Toc sidebar */}}
+        {{ partial "tutorial-sidebar" . }}
+
+        {{/* Tutorial */}}
+        <article class="article-content">
+          {{ .Content }}
+        </article>
+
+        {{/* Stars/contribute sidebar */}}
+        <aside class="right-sidebar">
+          {{ partial "github-stars" . }}
+          <div class="sidebar-buttons">
+            <a
+              href="https://github.com/deepset-ai/haystack/tree/master/tutorials"
+              class="btn"
+              >Edit on Github</a
+            >
+            <a
+              href="https://github.com/deepset-ai/haystack/discussions"
+              class="btn"
+              >Start a Discussion!</a
+            >
+          </div>
+        </aside>
+      </div>
     </div>
   </div>
 {{ end }}

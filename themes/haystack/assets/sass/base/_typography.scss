@@ -51,14 +51,28 @@ a {
 /**
  * Article typography
  */
-.article {
-  h2,
-  h3,
-  h4 {
-    margin-top: var(--big-text-spacing);
+.article article,
+.tutorial article {
+  h2 {
+    margin-top: var(--lg-text-spacing);
+  }
+  h3 {
+    margin-top: var(--md-text-spacing);
   }
 
-  p {
-    margin-top: var(--small-text-spacing);
+  h4,
+  p,
+  img,
+  pre {
+    margin-top: var(--sm-text-spacing);
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-blue);
+  }
+
+  ::marker {
+    color: var(--color-blue);
   }
 }

@@ -63,8 +63,15 @@
   --line-height-heading: 1.2;
 
   // Text spacing
-  --big-text-spacing: 1.25rem;
-  --small-text-spacing: 0.75rem;
+  --sm-text-spacing: 1rem;
+  --md-text-spacing: 1.5rem;
+  --lg-text-spacing: 2rem;
+
+  @include md {
+    --sm-text-spacing: 1.5rem;
+    --md-text-spacing: 2.5rem;
+    --lg-text-spacing: 3rem;
+  }
 
   // Site container
   --container-max-width: 90rem; // 1440px
@@ -101,4 +108,8 @@
     0 1.12694px 10.0172px rgba(0, 0, 0, 0.03),
     0 0.598509px 5.32008px rgba(0, 0, 0, 0.0242336),
     0 0.249053px 2.21381px rgba(0, 0, 0, 0.0168687);
+
+  --shadow-filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.05))
+    drop-shadow(0 -2px 5px rgba(0, 0, 0, 0.05))
+    drop-shadow(0 0 2px rgba(0, 0, 0, 0.05));
 }

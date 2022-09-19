@@ -70,9 +70,14 @@ a {
   a {
     text-decoration: none;
     color: var(--color-blue);
+    font-weight: var(--font-weight-links);
   }
 
   ::marker {
     color: var(--color-blue);
+  }
+
+  li {
+    margin-top: 0.5rem;
   }
 }

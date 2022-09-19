@@ -8,7 +8,6 @@
   > input,
   > button {
     font-size: var(--text-body);
-    border: none;
     line-height: 1;
   }
 
@@ -16,22 +15,29 @@
     appearance: none;
     background: var(--color-white);
     color: var(--color-dark-blue);
-    border-radius: 2px;
+    border: 2px solid var(--color-light-grey);
+    border-radius: var(--border-radius-sm);
     height: 2.45rem;
     min-width: 6rem;
     padding: 0 0.5rem;
     flex-grow: 1;
+    transition: border-color var(--transition-fast) var(--ease);
 
-    &:focus-within {
+    &::placeholder {
+      color: var(--color-medium-grey);
+    }
+
+    &:focus-within,
+    &:hover {
       outline: none;
+      border-color: var(--color-yellow);
     }
   }
 
   > button {
+    border: none;
     height: 2.45rem;
     flex-shrink: 0;
-    background-color: var(--color-dark-blue);
-    color: var(--color-white);
     transition: opacity var(--transition-fast) var(--ease);
     opacity: 1;
   }
@@ -52,9 +58,16 @@
     cursor: not-allowed;
 
     .button-wrapper {
-      svg,
-      .text-wrapper {
-        transform: unset;
+      transform: unset;
+
+      .button-arrow {
+        &.first {
+          opacity: 0;
+        }
+
+        &.second {
+          opacity: 1;
+        }
       }
     }
   }

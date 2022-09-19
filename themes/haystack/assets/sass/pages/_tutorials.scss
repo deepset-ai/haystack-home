@@ -36,11 +36,11 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      background-color: var(--color-dark-blue);
 
       > svg {
         width: 1.2rem;
         fill: var(--color-white);
+        margin-bottom: 0.2rem;
       }
     }
 
@@ -69,7 +69,7 @@
 
     // Accordions
     .accordion-js {
-      border-radius: 5px;
+      border-radius: var(--border-radius-lg);
       overflow: hidden;
 
       .content {
@@ -80,7 +80,7 @@
         background-color: var(--color-bg-light-grey);
         border: 2px solid var(--color-bg-dark-blue);
         border-top: none;
-        border-radius: 0 0 5px 5px;
+        border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
 
         @include md {
           padding: 2rem;
@@ -94,7 +94,7 @@
           gap: 0.5rem;
           text-decoration: none;
           border: 2px solid var(--color-light-grey);
-          border-radius: 5px;
+          border-radius: var(--border-radius-lg);
           background: var(--color-white);
           padding: 1rem;
           transition: all var(--transition-fast) var(--ease);

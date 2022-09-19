@@ -42,21 +42,49 @@ button.nav-toggle-close {
 
 // Base button
 .btn {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: fit-content;
+  max-width: 100%;
   text-decoration: none;
   font-weight: var(--font-weight-heading);
-  background-color: var(--color-green);
-  color: var(--color-white);
-  opacity: 1;
-  padding: 0.375rem 0.8125rem 0.3125rem;
+  padding: 0.375rem 0.8125rem 0.3125rem 0.8125rem;
   border: none;
-  overflow: hidden;
-  border-radius: 2px;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
   cursor: pointer;
-  transition: opacity var(--transition-fast) var(--ease);
+  transition: background-color var(--transition-fast) var(--ease);
 
-  &:hover {
-    opacity: 0.9;
+  &.btn-green {
+    background-color: rgba($color: #{var(--color-green-rgb)}, $alpha: 1);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: rgba($color: #{var(--color-green-rgb)}, $alpha: 0.9);
+    }
+  }
+
+  &.btn-blue {
+    background-color: rgba($color: #{var(--color-blue-rgb)}, $alpha: 1);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: rgba($color: #{var(--color-blue-rgb)}, $alpha: 0.9);
+    }
+  }
+
+  &.btn-dark-blue {
+    background-color: rgba($color: #{var(--color-dark-blue-rgb)}, $alpha: 1);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: rgba(
+        $color: #{var(--color-dark-blue-rgb)},
+        $alpha: 0.9
+      );
+    }
   }
 }
 
@@ -65,33 +93,73 @@ button.nav-toggle-close {
 .arrow-link {
   .button-wrapper {
     display: flex;
+    width: fit-content;
+    max-width: calc(100% + 1.75rem);
     align-items: center;
-    gap: 0.75rem;
-    margin-left: -1.7rem;
+    margin-left: -1.625rem;
+    transform: translate3d(0, 0, 0);
+    transition: transform var(--transition-fast) var(--ease);
+    white-space: nowrap;
 
-    svg {
-      width: 0.8125rem;
-    }
-
-    svg,
-    .text-wrapper {
-      transition: all var(--transition-fast) var(--ease);
-      flex-shrink: 0;
+    @include md {
+      margin-left: -1.3125rem;
     }
   }
 
-  &:hover {
+  .button-arrow {
+    width: 0.8125rem;
+    flex-shrink: 0;
+    color: var(--color-white);
+    transition: opacity var(--transition-fast) var(--ease);
+
+    &.first {
+      opacity: 0;
+    }
+
+    &.second {
+      opacity: 1;
+    }
+  }
+
+  .text-wrapper {
+    overflow: hidden;
+    flex-grow: 2;
+    margin: 0 0.75rem;
+    font-weight: var(--font-weight-heading);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include md {
+      margin: 0 0.5rem;
+    }
+  }
+
+  &:hover,
+  &:focus-within {
     .button-wrapper {
-      svg,
-      .text-wrapper {
-        transform: translate3d(1.7rem, 0px, 0px);
+      transform: translate3d(1.625rem, 0, 0);
+
+      @include md {
+        transform: translate3d(1.3125rem, 0, 0);
       }
+    }
+
+    .button-arrow.first {
+      opacity: 1;
+    }
+
+    .button-arrow.second {
+      opacity: 0;
     }
   }
 }
 
+// Arrow links used in nav
 .arrow-link {
   overflow: visible;
+  background-color: transparent;
+  color: var(--color-dark-blue);
+  padding: 0;
 
   .button-wrapper {
     margin-right: 1.7rem;
@@ -100,7 +168,12 @@ button.nav-toggle-close {
     }
   }
 
+  .text-wrapper {
+    font-weight: var(--font-weight-links);
+  }
+
   &:hover {
+    background-color: transparent;
     .button-wrapper {
       svg {
         opacity: 1;
@@ -111,10 +184,10 @@ button.nav-toggle-close {
 
 // Copy code button
 .copy-code-button {
-  color: var(--color-dark-blue);
+  color: var(--color-medium-grey);
   background-color: var(--color-white);
-  border: 2px solid var(--color-yellow);
-  border-radius: 2px;
+  border: 2px solid var(--color-light-grey);
+  border-radius: var(--border-radius-sm);
   display: block;
   position: absolute;
   top: 0.5rem;
@@ -122,8 +195,11 @@ button.nav-toggle-close {
   padding: 3px 8px;
   font-size: var(--text-small);
   font-family: var(--font-sans-serif);
+  font-weight: var(--font-weight-links);
   opacity: 0;
-  transition: opacity var(--transition-fast) var(--ease);
+  transition-property: opacity, border-color, color;
+  transition-duration: var(--transition-fast);
+  transition-timing-function: var(--ease);
 }
 
 .highlight:hover .copy-code-button {
@@ -132,6 +208,9 @@ button.nav-toggle-close {
 
 .copy-code-button:hover,
 .copy-code-button:focus {
+  border: 2px solid var(--color-yellow);
+  color: var(--color-dark-blue);
+
   opacity: 1;
 }
 
@@ -169,6 +248,16 @@ button.nav-toggle-close {
       fill: var(--color-medium-grey);
       width: 1.25rem;
     }
+  }
+}
+
+// Colab button
+.colab-btn {
+  gap: 0.5rem;
+  margin-top: var(--sm-text-spacing);
+  font-weight: var(--font-weight-links);
+  > svg {
+    width: 2rem;
   }
 }
 

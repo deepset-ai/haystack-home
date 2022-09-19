@@ -81,7 +81,9 @@
     svg {
       height: 1.45rem;
       fill: var(--color-medium-grey);
-      transition: all var(--transition-fast) var(--ease);
+      transition-property: fill, opacity;
+      transition-duration: var(--transition-fast);
+      transition-timing-function: var(--ease);
       opacity: 0.5;
     }
 

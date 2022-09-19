@@ -145,7 +145,7 @@
       }
 
       .showcase-image {
-        border-radius: var(--border-radius-lg);
+        border-radius: var(--border-radius-md);
       }
     }
   }
@@ -328,7 +328,7 @@
     gap: 1rem;
     align-items: flex-start;
     padding: 2rem;
-    border-radius: var(--border-radius-lg);
+    border-radius: var(--border-radius-md);
 
     img {
       width: 5rem;

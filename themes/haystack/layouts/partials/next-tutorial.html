@@ -9,7 +9,7 @@
   {{ if not $next }}
     {{ if $pageReached }}
       {{ $next = . }}
-    {{ else if eq .Permalink $url }}
+    {{ else if eq .RelPermalink $url }}
       {{ $pageReached = true }}
     {{ end }}
   {{ end }}
@@ -18,7 +18,7 @@
 {{ if $next }}
   {{/* Link next tutorial if it exists */}}
   <div class="next-article">
-    <a href="{{ $next.Permalink }}" class="btn"
+    <a href="{{ $next.RelPermalink }}" class="btn"
       >{{ $next.Title }}
 
       <svg
@@ -50,7 +50,7 @@
   {{ if $nextLevel }}
     {{ range first 1 (where (where .context.Site.Pages "Section" "tutorials") ".Params.level" $nextLevel ) }}
       <div class="next-article">
-        <a href="{{ .Permalink }}" class="btn"
+        <a href="{{ .RelPermalink }}" class="btn"
           >{{ .Title }}
 
           <svg

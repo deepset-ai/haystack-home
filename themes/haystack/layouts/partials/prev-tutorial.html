@@ -9,7 +9,7 @@
   {{ if not $prev }}
     {{ if $pageReached }}
       {{ $prev = . }}
-    {{ else if eq .Permalink $url }}
+    {{ else if eq .RelPermalink $url }}
       {{ $pageReached = true }}
     {{ end }}
   {{ end }}
@@ -18,7 +18,7 @@
 {{ if $prev }}
   {{/* Link previous tutorial if it exists */}}
   <div class="previous-article">
-    <a href="{{ $prev.Permalink }}" class="btn">
+    <a href="{{ $prev.RelPermalink }}" class="btn">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="0.9rem"
@@ -51,7 +51,7 @@
   {{ if $prevLevel }}
     {{ range last 1 (where (where .context.Site.Pages "Section" "tutorials") ".Params.level" $prevLevel ) }}
       <div class="previous-article">
-        <a href="{{ .Permalink }}" class="btn">
+        <a href="{{ .RelPermalink }}" class="btn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="0.9rem"

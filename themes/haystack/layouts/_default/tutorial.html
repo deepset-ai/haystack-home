@@ -54,8 +54,8 @@
 
 
           <div class="article-pagination">
-            {{ partial "prev-tutorial" (dict "context" . "level" .Params.level "url" .Permalink) }}
-            {{ partial "next-tutorial" (dict "context" . "level" .Params.level "url" .Permalink) }}
+            {{ partial "prev-tutorial" (dict "context" . "level" .Params.level "url" .RelPermalink) }}
+            {{ partial "next-tutorial" (dict "context" . "level" .Params.level "url" .RelPermalink) }}
           </div>
         </article>
 

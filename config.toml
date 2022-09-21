@@ -3,11 +3,11 @@ languageCode = 'en-us'
 title = 'Haystack Home'
 theme = "haystack" 
 
-# Allow html in markdown
-[markup.goldmark.renderer]
-  unsafe= true
+[permalinks]
+    tutorials = "/tutorials/:filename/"
 
 [markup]
+  # Code blocks
   [markup.highlight]
     anchorLineNos = false
     codeFences = true
@@ -23,9 +23,14 @@ theme = "haystack"
     style = 'solarized-light'
     tabWidth = 4
 
+  # Toc link levels (h2)
   [markup.tableOfContents]
     endLevel = 2
     startLevel = 2
+
+  # Allow html in markdown
+  [markup.goldmark.renderer]
+  unsafe= true
 
 # Main navigation
 [menu]
@@ -95,41 +100,3 @@ theme = "haystack"
   url = '/use-cases/'
   parent = 'overview'
   weight = 7
-
-# Community children
-# [[menu.main]]
-#   name = 'Discord Community'
-#   url = '/discord-community/'
-#   parent = 'community'
-#   weight = 1
-
-# [[menu.main]]
-#   name = 'Open NLP Meetup'
-#   url = '/open-nlp-meetup/'
-#   parent = 'community'
-#   weight = 2
-
-# [[menu.main]]
-#   name = 'Open Source Community'
-#   url = '/open-source-community/'
-#   parent = 'community'
-#   weight = 3
-
-# [[menu.main]]
-#   name = 'deepset on Hugging Face'
-#   url = 'https://huggingface.co/deepset'
-#   parent = 'community'
-#   weight = 4
-
-# Tutorials children
-# [[menu.main]]
-#   name = 'Tutorial 1'
-#   url = '/tutorial-1/'
-#   parent = 'tutorials'
-#   weight = 1
-
-# [[menu.main]]
-#   name = 'Tutorial 2'
-#   url = '/tutorial-2/'
-#   parent = 'tutorials'
-#   weight = 1

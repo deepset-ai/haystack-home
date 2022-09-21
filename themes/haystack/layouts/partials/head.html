@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   {{/* Stylesheet */}}
-  {{ $style := resources.Get "/sass/main.scss" | resources.ToCSS |
+  {{ $style := resources.Get "/sass/main.scss" | resources.ToCSS | resources.PostCSS  (dict "config" "./postcss.config.js") |
     resources.Minify | resources.Fingerprint
   }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}" />

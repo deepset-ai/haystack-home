@@ -51,6 +51,12 @@
 
           {{/* Article content */}}
           {{ .Content }}
+
+
+          <div class="article-pagination">
+            {{ partial "prev-tutorial" (dict "context" . "level" .Params.level "url" .Permalink) }}
+            {{ partial "next-tutorial" (dict "context" . "level" .Params.level "url" .Permalink) }}
+          </div>
         </article>
 
         {{/* Stars/contribute sidebar */}}

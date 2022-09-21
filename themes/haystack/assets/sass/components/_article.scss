@@ -67,16 +67,25 @@
         cursor: pointer;
         transition: opacity var(--transition-fast) var(--ease);
 
-        &::after {
-          content: url("/images/icons/caret.svg");
-          padding-top: 0.125rem;
-          width: 1rem;
-          transform: rotate(-90deg);
+        .accordion-title-child {
+          display: flex;
+          gap: 0.25rem;
+
+          &::after {
+            content: url("/images/icons/caret.svg");
+            padding-top: 0.125rem;
+            width: 1rem;
+            transform: rotate(-90deg);
+          }
         }
       }
 
-      details[open] .accordion-title::after {
+      details[open] .accordion-title-child::after {
         transform: rotate(0deg);
+      }
+
+      summary {
+        display: flex !important;
       }
 
       .content {
@@ -191,6 +200,47 @@
 
     .sidebar-buttons {
       flex-direction: column;
+    }
+  }
+}
+
+// Next / Prev links
+.article-pagination {
+  margin-top: var(--md-text-spacing);
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  .next-article {
+    margin-left: auto;
+  }
+
+  > div > a {
+    gap: 0.5rem;
+    width: 100%;
+    background-color: var(--color-white);
+    color: var(--color-medium-grey);
+    border: 2px solid var(--color-medium-grey);
+    text-align: center;
+    transition-property: border-color, color, filter, -webkit-filter, fill;
+    transition-duration: var(--transition-fast);
+    transition-timing-function: var(--ease);
+
+    > svg {
+      fill: var(--color-medium-grey);
+      transition: fill var(--transition-fast) var(--ease);
+    }
+
+    &:hover {
+      border: 2px solid var(--color-yellow);
+      color: var(--color-blue);
+      filter: var(--shadow-filter);
+
+      > svg {
+        fill: var(--color-blue);
+      }
     }
   }
 }

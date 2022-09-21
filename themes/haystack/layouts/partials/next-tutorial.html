@@ -1,0 +1,76 @@
+{{ $level := .level }}
+{{ $url := .url }}
+{{ $pageReached := false }}
+{{ $next := false }}
+{{ $nextLevel := false }}
+
+{{/* Get the url of the next tutorial in this level */}}
+{{ range where (where .context.Site.Pages "Section" "tutorials")  ".Params.level" $level }}
+  {{ if not $next }}
+    {{ if $pageReached }}
+      {{ $next = . }}
+    {{ else if eq .Permalink $url }}
+      {{ $pageReached = true }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if $next }}
+  {{/* Link next tutorial if it exists */}}
+  <div class="next-article">
+    <a href="{{ $next.Permalink }}" class="btn"
+      >{{ $next.Title }}
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="0.9rem"
+        height="0.9rem"
+        viewBox="0 0 13 14"
+        role="presentation"
+        focusable="false"
+        class="button-arrow first"
+        fill="#188bf5"
+      >
+        <path
+          d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+    </a>
+  </div>
+{{ else }}
+  {{/* If no more tutorials in this level, get the first tutorial in the next level */}}
+  {{ if eq $level "beginner" }}
+    {{ $nextLevel = "intermediate" }}
+  {{ else if eq $level "intermediate" }}
+    {{ $nextLevel = "advanced" }}
+  {{ end }}
+
+  {{ if $nextLevel }}
+    {{ range first 1 (where (where .context.Site.Pages "Section" "tutorials") ".Params.level" $nextLevel ) }}
+      <div class="next-article">
+        <a href="{{ .Permalink }}" class="btn"
+          >{{ .Title }}
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="0.9rem"
+            height="0.9rem"
+            viewBox="0 0 13 14"
+            role="presentation"
+            focusable="false"
+            class="button-arrow first"
+            fill="#188bf5"
+          >
+            <path
+              d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    {{ end }}
+  {{ end }}
+{{ end }}

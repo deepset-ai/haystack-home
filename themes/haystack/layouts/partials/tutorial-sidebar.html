@@ -6,7 +6,9 @@
       class="accordion-js"
       {{ if eq .Params.level "beginner" }}open{{ end }}
     >
-      <summary class="accordion-title">Beginner</summary>
+      <summary class="accordion-title">
+        <div class="accordion-title-child">Beginner</div>
+      </summary>
       <ul class="content" role="list">
         {{ range where (where .Site.Pages "Section" "tutorials")  ".Params.level" "beginner" }}
           <li>
@@ -36,7 +38,9 @@
       class="accordion-js"
       {{ if eq .Params.level "intermediate" }}open{{ end }}
     >
-      <summary class="accordion-title">Intermediate</summary>
+      <summary class="accordion-title">
+        <div class="accordion-title-child">Intermediate</div>
+      </summary>
       <ul class="content" role="list">
         {{ range where (where .Site.Pages "Section" "tutorials")  ".Params.level" "intermediate" }}
           <li>
@@ -66,7 +70,9 @@
       class="accordion-js"
       {{ if eq .Params.level "advanced" }}open{{ end }}
     >
-      <summary class="accordion-title">Advanced</summary>
+      <summary class="accordion-title">
+        <div class="accordion-title-child">Advanced</div>
+      </summary>
       <ul class="content" role="list">
         {{ range where (where .Site.Pages "Section" "tutorials")  ".Params.level" "advanced" }}
           <li>

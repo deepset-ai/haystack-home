@@ -12,7 +12,9 @@
         {{/* Filter buttons */}}
         <div class="button-container">
           {{ range .Params.categoryFilters }}
-            <button class="btn filter-btn enabled">{{ . }}</button>
+            <button class="btn filter-btn enabled category-{{ lower . }}">
+              {{ . }}
+            </button>
           {{ end }}
         </div>
 

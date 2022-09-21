@@ -4,7 +4,7 @@
 {{ $next := false }}
 {{ $nextLevel := false }}
 
-{{/* Get the url of the next tutorial in this level */}}
+{{/* Get the next tutorial in this level */}}
 {{ range where (where .context.Site.Pages "Section" "tutorials")  ".Params.level" $level }}
   {{ if not $next }}
     {{ if $pageReached }}

@@ -7,8 +7,10 @@ contribute:
   text: Contribute
   url: /
 categoryFilters:
-  - QA
-  - Summarization
-  - Lorem
-  - Ipsum
+  enabled: false
+  list:
+    - QA
+    - Summarization
+    - Lorem
+    - Ipsum
 ---

@@ -11,10 +11,12 @@
       <section class="tutorials-buttons">
         {{/* Filter buttons */}}
         <div class="button-container">
-          {{ range .Params.categoryFilters }}
-            <button class="btn filter-btn enabled category-{{ lower . }}">
-              {{ . }}
-            </button>
+          {{ if eq .Params.categoryFilters.enabled true }}
+            {{ range .Params.categoryFilters.list }}
+              <button class="btn filter-btn enabled category-{{ lower . }}">
+                {{ . }}
+              </button>
+            {{ end }}
           {{ end }}
         </div>
 

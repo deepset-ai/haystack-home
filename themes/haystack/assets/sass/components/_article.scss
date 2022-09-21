@@ -217,6 +217,10 @@
     margin-left: auto;
   }
 
+  @include md {
+    flex-wrap: nowrap;
+  }
+
   > div > a {
     gap: 0.5rem;
     width: 100%;
@@ -231,6 +235,7 @@
     > svg {
       fill: var(--color-medium-grey);
       transition: fill var(--transition-fast) var(--ease);
+      flex-shrink: 0;
     }
 
     &:hover {

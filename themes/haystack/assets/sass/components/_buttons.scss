@@ -55,6 +55,7 @@ button.nav-toggle-close {
   border-radius: var(--border-radius-sm);
   text-decoration: none;
   cursor: pointer;
+  user-select: none;
   transition: background-color var(--transition-fast) var(--ease);
 
   &.btn-green {

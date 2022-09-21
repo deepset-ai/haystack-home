@@ -18,8 +18,8 @@
 {{ if $next }}
   {{/* Link next tutorial if it exists */}}
   <div class="next-article">
-    <a href="{{ $next.RelPermalink }}" class="btn"
-      >{{ $next.Title }}
+    <a href="{{ $next.RelPermalink }}" class="btn">
+      {{ $next.Title }}
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -50,8 +50,8 @@
   {{ if $nextLevel }}
     {{ range first 1 (where (where .context.Site.Pages "Section" "tutorials") ".Params.level" $nextLevel ) }}
       <div class="next-article">
-        <a href="{{ .RelPermalink }}" class="btn"
-          >{{ .Title }}
+        <a href="{{ .RelPermalink }}" class="btn">
+          {{ .Title }}
 
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,0 +1,20 @@
+/**
+ * Codeblocks
+ */
+
+.highlight {
+  position: relative;
+  max-width: 100%;
+}
+code {
+  font-family: var(--font-monospaced);
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+}
+
+pre {
+  overflow: auto;
+  padding: 1rem;
+  background-color: var(--color-bg-light-grey) !important;
+}

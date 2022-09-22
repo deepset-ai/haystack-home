@@ -1,5 +1,9 @@
 {
   "devDependencies": {
+    "autoprefixer": "^10.4.12",
+    "axios": "^0.27.2",
+    "parse-link-header": "^2.0.0",
+    "postcss-cli": "^10.0.0",
     "prettier": "^2.7.1",
     "prettier-plugin-go-template": "^0.0.13"
   }

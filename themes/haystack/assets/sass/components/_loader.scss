@@ -1,0 +1,21 @@
+.loader {
+  display: inline-block;
+  animation: loader 1s linear infinite;
+  display: flex;
+  justify-content: center;
+  width: 3rem;
+  margin-bottom: 1rem;
+
+  svg {
+    fill: var(--color-light-grey);
+  }
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

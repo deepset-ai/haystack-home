@@ -63,4 +63,20 @@ github:
       url: https://github.com/deepset-ai/haystack
   contributors:
     title: Most active contributors
+
+# Community
+community:
+  discord:
+    title: Join our community
+    text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam!
+    icon: /images/icons/discord.svg
+    buttons:
+      - buttonText: Join Discord
+        url: https://discord.com/invite/VBpFzsgRVF
+  newsletter:
+    title: Sign up to future newsletters
+    text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam!
+    icon: /images/icons/email.svg
+    inputPlaceholder: Email address..
+    buttonText: Submit
 ---

@@ -1,6 +1,6 @@
 <section class="index-github">
   <div class="top-section">
-    <div class="container">
+    <div class="container container-padded">
       <div class="inner">
         {{/* Title / buttons */}}
         <div class="text-section">
@@ -8,7 +8,7 @@
 
           <div class="button-container">
             {{ range .Params.github.buttons }}
-              {{ partial "arrow-button" . }}
+              {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
             {{ end }}
           </div>
         </div>
@@ -16,11 +16,15 @@
         {{/* Stars / contributors */}}
         <ul class="stats-boxes" role="list">
           <li>
-            <span class="github-stars-js">5k</span>
+            <span class="github-stars-js">
+              {{ partial "loader" . }}
+            </span>
             <span>Stars</span>
           </li>
           <li>
-            <span class="github-contributors-js">100</span>
+            <span class="github-contributors-js">
+              {{ partial "loader" . }}
+            </span>
             <span>Contributors</span>
           </li>
         </ul>
@@ -28,11 +32,15 @@
     </div>
   </div>
 
+  {{/* Top contributors */}}
   <div class="bottom-section">
     <div class="container">
       <div class="inner">
         <h3>{{ .Params.github.contributors.title }}</h3>
-        <ul role="list" class="top-contributors-container-js"></ul>
+
+        <ul role="list" class="top-contributors-container-js">
+          {{ partial "loader" . }}
+        </ul>
       </div>
     </div>
   </div>

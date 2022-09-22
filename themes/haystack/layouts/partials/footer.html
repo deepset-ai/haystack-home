@@ -1,4 +1,8 @@
-<footer class="footer">
+<footer
+  class="footer {{ if eq .Params.layout "tutorials" "tutorial" }}
+    footer-alt
+  {{ end }}"
+>
   <div class="container">
     <div class="inner">
       <div class="footer-main-links">
@@ -255,6 +259,24 @@
   </div>
 </footer>
 
-<!-- Script -->
+{{/* Main Script */}}
 {{ $javascript := resources.Get "/js/script.js" | js.Build | resources.Minify | resources.Fingerprint }}
 <script src="{{ $javascript.RelPermalink }}"></script>
+
+{{/* Tutorials Script */}}
+{{ if eq .Params.layout "tutorials" }}
+  {{ $tutorialJs := resources.Get "/js/tutorial-filters.js" | js.Build | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $tutorialJs.RelPermalink }}"></script>
+{{ end }}
+
+{{/* codeblock copy buttons */}}
+{{ if (findRE "<pre" .Content 1) }}
+  {{ $codeCopyBtns := resources.Get "/js/code-copy-buttons.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $codeCopyBtns.RelPermalink }}"></script>
+{{ end }}
+
+{{/* Table of contents */}}
+{{ if eq .Params.layout "tutorial" }}
+  {{ $toc := resources.Get "/js/table-of-contents.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $toc.RelPermalink }}"></script>
+{{ end }}

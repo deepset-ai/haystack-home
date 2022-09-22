@@ -1,0 +1,15 @@
+<svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16px"
+      height="16px"
+      viewBox="0 0 13 14"
+      role="presentation"
+      focusable="false"
+    >
+      <path
+        d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z"
+        fill="#2b2f55"
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+      ></path>
+    </svg>

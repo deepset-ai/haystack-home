@@ -15,14 +15,27 @@
   --color-green: #03af9d;
   --color-yellow: #ffc55c;
 
-  --color-bg-white: #fefefd;
-  --color-bg-light-grey: #f4f6f7;
-  --color-bg-grey: #f3f3f7;
-  --color-bg-dark-blue: #2b2f55;
+  // RBG colors
+  --color-white-rgb: 254, 254, 253;
+  --color-light-grey-rgb: 216, 216, 229;
+  --color-medium-grey-rgb: 160, 160, 192;
+  --color-dark-grey-rgb: 144, 144, 178;
+  --color-blue-rgb: 24, 139, 245;
+  --color-dark-blue-rgb: 43, 47, 85;
+  --color-green-rgb: 3, 175, 157;
+  --color-yellow-rgb: 255, 197, 92;
 
-  --color-nav-link-active: #f5a106;
+  // Background colors
+  --color-bg-white: #fefefd;
+  --color-bg-light-grey: #f3f3f7;
+  --color-bg-grey: #f3f3f7;
+  --color-bg-blue: #48a7ff;
+  --color-bg-dark-blue: #2b2f55;
+  --color-bg-yellow: #ffd78f;
+  --color-bg-red: #ed6a5e;
 
   // Font Sizes
+  --text-label: 0.8125rem;
   --text-base: 1rem;
   --text-body: 1.1875rem;
   --text-small: 1rem;
@@ -32,11 +45,13 @@
   --h1-size: 2.25rem;
   --h2-size: 1.75rem;
   --h3-size: 1.375rem;
+  --h4-size: 1.2rem;
 
   @include md {
     --h1-size: 2.625rem;
     --h2-size: 1.9375rem;
     --h3-size: 1.4375rem;
+    --h4-size: 1.275rem;
   }
 
   @include lg {
@@ -47,6 +62,7 @@
     --h1-size: 3.125rem;
     --h2-size: 2.1875rem;
     --h3-size: 1.5625rem;
+    --h4-size: 1.325rem;
   }
 
   // Font weight
@@ -59,19 +75,28 @@
   --line-height-heading: 1.2;
 
   // Text spacing
-  --big-text-spacing: 1.25rem;
-  --small-text-spacing: 0.75rem;
+  --sm-text-spacing: 1rem;
+  --md-text-spacing: 1.5rem;
+  --lg-text-spacing: 2rem;
+
+  @include md {
+    --sm-text-spacing: 1.5rem;
+    --md-text-spacing: 2.5rem;
+    --lg-text-spacing: 3rem;
+  }
 
   // Site container
   --container-max-width: 90rem; // 1440px
 
   // Paddings
   --container-padding: 2rem; // Container right & left
+  --container-padding-lg: 2rem;
   --header-padding: 1.5rem; // Header top/bottom
   --inner-padding: 3rem; // Inner section top/bottom
   --footer-padding: 2.5rem;
 
   @include md {
+    --container-padding-lg: 5rem;
     --header-padding: 2rem;
     --inner-padding: 5rem;
     --footer-padding: 4rem;
@@ -79,9 +104,14 @@
 
   @include lg {
     --container-padding: 3rem;
+    --container-padding-lg: 8rem;
     --inner-padding: 7.5rem;
     --footer-padding: 5rem;
   }
+
+  // Borders
+  --border-radius-sm: 0.125rem;
+  --border-radius-md: 0.3125rem;
 
   // Transitions
   --transition-fast: 0.25s;
@@ -94,4 +124,8 @@
     0 1.12694px 10.0172px rgba(0, 0, 0, 0.03),
     0 0.598509px 5.32008px rgba(0, 0, 0, 0.0242336),
     0 0.249053px 2.21381px rgba(0, 0, 0, 0.0168687);
+
+  --shadow-filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.05))
+    drop-shadow(0 -2px 5px rgba(0, 0, 0, 0.05))
+    drop-shadow(0 0 2px rgba(0, 0, 0, 0.05));
 }

@@ -15,7 +15,7 @@
 
   // Current page link
   li.active > a {
-    color: var(--color-nav-link-active);
+    color: var(--color-yellow);
   }
 
   ul {
@@ -32,10 +32,11 @@
   top: 1rem;
   right: 1rem;
   padding: 2rem;
-  border-radius: 2px;
+  border-radius: var(--border-radius-sm);
   background-color: var(--color-bg-white);
   box-shadow: var(--box-shadow);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
   transition: opacity var(--transition-fast) var(--ease);
   z-index: 10;
@@ -58,13 +59,17 @@
   }
 
   .menu-label {
-    font-weight: var(--font-weight-links);
+    font-weight: var(--font-weight-heading);
     color: var(--color-dark-grey);
+    font-size: var(--text-label);
+    text-transform: uppercase;
+    letter-spacing: 0.06rem;
   }
 }
 
 .mobile-nav.open {
-  opacity: 100;
+  opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
@@ -115,7 +120,7 @@
         gap: 0.5rem;
         margin-top: 0.5rem;
         padding: 2rem;
-        border-radius: 2px;
+        border-radius: var(--border-radius-sm);
         width: auto;
         white-space: nowrap;
         background-color: var(--color-bg-white);
@@ -124,24 +129,39 @@
         transition: opacity var(--transition-fast) var(--ease);
         pointer-events: none;
         z-index: 10;
+        visibility: hidden;
+
+        > li:not(.active) a {
+          color: var(--color-dark-blue);
+        }
+
+        li.active {
+          .button-wrapper {
+            transform: none !important;
+          }
+          svg {
+            visibility: hidden;
+          }
+        }
       }
 
       // Show dropdown menu on hover
       &:hover {
         ul.sub-menu {
-          opacity: 100;
+          opacity: 1;
           pointer-events: auto;
+          visibility: visible;
         }
       }
     }
 
     // Prevent last dropdown menu from going out of page
-    li.dropdown-menu:last-of-type {
-      ul.sub-menu {
-        left: unset;
-        transform: unset;
-        right: 0%;
-      }
-    }
+    // li.dropdown-menu:last-of-type {
+    //   ul.sub-menu {
+    //     left: unset;
+    //     transform: unset;
+    //     right: 0%;
+    //   }
+    // }
   }
 }

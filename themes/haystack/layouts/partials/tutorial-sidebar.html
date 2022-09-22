@@ -1,0 +1,100 @@
+<aside class="tutorials-sidebar">
+  <div class="accordions">
+    {{ $currentPage := . }}
+    {{/* Beginner */}}
+    <details
+      class="accordion-js"
+      {{ if eq .Params.level "beginner" }}open{{ end }}
+    >
+      <summary class="accordion-title">
+        <div class="accordion-title-child">Beginner</div>
+      </summary>
+      <ul class="content" role="list">
+        {{ range where (where .Site.Pages "Section" "tutorials")  ".Params.level" "beginner" }}
+          <li>
+            {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
+              <details class="accordion-js accordion-child" open>
+                <summary class="accordion-title">{{ .Params.title }}</summary>
+                <div class="content">
+                  {{/* Page TOC */}}
+                  {{ .TableOfContents }}
+                </div>
+              </details>
+            {{ else }}
+              <a
+                class="tutorial-card category-{{ lower .Params.category }}"
+                href="{{ .RelPermalink }}"
+              >
+                {{ .Params.title }}
+              </a>
+            {{ end }}
+          </li>
+        {{ end }}
+      </ul>
+    </details>
+
+    {{/* Intermediate */}}
+    <details
+      class="accordion-js"
+      {{ if eq .Params.level "intermediate" }}open{{ end }}
+    >
+      <summary class="accordion-title">
+        <div class="accordion-title-child">Intermediate</div>
+      </summary>
+      <ul class="content" role="list">
+        {{ range where (where .Site.Pages "Section" "tutorials")  ".Params.level" "intermediate" }}
+          <li>
+            {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
+              <details class="accordion-js accordion-child" open>
+                <summary class="accordion-title">{{ .Params.title }}</summary>
+                <div class="content">
+                  {{/* Page TOC */}}
+                  {{ .TableOfContents }}
+                </div>
+              </details>
+            {{ else }}
+              <a
+                class="tutorial-card category-{{ lower .Params.category }}"
+                href="{{ .RelPermalink }}"
+              >
+                {{ .Params.title }}
+              </a>
+            {{ end }}
+          </li>
+        {{ end }}
+      </ul>
+    </details>
+
+    {{/* Advanced */}}
+    <details
+      class="accordion-js"
+      {{ if eq .Params.level "advanced" }}open{{ end }}
+    >
+      <summary class="accordion-title">
+        <div class="accordion-title-child">Advanced</div>
+      </summary>
+      <ul class="content" role="list">
+        {{ range where (where .Site.Pages "Section" "tutorials")  ".Params.level" "advanced" }}
+          <li>
+            {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
+              <details class="accordion-js accordion-child" open>
+                <summary class="accordion-title">{{ .Params.title }}</summary>
+                <div class="content">
+                  {{/* Page TOC */}}
+                  {{ .TableOfContents }}
+                </div>
+              </details>
+            {{ else }}
+              <a
+                class="tutorial-card category-{{ lower .Params.category }}"
+                href="{{ .RelPermalink }}"
+              >
+                {{ .Params.title }}
+              </a>
+            {{ end }}
+          </li>
+        {{ end }}
+      </ul>
+    </details>
+  </div>
+</aside>

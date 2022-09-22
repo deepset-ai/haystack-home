@@ -1,0 +1,119 @@
+{{/* Tutorials page */}}
+{{ define "main" }}
+  <div class="tutorials container container-padded">
+    <div class="inner inner-top">
+      {{/* Heading & subtitle */}}
+      <section class="tutorials-heading">
+        <h1>{{ .Params.title }}</h1>
+        <p>{{ .Params.subtitle | markdownify }}</p>
+      </section>
+
+      <section class="tutorials-buttons">
+        {{/* Filter buttons */}}
+        <div class="button-container">
+          {{ if eq .Params.categoryFilters.enabled true }}
+            {{ range .Params.categoryFilters.list }}
+              <button class="btn filter-btn enabled category-{{ lower . }}">
+                {{ . }}
+              </button>
+            {{ end }}
+          {{ end }}
+        </div>
+
+        {{/* Contribute btn */}}
+        <a
+          class="btn btn-dark-blue contribute-btn"
+          href="{{ .Params.contribute.url }}"
+        >
+          <svg
+            class="github-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M10 0C4.48 0 0 4.59 0 10.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.5l-.01-1.74c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .08 1.53 1.06 1.53 1.06.89 1.57 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.25-4.55-1.13-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.09-2.71 0 0 .84-.28 2.75 1.05a9.43 9.43 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71a4.02 4.02 0 011.03 2.75c0 3.94-2.34 4.8-4.57 5.06.36.31.68.94.68 1.9l-.01 2.81c0 .28.18.59.69.49a10.23 10.23 0 006.83-9.72A10.12 10.12 0 0010 0z"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            />
+          </svg>
+          {{ .Params.contribute.text }}
+        </a>
+      </section>
+
+      {{/* Tutorial accordions */}}
+      <div class="accordions">
+        {{/* Beginner */}}
+        <details class="accordion-js" open>
+          <summary class="accordion-title">
+            Beginner
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill="#fefefd"
+                d="M98,190.06,237.78,353.18a24,24,0,0,0,36.44,0L414,190.06c13.34-15.57,2.28-39.62-18.22-39.62H116.18C95.68,150.44,84.62,174.49,98,190.06Z"
+              />
+            </svg>
+          </summary>
+          <div class="content">
+            {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "beginner" }}
+              <a
+                class="tutorial-card category-{{ lower .Params.category }}"
+                href="{{ .RelPermalink }}"
+              >
+                <h3>{{ .Params.title }}</h3>
+                <p>{{ .Params.Description }}</p>
+              </a>
+            {{ end }}
+          </div>
+        </details>
+
+        {{/* Intermediate */}}
+        <details class="accordion-js">
+          <summary class="accordion-title">
+            Intermediate
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill="#fefefd"
+                d="M98,190.06,237.78,353.18a24,24,0,0,0,36.44,0L414,190.06c13.34-15.57,2.28-39.62-18.22-39.62H116.18C95.68,150.44,84.62,174.49,98,190.06Z"
+              />
+            </svg>
+          </summary>
+          <div class="content">
+            {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "intermediate" }}
+              <a
+                class="tutorial-card category-{{ lower .Params.category }}"
+                href="{{ .RelPermalink }}"
+              >
+                <h3>{{ .Params.title }}</h3>
+                <p>{{ .Params.Description }}</p>
+              </a>
+            {{ end }}
+          </div>
+        </details>
+
+        {{/* Advanced */}}
+        <details class="accordion-js">
+          <summary class="accordion-title">
+            Advanced
+            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill="#fefefd"
+                d="M98,190.06,237.78,353.18a24,24,0,0,0,36.44,0L414,190.06c13.34-15.57,2.28-39.62-18.22-39.62H116.18C95.68,150.44,84.62,174.49,98,190.06Z"
+              />
+            </svg>
+          </summary>
+          <div class="content">
+            {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "advanced" }}
+              <a
+                class="tutorial-card category-{{ lower .Params.category }}"
+                href="{{ .RelPermalink }}"
+              >
+                <h3>{{ .Params.title }}</h3>
+                <p>{{ .Params.Description }}</p>
+              </a>
+            {{ end }}
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+{{ end }}

@@ -1,16 +1,18 @@
-import { fetchGithubStars, fetchTopContributors } from "./github";
+// Main js file loaded in the footer partial
+import { navigation } from "./navigation";
+import { accordions } from "./accordions";
+import { newsletters } from "./newsletters";
+import { githubStats } from "./github-stats";
 
-// Github stars
-// Fetch stars from the Github API and populate containers
-const githubStarContainers = document.querySelectorAll(".github-stars-js");
-if (githubStarContainers.length > 0) {
-  fetchGithubStars(githubStarContainers);
-}
+const ready = (fn) => {
+  if (document.readyState != "loading") {
+    fn();
+  } else {
+    document.addEventListener("DOMContentLoaded", fn);
+  }
+};
 
-// Top contributors
-const topContributorsContainer = document.querySelector(
-  ".top-contributors-container-js"
-);
-if (topContributorsContainer) {
-  fetchTopContributors(topContributorsContainer);
-}
+ready(navigation);
+ready(accordions);
+ready(newsletters);
+ready(githubStats);

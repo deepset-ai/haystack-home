@@ -297,3 +297,36 @@ video.responsive {
   display: block;
   width: 100%;
 }
+
+.styled-table {
+  width: 100%;
+  overflow: auto;
+
+  table {
+    min-width: 45rem;
+    border-collapse: collapse;
+
+    thead tr {
+      background-color: var(--color-bg-dark-blue);
+      color: var(--color-white);
+      text-align: left;
+    }
+
+    th,
+    td {
+      padding: 1rem;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--color-light-grey);
+    }
+
+    tbody tr:nth-of-type(even) {
+      background-color: var(--color-bg-light-grey);
+    }
+
+    tbody tr:last-of-type {
+      border-bottom: 2px solid var(--color-bg-dark-blue);
+    }
+  }
+}

@@ -68,7 +68,8 @@ article {
   img,
   pre,
   .tabbed-content-js,
-  .arrow-button {
+  .arrow-button,
+  table {
     margin-top: var(--sm-text-spacing);
   }
 
@@ -84,5 +85,10 @@ article {
 
   li {
     margin-top: 0.5rem;
+  }
+
+  td,
+  td > a {
+    font-size: var(--font-size-base);
   }
 }

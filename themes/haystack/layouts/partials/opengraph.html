@@ -1,0 +1,62 @@
+{{/* Opengraph partial used in the <head>, adds opengraph metadata to pages
+  (title, description and images) for social shares. If no title, description
+  or images are set on the page, the default params from config.toml will be used
+*/}}
+
+
+<meta property="og:title" content="{{ .Title }} | Haystack" />
+<meta
+  property="og:description"
+  content="{{ with .Description }}
+    {{ . }}
+  {{ else }}
+    {{ with .Site.Params.description }}{{ . }}{{ end }}
+  {{ end }}"
+/>
+<meta
+  property="og:type"
+  content="{{ if .IsPage }}
+    article
+  {{ else }}
+    website
+  {{ end }}"
+/>
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@deepset_ai" />
+<meta name="twitter:site" content="@deepset_ai" />
+<meta name="twitter:title" content="{{ .Title }} | Haystack" />
+<meta
+  name="twitter:description"
+  content="{{ with .Description }}
+    {{ . }}
+  {{ else }}
+    {{ with .Site.Params.description }}{{ . }}{{ end }}
+  {{ end }}
+  "
+/>
+
+{{- with $.Params.images -}}
+  {{- range first 6 . }}
+    <meta property="og:image" content="{{ . | absURL }}" />
+  {{ end -}}
+{{- else -}}
+  {{- with $.Site.Params.images }}
+    <meta property="og:image" content="{{ index . 0 | absURL }}" />
+  {{ end -}}
+{{- end -}}
+
+{{- with $.Params.images -}}
+  <meta name="twitter:image" content="{{ index . 0 | absURL }}" />
+{{- else -}}
+  {{- with $.Site.Params.images }}
+    <meta name="twitter:image" content="{{ index . 0 | absURL }}" />
+  {{ end -}}
+{{- end -}}
+
+{{- with .Params.locale }}
+  <meta property="og:locale" content="{{ . }}" />
+{{ end }}
+{{- with .Site.Params.title }}
+  <meta property="og:site_name" content="{{ . }}" />
+{{ end }}

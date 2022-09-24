@@ -3,10 +3,16 @@ languageCode = 'en-us'
 title = 'Haystack Home'
 theme = "haystack" 
 
+# Defaults used for opengraph metadata if none are specified for the page
+[params]
+  title = "Haystack Home"
+  description = "Haystack is an open-source framework for building search systems that work intelligently over large document collections."
+  images = ["/images/haystack-ogimage.png"]
+
 [permalinks]
-    tutorials = "/tutorials/:filename"
-    overview = "/:filename"
-    pages = "/:filename"
+  tutorials = "/tutorials/:filename"
+  overview = "/:filename"
+  pages = "/:filename"
 
 [markup]
   # Code blocks

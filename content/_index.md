@@ -1,6 +1,7 @@
 ---
 layout: index
 title: Haystack - the Open Source NLP framework
+description: Meta description here
 
 # Hero
 hero:

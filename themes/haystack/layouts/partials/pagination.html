@@ -1,7 +1,7 @@
 <div class="article-pagination">
   <div class="prev-article">
     {{ with .NextInSection }}
-      <a href="{{ .Permalink }}" class="btn">
+      <a href="{{ .RelPermalink }}" class="btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="0.9rem"
@@ -27,7 +27,7 @@
 
   <div class="next-article">
     {{ with .PrevInSection }}
-      <a href="{{ .Permalink }}" class="btn">
+      <a href="{{ .RelPermalink }}" class="btn">
         {{ .Title }}
 
         <svg

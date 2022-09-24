@@ -3,40 +3,9 @@
   <div class="container">
     <div class="inner inner-top">
       <div class="article">
-        {{/* Sidebar */}}
-        <aside class="toc-sidebar">
-          <ul class="content" role="list">
-            {{ range where .Site.Pages "Section" "overview" }}
-              <li>
-                {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
-                  <details class="accordion-js accordion-child" open>
-                    <summary class="accordion-title">
-                      {{ .Params.title }}
-                    </summary>
-                    {{ if .Params.toc }}
-                      <div class="content">
-                        {{ .TableOfContents }}
-                      </div>
-                    {{ end }}
-                  </details>
-                {{ else }}
-                  <a
-                    class="tutorial-card category-{{ lower .Params.category }}"
-                    href="{{ .RelPermalink }}"
-                  >
-                    {{ .Params.title }}
-                  </a>
-                {{ end }}
-              </li>
-            {{ end }}
-          </ul>
-        </aside>
-
         <article class="article-content">
           <h1>{{ .Params.title }}</h1>
           {{ .Content }}
-
-          {{ partial "pagination" . }}
         </article>
       </div>
     </div>

@@ -1,4 +1,5 @@
 ---
+layout: overview
 title: Quick Start
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
 weight: 2
@@ -11,7 +12,7 @@ Haystack is an open source framework that helps developers build NLP empowered s
 On our Github, you can find the source code for Haystack.
 This is also the main channel for raising issues and contributing to the project.
 
-{{< button url="https://google.com" text="View Source Code" color="green">}}
+{{< button url="https://github.com/deepset-ai/haystack" text="View Source Code" color="green">}}
 
 ## Quick Installation
 

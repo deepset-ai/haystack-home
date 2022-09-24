@@ -1,5 +1,5 @@
 <footer
-  class="footer {{ if eq .Params.layout "tutorials" "tutorial" }}
+  class="footer {{ if eq .Params.layout "tutorials" "tutorial" "overview" }}
     footer-alt
   {{ end }}"
 >
@@ -276,12 +276,12 @@
 {{ end }}
 
 {{/* Table of contents */}}
-{{ if eq .Params.layout "tutorial" }}
+{{ if eq .Params.layout "tutorial" "overview" }}
   {{ $toc := resources.Get "/js/table-of-contents.js" | resources.Minify | resources.Fingerprint }}
   <script src="{{ $toc.RelPermalink }}"></script>
 {{ end }}
 
-{{/*  Tabbed content  */}}
+{{/* Tabbed content */}}
 {{ if .HasShortcode "tabs" }}
   {{ $tabs := resources.Get "/js/tabs.js" | resources.Minify | resources.Fingerprint }}
   <script src="{{ $tabs.RelPermalink }}"></script>

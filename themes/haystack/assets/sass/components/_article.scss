@@ -2,7 +2,7 @@
  * Tutorial article
  */
 
-.article,
+.overview,
 .tutorial {
   display: grid;
   grid-template-columns: 1fr;
@@ -290,4 +290,10 @@
       background-color: var(--color-white) !important;
     }
   }
+}
+
+// Videos
+video.responsive {
+  display: block;
+  width: 100%;
 }

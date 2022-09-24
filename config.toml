@@ -4,9 +4,9 @@ title = 'Haystack Home'
 theme = "haystack" 
 
 [permalinks]
-    tutorials = "/tutorials/:filename/"
-    overview = "/:filename/"
-    pages = "/:filename/"
+    tutorials = "/tutorials/:filename"
+    overview = "/:filename"
+    pages = "/:filename"
 
 [markup]
   # Code blocks
@@ -51,13 +51,13 @@ theme = "haystack"
 [[menu.main]]
   identifier = 'tutorials'
   name = 'Tutorials'
-  url = '/tutorials/'
+  url = '/tutorials'
   weight = 3
   
 [[menu.main]]
   identifier = 'community'
   name = 'Community'
-  url = '/community/'
+  url = '/community'
   weight = 4
 
 [[menu.main]]
@@ -69,38 +69,38 @@ theme = "haystack"
 # Overview children
 [[menu.main]]
   name = 'What is Haystack?'
-  url = '/intro/'
+  url = '/intro'
   parent = 'overview'
   weight = 1
 
 [[menu.main]]
   name = 'Quick Start'
-  url = '/quick-start/'
+  url = '/quick-start'
   parent = 'overview'
   weight = 2
 
 [[menu.main]]
   name = 'Quick Demo'
-  url = '/demo/'
+  url = '/demo'
   parent = 'overview'
   weight = 3
 
 [[menu.main]]
   name = 'Roadmap'
-  url = '/roadmap/'
+  url = '/roadmap'
   parent = 'overview'
   weight = 4
 
 [[menu.main]]
   name = 'Use Cases'
-  url = '/use-cases/'
+  url = '/use-cases'
   parent = 'overview'
   weight = 5
 
 # Learn children
 [[menu.main]]
   name = 'NLP Resources'
-  url = '/nlp-resources/'
+  url = '/nlp-resources'
   parent = 'learn'
   weight = 1
 

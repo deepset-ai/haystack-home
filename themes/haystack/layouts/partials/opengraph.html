@@ -21,7 +21,7 @@
     website
   {{ end }}"
 />
-<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:url" content="{{ .RelPermalink }}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@deepset_ai" />
 <meta name="twitter:site" content="@deepset_ai" />
@@ -38,19 +38,19 @@
 
 {{- with $.Params.images -}}
   {{- range first 6 . }}
-    <meta property="og:image" content="{{ . | absURL }}" />
+    <meta property="og:image" content="{{ . | relURL }}" />
   {{ end -}}
 {{- else -}}
   {{- with $.Site.Params.images }}
-    <meta property="og:image" content="{{ index . 0 | absURL }}" />
+    <meta property="og:image" content="{{ index . 0 | relURL }}" />
   {{ end -}}
 {{- end -}}
 
 {{- with $.Params.images -}}
-  <meta name="twitter:image" content="{{ index . 0 | absURL }}" />
+  <meta name="twitter:image" content="{{ index . 0 | relURL }}" />
 {{- else -}}
   {{- with $.Site.Params.images }}
-    <meta name="twitter:image" content="{{ index . 0 | absURL }}" />
+    <meta name="twitter:image" content="{{ index . 0 | relURL }}" />
   {{ end -}}
 {{- end -}}
 

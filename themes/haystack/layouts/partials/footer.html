@@ -280,3 +280,9 @@
   {{ $toc := resources.Get "/js/table-of-contents.js" | resources.Minify | resources.Fingerprint }}
   <script src="{{ $toc.RelPermalink }}"></script>
 {{ end }}
+
+{{/*  Tabbed content  */}}
+{{ if .HasShortcode "tabs" }}
+  {{ $tabs := resources.Get "/js/tabs.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $tabs.RelPermalink }}"></script>
+{{ end }}

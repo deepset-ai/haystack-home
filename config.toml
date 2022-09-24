@@ -5,6 +5,8 @@ theme = "haystack"
 
 [permalinks]
     tutorials = "/tutorials/:filename/"
+    overview = "/:filename/"
+    pages = "/:filename/"
 
 [markup]
   # Code blocks
@@ -37,7 +39,7 @@ theme = "haystack"
 [[menu.main]]
   identifier = 'overview'
   name = 'Overview'
-  url = '/overview'
+  url = '/'
   weight = 1
   
 [[menu.main]]
@@ -49,54 +51,61 @@ theme = "haystack"
 [[menu.main]]
   identifier = 'tutorials'
   name = 'Tutorials'
-  url = '/tutorials'
+  url = '/tutorials/'
   weight = 3
   
 [[menu.main]]
   identifier = 'community'
   name = 'Community'
-  url = '/community'
+  url = '/community/'
   weight = 4
+
+[[menu.main]]
+  identifier = 'learn'
+  name = 'Learn'
+  url = '/'
+  weight = 5
 
 # Overview children
 [[menu.main]]
   name = 'What is Haystack?'
-  url = '/'
+  url = '/intro/'
   parent = 'overview'
   weight = 1
 
 [[menu.main]]
-  name = 'Get Started'
-  url = '/get-started/'
+  name = 'Quick Start'
+  url = '/quick-start/'
   parent = 'overview'
   weight = 2
 
 [[menu.main]]
-  name = 'Installation'
-  url = '/installation/'
+  name = 'Quick Demo'
+  url = '/demo/'
   parent = 'overview'
   weight = 3
-
-[[menu.main]]
-  name = 'Quick Demo'
-  url = '/quick-demo/'
-  parent = 'overview'
-  weight = 4
-
-[[menu.main]]
-  name = 'NLP Resources'
-  url = '/nlp-resources/'
-  parent = 'overview'
-  weight = 5
 
 [[menu.main]]
   name = 'Roadmap'
   url = '/roadmap/'
   parent = 'overview'
-  weight = 6
+  weight = 4
 
 [[menu.main]]
   name = 'Use Cases'
   url = '/use-cases/'
   parent = 'overview'
-  weight = 7
+  weight = 5
+
+# Learn children
+[[menu.main]]
+  name = 'NLP Resources'
+  url = '/nlp-resources/'
+  parent = 'learn'
+  weight = 1
+
+[[menu.main]]
+  name = 'Blog'
+  url = 'https://www.deepset.ai/blog'
+  parent = 'learn'
+  weight = 2

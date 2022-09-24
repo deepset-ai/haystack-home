@@ -67,7 +67,9 @@ a {
   h4,
   p,
   img,
-  pre {
+  pre,
+  .tabbed-content-js,
+  .arrow-button {
     margin-top: var(--sm-text-spacing);
   }
 

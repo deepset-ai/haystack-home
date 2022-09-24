@@ -1,0 +1,16 @@
+{{/* Tab used in the tabs shortcode */}}
+
+{{ $tabName := .Get "tabName" }}
+{{ $tabId := .Get "tabId" }}
+{{ .Parent.Scratch.Add "tabName" (slice $tabName) }}
+{{ .Parent.Scratch.Add "tabId" (slice $tabId) }}
+
+
+<div
+  class="tab-pane {{ if eq .Ordinal 0 }}active{{ end }}"
+  id="{{ $tabId }}"
+  role="tabpanel"
+  data-tab-info
+>
+  {{ $.Inner | markdownify }}
+</div>

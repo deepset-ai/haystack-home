@@ -267,7 +267,7 @@
 {{ end }}
 
 {{/* Table of contents */}}
-{{ if eq .Params.layout "tutorial" "overview" }}
+{{ if eq .Params.toc true }}
   {{ $toc := resources.Get "/js/table-of-contents.js" | resources.Minify | resources.Fingerprint }}
   <script src="{{ $toc.RelPermalink }}"></script>
 {{ end }}

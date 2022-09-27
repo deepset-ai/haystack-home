@@ -242,6 +242,9 @@ button.nav-toggle-close {
     flex-shrink: 0;
     fill: var(--color-dark-grey);
     transition: fill var(--transition-fast) var(--ease);
+  }
+
+  > svg:first-of-type {
     padding-bottom: 0.2rem;
   }
 

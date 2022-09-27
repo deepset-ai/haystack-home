@@ -51,7 +51,7 @@ theme = "haystack"
 [[menu.main]]
   identifier = 'documentation'
   name = 'Documentation'
-  url = 'https://haystack.deepset.ai'
+  url = 'https://docs.haystack.deepset.ai/docs'
   weight = 2
 
 [[menu.main]]

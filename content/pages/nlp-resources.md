@@ -1,5 +1,7 @@
 ---
 title: NLP Resources
+toc: true
+layout: single
 ---
 
 Here are some links to resources about the core concepts of Natural Language Processing (NLP)

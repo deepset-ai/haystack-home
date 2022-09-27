@@ -1,32 +1,40 @@
 ---
 layout: index
-title: Haystack - the Open Source NLP framework
+title: Haystack
 description: Meta description here
 
 # Hero
 hero:
-  title: Haystack - the Open Source NLP framework
-  subtitle: Enabling end-to-end semantic search applications
+  title: Haystack
+  subtitle: The open source NLP framework enabling end-to-end search applications
   bulletPoints:
-    - Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus
-    - Nihil sit fugiat, reiciendis impedit voluptate tenetur soluta praesentium. Reiciendis, ut!
+    - Build search systems that work intelligently over large document collections
+    - Make use of the latest transformer based language models (BERT, RoBERTa, MiniLM, DPR) 
+    - Annotate examples, collect user-feedback, evaluate components and finetune models
   buttons:
     - buttonText: Learn more
-      url: /
+      url: /intro
   image: /images/hero-placeholder.png
 
 # Showcase
 showcase:
   title: Enabling Semantic Search
   showcaseItems:
-    - title: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    - title: Question Answering
       text: Similique quod, aspernatur rem ad iure iste, sapiente corrupti dicta quam repudiandae sed culpa perferendis dolorem dolor.
       url: /
       buttonText: Explore Docs
       image:
         url: /images/card-placeholder.jpg
         alt: placeholder img
-    - title: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    - title: Document Search
+      text: Nihil sit fugiat, reiciendis impedit voluptate tenetur soluta praesentium. Reiciendis, sapiente corrupti dicta quam.
+      url: /
+      buttonText: Explore Docs
+      image:
+        url: /images/card-placeholder-2.jpg
+        alt: placeholder img
+    - title: Summarization
       text: Nihil sit fugiat, reiciendis impedit voluptate tenetur soluta praesentium. Reiciendis, sapiente corrupti dicta quam.
       url: /
       buttonText: Explore Docs

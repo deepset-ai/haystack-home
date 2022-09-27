@@ -1,0 +1,36 @@
+{{/*  Tabs Shortcode - add tabbed content to markdown */}}
+{{/*  Usage:
+
+{{< tabs totalTabs="2">}}
+{{< tab tabName="First Tab Name" tabId="unique_tab_id" >}}
+
+First tab content here
+
+{{< /tab >}}
+
+{{< tab tabName="Second Tab Name" tabId="unique_tab_id_2" >}}
+
+Second tab content here
+    
+{{< /tab >}}
+{{< /tabs >}}
+    
+    
+*/}}
+
+<div class="tabbed-content-js">
+    <div class="tabs" role="tablist">
+        {{ $totalTabs := .Get "totalTabs" }}
+        {{ $tabName := .Scratch.Get "tabName" }}
+        {{ $tabId := .Scratch.Get "tabId" }}
+    
+        {{ range $i, $sequence := (seq $totalTabs) }}
+            <a class="tablink {{ if eq $i 0 }} active {{ end }}" data-toggle="tab" role="tab" data-tab-value="#{{ (index $tabId $i) }}">{{ index $tabName $i }}</a>
+        {{ end }}
+    
+    </div>
+    
+    <div>
+        {{ .Inner }}
+    </div>
+</div>

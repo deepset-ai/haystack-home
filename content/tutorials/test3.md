@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Third Intermediate Tutorial
+toc: true
 date: 2022-09-18
 last-update: 2022-09-18
 category: Summarization

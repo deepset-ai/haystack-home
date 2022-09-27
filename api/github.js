@@ -36,6 +36,11 @@ export default async function handler(request, response) {
       contributions: contrib.contributions,
     }));
 
+    response.setHeader(
+      "Cache-Control",
+      "s-maxage=1800, stale-while-revalidate=1800"
+    );
+
     return response.status(200).json({
       stars,
       contributors,

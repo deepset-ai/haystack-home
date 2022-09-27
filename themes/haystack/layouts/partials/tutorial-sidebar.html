@@ -1,4 +1,4 @@
-<aside class="tutorials-sidebar">
+<aside class="toc-sidebar">
   <div class="accordions">
     {{ $currentPage := . }}
     {{/* Beginner */}}
@@ -15,10 +15,12 @@
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>
                 <summary class="accordion-title">{{ .Params.title }}</summary>
-                <div class="content">
-                  {{/* Page TOC */}}
-                  {{ .TableOfContents }}
-                </div>
+                {{if .Params.toc}}
+                  <div class="content">
+                    {{/* Page TOC */}}
+                    {{ .TableOfContents }}
+                  </div>
+                {{ end }}
               </details>
             {{ else }}
               <a
@@ -47,10 +49,12 @@
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>
                 <summary class="accordion-title">{{ .Params.title }}</summary>
-                <div class="content">
-                  {{/* Page TOC */}}
-                  {{ .TableOfContents }}
-                </div>
+                {{if .Params.toc}}
+                  <div class="content">
+                    {{/* Page TOC */}}
+                    {{ .TableOfContents }}
+                  </div>
+                {{ end }}
               </details>
             {{ else }}
               <a
@@ -79,10 +83,12 @@
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>
                 <summary class="accordion-title">{{ .Params.title }}</summary>
-                <div class="content">
-                  {{/* Page TOC */}}
-                  {{ .TableOfContents }}
-                </div>
+                {{if .Params.toc}}
+                  <div class="content">
+                    {{/* Page TOC */}}
+                    {{ .TableOfContents }}
+                  </div>
+                {{ end }}
               </details>
             {{ else }}
               <a

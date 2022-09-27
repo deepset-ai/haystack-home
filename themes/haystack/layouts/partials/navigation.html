@@ -1,7 +1,9 @@
+{{/* Desktop navigation */}}
 <nav class="nav desktop-nav">
   <ul role="list">
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
+      {{/* If nav item has children, add a dropdown menu */}}
       {{ if .HasChildren }}
         <li class="dropdown-menu">
           <a href="#" class="dropdown-button">
@@ -10,7 +12,7 @@
           <ul class="sub-menu" role="list">
             {{ range .Children }}
               <li
-                class="{{ if (eq $currentPage.RelPermalink .URL) }}
+                class="{{ if (in $currentPage.RelPermalink .URL) }}
                   active
                 {{ end }}"
               >
@@ -42,10 +44,14 @@
           </ul>
         </li>
       {{ else }}
+        {{/* If no children, add a link */}}
         <li>
           <a href="{{ .URL }}">{{ .Name }}</a>
         </li>
       {{ end }}
     {{ end }}
+
+    {{/* Get started button */}}
+    {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Get Started" "url" "https://github.com/deepset-ai/haystack") }}
   </ul>
 </nav>

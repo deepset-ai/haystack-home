@@ -1,3 +1,4 @@
+{{/*  Mobile navigation  */}}
 <nav class="nav mobile-nav">
   <button class="nav-toggle nav-toggle-close" aria-label="Close menu">
     <svg
@@ -18,6 +19,7 @@
   <ul role="list">
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
+    {{/*  If nav item has children, list the children  */}}
       {{ if .HasChildren }}
         <li>
           <span class="menu-label">
@@ -36,10 +38,15 @@
           </ul>
         </li>
       {{ else }}
+      {{/*  If no children, add a link  */}}
         <li>
           <a href="{{ .URL }}">{{ .Name }}</a>
         </li>
       {{ end }}
     {{ end }}
+
+    {{/*  Get started button  */}}
+    {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Get Started" "url" "https://github.com/deepset-ai/haystack") }}
+
   </ul>
 </nav>

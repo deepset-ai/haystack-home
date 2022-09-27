@@ -9,5 +9,15 @@
         }
       ]
     }
+  ],
+
+  "trailingSlash": false,
+
+  "redirects": [
+    {
+      "source": "/old-page",
+      "destination": "/tutorials",
+      "permanent": true
+    }
   ]
 }

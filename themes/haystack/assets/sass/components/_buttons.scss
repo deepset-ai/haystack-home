@@ -22,7 +22,7 @@ button.nav-toggle {
 }
 
 button.nav-toggle-open {
-  @include md {
+  @include lg {
     display: none;
   }
   svg {
@@ -62,6 +62,10 @@ button.nav-toggle-close {
     background-color: rgba($color: #{var(--color-green-rgb)}, $alpha: 1);
     color: var(--color-white);
 
+    svg {
+      fill: var(--color-white);
+    }
+
     &:hover {
       background-color: rgba($color: #{var(--color-green-rgb)}, $alpha: 0.9);
     }
@@ -71,6 +75,10 @@ button.nav-toggle-close {
     background-color: rgba($color: #{var(--color-blue-rgb)}, $alpha: 1);
     color: var(--color-white);
 
+    svg {
+      fill: var(--color-white);
+    }
+
     &:hover {
       background-color: rgba($color: #{var(--color-blue-rgb)}, $alpha: 0.9);
     }
@@ -79,6 +87,10 @@ button.nav-toggle-close {
   &.btn-dark-blue {
     background-color: rgba($color: #{var(--color-dark-blue-rgb)}, $alpha: 1);
     color: var(--color-white);
+
+    svg {
+      fill: var(--color-white);
+    }
 
     &:hover {
       background-color: rgba(

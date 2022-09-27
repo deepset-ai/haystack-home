@@ -1,30 +1,13 @@
 {{ define "main" }}
+  {{ $currentPage := . }}
   <div class="container">
-    <div class="inner article">
-      <section>
-        <h1>{{ .Title }}</h1>
-        <div>
-          <article>
-            {{ .Content }}
-          </article>
-        </div>
-      </section>
-      {{/*  <aside>
-        <div>
-          <section>
-            <h4>{{ .Date.Format "Jan 2, 2006" }}</h4>
-            <h5>{{ .WordCount }} Words</h5>
-          </section>
-        </div>
-        <div>
-          {{ with .PrevInSection }}
-            <a class="previous" href="{{ .Permalink }}"> {{ .Title }}</a>
-          {{ end }}
-          {{ with .NextInSection }}
-            <a class="next" href="{{ .Permalink }}"> {{ .Title }}</a>
-          {{ end }}
-        </div>
-      </aside>  */}}
+    <div class="inner inner-top">
+      <div class="article">
+        <article class="article-content">
+          <h1>{{ .Params.title }}</h1>
+          {{ .Content }}
+        </article>
+      </div>
     </div>
   </div>
 {{ end }}

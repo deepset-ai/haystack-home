@@ -38,7 +38,7 @@ theme = "haystack"
 
   # Allow html in markdown
   [markup.goldmark.renderer]
-  unsafe= true
+    unsafe= true
 
 # Main navigation
 [menu]

@@ -32,7 +32,7 @@
                   active
                 {{ end }}"
               >
-                <a href="{{ .URL }}">{{ .Name }}</a>
+                <a href="{{ .URL }}" {{ if strings.HasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
               </li>
             {{ end }}
           </ul>
@@ -40,7 +40,7 @@
       {{ else }}
       {{/*  If no children, add a link  */}}
         <li>
-          <a href="{{ .URL }}">{{ .Name }}</a>
+          <a href="{{ .URL }}" {{ if strings.HasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
         </li>
       {{ end }}
     {{ end }}

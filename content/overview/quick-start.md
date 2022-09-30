@@ -17,7 +17,7 @@ This is also the main channel for raising issues and contributing to the project
 ## Quick Installation
 
 {{< tabs totalTabs="2">}}
-{{< tab tabName="Basic Install" tabId="basic_tab" >}}
+{{< tab tabName="Basic Install"  >}}
 
 The most straightforward way to install the latest release of Haystack is through pip.
 
@@ -29,7 +29,7 @@ pip install farm-haystack
 
 {{< /tab >}}
 
-{{< tab tabName="Full Install" tabId="full_tab" >}}
+{{< tab tabName="Full Install" >}}
 
 If you plan to be using more advanced features like Milvus, FAISS, Weaviate, OCR or Ray, you will need to install a full version of Haystack.
 

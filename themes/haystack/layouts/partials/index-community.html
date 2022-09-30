@@ -9,7 +9,6 @@
         {{ range .Params.community.discord.buttons }}
           {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
         {{ end }}
-
       </div>
 
       {{/* Newsletter card */}}
@@ -18,6 +17,7 @@
         <h3>{{ .Params.community.newsletter.title }}</h3>
         <p>{{ .Params.community.newsletter.text }}</p>
 
+        {{/*  Newsletter form  */}}
         <form
           class="js-newsletter-form disabled"
           aria-label="Subscribe to our newsletter"

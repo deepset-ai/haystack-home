@@ -24,6 +24,7 @@
         <a
           class="btn btn-dark-blue contribute-btn"
           href="{{ .Params.contribute.url }}"
+          {{ if strings.HasPrefix .Params.contribute.url "http" }} target="_blank" rel="noopener"{{ end }}
         >
           <svg
             class="github-icon"

@@ -8,7 +8,6 @@
 .index-hero {
   position: relative;
 
-  // background-color: var(--color-bg-light-grey);
   .hero-inner {
     width: 100%;
     position: relative;
@@ -54,6 +53,17 @@
             flex-shrink: 0;
             margin-top: 0.35rem;
           }
+        }
+      }
+
+      .button-outer-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        .github-stars-btn {
+          align-self: unset;
+          margin-left: auto;
         }
       }
     }
@@ -347,3 +357,4 @@
     background-color: var(--color-bg-light-grey);
   }
 }
+

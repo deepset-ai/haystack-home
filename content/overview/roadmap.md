@@ -15,7 +15,7 @@ We hope this helps to clarify the direction of the open-source project and inspi
 Here you will find the **high-level projects** that we have planned for the upcoming quarters.
 We update it regularly and refine the projects as their start date approaches.
 
-![image](/images/roadmap_github.png)
+{{< img src="/images/roadmap_github.png" alt="Roadmap" width="1100" >}}
 
 <div style={{ marginBottom: "3rem" }} />
 
@@ -26,7 +26,7 @@ To see them, you will need to install the [Zenhub plugin](https://www.zenhub.com
 When you have done this, additional tabs will appear on the GitHub page.
 Click The **Zenhub** tab followed by **Board** in the left menu to view it.
 
-![image](/images/zenhub_board.png)
+{{< img src="/images/zenhub_board.png" width="1100" alt="Zenhub Board" >}}
 
 <div style={{ marginBottom: "3rem" }} />
 
@@ -37,4 +37,4 @@ _Right panel in regular Github issues_
 With Zenhub you can also see some additional tags in every GitHub issue.
 For those of you who wonder about the next release date: We aim for releases every ~ 4 weeks and will tag the issues that will need to be finished before a bit in advance.
 
-![image](/images/zenhub_issue.png)
+{{< img src="/images/zenhub_issue.png" width="1000" alt="Zenhub Issue" styling="centered" >}}

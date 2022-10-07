@@ -1,0 +1,125 @@
+{{/* Community page hero */}}
+{{ with .Params.Hero }}
+  <section class="community-hero">
+    <div class="container">
+      <section class="inner inner-top">
+        {{/* Top section */}}
+        <div class="community-hero-top">
+          {{/* Top Left section */}}
+          <div>
+            {{/* Headline & Text */}}
+            <div>
+              <h1>{{ .headline }}</h1>
+              <p>{{ .text }}</p>
+            </div>
+
+            {{/* Discord & Newsletter cards */}}
+            {{ with .community }}
+            <div class="community-cards">
+              {{ partial "community-cards" (dict "context" . "community" .) }}
+            </div>
+            {{ end }}
+
+            {{/* Social icons/links */}}
+            {{ with .socials }}
+            <ul class="social-links" role="list">
+              {{ range . }}
+              <li>
+                <a href="{{ .url }}" target="_blank" rel="noopener">
+                  <img src="{{ .icon }}" alt="{{ .title }}" />
+                </a>
+              </li>
+              {{ end }}
+            </ul>
+            {{ end }}
+          </div>
+
+          {{/* Top Right section */}}
+          <div>
+            {{/* Most active community members */}}
+            <div>
+              <h2>{{ .communityText }}</h2>
+              <div class="orbit-stats-js">
+                <ul role="list">
+                  <li>
+                    <span class="rank">1</span>
+                    <img src="/images/user-placeholder.jpg">
+                    <p>placeholderName</p>
+                  </li>
+
+                  <li>
+                    <span class="rank">2</span>
+                    <img src="/images/user-placeholder.jpg">
+                    <p>placeholderName</p>
+                  </li>
+
+                  <li>
+                    <span class="rank">3</span>
+                    <img src="/images/user-placeholder.jpg">
+                    <p>placeholderName</p>
+                  </li>
+
+                  <li>
+                    <span class="rank">4</span>
+                    <img src="/images/user-placeholder.jpg">
+                    <p>placeholderName</p>
+                  </li>
+
+                  <li>
+                    <span class="rank">5</span>
+                    <img src="/images/user-placeholder.jpg">
+                    <p>placeholderName</p>
+                  </li>
+
+                  <li>
+                    <span class="rank">6</span>
+                    <img src="/images/user-placeholder.jpg">
+                    <p>placeholderName</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {{/* New contributors */}}
+            {{/* <div>
+              <h2>{{ .contributorsText }}</h2>
+            </div> */}}
+          </div>
+        </div>
+
+        {{ with .github}}
+          {{/* Github section */}}
+          <section class="community-github">
+            {{/* Stars / contributors */}}
+            <ul class="stats-boxes" role="list">
+              <li>
+                <span class="github-stars-js">
+                  {{ partial "loader" . }}
+                </span>
+                <span>Stars</span>
+              </li>
+              <li>
+                <span class="github-contributors-js">
+                  {{ partial "loader" . }}
+                </span>
+                <span>Contributors</span>
+              </li>
+            </ul>
+
+            {{/* Title / buttons */}}
+            <div class="text-section">
+              <h2>{{ .title }}</h2>
+
+              <div class="button-container">
+                {{ range .buttons }}
+                {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
+                {{ end }}
+              </div>
+            </div>
+          </section>
+        {{ end }}
+
+      </section>
+    </div>
+  </section>
+{{ end }}

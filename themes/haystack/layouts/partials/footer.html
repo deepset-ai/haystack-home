@@ -1,7 +1,5 @@
 <footer
-  class="footer {{ if not (eq .Params.layout "index") }}
-    footer-alt
-  {{ end }}"
+  class="footer{{ with .Params.Footer }}{{ if eq . "dark" }} footer-dark{{ end }}{{ end }}"
 >
   <div class="container">
     <div class="inner">

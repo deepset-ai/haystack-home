@@ -1,5 +1,7 @@
 ---
 layout: tutorial
+header: light
+footer: dark
 title: Third Intermediate Tutorial
 toc: true
 date: 2022-09-18

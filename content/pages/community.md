@@ -1,7 +1,10 @@
 ---
 layout: community
 title: Community
-# Top section
+header: dark
+footer: dark
+
+# Hero
 hero:
   headline: Join the Haystack Community
   text: Haystack is fully open source. Our community is made up of NLP researchers, enthusiasts, engineers and people who are interested in semantic search. Join us!
@@ -76,6 +79,11 @@ eventsSection:
 meetupSection:
   title: The Open NLP Meetup
   text: Every 3 months, we organize the Open NLP Meetup. We have guest speakers from..... 
-  buttonText: Join Open NLP Meetup
+  buttonText: Join Meetup
+  url: /
+  videos:
+    - rO88zjicRWI
+    - r3oeEWUYZ5A
+    - 7Qix5oFbwDM
 
 ---

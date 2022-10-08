@@ -1,5 +1,7 @@
 ---
 layout: overview
+header: light
+footer: dark
 title: Roadmap
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
 weight: 4

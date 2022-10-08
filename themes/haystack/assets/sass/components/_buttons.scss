@@ -40,6 +40,19 @@ button.nav-toggle-close {
   }
 }
 
+.header-dark button.nav-toggle-open {
+  svg path {
+    stroke: var(--color-white);
+    transition: stroke var(--transition-fast) var(--ease);
+  }
+
+  &:hover {
+    svg path {
+      stroke: var(--color-light-grey);
+    }
+  }
+}
+
 // Base button
 .btn {
   display: flex;

@@ -8,22 +8,19 @@
                 <div class="events-container">
                     {{ range .events }}
                         <div class="events-card {{ with .alt }}alt-card{{ end }}">
-                            <div class="top">
                                 <img src="{{ .image }}" alt="{{ .title }}">
-                                <div class="title">
+
+                                <div class="content-section">
                                     <h3>{{ .title }}</h3>
                                     <div class="details">
                                         <span class="date">{{ .date }}</span>
                                         <span class="time">{{ .time }}</span>
                                         <span class="location">{{ .location }}</span>
                                     </div>
+    
+                                    <p>{{ .description }}</p>
+                                    {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
                                 </div>
-                            </div>
-
-                            <div class="bottom">
-                                <p>{{ .description }}</p>
-                                {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
-                            </div>
                         </div>
                     {{ end }}
                 </div>

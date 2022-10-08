@@ -1,4 +1,4 @@
-<header class="site-header">
+<header class="site-header{{ with .Params.Header }}{{ if eq . "dark" }} header-dark{{ end }}{{ end }}">
   <div class="container">
     <a class="site-title" href="/">{{ partial "site-logo" . }}</a>
 

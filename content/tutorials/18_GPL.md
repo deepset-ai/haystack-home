@@ -1,17 +1,20 @@
 ---
 layout: tutorial
-title: "GPL Domain Adaptation"
-toc: true
-date: "2022-06-22"
-last-update: "2022-09-09"
-category: QA
+colab: https://colab.research.google.com/github/deepset-ai/haystack-tutorials/blob/main/tutorials/18_GPL.ipynb
+toc: True
+title: "Generative Pseudo Labeling"
+last_updated: 2022-10-11
 level: "advanced"
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
-weight: 1
-colab: https://colab.research.google.com/github/deepset-ai/haystack/blob/main/tutorials/Tutorial18_GPL.ipynb
+weight: 140
+description: Use a Retriever and a query generator to perform unsupervised domain adaptation.
+category: "QA"
+aliases: ['/tutorials/gpl']
 ---
+    
 
-*Note: Adapted to Haystack from Nils Riemers' original [notebook](https://colab.research.google.com/gist/jamescalam/d2c888775c87f9882bb7c379a96adbc8/gpl-domain-adaptation.ipynb#scrollTo=183ff7ab)
+# Generative Pseudo Labeling for Domain Adaptation of Dense Retrievals
+
+*Note: Adapted to Haystack from Nils Reimers' original [notebook](https://colab.research.google.com/gist/jamescalam/d2c888775c87f9882bb7c379a96adbc8/gpl-domain-adaptation.ipynb#scrollTo=183ff7ab)
 
 The NLP models we use every day were trained on a corpus of data that reflects the world from the past. In the meantime, we've experienced world-changing events, like the COVID pandemics, and we'd like our models to know about them. Training a model from scratch is tedious work but what if we could just update the models with new data? Generative Pseudo Labeling comes to the rescue.
 
@@ -124,7 +127,7 @@ print("Original Model")
 show_examples(org_model)
 ```
 
-## Get Some Data on COVID-19
+# Get Some Data on COVID-19
 We select 10k scientific publications (title + abstract) that are connected to COVID-19. As a dataset, we use [TREC-COVID-19](https://huggingface.co/datasets/nreimers/trec-covid).
 
 
@@ -149,7 +152,7 @@ for row in dataset:
 print("Len Corpus:", len(corpus))
 ```
 
-## Initialize Haystack Retriever and DocumentStore
+# Initialize Haystack Retriever and DocumentStore
 
 Let's add corpus documents to `FAISSDocumentStore` and update corpus embeddings via `EmbeddingRetriever`
 
@@ -225,7 +228,7 @@ else:
 print("Generated queries:", len(query_doc_pairs))
 ```
 
-## Use PseudoLabelGenerator to Genenerate Retriever Adaptation Training Data
+# Use PseudoLabelGenerator to Genenerate Retriever Adaptation Training Data
 
 PseudoLabelGenerator run will execute all three steps of the GPL [algorithm](https://github.com/UKPLab/gpl#how-does-gpl-work):
  1. Question generation - optional step
@@ -260,7 +263,7 @@ psg = PseudoLabelGenerator(questions_producer, retriever, max_questions_per_docu
 output, pipe_id = psg.run(documents=document_store.get_all_documents())
 ```
 
-## Update the Retriever
+# Update the Retriever
 
 Now that we have the generated training data produced by `PseudoLabelGenerator`, we'll update the `EmbeddingRetriever`. Let's take a peek at the training data.
 

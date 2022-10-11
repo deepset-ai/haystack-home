@@ -41,41 +41,7 @@
               <h2>{{ .communityText }}</h2>
               <div class="orbit-stats-js">
                 <ul role="list">
-                  <li>
-                    <span class="rank">1</span>
-                    <img src="/images/user-placeholder.jpg">
-                    <p>placeholderName</p>
-                  </li>
-
-                  <li>
-                    <span class="rank">2</span>
-                    <img src="/images/user-placeholder.jpg">
-                    <p>placeholderName</p>
-                  </li>
-
-                  <li>
-                    <span class="rank">3</span>
-                    <img src="/images/user-placeholder.jpg">
-                    <p>placeholderName</p>
-                  </li>
-
-                  <li>
-                    <span class="rank">4</span>
-                    <img src="/images/user-placeholder.jpg">
-                    <p>placeholderName</p>
-                  </li>
-
-                  <li>
-                    <span class="rank">5</span>
-                    <img src="/images/user-placeholder.jpg">
-                    <p>placeholderName</p>
-                  </li>
-
-                  <li>
-                    <span class="rank">6</span>
-                    <img src="/images/user-placeholder.jpg">
-                    <p>placeholderName</p>
-                  </li>
+                  {{ partial "orbit-community-members" . }}
                 </ul>
               </div>
             </div>

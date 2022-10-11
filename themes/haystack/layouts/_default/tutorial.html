@@ -46,6 +46,10 @@
             </a>
           {{ end }}
 
+          <sub>
+            Last Updated: {{ .Params.last_updated | time.Format ":date_long"  }}
+          </sub>
+
           {{/* Article content */}}
           {{ .Content }}
 

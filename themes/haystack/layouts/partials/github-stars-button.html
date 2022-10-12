@@ -1,3 +1,20 @@
+{{/*  Github stars button  */}}
+
+{{ $accessToken := getenv "GITHUB_ACCESS_TOKEN" }}
+{{ $starCount := 0 }}
+
+{{ with $accessToken }}
+  {{/*  Authorization  */}}
+  {{ $auth := (dict "Authorization" (printf "Bearer %s" $accessToken)) }}
+
+  {{/* Fetch Stargazer count */}}
+  {{ $starsData := getJSON "https://api.github.com/repos/deepset-ai/haystack" $auth }}
+  {{/*  Format number to K (2000 -> 2k)  */}}
+  {{ $starCount = (div $starsData.stargazers_count 1000) | lang.FormatNumber 1 }}
+  {{ $starCount = printf (print $starCount "%s") "k"}}
+{{ end }}
+
+{{/*  Button  */}}
 <a class="github-stars-btn" href="https://github.com/deepset-ai/haystack" target="_blank" rel="noopener"
   ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
     <path
@@ -7,5 +24,5 @@
     />
   </svg>
   Stars <span>|</span
-  ><span class="github-stars-js">{{ partial "loader" . }}</span></a
+  ><span class="github-stars-js">{{ $starCount }}</span></a
 >

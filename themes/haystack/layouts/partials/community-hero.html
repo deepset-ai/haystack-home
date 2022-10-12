@@ -57,20 +57,7 @@
           {{/* Github section */}}
           <section class="community-github">
             {{/* Stars / contributors */}}
-            <ul class="stats-boxes" role="list">
-              <li>
-                <span class="github-stars-js">
-                  {{ partial "loader" . }}
-                </span>
-                <span>Stars</span>
-              </li>
-              <li>
-                <span class="github-contributors-js">
-                  {{ partial "loader" . }}
-                </span>
-                <span>Contributors</span>
-              </li>
-            </ul>
+            {{ partial "github-stats.html" . }}
 
             {{/* Title / buttons */}}
             <div class="text-section">
@@ -84,6 +71,7 @@
             </div>
           </section>
         {{ end }}
+
 
       </section>
     </div>

@@ -24,10 +24,13 @@
         </ul>
 
         {{/* Buttons */}}
-        <div class="button-container">
-          {{ range .Params.hero.buttons }}
-            {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
-          {{ end }}
+        <div class="button-outer-container">
+          <div class="button-container">
+            {{ range .Params.hero.buttons }}
+              {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
+            {{ end }}
+          </div>
+          {{ partial "github-stars" . }}
         </div>
       </div>
     </div>

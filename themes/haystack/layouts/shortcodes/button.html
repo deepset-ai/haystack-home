@@ -13,7 +13,7 @@ Color options: green, blue, dark-blue
 
 <a
   class="btn arrow-button {{ if $color }}btn-{{ $color }}{{ end }}"
-  href="{{ $url }}"
+  href="{{ $url }}" {{ if strings.HasPrefix $url "http" }} target="_blank" rel="noopener"{{ end }}
 >
   <div class="button-wrapper">
     <svg

@@ -12,16 +12,16 @@ Haystack is an **open-source framework** for building **search systems** that wo
 Recent advances in NLP have enabled the application of question answering, retrieval and summarization to real world settings
 and Haystack is designed to be the bridge between research and industry.
 
-- **NLP for Search**: Pick components that perform [retrieval](/pipeline_nodes/retriever),
-  [question answering](/pipeline_nodes/reader), [reranking](/pipeline_nodes/ranker) and much more.
+- **NLP for Search**: Pick components that perform [retrieval](https://docs.haystack.deepset.ai/docs/retriever),
+  [question answering](https://docs.haystack.deepset.ai/docs/reader), [reranking](https://docs.haystack.deepset.ai/docs/ranker) and much more.
 
 - **Latest models**: Utilize all transformer based models (BERT, RoBERTa, MiniLM, DPR) and smoothly switch when new ones get published.
 
-- **Flexible databases**: Load data into and query from a range of [databases](/components/document-store) such as Elasticsearch, Milvus, FAISS, SQL and more.
+- **Flexible databases**: Load data into and query from a range of [databases](https://docs.haystack.deepset.ai/docs/document_store) such as Elasticsearch, Milvus, FAISS, SQL and more.
 
-- **Scalability**: [Scale your system](/guides/optimization) to handle millions of documents and deploy them via [REST API](/components/rest-api).
+- **Scalability**: [Scale your system](https://docs.haystack.deepset.ai/docs/optimization) to handle millions of documents and deploy them via [REST API](https://docs.haystack.deepset.ai/docs/rest_api).
 
-- **Domain adaptation**: All tooling you need to [annotate](/components/annotation) examples, collect [user-feedback](/guides/domain-adaptation#user-feedback), [evaluate](/guides/evaluation) components and [finetune](/guides/domain-adaptation) models.
+- **Domain adaptation**: All tooling you need to [annotate](https://docs.haystack.deepset.ai/docs/annotation) examples, collect [user-feedback](https://docs.haystack.deepset.ai/docs/domain_adaptation#user-feedback), [evaluate](https://docs.haystack.deepset.ai/docs/evaluation) components and [finetune](https://docs.haystack.deepset.ai/docs/domain_adaptation) models.
 
 ![image](/images/concepts_haystack_handdrawn.png)
 
@@ -33,10 +33,10 @@ but Machine Learning has enabled systems to search based on word meaning rather 
 As new language processing models are developed, new styles of search are also possible.
 In Haystack, you can create systems that perform:
 
-- [Question Answering](/components/ready-made-pipelines#extractiveqapipeline)
-- [Summarization](/components/ready-made-pipelines#searchsummarizationpipeline)
-- [Document Search](/components/ready-made-pipelines#documentsearchpipeline)
-- [Question Generation](/components/ready-made-pipelines#questiongenerationpipeline)
+- [Question Answering](https://docs.haystack.deepset.ai/docs/ready_made_pipelines#extractiveqapipeline)
+- [Summarization](https://docs.haystack.deepset.ai/docs/ready_made_pipelines#searchsummarizationpipeline)
+- [Document Search](https://docs.haystack.deepset.ai/docs/ready_made_pipelines#documentsearchpipeline)
+- [Question Generation](https://docs.haystack.deepset.ai/docs/ready_made_pipelines#questiongenerationpipeline)
 
 This is just a small subset of the kinds of systems that can be created in Haystack.
 
@@ -51,4 +51,4 @@ There are 3 different levels on which you can interact with the components in Ha
 
 To find out more, visit our Documentation
 
-{{< button url="https://haystack.deepset.ai/overview/intro" text="Documentation" color="green">}}
+{{< button url="https://docs.haystack.deepset.ai/docs" text="Documentation" color="green">}}

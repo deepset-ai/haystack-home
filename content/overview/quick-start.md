@@ -21,7 +21,7 @@ This is also the main channel for raising issues and contributing to the project
 
 The most straightforward way to install the latest release of Haystack is through pip.
 
-This command will install everything needed for Pipelines that use an Elasticsearch Document Store. See <a href="https://haystack.deepset.ai/overview/installation">Installation</a> for more details.
+This command will install everything needed for Pipelines that use an Elasticsearch Document Store. See <a href="https://docs.haystack.deepset.ai/docs/installation">Installation</a> for more details.
 
 ```python
 pip install farm-haystack
@@ -46,7 +46,7 @@ pip install -e .[all]
 
 For a more comprehensive guide to installation, see our documentation.
 
-{{< button url="https://haystack.deepset.ai/overview/installation" text="Installation" color="green">}}
+{{< button url="https://docs.haystack.deepset.ai/docs/installation" text="Installation" color="green">}}
 
 ## Build Your First Pipeline
 

@@ -1,0 +1,39 @@
+{{/*
+    Image shortcode - resize images added through markdown
+    Images to be processed must be placed in the /assets/images directory and NOT in the static directory
+
+    Usage:
+
+    {{< img src="/images/test_image.jpg" width="800" alt="Test Image" quality="70" styling="centered" >}}
+
+    src: path to the image relative to the assets directory
+    width: maximum width of the image
+    alt: alternate text for the image
+
+    - Optional -
+    quality: image quality, defaults to 80 // has no effect on png
+    styling: set to "centered" to center the image 
+*/}}
+
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" }}
+{{ $width := .Get "width" }}
+{{ $styling := .Get "styling" }}
+{{ $quality := "80" }}
+{{ $customQuality := .Get "quality" }}
+
+{{/*  Change quality if specified  */}}
+{{ with $customQuality }}
+    {{ $quality = . }}
+{{ end }}
+
+{{/*  Get the image  */}}
+{{ $image := resources.Get $src }}
+
+{{ with $image}}
+    {{/*  Resize if width specified  */}}
+    {{ with $width }}
+        {{ $image = $image.Resize (printf "%sx q%s" . $quality ) }}
+    {{ end }}
+    <img src="{{ $image.RelPermalink }}" {{ with $alt }} alt="{{ $alt }}" {{ end }} loading="lazy" {{ if eq $styling "centered" }} style="margin-left: auto; margin-right: auto;" {{ end }}/>
+{{ end }}

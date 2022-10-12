@@ -1,5 +1,5 @@
 {{ if eq .type "link" }}
-  <a class="btn btn-green arrow-button" href="{{ .url }}">
+  <a class="btn btn-green arrow-button" href="{{ .url }}" {{ if strings.HasPrefix .url "http" }} target="_blank" rel="noopener"{{ end }}>
     <div class="button-wrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -2,10 +2,10 @@
 layout: tutorials
 title: Tutorials
 
-subtitle: We maintain these tutorials in an open source repository in GitHub. **Want to contribute?**<br>Go to the repository to submit your edits or suggest a new tutorial.
+subtitle: We maintain these tutorials in an open source repository on GitHub. **Want to contribute?**<br>Go to the repository to submit your edits or suggest a new tutorial.
 contribute:
   text: Contribute
-  url: /
+  url: https://github.com/deepset-ai/haystack-tutorials/blob/main/Contributing.md#contributing-to-haystack-tutorials
 categoryFilters:
   enabled: false
   list:

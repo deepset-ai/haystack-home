@@ -74,17 +74,23 @@
 
       .content {
         padding: 1rem;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
         gap: 1rem;
         background-color: var(--color-bg-light-grey);
         border: 2px solid var(--color-bg-dark-blue);
         border-top: none;
         border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
 
+        
         @include md {
+          grid-template-columns: 1fr 1fr;
           padding: 2rem;
           gap: 2rem;
+        }
+        
+        @include lg {
+          grid-template-columns: 1fr 1fr 1fr;
         }
 
         // Tutorial cards

@@ -2,16 +2,19 @@
 layout: tutorial
 header: light
 footer: dark
-title: "Utilizing existing FAQs for Question Answering"
-toc: true
-date: "2020-09-03"
-last-update: "2022-10-09"
-category: Summarization
+colab: https://colab.research.google.com/github/deepset-ai/haystack-tutorials/blob/main/tutorials/04_FAQ_style_QA.ipynb
+toc: True
+title: "FAQ Style Question Answering"
+last_updated: 2022-10-11
 level: "beginner"
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
-weight: 2
-colab: https://colab.research.google.com/github/deepset-ai/haystack/blob/main/tutorials/Tutorial4_FAQ_style_QA.ipynb
+weight: 20
+description: Create a smarter way to answer new questions using your existing FAQ documents.
+category: "QA"
+aliases: ['/tutorials/existing-faqs']
 ---
+    
+
+# Utilizing existing FAQs for Question Answering
 
 While *extractive Question Answering* works on pure texts and is therefore more generalizable, there's also a common alternative that utilizes existing FAQ data.
 
@@ -35,20 +38,23 @@ Make sure you enable the GPU runtime to experience decent speed in this tutorial
 
 <img src="https://raw.githubusercontent.com/deepset-ai/haystack/main/docs/img/colab_gpu_runtime.jpg">
 
+You can double check whether the GPU runtime is enabled with the following command:
 
-```python
-# Make sure you have a GPU running
-!nvidia-smi
+
+```bash
+%%bash
+
+nvidia-smi
 ```
 
+To start, install the latest release of Haystack with `pip`:
 
-```python
-# Install the latest release of Haystack in your own environment
-#! pip install farm-haystack
 
-# Install the latest main of Haystack
-!pip install --upgrade pip
-!pip install git+https://github.com/deepset-ai/haystack.git#egg=farm-haystack[colab]
+```bash
+%%bash
+
+pip install --upgrade pip
+pip install git+https://github.com/deepset-ai/haystack.git#egg=farm-haystack[colab]
 ```
 
 ## Logging
@@ -66,14 +72,6 @@ logging.basicConfig(format="%(levelname)s - %(name)s -  %(message)s", level=logg
 logging.getLogger("haystack").setLevel(logging.INFO)
 ```
 
-
-```python
-from haystack.document_stores import ElasticsearchDocumentStore
-
-from haystack.nodes import EmbeddingRetriever
-import pandas as pd
-```
-
 ### Start an Elasticsearch server
 You can start Elasticsearch on your local machine instance using Docker. If Docker is not readily available in your environment (eg., in Colab notebooks), then you can manually download and execute Elasticsearch from source.
 
@@ -85,25 +83,29 @@ from haystack.utils import launch_es
 launch_es()
 ```
 
+### Start an Elasticsearch server in Colab
 
-```python
-# In Colab / No Docker environments: Start Elasticsearch from source
-! wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.9.2-linux-x86_64.tar.gz -q
-! tar -xzf elasticsearch-7.9.2-linux-x86_64.tar.gz
-! chown -R daemon:daemon elasticsearch-7.9.2
+If Docker is not readily available in your environment (e.g. in Colab notebooks), then you can manually download and execute Elasticsearch from source.
 
-import os
-from subprocess import Popen, PIPE, STDOUT
 
-es_server = Popen(
-    ["elasticsearch-7.9.2/bin/elasticsearch"], stdout=PIPE, stderr=STDOUT, preexec_fn=lambda: os.setuid(1)  # as daemon
-)
-# wait until ES has started
-! sleep 30
+```bash
+%%bash
+
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.9.2-linux-x86_64.tar.gz -q
+tar -xzf elasticsearch-7.9.2-linux-x86_64.tar.gz
+chown -R daemon:daemon elasticsearch-7.9.2
+sudo -u daemon -- elasticsearch-7.9.2/bin/elasticsearch -d
+```
+
+
+```bash
+%%bash --bg
+
+sudo -u daemon -- elasticsearch-7.9.2/bin/elasticsearch
 ```
 
 ### Init the DocumentStore
-In contrast to Tutorial 1 (extractive QA), we:
+In contrast to Tutorial 1 (Build your first QA system), we:
 
 * specify the name of our `text_field` in Elasticsearch that we want to return as an answer
 * specify the name of our `embedding_field` in Elasticsearch where we'll store the embedding of our question and that is used later for calculating our similarity to the incoming user question
@@ -111,10 +113,19 @@ In contrast to Tutorial 1 (extractive QA), we:
 
 
 ```python
+import os
+import time
+
 from haystack.document_stores import ElasticsearchDocumentStore
 
+# Wait 30 seconds only to be sure Elasticsearch is ready before continuing
+time.sleep(30)
+
+# Get the host where Elasticsearch is running, default to localhost
+host = os.environ.get("ELASTICSEARCH_HOST", "localhost")
+
 document_store = ElasticsearchDocumentStore(
-    host="localhost",
+    host=host,
     username="",
     password="",
     index="document",
@@ -131,6 +142,8 @@ We can use the `EmbeddingRetriever` for this purpose and specify a model that we
 
 
 ```python
+from haystack.nodes import EmbeddingRetriever
+
 retriever = EmbeddingRetriever(
     document_store=document_store,
     embedding_model="sentence-transformers/all-MiniLM-L6-v2",
@@ -145,7 +158,10 @@ Here: We download some question-answer pairs related to COVID-19
 
 
 ```python
+import pandas as pd
+
 from haystack.utils import fetch_archive_from_http
+
 
 # Download
 doc_dir = "data/tutorial4"
@@ -161,7 +177,7 @@ print(df.head())
 
 # Get embeddings for our questions from the FAQs
 questions = list(df["question"].values)
-df["question_emb"] = retriever.embed_queries(texts=questions)
+df["question_emb"] = retriever.embed_queries(queries=questions).tolist()
 df = df.rename(columns={"question": "content"})
 
 # Convert Dataframe to list of dicts and index them in our DocumentStore
@@ -200,6 +216,6 @@ Some of our other work:
 - [FARM](https://github.com/deepset-ai/FARM)
 
 Get in touch:
-[Twitter](https://twitter.com/deepset_ai) | [LinkedIn](https://www.linkedin.com/company/deepset-ai/) | [Slack](https://haystack.deepset.ai/community/join) | [GitHub Discussions](https://github.com/deepset-ai/haystack/discussions) | [Website](https://deepset.ai)
+[Twitter](https://twitter.com/deepset_ai) | [LinkedIn](https://www.linkedin.com/company/deepset-ai/) | [Discord](https://haystack.deepset.ai/community/join) | [GitHub Discussions](https://github.com/deepset-ai/haystack/discussions) | [Website](https://deepset.ai)
 
 By the way: [we're hiring!](https://www.deepset.ai/jobs)

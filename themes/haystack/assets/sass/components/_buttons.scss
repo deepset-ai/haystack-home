@@ -280,14 +280,21 @@ button.nav-toggle-close {
   }
 }
 
-// Colab button
-.colab-btn {
+.colab-btn, .download-btn {
   gap: 0.5rem;
-  margin-top: var(--sm-text-spacing);
+  // margin-top: var(--sm-text-spacing);
   font-weight: var(--font-weight-links);
-  > svg {
-    width: 2rem;
-  }
+}
+
+// Colab button
+.colab-btn > svg {
+  width: 2rem; 
+}
+
+// Download button
+.download-btn > svg {
+  width: 1.2rem;
+  margin-bottom: 0.25rem;
 }
 
 // button container

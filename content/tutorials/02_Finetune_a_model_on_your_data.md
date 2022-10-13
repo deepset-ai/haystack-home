@@ -2,16 +2,19 @@
 layout: tutorial
 header: light
 footer: dark
-title: "Fine-tuning a model on your own data"
-toc: true
-date: "2020-09-03"
-last-update: "2022-09-09"
-category: Summarization
+colab: https://colab.research.google.com/github/deepset-ai/haystack-tutorials/blob/main/tutorials/02_Finetune_a_model_on_your_data.ipynb
+toc: True
+title: "Fine-Tuning a Model on Your Own Data"
+last_updated: 2022-10-11
 level: "intermediate"
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
-weight: 1
-colab: https://colab.research.google.com/github/deepset-ai/haystack/blob/main/tutorials/Tutorial2_Finetune_a_model_on_your_data.ipynb
+weight: 50
+description: Improve the performance of your Reader by performing fine-tuning.
+category: "QA"
+aliases: ['/tutorials/fine-tuning-a-model']
 ---
+    
+
+# Fine-tuning a Model on Your Own Data
 
 For many use cases it is sufficient to just use one of the existing public models that were trained on SQuAD or other public QA datasets (e.g. Natural Questions).
 However, if you have domain-specific questions, fine-tuning your model on custom examples will very likely boost your performance.
@@ -169,6 +172,6 @@ Some of our other work:
 - [FARM](https://github.com/deepset-ai/FARM)
 
 Get in touch:
-[Twitter](https://twitter.com/deepset_ai) | [LinkedIn](https://www.linkedin.com/company/deepset-ai/) | [Slack](https://haystack.deepset.ai/community/join) | [GitHub Discussions](https://github.com/deepset-ai/haystack/discussions) | [Website](https://deepset.ai)
+[Twitter](https://twitter.com/deepset_ai) | [LinkedIn](https://www.linkedin.com/company/deepset-ai/) | [Discord](https://haystack.deepset.ai/community/join) | [GitHub Discussions](https://github.com/deepset-ai/haystack/discussions) | [Website](https://deepset.ai)
 
 By the way: [we're hiring!](https://www.deepset.ai/jobs)

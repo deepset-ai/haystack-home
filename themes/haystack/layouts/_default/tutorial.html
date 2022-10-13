@@ -8,45 +8,93 @@
 
         {{/* Tutorial */}}
         <article class="article-content">
-          <h1>
-            {{ .Params.title }}
-          </h1>
 
-          {{/* Colab button */}}
-          {{ with .Params.colab }}
-            <a href="{{ . }}" class="btn btn-dark-blue colab-btn" target="_blank" rel="noopener">
-              <svg
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid meet"
-                focusable="false"
-                viewBox="0.17 5.07 23.67 13.87"
+          <div class="button-container">
+
+            {{/* Colab button */}}
+            {{ with .Params.colab }}
+              <a
+                href="{{ . }}"
+                class="btn btn-dark-blue colab-btn"
+                target="_blank"
+                rel="noopener"
               >
-                <g>
+                <svg
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid meet"
+                  focusable="false"
+                  viewBox="0.17 5.07 23.67 13.87"
+                >
+                  <g>
+                    <path
+                      d="M4.54,9.46,2.19,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36A3.59,3.59,0,0,1,4.54,9.46Z"
+                      fill="#E8710A"
+                    />
+                    <path
+                      d="M2.19,7.1,4.54,9.46a3.59,3.59,0,0,1,5.08,0l1.71-2.93h0l-.1-.08h0A6.93,6.93,0,0,0,2.19,7.1Z"
+                      fill="#F9AB00"
+                    />
+                    <path
+                      d="M11.34,17.46h0L9.62,14.54a3.59,3.59,0,0,1-5.08,0L2.19,16.9a6.93,6.93,0,0,0,9,.65l.11-.09"
+                      fill="#F9AB00"
+                    />
+                    <path
+                      d="M12,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36a3.59,3.59,0,1,1,5.08-5.08L21.81,7.1A6.93,6.93,0,0,0,12,7.1Z"
+                      fill="#F9AB00"
+                    />
+                    <path
+                      d="M21.81,7.1,19.46,9.46a3.59,3.59,0,0,1-5.08,5.08L12,16.9A6.93,6.93,0,0,0,21.81,7.1Z"
+                      fill="#E8710A"
+                    />
+                  </g>
+                </svg>
+                Open in Colab
+              </a>
+            {{ end }}
+  
+            {{/*  Download button  */}}
+            {{ with .Params.download }}
+              <a
+                href="{{ . }}"
+                class="btn btn-dark-blue download-btn"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  version="1.1"
+                  focusable="false"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 29.978 29.978"
+                  style="enable-background:new 0 0 29.978 29.978;"
+                  xml:space="preserve"
+                >
                   <path
-                    d="M4.54,9.46,2.19,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36A3.59,3.59,0,0,1,4.54,9.46Z"
-                    fill="#E8710A"
+                    d="M25.462,19.105v6.848H4.515v-6.848H0.489v8.861c0,1.111,0.9,2.012,2.016,2.012h24.967c1.115,0,2.016-0.9,2.016-2.012
+                  v-8.861H25.462z"
+                  fill="#03af9d"
+  
                   />
                   <path
-                    d="M2.19,7.1,4.54,9.46a3.59,3.59,0,0,1,5.08,0l1.71-2.93h0l-.1-.08h0A6.93,6.93,0,0,0,2.19,7.1Z"
-                    fill="#F9AB00"
+                    d="M14.62,18.426l-5.764-6.965c0,0-0.877-0.828,0.074-0.828s3.248,0,3.248,0s0-0.557,0-1.416c0-2.449,0-6.906,0-8.723
+                  c0,0-0.129-0.494,0.615-0.494c0.75,0,4.035,0,4.572,0c0.536,0,0.524,0.416,0.524,0.416c0,1.762,0,6.373,0,8.742
+                  c0,0.768,0,1.266,0,1.266s1.842,0,2.998,0c1.154,0,0.285,0.867,0.285,0.867s-4.904,6.51-5.588,7.193
+                  C15.092,18.979,14.62,18.426,14.62,18.426z"
+                  fill="#03af9d"
                   />
-                  <path
-                    d="M11.34,17.46h0L9.62,14.54a3.59,3.59,0,0,1-5.08,0L2.19,16.9a6.93,6.93,0,0,0,9,.65l.11-.09"
-                    fill="#F9AB00"
-                  />
-                  <path
-                    d="M12,7.1a6.93,6.93,0,0,0,0,9.79l2.36-2.36a3.59,3.59,0,1,1,5.08-5.08L21.81,7.1A6.93,6.93,0,0,0,12,7.1Z"
-                    fill="#F9AB00"
-                  />
-                  <path
-                    d="M21.81,7.1,19.46,9.46a3.59,3.59,0,0,1-5.08,5.08L12,16.9A6.93,6.93,0,0,0,21.81,7.1Z"
-                    fill="#E8710A"
-                  />
-                </g>
-              </svg>
-              Open in Colab
-            </a>
+                </svg>
+                Download
+              </a>
+            {{ end }}
+          </div>
+
+
+          {{ with .Params.last_updated }}
+            <sub class="article-date">
+              Last Updated:
+              {{ . | time.Format ":date_long" }}
+            </sub>
           {{ end }}
 
           {{/* Article content */}}
@@ -65,12 +113,16 @@
           <div class="sidebar-buttons">
             <a
               href="https://github.com/deepset-ai/haystack-tutorials"
-              class="btn" target="_blank" rel="noopener"
+              class="btn"
+              target="_blank"
+              rel="noopener"
               >Edit on Github</a
             >
             <a
               href="https://github.com/deepset-ai/haystack/discussions"
-              class="btn" target="_blank" rel="noopener"
+              class="btn"
+              target="_blank"
+              rel="noopener"
               >Start a Discussion!</a
             >
           </div>

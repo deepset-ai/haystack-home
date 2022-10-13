@@ -1,0 +1,63 @@
+{{ define "main" }}
+  <div class="container">
+    <div class="inner inner-top">
+      <article class="article-content">
+        <h1>{{ .Params.title }}</h1>
+
+        <div id="chart-div"></div>
+      </article>
+    </div>
+  </div>
+
+  {{ $readerPerformance := .Site.Data.benchmarks.reader_performance }}
+
+  {{/*  Load charts script  */}}
+  <script
+    type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"
+  ></script>
+
+    <script type="text/javascript">
+        const readerPerformance = {{ $readerPerformance }}
+
+        google.charts.load("current", {"packages": ["corechart"]});
+        google.charts.setOnLoadCallback(drawReaderPerformanceChart);
+
+        function drawReaderPerformanceChart() {
+            // Create the data table
+            const data = new google.visualization.DataTable();
+            data.addColumn("string", "Model");
+            data.addColumn("number", "F1");
+            data.addColumn("number", "Speed (passages/sec)");
+
+            let dataArr = [];
+            readerPerformance.data.forEach((d) => dataArr.push([d.Model, d.F1, d.Speed]))
+            data.addRows(dataArr);
+
+            // Set chart options
+            const options = {
+                "title": readerPerformance.title,
+                "width": "100%",
+                "height": 400,
+                colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
+                bar: {
+                    groupWidth: "65%",
+                },
+                subTitle: readerPerformance.subtitle,
+                bars: readerPerformance.bars,
+                legend: "bottom",
+                displayAnnotations: true,
+                annotations: {
+                    textStyle: {
+                    color: "#000000",
+                    fontSize: 15,
+                    }
+                }
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            const chart = new google.visualization.BarChart(document.getElementById("chart-div"));
+            chart.draw(data, options);
+        }
+    </script>
+{{ end }}

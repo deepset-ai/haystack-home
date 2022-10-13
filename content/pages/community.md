@@ -25,9 +25,6 @@ hero:
   
   # Social links
   socials:
-    - title: GitHub
-      url: https://github.com/deepset-ai/haystack
-      icon: /images/icons/github.svg
 
     - title: Hugging Face
       url: https://huggingface.co/deepset
@@ -41,8 +38,12 @@ hero:
       url: https://www.linkedin.com/company/deepset-ai
       icon: /images/icons/linkedin.svg
 
+    - title: Youtube
+      url: https://www.youtube.com/channel/UC5dfn9m310oyt-cbeegfvZw
+      icon: /images/icons/youtube.svg
+
   # Most active / new contributors
-  communityText: Most Active Community Members
+  communityText: Active Community Members
   contributorsText: New Contributors on GitHub
 
   # Github section enabled/disabled
@@ -51,6 +52,7 @@ hero:
     buttons:
       - buttonText: Check on Github
         url: https://github.com/deepset-ai/haystack
+    icon: /images/icons/github.svg
     contributors:
       title: Most active contributors
 

@@ -5,122 +5,114 @@
   .community-hero-top {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
 
     @include md {
-      flex-direction: row;
-      gap: 4rem;
+      gap: 3rem;
     }
 
-    // Left section
-    > div:first-of-type {
-      width: 100%;
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    p.narrow-text {
+      @include md {
+        max-width: 55rem;
+      }
+    }
+
+    // Newsletter / Discord CTA
+    .community-cards {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
+      gap: 2rem;
+
+      @include sm {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
 
       @include md {
-        gap: 4rem;
-        width: 70%;
+        gap: 3rem;
       }
 
-      h1 {
-        margin-bottom: 1rem;
-      }
 
-      // Newsletter / Discord CTA
-      .community-cards {
+      .discord-card {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1rem;
+        align-items: flex-start;
+        border-radius: var(--border-radius-md);
 
-        @include sm {
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: 2.5rem;
+        img {
+          width: 3.5rem;
         }
 
-        @include md {
-          flex-direction: row;
-          gap: 4rem;
-        }
-
-        .discord-card,
-        .newsletter-card {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          align-items: flex-start;
-          border-radius: var(--border-radius-md);
-
-          img {
-            width: 3.5rem;
-          }
-
-          .arrow-button {
-            background-color: var(--color-green);
-          }
-        }
-
-      }
-
-      // Social Links / Icons
-      .social-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-
-        @include md {
-          gap: 2.5rem;
-        }
-
-        li img {
-          width: 3rem;
+        .arrow-button {
+          background-color: var(--color-green);
         }
       }
     }
 
-    // Right section
-    > div:nth-of-type(2) {
-      width: 100%;
-      // display: grid;
-      // grid-template-columns: 1fr 1fr;
-      // gap: 1rem;
+    // Social Links / Icons
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
 
       @include md {
-        width: 30%;
+        gap: 1.5rem;
       }
 
-      h2 {
-        font-size: var(--h3-size);
+      li img {
+        width: 3rem;
       }
+    }
 
+    // Orbit section
+    .orbit {
       .orbit-stats-js {
-        margin-top: 1rem;
+        margin-top: 2rem;
+
         ul {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
 
-        li {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-
-          .rank {
-            font-size: var(--text-label);
-            align-self: flex-start;
-            font-weight: var(--font-weight-heading);
+          @include sm {
+            grid-template-columns: repeat(3, 1fr);
           }
 
+          @include lg {
+            grid-template-columns: repeat(6, 1fr);
+          }
+        }
+        
+        li {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-shrink: 0;
+          gap: 0.5rem;
+
           img {
-            width: 2rem;
-            height: 2rem;
+            width: 3rem;
+            height: 3rem;
             border: 0.125rem solid var(--color-light-grey);
             border-radius: 100%;
-            object-fit: contain;
+            object-fit: cover;
             overflow: hidden;
+            flex-shrink: 0;
+
+            @include md {
+              width: 4rem;
+              height: 4rem;
+            }
+
+          }
+
+          p {
+            text-align: center;
           }
         }
       }
@@ -129,27 +121,13 @@
 
   // Github section
   .community-github {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 3rem;
-
-    @include md {
-      flex-direction: row;
-      margin-top: 4rem;
-    }
-
-    h2 {
-      margin-bottom: 2rem;
-    }
-
     .stats-boxes {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
 
       li {
-        padding: 2rem;
+        padding: 1.5rem;
         border: 0.125rem solid var(--color-light-grey);
         display: flex;
         flex-direction: column;
@@ -172,7 +150,6 @@
   }
 }
 
-
 // Upcoming Events section
 .community-events {
   background-color: var(--color-bg-dark-blue);
@@ -194,7 +171,6 @@
 
     @include md {
       grid-template-columns: 1fr 1fr;
-
     }
 
     .events-card {
@@ -204,11 +180,10 @@
       overflow: hidden;
       align-self: flex-start;
 
-
       > img {
         height: 14rem;
         object-fit: cover;
-  
+
         @include lg {
           height: 16rem;
         }
@@ -217,7 +192,7 @@
       .content-section {
         display: flex;
         flex-direction: column;
-        gap: .25rem;
+        gap: 0.25rem;
         padding: 1rem;
         background-color: var(--color-bg-light-grey);
 
@@ -246,11 +221,8 @@
         .btn {
           margin-top: 1rem;
         }
-
       }
-
     }
-
   }
 }
 
@@ -260,7 +232,6 @@
   h2 {
     font-size: var(--h1-size);
     margin-bottom: 1rem;
-
   }
 
   a.btn {

@@ -1,24 +1,41 @@
 {{/* Community page hero */}}
 {{ with .Params.Hero }}
   <section class="community-hero">
-    <div class="container">
+    <div class="container container-padded">
       <section class="inner inner-top">
-        {{/* Top section */}}
         <div class="community-hero-top">
-          {{/* Top Left section */}}
-          <div>
             {{/* Headline & Text */}}
             <div>
               <h1>{{ .headline }}</h1>
-              <p>{{ .text }}</p>
+              <p class="narrow-text">{{ .text }}</p>
             </div>
 
-            {{/* Discord & Newsletter cards */}}
-            {{ with .community }}
+            
             <div class="community-cards">
-              {{ partial "community-cards" (dict "context" . "community" .) }}
+              {{/* Discord card */}}
+              {{ partial "discord-card" . }}
+              
+              {{/* Github section */}}
+              {{ with .github}}
+                {{/* Title / buttons */}}
+                <div class="text-section discord-card">
+                  <img src="{{ .icon }}" alt="Github" />
+                  
+                  <h3>{{ .title }}</h3>
+                  
+                  <div class="button-container">
+                    {{ range .buttons }}
+                    {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
+                    {{ end }}
+                  </div>
+                </div>
+                {{/* Stars / contributors */}}
+                <div class="community-github">
+                  {{ partial "github-stats.html" . }}
+                </div>
+              {{ end }}
             </div>
-            {{ end }}
+
 
             {{/* Social icons/links */}}
             {{ with .socials }}
@@ -32,47 +49,19 @@
               {{ end }}
             </ul>
             {{ end }}
-          </div>
 
-          {{/* Top Right section */}}
-          <div>
             {{/* Most active community members */}}
-            <div>
+            <div class="orbit">
               <h2>{{ .communityText }}</h2>
               <div class="orbit-stats-js">
                 <ul role="list">
                   {{ partial "orbit-community-members" . }}
                 </ul>
               </div>
-            </div>
+            </div>  
 
-            {{/* New contributors */}}
-            {{/* <div>
-              <h2>{{ .contributorsText }}</h2>
-            </div> */}}
-          </div>
+
         </div>
-
-        {{ with .github}}
-          {{/* Github section */}}
-          <section class="community-github">
-            {{/* Stars / contributors */}}
-            {{ partial "github-stats.html" . }}
-
-            {{/* Title / buttons */}}
-            <div class="text-section">
-              <h2>{{ .title }}</h2>
-
-              <div class="button-container">
-                {{ range .buttons }}
-                {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
-                {{ end }}
-              </div>
-            </div>
-          </section>
-        {{ end }}
-
-
       </section>
     </div>
   </section>

@@ -17,8 +17,7 @@
     {{/*  Map the data  */}}
     {{ range $i, $d := $data.data }}
         <li>
-            <span class="rank">{{ add $i 1 }}</span>
-            <img src="{{ .attributes.avatar_url }}">
+            <img src="{{ .attributes.avatar_url }}" onerror="this.onerror=null;this.src='/images/user-placeholder.jpg';">
             <p>{{ with .attributes.name }}{{ . }}{{ else }}{{ .attributes.github }}{{ end }}</p>
         </li>
     {{ end }}

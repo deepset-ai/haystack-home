@@ -4,6 +4,7 @@ title: Roadmap
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
 weight: 4
 toc: true
+aliases: [/overview/roadmap]
 ---
 
 We believe open-source is more than open-source code. It's about the collaboration, transparency, and trust.

@@ -15,13 +15,8 @@
 
   "redirects": [
     {
-      "source": "/refernce/:api",
-      "destination": "https://docs.haystack.deepset.ai/reference/{:api}-api",
-      "permanent": true
-    },
-    {
-      "source": "/refernce/v{:version}/:api",
-      "destination": "https://docs.haystack.deepset.ai/v{:version}/reference/{:api}-api",
+      "source": "/refernce/{v:version?}?/:api",
+      "destination": "https://docs.haystack.deepset.ai/{v:version?}?/reference/{:api}-api",
       "permanent": true
     }
   ]

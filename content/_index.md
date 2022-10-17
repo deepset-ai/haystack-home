@@ -77,7 +77,7 @@ github:
 community:
   discord:
     title: Join our community
-    text: Our community on Discord is for everyone interested in NLP, using Haystack or even just getting started! Meet others in the community, get help, share projects and ideas.
+    text: Our community on Discord is for everyone interested in NLP, using Haystack or even just getting started!
     icon: /images/icons/discord.svg
     buttons:
       - buttonText: Join Discord

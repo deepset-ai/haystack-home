@@ -80,7 +80,7 @@ eventsSection:
 # Open NLP Meetup section
 meetupSection:
   title: The Open NLP Meetup
-  text: Every 3 months, we organize the Open NLP Meetup. We have guest speakers from..... 
+  text: The Open NLP Group is more than just high-quality talks from industry and research perspectives. It’s also the place to meet other NLP enthusiasts and to discuss and share ideas on how to integrate NLP techniques into your applications. We get together every three months and we welcome people from all kinds of backgrounds to join.
   buttonText: Join Meetup
   url: /
   videos:

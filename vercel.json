@@ -25,8 +25,13 @@
       "permanent": true
     },
     {
-      "source": "/pipeline_nodes/v:version/:seg1(-:seg2?)(-:seg3?)",
-      "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1(_:seg2?)(_:seg3?)",
+      "source": "/pipeline_nodes/v:version/:seg1{-:seg2}?{-:seg3}?",
+      "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1{_:seg2}?{_:seg3}?",
+      "permanent": true 
+    },
+    {
+      "source": "/pipeline_nodes/:seg1{-:seg2}?{-:seg3}?",
+      "destination": "https://docs.haystack.deepset.ai/docs/:seg1{_:seg2}?{_:seg3}?",
       "permanent": true 
     }
   ]

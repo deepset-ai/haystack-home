@@ -15,6 +15,16 @@
 
   "redirects": [
     {
+      "source": "/overview/v:version/:name(installation|telemetry|faq|migration|glossary)",
+      "destination": "https://docs.haystack.deepset.ai/v:version/docs/:name",
+      "permanent": true
+    },
+    {
+      "source": "/overview/:name(installation|telemetry|faq|migration|glossary)",
+      "destination": "https://docs.haystack.deepset.ai/docs/:name",
+      "permanent": true
+    },
+    {
       "source": "/reference/:api",
       "destination": "https://docs.haystack.deepset.ai/reference/:api-api",
       "permanent": true

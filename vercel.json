@@ -15,12 +15,12 @@
 
   "redirects": [
     {
-      "source": "/refernce/:api",
+      "source": "/reference/:api",
       "destination": "https://docs.haystack.deepset.ai/reference/:api-api",
       "permanent": true
     },
     {
-      "source": "/refernce/v:version/:api",
+      "source": "/reference/v:version/:api",
       "destination": "https://docs.haystack.deepset.ai/v:version/reference/:api-api",
       "permanent": true
     }

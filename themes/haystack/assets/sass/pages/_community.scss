@@ -48,9 +48,6 @@
           width: 3.5rem;
         }
 
-        .arrow-button {
-          background-color: var(--color-green);
-        }
       }
     }
 
@@ -65,7 +62,7 @@
       }
 
       li img {
-        width: 3rem;
+        width: 2.25rem;
       }
     }
 
@@ -78,9 +75,10 @@
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 2rem;
+          justify-items: start;
 
           @include sm {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
           }
 
           @include lg {
@@ -94,11 +92,14 @@
           align-items: center;
           flex-shrink: 0;
           gap: 0.5rem;
+          width: 100%;
+          max-width: 7.5rem;
+          overflow: hidden;
 
           img {
             width: 3rem;
             height: 3rem;
-            border: 0.125rem solid var(--color-light-grey);
+            // border: 0.125rem solid var(--color-light-grey);
             border-radius: 100%;
             object-fit: cover;
             overflow: hidden;
@@ -113,6 +114,7 @@
 
           p {
             text-align: center;
+            font-size: var(--text-base);
           }
         }
       }
@@ -156,12 +158,10 @@
 
   h2 {
     font-size: var(--h1-size);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     color: var(--color-white);
 
-    @include lg {
-      margin-bottom: 2rem;
-    }
+   
   }
 
   .events-container {

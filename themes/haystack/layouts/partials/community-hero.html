@@ -25,7 +25,7 @@
                   
                   <div class="button-container">
                     {{ range .buttons }}
-                    {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
+                    {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url "color" "grey") }}
                     {{ end }}
                   </div>
                 </div>

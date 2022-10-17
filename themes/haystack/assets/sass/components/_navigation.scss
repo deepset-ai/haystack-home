@@ -23,15 +23,7 @@
     margin: 0;
   }
 
-  .btn.arrow-button {
-    background-color: rgba($color: #{var(--color-dark-grey-rgb)}, $alpha: 1);
-    color: var(--color-white);
-
-    &:hover {
-      background-color: rgba($color: #{var(--color-dark-grey-rgb)}, $alpha: 0.9);
-    }
-
-  }
+  
 }
 
 /**

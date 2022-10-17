@@ -15,8 +15,8 @@
 
   "redirects": [
     {
-      "source": "/old-page",
-      "destination": "/tutorials",
+      "source": "/refernce/:version*/(?<api>.*)",
+      "destination": "https://docs.haystack.deepset.ai/:version*/reference/(:api)-api",
       "permanent": true
     }
   ]

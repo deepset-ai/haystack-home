@@ -1,6 +1,6 @@
 # Haystack Home
 
-The Haystack Home website is built using [Hugo](https://github.com/gohugoio/hugo), a static website generator written in Go. 
+Haystack Home is built using [Hugo](https://github.com/gohugoio/hugo), a static website generator written in Go. 
 
 ## Contribute
 
@@ -12,12 +12,13 @@ The Haystack Home website is built using [Hugo](https://github.com/gohugoio/hugo
 
 ### Adding new content
 
-**New tutorial page**:
+**Edits and Additions to Tutorials**:
 
-1. Run `hugo new tutorials/new-tutorial.md`, replacing "new-tutorial" with the slug (url) of the tutorial
-2. This will create a new tutorial markdown template in the /content/tutorials directory
-3. Update the front matter in the markdown file and add your markdown content
-4. Check this [markdown guide](https://www.markdownguide.org/basic-syntax/) if you need help with formatting
+The tutorials are maintained in the [`haystack-tutorials` repository](https://github.com/deepset-ai/haystack-tutorials)
+
+1. Check out the [Contributing Guidelines](https://github.com/deepset-ai/haystack-tutorials/blob/main/Contributing.md) 
+2. Create a PR on the `haystack-tutorials` repository
+3. When merged, your changes will reflect on Haystack Home
 
 ### Shortcodes
 

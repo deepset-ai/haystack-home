@@ -99,6 +99,7 @@
           {{ .Content }}
 
 
+          {{/*  Pagination  */}}
           <div class="article-pagination">
             {{ partial "prev-tutorial" (dict "context" . "level" .Params.level "url" .RelPermalink) }}
             {{ partial "next-tutorial" (dict "context" . "level" .Params.level "url" .RelPermalink) }}

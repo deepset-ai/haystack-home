@@ -51,11 +51,25 @@ theme = "haystack"
   name = 'Overview'
   url = '/'
   weight = 1
-  
+
+[[menu.main]]
+  identifier = 'resources'
+  name = 'Resources'
+  url = '/'
+  weight = 2
+
 [[menu.main]]
   identifier = 'documentation'
   name = 'Documentation'
   url = 'https://docs.haystack.deepset.ai/docs'
+  parent = 'resources'
+  weight = 1
+
+[[menu.main]]
+  identifier = 'annotation-tool'
+  name = 'Annotation Tool'
+  url = 'https://www.deepset.ai/annotation-tool-for-labeling-datasets'
+  parent = 'resources'
   weight = 2
 
 [[menu.main]]

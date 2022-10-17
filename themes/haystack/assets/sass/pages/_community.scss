@@ -12,7 +12,7 @@
     }
 
     h1 {
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
     }
 
     p.narrow-text {
@@ -62,19 +62,19 @@
       }
 
       li img {
-        width: 2.25rem;
+        width: 3.5rem;
       }
     }
 
     // Orbit section
     .orbit {
       .orbit-stats-js {
-        margin-top: 2rem;
+        margin-top: 2.5rem;
 
         ul {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 2rem;
+          gap: 0.5rem;
           justify-items: start;
 
           @include sm {
@@ -97,8 +97,8 @@
           overflow: hidden;
 
           img {
-            width: 3rem;
-            height: 3rem;
+            width: 4rem;
+            height: 4rem;
             // border: 0.125rem solid var(--color-light-grey);
             border-radius: 100%;
             object-fit: cover;
@@ -106,8 +106,8 @@
             flex-shrink: 0;
 
             @include md {
-              width: 4rem;
-              height: 4rem;
+              width: 5rem;
+              height: 5rem;
             }
 
           }

@@ -1,0 +1,57 @@
+{{/*  Github star & contributor count  */}}
+
+{{ $accessToken := getenv "GITHUB_ACCESS_TOKEN" }}
+
+{{/* Placeholder values */}}
+{{ $starCount := 0 }}
+{{ $contributorCount := 0 }}
+
+{{ with $accessToken }}
+  {{/*  Authorization  */}}
+  {{ $auth := (dict "Authorization" (printf "Bearer %s" $accessToken)) }}
+
+  {{/* Fetch Stargazer count */}}
+  {{ $starsData := getJSON "https://api.github.com/repos/deepset-ai/haystack" $auth }}
+  {{/*  Format number to K (2000 -> 2k)  */}}
+  {{ $starCount = (div $starsData.stargazers_count 1000) | lang.FormatNumber 1 }}
+  {{ $starCount = printf (print $starCount "%s") "k"}}
+
+
+  {{/* Fetch Contributor count */}}
+  {{ $contributorsURL := "https://api.github.com/repos/deepset-ai/haystack/contributors?per_page=100" }}
+  {{ $contributorsData := getJSON $contributorsURL $auth }}
+  {{ $contributorCount = len $contributorsData }}
+
+  {{/*  Save the amount of results we got  */}}
+  {{ $lastFetchCount := $contributorCount }}
+
+  {{/*  Range 10 times - hardcoded since there is no proper loop in Hugo  */}}
+  {{ range $i, $num := (seq 10) }}
+  {{/*  If we got 100 results on last fetch, fetch again  */}}
+    {{ if eq $lastFetchCount 100 }}
+        {{ $page := add $i 2 }}
+        {{ $contributorsURL = printf "https://api.github.com/repos/deepset-ai/haystack/contributors?per_page=100&page=%s" ( string $page ) }}
+        {{ $contributorsData = getJSON $contributorsURL $auth }}
+        {{ $lastFetchCount = (len $contributorsData) }}
+        {{ $contributorCount = add $contributorCount (len $contributorsData) }}
+    {{ end }}
+  {{ end }}
+
+{{ end }}
+
+
+{{/*  Stat boxes  */}}
+<ul class="stats-boxes" role="list">
+  <li>
+    <span class="github-stars-js">
+      {{ $starCount }}
+    </span>
+    <span>Stars</span>
+  </li>
+  <li>
+    <span class="github-contributors-js">
+      {{ $contributorCount }}
+    </span>
+    <span>Contributors</span>
+  </li>
+</ul>

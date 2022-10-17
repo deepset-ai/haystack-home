@@ -15,20 +15,7 @@
         </div>
 
         {{/* Stars / contributors */}}
-        <ul class="stats-boxes" role="list">
-          <li>
-            <span class="github-stars-js">
-              {{ partial "loader" . }}
-            </span>
-            <span>Stars</span>
-          </li>
-          <li>
-            <span class="github-contributors-js">
-              {{ partial "loader" . }}
-            </span>
-            <span>Contributors</span>
-          </li>
-        </ul>
+        {{ partial "github-stats.html" . }}
       </div>
     </div>
   </div>
@@ -39,9 +26,7 @@
       <div class="inner">
         <h3>{{ .Params.github.contributors.title }}</h3>
 
-        <ul role="list" class="top-contributors-container-js">
-          {{ partial "loader" . }}
-        </ul>
+        {{ partial "github-top-contributors.html" . }}
       </div>
     </div>
   </div>

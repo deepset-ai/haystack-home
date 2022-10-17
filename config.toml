@@ -14,6 +14,10 @@ theme = "haystack"
   overview = "/:filename"
   pages = "/:filename"
 
+[security]
+  [security.funcs]
+    getenv = ["^HUGO_", "ORBIT_API_KEY", "GITHUB_ACCESS_TOKEN"]
+
 [markup]
   # Code blocks
   [markup.highlight]

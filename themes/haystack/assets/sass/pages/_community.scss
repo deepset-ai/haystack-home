@@ -1,0 +1,263 @@
+// Community page
+
+// Hero
+.community-hero {
+  .community-hero-top {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include md {
+      gap: 3rem;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+    }
+
+    p.narrow-text {
+      @include md {
+        max-width: 55rem;
+      }
+    }
+
+    // Newsletter / Discord CTA
+    .community-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      @include sm {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      @include md {
+        gap: 3rem;
+      }
+
+
+      .discord-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+        border-radius: var(--border-radius-md);
+
+        img {
+          width: 3.5rem;
+        }
+
+      }
+    }
+
+    // Social Links / Icons
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      @include md {
+        gap: 1.5rem;
+      }
+
+      li img {
+        width: 2.25rem;
+      }
+    }
+
+    // Orbit section
+    .orbit {
+      .orbit-stats-js {
+        margin-top: 2.5rem;
+
+        ul {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.5rem;
+          justify-items: start;
+
+          @include sm {
+            grid-template-columns: repeat(4, 1fr);
+          }
+
+          @include lg {
+            grid-template-columns: repeat(6, 1fr);
+          }
+        }
+        
+        li {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-shrink: 0;
+          gap: 0.5rem;
+          width: 100%;
+          max-width: 7.5rem;
+          overflow: hidden;
+
+          img {
+            width: 4rem;
+            height: 4rem;
+            // border: 0.125rem solid var(--color-light-grey);
+            border-radius: 100%;
+            object-fit: cover;
+            overflow: hidden;
+            flex-shrink: 0;
+
+            @include md {
+              width: 5rem;
+              height: 5rem;
+            }
+
+          }
+
+          p {
+            text-align: center;
+            font-size: var(--text-base);
+          }
+        }
+      }
+    }
+  }
+
+  // Github section
+  .community-github {
+    .stats-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      li {
+        padding: 1.5rem;
+        border: 0.125rem solid var(--color-light-grey);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-grow: 1;
+
+        > span:first-of-type {
+          font-size: var(--text-large);
+
+          @include md {
+            font-size: var(--text-large);
+          }
+        }
+
+        > span:nth-of-type(2) {
+          font-size: var(--text-small);
+        }
+      }
+    }
+  }
+}
+
+// Upcoming Events section
+.community-events {
+  background-color: var(--color-bg-dark-blue);
+
+  h2 {
+    font-size: var(--h1-size);
+    margin-bottom: 2rem;
+    color: var(--color-white);
+
+   
+  }
+
+  .events-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .events-card {
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--border-radius-md);
+      overflow: hidden;
+      align-self: flex-start;
+
+      > img {
+        height: 14rem;
+        object-fit: cover;
+
+        @include lg {
+          height: 16rem;
+        }
+      }
+
+      .content-section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 1rem;
+        background-color: var(--color-bg-light-grey);
+
+        @include md {
+          padding: 2rem;
+        }
+
+        h3 {
+          margin-bottom: 0.25rem;
+        }
+
+        .details {
+          font-size: var(--text-base);
+          font-weight: var(--font-weight-heading);
+          color: var(--color-dark-blue);
+          display: flex;
+          gap: 0.25rem;
+          flex-wrap: wrap;
+
+          > span:not(:first-of-type)::before {
+            content: "-";
+            margin-right: 0.25rem;
+          }
+        }
+
+        .btn {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}
+
+// Open NLP Meetup section
+.community-meetup {
+  background-color: var(--color-bg-light-grey);
+  h2 {
+    font-size: var(--h1-size);
+    margin-bottom: 1rem;
+  }
+
+  a.btn {
+    margin-top: 1rem;
+  }
+
+  .video-grid {
+    margin-top: 2rem;
+
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+
+    .video {
+      min-height: 18rem;
+      iframe {
+        min-height: inherit;
+      }
+    }
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+
+      .video:first-of-type {
+        grid-row: 1/3;
+      }
+    }
+  }
+}

@@ -90,10 +90,12 @@
           </div>
 
 
-          <sub class="article-date">
-            Last Updated:
-            {{ .Params.last_updated | time.Format ":date_long" }}
-          </sub>
+          {{ with .Params.last_updated }}
+            <sub class="article-date">
+              Last Updated:
+              {{ . | time.Format ":date_long" }}
+            </sub>
+          {{ end }}
 
           {{/* Article content */}}
           {{ .Content }}
@@ -108,7 +110,7 @@
 
         {{/* Stars/contribute sidebar */}}
         <aside class="right-sidebar">
-          {{ partial "github-stars" . }}
+          {{ partial "github-stars-button" . }}
           <div class="sidebar-buttons">
             <a
               href="https://github.com/deepset-ai/haystack-tutorials"

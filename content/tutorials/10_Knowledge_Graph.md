@@ -1,5 +1,7 @@
 ---
 layout: tutorial
+header: light
+footer: dark
 colab: https://colab.research.google.com/github/deepset-ai/haystack-tutorials/blob/main/tutorials/10_Knowledge_Graph.ipynb
 toc: True
 title: "Question Answering on a Knowledge Graph"

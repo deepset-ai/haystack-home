@@ -1,5 +1,7 @@
 ---
 layout: tutorial
+header: light
+footer: dark
 colab: https://colab.research.google.com/github/deepset-ai/haystack-tutorials/blob/main/tutorials/05_Evaluation.ipynb
 toc: True
 title: "Evaluation"

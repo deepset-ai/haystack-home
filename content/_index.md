@@ -1,5 +1,7 @@
 ---
 layout: index
+header: light
+footer: light
 title: Haystack
 description: Meta description here
 

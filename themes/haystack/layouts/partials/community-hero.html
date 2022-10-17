@@ -1,0 +1,68 @@
+{{/* Community page hero */}}
+{{ with .Params.Hero }}
+  <section class="community-hero">
+    <div class="container container-padded">
+      <section class="inner inner-top">
+        <div class="community-hero-top">
+            {{/* Headline & Text */}}
+            <div>
+              <h1>{{ .headline }}</h1>
+              <p class="narrow-text">{{ .text }}</p>
+            </div>
+
+            
+            <div class="community-cards">
+              {{/* Discord card */}}
+              {{ partial "discord-card" . }}
+              
+              {{/* Github section */}}
+              {{ with .github}}
+                {{/* Title / buttons */}}
+                <div class="text-section discord-card">
+                  <img src="{{ .icon }}" alt="Github" />
+                  
+                  <h3>{{ .title }}</h3>
+                  
+                  <div class="button-container">
+                    {{ range .buttons }}
+                    {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url "color" "grey") }}
+                    {{ end }}
+                  </div>
+                </div>
+                {{/* Stars / contributors */}}
+                <div class="community-github">
+                  {{ partial "github-stats.html" . }}
+                </div>
+              {{ end }}
+            </div>
+
+
+            {{/* Social icons/links */}}
+            {{ with .socials }}
+            <ul class="social-links" role="list">
+              {{ range . }}
+              <li>
+                <a href="{{ .url }}" target="_blank" rel="noopener">
+                  <img src="{{ .icon }}" alt="{{ .title }}" />
+                </a>
+              </li>
+              {{ end }}
+            </ul>
+            {{ end }}
+
+            {{/* Most active community members */}}
+            <div class="orbit">
+              <h2>{{ .communityText }}</h2>
+              <div class="orbit-stats-js">
+                <ul role="list">
+                  {{ partial "orbit-community-members" . }}
+                </ul>
+              </div>
+            </div>  
+
+
+        </div>
+      </section>
+    </div>
+  </section>
+{{ end }}

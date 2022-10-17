@@ -40,6 +40,19 @@ button.nav-toggle-close {
   }
 }
 
+.header-dark button.nav-toggle-open {
+  svg path {
+    stroke: var(--color-white);
+    transition: stroke var(--transition-fast) var(--ease);
+  }
+
+  &:hover {
+    svg path {
+      stroke: var(--color-light-grey);
+    }
+  }
+}
+
 // Base button
 .btn {
   display: flex;
@@ -98,6 +111,21 @@ button.nav-toggle-close {
         $alpha: 0.9
       );
     }
+  }
+
+
+  &.btn-grey {
+    background-color: rgba($color: #{var(--color-dark-grey-rgb)}, $alpha: 1);
+    color: var(--color-white);
+
+    svg {
+      fill: var(--color-white);
+    }
+
+    &:hover {
+      background-color: rgba($color: #{var(--color-dark-grey-rgb)}, $alpha: 0.9);
+    }
+
   }
 }
 

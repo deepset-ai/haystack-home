@@ -1,5 +1,7 @@
 ---
 layout: tutorial
+header: light
+footer: dark
 colab: https://colab.research.google.com/github/deepset-ai/haystack-tutorials/blob/main/tutorials/16_Document_Classifier_at_Index_Time.ipynb
 toc: True
 title: "Document Classifier at Index Time"

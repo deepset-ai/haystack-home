@@ -1,37 +1,8 @@
 <section class="index-community">
   <div class="container">
     <div class="inner">
-      {{/* Discord card */}}
-      <div class="discord-card">
-        <img src="{{ .Params.community.discord.icon }}" alt="Discord" />
-        <h3>{{ .Params.community.discord.title }}</h3>
-        <p>{{ .Params.community.discord.text }}</p>
-        {{ range .Params.community.discord.buttons }}
-          {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
-        {{ end }}
-      </div>
-
-      {{/* Newsletter card */}}
-      <div class="newsletter-card">
-        <img src="{{ .Params.community.newsletter.icon }}" alt="Newsletter" />
-        <h3>{{ .Params.community.newsletter.title }}</h3>
-        <p>{{ .Params.community.newsletter.text }}</p>
-
-        {{/*  Newsletter form  */}}
-        <form
-          class="js-newsletter-form disabled"
-          aria-label="Subscribe to our newsletter"
-        >
-          <input
-            type="email"
-            name="email"
-            placeholder="{{ .Params.community.newsletter.inputPlaceholder }}"
-            aria-label="Email"
-          />
-          {{ partial "arrow-button" (dict "context" . "type" "submitButton" "text" .Params.community.newsletter.buttonText) }}
-          <span class="success-message">Thanks!</span>
-        </form>
-      </div>
+      {{ partial "discord-card" (dict "context" . "community" .Params.community) }}
+      {{ partial "newsletter-card" (dict "context" . "community" .Params.community) }}
     </div>
   </div>
 </section>

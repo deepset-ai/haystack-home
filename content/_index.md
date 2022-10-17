@@ -8,7 +8,7 @@ hero:
   title: Haystack
   subtitle: An open source NLP framework that leverages pre-trained Transformer models
   bulletPoints:
-    - Build search applications for your documents with the help of Haystack's powerful pipeline architecture
+    - Apply the latest NLP technology to your own data with the use of Haystack's pipeline architecture
     - Implement production-ready semantic search, question answering, summarization and document ranking for a wide range of NLP applications.
     - Evaluate components and fine-tune models
   buttons:

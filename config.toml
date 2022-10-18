@@ -1,7 +1,10 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'Haystack Home'
-theme = "haystack" 
+theme = "haystack"
+
+# Disable /tags and /categories pages
+disableKinds = ["taxonomy", "term"]
 
 # Defaults used for opengraph metadata if none are specified for the page
 [params]

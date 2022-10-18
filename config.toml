@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'haystack.deepset.ai'
 languageCode = 'en-us'
 title = 'Haystack Home'
 theme = "haystack"

@@ -1,8 +1,20 @@
 {{/* Website Footer */}}
+
+{{/*  Default color  */}}
+{{ $theme := "light" }}
+
+{{/*  Get color from frontmatter if specified  */}}
+{{ with .Params.Footer }}
+  {{ $theme = . }}
+{{ end }}
+
+{{/*  Set to dark on 404 page since there is no frontmatter  */}}
+{{ if eq .Page.Kind "404" }}
+  {{ $theme = "dark" }}  
+{{ end }}
+
 <footer
-  class="footer{{ with .Params.Footer }}
-    {{ if eq . "dark" }}footer-dark{{ end }}
-  {{ end }}"
+  class="footer{{ if eq $theme "dark" }} footer-dark{{ end }}"
 >
   <div class="container">
     <div class="inner">

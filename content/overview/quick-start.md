@@ -6,6 +6,7 @@ title: Quick Start
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
 weight: 2
 toc: true
+aliases: [/overview/get-started]
 ---
 
 ## The Haystack Source Code

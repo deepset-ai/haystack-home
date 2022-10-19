@@ -16,7 +16,7 @@ hero:
   buttons:
     - buttonText: Learn more
       url: /intro
-  image: /images/hero-placeholder.png
+  image: /images/hero.png
 
 # Showcase
 showcase:
@@ -27,21 +27,21 @@ showcase:
       url: https://docs.haystack.deepset.ai/docs/ready_made_pipelines#extractiveqapipeline
       buttonText: Explore Docs
       image:
-        url: /images/card-placeholder.jpg
+        url: /images/qa.png
         alt: placeholder img
     - title: Document Search
       text: Perform semantic search and retrieve ranked documents according to meaning, not just keywords!
       url: https://docs.haystack.deepset.ai/docs/ready_made_pipelines#documentsearchpipeline
       buttonText: Explore Docs
       image:
-        url: /images/card-placeholder-2.jpg
+        url: /images/document_search.png
         alt: placeholder img
     - title: Latest Models
       text: Make use of the latest transformer based language models (BERT, RoBERTa, MiniLM, DPR)
       url: https://huggingface.co/deepset
       buttonText: Explore Docs
       image:
-        url: /images/card-placeholder-2.jpg
+        url: /images/models.png
         alt: placeholder img
 
 # Features

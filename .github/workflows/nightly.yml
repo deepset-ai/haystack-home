@@ -1,0 +1,6 @@
+name: Nighly Build
+
+on:
+  schedule:
+  # every day at 2AM
+  - cron: "0 2 * * *"

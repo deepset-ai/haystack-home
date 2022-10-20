@@ -40,11 +40,7 @@ button {
   line-height: var(--line-height-base);
 }
 
-p {
-  color: var(--color-dark-blue);
-}
-
-li {
+p, li, small {
   color: var(--color-dark-blue);
 }
 

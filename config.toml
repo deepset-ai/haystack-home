@@ -16,7 +16,7 @@ theme = "haystack"
 
 [security]
   [security.funcs]
-    getenv = ["^HUGO_", "ORBIT_API_KEY", "GITHUB_ACCESS_TOKEN"]
+    getenv = ["^HUGO_", "ORBIT_API_KEY", "GITHUB_ACCESS_TOKEN", "GOOGLE_TAG_ANALYTICS"]
 
 [markup]
   # Code blocks

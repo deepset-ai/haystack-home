@@ -43,6 +43,29 @@
       text-transform: uppercase;
     }
   }
+
+}
+
+.footer .newsletter-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  border-radius: var(--border-radius-md);
+  margin-top: 2rem;
+
+
+  h3, small, span.success-message, input  {
+    color: var(--color-medium-grey);
+  }
+
+  .mail-icon {
+    width: 3.5rem;
+  }
+
+  .arrow-button {
+    background-color: var(--color-green);
+  }
 }
 
 // Secondary links
@@ -114,7 +137,7 @@
   }
 }
 
-.footer-alt {
+.footer-dark {
   background-color: var(--color-bg-dark-blue);
 
   a.footer-deepset-logo svg {
@@ -139,5 +162,18 @@
     &:hover {
       color: var(--color-medium-grey);
     }
+  }
+
+
+  .newsletter-card {
+    h3, small, span.success-message, input {
+      color: var(--color-light-grey);
+    }
+  
+    .mail-icon {
+      fill: var(--color-light-grey);
+    }
+
+  
   }
 }

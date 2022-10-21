@@ -1,5 +1,7 @@
 ---
 layout: tutorial
+header: light
+footer: dark
 colab: https://colab.research.google.com/github/deepset-ai/haystack-tutorials/blob/main/tutorials/06_Better_Retrieval_via_Embedding_Retrieval.ipynb
 toc: True
 title: "Embedding Retrieval"

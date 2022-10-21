@@ -1,0 +1,25 @@
+{{/* Newsletter card used in home page & footer */}}
+
+{{/* Newsletter card */}}
+<div class="newsletter-card">
+  <img src="{{ .community.newsletter.icon }}" alt="Newsletter" />
+  <h3>{{ .community.newsletter.title }}</h3>
+  {{ with .community.newsletter.text}}
+    <p>{{ . }}</p>
+  {{ end }}
+
+  <form
+    class="js-newsletter-form disabled"
+    aria-label="Subscribe to our newsletter"
+  >
+    <input
+      type="email"
+      name="email"
+      placeholder="{{ .community.newsletter.inputPlaceholder }}"
+      aria-label="Email"
+    />
+    {{ partial "arrow-button" (dict "context" . "type" "submitButton" "text" .community.newsletter.buttonText) }}
+    <span class="success-message">Thanks!</span>
+  </form>
+  <small class="copyright">By submitting my email, I agree to allow deepset to store and process my personal data.</small>
+</div>

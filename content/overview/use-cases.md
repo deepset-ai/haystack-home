@@ -1,9 +1,12 @@
 ---
 layout: overview
+header: light
+footer: dark
 title: Use Cases
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
 weight: 5
 toc: true
+aliases: [/overview/use-cases]
 ---
 
 ## Semantic Search System

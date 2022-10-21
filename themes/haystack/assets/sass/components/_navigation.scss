@@ -23,15 +23,7 @@
     margin: 0;
   }
 
-  .btn.arrow-button {
-    background-color: rgba($color: #{var(--color-dark-grey-rgb)}, $alpha: 1);
-    color: var(--color-white);
-
-    &:hover {
-      background-color: rgba($color: #{var(--color-dark-grey-rgb)}, $alpha: 0.9);
-    }
-
-  }
+  
 }
 
 /**
@@ -82,6 +74,7 @@
   visibility: visible;
   pointer-events: auto;
 }
+
 
 /**
  * Desktop nav
@@ -173,5 +166,38 @@
     //     right: 0%;
     //   }
     // }
+  }
+}
+
+// Dark
+.header-dark .desktop-nav {
+
+  li > a {
+    color: var(--color-light-grey);
+
+    &:hover {
+      color: var(--color-white);
+    }
+  }
+
+  li.active > a {
+    color: var(--color-yellow);
+  }
+
+  .btn.arrow-button {
+    background-color: rgba($color: #{var(--color-green-rgb)}, $alpha: 1);
+
+    &:hover {
+      background-color: rgba($color: #{var(--color-green-rgb)}, $alpha: 0.9);
+    }
+
+  }
+
+  li.dropdown-menu {
+    &:hover {
+      > a {
+        color: var(--color-white);
+      }
+    }
   }
 }

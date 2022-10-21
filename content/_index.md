@@ -1,16 +1,18 @@
 ---
 layout: index
+header: light
+footer: light
 title: Haystack
 description: Meta description here
 
 # Hero
 hero:
   title: Haystack
-  subtitle: The open source NLP framework enabling end-to-end search applications
+  subtitle: An open source NLP framework that leverages pre-trained Transformer models
   bulletPoints:
-    - Build search systems that work intelligently over large document collections
-    - Make use of the latest transformer based language models (BERT, RoBERTa, MiniLM, DPR) 
-    - Annotate examples, collect user-feedback, evaluate components and finetune models
+    - Apply the latest NLP technology to your own data with the use of Haystack's pipeline architecture.
+    - Implement production-ready semantic search, question answering, summarization and document ranking for a wide range of NLP applications.
+    - Evaluate components and fine-tune models.
   buttons:
     - buttonText: Learn more
       url: /intro
@@ -21,22 +23,22 @@ showcase:
   title: Enabling Semantic Search
   showcaseItems:
     - title: Question Answering
-      text: Similique quod, aspernatur rem ad iure iste, sapiente corrupti dicta quam repudiandae sed culpa perferendis dolorem dolor.
-      url: /
+      text: Ask questions in natural language and find granular answers in your documents using the latest QA models with the help of Haystack pipelines.
+      url: https://docs.haystack.deepset.ai/docs/ready_made_pipelines#extractiveqapipeline
       buttonText: Explore Docs
       image:
         url: /images/card-placeholder.jpg
         alt: placeholder img
     - title: Document Search
-      text: Nihil sit fugiat, reiciendis impedit voluptate tenetur soluta praesentium. Reiciendis, sapiente corrupti dicta quam.
-      url: /
+      text: Perform semantic search and retrieve ranked documents according to meaning, not just keywords!
+      url: https://docs.haystack.deepset.ai/docs/ready_made_pipelines#documentsearchpipeline
       buttonText: Explore Docs
       image:
         url: /images/card-placeholder-2.jpg
         alt: placeholder img
-    - title: Summarization
-      text: Nihil sit fugiat, reiciendis impedit voluptate tenetur soluta praesentium. Reiciendis, sapiente corrupti dicta quam.
-      url: /
+    - title: Latest Models
+      text: Make use of the latest transformer based language models (BERT, RoBERTa, MiniLM, DPR)
+      url: https://huggingface.co/deepset
       buttonText: Explore Docs
       image:
         url: /images/card-placeholder-2.jpg
@@ -77,14 +79,14 @@ github:
 community:
   discord:
     title: Join our community
-    text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam!
+    text: Our community on Discord is for everyone interested in NLP, using Haystack or even just getting started!
     icon: /images/icons/discord.svg
     buttons:
       - buttonText: Join Discord
         url: https://discord.com/invite/VBpFzsgRVF
   newsletter:
     title: Sign up to future newsletters
-    text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam!
+    text: Stay tuned for upcoming newsletters for the latest Haystack community updates
     icon: /images/icons/email.svg
     inputPlaceholder: Email address..
     buttonText: Submit

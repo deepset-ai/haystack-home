@@ -1,6 +1,21 @@
-<header class="site-header">
+{{/*  Website Header */}}
+
+{{/*  Default color  */}}
+{{ $theme := "light" }}
+
+{{/*  Get color from frontmatter if specified  */}}
+{{ with .Params.Header }}
+  {{ $theme = . }}
+{{ end }}
+
+{{/*  Set to dark on 404 page since there is no frontmatter  */}}
+{{ if eq .Page.Kind "404" }}
+  {{ $theme = "dark" }}  
+{{ end }}
+
+<header class="site-header{{ if eq $theme "dark" }} header-dark{{ end }}">
   <div class="container">
-    <a class="site-title" href="/">{{ partial "site-logo" . }}</a>
+    <a class="site-title" href="/">{{ partial "site-logo" (dict "context" . "theme" $theme) }}</a>
 
     {{/* Mobile nav toggle */}}
     <button class="nav-toggle nav-toggle-open" aria-label="Open menu">
@@ -20,6 +35,7 @@
       </svg>
     </button>
 
+    {{/*  Navigations  */}}
     {{ partial "navigation-mobile" . }}
     {{ partial "navigation" . }}
 

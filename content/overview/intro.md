@@ -1,9 +1,12 @@
 ---
 layout: overview
+header: light
+footer: dark
 title: What is Haystack?
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
 weight: 1
 toc: true
+aliases: [/overview/intro]
 ---
 
 ## Overview

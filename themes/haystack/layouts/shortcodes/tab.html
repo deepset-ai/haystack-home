@@ -1,10 +1,9 @@
 {{/* Tab used in the tabs shortcode */}}
 
 {{ $tabName := .Get "tabName" }}
-{{ $tabId := .Get "tabId" }}
+{{ $tabId := delimit (shuffle (slice "a" "b" "c" "d" "e" "f")) "" }}
 {{ .Parent.Scratch.Add "tabName" (slice $tabName) }}
 {{ .Parent.Scratch.Add "tabId" (slice $tabId) }}
-
 
 <div
   class="tab-pane {{ if eq .Ordinal 0 }}active{{ end }}"

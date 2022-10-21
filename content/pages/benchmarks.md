@@ -1,4 +1,6 @@
 ---
 layout: benchmarks
-title: Benchmarks
+header: dark
+footer: dark
+title: Haystack Benchmarks
 ---

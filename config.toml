@@ -1,7 +1,15 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://haystack.deepset.ai/'
 languageCode = 'en-us'
 title = 'Haystack Home'
-theme = "haystack" 
+theme = "haystack"
+
+# Disable /tags and /categories pages
+disableKinds = ["taxonomy", "term"]
+
+[sitemap]
+  changefreq = 'monthly'
+  filename = 'sitemap.xml'
+  priority = 1
 
 # Defaults used for opengraph metadata if none are specified for the page
 [params]
@@ -16,7 +24,7 @@ theme = "haystack"
 
 [security]
   [security.funcs]
-    getenv = ["^HUGO_", "ORBIT_API_KEY", "GITHUB_ACCESS_TOKEN"]
+    getenv = ["^HUGO_", "ORBIT_API_KEY", "GITHUB_ACCESS_TOKEN", "GOOGLE_TAG_ANALYTICS"]
 
 [markup]
   # Code blocks

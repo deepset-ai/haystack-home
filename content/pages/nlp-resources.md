@@ -4,7 +4,7 @@ header: light
 footer: dark
 toc: true
 layout: single
-alisases: [/overview/nlp-resources]
+aliases: [/overview/nlp-resources]
 ---
 
 Here are some links to resources about the core concepts of Natural Language Processing (NLP)

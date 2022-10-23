@@ -336,3 +336,12 @@ video.responsive {
   display: block;
   margin: 1rem 0;
 }
+
+// Google chart
+.article-content .google-chart {
+  min-height: 25rem;
+  
+  &:not(:last-of-type) {
+    margin-bottom: 5rem;
+  }
+}

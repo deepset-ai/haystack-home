@@ -7,4 +7,7 @@ cp ./haystack-tutorials/markdowns/* ./content/tutorials
 ls ./content/tutorials
 
 npm install
-hugo -D --gc
+
+# Use "localhost" if VERCEL_URL is not set
+PREVIEW_URL="${VERCEL_URL:-localhost}"
+hugo -b https://${SITE_URL:-$PREVIEW_URL}

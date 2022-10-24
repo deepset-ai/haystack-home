@@ -10,4 +10,8 @@ npm install
 
 # Use "localhost" if VERCEL_URL is not set
 PREVIEW_URL="${VERCEL_URL:-localhost}"
-hugo -b https://${SITE_URL:-$PREVIEW_URL}
+# Use PREVIEW_URL if SITE_URL is not set
+DEPLOY_URL="${SITE_URL:-$PREVIEW_URL}"
+
+echo "Deploy URL: ${DEPLOY_URL}"
+hugo -b https://${DEPLOY_URL}

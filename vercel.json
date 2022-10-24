@@ -88,6 +88,11 @@
       "source":"/benchmarks/v:version",
       "destination":"/benchmarks",
       "permanent": false
+    },
+    {
+      "source":"/tutorials/v:version/:name",
+      "destination":"/tutorials/:name",
+      "permanent": true
     }
   ],
 

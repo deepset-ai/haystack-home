@@ -95,7 +95,7 @@
       "permanent": true
     },
     {
-      "source":"/benchmarks/v*",
+      "source":"/benchmarks/v:version",
       "destination":"/benchmarks",
       "permanent": false
     }

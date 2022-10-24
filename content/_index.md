@@ -37,7 +37,7 @@ showcase:
         url: /images/document_search.png
         alt: placeholder img
     - title: Latest Models
-      text: Make use of the latest transformer based language models (BERT, RoBERTa, MiniLM, DPR)
+      text: Make use of and compare latest transformer based language models like OpenAI’s GPT-3, BERT, RoBERTa, DPR and more.
       url: https://huggingface.co/deepset
       buttonText: Explore Docs
       image:

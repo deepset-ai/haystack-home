@@ -1,6 +1,6 @@
 ---
 title: NLP Resources
-header: light
+header: dark
 footer: dark
 toc: true
 layout: single

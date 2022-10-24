@@ -44,7 +44,7 @@ hero:
       icon: /images/icons/youtube.svg
 
   # Most active / new contributors
-  communityText: Active Community Members
+  communityText: Most Active Community Members
   contributorsText: New Contributors on GitHub
 
   # Github section enabled/disabled
@@ -58,25 +58,25 @@ hero:
       title: Most active contributors
 
 # Upcoming events
-eventsSection:
-  title: Upcoming Events
-  events:
-    - title: Test Event 1
-      description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima quidem accusamus facilis, nobis officiis accusantium!
-      date: 4th Dec 2022
-      time: "14:00 GMT"
-      location: Online 
-      image: /images/card-placeholder.jpg
-      url: /
-      buttonText: Join Event
-    - title: Test Event 2
-      description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima quidem accusamus facilis, nobis officiis accusantium!
-      date: 6th Dec 2022
-      time: "13:00 GMT"
-      location: Online
-      image: /images/card-placeholder-2.jpg
-      url: /
-      buttonText: Join Event
+# eventsSection:
+#   title: Upcoming Events
+#   events:
+#     - title: Test Event 1
+#       description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima quidem accusamus facilis, nobis officiis accusantium!
+#       date: 4th Dec 2022
+#       time: "14:00 GMT"
+#       location: Online 
+#       image: /images/card-placeholder.jpg
+#       url: /
+#       buttonText: Join Event
+#     - title: Test Event 2
+#       description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima quidem accusamus facilis, nobis officiis accusantium!
+#       date: 6th Dec 2022
+#       time: "13:00 GMT"
+#       location: Online
+#       image: /images/card-placeholder-2.jpg
+#       url: /
+#       buttonText: Join Event
 
 # Open NLP Meetup section
 meetupSection:

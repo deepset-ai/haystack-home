@@ -7,7 +7,7 @@ description: Meta description here
 
 # Hero
 hero:
-  subtitle: An open source NLP framework to use pre-trained transformer models in your applications
+  subtitle: An Open Source NLP Framework To Use Transformer Models In Your Applications
   bulletPoints:
     - Apply the latest NLP technology to your own data with the use of Haystack's pipeline architecture
     - Implement production-ready semantic search, question answering, summarization and document ranking for a wide range of NLP applications
@@ -36,7 +36,7 @@ showcase:
         url: /images/document_search.png
         alt: placeholder img
     - title: Latest Models
-      text: Make use of and compare latest transformer based language models like OpenAI’s GPT-3, BERT, RoBERTa, DPR and more.
+      text: Make use of and compare latest pre-trained transformer based language models like OpenAI’s GPT-3, BERT, RoBERTa, DPR and more.
       url: https://huggingface.co/deepset
       buttonText: Explore Docs
       image:

@@ -1,0 +1,17 @@
+name: Nighly Build
+
+on:
+  workflow_dispatch:
+  schedule:
+  # every day at 2AM
+  - cron: "0 2 * * *"
+
+
+jobs:
+   build-haystack-home:
+     runs-on: ubuntu-latest
+
+     steps:
+       - name: trigger-hook
+         run: |
+           curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}

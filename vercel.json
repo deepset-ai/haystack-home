@@ -88,6 +88,16 @@
       "source": "/pipeline_nodes/v:version/overview",
       "destination": "https://docs.haystack.deepset.ai/v:version/docs/nodes_overview",
       "permanent": true 
+    },
+    {
+      "source":"/benchmarks/latest",
+      "destination":"/benchmarks",
+      "permanent": true
+    },
+    {
+      "source":"/benchmarks/v*",
+      "destination":"/benchmarks",
+      "permanent": false
     }
   ]
 }

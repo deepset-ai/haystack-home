@@ -1,0 +1,7 @@
+{{/*  Google Tag Manager <body> script  */}}
+
+{{ $gtag := getenv "GOOGLE_TAG_ANALYTICS" }}
+
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id={{ $gtag }}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>

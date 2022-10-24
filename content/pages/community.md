@@ -3,6 +3,7 @@ layout: community
 title: Community
 header: dark
 footer: dark
+aliases: [/community/join]
 
 # Hero
 hero:

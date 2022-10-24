@@ -12,4 +12,11 @@
   <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
 
   <title>{{ .Title | plainify }} | {{ .Site.Title }}</title>
+
+
+  <link href="https://www.googletagmanager.com" rel="preconnect" crossorigin>
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+  {{/*  Google Tag Manager  */}}
+  {{ partial "gtag-head" . }}
 </head>

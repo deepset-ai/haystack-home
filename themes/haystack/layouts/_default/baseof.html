@@ -2,13 +2,17 @@
 <html lang="en">
   {{ partial "head" . }}
 
-
   <body>
+    {{/*  Google Tag Manager  */}}
+    {{ partial "gtag-body" . }}
+
+    {{/*  Header  */}}
     {{ partial "header" . }}
 
-
+    {{/*  Main  */}}
     <main>{{ block "main" . }}{{ end }}</main>
 
+    {{/*  Footer  */}}
     {{ partial "footer" . }}
   </body>
 </html>

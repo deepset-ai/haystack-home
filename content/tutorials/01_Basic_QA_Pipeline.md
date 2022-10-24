@@ -12,6 +12,10 @@ weight: 10
 description: Get Started by creating a Retriever Reader pipeline.
 category: "QA"
 aliases: ['/tutorials/first-qa-system']
+
+# sitemap:
+#   changefreq: weekly
+#   priority: 0.8
 ---
     
 

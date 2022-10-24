@@ -1,0 +1,246 @@
+{{ define "main" }}
+  {{/* Benchmark data */}}
+  {{ $readerPerformance := .Site.Data.benchmarks.reader_performance }}
+  {{ $retrieverPerformance := .Site.Data.benchmarks.retriever_performance }}
+  {{ $retrieverAccuracy := .Site.Data.benchmarks.retriever_map }}
+  {{ $retrieverSpeed := .Site.Data.benchmarks.retriever_speed }}
+
+  <div class="container">
+    <div class="inner inner-top">
+      <article class="article-content">
+        <h1>{{ .Params.title }}</h1>
+
+        {{/* Reader Performance */}}
+        <h2>{{ $readerPerformance.title }}</h2>
+        <p>{{ $readerPerformance.description | safeHTML }}</p>
+        <div id="reader-performance" class="google-chart"></div>
+
+        {{/* Retriever Performance */}}
+        <h2>{{ $retrieverPerformance.title }}</h2>
+        <p>{{ $retrieverPerformance.description | safeHTML }}</p>
+        <div id="retriever-performance" class="google-chart"></div>
+
+        {{/*  Retriever Accuracy  */}}
+        <h2>{{ $retrieverAccuracy.title }}</h2>
+        <p>{{ $retrieverAccuracy.description | safeHTML }}</p>
+        <div id="retriever-accuracy" class="google-chart"></div>
+
+        {{/*  Retriever Speed  */}}
+        <h2>{{ $retrieverSpeed.title }}</h2>
+        <p>{{ $retrieverSpeed.description | safeHTML }}</p>
+        <div id="retriever-speed" class="google-chart"></div>
+      </article>
+    </div>
+  </div>
+
+  {{/* Load charts script */}}
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  {{/*  Draw Charts  */}}
+  <script type="text/javascript">
+      const readerPerformance = {{ $readerPerformance }}
+      const retrieverPerformance = {{ $retrieverPerformance }}
+      const retrieverAccuracy = {{ $retrieverAccuracy }}
+      const retrieverSpeed = {{ $retrieverSpeed }}
+
+      google.charts.load("current", {"packages": ["corechart"]});
+      google.charts.setOnLoadCallback(drawCharts);
+
+      function drawCharts() {
+        drawReaderPerformanceChart()
+        drawRetrieverPerformanceChart()
+        drawRetrieverAccuracyChart()
+        drawRetrieverSpeedChart()
+
+        window.addEventListener("resize", () => {
+          drawReaderPerformanceChart()
+          drawRetrieverPerformanceChart()
+          drawRetrieverAccuracyChart()
+          drawRetrieverSpeedChart()
+        })
+      }
+
+      function drawReaderPerformanceChart() {
+          // Create the data table
+          const data = new google.visualization.DataTable();
+          data.addColumn("string", "Model");
+          data.addColumn("number", "F1");
+          data.addColumn("number", "Speed (passages/sec)");
+
+          let dataArr = [];
+          readerPerformance.data.forEach((d) => dataArr.push([d.Model, d.F1, d.Speed]))
+          data.addRows(dataArr);
+
+          // Set chart options
+          const options = {
+              "width": "100%",
+              "height": 400,
+              colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
+              bar: {
+                  groupWidth: "65%",
+              },
+              bars: readerPerformance.bars,
+              legend: "bottom",
+              displayAnnotations: true,
+              annotations: {
+                  textStyle: {
+                  color: "#2b2f55",
+                  fontSize: 16,
+                  }
+              }
+          };
+
+          // Instantiate and draw our chart, passing in some options.
+          const chart = new google.visualization.BarChart(document.getElementById("reader-performance"));
+          chart.draw(data, options);
+      }
+
+      function drawRetrieverPerformanceChart() {
+        // Create the data table
+        const data = new google.visualization.DataTable();
+        data.addColumn("string", "Model");
+        data.addColumn("number", "mAP");
+        data.addColumn("number", "Index Speed (docs/sec)");
+        data.addColumn("number", "Query Speed (queries/sec)");
+
+        let dataArr = [];
+        retrieverPerformance.data.forEach((d) => dataArr.push([d.model, d.map, d.index_speed, d.query_speed]))
+        data.addRows(dataArr);
+
+        // Set chart options
+        const options = {
+            "width": "100%",
+            "height": 500,
+            colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
+            bar: {
+                groupWidth: "65%",
+            },
+            bars: retrieverPerformance.bars,
+            legend: "bottom",
+            displayAnnotations: true,
+            annotations: {
+              textStyle: {
+                color: "#2b2f55",
+                fontSize: 16,
+              }
+            }
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        const chart = new google.visualization[retrieverPerformance.chart_type](document.getElementById("retriever-performance"));
+        chart.draw(data, options);
+    }
+    
+      function drawRetrieverAccuracyChart() {
+
+        {{/*  Map the data  */}}
+        const n_docs = [1000, 10000, 100000, 500000];
+        const dataRetriever = new Array(retrieverAccuracy.columns);
+
+        for (let z = 0; z < n_docs.length; z++) {
+          dataRetriever[z + 1] = new Array(retrieverAccuracy.columns.length);
+          dataRetriever[z + 1][0] = n_docs[z];
+          for (let j = 0; j < retrieverAccuracy.columns.length; j++) {
+            for (let i = 0; i < retrieverAccuracy.data.length; i++) {
+              if (
+                retrieverAccuracy.columns[j] === retrieverAccuracy.data[i].model &&
+                n_docs[z] === retrieverAccuracy.data[i].n_docs
+              )
+                dataRetriever[z + 1][j] = retrieverAccuracy.data[i].map;
+            }
+          }
+        }
+
+
+        // Create the data table
+        const data = new google.visualization.DataTable();
+        dataRetriever[0].forEach((d) => {
+          data.addColumn("number", d);
+        })
+
+        data.addRows(dataRetriever.slice(1));
+
+        // Chart options
+        const options = {
+          "width": "100%",
+          "height": 500,
+          colors: ["#22BA99", "#FBB14B", "#63C7CA", "#49B0E4"],
+          hAxis: {
+            title: retrieverAccuracy.axis[0].x,
+          },
+          vAxis: {
+            title: retrieverAccuracy.axis[0].y,
+          },
+          pointSize: 5,
+          legend: "bottom",
+          displayAnnotations: true,
+          annotations: {
+            textStyle: {
+              color: "#2b2f55",
+              fontSize: 16,
+            }
+          }
+          
+        };
+
+        // Draw chart
+        const chart = new google.visualization[retrieverAccuracy.chart_type](document.getElementById("retriever-accuracy"));
+        chart.draw(data, options);
+    }
+  
+      function drawRetrieverSpeedChart() {
+
+        {{/*  Map the data  */}}
+        const n_docs = [1000, 10000, 100000, 500000];
+        const dataRetriever = new Array(retrieverSpeed.columns);
+
+        for (let z = 0; z < n_docs.length; z++) {
+          dataRetriever[z + 1] = new Array(retrieverSpeed.columns.length);
+          dataRetriever[z + 1][0] = n_docs[z];
+          for (let j = 0; j < retrieverSpeed.columns.length; j++) {
+            for (let i = 0; i < retrieverSpeed.data.length; i++) {
+              if (
+                retrieverSpeed.columns[j] === retrieverSpeed.data[i].model &&
+                n_docs[z] === retrieverSpeed.data[i].n_docs
+              )
+                dataRetriever[z + 1][j] = retrieverSpeed.data[i].query_speed;
+            }
+          }
+        }
+
+        // Create the data table
+        const data = new google.visualization.DataTable();
+        dataRetriever[0].forEach((d) => {
+          data.addColumn("number", d);
+        })
+
+        data.addRows(dataRetriever.slice(1));
+
+        // Chart options
+        const options = {
+          "width": "100%",
+          "height": 500,
+          colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
+          hAxis: {
+            title: retrieverSpeed.axis[0].x,
+          },
+          vAxis: {
+            title: retrieverSpeed.axis[0].y,
+          },
+          pointSize: 5,
+          legend: "bottom",
+          displayAnnotations: true,
+          annotations: {
+            textStyle: {
+              color: "#2b2f55",
+              fontSize: 16,
+            }
+          }
+        };
+
+        // Draw chart
+        const chart = new google.visualization[retrieverSpeed.chart_type](document.getElementById("retriever-speed"));
+        chart.draw(data, options);
+    }
+  </script>
+{{ end }}

@@ -6,7 +6,7 @@ title: Demo
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
 weight: 3
 toc: false
-aliases: [/overview/quick-demo]
+aliases: [quick-demo]
 ---
 
 <!-- ![image](https://raw.githubusercontent.com/deepset-ai/haystack-website/source/public/img/haystack-demo-short.gif) -->

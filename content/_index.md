@@ -14,7 +14,7 @@ hero:
     - Evaluate components and fine-tune models
   buttons:
     - buttonText: Learn more
-      url: /intro
+      url: /overview/intro
   image: /images/hero.png
 
 # Showcase
@@ -37,7 +37,7 @@ showcase:
         alt: placeholder img
     - title: Latest Models
       text: Make use of and compare latest pre-trained transformer based language models like OpenAI’s GPT-3, BERT, RoBERTa, DPR and more.
-      url: https://huggingface.co/deepset
+      url: https://docs.haystack.deepset.ai/docs/reader#models
       buttonText: Explore Docs
       image:
         url: /images/models.png

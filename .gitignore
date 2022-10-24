@@ -42,5 +42,6 @@ resources
 .env*
 
 # Tutorial files are pulled at build time
+haystack-tutorials
 content/tutorials
 !content/tutorials/_index.md

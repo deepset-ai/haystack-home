@@ -1,11 +1,11 @@
 # Haystack Home
 
-Haystack Home is built using [Hugo](https://github.com/gohugoio/hugo), a static website generator written in Go. 
+Haystack Home is built using [Hugo](https://github.com/gohugoio/hugo), a static website generator written in Go.
 
 ## Contribute
 
 1. Install Hugo using the [appropriate installation method](https://gohugo.io/getting-started/installing/) for your OS
-2. Clone the project locally, and install dependencies by running `npm install`
+2. Clone the project locally, and install dependencies by running `./build.sh`
 3. Add or edit any content in the /content directory
 4. Start a local Hugo server (with drafts enabled) by running `hugo server -D`
 5. Visit http://localhost:1313/ in your browser to preview any changes made
@@ -16,9 +16,9 @@ Haystack Home is built using [Hugo](https://github.com/gohugoio/hugo), a static 
 
 The tutorials are maintained in the [`haystack-tutorials` repository](https://github.com/deepset-ai/haystack-tutorials)
 
-1. Check out the [Contributing Guidelines](https://github.com/deepset-ai/haystack-tutorials/blob/main/Contributing.md) 
+1. Check out the [Contributing Guidelines](https://github.com/deepset-ai/haystack-tutorials/blob/main/Contributing.md)
 2. Create a PR on the `haystack-tutorials` repository
-3. When merged, your changes will reflect on Haystack Home
+3. When merged, your changes will reflect on Haystack Home after the next deployment
 
 ### Shortcodes
 
@@ -53,7 +53,7 @@ First tab content here
 {{< tab tabName="Second Tab Name" >}}
 
 Second tab content here
-    
+
 {{< /tab >}}
 {{< /tabs >}}
 ```

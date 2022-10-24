@@ -89,5 +89,7 @@
       "destination":"/benchmarks",
       "permanent": false
     }
-  ]
+  ],
+
+  "buildCommand": "./build.sh"
 }

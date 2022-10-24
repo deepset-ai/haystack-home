@@ -15,9 +15,79 @@
 
   "redirects": [
     {
-      "source": "/old-page",
-      "destination": "/tutorials",
+      "source": "/overview/v:version/:name(intro|get-started|quick-demo|nlp-resources|roadmap|use-cases)",
+      "destination": "/overview/:name",
       "permanent": true
+    },
+    {
+      "source": "/overview/v:version/:name(installation|telemetry|faq|migration|glossary)",
+      "destination": "https://docs.haystack.deepset.ai/v:version/docs/:name",
+      "permanent": true
+    },
+    {
+      "source": "/overview/:name(installation|telemetry|faq|migration|glossary)",
+      "destination": "https://docs.haystack.deepset.ai/docs/:name",
+      "permanent": true
+    },
+    {
+      "source": "/reference/:api",
+      "destination": "https://docs.haystack.deepset.ai/reference/:api-api",
+      "permanent": true
+    },
+    {
+      "source": "/reference/v:version/:api",
+      "destination": "https://docs.haystack.deepset.ai/v:version/reference/:api-api",
+      "permanent": true
+    },
+    {
+      "source": "/(pipeline_nodes|components|guides|usage)/v:version/:seg1-:seg2-:seg3",
+      "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1*_:seg2*_:seg3",
+      "permanent": true 
+    },
+    {
+      "source": "/(pipeline_nodes|components|guides|usage)/v:version/:seg1-:seg2",
+      "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1*_:seg2",
+      "permanent": true 
+    },
+    {
+      "source": "/(pipeline_nodes|components|guides|usage)/v:version/:seg1",
+      "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1",
+      "permanent": true 
+    },
+    {
+      "source": "/(pipeline_nodes|components|guides|usage)/v:version/:seg1-:seg2-:seg3",
+      "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1*_:seg2*_:seg3",
+      "permanent": true 
+    },
+    {
+      "source": "/(pipeline_nodes|components|guides|usage)/:seg1-:seg2",
+      "destination": "https://docs.haystack.deepset.ai/docs/:seg1*_:seg2",
+      "permanent": true 
+    },
+    {
+      "source": "/(pipeline_nodes|components|guides|usage)/:seg1",
+      "destination": "https://docs.haystack.deepset.ai/docs/:seg1",
+      "permanent": true 
+    },
+    {
+      "source": "/pipeline_nodes/overview",
+      "destination": "https://docs.haystack.deepset.ai/docs/nodes_overview",
+      "permanent": true 
+    },
+    {
+      "source": "/pipeline_nodes/v:version/overview",
+      "destination": "https://docs.haystack.deepset.ai/v:version/docs/nodes_overview",
+      "permanent": true 
+    },
+    {
+      "source":"/benchmarks/latest",
+      "destination":"/benchmarks",
+      "permanent": true
+    },
+    {
+      "source":"/benchmarks/v:version",
+      "destination":"/benchmarks",
+      "permanent": false
     }
   ]
 }

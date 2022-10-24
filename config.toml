@@ -18,8 +18,6 @@ disableKinds = ["taxonomy", "term"]
   images = ["/images/haystack-ogimage.png"]
 
 [permalinks]
-  tutorials = "/tutorials/:filename"
-  overview = "/:filename"
   pages = "/:filename"
 
 [security]
@@ -59,11 +57,25 @@ disableKinds = ["taxonomy", "term"]
   name = 'Overview'
   url = '/'
   weight = 1
-  
+
+[[menu.main]]
+  identifier = 'resources'
+  name = 'Resources'
+  url = '/'
+  weight = 2
+
 [[menu.main]]
   identifier = 'documentation'
   name = 'Documentation'
   url = 'https://docs.haystack.deepset.ai/docs'
+  parent = 'resources'
+  weight = 1
+
+[[menu.main]]
+  identifier = 'annotation-tool'
+  name = 'Annotation Tool'
+  url = 'https://www.deepset.ai/annotation-tool-for-labeling-datasets'
+  parent = 'resources'
   weight = 2
 
 [[menu.main]]
@@ -93,31 +105,31 @@ disableKinds = ["taxonomy", "term"]
 # Overview children
 [[menu.main]]
   name = 'What is Haystack?'
-  url = '/intro'
+  url = '/overview/intro'
   parent = 'overview'
   weight = 1
 
 [[menu.main]]
   name = 'Quick Start'
-  url = '/quick-start'
+  url = '/overview/quick-start'
   parent = 'overview'
   weight = 2
 
 [[menu.main]]
   name = 'Quick Demo'
-  url = '/demo'
+  url = '/overview/demo'
   parent = 'overview'
   weight = 3
 
 [[menu.main]]
   name = 'Roadmap'
-  url = '/roadmap'
+  url = '/overview/roadmap'
   parent = 'overview'
   weight = 4
 
 [[menu.main]]
   name = 'Use Cases'
-  url = '/use-cases'
+  url = '/overview/use-cases'
   parent = 'overview'
   weight = 5
 

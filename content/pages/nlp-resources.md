@@ -1,5 +1,6 @@
 ---
 title: NLP Resources
+description: Some resources to get going with NLP.
 header: dark
 footer: dark
 toc: true

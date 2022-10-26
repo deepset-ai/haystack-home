@@ -3,7 +3,7 @@ layout: overview
 header: dark
 footer: dark
 title: What is Haystack?
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
+description: Haystack is an open-source NLP frameworkfor building search systems
 weight: 1
 toc: true
 ---

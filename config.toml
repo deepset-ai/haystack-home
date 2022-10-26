@@ -1,6 +1,6 @@
 baseURL = 'https://haystack.deepset.ai/'
 languageCode = 'en-us'
-title = 'Haystack Home'
+title = 'Haystack'
 theme = "haystack"
 
 # Disable /tags and /categories pages
@@ -13,7 +13,7 @@ disableKinds = ["taxonomy", "term"]
 
 # Defaults used for opengraph metadata if none are specified for the page
 [params]
-  title = "Haystack Home"
+  title = "Haystack"
   description = "Haystack is an open-source framework for building search systems that work intelligently over large document collections."
   images = ["/images/haystack-ogimage.png"]
 

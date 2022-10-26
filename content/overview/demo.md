@@ -3,7 +3,7 @@ layout: overview
 header: dark
 footer: dark
 title: Demo
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
+description: Check out our live demo with Haystack.
 weight: 3
 toc: false
 aliases: [quick-demo]

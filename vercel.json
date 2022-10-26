@@ -15,6 +15,21 @@
 
   "redirects": [
     {
+      "source": "/docs/:name",
+      "destination": "https://docs.haystack.deepset.ai/docs/:name",
+      "permanent": true
+    },
+    {
+      "source": "/docs/latest/:name",
+      "destination": "https://docs.haystack.deepset.ai/docs/:name",
+      "permanent": true
+    },
+    {
+      "source": "/docs/v:version/:name",
+      "destination": "https://docs.haystack.deepset.ai/v:version/docs/:name",
+      "permanent": true
+    },
+    {
       "source": "/overview/v:version/:name(intro|get-started|quick-demo|nlp-resources|roadmap|use-cases)",
       "destination": "/overview/:name",
       "permanent": true

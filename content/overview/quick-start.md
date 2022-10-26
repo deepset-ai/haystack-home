@@ -3,7 +3,7 @@ layout: overview
 header: dark
 footer: dark
 title: Quick Start
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
+description: Guide to setting up and installing Haystack. 
 weight: 2
 toc: true
 aliases: [get-started]

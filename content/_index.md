@@ -3,7 +3,7 @@ layout: index
 header: dark
 footer: light
 title: Haystack
-description: Meta description here
+description: Haystack, the open source NLP framework
 
 # Hero
 hero:

@@ -3,7 +3,7 @@ layout: overview
 header: dark
 footer: dark
 title: Roadmap
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
+description: Check out what's next for the Haystack project in our Roadmap.
 weight: 4
 aliases: [/overview/roadmap]
 ---

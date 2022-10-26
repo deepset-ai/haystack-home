@@ -1,6 +1,6 @@
-# Haystack Home
+# Haystack
 
-Haystack Home is built using [Hugo](https://github.com/gohugoio/hugo), a static website generator written in Go.
+This Haystack website is built using [Hugo](https://github.com/gohugoio/hugo), a static website generator written in Go.
 
 ## Contribute
 
@@ -18,7 +18,7 @@ The tutorials are maintained in the [`haystack-tutorials` repository](https://gi
 
 1. Check out the [Contributing Guidelines](https://github.com/deepset-ai/haystack-tutorials/blob/main/Contributing.md)
 2. Create a PR on the `haystack-tutorials` repository
-3. When merged, your changes will reflect on Haystack Home after the next deployment
+3. When merged, your changes will reflect on the Haystack website after the next deployment
 
 ### Shortcodes
 
@@ -35,7 +35,7 @@ You can use Hugo shortcodes in markdown to call various built-in or custom templ
 **Adding a button:**
 
 ```
-{{< button url="https://github.com/deepset-ai/haystack-home" text="Haystack Home Github Repo" color="green">}}
+{{< button url="https://github.com/deepset-ai/haystack-home" text="Haystack website Github Repo" color="green">}}
 
 # colors options: green, blue, dark-blue
 ```

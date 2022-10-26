@@ -3,7 +3,7 @@ layout: overview
 header: dark
 footer: dark
 title: Use Cases
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit, nisi quisquam et eveniet nesciunt repellendus.
+description: Discover how you can use Haystack.
 weight: 5
 toc: true
 ---

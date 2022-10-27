@@ -55,7 +55,7 @@
       "permanent": true 
     },
     {
-      "source": "/(pipeline_nodes|components|guides|usage)/v:version/:seg1-:seg2-:seg3",
+      "source": "/(pipeline_nodes|components|guides|usage)/:seg1-:seg2-:seg3",
       "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1*_:seg2*_:seg3",
       "permanent": true 
     },

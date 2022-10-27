@@ -7,7 +7,7 @@ description: Haystack, the open source NLP framework
 
 # Hero
 hero:
-  subtitle: An Open Source NLP Framework To Use Transformer Models In Your Applications
+  title: An NLP Framework To Use Transformers In Your Applications
   bulletPoints:
     - Apply the latest NLP technology to your own data with the use of Haystack's pipeline architecture
     - Implement production-ready semantic search, question answering, summarization and document ranking for a wide range of NLP applications

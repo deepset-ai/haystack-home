@@ -59,17 +59,17 @@ hero:
       title: Most active contributors
 
 # Upcoming events
-# eventsSection:
-#   title: Upcoming Events
-#   events:
-#     - title: Test Event 1
-#       description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima quidem accusamus facilis, nobis officiis accusantium!
-#       date: 4th Dec 2022
-#       time: "14:00 GMT"
-#       location: Online 
-#       image: /images/card-placeholder.jpg
-#       url: /
-#       buttonText: Join Event
+eventsSection:
+  title: Upcoming Events
+  events:
+    - title: Enabling NLP for Enterprise Applications
+      description: In this webinar, Milos Rusic will share key concepts of building NLP-driven products, highlight the necessary areas of focus, and explain how to lower the barrier to modern enterprise NLP. 
+      date: 9th Nov 2022
+      time: "17:00 CET"
+      location: Online 
+      image: /images/webinar.png
+      url: https://landing.deepset.ai/enabling-nlp-for-enterprise-2211?utm_campaign=2211_Webinar_Enabling%20NLP%20for%20Enterprise%20Applications&utm_source=referral&utm_medium=hsh
+      buttonText: Register
 #     - title: Test Event 2
 #       description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima quidem accusamus facilis, nobis officiis accusantium!
 #       date: 6th Dec 2022

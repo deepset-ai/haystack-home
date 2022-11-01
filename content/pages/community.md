@@ -70,7 +70,7 @@ eventsSection:
       image: /images/webinar.png
       url: https://landing.deepset.ai/enabling-nlp-for-enterprise-2211?utm_campaign=2211_Webinar_Enabling%20NLP%20for%20Enterprise%20Applications&utm_source=referral&utm_medium=hsh
       buttonText: Register
-    - title: Contributor Cafe 
+    - title: Contributor Cafe 3
       description: >
         Monthly community call to talk about Haystack contributions with allocated time to discuss your issues or PRs.
         <br />⭐️ **Highlight: Open AI Embeddings**

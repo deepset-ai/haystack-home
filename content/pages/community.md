@@ -70,14 +70,16 @@ eventsSection:
       image: /images/webinar.png
       url: https://landing.deepset.ai/enabling-nlp-for-enterprise-2211?utm_campaign=2211_Webinar_Enabling%20NLP%20for%20Enterprise%20Applications&utm_source=referral&utm_medium=hsh
       buttonText: Register
-#     - title: Test Event 2
-#       description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima quidem accusamus facilis, nobis officiis accusantium!
-#       date: 6th Dec 2022
-#       time: "13:00 GMT"
-#       location: Online
-#       image: /images/card-placeholder-2.jpg
-#       url: /
-#       buttonText: Join Event
+    - title: Contributor Cafe 
+      description: >
+        Monthly community call to talk about Haystack contributions with allocated time to discuss your issues or PRs.
+        <br />⭐️ **Highlight: Open AI Embeddings**
+      date: 10th Nov 2022
+      time: "18:00 CET"
+      location: Discord
+      image: /images/contributor-cafe.png
+      url: /
+      buttonText: Join Event
 
 # Open NLP Meetup section
 meetupSection:

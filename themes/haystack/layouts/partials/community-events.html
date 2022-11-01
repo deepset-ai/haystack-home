@@ -18,7 +18,7 @@
                                         <span class="location">{{ .location }}</span>
                                     </div>
     
-                                    <p>{{ .description }}</p>
+                                    <p>{{ .description | markdownify }}</p>
                                     {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
                                 </div>
                         </div>

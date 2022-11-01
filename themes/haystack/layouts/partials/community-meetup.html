@@ -1,6 +1,6 @@
 {{/* Open NLP Meetup section on the Community page */}}
 {{ with .Params.MeetupSection }}
-  <section class="community-meetup">
+  <section class="community-meetup" {{ if .anchor }} id="{{ .anchor }}" {{ end }}>
     <div class="container container-padded">
       <div class="inner">
         <h2>{{ .title }}</h2>

@@ -19,6 +19,7 @@ hero:
 
 # Showcase
 showcase:
+  anchor: showcase
   title: Enabling Semantic Search
   showcaseItems:
     - title: Question Answering
@@ -45,6 +46,7 @@ showcase:
 
 # Features
 features:
+  anchor: features
   featureItems:
     - title: Latest Models
       text: Pick any Transformer model from Hugging Face's Model Hub, experiment, find the one that works.
@@ -67,6 +69,7 @@ features:
 
 # Github section
 github:
+  anchor: github
   title: Start exploring Haystack!
   buttons:
     - buttonText: Check on Github
@@ -76,6 +79,7 @@ github:
 
 # Community
 community:
+  anchor: community
   discord:
     title: Join our community
     text: Our community on Discord is for everyone interested in NLP, using Haystack or even just getting started!

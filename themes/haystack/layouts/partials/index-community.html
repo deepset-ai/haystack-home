@@ -1,4 +1,4 @@
-<section class="index-community">
+<section class="index-community" {{ if .Params.community.anchor }} id="{{ .Params.community.anchor }}" {{ end }}>
   <div class="container">
     <div class="inner">
       {{ partial "discord-card" (dict "context" . "community" .Params.community) }}

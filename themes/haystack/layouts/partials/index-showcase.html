@@ -1,5 +1,5 @@
 {{/*  Homepage showcase section  */}}
-<section class="index-showcase">
+<section class="index-showcase" {{ if .Params.showcase.anchor }} id="{{ .Params.showcase.anchor }}" {{ end }}>
   <div class="container container-padded">
     <div class="inner">
       {{/* Title */}}

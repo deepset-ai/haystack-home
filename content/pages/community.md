@@ -78,7 +78,7 @@ eventsSection:
       time: "18:00 CET"
       location: Discord
       image: /images/contributor-cafe.png
-      url: /
+      url: https://discord.gg/HVnRwuD3?event=1037021629911416852
       buttonText: Join Event
 
 # Open NLP Meetup section

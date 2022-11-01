@@ -47,10 +47,10 @@
 {{- end -}}
 
 {{- with $.Params.images -}}
-  <meta name="twitter:image" content="{{ index . 0 | relURL }}" />
+  <meta name="twitter:image" content="{{ index . 0 | absURL }}" />
 {{- else -}}
   {{- with $.Site.Params.images }}
-    <meta name="twitter:image" content="{{ index . 0 | relURL }}" />
+    <meta name="twitter:image" content="{{ index . 0 | absURL }}" />
   {{ end -}}
 {{- end -}}
 

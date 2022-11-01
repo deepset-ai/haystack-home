@@ -1,5 +1,5 @@
 {{/*  Homepage Features section  */}}
-<section class="index-features">
+<section class="index-features" {{ if .Params.features.anchor }} id="{{ .Params.features.anchor }}" {{ end }}>
   <div class="container">
     <div class="inner">
       {{/* Feature items */}}

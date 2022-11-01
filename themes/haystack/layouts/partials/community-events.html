@@ -1,6 +1,6 @@
 {{/*  Upcoming events section on the Community page  */}}
 {{ with .Params.EventsSection}}
-    <section class="community-events">
+    <section class="community-events" {{ if .anchor }} id="{{ .anchor }}" {{ end }}>
         <div class="container container-padded">
             <div class="inner">
                 <h2>{{ .title }}</h2>

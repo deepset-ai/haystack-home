@@ -1,6 +1,6 @@
 {{/* Community page hero */}}
 {{ with .Params.Hero }}
-  <section class="community-hero">
+  <section class="community-hero" {{ if .anchor }} id="{{ .anchor }}" {{ end }}>
     <div class="container container-padded">
       <section class="inner inner-top">
         <div class="community-hero-top">

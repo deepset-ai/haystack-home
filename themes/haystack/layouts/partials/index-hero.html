@@ -1,5 +1,5 @@
 {{/*  Homepage Hero  */}}
-<section class="index-hero">
+<section class="index-hero" {{ if .Params.hero.anchor }} id="{{ .Params.hero.anchor }}" {{ end }}>
 
   {{/*  Hero bg image  */}}
   <div

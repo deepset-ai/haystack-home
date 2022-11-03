@@ -1,3 +1,5 @@
+[![Nighly Build](https://github.com/deepset-ai/haystack-home/actions/workflows/nightly.yml/badge.svg)](https://github.com/deepset-ai/haystack-home/actions/workflows/nightly.yml)
+
 # Haystack
 
 This Haystack website is built using [Hugo](https://github.com/gohugoio/hugo), a static website generator written in Go.

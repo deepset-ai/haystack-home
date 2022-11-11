@@ -63,6 +63,17 @@ eventsSection:
   anchor: events
   title: Upcoming Events
   events:
+    - title: The fastest way to ship NLP to production
+      description: >
+        At deepset, we believe that NLP applications should be built the same way as any other modern software. 
+        
+        <br /> In this webinar, Mathis, Head of Product for deepset Cloud, will share his experience in building enterprise NLP applications.
+      date: 22nd Nov 2022
+      time: "17:00 CET"
+      location: Zoom
+      image: /images/webinar-mathis.png
+      url: https://hubs.li/Q01s4ZzZ0
+      buttonText: Register
     - title: Ethics in NLP & A Practical Introduction to Image Retrieval
       description: >
         We have 2 talks scheduled for our final Open NLP Meetup of 2022:

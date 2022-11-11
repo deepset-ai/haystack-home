@@ -63,24 +63,6 @@ eventsSection:
   anchor: events
   title: Upcoming Events
   events:
-    - title: Enabling NLP for Enterprise Applications
-      description: In this webinar, Milos Rusic will share key concepts of building NLP-driven products, highlight the necessary areas of focus, and explain how to lower the barrier to modern enterprise NLP. 
-      date: 9th Nov 2022
-      time: "17:00 CET"
-      location: Online 
-      image: /images/webinar.png
-      url: https://landing.deepset.ai/enabling-nlp-for-enterprise-2211?utm_campaign=2211_Webinar_Enabling%20NLP%20for%20Enterprise%20Applications&utm_source=referral&utm_medium=hsh
-      buttonText: Register
-    - title: Contributor Cafe 3
-      description: >
-        Monthly community call to talk about Haystack contributions with allocated time to discuss your issues or PRs.
-        <br />⭐️ **Highlight: Open AI Embeddings**
-      date: 10th Nov 2022
-      time: "18:00 CET"
-      location: Discord
-      image: /images/contributor-cafe.png
-      url: https://discord.gg/HVnRwuD3?event=1037021629911416852
-      buttonText: Join Event
     - title: Ethics in NLP & A Practical Introduction to Image Retrieval
       description: >
         We have 2 talks scheduled for our final Open NLP Meetup of 2022:

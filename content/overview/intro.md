@@ -8,8 +8,6 @@ weight: 1
 toc: true
 ---
 
-## Overview
-
 Haystack is an **open-source framework** for building **search systems** that work intelligently over large document collections.
 Recent advances in NLP have enabled the application of question answering, retrieval and summarization to real world settings
 and Haystack is designed to be the bridge between research and industry.

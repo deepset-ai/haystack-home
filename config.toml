@@ -59,26 +59,6 @@ disableKinds = ["taxonomy", "term"]
   weight = 1
 
 [[menu.main]]
-  identifier = 'resources'
-  name = 'Resources'
-  url = '/'
-  weight = 2
-
-[[menu.main]]
-  identifier = 'documentation'
-  name = 'Documentation'
-  url = 'https://docs.haystack.deepset.ai/docs'
-  parent = 'resources'
-  weight = 1
-
-[[menu.main]]
-  identifier = 'annotation-tool'
-  name = 'Annotation Tool'
-  url = 'https://www.deepset.ai/annotation-tool-for-labeling-datasets'
-  parent = 'resources'
-  weight = 2
-
-[[menu.main]]
   identifier = 'tutorials'
   name = 'Tutorials'
   url = '/tutorials'
@@ -97,8 +77,8 @@ disableKinds = ["taxonomy", "term"]
   weight = 5
 
 [[menu.main]]
-  identifier = 'learn'
-  name = 'Learn'
+  identifier = 'resources'
+  name = 'Resources'
   url = '/'
   weight = 6
 
@@ -133,15 +113,23 @@ disableKinds = ["taxonomy", "term"]
   parent = 'overview'
   weight = 5
 
-# Learn children
-[[menu.main]]
-  name = 'NLP Resources'
-  url = '/nlp-resources'
-  parent = 'learn'
-  weight = 1
-
+# Resources children
 [[menu.main]]
   name = 'Blog'
   url = 'https://www.deepset.ai/blog'
-  parent = 'learn'
+  parent = 'resources'
+  weight = 1
+  
+[[menu.main]]
+  identifier = 'annotation-tool'
+  name = 'Annotation Tool'
+  url = 'https://www.deepset.ai/annotation-tool-for-labeling-datasets'
+  parent = 'resources'
   weight = 2
+
+[[menu.main]]
+  name = 'NLP Resources'
+  url = '/nlp-resources'
+  parent = 'resources'
+  weight = 3
+

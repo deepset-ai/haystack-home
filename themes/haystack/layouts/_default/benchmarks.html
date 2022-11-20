@@ -1,14 +1,41 @@
 {{ define "main" }}
   {{/* Benchmark data */}}
-  {{ $readerPerformance := .Site.Data.benchmarks.reader_performance }}
-  {{ $retrieverPerformance := .Site.Data.benchmarks.retriever_performance }}
-  {{ $retrieverAccuracy := .Site.Data.benchmarks.retriever_map }}
-  {{ $retrieverSpeed := .Site.Data.benchmarks.retriever_speed }}
+  {{ $versions := (slice "v0.10.0" "v0.9.0" "v0.8.0" "v0.7.0" "v0.6.0" "v0.5.0" ) }}
+  {{ $version := replace .Params.version "." "_" }}
+
+  {{ $readerPerformance := (index .Site.Data.benchmarks $version "reader_performance") }}
+  {{ $retrieverPerformance := (index .Site.Data.benchmarks $version "retriever_performance") }}
+  {{ $retrieverAccuracy := (index .Site.Data.benchmarks $version "retriever_map") }}
+  {{ $retrieverSpeed := (index .Site.Data.benchmarks $version "retriever_speed") }}
+
 
   <div class="container">
     <div class="inner inner-top">
       <article class="article-content">
-        <h1>{{ .Params.title }}</h1>
+        <div class="benchmarks-heading">
+          {{/* Page Title */}}
+          <h1>{{ .Params.title }}</h1>
+
+          {{/* Version Select */}}
+          <select onchange="window.open(this.value,'_self');">
+            {{ $v := .Params.version }}
+            <option
+              value="/benchmarks"
+              {{ if eq $v "latest" }}selected{{ end }}
+            >
+              latest
+            </option>
+            {{ range $versions }}
+              <option
+                value="/benchmarks/{{ . }}"
+                {{ if eq $v . }}selected{{ end }}
+              >
+                {{ . }}
+              </option>
+            {{ end }}
+          </select>
+          <span class="focus"></span>
+        </div>
 
         {{/* Reader Performance */}}
         <h2>{{ $readerPerformance.title }}</h2>
@@ -20,12 +47,12 @@
         <p>{{ $retrieverPerformance.description | safeHTML }}</p>
         <div id="retriever-performance" class="google-chart"></div>
 
-        {{/*  Retriever Accuracy  */}}
+        {{/* Retriever Accuracy */}}
         <h2>{{ $retrieverAccuracy.title }}</h2>
         <p>{{ $retrieverAccuracy.description | safeHTML }}</p>
         <div id="retriever-accuracy" class="google-chart"></div>
 
-        {{/*  Retriever Speed  */}}
+        {{/* Retriever Speed */}}
         <h2>{{ $retrieverSpeed.title }}</h2>
         <p>{{ $retrieverSpeed.description | safeHTML }}</p>
         <div id="retriever-speed" class="google-chart"></div>
@@ -34,9 +61,12 @@
   </div>
 
   {{/* Load charts script */}}
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script
+    type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"
+  ></script>
 
-  {{/*  Draw Charts  */}}
+  {{/* Draw Charts */}}
   <script type="text/javascript">
       const readerPerformance = {{ $readerPerformance }}
       const retrieverPerformance = {{ $retrieverPerformance }}
@@ -130,7 +160,7 @@
         const chart = new google.visualization[retrieverPerformance.chart_type](document.getElementById("retriever-performance"));
         chart.draw(data, options);
     }
-    
+
       function drawRetrieverAccuracyChart() {
 
         {{/*  Map the data  */}}
@@ -180,14 +210,14 @@
               fontSize: 16,
             }
           }
-          
+
         };
 
         // Draw chart
         const chart = new google.visualization[retrieverAccuracy.chart_type](document.getElementById("retriever-accuracy"));
         chart.draw(data, options);
     }
-  
+
       function drawRetrieverSpeedChart() {
 
         {{/*  Map the data  */}}

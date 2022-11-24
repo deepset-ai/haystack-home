@@ -65,3 +65,9 @@ Second tab content here
 HTML template files are located at /themes/haystack/layouts
 
 CSS (Sass) files are located at /themes/haystack/assets/sass
+
+### Sitemap
+To exclude any page from the sitemap add the following to the frontmatter of that page:
+`sitemap_exclude: true`
+
+Consider this for pages that are versioned that are effectively duplicates of an original page with minot changes. E.g: Versioned Benchmarks

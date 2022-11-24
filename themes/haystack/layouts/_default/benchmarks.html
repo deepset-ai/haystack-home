@@ -1,6 +1,5 @@
 {{ define "main" }}
   {{/* Benchmark data */}}
-  {{ $versions := (slice "v0.10.0" "v0.9.0" "v0.8.0" "v0.7.0" "v0.6.0" "v0.5.0" ) }}
   {{ $version := replace .Params.version "." "_" }}
 
   {{ $readerPerformance := (index .Site.Data.benchmarks $version "reader_performance") }}
@@ -12,27 +11,24 @@
   <div class="container">
     <div class="inner inner-top">
       <article class="article-content">
-        <div class="benchmarks-heading">
+        <div class="benchmarks-heading">  
           {{/* Page Title */}}
           <h1>{{ .Params.title }}</h1>
 
           {{/* Version Select */}}
-          <select onchange="window.open(this.value,'_self');">
+          <select id="select-menu" onchange="window.open(this.value,'_self');">
             {{ $v := .Params.version }}
-            <option
-              value="/benchmarks"
-              {{ if eq $v "latest" }}selected{{ end }}
-            >
-              latest
-            </option>
-            {{ range $versions }}
+
+            {{ range where .Site.RegularPages "Section" "benchmarks" }}
               <option
-                value="/benchmarks/{{ . }}"
-                {{ if eq $v . }}selected{{ end }}
+                value="/benchmarks/{{ .Params.version }}"
+                data-version="{{ replace .Params.version "v" "" }}"
+                {{ if eq $v .Params.version }}selected{{ end }}
               >
-                {{ . }}
+                {{ .Params.version }}
               </option>
             {{ end }}
+
           </select>
           <span class="focus"></span>
         </div>
@@ -66,8 +62,27 @@
     src="https://www.gstatic.com/charts/loader.js"
   ></script>
 
-  {{/* Draw Charts */}}
+  
   <script type="text/javascript">
+
+      {{/*  Sort the version select menu  */}}
+      function sortSelectMenu() {
+        const selectOptions = Array.from(document.querySelectorAll("[data-version]"))
+        const sorted = selectOptions.sort(compare)
+        sorted.forEach(e => document.querySelector("#select-menu").appendChild(e))
+      }
+
+      function compare(a, b) {
+        const aa = a.dataset.version.split('.').map( n => +n+100000 ).join('.')
+        const bb = b.dataset.version.split('.').map( n => +n+100000 ).join('.')
+        if (aa < bb)
+            return 1;
+        if (aa > bb)
+            return -1;
+        return 0;
+      }
+
+      {{/* Draw Charts */}}
       const readerPerformance = {{ $readerPerformance }}
       const retrieverPerformance = {{ $retrieverPerformance }}
       const retrieverAccuracy = {{ $retrieverAccuracy }}
@@ -81,6 +96,8 @@
         drawRetrieverPerformanceChart()
         drawRetrieverAccuracyChart()
         drawRetrieverSpeedChart()
+        
+        sortSelectMenu()
 
         window.addEventListener("resize", () => {
           drawReaderPerformanceChart()
@@ -91,39 +108,39 @@
       }
 
       function drawReaderPerformanceChart() {
-          // Create the data table
-          const data = new google.visualization.DataTable();
-          data.addColumn("string", "Model");
-          data.addColumn("number", "F1");
-          data.addColumn("number", "Speed (passages/sec)");
+        // Create the data table
+        const data = new google.visualization.DataTable();
+        data.addColumn("string", "Model");
+        data.addColumn("number", "F1");
+        data.addColumn("number", "Speed (passages/sec)");
 
-          let dataArr = [];
-          readerPerformance.data.forEach((d) => dataArr.push([d.Model, d.F1, d.Speed]))
-          data.addRows(dataArr);
+        let dataArr = [];
+        readerPerformance.data.forEach((d) => dataArr.push([d.Model, d.F1, d.Speed]))
+        data.addRows(dataArr);
 
-          // Set chart options
-          const options = {
-              "width": "100%",
-              "height": 400,
-              colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
-              bar: {
-                  groupWidth: "65%",
-              },
-              bars: readerPerformance.bars,
-              legend: "bottom",
-              displayAnnotations: true,
-              annotations: {
-                  textStyle: {
-                  color: "#2b2f55",
-                  fontSize: 16,
-                  }
-              }
-          };
+        // Set chart options
+        const options = {
+          "width": "100%",
+          "height": 400,
+          colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
+          bar: {
+            groupWidth: "65%",
+          },
+          bars: readerPerformance.bars,
+          legend: "bottom",
+          displayAnnotations: true,
+          annotations: {
+            textStyle: {
+            color: "#2b2f55",
+            fontSize: 16,
+            }
+          }
+        };
 
-          // Instantiate and draw our chart, passing in some options.
-          const chart = new google.visualization.BarChart(document.getElementById("reader-performance"));
-          chart.draw(data, options);
-      }
+        // Instantiate and draw our chart, passing in some options.
+        const chart = new google.visualization.BarChart(document.getElementById("reader-performance"));
+        chart.draw(data, options);
+    }
 
       function drawRetrieverPerformanceChart() {
         // Create the data table
@@ -139,21 +156,21 @@
 
         // Set chart options
         const options = {
-            "width": "100%",
-            "height": 500,
-            colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
-            bar: {
-                groupWidth: "65%",
-            },
-            bars: retrieverPerformance.bars,
-            legend: "bottom",
-            displayAnnotations: true,
-            annotations: {
-              textStyle: {
-                color: "#2b2f55",
-                fontSize: 16,
-              }
+          "width": "100%",
+          "height": 500,
+          colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
+          bar: {
+            groupWidth: "65%",
+          },
+          bars: retrieverPerformance.bars,
+          legend: "bottom",
+          displayAnnotations: true,
+          annotations: {
+            textStyle: {
+              color: "#2b2f55",
+              fontSize: 16,
             }
+          }
         };
 
         // Instantiate and draw our chart, passing in some options.

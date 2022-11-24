@@ -1,0 +1,40 @@
+.benchmarks-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+
+  //   Version select
+  > select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    display: inline-block;
+    margin: 0;
+    padding: 0.5rem 3.5rem 0.5rem 1rem;
+    border: 1px solid var(--color-dark-blue);
+    border-radius: var(--border-radius-sm);
+    line-height: 1.25rem;
+
+    background-image: linear-gradient(
+        45deg,
+        transparent 50%,
+        var(--color-dark-blue) 50%
+      ),
+      linear-gradient(135deg, var(--color-dark-blue) 50%, transparent 50%),
+      linear-gradient(to right, var(--color-dark-blue), var(--color-dark-blue));
+    background-position: calc(100% - 20px) calc(1em + 2px),
+      calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+    background-size: 5px 5px, 5px 5px, 1px 1.5em;
+    background-repeat: no-repeat;
+
+    &:focus {
+      outline: 0;
+    }
+
+    @include sm {
+      margin-left: auto;
+    }
+  }
+}

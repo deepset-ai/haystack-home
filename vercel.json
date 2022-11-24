@@ -57,56 +57,51 @@
     {
       "source": "/(pipeline_nodes|components|guides|usage)/v:version/:seg1-:seg2-:seg3",
       "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1*_:seg2*_:seg3",
-      "permanent": true 
+      "permanent": true
     },
     {
       "source": "/(pipeline_nodes|components|guides|usage)/v:version/:seg1-:seg2",
       "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1*_:seg2",
-      "permanent": true 
+      "permanent": true
     },
     {
       "source": "/(pipeline_nodes|components|guides|usage)/v:version/:seg1",
       "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1",
-      "permanent": true 
+      "permanent": true
     },
     {
       "source": "/(pipeline_nodes|components|guides|usage)/:seg1-:seg2-:seg3",
       "destination": "https://docs.haystack.deepset.ai/docs/:seg1*_:seg2*_:seg3",
-      "permanent": true 
+      "permanent": true
     },
     {
       "source": "/(pipeline_nodes|components|guides|usage)/:seg1-:seg2",
       "destination": "https://docs.haystack.deepset.ai/docs/:seg1*_:seg2",
-      "permanent": true 
+      "permanent": true
     },
     {
       "source": "/(pipeline_nodes|components|guides|usage)/:seg1",
       "destination": "https://docs.haystack.deepset.ai/docs/:seg1",
-      "permanent": true 
+      "permanent": true
     },
     {
       "source": "/pipeline_nodes/overview",
       "destination": "https://docs.haystack.deepset.ai/docs/nodes_overview",
-      "permanent": true 
+      "permanent": true
     },
     {
       "source": "/pipeline_nodes/v:version/overview",
       "destination": "https://docs.haystack.deepset.ai/v:version/docs/nodes_overview",
-      "permanent": true 
-    },
-    {
-      "source":"/benchmarks/latest",
-      "destination":"/benchmarks",
       "permanent": true
     },
     {
-      "source":"/benchmarks/v:version",
-      "destination":"/benchmarks",
-      "permanent": false
+      "source": "/benchmarks/latest",
+      "destination": "/benchmarks",
+      "permanent": true
     },
     {
-      "source":"/tutorials/v:version/:name",
-      "destination":"/tutorials/:name",
+      "source": "/tutorials/v:version/:name",
+      "destination": "/tutorials/:name",
       "permanent": true
     }
   ],

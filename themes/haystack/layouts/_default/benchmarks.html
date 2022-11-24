@@ -1,14 +1,37 @@
 {{ define "main" }}
   {{/* Benchmark data */}}
-  {{ $readerPerformance := .Site.Data.benchmarks.reader_performance }}
-  {{ $retrieverPerformance := .Site.Data.benchmarks.retriever_performance }}
-  {{ $retrieverAccuracy := .Site.Data.benchmarks.retriever_map }}
-  {{ $retrieverSpeed := .Site.Data.benchmarks.retriever_speed }}
+  {{ $version := replace .Params.version "." "_" }}
+
+  {{ $readerPerformance := (index .Site.Data.benchmarks $version "reader_performance") }}
+  {{ $retrieverPerformance := (index .Site.Data.benchmarks $version "retriever_performance") }}
+  {{ $retrieverAccuracy := (index .Site.Data.benchmarks $version "retriever_map") }}
+  {{ $retrieverSpeed := (index .Site.Data.benchmarks $version "retriever_speed") }}
+
 
   <div class="container">
     <div class="inner inner-top">
       <article class="article-content">
-        <h1>{{ .Params.title }}</h1>
+        <div class="benchmarks-heading">  
+          {{/* Page Title */}}
+          <h1>{{ .Params.title }}</h1>
+
+          {{/* Version Select */}}
+          <select id="select-menu" onchange="window.open(this.value,'_self');">
+            {{ $v := .Params.version }}
+
+            {{ range where .Site.RegularPages "Section" "benchmarks" }}
+              <option
+                value="/benchmarks/{{ .Params.version }}"
+                data-version="{{ replace .Params.version "v" "" }}"
+                {{ if eq $v .Params.version }}selected{{ end }}
+              >
+                {{ .Params.version }}
+              </option>
+            {{ end }}
+
+          </select>
+          <span class="focus"></span>
+        </div>
 
         {{/* Reader Performance */}}
         <h2>{{ $readerPerformance.title }}</h2>
@@ -20,12 +43,12 @@
         <p>{{ $retrieverPerformance.description | safeHTML }}</p>
         <div id="retriever-performance" class="google-chart"></div>
 
-        {{/*  Retriever Accuracy  */}}
+        {{/* Retriever Accuracy */}}
         <h2>{{ $retrieverAccuracy.title }}</h2>
         <p>{{ $retrieverAccuracy.description | safeHTML }}</p>
         <div id="retriever-accuracy" class="google-chart"></div>
 
-        {{/*  Retriever Speed  */}}
+        {{/* Retriever Speed */}}
         <h2>{{ $retrieverSpeed.title }}</h2>
         <p>{{ $retrieverSpeed.description | safeHTML }}</p>
         <div id="retriever-speed" class="google-chart"></div>
@@ -34,10 +57,32 @@
   </div>
 
   {{/* Load charts script */}}
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script
+    type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"
+  ></script>
 
-  {{/*  Draw Charts  */}}
+  
   <script type="text/javascript">
+
+      {{/*  Sort the version select menu  */}}
+      function sortSelectMenu() {
+        const selectOptions = Array.from(document.querySelectorAll("[data-version]"))
+        const sorted = selectOptions.sort(compare)
+        sorted.forEach(e => document.querySelector("#select-menu").appendChild(e))
+      }
+
+      function compare(a, b) {
+        const aa = a.dataset.version.split('.').map( n => +n+100000 ).join('.')
+        const bb = b.dataset.version.split('.').map( n => +n+100000 ).join('.')
+        if (aa < bb)
+            return 1;
+        if (aa > bb)
+            return -1;
+        return 0;
+      }
+
+      {{/* Draw Charts */}}
       const readerPerformance = {{ $readerPerformance }}
       const retrieverPerformance = {{ $retrieverPerformance }}
       const retrieverAccuracy = {{ $retrieverAccuracy }}
@@ -51,6 +96,8 @@
         drawRetrieverPerformanceChart()
         drawRetrieverAccuracyChart()
         drawRetrieverSpeedChart()
+        
+        sortSelectMenu()
 
         window.addEventListener("resize", () => {
           drawReaderPerformanceChart()
@@ -61,39 +108,39 @@
       }
 
       function drawReaderPerformanceChart() {
-          // Create the data table
-          const data = new google.visualization.DataTable();
-          data.addColumn("string", "Model");
-          data.addColumn("number", "F1");
-          data.addColumn("number", "Speed (passages/sec)");
+        // Create the data table
+        const data = new google.visualization.DataTable();
+        data.addColumn("string", "Model");
+        data.addColumn("number", "F1");
+        data.addColumn("number", "Speed (passages/sec)");
 
-          let dataArr = [];
-          readerPerformance.data.forEach((d) => dataArr.push([d.Model, d.F1, d.Speed]))
-          data.addRows(dataArr);
+        let dataArr = [];
+        readerPerformance.data.forEach((d) => dataArr.push([d.Model, d.F1, d.Speed]))
+        data.addRows(dataArr);
 
-          // Set chart options
-          const options = {
-              "width": "100%",
-              "height": 400,
-              colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
-              bar: {
-                  groupWidth: "65%",
-              },
-              bars: readerPerformance.bars,
-              legend: "bottom",
-              displayAnnotations: true,
-              annotations: {
-                  textStyle: {
-                  color: "#2b2f55",
-                  fontSize: 16,
-                  }
-              }
-          };
+        // Set chart options
+        const options = {
+          "width": "100%",
+          "height": 400,
+          colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
+          bar: {
+            groupWidth: "65%",
+          },
+          bars: readerPerformance.bars,
+          legend: "bottom",
+          displayAnnotations: true,
+          annotations: {
+            textStyle: {
+            color: "#2b2f55",
+            fontSize: 16,
+            }
+          }
+        };
 
-          // Instantiate and draw our chart, passing in some options.
-          const chart = new google.visualization.BarChart(document.getElementById("reader-performance"));
-          chart.draw(data, options);
-      }
+        // Instantiate and draw our chart, passing in some options.
+        const chart = new google.visualization.BarChart(document.getElementById("reader-performance"));
+        chart.draw(data, options);
+    }
 
       function drawRetrieverPerformanceChart() {
         // Create the data table
@@ -109,28 +156,28 @@
 
         // Set chart options
         const options = {
-            "width": "100%",
-            "height": 500,
-            colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
-            bar: {
-                groupWidth: "65%",
-            },
-            bars: retrieverPerformance.bars,
-            legend: "bottom",
-            displayAnnotations: true,
-            annotations: {
-              textStyle: {
-                color: "#2b2f55",
-                fontSize: 16,
-              }
+          "width": "100%",
+          "height": 500,
+          colors: ["#22BA99", "#63C7CA", "#49B0E4", "#FBB14B"],
+          bar: {
+            groupWidth: "65%",
+          },
+          bars: retrieverPerformance.bars,
+          legend: "bottom",
+          displayAnnotations: true,
+          annotations: {
+            textStyle: {
+              color: "#2b2f55",
+              fontSize: 16,
             }
+          }
         };
 
         // Instantiate and draw our chart, passing in some options.
         const chart = new google.visualization[retrieverPerformance.chart_type](document.getElementById("retriever-performance"));
         chart.draw(data, options);
     }
-    
+
       function drawRetrieverAccuracyChart() {
 
         {{/*  Map the data  */}}
@@ -180,14 +227,14 @@
               fontSize: 16,
             }
           }
-          
+
         };
 
         // Draw chart
         const chart = new google.visualization[retrieverAccuracy.chart_type](document.getElementById("retriever-accuracy"));
         chart.draw(data, options);
     }
-  
+
       function drawRetrieverSpeedChart() {
 
         {{/*  Map the data  */}}

@@ -8,14 +8,18 @@
 
         {{/* Tutorial */}}
         <article class="article-content">
-
+          {{ with .Params.title }}
+            <h1> Tutorial: {{.}} </h1>
+            <br>
+          {{ end }}
+          
           <div class="button-container">
 
             {{/* Colab button */}}
             {{ with .Params.colab }}
               <a
                 href="{{ . }}"
-                class="btn btn-dark-blue colab-btn"
+                class="btn btn-light-blue colab-btn"
                 target="_blank"
                 rel="noopener"
               >
@@ -97,7 +101,7 @@
               {{ . | time.Format ":date_long" }}
             </sub>
           {{ end }}
-
+         
           {{/* Article content */}}
           {{ .Content }}
 

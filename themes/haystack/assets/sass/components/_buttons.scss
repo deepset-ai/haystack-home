@@ -113,6 +113,21 @@ button.nav-toggle-close {
     }
   }
 
+  &.btn-light-blue {
+    background-color: rgba($color: #{var(--color-light-blue-rgb)}, $alpha: 1);
+    color: var(--color-white);
+
+    svg {
+      fill: var(--color-white);
+    }
+
+    &:hover {
+      background-color: rgba(
+        $color: #{var(--color-dark-blue-rgb)},
+        $alpha: 0.9
+      );
+    }
+  }
 
   &.btn-grey {
     background-color: rgba($color: #{var(--color-dark-grey-rgb)}, $alpha: 1);

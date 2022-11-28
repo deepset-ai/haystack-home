@@ -70,4 +70,4 @@ CSS (Sass) files are located at /themes/haystack/assets/sass
 To exclude any page from the sitemap add the following to the frontmatter of that page:
 `sitemap_exclude: true`
 
-Consider this for pages that are versioned that are effectively duplicates of an original page with minot changes. E.g: Versioned Benchmarks
+Consider this for pages that are versioned that are effectively duplicates of an original page with minor changes, for example the "Benchmarks" page.

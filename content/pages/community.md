@@ -58,22 +58,22 @@ hero:
     contributors:
       title: Most active contributors
 
-# Upcoming events
-eventsSection:
-  anchor: events
-  title: Upcoming Events
-  events:
-    - title: Ethics in NLP & A Practical Introduction to Image Retrieval
-      description: >
-        We have 2 talks scheduled for our final Open NLP Meetup of 2022:
-        <br /> **1. Ethics in Natural Language Processing** *by Marty Oelschläge from dida Datenschmiede*
-        <br /> **2. A Practical Introduction to Image Retrieval** *by Sara Zanzoterra from deepset*
-      date: 1st Dec 2022
-      time: "19:00 CET"
-      location: Zoom
-      image: /images/meetup.png
-      url: https://www.meetup.com/open-nlp-meetup/events/289499354/
-      buttonText: Join Meetup
+# # Upcoming events
+# eventsSection:
+#   anchor: events
+#   title: Upcoming Events
+#   events:
+#     - title: Ethics in NLP & A Practical Introduction to Image Retrieval
+#       description: >
+#         We have 2 talks scheduled for our final Open NLP Meetup of 2022:
+#         <br /> **1. Ethics in Natural Language Processing** *by Marty Oelschläge from dida Datenschmiede*
+#         <br /> **2. A Practical Introduction to Image Retrieval** *by Sara Zanzoterra from deepset*
+#       date: 1st Dec 2022
+#       time: "19:00 CET"
+#       location: Zoom
+#       image: /images/meetup.png
+#       url: https://www.meetup.com/open-nlp-meetup/events/289499354/
+#       buttonText: Join Meetup
 
 # Open NLP Meetup section
 meetupSection:
@@ -83,8 +83,9 @@ meetupSection:
   buttonText: Join Meetup
   url: https://www.meetup.com/open-nlp-meetup/
   videos:
+    - 7Idjl3OR0FY
     - rO88zjicRWI
     - r3oeEWUYZ5A
-    - 7Qix5oFbwDM
+    # - 7Qix5oFbwDM
 
 ---

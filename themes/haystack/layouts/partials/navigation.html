@@ -6,9 +6,20 @@
       {{/* If nav item has children, add a dropdown menu */}}
       {{ if .HasChildren }}
         <li class="dropdown-menu">
-          <a href="#" class="dropdown-button">
+          {{ $childSlice := slice }}
+          {{ range .Children }}
+            {{ $childSlice = $childSlice | append .Name }}
+          {{ end }}
+
+          <a
+            href="#"
+            class="dropdown-button {{ if in $childSlice $currentPage.Name }}
+              active
+            {{ end }}"
+          >
             {{ .Name }}
           </a>
+
           <ul class="sub-menu" role="list">
             {{ range .Children }}
               <li
@@ -16,7 +27,13 @@
                   active
                 {{ end }}"
               >
-                <a class="btn arrow-link" href="{{ .URL }}" {{ if strings.HasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>
+                <a
+                  class="btn arrow-link"
+                  href="{{ .URL }}"
+                  {{ if strings.HasPrefix .URL "http" }}
+                    target="_blank" rel="noopener"
+                  {{ end }}
+                >
                   <div class="button-wrapper">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +63,14 @@
       {{ else }}
         {{/* If no children, add a link */}}
         <li>
-          <a href="{{ .URL }}" {{ if strings.HasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+          <a
+            href="{{ .URL }}"
+            class="{{ if (in $currentPage.RelPermalink .URL) }}active{{ end }}"
+            {{ if strings.HasPrefix .URL "http" }}
+              target="_blank" rel="noopener"
+            {{ end }}
+            >{{ .Name }}</a
+          >
         </li>
       {{ end }}
     {{ end }}

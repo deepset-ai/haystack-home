@@ -14,8 +14,8 @@
   }
 
   // Current page link
-  li.active > a {
-    color: var(--color-yellow);
+  li.active > a, a.active {
+    color: var(--color-yellow) !important;
   }
 
   ul {
@@ -98,7 +98,7 @@
       display: flex;
 
       &:hover {
-        > a {
+        > a:not(.active) {
           color: var(--color-dark-blue);
         }
       }
@@ -172,7 +172,7 @@
 // Dark
 .header-dark .desktop-nav {
 
-  li > a {
+  li > a:not(.active) {
     color: var(--color-light-grey);
 
     &:hover {
@@ -180,7 +180,7 @@
     }
   }
 
-  li.active > a {
+  li.active > a, a.active {
     color: var(--color-yellow);
   }
 
@@ -195,7 +195,7 @@
 
   li.dropdown-menu {
     &:hover {
-      > a {
+      > a:not(.active) {
         color: var(--color-white);
       }
     }

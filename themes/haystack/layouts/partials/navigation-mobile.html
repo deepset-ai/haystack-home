@@ -28,7 +28,7 @@
           <ul class="sub-menu" role="list">
             {{ range .Children }}
               <li
-                class="{{ if (eq $currentPage.RelPermalink .URL) }}
+                class="{{ if (in $currentPage.RelPermalink .URL) }}
                   active
                 {{ end }}"
               >
@@ -40,7 +40,7 @@
       {{ else }}
       {{/*  If no children, add a link  */}}
         <li>
-          <a href="{{ .URL }}" {{ if strings.HasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+          <a href="{{ .URL }}" class="{{ if (in $currentPage.RelPermalink .URL) }}active{{ end }}" {{ if strings.HasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
         </li>
       {{ end }}
     {{ end }}

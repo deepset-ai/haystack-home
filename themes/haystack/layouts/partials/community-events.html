@@ -11,7 +11,7 @@
                                 <img src="{{ .image }}" alt="{{ .title }}">
 
                                 <div class="content-section">
-                                    <h3>{{ .title }}</h3>
+                                    <h3>{{ .title | markdownify }}</h3>
                                     <div class="details">
                                         <span class="date">{{ .date }}</span>
                                         <span class="time">{{ .time }}</span>

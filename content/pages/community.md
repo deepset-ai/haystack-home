@@ -59,21 +59,21 @@ hero:
       title: Most active contributors
 
 # # Upcoming events
-# eventsSection:
-#   anchor: events
-#   title: Upcoming Events
-#   events:
-#     - title: Ethics in NLP & A Practical Introduction to Image Retrieval
-#       description: >
-#         We have 2 talks scheduled for our final Open NLP Meetup of 2022:
-#         <br /> **1. Ethics in Natural Language Processing** *by Marty Oelschläge from dida Datenschmiede*
-#         <br /> **2. A Practical Introduction to Image Retrieval** *by Sara Zanzoterra from deepset*
-#       date: 1st Dec 2022
-#       time: "19:00 CET"
-#       location: Zoom
-#       image: /images/meetup.png
-#       url: https://www.meetup.com/open-nlp-meetup/events/289499354/
-#       buttonText: Join Meetup
+eventsSection:
+  anchor: events
+  title: Upcoming Events
+  events:
+    - title: >
+        Fact Checking Rocks:
+         <br /> Build a Fact Checking Application with Haystack
+      description: >
+       In this talk, we’ll discover how to build a simple fact-checking system for rock music. We will leverage the power of the Haystack NLP framework and Natural Language Inference models. We will also see how easy it is to create a custom node in Haystack, to integrate the most varied NLP tasks into this great framework! 
+      date: 26th Jan 2023
+      time: "18:00 CET"
+      location: Zoom
+      image: /images/fact_checking_rocks.png
+      url: https://landing.deepset.ai/project-highlight-fact-checking-rocks-webinar
+      buttonText: Register
 
 # Open NLP Meetup section
 meetupSection:
@@ -86,6 +86,4 @@ meetupSection:
     - 7Idjl3OR0FY
     - rO88zjicRWI
     - r3oeEWUYZ5A
-    # - 7Qix5oFbwDM
-
 ---

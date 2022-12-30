@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", addCopyButtons);
 
 function addCopyButtons() {
-  document.querySelectorAll("pre > code").forEach(function (codeBlock) {
+  document.querySelectorAll(".highlight > pre > code").forEach(function (codeBlock) {
     const button = document.createElement("button");
     button.className = "btn copy-code-button";
     button.type = "button";

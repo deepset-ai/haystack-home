@@ -4,7 +4,7 @@ export const newsletters = () => {
 
   if (forms.length > 0) {
     // Regex string to validate email
-    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+    const re = /^[\w+]+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
 
     forms.forEach((form) => {
       // Listen to input, validate email, disable/enable submit btn

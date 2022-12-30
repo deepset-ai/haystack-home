@@ -1,16 +1,11 @@
 {{/* Website Footer */}}
 
 {{/*  Default color  */}}
-{{ $theme := "light" }}
+{{ $theme := "dark" }}
 
 {{/*  Get color from frontmatter if specified  */}}
 {{ with .Params.Footer }}
   {{ $theme = . }}
-{{ end }}
-
-{{/*  Set to dark on 404 page since there is no frontmatter  */}}
-{{ if eq .Page.Kind "404" }}
-  {{ $theme = "dark" }}  
 {{ end }}
 
 <footer

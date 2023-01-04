@@ -340,8 +340,20 @@ video.responsive {
 // Google chart
 .article-content .google-chart {
   min-height: 25rem;
-  
+
   &:not(:last-of-type) {
     margin-bottom: 5rem;
+  }
+}
+
+// Blockquotes
+blockquote {
+  background: var(--color-bg-light-grey);
+  border-left: 0.5rem solid var(--color-blue);
+  padding: 1rem;
+  margin-top: var(--sm-text-spacing);
+
+  p {
+    margin-top: 0;
   }
 }

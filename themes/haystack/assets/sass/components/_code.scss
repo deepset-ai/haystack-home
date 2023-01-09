@@ -17,4 +17,8 @@ pre {
   overflow: auto;
   padding: 1rem;
   background-color: var(--color-bg-light-grey) !important;
+
+  code {
+    font-size: var(--text-base);
+  }
 }

@@ -20,9 +20,9 @@ hero:
         - buttonText: Join Discord
           url: https://discord.com/invite/VBpFzsgRVF
     newsletter:
-      title: Sign up to future newsletters
+      title: Sign up for community updates
       icon: /images/icons/email.svg
-      inputPlaceholder: Email address..
+      inputPlaceholder: Email address...
       buttonText: Submit
   
   # Social links
@@ -41,7 +41,7 @@ hero:
       icon: /images/icons/linkedin.svg
 
     - title: Youtube
-      url: https://www.youtube.com/channel/UC5dfn9m310oyt-cbeegfvZw
+      url: https://www.youtube.com/@deepset_ai
       icon: /images/icons/youtube.svg
 
   # Most active / new contributors

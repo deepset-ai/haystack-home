@@ -1,0 +1,23 @@
+{{/*  Homepage logo garden section  */}}
+<section class="index-logos" {{ if .Params.logos.anchor }} id="{{ .Params.logos.anchor }}" {{ end }}>
+  <div class="container container-padded">
+    <div class="inner">
+      {{/* Title */}}
+      <h2>{{ .Params.logos.title }}</h2>
+
+      {{/* Showcase items */}}
+      <div class="logos-items">
+        {{ range .Params.logos.logoItems }}
+          <div class="logos-item">
+            <div>
+              <img
+                class="logos-image"
+                src="{{ .image.url }}"
+              />
+            </div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>

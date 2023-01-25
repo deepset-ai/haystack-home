@@ -17,6 +17,22 @@ hero:
       url: /overview/intro
   image: /images/hero.png
 
+# Logo garden
+logos:
+  anchor: logos
+  title: Our open source community includes people from
+  logoItems:
+    - image:
+        url: /images/logos/databricks.svg
+    - image:
+        url: /images/logos/rakuten.svg
+    - image:
+        url: /images/logos/nvidia.svg
+    - image:
+        url: /images/logos/aws.svg
+    - image:
+        url: /images/logos/betterup.svg
+
 # Showcase
 showcase:
   anchor: showcase

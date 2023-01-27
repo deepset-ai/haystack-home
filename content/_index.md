@@ -17,6 +17,22 @@ hero:
       url: /overview/intro
   image: /images/hero.png
 
+# Logo garden
+logos:
+  anchor: logos
+  title: Some companies from our community
+  logoItems:
+    - image:
+        url: /images/logos/databricks.svg
+    - image:
+        url: /images/logos/rakuten.svg
+    - image:
+        url: /images/logos/nvidia.svg
+    - image:
+        url: /images/logos/aws.svg
+    - image:
+        url: /images/logos/betterup.svg
+
 # Showcase
 showcase:
   anchor: showcase

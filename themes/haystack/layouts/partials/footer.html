@@ -112,20 +112,20 @@
             </g>
           </svg>
 
-          <h3>Sign up to future newsletters</h3>
+          <h3>Sign up for community updates</h3>
 
           <form
             class="js-newsletter-form disabled"
-            aria-label="Subscribe to our newsletter"
+            aria-label="Subscribe to our community updates"
           >
             <input
               type="email"
               name="email"
-              placeholder="Email address.."
+              placeholder="Email address..."
               aria-label="Email"
             />
             {{ partial "arrow-button" (dict "context" . "type" "submitButton" "text" "Submit") }}
-            <span class="success-message">Thanks!</span>
+            <span class="success-message">Thanks! You'll soon receive a confirmation email 📧</span>
           </form>
           <small class="copyright">By submitting my email, I agree to allow deepset to store and process my personal data.</small>
         </div>

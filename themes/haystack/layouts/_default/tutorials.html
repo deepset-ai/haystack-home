@@ -1,120 +1,179 @@
 {{/* Tutorials page */}}
 {{ define "main" }}
-  <div class="tutorials container container-padded">
-    <div class="inner inner-top">
-      {{/* Heading & subtitle */}}
-      <section class="tutorials-heading">
-        <h1>{{ .Params.title }}</h1>
-        <p>{{ .Params.subtitle | markdownify }}</p>
-      </section>
+  <div class="tutorials">
+    {{/* Hero */}}
+    <div class="tutorials-hero">
+      <div class="container container-padded">
+        <section class="tutorials-heading">
+          <h1>{{ .Params.title }}</h1>
+          <p>{{ .Params.subtitle | markdownify }}</p>
+        </section>
+      </div>
+    </div>
 
-      <section class="tutorials-buttons">
-        {{/* Filter buttons */}}
-        <div class="button-container">
-          {{ if eq .Params.categoryFilters.enabled true }}
-            {{ range .Params.categoryFilters.list }}
-              <button class="btn filter-btn enabled category-{{ lower . }}">
-                {{ . }}
+    <div class="tutorials-content">
+      <div class="container container-padded">
+        <div class="inner inner-top">
+          {{/* Section title */}}
+          <h2>
+            {{ len (where .Site.Pages "Layout" "tutorial") }} tutorials for
+            <span>all</span> levels
+          </h2>
+
+          {{/* Sorting options / Filters */}}
+          <div class="tutorial-options">
+            <div class="filters">
+              {{/* Search */}}
+              <div class="search-wrapper">
+                <input type="text" placeholder="Search tutorials" />
+                <div class="search-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M19.3187 18.0273L13.232 11.9406C14.1766 10.7195 14.6875 9.22656 14.6875 7.65625C14.6875 5.77656 13.9539 4.01406 12.6273 2.68516C11.3008 1.35625 9.53359 0.625 7.65625 0.625C5.77891 0.625 4.01172 1.35859 2.68516 2.68516C1.35625 4.01172 0.625 5.77656 0.625 7.65625C0.625 9.53359 1.35859 11.3008 2.68516 12.6273C4.01172 13.9562 5.77656 14.6875 7.65625 14.6875C9.22656 14.6875 10.7172 14.1766 11.9383 13.2344L18.025 19.3187C18.0428 19.3366 18.064 19.3508 18.0874 19.3604C18.1107 19.3701 18.1357 19.3751 18.1609 19.3751C18.1862 19.3751 18.2112 19.3701 18.2345 19.3604C18.2578 19.3508 18.279 19.3366 18.2969 19.3187L19.3187 18.2992C19.3366 18.2814 19.3508 18.2602 19.3604 18.2369C19.3701 18.2135 19.3751 18.1885 19.3751 18.1633C19.3751 18.138 19.3701 18.113 19.3604 18.0897C19.3508 18.0664 19.3366 18.0452 19.3187 18.0273ZM11.3688 11.3688C10.375 12.3602 9.05781 12.9062 7.65625 12.9062C6.25469 12.9062 4.9375 12.3602 3.94375 11.3688C2.95234 10.375 2.40625 9.05781 2.40625 7.65625C2.40625 6.25469 2.95234 4.93516 3.94375 3.94375C4.9375 2.95234 6.25469 2.40625 7.65625 2.40625C9.05781 2.40625 10.3773 2.95 11.3688 3.94375C12.3602 4.9375 12.9062 6.25469 12.9062 7.65625C12.9062 9.05781 12.3602 10.3773 11.3688 11.3688Z"
+                      fill="#2B2F55"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              {{/* Levels filter */}}
+              <div class="select-wrapper">
+                <select id="level-select" onchange="filterAndSort();">
+                  <option value="all">All levels</option>
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+              </div>
+
+              {{/* Tasks filter */}}
+              <div class="select-wrapper">
+                <select id="task-select" onchange="filterAndSort();">
+                  <option value="all">All tasks</option>
+
+                  {{/* Get all tasks */}}
+                  {{ $tasks := slice }}
+                  {{ range where .Site.Pages "Layout" "tutorial" }}
+                    {{ if .Params.task }}
+                      {{ if not (in $tasks .Params.task) }}
+                        {{ $tasks = $tasks | append .Params.task }}
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+
+                  {{/* Task options */}}
+                  {{ range $tasks }}
+                    <option value="{{ . }}">{{ . }}</option>
+                  {{ end }}
+                </select>
+              </div>
+
+              {{/* Reset filters btn */}}
+              <button class="reset-filters-btn" onclick="resetFilters();">
+                Reset filters
               </button>
+            </div>
+
+            <div>
+              {{/* Sorting */}}
+              <div class="select-wrapper">
+                <select id="sort-select" onchange="filterAndSort();">
+                  <option value="new">Sort by:</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {{/* Tutorials grid */}}
+          <div class="tutorial-grid">
+            {{ range where (.Site.Pages.ByParam "new") "Layout" "tutorial" }}
+              {{ partial "tutorial-card" . }}
             {{ end }}
-          {{ end }}
+          </div>
+
+          {{/* Footer */}}
+          <div class="tutorial-footer">
+            <div class="text-section">
+              <h2>Want to contribute on GitHub?</h2>
+              <p>
+                We maintain these tutorials in an open source repository on
+                GitHub. If you’d like to contribute, go to the repository to
+                submit your edits or suggest a new tutorial.
+              </p>
+            </div>
+
+            {{/* Contribute btn */}}
+            <div class="button-section">
+              <a
+                class="btn btn-green contribute-btn"
+                href="{{ .Params.contribute.url }}"
+                {{ if strings.HasPrefix .Params.contribute.url "http" }}
+                  target="_blank" rel="noopener"
+                {{ end }}
+              >
+                <svg
+                  class="github-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  width="16"
+                  height="16"
+                >
+                  <path
+                    d="M10 0C4.48 0 0 4.59 0 10.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.5l-.01-1.74c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .08 1.53 1.06 1.53 1.06.89 1.57 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.25-4.55-1.13-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.09-2.71 0 0 .84-.28 2.75 1.05a9.43 9.43 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71a4.02 4.02 0 011.03 2.75c0 3.94-2.34 4.8-4.57 5.06.36.31.68.94.68 1.9l-.01 2.81c0 .28.18.59.69.49a10.23 10.23 0 006.83-9.72A10.12 10.12 0 0010 0z"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                {{ .Params.contribute.text }}
+              </a>
+            </div>
+          </div>
         </div>
-
-        {{/* Contribute btn */}}
-        <a
-          class="btn btn-dark-blue contribute-btn"
-          href="{{ .Params.contribute.url }}"
-          {{ if strings.HasPrefix .Params.contribute.url "http" }} target="_blank" rel="noopener"{{ end }}
-        >
-          <svg
-            class="github-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="M10 0C4.48 0 0 4.59 0 10.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.5l-.01-1.74c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .08 1.53 1.06 1.53 1.06.89 1.57 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.25-4.55-1.13-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.09-2.71 0 0 .84-.28 2.75 1.05a9.43 9.43 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71a4.02 4.02 0 011.03 2.75c0 3.94-2.34 4.8-4.57 5.06.36.31.68.94.68 1.9l-.01 2.81c0 .28.18.59.69.49a10.23 10.23 0 006.83-9.72A10.12 10.12 0 0010 0z"
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-            />
-          </svg>
-          {{ .Params.contribute.text }}
-        </a>
-      </section>
-
-      {{/* Tutorial accordions */}}
-      <div class="accordions">
-        {{/* Beginner */}}
-        <details class="accordion-js" open>
-          <summary class="accordion-title">
-            Beginner
-            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fill="#fefefd"
-                d="M98,190.06,237.78,353.18a24,24,0,0,0,36.44,0L414,190.06c13.34-15.57,2.28-39.62-18.22-39.62H116.18C95.68,150.44,84.62,174.49,98,190.06Z"
-              />
-            </svg>
-          </summary>
-          <div class="content">
-            {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "beginner" }}
-              <a
-                class="tutorial-card category-{{ lower .Params.category }}"
-                href="{{ .RelPermalink }}"
-              >
-                <h3>{{ .Params.title }}</h3>
-                <p>{{ .Params.Description }}</p>
-              </a>
-            {{ end }}
-          </div>
-        </details>
-
-        {{/* Intermediate */}}
-        <details class="accordion-js">
-          <summary class="accordion-title">
-            Intermediate
-            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fill="#fefefd"
-                d="M98,190.06,237.78,353.18a24,24,0,0,0,36.44,0L414,190.06c13.34-15.57,2.28-39.62-18.22-39.62H116.18C95.68,150.44,84.62,174.49,98,190.06Z"
-              />
-            </svg>
-          </summary>
-          <div class="content">
-            {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "intermediate" }}
-              <a
-                class="tutorial-card category-{{ lower .Params.category }}"
-                href="{{ .RelPermalink }}"
-              >
-                <h3>{{ .Params.title }}</h3>
-                <p>{{ .Params.Description }}</p>
-              </a>
-            {{ end }}
-          </div>
-        </details>
-
-        {{/* Advanced */}}
-        <details class="accordion-js">
-          <summary class="accordion-title">
-            Advanced
-            <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fill="#fefefd"
-                d="M98,190.06,237.78,353.18a24,24,0,0,0,36.44,0L414,190.06c13.34-15.57,2.28-39.62-18.22-39.62H116.18C95.68,150.44,84.62,174.49,98,190.06Z"
-              />
-            </svg>
-          </summary>
-          <div class="content">
-            {{ range where (where .Pages "Section" "tutorials")  ".Params.level" "advanced" }}
-              <a
-                class="tutorial-card category-{{ lower .Params.category }}"
-                href="{{ .RelPermalink }}"
-              >
-                <h3>{{ .Params.title }}</h3>
-                <p>{{ .Params.Description }}</p>
-              </a>
-            {{ end }}
-          </div>
-        </details>
       </div>
     </div>
   </div>
+
+  <script>
+    {{/*  Get the tutorials  */}}
+    const tutorialCards = Array.from(
+      document.querySelectorAll(".tutorial-card")
+    );
+
+    const filterAndSort = () => {
+      let tutorials = [...tutorialCards]
+      {{/*  Get selected filters  */}}
+      const selectedLevel = document.querySelector("#level-select").value;
+      const selectedTask = document.querySelector("#task-select").value;
+
+      {{/*  Filter by level  */}}
+      if (selectedLevel !== "all") {
+        tutorials = tutorials.filter(t => t.dataset.level === selectedLevel)
+      }
+
+      {{/*  Filter by task  */}}
+      if (selectedTask !== "all") {
+        tutorials = tutorials.filter(t => t.dataset.task === selectedTask)
+      }
+
+      {{/*  Sorting  */}}
+      {{/*  TBD  */}}
+
+      document.querySelector(".tutorial-grid").innerHTML = ""
+      tutorials.forEach((e) =>
+        document.querySelector(".tutorial-grid").appendChild(e)
+      );
+    }
+
+    const resetFilters = () => {
+      document.querySelector("#level-select").value = "all";
+      document.querySelector("#task-select").value = "all";
+      filterAndSort();
+    }
+  </script>
 {{ end }}

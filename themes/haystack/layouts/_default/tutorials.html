@@ -24,7 +24,7 @@
           <div class="tutorial-options">
             <div class="filters">
               {{/* Search */}}
-              <div class="search-wrapper">
+              {{/*  <div class="search-wrapper">
                 <input type="text" placeholder="Search tutorials" />
                 <div class="search-icon">
                   <svg
@@ -40,7 +40,7 @@
                     />
                   </svg>
                 </div>
-              </div>
+              </div>  */}}
 
               {{/* Levels filter */}}
               <div class="select-wrapper">
@@ -53,11 +53,10 @@
               </div>
 
               {{/* Tasks filter */}}
-              <div class="select-wrapper">
+              {{/*  <div class="select-wrapper">
                 <select id="task-select" onchange="filterAndSort();">
                   <option value="all">All tasks</option>
 
-                  {{/* Get all tasks */}}
                   {{ $tasks := slice }}
                   {{ range where .Site.Pages "Layout" "tutorial" }}
                     {{ if .Params.task }}
@@ -67,12 +66,11 @@
                     {{ end }}
                   {{ end }}
 
-                  {{/* Task options */}}
                   {{ range $tasks }}
                     <option value="{{ . }}">{{ . }}</option>
                   {{ end }}
                 </select>
-              </div>
+              </div>  */}}
 
               {{/* Reset filters btn */}}
               <button class="reset-filters-btn" onclick="resetFilters();">
@@ -82,11 +80,11 @@
 
             <div>
               {{/* Sorting */}}
-              <div class="select-wrapper">
+              {{/*  <div class="select-wrapper">
                 <select id="sort-select" onchange="filterAndSort();">
                   <option value="new">Sort by:</option>
                 </select>
-              </div>
+              </div>  */}}
             </div>
           </div>
 
@@ -149,7 +147,7 @@
       let tutorials = [...tutorialCards]
       {{/*  Get selected filters  */}}
       const selectedLevel = document.querySelector("#level-select").value;
-      const selectedTask = document.querySelector("#task-select").value;
+      {{/*  const selectedTask = document.querySelector("#task-select").value;  */}}
 
       {{/*  Filter by level  */}}
       if (selectedLevel !== "all") {
@@ -157,9 +155,9 @@
       }
 
       {{/*  Filter by task  */}}
-      if (selectedTask !== "all") {
+      {{/*  if (selectedTask !== "all") {
         tutorials = tutorials.filter(t => t.dataset.task === selectedTask)
-      }
+      }  */}}
 
       {{/*  Sorting  */}}
       {{/*  TBD  */}}
@@ -172,7 +170,7 @@
 
     const resetFilters = () => {
       document.querySelector("#level-select").value = "all";
-      document.querySelector("#task-select").value = "all";
+      {{/*  document.querySelector("#task-select").value = "all";  */}}
       filterAndSort();
     }
   </script>

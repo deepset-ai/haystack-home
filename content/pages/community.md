@@ -59,21 +59,21 @@ hero:
       title: Most active contributors
 
 # # Upcoming events
-# eventsSection:
-#   anchor: events
-#   title: Upcoming Events
-#   events:
-#     - title: >
-#         Fact Checking Rocks:
-#          <br /> Build a Fact Checking Application with Haystack
-#       description: >
-#        In this talk, we’ll discover how to build a simple fact-checking system for rock music. We will leverage the power of the Haystack NLP framework and Natural Language Inference models. We will also see how easy it is to create a custom node in Haystack, to integrate the most varied NLP tasks into this great framework! 
-#       date: 26th Jan 2023
-#       time: "18:00 CET"
-#       location: Zoom
-#       image: /images/fact_checking_rocks.png
-#       url: https://landing.deepset.ai/project-highlight-fact-checking-rocks-webinar
-#       buttonText: Register
+eventsSection:
+  anchor: events
+  title: Upcoming Events
+  events:
+    - title: >
+        ChatGPT is awesome, but what next?
+      description: >
+       Learn how to use LLMs to build products with deepset Cloud.
+       Channel the buzz around ChatGPT into something that is useful for you and your organization.       
+      date: 28th Feb 2023
+      time: "17:00 CET"
+      location: Zoom
+      image: /images/webinar_chatgpt.png
+      url: https://hubs.li/Q01BF1kD0
+      buttonText: Register
 
 # Open NLP Meetup section
 meetupSection:

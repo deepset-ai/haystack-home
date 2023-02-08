@@ -53,10 +53,16 @@ disableKinds = ["taxonomy", "term"]
 # Main navigation
 [menu]
 [[menu.main]]
-  identifier = 'overview'
-  name = 'Overview'
-  url = '/'
+  identifier = 'documentation'
+  name = 'Developer Docs'
+  url = 'https://docs.haystack.deepset.ai/docs'
   weight = 1
+
+[[menu.main]]
+  identifier = 'learn'
+  name = 'Learn'
+  url = '/'
+  weight = 2
 
 [[menu.main]]
   identifier = 'tutorials'
@@ -86,32 +92,32 @@ disableKinds = ["taxonomy", "term"]
 [[menu.main]]
   name = 'What is Haystack?'
   url = '/overview/intro'
-  parent = 'overview'
+  parent = 'learn'
   weight = 1
 
 [[menu.main]]
   name = 'Quick Start'
   url = '/overview/quick-start'
-  parent = 'overview'
+  parent = 'learn'
   weight = 2
 
 [[menu.main]]
   name = 'Demo'
   url = '/overview/demo'
-  parent = 'overview'
-  weight = 3
+  parent = 'learn'
+  weight = 4
 
 [[menu.main]]
   name = 'Roadmap'
   url = '/overview/roadmap'
-  parent = 'overview'
-  weight = 4
+  parent = 'learn'
+  weight = 5
 
 [[menu.main]]
   name = 'Use Cases'
   url = '/overview/use-cases'
-  parent = 'overview'
-  weight = 5
+  parent = 'learn'
+  weight = 3
 
 # Resources children
 [[menu.main]]

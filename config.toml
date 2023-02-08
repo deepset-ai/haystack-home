@@ -96,7 +96,7 @@ disableKinds = ["taxonomy", "term"]
   weight = 2
 
 [[menu.main]]
-  name = 'Quick Demo'
+  name = 'Demo'
   url = '/overview/demo'
   parent = 'overview'
   weight = 3

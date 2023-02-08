@@ -4,7 +4,7 @@ export const newsletters = () => {
 
   if (forms.length > 0) {
     // Regex string to validate email
-    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+    const re = /^[\w.+-]+@[\w.-]+\.[\w]{2,}$/;
 
     forms.forEach((form) => {
       // Listen to input, validate email, disable/enable submit btn
@@ -22,7 +22,7 @@ export const newsletters = () => {
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const res = await fetch(
-          "https://api.hsforms.com/submissions/v3/integration/submit/4561480/103aed2c-3c5d-4889-b029-46d289857db3",
+          "https://api.hsforms.com/submissions/v3/integration/submit/4561480/6256f9c8-3243-45a9-ac59-72b2ab077622",
           {
             body: JSON.stringify({
               fields: [{ name: "email", value: e.target.email.value }],

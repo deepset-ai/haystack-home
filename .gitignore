@@ -45,3 +45,5 @@ resources
 haystack-tutorials
 content/tutorials
 !content/tutorials/_index.md
+
+static/downloads

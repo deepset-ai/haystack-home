@@ -5,6 +5,10 @@ git clone --depth 1 https://github.com/deepset-ai/haystack-tutorials.git
 echo "Copying markdown files into ./content/tutorials..."
 cp ./haystack-tutorials/markdowns/* ./content/tutorials
 ls ./content/tutorials
+mkdir ./static/downloads
+echo "Copying notebook files into ./static/downloads..."
+cp ./haystack-tutorials/tutorials/*.ipynb ./static/downloads
+ls ./static/downloads
 
 npm install
 

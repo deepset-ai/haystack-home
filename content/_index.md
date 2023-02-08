@@ -17,6 +17,22 @@ hero:
       url: /overview/intro
   image: /images/hero.png
 
+# Logo garden
+logos:
+  anchor: logos
+  title: Some companies from our community
+  logoItems:
+    - image:
+        url: /images/logos/databricks.svg
+    - image:
+        url: /images/logos/rakuten.svg
+    - image:
+        url: /images/logos/nvidia.svg
+    - image:
+        url: /images/logos/aws.svg
+    - image:
+        url: /images/logos/betterup.svg
+
 # Showcase
 showcase:
   anchor: showcase
@@ -88,9 +104,9 @@ community:
       - buttonText: Join Discord
         url: https://discord.com/invite/VBpFzsgRVF
   newsletter:
-    title: Sign up to future newsletters
-    text: Stay tuned for upcoming newsletters for the latest Haystack community updates
+    title: Sign up for community updates
+    text: Stay tuned for the latest Haystack community news and events.
     icon: /images/icons/email.svg
-    inputPlaceholder: Email address..
+    inputPlaceholder: Email address...
     buttonText: Submit
 ---

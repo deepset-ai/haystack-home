@@ -9,10 +9,9 @@ toc: false
 aliases: [quick-demo]
 ---
 
-<!-- ![image](https://raw.githubusercontent.com/deepset-ai/haystack-website/source/public/img/haystack-demo-short.gif) -->
-<!-- use mp4 instead of gif to reduce file size -->
+<!-- <video autoplay loop muted playsinline poster="/images/haystack-demo-poster.jpg" class="responsive"><source src="/images/haystack-demo-short.mp4" type="video/mp4"></video> -->
 
-<video autoplay loop muted playsinline class="responsive"><source src="/images/haystack-demo-short.mp4" type="video/mp4"></video>
+<video autoplay loop muted playsinline poster="/images/haystack-demo-poster.jpg" class="responsive"><source src="/images/haystack-demo-short.webm" type="video/webm"></video>
 
 Try out our Explore The World live demo! Ask any question on countries or capital cities and let Haystack return the answers to you.
 

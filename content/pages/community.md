@@ -20,9 +20,9 @@ hero:
         - buttonText: Join Discord
           url: https://discord.com/invite/VBpFzsgRVF
     newsletter:
-      title: Sign up to future newsletters
+      title: Sign up for community updates
       icon: /images/icons/email.svg
-      inputPlaceholder: Email address..
+      inputPlaceholder: Email address...
       buttonText: Submit
   
   # Social links
@@ -41,7 +41,7 @@ hero:
       icon: /images/icons/linkedin.svg
 
     - title: Youtube
-      url: https://www.youtube.com/channel/UC5dfn9m310oyt-cbeegfvZw
+      url: https://www.youtube.com/@deepset_ai
       icon: /images/icons/youtube.svg
 
   # Most active / new contributors
@@ -58,33 +58,22 @@ hero:
     contributors:
       title: Most active contributors
 
-# Upcoming events
+# # Upcoming events
 eventsSection:
   anchor: events
   title: Upcoming Events
   events:
-    - title: The fastest way to ship NLP to production
+    - title: >
+        ChatGPT is awesome, but what next?
       description: >
-        At deepset, we believe that NLP applications should be built the same way as any other modern software. 
-        
-        <br /> In this webinar, Mathis, Head of Product for deepset Cloud, will share his experience in building enterprise NLP applications.
-      date: 22nd Nov 2022
+       Learn how to use LLMs to build products with deepset Cloud.
+       Channel the buzz around ChatGPT into something that is useful for you and your organization.       
+      date: 28th Feb 2023
       time: "17:00 CET"
       location: Zoom
-      image: /images/webinar-mathis.png
-      url: https://hubs.li/Q01s4ZzZ0
+      image: /images/webinar_chatgpt.png
+      url: https://hubs.li/Q01BF1kD0
       buttonText: Register
-    - title: Ethics in NLP & A Practical Introduction to Image Retrieval
-      description: >
-        We have 2 talks scheduled for our final Open NLP Meetup of 2022:
-        <br /> **1. Ethics in Natural Language Processing** *by Marty Oelschläge from dida Datenschmiede*
-        <br /> **2. A Practical Introduction to Image Retrieval** *by Sara Zanzoterra from deepset*
-      date: 1st Dec 2022
-      time: "19:00 CET"
-      location: Zoom
-      image: /images/meetup.png
-      url: https://www.meetup.com/open-nlp-meetup/events/289499354/
-      buttonText: Join Meetup
 
 # Open NLP Meetup section
 meetupSection:
@@ -94,8 +83,7 @@ meetupSection:
   buttonText: Join Meetup
   url: https://www.meetup.com/open-nlp-meetup/
   videos:
+    - 7Idjl3OR0FY
     - rO88zjicRWI
     - r3oeEWUYZ5A
-    - 7Qix5oFbwDM
-
 ---

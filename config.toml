@@ -118,13 +118,13 @@ disableKinds = ["taxonomy", "term"]
   name = 'Benchmarks'
   url = '/benchmarks'
   parent = 'resources'
-  weight = 1
-  
+  weight = 2
+
 [[menu.main]]
   name = 'Blog'
   url = 'https://www.deepset.ai/blog'
   parent = 'resources'
-  weight = 2
+  weight = 1
   
 [[menu.main]]
   identifier = 'annotation-tool'

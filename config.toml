@@ -57,25 +57,11 @@ disableKinds = ["taxonomy", "term"]
   name = 'Overview'
   url = '/'
   weight = 1
-
-[[menu.main]]
-  identifier = 'resources'
-  name = 'Resources'
-  url = '/'
-  weight = 2
-
+  
 [[menu.main]]
   identifier = 'documentation'
   name = 'Documentation'
   url = 'https://docs.haystack.deepset.ai/docs'
-  parent = 'resources'
-  weight = 1
-
-[[menu.main]]
-  identifier = 'annotation-tool'
-  name = 'Annotation Tool'
-  url = 'https://www.deepset.ai/annotation-tool-for-labeling-datasets'
-  parent = 'resources'
   weight = 2
 
 [[menu.main]]
@@ -83,24 +69,18 @@ disableKinds = ["taxonomy", "term"]
   name = 'Tutorials'
   url = '/tutorials'
   weight = 3
-
-[[menu.main]]
-  identifier = 'benchmarks'
-  name = 'Benchmarks'
-  url = '/benchmarks'
-  weight = 4
   
 [[menu.main]]
   identifier = 'community'
   name = 'Community'
   url = '/community'
-  weight = 5
+  weight = 4
 
 [[menu.main]]
-  identifier = 'learn'
-  name = 'Learn'
+  identifier = 'resources'
+  name = 'Resources'
   url = '/'
-  weight = 6
+  weight = 5
 
 # Overview children
 [[menu.main]]
@@ -119,29 +99,43 @@ disableKinds = ["taxonomy", "term"]
   name = 'Demo'
   url = '/overview/demo'
   parent = 'overview'
-  weight = 3
+  weight = 4
 
 [[menu.main]]
   name = 'Roadmap'
   url = '/overview/roadmap'
   parent = 'overview'
-  weight = 4
+  weight = 5
 
 [[menu.main]]
   name = 'Use Cases'
   url = '/overview/use-cases'
   parent = 'overview'
-  weight = 5
+  weight = 3
 
-# Learn children
+# Resources children
 [[menu.main]]
-  name = 'NLP Resources'
-  url = '/nlp-resources'
-  parent = 'learn'
-  weight = 1
+  name = 'Benchmarks'
+  url = '/benchmarks'
+  parent = 'resources'
+  weight = 2
 
 [[menu.main]]
   name = 'Blog'
   url = 'https://www.deepset.ai/blog'
-  parent = 'learn'
-  weight = 2
+  parent = 'resources'
+  weight = 1
+  
+[[menu.main]]
+  identifier = 'annotation-tool'
+  name = 'Annotation Tool'
+  url = 'https://www.deepset.ai/annotation-tool-for-labeling-datasets'
+  parent = 'resources'
+  weight = 3
+
+[[menu.main]]
+  name = 'NLP Resources'
+  url = '/nlp-resources'
+  parent = 'resources'
+  weight = 4
+

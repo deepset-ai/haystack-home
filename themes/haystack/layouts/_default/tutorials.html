@@ -15,7 +15,7 @@
       <div class="container container-padded">
         <div class="inner inner-top">
           {{/* Section title */}}
-          <h2>
+          <h2 class="section-title">
             {{ len (where .Site.Pages "Layout" "tutorial") }} tutorials for
             <span>all</span> levels
           </h2>
@@ -161,6 +161,9 @@
 
       {{/*  Sorting  */}}
       {{/*  TBD  */}}
+
+      {{/*  Update section title  */}}
+      document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
 
       document.querySelector(".tutorial-grid").innerHTML = ""
       tutorials.forEach((e) =>

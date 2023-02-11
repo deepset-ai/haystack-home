@@ -222,6 +222,7 @@
     .contribute-btn > svg {
       margin-right: 0.5rem;
       margin-bottom: 0.1rem;
+      flex-shrink: 0;
     }
   }
 }

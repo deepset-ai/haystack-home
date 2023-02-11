@@ -104,11 +104,9 @@
           {{/* Footer */}}
           <div class="tutorial-footer">
             <div class="text-section">
-              <h2>Want to contribute on GitHub?</h2>
+              <h2>{{ .Params.contribute.title }}</h2>
               <p>
-                We maintain these tutorials in an open source repository on
-                GitHub. If you’d like to contribute, go to the repository to
-                submit your edits or suggest a new tutorial.
+                {{ .Params.contribute.text }}
               </p>
             </div>
 
@@ -134,7 +132,7 @@
                     clip-rule="evenodd"
                   />
                 </svg>
-                {{ .Params.contribute.text }}
+                {{ .Params.contribute.buttonText }}
               </a>
             </div>
           </div>

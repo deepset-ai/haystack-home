@@ -90,7 +90,13 @@
 
           {{/* Tutorials grid */}}
           <div class="tutorial-grid">
-            {{ range where (.Site.Pages.ByParam "new") "Layout" "tutorial" }}
+            {{/*  New tutorials  */}}
+            {{ range where (where .Site.Pages "Params.new" true) "Layout" "tutorial" }}
+              {{ partial "tutorial-card" . }}
+            {{ end }}
+
+            {{/*  Other tutorials  */}}
+            {{ range where (where .Site.Pages "Params.new" "!=" true) "Layout" "tutorial" }}
               {{ partial "tutorial-card" . }}
             {{ end }}
           </div>

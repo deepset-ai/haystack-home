@@ -82,7 +82,7 @@
               {{/* Sorting */}}
               {{/*  <div class="select-wrapper">
                 <select id="sort-select" onchange="filterAndSort();">
-                  <option value="new">Sort by:</option>
+                  <option value="featured">Sort by:</option>
                 </select>
               </div>  */}}
             </div>
@@ -90,13 +90,13 @@
 
           {{/* Tutorials grid */}}
           <div class="tutorial-grid">
-            {{/*  New tutorials  */}}
-            {{ range where (where .Site.Pages "Params.new" true) "Layout" "tutorial" }}
+            {{/*  Featured tutorials  */}}
+            {{ range where (where .Site.Pages "Params.featured" true) "Layout" "tutorial" }}
               {{ partial "tutorial-card" . }}
             {{ end }}
 
             {{/*  Other tutorials  */}}
-            {{ range where (where .Site.Pages "Params.new" "!=" true) "Layout" "tutorial" }}
+            {{ range where (where .Site.Pages "Params.featured" "!=" true) "Layout" "tutorial" }}
               {{ partial "tutorial-card" . }}
             {{ end }}
           </div>

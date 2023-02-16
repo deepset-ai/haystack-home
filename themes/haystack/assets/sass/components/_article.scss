@@ -254,8 +254,12 @@
 
 // Blog post sidebar
 .blog-post-sidebar {
-  display: block;
+  display: none;
   align-self: flex-start;
+
+  @include md {
+    display: block;
+  }
 
   .toc-heading {
     display: block;

@@ -1,0 +1,84 @@
+{{/* Author listing page */}}
+{{ define "main" }}
+  <div class="author-page">
+    {{ partial "page-hero" . }}
+
+
+    <div class="blog-list-content">
+      <div class="container container-padded">
+        <div class="inner inner-top">
+          <h2 class="author-blog-list-title">Articles by {{ .Params.name }}</h2>
+
+          {{/* Blog grid */}}
+          <div class="blog-grid">
+            {{/* Get the blog posts */}}
+            {{ $blogPosts := .Data.Pages }}
+            {{ $paginatedBlogPosts := .Paginate $blogPosts }}
+
+            {{/* Check if there is a next/previous page */}}
+            {{ $hasPrev := .Paginator.HasPrev }}
+            {{ $hasNext := .Paginator.HasNext }}
+
+            {{/* Small screens - single inner grid */}}
+            <div class="blog-grid-inner-sm">
+              {{ range $i, $p := $paginatedBlogPosts.Pages }}
+                {{ if not .IsHome }}
+                  {{ partial "blog-card" . }}
+                {{ end }}
+              {{ end }}
+            </div>
+
+            {{/*  Large screens  */}}
+            <div class="blog-grid-inner-lg">
+              {{ range $i, $p := $paginatedBlogPosts.Pages }}
+                {{ if and (modBool $i 2) (not .IsHome) }}
+                  {{ partial "blog-card" . }}
+                {{ end }}
+              {{ end }}
+            </div>
+
+            <div class="blog-grid-inner-lg">
+              {{ range $i, $p := $paginatedBlogPosts.Pages }}
+                {{ if and (not (modBool $i 2)) (not .IsHome) }}
+                  {{ partial "blog-card" . }}
+                {{ end }}
+              {{ end }}
+            </div>
+          </div>
+
+          {{/*  Pagination  */}}
+          <div class="blog-pagination">
+            {{ if $hasPrev }}
+              <a
+                class="pagination-prev"
+                href="{{ $paginatedBlogPosts.Prev.URL }}"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16px"
+                  height="16px"
+                  viewBox="0 0 13 14"
+                  role="presentation"
+                  focusable="false"
+                >
+                  <path
+                    d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z"
+                    fill="#9090b2"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                Previous
+              </a>
+            {{ end }}
+            {{ if $hasNext }}
+              <div class="pagination-next">
+                {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Next" "url" $paginatedBlogPosts.Next.URL) }}
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

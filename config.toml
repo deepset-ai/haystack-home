@@ -3,8 +3,12 @@ languageCode = 'en-us'
 title = 'Haystack'
 theme = "haystack"
 
-# Disable /tags and /categories pages
-disableKinds = ["taxonomy", "term"]
+
+paginate = 10
+paginatePath = "/"
+
+[taxonomies]
+  author = "authors"
 
 [sitemap]
   changefreq = 'monthly'
@@ -19,6 +23,7 @@ disableKinds = ["taxonomy", "term"]
 
 [permalinks]
   pages = "/:filename"
+  authors = "/blog/authors/:slug"
 
 [security]
   [security.funcs]

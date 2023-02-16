@@ -116,6 +116,11 @@
       "source": "/tutorials/v:version/:name",
       "destination": "/tutorials/:name",
       "permanent": true
+    },
+    {
+      "source": "/blog/authors",
+      "destination": "/blog",
+      "permanent": true
     }
   ],
 

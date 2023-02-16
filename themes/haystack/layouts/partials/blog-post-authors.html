@@ -1,0 +1,23 @@
+{{/* Blog post authors */}}
+<div class="blog-post-authors">
+  {{ range .Params.authors }}
+    {{ with $.Site.GetPage "taxonomy" (printf "authors/%s" (urlize .)) }}
+      <a href="{{ .Permalink }}">
+        {{/* Author image */}}
+        <div class="author-image">
+          {{ if .Params.image }}
+            <img src="{{ .Params.image }}" alt="{{ .Params.name }}" />
+          {{ else }}
+            <img src="/images/user-placeholder.jpg" alt="{{ .Params.name }}" />
+          {{ end }}
+        </div>
+
+        {{/* Author name & position */}}
+        <div class="author-info">
+          <span class="name">{{ .Params.name }}</span>
+          <span class="position">{{ .Params.position }}</span>
+        </div>
+      </a>
+    {{ end }}
+  {{ end }}
+</div>

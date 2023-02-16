@@ -1,0 +1,60 @@
+{{/* Blog post */}}
+{{ define "main" }}
+  <div class="container">
+    <div class="inner inner-top">
+      <div class="blog-post">
+        {{/* Sidebar */}}
+        <aside class="toc-sidebar blog-post-sidebar">
+          {{/* Authors */}}
+          {{ partial "blog-post-authors" . }}
+
+          {{/* Toc */}}
+          {{if .Params.toc}}
+            <span class="toc-heading">Table of contents</span>
+            {{ .TableOfContents }}
+          {{ end }}
+        </aside>
+
+        <article class="article-content">
+          {{/* Blog post header */}}
+          <div class="blog-post-header">
+            {{/* Featured image */}}
+            {{ if .Params.featured_image }}
+              <div class="featured-image">
+                <img
+                  src="{{ .Params.featured_image }}"
+                  alt="{{ .Params.title }}"
+                />
+              </div>
+            {{ end }}
+
+
+            <div class="blog-post-title">
+              {{/* Title */}}
+              <h1>{{ .Params.title }}</h1>
+
+              {{/* Description */}}
+              <p>{{ .Params.description }}</p>
+
+              {{/* Date */}}
+              {{ with .Params.date }}
+                <span class="article-date">
+                  {{ . | time.Format ":date_long" }}
+                </span>
+              {{ end }}
+            </div>
+          </div>
+
+          {{/* Blog post content */}}
+          {{ .Content }}
+
+        </article>
+
+        {{/* Post authors under the article - for small screens */}}
+        <div class="blog-post-authors-sm">
+          {{ partial "blog-post-authors" . }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}

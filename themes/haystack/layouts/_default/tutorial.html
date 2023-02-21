@@ -95,7 +95,7 @@
           </div>
 
 
-          {{ with .Params.last_updated }}
+          {{ with .Lastmod }}
             <sub class="article-date">
               Last Updated:
               {{ . | time.Format ":date_long" }}

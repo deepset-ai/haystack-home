@@ -2,6 +2,7 @@ baseURL = 'https://haystack.deepset.ai/'
 languageCode = 'en-us'
 title = 'Haystack'
 theme = "haystack"
+enableGitInfo = true
 
 # Disable /tags and /categories pages
 disableKinds = ["taxonomy", "term"]

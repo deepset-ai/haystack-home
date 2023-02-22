@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf haystack-tutorials
-git clone --depth 1 https://github.com/deepset-ai/haystack-tutorials.git
+git clone --filter=tree:0 https://github.com/deepset-ai/haystack-tutorials.git
 echo "Copying markdown files into ./content/tutorials..."
 cp ./haystack-tutorials/markdowns/* ./content/tutorials
 ls ./content/tutorials

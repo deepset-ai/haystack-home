@@ -24,7 +24,6 @@ paginatePath = "/"
 [permalinks]
   pages = "/:filename"
   authors = "/blog/authors/:slug"
-  blog = "/blog/:filename"
 
 [security]
   [security.funcs]

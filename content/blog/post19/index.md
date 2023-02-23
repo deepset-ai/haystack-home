@@ -14,7 +14,6 @@ authors:
 # images: [""]
 ---
 
-
 ![test](post19/testimg.png)
-![test](/testimg.png)
 ![test](testimg.png)
+![test](./testimg.png)

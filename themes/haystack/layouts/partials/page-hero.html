@@ -1,4 +1,4 @@
-{{/* Hero used in the Tutorials and Blog pages */}}
+{{/* Hero used in the Tutorials, Blog, and Author pages */}}
 <div class="page-hero">
   <div class="container container-padded">
     <section class="hero-heading">
@@ -20,7 +20,7 @@
 
             {{/* Social links */}}
             <div class="socials">
-              {{ range .Params.socials }}
+              {{ range .Params.socials.author_page }}
                 <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
                   <img src="{{ .icon }}" alt="{{ .name }}" />
                 </a>

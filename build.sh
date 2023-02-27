@@ -17,14 +17,13 @@ PREVIEW_URL="${VERCEL_URL:-localhost}"
 # Use PREVIEW_URL if SITE_URL is not set
 DEPLOY_URL="${SITE_URL:-$PREVIEW_URL}"
 
+# Adds the directory to relative image paths in blog posts
 if [[ "$DEPLOY_URL" != "localhost" ]]; then
     find ./content/blog -name "index.md" -type f -exec bash -c '
     dir=$(dirname "{}" | sed -e "s,^.*content/blog/,," -e "s,/.*,,");
     sed -i "/\(http\|\/images\)/! s~!\[\([^]]*\)\]([./]*\([^)]*\))~![\1]($dir/\2)~g" "{}"
     ' \;
 fi
-
-# sed -i -r "s~featured_image: *(\\.?/?)([^/]*\\.[a-zA-Z0-9]+)~featured_image: $dir/\\2~" "{}"
 
 echo "Deploy URL: ${DEPLOY_URL}"
 hugo -b https://${DEPLOY_URL}

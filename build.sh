@@ -21,9 +21,10 @@ if [[ "$DEPLOY_URL" != "localhost" ]]; then
     find ./content/blog -name "index.md" -type f -exec bash -c '
     dir=$(dirname "{}" | sed -e "s,^.*content/blog/,," -e "s,/.*,,");
     sed -i "/\(http\|\/images\)/! s~!\[\([^]]*\)\]([./]*\([^)]*\))~![\1]($dir/\2)~g" "{}"
-    sed -i -r "s~featured_image: *(\\.?/?)([^/]*\\.[a-zA-Z0-9]+)~featured_image: $dir/\\2~" "{}"
     ' \;
 fi
+
+# sed -i -r "s~featured_image: *(\\.?/?)([^/]*\\.[a-zA-Z0-9]+)~featured_image: $dir/\\2~" "{}"
 
 echo "Deploy URL: ${DEPLOY_URL}"
 hugo -b https://${DEPLOY_URL}

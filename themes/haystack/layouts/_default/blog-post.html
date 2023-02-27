@@ -22,7 +22,7 @@
             {{ if .Params.featured_image }}
               <div class="featured-image">
                 <img
-                  src="{{ .Params.featured_image }}"
+                  src="{{.Permalink}}{{ .Params.featured_image }}"
                   alt="{{ .Params.title }}"
                 />
               </div>

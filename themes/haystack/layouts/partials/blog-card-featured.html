@@ -2,7 +2,7 @@
   {{/* Image */}}
   <div class="blog-card-image">
     {{ if .Params.featured_image }}
-      <img src="{{ .Params.featured_image }}" alt="{{ .Params.title }}" />
+      <img src="{{.Permalink}}{{ .Params.featured_image }}" alt="{{ .Params.title }}" />
     {{ else }}
       <img src="/images/hero-bg.jpg" alt="{{ .Params.title }}" />
     {{ end }}

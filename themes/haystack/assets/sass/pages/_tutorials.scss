@@ -90,6 +90,17 @@
         justify-content: center;
       }
     }
+     
+    // Sorting select
+    .sort-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      label {
+        font-size: var(--text-small);
+        color: var(--color-medium-grey);
+      }
+    }
 
     // Filter selects
     .select-wrapper {

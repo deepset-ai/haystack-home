@@ -80,11 +80,16 @@
 
             <div>
               {{/* Sorting */}}
-              {{/*  <div class="select-wrapper">
-                <select id="sort-select" onchange="filterAndSort();">
-                  <option value="featured">Sort by:</option>
-                </select>
-              </div>  */}}
+              <div class="sort-wrapper">
+                <label for="sort">Sort By:</label>
+                <div class="select-wrapper">
+                  <select name="sort" id="sort-select" onchange="filterAndSort();">
+                    <option value="level">Level</option>
+                    <option value="last-updated">Last Updated</option>
+                    <option value="newest">Newest</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -149,8 +154,9 @@
 
     const filterAndSort = () => {
       let tutorials = [...tutorialCards]
-      {{/*  Get selected filters  */}}
+      {{/*  Get selected filter, sort, and task options   */}}
       const selectedLevel = document.querySelector("#level-select").value;
+      const selectedSort = document.querySelector("#sort-select").value;
       {{/*  const selectedTask = document.querySelector("#task-select").value;  */}}
 
       {{/*  Filter by level  */}}
@@ -164,7 +170,22 @@
       }  */}}
 
       {{/*  Sorting  */}}
-      {{/*  TBD  */}}
+      if (selectedSort === "last-updated") {
+        tutorials = tutorials.sort((a, b) => {
+          const aDate = new Date(a.dataset.updated);
+          const bDate = new Date(b.dataset.updated);
+          return bDate - aDate;
+        });
+      }
+
+      if (selectedSort === "newest") {
+        tutorials = tutorials.sort((a, b) => {
+          const aDate = new Date(a.dataset.created);
+          const bDate = new Date(b.dataset.created);
+          return bDate - aDate;
+        });
+      }
+
 
       {{/*  Update section title  */}}
       document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
@@ -177,6 +198,7 @@
 
     const resetFilters = () => {
       document.querySelector("#level-select").value = "all";
+      document.querySelector("#sort-select").value = "level";
       {{/*  document.querySelector("#task-select").value = "all";  */}}
       filterAndSort();
     }

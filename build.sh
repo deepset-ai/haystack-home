@@ -1,7 +1,6 @@
 #!/bin/bash
 
 rm -rf haystack-tutorials
-echo "Cloning haystack-tutorials..."
 git clone --filter=tree:0 https://github.com/deepset-ai/haystack-tutorials.git
  
 cd haystack-tutorials

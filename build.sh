@@ -1,9 +1,15 @@
 #!/bin/bash
 
 rm -rf haystack-tutorials
+echo "Cloning haystack-tutorials..."
 git clone --filter=tree:0 https://github.com/deepset-ai/haystack-tutorials.git
-echo "Copying markdown files into ./content/tutorials..."
-cp ./haystack-tutorials/markdowns/* ./content/tutorials
+ 
+cd haystack-tutorials
+echo "Installing requirements for haystack-tutorials..."
+pip3 install -r requirements.txt
+echo "Generating markdown files into ./content/tutorials..."
+python3 scripts/generate_markdowns.py --index index.toml --notebooks all --output ../content/tutorials
+cd ..
 ls ./content/tutorials
 mkdir ./static/downloads
 echo "Copying notebook files into ./static/downloads..."

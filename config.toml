@@ -76,16 +76,22 @@ paginatePath = "/"
   weight = 3
   
 [[menu.main]]
+  identifier = 'blog'
+  name = 'Blog'
+  url = '/blog'
+  weight = 4
+
+[[menu.main]]
   identifier = 'community'
   name = 'Community'
   url = '/community'
-  weight = 4
+  weight = 6
 
 [[menu.main]]
   identifier = 'resources'
   name = 'Resources'
   url = '/'
-  weight = 5
+  weight = 6
 
 # Overview children
 [[menu.main]]
@@ -126,7 +132,7 @@ paginatePath = "/"
   weight = 2
 
 [[menu.main]]
-  name = 'Blog'
+  name = 'deepset Blog'
   url = 'https://www.deepset.ai/blog'
   parent = 'resources'
   weight = 1

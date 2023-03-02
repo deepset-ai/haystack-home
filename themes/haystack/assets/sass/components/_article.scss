@@ -25,6 +25,14 @@
   overflow: hidden;
 }
 
+.blog-post-content {
+  overflow: hidden;
+
+  img {
+    margin: auto;
+  }
+}
+
 .blog-post-header {
   display: flex;
   flex-direction: column;

@@ -3,6 +3,7 @@ layout: blog-post
 title: Build a Search Engine with GPT-3
 description: Combine the power of large language models with a corpus of your choice to generate natural-sounding answers that are grounded in facts
 featured_image: thumbnail.png
+images: ["thumbnail.png"]
 toc: True
 date: 2023-01-31
 last_updated: 2023-01-31

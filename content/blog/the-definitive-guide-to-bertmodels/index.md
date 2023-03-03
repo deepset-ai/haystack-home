@@ -3,6 +3,7 @@ layout: blog-post
 title: The Definitive Guide to BERT Models
 description: The BERT language model greatly improved the standard for language models. This article explains BERT’s history and the language models derived from it.
 featured_image: thumbnail.png
+images: ["thumbnail.png"]
 toc: True
 date: 2023-01-16
 last_updated: 2023-01-16

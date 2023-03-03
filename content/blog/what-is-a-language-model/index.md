@@ -3,6 +3,7 @@ layout: blog-post
 title: What is a Language Model?
 description: What are they used for? Where can you find them? And what kind of information do they actually store?
 featured_image: thumbnail.png
+images: ["thumbnail.png"]
 toc: True
 date: 2022-07-20
 last_updated: 2022-07-20

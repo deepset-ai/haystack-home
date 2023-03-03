@@ -14,11 +14,11 @@
  * Components
  */
 @import "components/buttons", "components/header", "components/navigation",
-  "components/article", "components/loader", "components/forms",
-  "components/code", "components/footer";
+  "components/hero", "components/article", "components/loader",
+  "components/forms", "components/code", "components/footer";
 
 /**
  * Pages
  */
-@import "pages/index", "pages/tutorials", "pages/community", "pages/benchmarks",
-  "pages/404";
+@import "pages/index", "pages/tutorials", "pages/bloglist", "pages/community",
+  "pages/benchmarks", "pages/404";

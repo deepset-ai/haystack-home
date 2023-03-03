@@ -2,14 +2,7 @@
 {{ define "main" }}
   <div class="tutorials">
     {{/* Hero */}}
-    <div class="tutorials-hero">
-      <div class="container container-padded">
-        <section class="tutorials-heading">
-          <h1>{{ .Params.title }}</h1>
-          <p>{{ .Params.subtitle | markdownify }}</p>
-        </section>
-      </div>
-    </div>
+    {{ partial "page-hero" . }}
 
     <div class="tutorials-content">
       <div class="container container-padded">
@@ -139,6 +132,7 @@
                 </svg>
                 {{ .Params.contribute.buttonText }}
               </a>
+            </div>
             </div>
           </div>
         </div>

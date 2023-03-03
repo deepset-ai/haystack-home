@@ -1,0 +1,49 @@
+<a href="{{ .RelPermalink }}" class="blog-card">
+  {{/* Image */}}
+  <div class="blog-card-image">
+    {{ if .Params.featured_image }}
+      <img src="{{.Permalink}}{{ .Params.featured_image }}" alt="{{ .Params.title }}" loading="lazy" />
+    {{ else }}
+      <img src="/images/hero-bg.jpg" alt="{{ .Params.title }}" loading="lazy" />
+    {{ end }}
+  </div>
+
+  {{/* Content */}}
+  <div class="blog-card-content">
+    {{/* Title */}}
+    <h2>{{ .Params.title }}</h2>
+
+    {{/* Description */}}
+    <p>{{ .Params.description }}</p>
+
+    {{/* Date */}}
+    <span class="date">{{ .Params.date | time.Format ":date_long" }}</span>
+
+    {{/* Authors */}}
+    <div class="blog-card-authors">
+      {{ range .Params.authors }}
+        {{ with $.Site.GetPage "taxonomy" (printf "authors/%s" (urlize .)) }}
+          <div>
+            {{/* Author image */}}
+            <div class="author-image">
+              {{ if .Params.image }}
+                <img src="{{ .Params.image }}" alt="{{ .Params.name }}" />
+              {{ else }}
+                <img
+                  src="/images/user-placeholder.jpg"
+                  alt="{{ .Params.name }}"
+                />
+              {{ end }}
+            </div>
+
+            {{/* Author name & position */}}
+            <div class="author-info">
+              <span class="name">{{ .Params.title }}</span>
+              <span class="position">{{ .Params.position }}</span>
+            </div>
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</a>

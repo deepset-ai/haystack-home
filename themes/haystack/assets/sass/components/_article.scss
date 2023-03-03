@@ -3,7 +3,8 @@
  */
 
 .overview,
-.tutorial {
+.tutorial,
+.blog-post {
   display: grid;
   grid-template-columns: 1fr;
 
@@ -22,6 +23,58 @@
 
 .article-content {
   overflow: hidden;
+}
+
+.blog-post-content {
+  overflow: hidden;
+
+  img {
+    margin: auto;
+  }
+}
+
+.blog-post-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @include lg {
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  .featured-image {
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    width: 100%;
+    height: 20rem;
+
+    @include lg {
+      height: 17rem;
+      max-width: 30rem;
+      order: 2;
+    }
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      margin-top: 0;
+    }
+  }
+
+  .blog-post-title {
+    width: 100%;
+
+    p,
+    .article-date {
+      color: var(--color-dark-grey);
+    }
+
+    @include lg {
+      order: 1;
+    }
+  }
 }
 
 // Left sidebar / TOC
@@ -204,6 +257,105 @@
     .sidebar-buttons {
       flex-direction: column;
     }
+  }
+}
+
+// Blog post sidebar
+.blog-post-sidebar {
+  display: none;
+  align-self: flex-start;
+
+  @include md {
+    display: block;
+  }
+
+  .toc-heading {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: var(--text-body);
+    color: var(--color-dark-grey);
+  }
+
+  #TableOfContents > ul {
+    padding: 0;
+  }
+}
+
+// Blog post authors
+.blog-post-authors {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+
+  @include md {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  .author-container > a {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.75rem;
+    font-weight: var(--font-weight-base);
+    text-decoration: none;
+
+    // Image
+    .author-image {
+      width: 5rem;
+      height: 5rem;
+      border-radius: var(--border-radius-md);
+      overflow: hidden;
+      flex-shrink: 0;
+
+      > img {
+        object-fit: cover;
+      }
+    }
+
+    // Name & position
+    .author-info {
+      .name {
+        display: block;
+        color: var(--color-dark-blue);
+        font-weight: var(--font-weight-links);
+      }
+
+      .position {
+        display: block;
+        color: var(--color-dark-grey);
+      }
+      font-size: var(--text-base);
+    }
+  }
+
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+
+    > a {
+      width: 1.5rem;
+      height: 1.5rem;
+
+      > img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+// Blog post authors mobile (under blog post)
+.blog-post-authors-sm {
+  border-top: 2px solid var(--color-light-grey);
+  margin-top: 2rem;
+  @include md {
+    display: none;
   }
 }
 

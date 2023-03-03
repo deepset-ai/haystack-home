@@ -1,26 +1,5 @@
 // Tutorials listing Page
 .tutorials {
-  // Hero
-  .tutorials-hero {
-    padding: 4rem 0;
-    background: var(--color-bg-dark-blue) url("/images/tutorials-bg.jpg") center
-      center / cover no-repeat;
-  }
-
-  // Heading
-  .tutorials-heading {
-    max-width: 43.75rem;
-
-    > h1 {
-      margin-bottom: 1rem;
-    }
-
-    > h1,
-    > p {
-      color: var(--color-white);
-    }
-  }
-
   h2 {
     margin-bottom: 1rem;
 

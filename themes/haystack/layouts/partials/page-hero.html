@@ -1,0 +1,38 @@
+{{/* Hero used in the Tutorials, Blog, and Author pages */}}
+<div class="page-hero">
+  <div class="container container-padded">
+    <section class="hero-heading">
+      {{ if eq .Params.layout "author" }}
+        {{/* Author page hero */}}
+        <div class="hero-author">
+          {{/* Image */}}
+          {{ if .Params.image }}
+            <div class="author-image">
+              <img src="{{ .Params.image }}" alt="{{ .Params.name }}" />
+            </div>
+          {{ end }}
+
+
+          <div>
+            {{/* Name & position */}}
+            <h1>{{ .Params.title }}</h1>
+            <p>{{ .Params.position }}</p>
+
+            {{/* Social links */}}
+            <div class="socials">
+              {{ range .Params.socials.author_page }}
+                <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+                  <img src="{{ .icon }}" alt="{{ .name }}" />
+                </a>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      {{ else }}
+        {{/* Regular page hero */}}
+        <h1>{{ .Params.title }}</h1>
+        <p>{{ .Params.subtitle | markdownify }}</p>
+      {{ end }}
+    </section>
+  </div>
+</div>

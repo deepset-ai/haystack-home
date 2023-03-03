@@ -59,21 +59,20 @@ hero:
       title: Most active contributors
 
 # # Upcoming events
-# eventsSection:
-#   anchor: events
-#   title: Upcoming Events
-#   events:
-#     - title: >
-#         ChatGPT is awesome, but what next?
-#       description: >
-#        Learn how to use LLMs to build products with deepset Cloud.
-#        Channel the buzz around ChatGPT into something that is useful for you and your organization.       
-#       date: 28th Feb 2023
-#       time: "17:00 CET"
-#       location: Zoom
-#       image: /images/webinar_chatgpt.png
-#       url: https://hubs.li/Q01BF1kD0
-#       buttonText: Register
+eventsSection:
+  anchor: events
+  title: Upcoming Events
+  events:
+    - title: >
+        How to evaluate LLM applications?
+      description: >
+       Evaluating NLP systems is one of the most important steps in the NLP development cycle, and often times the most complicated part of deploying a viable solution in an enterprise.
+      date: 14th Mar 2023
+      time: "17:00 CET"
+      location: Zoom
+      image: /images/webinar_evaluate.png
+      url: https://landing.deepset.ai/how-to-evaluage-llm-applications?utm_campaign=2303%20-%20We[…]pplications&utm_source=haystack-homepage&utm_medium=website
+      buttonText: Register
 
 # Open NLP Meetup section
 meetupSection:

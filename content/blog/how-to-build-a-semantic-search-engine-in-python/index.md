@@ -3,7 +3,7 @@ layout: blog-post
 title: How to Build a Semantic Search Engine in Python
 description: Search your large collection of documents in the most effective way using open source tools
 featured_image: thumbnail.png
-images: ["thumbnail.png"]
+images: ["blog/how-to-build-a-semantic-search-engine-in-python/thumbnail.png"]
 toc: True
 date: 2022-11-23
 last_updated: 2022-11-23

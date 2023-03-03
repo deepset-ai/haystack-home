@@ -3,7 +3,7 @@ layout: blog-post
 title: When and How to Train Your Own Language Model
 description: You’ll almost never have to train a language model from scratch.
 featured_image: thumbnail.png
-images: ["thumbnail.png"]
+images: ["blog/when-and-how-to-train-a-language-model/thumbnail.png"]
 toc: True
 date: 2022-08-03
 last_updated: 2022-08-03

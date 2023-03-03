@@ -3,7 +3,7 @@ layout: blog-post
 title: Announcing the Haystack Blog
 description: A place for the community to learn more about Haystack, NLP, open source development and more!
 featured_image: thumbnail.png
-images: ["thumbnail.png"]
+images: ["blog/announcing-haystack-blog/thumbnail.png"]
 alt_image: Photo by Jess Bailey on Unsplash
 toc: False
 date: 2023-03-03

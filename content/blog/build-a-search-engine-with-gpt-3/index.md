@@ -122,7 +122,7 @@ from haystack.nodes import EmbeddingRetriever
   
 retriever = EmbeddingRetriever(  
  document_store=document_store,  
- embedding_model=”text-embedding-ada-002",  
+ embedding_model="text-embedding-ada-002",  
  batch_size = 32,  
  api_key=MY_API_KEY,  
  max_seq_len = 1024  

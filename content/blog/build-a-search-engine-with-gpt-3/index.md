@@ -129,9 +129,9 @@ retriever = EmbeddingRetriever(
 )
 ```
 When you set up the retriever, you connect it directly to your document store. Now you can use the update_embeddings method to turn the raw documents in the document store into high-dimensional vectors that the retrieval model can search and compare.
-
+```python
 document_store.update_embeddings(retriever)
-
+```
 ### Generator
 
 You are now ready to initialize the GPT model that will generate text for you. The  [OpenAIAnswerGenerator node](https://docs.haystack.deepset.ai/reference/answer-generator-api#openaianswergenerator)  can use four different GPT models. You can use the highest performing GPT-3.5 model, text-davinci-003.

@@ -78,8 +78,8 @@
                 <div class="select-wrapper">
                   <select name="sort" id="sort-select" onchange="filterAndSort();">
                     <option value="level">Level</option>
-                    <option value="last-updated">Last Updated</option>
-                    <option value="newest">Newest</option>
+                    <option value="updated">Last Updated</option>
+                    <option value="created">Newest</option>
                   </select>
                 </div>
               </div>
@@ -164,18 +164,16 @@
       }  */}}
 
       {{/*  Sorting  */}}
-      if (selectedSort === "last-updated") {
+      if (selectedSort === "created" || selectedSort === "updated") {
         tutorials = tutorials.sort((a, b) => {
-          const aDate = new Date(a.dataset.updated);
-          const bDate = new Date(b.dataset.updated);
-          return bDate - aDate;
-        });
-      }
+          const aFeatured = a.dataset.featured ? 1 : -1;
+          const bFeatured = b.dataset.featured ? 1 : -1;
+          if (aFeatured !== bFeatured) {
+            return bFeatured - aFeatured;
+          }
 
-      if (selectedSort === "newest") {
-        tutorials = tutorials.sort((a, b) => {
-          const aDate = new Date(a.dataset.created);
-          const bDate = new Date(b.dataset.created);
+          const aDate = new Date(a.dataset[selectedSort]);
+          const bDate = new Date(b.dataset[selectedSort]);
           return bDate - aDate;
         });
       }
@@ -196,5 +194,10 @@
       {{/*  document.querySelector("#task-select").value = "all";  */}}
       filterAndSort();
     }
+
+    {{/*  Reset filters on pageshow in case of back button  */}}
+    addEventListener('pageshow', () => {
+      resetFilters();
+    });
   </script>
 {{ end }}

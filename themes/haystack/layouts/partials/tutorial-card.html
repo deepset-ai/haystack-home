@@ -1,4 +1,4 @@
-<a href="{{ .RelPermalink }}" class="tutorial-card" data-level="{{ .Params.level }}" data-created="{{ .Params.created_at }}" data-updated="{{ with .Lastmod }}{{ . | time.Format "2006-01-02" }}{{else}}{{ .Params.created_at }}{{ end }}">
+<a href="{{ .RelPermalink }}" class="tutorial-card" data-level="{{ .Params.level }}" data-created="{{ .Params.created_at }}" data-updated='{{ with .Lastmod }}{{ . | time.Format "2006-01-02" }}{{else}}{{ .Params.created_at }}{{ end }}' {{with .Params.featured}}data-featured="{{.}}"{{end}}>
     {{/*  Header / tags  */}}
     <div class="tutorial-card-header">
         {{/*  level  */}}

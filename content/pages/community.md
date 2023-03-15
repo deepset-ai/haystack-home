@@ -64,14 +64,28 @@ eventsSection:
   title: Upcoming Events
   events:
     - title: >
-        How to evaluate LLM applications?
+        Responding to Disasters Using NLP & State of Multilingual Semantic Search
       description: >
-       Evaluating NLP systems is one of the most important steps in the NLP development cycle, and often times the most complicated part of deploying a viable solution in an enterprise.
-      date: 14th Mar 2023
-      time: "17:00 CET"
+        We have 2 talks scheduled for our first Open NLP Meetup of 2023:
+        <br /> **1. Responding to Disasters Using NLP** *by Merve Noyan from Hugging Face*
+        <br /> **2. Current State of Multilingual Semantic Search** *by Kacper Łukawski from Qdrant*
+      date: 30th Mar 2023
+      time: "19:00 CET"
       location: Zoom
-      image: /images/webinar_evaluate.png
-      url: https://landing.deepset.ai/how-to-evaluage-llm-applications?utm_campaign=2303%20-%20We[…]pplications&utm_source=haystack-homepage&utm_medium=website
+      image: /images/20230330_NLP_meetup.png
+      url: https://www.meetup.com/open-nlp-meetup/events/292067506
+      buttonText: Register
+    - title: >
+        How to Make Audio Podcasts Searchable & NLP for Under-Represented Languages
+      description: >
+        We have 2 talks scheduled for the hybrid Open NLP Meetup:
+        <br /> **1. How to Make Audio Podcasts Searchable** *by Nicolas Delahousse from ML6*
+        <br /> **2. NLP for Under-Represented Languages** *by Sebastian Ruder from Google*
+      date: 11th May 2023
+      time: "19:00 CET"
+      location: Zoom and AI Campus, Berlin
+      image: /images/20230511_NLP_meetup.png
+      url: https://www.meetup.com/open-nlp-meetup/events/291727375/
       buttonText: Register
 
 # Open NLP Meetup section

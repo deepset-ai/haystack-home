@@ -72,7 +72,7 @@ eventsSection:
       date: 30th Mar 2023
       time: "19:00 CET"
       location: Zoom
-      image: /images/20230330_NLP_meetup.png
+      image: /images/meetup-march.png
       url: https://www.meetup.com/open-nlp-meetup/events/292067506
       buttonText: Register
     - title: >
@@ -84,7 +84,7 @@ eventsSection:
       date: 11th May 2023
       time: "19:00 CET"
       location: Zoom and AI Campus, Berlin
-      image: /images/20230511_NLP_meetup.png
+      image: /images/meetup-may.png
       url: https://www.meetup.com/open-nlp-meetup/events/291727375/
       buttonText: Register
 

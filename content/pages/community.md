@@ -76,6 +76,18 @@ eventsSection:
       url: https://www.meetup.com/open-nlp-meetup/events/292067506
       buttonText: Register
     - title: >
+        Prompting LLMs Using Haystack
+      description: >
+        Haystack provides all the tools to experiment with and create complex prompts for LLMs. 
+        <br/>
+        Join us to learn about new prompt templates and how to integrate them into your pipelines!
+      date: 4th April 2023
+      time: "17:00 CET"
+      location: Zoom
+      image: /images/haystack-webinar.png
+      url: https://hubs.li/Q01HJdvn0
+      buttonText: Register
+    - title: >
         How to Make Audio Podcasts Searchable & NLP for Under-Represented Languages
       description: >
         We have 2 talks scheduled for the hybrid Open NLP Meetup:

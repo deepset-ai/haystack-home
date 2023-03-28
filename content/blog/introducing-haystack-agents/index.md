@@ -5,19 +5,19 @@ description: LLMs can now choose the right tools to resolve complex queries
 featured_image: thumbnail.png
 images: ["blog/indtroducing-haystack-agents/thumbnail.png"]
 toc: True
-date: 2023-03-29
-last_updated: 2023-03-29
+date: 2023-03-28
+last_updated: 2023-03-28
 authors:
   - Tuana Celik
 ---
 
 Wouldn’t it be cool if you could enter a query and an LLM makes decisions on-the-fly about what resources it needs to resolve the query? For example, that it needs to search the web and retrieve relevant resources. Or that it needs to search through your company files first. That’s now possible with Agents!
 
-With the release of Haystack 1.15, we’re officially introducing the `Agent` to the Haystack ecosystem. The implementation of Agents is inspired by two papers: the [MRKL Systems paper](https://arxiv.org/abs/2205.00445) (pronounced ‘miracle’ 😉) and [the ReAct paper](https://arxiv.org/abs/2210.03629). ********If you like reading papers, I highly recommend these two. Here, I’ll explain how we’re introducing this functionality to Haystack.
+With the release of Haystack 1.15, we’re officially introducing the `Agent` to the Haystack ecosystem. The implementation of Agents is inspired by two papers: the [MRKL Systems paper](https://arxiv.org/abs/2205.00445) (pronounced ‘miracle’ 😉) and [the ReAct paper](https://arxiv.org/abs/2210.03629). If you like reading papers, I highly recommend these two. Here, I’ll explain how we’re introducing this functionality to Haystack.
 
 Let’s first talk about what an Agent is, and then see how you can start using Agents in Haystack. First, we need to briefly talk about what a ‘prompt’ is.
 
-### What is a Prompt?
+## What is a Prompt?
 
 Long story short, a prompt is an instruction. In the world of Natural Language Processing, these instructions can often be things like ‘Answer the given query’, or ‘Summarize the following piece of text’. In recent months, new large language models (LLMs) were made available, such as GPT models like `text-davinci-003` by OpenAI. These have shown great capability in consuming and acting on increasingly complex prompts.
 
@@ -35,7 +35,7 @@ Why does this matter to understand Agents? Let’s have a look 👇
 
 Agents are a way to leverage this ability of LLMs to consume prompts. In essence, an Agent is an LLM that has been given a very clever initial prompt. The prompt tells the LLM to break down the process of answering a complex query into a sequence of steps that are resolved one at a time.
 
-Agents become _**********really**********_ cool when we combine them with ‘experts’, introduced in the MRKL paper. Simple example: an Agent might not have the inherent capability to reliably perform mathematical calculations by itself. However, we can introduce an expert - in this case a calculator, an expert at mathematical calculations. Now, when we need to perform a calculation, the Agent can call in the expert rather than trying to predict the result itself.
+Agents become _really_ cool when we combine them with ‘experts’, introduced in the MRKL paper. Simple example: an Agent might not have the inherent capability to reliably perform mathematical calculations by itself. However, we can introduce an expert - in this case a calculator, an expert at mathematical calculations. Now, when we need to perform a calculation, the Agent can call in the expert rather than trying to predict the result itself.
 
 For example, an Agent that is asked “Who was the US president ten years ago today?”. A simplified view of the Agent’s thought process as it breaks down this question might look like this:
 
@@ -45,7 +45,7 @@ For example, an Agent that is asked “Who was the US president ten years ago to
 
 At each step, the Agent may decide to make use of an expert to come to a resolution. Notice how it is able to figure out that it first has to ask a question, then perform a calculation with the answer, then finally ask another question. Whether it is able to do any of those things depends on which experts it has access to. In Haystack, these experts are called `Tools`.
 
-### What are Tools?
+## What are Tools?
 
 In the world of the Agent, a Tool is an expert that the Agent can query at any time. For example, an Agent might be given a Tool that can search the web (let’s call it ‘Websearch’). If the Agent sees that there’s a need to search the web and it has the Websearch in its set of tools, it will use it.
 
@@ -63,7 +63,7 @@ Pay attention to the highlighted sections of the output. Notice how the Agent go
 
 The options for these Tools are effectively limitless. It is up to you the user, to define your own Tools and decide which ones to give your Agent access to.
 
-### What is the Difference between an Agent and a Pipeline?
+## What is the Difference between an Agent and a Pipeline?
 
 Now let’s see how this differs from the Haystack Pipeline. A Pipeline is a powerful structure in Haystack. A simple pipeline might consist of:
 
@@ -84,7 +84,7 @@ The Agent owes this talent to three things:
 -   a well-defined prompt that defines the lifecycle of an Agent and causes it to continue until it has reached a solution; and
 -   a set of Tools that are each good at doing something _really well._
 
-### Customizing an Agent
+## Customizing an Agent
 
 You may have already noticed and started to use the `PromptNode` in Haystack. This node is an interface with LLMs such as `text-davinci-003` by OpenAI; the Flan T5 models by Google and so on.
 
@@ -92,7 +92,7 @@ At its core, the Agent is a `PromptNode` that has been given a specific prompt. 
 
 The same goes for `Tools`. In Haystack, you can now turn virtually any Haystack component into a Tool that can be used by an Agent. This means you have the freedom to design and create Tools with your own Pipelines and Nodes, including the PromptNode. This makes Tools incredibly flexible and will allow you to add all sorts of capabilities to your agents.
 
-### An Example of Creating and Adding Tools
+## An Example of Creating and Adding Tools
 
 For a walkthrough of creating an Agent and adding Tools to it, visit our first tutorial on how to [‘Answer Multihop Questions with Agents’.](https://haystack.deepset.ai/tutorials/23_Answering_Multihop_Questions_with_Agents) But here’s the simple idea behind it:
 
@@ -111,7 +111,6 @@ from haystack.agents import Tool
 my_qa_tool = Tool(name="ExtractiveQATool", pipeline_or_node=my_pipeline, 
 									description="Useful for when you need to answer questions related to Yoda", 
 									output_variable="answers")
-
 ```
 
 And assuming you have an Agent, you would simply add it to its set of Tools it has access to. Or as I like to imagine it, you, as the all-seeing divinity in charge of the measly Agent, grant it the ability to (as per the description) use the “ExtractiveQATool” to “answer questions related to Yoda”.

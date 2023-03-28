@@ -58,15 +58,25 @@ Our first release of Agents will let you use several ready-made Haystack pipelin
 Imagine that we have our own data store containing information about US presidents. We create an `ExtractiveQAPipeline` for this data and supply it to our Agent as a Tool called ‘ExtractiveQATool’. When we ask the Agent a question, here’s what the output might look like:
 
 > Question: What year was the 1st president of the USA born? 
+>
 > Thought: Let's think step-by-step, I first need to find out who the first president of the USA was. 
+>
 > Tool: ExtractiveQATool 
+>
 > Tool Input: **Who was the first president of the USA?** 
+>
 > Observation: **George Washington** 
+>
 > Thought: Now that I know who the first president of the USA was, I can use the same tool to find out when he was born. 
+>
 > Tool: ExtractiveQATool 
+>
 > Tool Input: **When was George Washington born?** 
+>
 > Observation: **February 22, 1732** 
+>
 > Thought: That's the answer to the question. 
+>
 > Final Answer: 1732
 
 Pay attention to the highlighted sections of the output. Notice how the Agent goes step-by-step to come up with an action plan. Depending on what the next step is, it is able to select a Tool (in this case our ‘ExtractiveQATool’) to perform the desired action.

@@ -21,7 +21,7 @@ Let’s first talk about what an Agent is, and then see how you can start using 
 
 Long story short, a prompt is an instruction. In the world of Natural Language Processing, these instructions can often be things like ‘Answer the given query’, or ‘Summarize the following piece of text’. In recent months, new large language models (LLMs) were made available, such as GPT models like `text-davinci-003` by OpenAI. These have shown great capability in consuming and acting on increasingly complex prompts.
 
-Haystack users may already have encountered the `[PromptNode](<https://docs.haystack.deepset.ai/docs/prompt_node>)`, which works alongside an LLM that consumes instructions. You have the option to define your own prompt in a `PromptTemplate`, or use one of our defaults.
+Haystack users may already have encountered the [`PromptNode`](https://docs.haystack.deepset.ai/docs/prompt_node), which works alongside an LLM that consumes instructions. You have the option to define your own prompt in a `PromptTemplate`, or use one of our defaults.
 
 For example, [here is a prompt](https://huggingface.co/spaces/deepset/should-i-follow/blob/482bee0f12c76147028acae160814a948cf6d945/utils/haystack.py#L14) that I defined in a `PromptTemplate` for the [‘Should I follow?’ demo on Hugging Face](https://huggingface.co/spaces/deepset/should-i-follow). Take a look if you’re interested in how to use custom prompts in Haystack!
 
@@ -57,7 +57,17 @@ Our first release of Agents will let you use several ready-made Haystack pipelin
 
 Imagine that we have our own data store containing information about US presidents. We create an `ExtractiveQAPipeline` for this data and supply it to our Agent as a Tool called ‘ExtractiveQATool’. When we ask the Agent a question, here’s what the output might look like:
 
-> Question: What year was the 1st president of the USA born? Thought: Let's think step-by-step, I first need to find out who the first president of the USA was. Tool: ExtractiveQATool Tool Input: **Who was the first president of the USA?** Observation: **George Washington** Thought: Now that I know who the first president of the USA was, I can use the same tool to find out when he was born. Tool: ExtractiveQATool Tool Input: **When was George Washington born?** Observation: **February 22, 1732** Thought: That's the answer to the question. Final Answer: 1732
+> Question: What year was the 1st president of the USA born? 
+> Thought: Let's think step-by-step, I first need to find out who the first president of the USA was. 
+> Tool: ExtractiveQATool 
+> Tool Input: **Who was the first president of the USA?** 
+> Observation: **George Washington** 
+> Thought: Now that I know who the first president of the USA was, I can use the same tool to find out when he was born. 
+> Tool: ExtractiveQATool 
+> Tool Input: **When was George Washington born?** 
+> Observation: **February 22, 1732** 
+> Thought: That's the answer to the question. 
+> Final Answer: 1732
 
 Pay attention to the highlighted sections of the output. Notice how the Agent goes step-by-step to come up with an action plan. Depending on what the next step is, it is able to select a Tool (in this case our ‘ExtractiveQATool’) to perform the desired action.
 

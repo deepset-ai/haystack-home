@@ -31,7 +31,7 @@ In this case, I wanted to have a system that can tell me what type of things a T
 
 Why does this matter to understand Agents? Let’s have a look 👇
 
-### What is an Agent?
+## What is an Agent?
 
 Agents are a way to leverage this ability of LLMs to understand and act on prompts. In essence, an Agent is an LLM that has been given a very clever initial prompt. The prompt tells the LLM to break down the process of answering a complex query into a sequence of steps that are resolved one at a time.
 

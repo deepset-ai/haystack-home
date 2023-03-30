@@ -13,7 +13,7 @@ authors:
 
 Wouldn’t it be cool if you could enter a query and an LLM makes decisions on-the-fly about what resources it needs to resolve the query? For example, that it needs to search the web and retrieve relevant resources. Or that it needs to search through your company files first. That’s now possible with Agents!
 
-With the release of Haystack 1.15, we’re officially introducing the `Agent` to the Haystack ecosystem. The implementation of Agents is inspired by two papers: the [MRKL Systems paper](https://arxiv.org/abs/2205.00445) (pronounced ‘miracle’ 😉) and [the ReAct paper](https://arxiv.org/abs/2210.03629). If you like reading papers, I highly recommend these two. Here, I’ll explain how we’re introducing this functionality to Haystack.
+With the release of [Haystack 1.15](https://github.com/deepset-ai/haystack), we’re officially introducing the `Agent` to the Haystack ecosystem. The implementation of Agents is inspired by two papers: the [MRKL Systems paper](https://arxiv.org/abs/2205.00445) (pronounced ‘miracle’ 😉) and [the ReAct paper](https://arxiv.org/abs/2210.03629). If you like reading papers, I highly recommend these two. Here, I’ll explain how we’re introducing this functionality to Haystack.
 
 Let’s first talk about what an Agent is, and then see how you can start using Agents in Haystack. First, we need to briefly talk about what a ‘prompt’ is.
 

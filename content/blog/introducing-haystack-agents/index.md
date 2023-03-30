@@ -3,7 +3,7 @@ layout: blog-post
 title: 'Introducing Agents in Haystack: Make LLMs resolve complex tasks'
 description: LLMs can now make use of the right tools to resolve complex queries and tasks
 featured_image: thumbnail.png
-images: ["blog/indtroducing-haystack-agents/thumbnail.png"]
+images: ["blog/introducing-haystack-agents/thumbnail.png"]
 toc: True
 date: 2023-03-30
 last_updated: 2023-03-30

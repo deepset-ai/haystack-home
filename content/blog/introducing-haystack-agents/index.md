@@ -5,8 +5,8 @@ description: LLMs can now make use of the right tools to resolve complex queries
 featured_image: thumbnail.png
 images: ["blog/indtroducing-haystack-agents/thumbnail.png"]
 toc: True
-date: 2023-03-29
-last_updated: 2023-03-29
+date: 2023-03-30
+last_updated: 2023-03-30
 authors:
   - Tuana Celik
 ---
@@ -116,7 +116,7 @@ The same goes for `Tools`. In Haystack, you can now turn virtually any Haystack 
 
 ## An Example of Creating and Adding Tools
 
-For a walkthrough of creating an Agent and adding Tools to it, visit our first tutorial on how to [‘Answer Multihop Questions with Agents’.](https://haystack.deepset.ai/tutorials/23_Answering_Multihop_Questions_with_Agents) But here’s the simple idea behind it:
+For a walkthrough of creating an Agent and adding Tools to it, visit our first tutorial on how to [‘Answer Multihop Questions with Agents’.](https://haystack.deepset.ai/tutorials/23_answering_multihop_questions_with_agents) But here’s the simple idea behind it:
 
 First, create a tool. Let’s assume the following pipeline:
 
@@ -129,10 +129,9 @@ This could become a tool as follows:
 
 ```python
 from haystack.agents import Tool
-
 my_qa_tool = Tool(name="ExtractiveQATool", pipeline_or_node=my_pipeline, 
-									description="Useful for when you need to answer questions related to Yoda", 
-									output_variable="answers")
+                  description="Useful for when you need to answer questions related to Yoda", 
+                  output_variable="answers")
 ```
 
 Note that `description` property you supply to your Tool is really important. The descriptions will be used by your Agent to make its decision about which Tool to use for the task at hand.

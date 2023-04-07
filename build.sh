@@ -15,6 +15,10 @@ echo "Copying notebook files into ./static/downloads..."
 cp ./haystack-tutorials/tutorials/*.ipynb ./static/downloads
 ls ./static/downloads
 
+rm -rf haystack-integrations
+git clone --filter=tree:0 https://github.com/deepset-ai/haystack-integrations.git
+cp ./haystack-integrations/integrations/*.md ./content/integrations
+
 npm install
 
 # Use "localhost" if VERCEL_URL is not set

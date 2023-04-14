@@ -64,6 +64,48 @@ eventsSection:
   title: Upcoming Events
   events:
     - title: >
+        How to build a personal assistant with GPT and Haystack
+      description: >
+        Join us at the PyCon Berlin!
+        <br />
+        In this talk, you will learn how to use Haystack to chain LLMs with other models and components to overcome hallucination.
+        <br />
+        And you will walk away with a deeper understanding of how to use LLMs to build NLP products that work.
+      date: 16th April 2023
+      time: "16:20 CET"
+      location: PyCon Berlin
+      image: /images/PyCon-DE.png
+      url: https://2023.pycon.de/program/H8KMTT/
+      buttonText: Check out the Agenda
+    - title: >
+        Develop smart NLP-driven apps with Haystack
+      description: >
+        Join us at the PyCon US!
+        <br />
+        In this talk, you will learn how to build agent-driven applications with Haystack by building an agent and connecting it to other tools or knowledge bases.
+        <br />
+        By the end of the talk, you will be able to build an agent-driven application for your own use case.
+      date: 20th April 2023
+      time: "1:30 PM MDT"
+      location: PyCon US, Salt Lake City
+      image: /images/PyCon-US.png
+      url: https://us.pycon.org/2023/schedule/presentation/133/
+      buttonText: Check out the Agenda
+    - title: >
+        Building Generative AI Applications on AWS featuring deepset
+      description: >
+        Join us at the AWS Summit Berlin!
+        <br />
+        In this talk, you will learn how you can start addressing the challenges of building generative AI applications and gain insight into how to bridge generative models to your data by using Haystack.
+        <br />
+        We will also cover the AWS-powered architecture behind deepset’s enterprise ML/NLP platform.
+      date: 4th May 2023
+      time: "15:15 CET"
+      location: AWS Summit Berlin
+      image: /images/aws-berlin.png
+      url: https://aws.amazon.com/de/events/summits/berlin/agenda/?emea-event-agenda-card.sort-by=item.additionalFields.title&emea-event-agenda-card.sort-order=asc&awsf.emea-event-agenda-level=*all&awsf.emea-event-agenda-role=*all&awsf.emea-event-agenda-category=*all&awsf.emea-event-agenda-aws-industry=*all&emea-event-agenda-card.q=STP306&emea-event-agenda-card.q_operator=AND&awsf.emea-event-agenda-session-type=*all&awsf.emea-event-agenda-language=*all&awsf.emea-event-agenda-segment=*all
+      buttonText: Check out the Agenda
+    - title: >
         How to Make Audio Podcasts Searchable & NLP for Under-Represented Languages
       description: >
         We have 2 talks scheduled for the hybrid Open NLP Meetup:

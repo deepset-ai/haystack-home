@@ -64,7 +64,7 @@ eventsSection:
   title: Upcoming Events
   events:
     - title: >
-        How to build a personal assistant with GPT and Haystack
+        Building a Personal Assistant with GPT and Haystack
       description: >
         Join us at the PyCon Berlin!
         <br />
@@ -78,7 +78,7 @@ eventsSection:
       url: https://2023.pycon.de/program/H8KMTT/
       buttonText: Check out the Agenda
     - title: >
-        Develop smart NLP-driven apps with Haystack
+        Building LLM-based Agents
       description: >
         Join us at the PyCon US!
         <br />
@@ -92,7 +92,7 @@ eventsSection:
       url: https://us.pycon.org/2023/schedule/presentation/133/
       buttonText: Check out the Agenda
     - title: >
-        Building Generative AI Applications on AWS featuring deepset
+        Building Generative AI Applications on AWS Featuring deepset
       description: >
         Join us at the AWS Summit Berlin!
         <br />

@@ -1,0 +1,46 @@
+{{/*  Integration page sidebar  */}}
+<aside class="toc-sidebar">
+  <div class="accordions">
+    <span class="sidebar-title">Integrations</span>
+    {{ $currentPage := . }}
+
+    {{/*  Get all the integration types  */}}
+    {{ $types := slice }}
+    {{ range where .Site.Pages "Layout" "integration" }}
+      {{ if .Params.type }}
+        {{ if not (in $types .Params.type) }}
+          {{ $types = $types | append .Params.type }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{/*  Accordions  */}}
+    {{ range $types }}
+      <details
+        class="accordion-js"
+        {{ if eq $currentPage.Params.type . }}open{{ end }}
+      >
+        <summary class="accordion-title">
+          <div class="accordion-title-child">{{ . }}</div>
+        </summary>
+
+        <ul class="content" role="list">
+          {{ range where (where $.Site.Pages "Section" "integrations")  ".Params.type" . }}
+            <li>
+              {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
+                <p>{{ .Params.name }}</p>
+              {{ else }}
+                <a
+                  class="tutorial-card category-{{ lower .Params.category }}"
+                  href="{{ .RelPermalink }}"
+                >
+                  {{ .Params.name }}
+                </a>
+              {{ end }}
+            </li>
+          {{ end }}
+        </ul>
+      </details>
+    {{ end }}
+  </div>
+</aside>

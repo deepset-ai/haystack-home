@@ -31,10 +31,10 @@ The latest addition to the Haystack DocumentStore family is the **`QdrantDocumen
 
 Some of the advantages of using Qdrant with Haystack include:
 
-- Efficient search and retrieval of high-dimensional vectors.
-- mmap support for HNSW graph storage.
-- Filtering capabilities integrated directly into the vector search phase.
-- Constraints based on metadata attributes.
+- Efficient search and retrieval of high-dimensional vectors
+- mmap support for HNSW graph storage
+- Filtering capabilities integrated directly into the vector search phase
+- Constraints based on metadata attributes
 - Reducing the memory footprint up to 4 times by using [Scalar Quantization](https://qdrant.tech/articles/scalar-quantization/)
 - Storing even a [million vectors with a small amount of RAM](https://qdrant.tech/articles/memory-consumption/)
 - Open source! 😍
@@ -98,4 +98,4 @@ Once you have initialized the document store, you can write your documents using
 document_store.write_documents(docs)
 ```
 
-That's it! For more examples and documentation on using Qdrant with Haystack, refer to the [qdrant-haystack](https://github.com/qdrant/qdrant-haystack) GitHub repository and if you have any questions, join Haystack community on [Discord](https://discord.com/invite/VBpFzsgRVF).
+That's it! For more examples and documentation on using Qdrant with Haystack, refer to the [qdrant-haystack](https://github.com/qdrant/qdrant-haystack) GitHub repository, and if you have any questions, join Haystack community on [Discord](https://discord.com/invite/VBpFzsgRVF).

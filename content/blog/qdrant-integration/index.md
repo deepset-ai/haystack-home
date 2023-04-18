@@ -76,7 +76,7 @@ from qdrant_haystack.document_stores import QdrantDocumentStore
 from qdrant_client.http import models
 
 document_store = QdrantDocumentStore(
-    ":memory:", 
+    "http://localhost:6333", 
     index="Document",
     embedding_dim=512,
     recreate_index=True,

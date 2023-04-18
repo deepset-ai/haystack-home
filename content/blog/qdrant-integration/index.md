@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 title: 'New DocumentStore Integration for Haystack: QdrantDocumentStore'
-description: Learn about QdrantDocumentStore, it's advantages, and how to use it with Haystack.
+description: Learn about QdrantDocumentStore, its advantages, and how to use it with Haystack.
 featured_image: thumbnail.png
 images: ["blog/qdrant-integration/thumbnail.png"]
 toc: True

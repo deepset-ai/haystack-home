@@ -5,7 +5,7 @@ description: Learn about QdrantDocumentStore, it's advantages, and how to use it
 featured_image: thumbnail.png
 images: ["blog/qdrant-integration/thumbnail.png"]
 toc: True
-date: 2023-04-16
+date: 2023-04-18
 last_updated: 2023-04-18
 authors:
   - Bilge Yucel

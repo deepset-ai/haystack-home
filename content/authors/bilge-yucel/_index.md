@@ -20,4 +20,7 @@ socials:
     - name: Twitter
       url: https://twitter.com/bilgeycl
       icon: /images/icons/twitter-dark.svg
+    - name: GitHub
+      url: https://github.com/bilgeyucel
+      icon: /images/icons/github.svg
 ---

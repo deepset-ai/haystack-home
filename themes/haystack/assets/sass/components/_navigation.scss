@@ -14,7 +14,8 @@
   }
 
   // Current page link
-  li.active > a, a.active {
+  li.active > a,
+  a.active {
     color: var(--color-yellow) !important;
   }
 
@@ -23,7 +24,17 @@
     margin: 0;
   }
 
-  
+  .menu-item-tag {
+    position: absolute;
+    top: -0.75rem;
+    right: -0.75rem;
+    font-size: 0.75rem;
+    padding: 0.125rem 0.25rem;
+    line-height: 1;
+    background-color: var(--color-yellow);
+    color: var(--color-dark-blue);
+    border-radius: 0.125rem;
+  }
 }
 
 /**
@@ -47,6 +58,10 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+  }
+
+  li > a {
+    position: relative;
   }
 
   ul.sub-menu {
@@ -75,7 +90,6 @@
   pointer-events: auto;
 }
 
-
 /**
  * Desktop nav
  */
@@ -86,6 +100,10 @@
     display: block;
   }
 
+  li, li .button-wrapper {
+    position: relative;
+  }
+
   //Main menu list
   > ul {
     display: flex;
@@ -94,7 +112,6 @@
 
     // Dropdown menu parent
     li.dropdown-menu {
-      position: relative;
       display: flex;
 
       &:hover {
@@ -171,7 +188,6 @@
 
 // Dark
 .header-dark .desktop-nav {
-
   li > a:not(.active) {
     color: var(--color-light-grey);
 
@@ -180,7 +196,8 @@
     }
   }
 
-  li.active > a, a.active {
+  li.active > a,
+  a.active {
     color: var(--color-yellow);
   }
 
@@ -190,7 +207,6 @@
     &:hover {
       background-color: rgba($color: #{var(--color-green-rgb)}, $alpha: 0.9);
     }
-
   }
 
   li.dropdown-menu {

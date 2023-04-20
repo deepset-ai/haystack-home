@@ -1,4 +1,4 @@
-{{/* Tutorials page */}}
+{{/* Integrations page */}}
 {{ define "main" }}
   <div class="grid-page">
     {{/* Hero */}}
@@ -9,16 +9,15 @@
         <div class="inner inner-top">
           {{/* Section title */}}
           <h2 class="section-title">
-            {{ len (where .Site.Pages "Layout" "tutorial") }} tutorials for
-            <span>all</span> levels
+            {{ len (where .Site.Pages "Layout" "integration") }} Total Integrations
           </h2>
 
           {{/* Sorting options / Filters */}}
           <div class="grid-page-options">
             <div class="filters">
               {{/* Search */}}
-              {{/*  <div class="search-wrapper">
-                <input type="text" placeholder="Search tutorials" />
+              <div class="search-wrapper">
+                <input id="search" type="text" placeholder="Search integrations" oninput="filterAndSort();" />
                 <div class="search-icon">
                   <svg
                     width="20"
@@ -33,37 +32,7 @@
                     />
                   </svg>
                 </div>
-              </div>  */}}
-
-              {{/* Levels filter */}}
-              <div class="select-wrapper">
-                <select id="level-select" onchange="filterAndSort();">
-                  <option value="all">All levels</option>
-                  <option value="beginner">Beginner</option>
-                  <option value="intermediate">Intermediate</option>
-                  <option value="advanced">Advanced</option>
-                </select>
               </div>
-
-              {{/* Tasks filter */}}
-              {{/*  <div class="select-wrapper">
-                <select id="task-select" onchange="filterAndSort();">
-                  <option value="all">All tasks</option>
-
-                  {{ $tasks := slice }}
-                  {{ range where .Site.Pages "Layout" "tutorial" }}
-                    {{ if .Params.task }}
-                      {{ if not (in $tasks .Params.task) }}
-                        {{ $tasks = $tasks | append .Params.task }}
-                      {{ end }}
-                    {{ end }}
-                  {{ end }}
-
-                  {{ range $tasks }}
-                    <option value="{{ . }}">{{ . }}</option>
-                  {{ end }}
-                </select>
-              </div>  */}}
 
               {{/* Reset filters btn */}}
               <button class="reset-filters-btn" onclick="resetFilters();">
@@ -71,31 +40,31 @@
               </button>
             </div>
 
-            <div>
-              {{/* Sorting */}}
-              <div class="sort-wrapper">
-                <label for="sort">Sort By:</label>
-                <div class="select-wrapper">
-                  <select name="sort" id="sort-select" onchange="filterAndSort();">
-                    <option value="level">Level</option>
-                    <option value="updated">Last Updated</option>
-                    <option value="created">Newest</option>
-                  </select>
-                </div>
-              </div>
+            {{/* Type filter */}}
+            <div class="select-wrapper">
+              <select id="type-select" onchange="filterAndSort();">
+                <option value="all">All Integrations</option>
+
+                {{ $types := slice }}
+                {{ range where .Site.Pages "Layout" "integration" }}
+                  {{ if .Params.type }}
+                    {{ if not (in $types .Params.type) }}
+                      {{ $types = $types | append .Params.type }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+
+                {{ range $types }}
+                  <option value="{{ . }}">{{ . }}</option>
+                {{ end }}
+              </select>
             </div>
           </div>
 
-          {{/* Tutorials grid */}}
+          {{/* Integrations grid */}}
           <div class="grid-page-grid">
-            {{/*  Featured tutorials  */}}
-            {{ range where (where .Site.Pages "Params.featured" true) "Layout" "tutorial" }}
-              {{ partial "tutorial-card" . }}
-            {{ end }}
-
-            {{/*  Other tutorials  */}}
-            {{ range where (where .Site.Pages "Params.featured" "!=" true) "Layout" "tutorial" }}
-              {{ partial "tutorial-card" . }}
+            {{ range where .Site.Pages "Layout" "integration" }}
+              {{ partial "integration-card" . }}
             {{ end }}
           </div>
 
@@ -141,57 +110,43 @@
   </div>
 
   <script>
-    {{/*  Get the tutorials  */}}
-    const tutorialCards = Array.from(
+    {{/*  Get the integrations  */}}
+    const integrationCards = Array.from(
       document.querySelectorAll(".grid-page-card")
     );
 
     const filterAndSort = () => {
-      let tutorials = [...tutorialCards]
-      {{/*  Get selected filter, sort, and task options   */}}
-      const selectedLevel = document.querySelector("#level-select").value;
-      const selectedSort = document.querySelector("#sort-select").value;
-      {{/*  const selectedTask = document.querySelector("#task-select").value;  */}}
+      let integrations = [...integrationCards]
+      const selectedType = document.querySelector("#type-select").value;
+      const searchTerm = document.querySelector("#search").value;
 
-      {{/*  Filter by level  */}}
-      if (selectedLevel !== "all") {
-        tutorials = tutorials.filter(t => t.dataset.level === selectedLevel)
+      {{/*  Filter by type  */}}
+      if (selectedType !== "all") {
+        integrations = integrations.filter(t => t.dataset.type === selectedType)
       }
 
-      {{/*  Filter by task  */}}
-      {{/*  if (selectedTask !== "all") {
-        tutorials = tutorials.filter(t => t.dataset.task === selectedTask)
-      }  */}}
+      {{/*  Filter by search  */}}
+      if (searchTerm) {
+        const searchTermsArray = searchTerm.toLowerCase().split(" ").filter(term => term);
 
-      {{/*  Sorting  */}}
-      if (selectedSort === "created" || selectedSort === "updated") {
-        tutorials = tutorials.sort((a, b) => {
-          const aFeatured = a.dataset.featured ? 1 : -1;
-          const bFeatured = b.dataset.featured ? 1 : -1;
-          if (aFeatured !== bFeatured) {
-            return bFeatured - aFeatured;
-          }
-
-          const aDate = new Date(a.dataset[selectedSort]);
-          const bDate = new Date(b.dataset[selectedSort]);
-          return bDate - aDate;
+        integrations = integrations.filter(i => {
+          let text = i.innerText.toLowerCase();
+          return searchTermsArray.every(term => text.includes(term));
         });
       }
 
-
       {{/*  Update section title  */}}
-      document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
+      document.querySelector(".section-title").innerHTML = `${integrations.length} ${selectedType === "all" ? "Total" : selectedType} Integration${integrations.length === 1 ? "":"s"}`
 
       document.querySelector(".grid-page-grid").innerHTML = ""
-      tutorials.forEach((e) =>
+      integrations.forEach((e) =>
         document.querySelector(".grid-page-grid").appendChild(e)
       );
     }
 
     const resetFilters = () => {
-      document.querySelector("#level-select").value = "all";
-      document.querySelector("#sort-select").value = "level";
-      {{/*  document.querySelector("#task-select").value = "all";  */}}
+      document.querySelector("#type-select").value = "all";
+      document.querySelector("#search").value = "";
       filterAndSort();
     }
 

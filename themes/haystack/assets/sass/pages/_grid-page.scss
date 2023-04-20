@@ -1,5 +1,5 @@
-// Tutorials listing Page
-.tutorials {
+// Tutorials & Integrations grid page
+.grid-page {
   h2 {
     margin-bottom: 1rem;
 
@@ -8,11 +8,11 @@
     }
   }
 
-  .tutorials-content {
+  .grid-page-content {
     background-color: var(--color-bg-light-grey);
   }
 
-  .tutorial-options {
+  .grid-page-options {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -130,7 +130,7 @@
   }
 
   // Grid
-  .tutorial-grid {
+  .grid-page-grid {
     margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
@@ -138,7 +138,7 @@
   }
 
   // Tutorial cards
-  .tutorial-card {
+  .grid-page-card {
     background-color: var(--color-white);
     padding: 1.5rem;
     display: flex;
@@ -148,15 +148,15 @@
     border-radius: 0.5rem;
     transition: box-shadow var(--transition-fast) var(--ease);
 
-    .tutorial-card-header {
+    .grid-page-card-header {
       display: flex;
       flex-wrap: wrap;
       gap: 0.25rem;
     }
 
-    .tutorial-card-header > div {
+    .grid-page-card-header > div {
       font-size: 0.75rem;
-      padding: 0.25rem 0.5rem;
+      padding: 0.25rem 0.45rem;
       background-color: var(--color-light-grey);
       color: var(--color-dark-blue);
       text-transform: capitalize;
@@ -194,8 +194,17 @@
     }
   }
 
+  // Integration cards
+  .grid-page-card.integration-card {
+    background-color: var(--color-bg-dark-blue);
+
+    h3, p {
+      color: var(--color-white);
+    }
+  }
+
   // Tutorial footer
-  .tutorial-footer {
+  .grid-page-footer {
     margin-top: 2rem;
     background-color: var(--color-light-grey);
     border-radius: 0.5rem;

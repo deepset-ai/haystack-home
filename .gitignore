@@ -46,4 +46,8 @@ haystack-tutorials
 content/tutorials
 !content/tutorials/_index.md
 
+haystack-integrations
+content/integrations/*.md
+!content/integrations/_index.md
+
 static/downloads

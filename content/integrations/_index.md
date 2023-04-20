@@ -5,7 +5,8 @@ description: Learn how to use Haystack with our integrations.
 
 subtitle: |
   Haystack Integrations created and maintained by the community or the deepset team 🤍 
-  Use them with Haystack Pipelines or Agents.
+  
+  Filter for Custom Nodes, Document Stores or Agent Tools
   
 contribute:
   title: Want to contribute an integration?

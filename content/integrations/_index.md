@@ -4,7 +4,8 @@ title: Integrations
 description: Learn how to use Haystack with our integrations.
 
 subtitle: |
-  Here you can find Haystack Integrations created by the community or the deepset team. They can be used with Haystack Pipelines or Agents. These are additional packages or projects that are installed separately to Haystack. They are maintained by the authors mentioned in each page.
+  Haystack Integrations created and maintained by the community or the deepset team 🤍 
+  Use them with Haystack Pipelines or Agents.
   
 contribute:
   title: Want to contribute an integration?

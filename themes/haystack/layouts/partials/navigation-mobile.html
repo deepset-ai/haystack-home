@@ -32,7 +32,14 @@
                   active
                 {{ end }}"
               >
-                <a href="{{ .URL }}" {{ if strings.HasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+              
+                <a href="{{ .URL }}" {{ if strings.HasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>
+                  {{ with .Params.tag }}
+                    <span span class="menu-item-tag">{{ . }}</span>
+                  {{ end }}
+
+                  {{ .Name }}
+                </a>
               </li>
             {{ end }}
           </ul>
@@ -40,7 +47,13 @@
       {{ else }}
       {{/*  If no children, add a link  */}}
         <li>
-          <a href="{{ .URL }}" class="{{ if (in $currentPage.RelPermalink .URL) }}active{{ end }}" {{ if strings.HasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+          <a href="{{ .URL }}" class="{{ if (in $currentPage.RelPermalink .URL) }}active{{ end }}" {{ if strings.HasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>
+            {{ with .Params.tag }}
+              <span class="menu-item-tag">{{ . }}</span>
+            {{ end }}
+            
+            {{ .Name }}
+          </a>
         </li>
       {{ end }}
     {{ end }}

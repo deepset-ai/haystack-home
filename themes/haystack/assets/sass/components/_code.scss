@@ -28,3 +28,11 @@ pre {
     font-size: var(--text-base);
   }
 }
+
+// Fixes iOS font sizing anomaly - https://github.com/adityatelange/hugo-PaperMod/issues/828
+code {
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}

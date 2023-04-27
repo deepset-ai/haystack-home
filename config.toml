@@ -27,7 +27,7 @@ paginatePath = "/"
 
 [security]
   [security.funcs]
-    getenv = ["^HUGO_", "ORBIT_API_KEY", "GITHUB_ACCESS_TOKEN", "GOOGLE_TAG_ANALYTICS"]
+    getenv = ["^HUGO_", "ORBIT_API_KEY", "GITHUB_ACCESS_TOKEN", "GOOGLE_TAG_ANALYTICS", "DC_API_KEY"]
 
 [markup]
   # Code blocks

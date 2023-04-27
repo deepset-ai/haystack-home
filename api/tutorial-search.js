@@ -4,7 +4,7 @@ module.exports = async (request, response) => {
         headers: {
           accept: 'application/json',
           'content-type': 'application/json',
-          authorization: `Bearer ${DC_API_KEY}`
+          authorization: `Bearer ${process.env.DC_API_KEY}`
         },
         body: JSON.stringify({debug: false, queries: [request.query.query]})
       };

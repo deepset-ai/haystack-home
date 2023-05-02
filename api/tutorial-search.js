@@ -8,15 +8,17 @@ export default async function tutorialSearch(request, response) {
         },
         body: JSON.stringify({debug: false, queries: [request.query.query]})
       };
-    const dcResponse = await fetch(`https://api.cloud.deepset.ai/api/v1/workspaces/${process.env.DC_WORKSPACE_NAME}/pipelines/${process.env.DC_PIPELINE_NAME}/search`, options);
-     
-    if (dcResponse.status === 200) {
-        const data = await dcResponse.text();
-        response.status(200).send(data)
-    } else { 
-        const error = await dcResponse.text();
-        console.error(error) 
+
+    try {
+      const dcResponse = await fetch(`https://api.cloud.deepset.ai/api/v1/workspaces/${process.env.DC_WORKSPACE_NAME}/pipelines/${process.env.DC_PIPELINE_NAME}/search`, options);
+      const result = await dcResponse.text();
+      
+      if (dcResponse.status === 200) {
+        response.status(200).send(result)
+      } else { 
         response.status(dcResponse.status).send(statusText)
-        // TODO: trace this 
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
   }

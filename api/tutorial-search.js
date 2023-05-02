@@ -19,7 +19,7 @@ export default async function tutorialSearch(request, response) {
     } else { 
         const error = await dcResponse.text();
         console.error(error) 
-        response.status(error.status).send(error)
+        response.status(dcResponse.status).send(statusText)
         // TODO: trace this 
     }
   }

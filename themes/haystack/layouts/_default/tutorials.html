@@ -259,15 +259,19 @@
       searchModalCards.innerHTML = ""
       searchModal.classList.add("loading")
 
-      let response = await fetch(`/api/tutorial-search?query=${query}`);
-
-      if (response.status === 200) {
-        const tutorialData = await response.text();
-        console.log(tutorialData)
-      } else { 
-        const errorText = await response.text();
-        console.error(errorText)
+      try {
+        const response = await fetch(`/api/tutorial-search?query=${query}`);
+        const result = await response.text();
+        
+        if (response.status === 200) {
+          console.log(result)
+        } else { 
+          console.error(result)
+        }
+      } catch (error) {
+        console.error("Error:", error);
       }
+
 
       const res = {
         "query_id": "XXX",

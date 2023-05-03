@@ -261,12 +261,12 @@
 
       try {
         const response = await fetch(`/api/tutorial-search?query=${query}`);
-        const result = await response.text();
-        
+
         if (response.status === 200) {
+          const result = await response.text();
           console.log(result)
-        } else { 
-          console.error(result)
+        } else {
+          console.error(response.statusText)
         }
       } catch (error) {
         console.error("Error:", error);

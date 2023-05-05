@@ -71,7 +71,8 @@ eventsSection:
         In this talk, you will learn how to use Haystack to chain LLMs with other models and components to overcome hallucination.
         <br />
         And you will walk away with a deeper understanding of how to use LLMs to build NLP products that work.
-      date: 16th April 2023
+      # date: 16th April 2023
+      date: "2023-04-16"
       time: "16:20 CET"
       location: PyCon Berlin
       image: /images/PyCon-DE.png
@@ -85,7 +86,8 @@ eventsSection:
         In this talk, you will learn how to build agent-driven applications with Haystack by building an agent and connecting it to other tools or knowledge bases.
         <br />
         By the end of the talk, you will be able to build an agent-driven application for your own use case.
-      date: 20th April 2023
+      # date: 20th April 2023
+      date: "2023-04-20"
       time: "1:30 PM MDT"
       location: PyCon US, Salt Lake City
       image: /images/PyCon-US.png
@@ -99,7 +101,8 @@ eventsSection:
         In this talk, you will learn how you can start addressing the challenges of building generative AI applications and gain insight into how to bridge generative models to your data by using Haystack.
         <br />
         We will also cover the AWS-powered architecture behind deepset’s enterprise ML/NLP platform.
-      date: 4th May 2023
+      # date: 4th May 2023
+      date: "2023-05-04"
       time: "15:15 CET"
       location: AWS Summit Berlin
       image: /images/aws-berlin.png
@@ -111,7 +114,8 @@ eventsSection:
         We have 2 talks scheduled for the hybrid Open NLP Meetup:
         <br /> **1. How to Make Audio Podcasts Searchable** *by Nicolas Delahousse from ML6*
         <br /> **2. NLP for Under-Represented Languages** *by Sebastian Ruder from Google*
-      date: 11th May 2023
+      # date: 11th May 2023
+      date: "2023-05-11"
       time: "19:00 CET"
       location: Zoom and AI Campus, Berlin
       image: /images/meetup-may.png

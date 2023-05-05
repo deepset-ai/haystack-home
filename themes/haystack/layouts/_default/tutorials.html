@@ -254,12 +254,24 @@
     });
 
     {{/*  Search  */}}
-    const searchTutorials = async() => {
+    const searchTutorials = async (query) => {
       searchModal.classList.remove("default", "not-found")
       searchModalCards.innerHTML = ""
       searchModal.classList.add("loading")
 
-      await sleep(2000)
+      try {
+        const response = await fetch(`/api/tutorial-search?query=${query}`);
+
+        if (response.status === 200) {
+          const result = await response.text();
+          console.log(result)
+        } else {
+          console.error(response.statusText)
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+
 
       const res = {
         "query_id": "XXX",
@@ -388,7 +400,7 @@
 
     searchModalInput.onkeydown = (e) => {
       if (e.keyCode == 13) {
-        searchTutorials()
+        searchTutorials(searchModalInput.value)
       }
     }
 

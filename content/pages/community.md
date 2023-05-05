@@ -69,7 +69,7 @@ eventsSection:
         We have 2 talks scheduled for the hybrid Open NLP Meetup:
         <br /> **1. How to Make Audio Podcasts Searchable** *by Nicolas Delahousse from ML6*
         <br /> **2. NLP for Under-Represented Languages** *by Sebastian Ruder from Google*
-      date: 11th May 2023
+      date: "2023-05-11"
       time: "19:00 CET"
       location: Zoom and AI Campus, Berlin
       image: /images/meetup-may.png
@@ -79,7 +79,7 @@ eventsSection:
         Building Applications with LLM-based Agents
       description: >
         In this webinar, Julian will explain the concept of Agents, walk you through code examples, and show you how to create your own application with custom tools using Haystack.
-      date: 16th May 2023
+      date: "2023-05-16"
       time: "17:00 CET"
       location: Zoom
       image: /images/webinar-agents.png

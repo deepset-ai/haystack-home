@@ -6,6 +6,10 @@
       {{/* If nav item has children, add a dropdown menu */}}
       {{ if .HasChildren }}
         <li class="dropdown-menu">
+          {{ with .Params.tag }}
+            <span class="menu-item-tag">{{ . }}</span>
+          {{ end }}
+
           {{ $childSlice := slice }}
           {{ range .Children }}
             {{ $childSlice = $childSlice | append .Name }}
@@ -52,6 +56,10 @@
                       ></path>
                     </svg>
                     <div class="text-wrapper">
+                      {{ with .Params.tag }}
+                        <span class="menu-item-tag">{{ . }}</span>
+                      {{ end }}
+
                       {{ .Name }}
                     </div>
                   </div>
@@ -69,7 +77,12 @@
             {{ if strings.HasPrefix .URL "http" }}
               target="_blank" rel="noopener"
             {{ end }}
-            >{{ .Name }}</a
+            >
+            {{ with .Params.tag }}
+              <span class="menu-item-tag">{{ . }}</span>
+            {{ end }}
+            
+            {{ .Name }}</a
           >
         </li>
       {{ end }}

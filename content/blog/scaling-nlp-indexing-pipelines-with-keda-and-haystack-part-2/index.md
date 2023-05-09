@@ -16,7 +16,8 @@ In the first part of this article series, we discussed the power of retrieval-au
 
 In this part, we will explore how to  **deploy an indexing consumer to Kubernetes**  and  **how to autoscale it using KEDA**. This will allow us to efficiently add text and embeddings to our vector database that can power a retrieval augmented LLM search engine  [like this](https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3).
 
-We will use the  [architecture described in the first part](blog/scaling-nlp-indexing-pipelines-with-keda-and-haystack-part-1), which involves queuing files to be indexed on AWS SQS and consuming them in parallel using Haystack pipelines. Let’s start deploying and scaling!
+We will use the  [architecture described in the first part](scaling-nlp-indexing-pipelines-with-keda-and-haystack-part-1), which involves queuing files to be indexed on AWS SQS and consuming them in parallel using Haystack pipelines. Let’s start deploying and scaling!
+
 
 # Deployment on Kubernetes and scaling with KEDA
 

@@ -20,6 +20,7 @@ But how do we create a service that can turn files into searchable documents? An
 
 > This tutorial only covers turning files into text snippets, embeddings or arbitrary preprocessed data. We will not cover the augmented LLM application itself. If you are interested in creating such applications, feel free to use this tutorial:  [https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3](https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3)
 
+
 # Natural language processing basics
 
 The idea behind using documents for search is to fill in the gaps in the model’s knowledge, such as the latest news. This is known as Retrieval-Augmented Generation (RAG), which means that in addition to its own knowledge, the model also uses the documents you provide to generate answers. You can find a step-by-step tutorial on how to create a search engine that uses preprocessed documents by this tutorial  [here](https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3).
@@ -421,4 +422,4 @@ We have a stateless service that processes indexing requests asynchronously and 
 
 # Conclusion and next steps
 
-This article explains how to create a stateless consumer application that turns files into documents. We learned that we can use this application with different models, preprocessors, and file types which are defined in a single configuration file using Haystack. In order to ship this application to a production-ready deployment, we will deploy this service on Kubernetes and define custom autoscaling in  [the next chapter](blog/scaling-nlp-indexing-pipelines-with-keda-and-haystack-part-2).
+This article explains how to create a stateless consumer application that turns files into documents. We learned that we can use this application with different models, preprocessors, and file types which are defined in a single configuration file using Haystack. In order to ship this application to a production-ready deployment, we will deploy this service on Kubernetes and define custom autoscaling in  [the next chapter](scaling-nlp-indexing-pipelines-with-keda-and-haystack-part-2).

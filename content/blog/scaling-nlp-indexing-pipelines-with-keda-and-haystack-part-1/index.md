@@ -20,18 +20,16 @@ But how do we create a service that can turn files into searchable documents? An
 
 > This tutorial only covers turning files into text snippets, embeddings or arbitrary preprocessed data. We will not cover the augmented LLM application itself. If you are interested in creating such applications, feel free to use this tutorial:  [https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3](https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3)
 
-
 # Natural language processing basics
 
 The idea behind using documents for search is to fill in the gaps in the model’s knowledge, such as the latest news. This is known as Retrieval-Augmented Generation (RAG), which means that in addition to its own knowledge, the model also uses the documents you provide to generate answers. You can find a step-by-step tutorial on how to create a search engine that uses preprocessed documents by this tutorial  [here](https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3).
 
-![](1.png)
-
-Indexing and query pipeline for retrieval augmented generation
+![Indexing and query pipeline for retrieval augmented generation](1.png)
 
 The diagram illustrates the process of passing text files (🔡) through a model (🔮) that generates vectors and stores them in a vector database, such as  [Opensearch](https://opensearch.org/),  [Pinecone](https://www.pinecone.io/), or  [Weaviate](https://weaviate.io/). Later, these documents are fed to the model and the resulting output is provided to the user.
 
 Now, let’s discuss how to efficiently generate these documents and input them into a vector database.
+
 
 # How to scale indexing applications
 
@@ -68,9 +66,7 @@ This chapter will guide you through the process of creating an application that 
 
 These  _“consumers”_  are the core service of our architecture. We will deploy them to Kubernetes and scale them based on the queue length with KEDA.
 
-![](3.png)
-
-Single indexing consumer with AWS infrastructure
+![Single indexing consumer with AWS infrastructure](3.png)
 
 > If you are only interested in scaling these applications using KEDA and do not need to know the details of this service, you can use the Docker image  [arzelaascoli/keda-haystack-consumer:latest](https://hub.docker.com/repository/docker/arzelaascoli/keda-haystack-consumer/general)  in the next section and skip writing the Python code.
 

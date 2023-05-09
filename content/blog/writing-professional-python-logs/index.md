@@ -34,11 +34,11 @@ logging.error("Failed uploading file with name %s. Current retry: %s.", file_nam
 ```
 Basically, there is nothing wrong with this code snippet, which prints the following logs.
 
-![](1.png)
+![Native python logger](1.png)
 
-Native python logger
 
 These two log lines describe what is happening during a request. However, we could improve the notation of the retries, add more context and make the log lines more readable.
+
 
 # Classic logging challenges
 
@@ -89,9 +89,11 @@ logger.error("Failed uploading file.", file_name=file_name,retries=retries)
 ```
 The first thing we might notice is that the variables are not longer loaded to the string but rather  `kwargs`  of the  `debug`  and  `error`  methods. This not only adds the values of these variables to the logger but also binds the key names to the log message. The resulting log lines will look like this:
 
+
 ![](2.png)
 
 If we compare this to the solution we had before, we can see that the file name and retries are added to the log lines by mapping key values instead of inserting the values as a raw string.
+
 
 ![](1.png)
 
@@ -113,6 +115,7 @@ log.error("Failed uploading file.", retries=retries)
 This allows us to remove the file name from all the log lines and move it to the top where it is just called once. Structlog will take care of adding it to each log line.
 
 **#2 Implicitly binding context variables**, by calling structlog.contextvars.bind_contextvars(…) — This function uses  [context variables](https://docs.python.org/3/library/contextvars.html)  that are used whenever the logger within the same thread prints log messages. A code snippet that prints the same log messages using context variables might look like this:
+
 ```python
 # /controller/file.py  
   
@@ -126,6 +129,7 @@ logger.debug("Start uploading file.", retries=0)
 logger.error("Failed uploading file.", retries=retries)
 ```
 However, our scenario is  **not the preferred use case**  for using context variables to add values to your logger. As we learned in the logging challenges, contextual data is often missing in the classic approach. Before processing the file, we assume that an authentication and authorization mechanism is in place to validate whether a user has access to the endpoint. In a framework like  [FastAPI](https://fastapi.tiangolo.com/), this workload is handled in middleware. Since we have already fetched the user ID here to authenticate the request, let’s add this key-value pair to the logger:
+
 ```python
 # /auth/middleware.py   
   
@@ -204,17 +208,15 @@ structlog.configure(
 
 After setting the environment variable  `DEV_LOGS`  to  `False`  our log lines are printed as raw JSONs.
 
-![](4.png)
+![Logs parsed as dictionaries](4.png)
 
-Logs parsed as dictionaries
 
 This format can now be used in your monitoring system and easily be parsed and aggregated since its not longer a stream of text, but rather a stream of easy to parse JSONs.
 
 In our local environment we can still use the old colored log lines:
 
-![](5.png)
+![Pretified logs](5.png)
 
-Pretified logs
 
 # Limitations
 
@@ -228,6 +230,7 @@ To increase consistency in our codebase, we use a set of default naming conventi
 4.  `<custom_usecase_specific_field>`  ←  **(optional)** Sometimes, you may need to add case-specific information. In such cases, you can use additional arbitrary keys. However, it is recommended to follow the naming conventions from 1–3, if possible.
 
 This is for sure not the only possible naming, but the one that works for us best.
+
 
 # Summary
 

@@ -421,4 +421,4 @@ We have a stateless service that processes indexing requests asynchronously and 
 
 # Conclusion and next steps
 
-This article explains how to create a stateless consumer application that turns files into documents. We learned that we can use this application with different models, preprocessors, and file types which are defined in a single configuration file using Haystack. In order to ship this application to a production-ready deployment, we will deploy this service on Kubernetes and define custom autoscaling in  [the next chapter](https://medium.com/@ArzelaAscoli/scaling-nlp-indexing-pipelines-with-keda-and-haystack-part-2-deployment-8750dc96171f).
+This article explains how to create a stateless consumer application that turns files into documents. We learned that we can use this application with different models, preprocessors, and file types which are defined in a single configuration file using Haystack. In order to ship this application to a production-ready deployment, we will deploy this service on Kubernetes and define custom autoscaling in  [the next chapter](blog/scaling-nlp-indexing-pipelines-with-keda-and-haystack-part-2).

@@ -39,14 +39,14 @@ We will need to set up a local Kubernetes cluster and deploy a list of services 
 
 To begin, create a new Kubernetes cluster named  `haystack-keda-cluster`  using k3d.
 
-```
+```bash
 k3d cluster create haystack-keda-cluster  
 # check the the status via: kubectl cluster-info
 ```
 
 Next, we will create a namespace called  `indexing`  that we will use to deploy our services.
 
-```
+```bash
 kubectl create namespace indexing
 ```
 
@@ -54,14 +54,14 @@ kubectl create namespace indexing
 
 To set up LocalStack, add the helm chart and install LocalStack in the  `indexing`  namespace:
 
-```
+```bash
 helm repo add localstack https://localstack.github.io/helm-charts  
 helm install localstack localstack/localstack --namespace indexing
 ```
 
 We will repeat the same steps with KEDA.
 
-```
+```bash
 helm repo add kedacore https://kedacore.github.io/charts  
 helm install keda kedacore/keda --namespace indexing
 ```
@@ -76,13 +76,13 @@ Our indexing consumers will connect to queues on LocalStack and download files f
 
 To create a queue and a bucket, we will use  [the same shell script](https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/scripts/sqs_bucket_bootstrap.sh)  that we used in our development environment with Docker Compose. To run the script from within the container, pipe the script into the  `kubectl exec`  command:
 
-```
+```bash
 cat ./scripts/sqs_bucket_bootstrap.sh | kubectl exec -i -n indexing deployment/localstack -- /bin/bash
 ```
 
 If we fetch the logs via  `kubectl logs -f deployment/localstack -c localstack -n indexing`, we should see that a queue and a bucket were created.
 
-```
+```bash
 2023-04-22T15:19:34.166  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS sqs.CreateQueue => 200  
 2023-04-22T15:19:34.533  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS s3.CreateBucket => 200
 ```
@@ -91,7 +91,7 @@ If we fetch the logs via  `kubectl logs -f deployment/localstack -c localstack -
 
 Now that we have LocalStack and KEDA deployed to our Kubernetes cluster, we can start deploying our indexing consumer. The indexing consumers are deployed as Kubernetes deployments by using a deployment file  `deployment-consumer.yaml`.
 
-```
+```yaml
 # deployment-consumer.yaml  
 # link to file: <https://github.com/ArzelaAscoIi/haystack-keda-indexing/tree/main/kubernetes>  
   
@@ -141,13 +141,13 @@ spec:
 
 We can apply this YAML to our namespace indexing with kubectl:
 
-```
+```bash
 kubectl apply -f ./kubernetes/deployment-consumer.yaml --namespace indexing
 ```
 
 To validate that consumers can successfully start and connect to the queue, we can scale up the replicas to 1, and check the running pods.
 
-```
+```bash
 # scale deployment   
 kubectl scale deployment indexing-consumer --namespace=indexing --replicas=1  
 # get pods   
@@ -160,7 +160,7 @@ kubectl logs -f deployment/indexing-consumer -c indexing-consumer -n indexing
 
 The system will log that no files were found to be processed:
 
-```
+```bash
 │ 2023-04-23 15:43:14 [info     ] No files to process                                                                                                       │  
 │ 2023-04-23 15:43:19 [info     ] No files to process                                                                                                       │  
 │ 2023-04-23 15:43:24 [info     ] No files to process                                                                                                       │  
@@ -175,7 +175,7 @@ After successfully creating all the required services to index files, we can now
 
 To set up a KEDA trigger on SQS, we need to configure authentication by creating a Kubernetes secrets object.
 
-```
+```yaml
 # secrets-localstack.yaml  
 # link to file: <https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/kubernetes/keda/secrets-localstack.yaml>  
   
@@ -191,7 +191,7 @@ data:
 
 This secret is then mapped via a TriggerAuthentication object to KEDA, which will use  [credential based authentication.](https://keda.sh/docs/2.10/scalers/aws-sqs/#authentication-parameters)
 
-```
+```yaml
 # trigger-authentication.yaml  
 # link to file: <https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/kubernetes/keda/trigger-authentication.yaml>  
   
@@ -212,7 +212,7 @@ spec:
 
 The operator is now allowed to access LocalStacks resources, and we can create a scaled object with a `aws-sqs-queue`  [trigger](https://keda.sh/docs/2.1/scalers/aws-sqs/#trigger-specification).
 
-```
+```yaml
 apiVersion: keda.sh/v1alpha1  
 kind: ScaledObject  
 metadata:  
@@ -245,7 +245,7 @@ spec:
 
 After applying these three YAMLs via  `kubectl apply --f ./kubernetes/keda --namespace indexing`, we can forward the port to allow uploading files to LocalStack.
 
-```
+```bash
  kubectl port-forward deployment/localstack 4566:4566 -n indexing
 ```
 
@@ -260,7 +260,7 @@ aws_service.upload_file(Path("./data/test.txt"))
 
 Once the file is successfully uploaded and queued, KEDA will take care of scaling the deployment from 0 to 1 replica. Kubernetes will list an indexing-consumer pod.
 
-```
+```bash
 NAME                                               READY   STATUS                
 localstack-8fc647d9d-xkrsk                         1/1     Running               
 keda-operator-metrics-apiserver-7bcfdd7c9b-7pbkp   1/1     Running              

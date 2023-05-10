@@ -75,7 +75,8 @@ We will start by creating a code snipped that receives a list of local, already 
 ## Indexing Pipeline
 
 Haystack provides a simple way to create pipelines using YAML files. In this example, we will use a  [standard template](https://github.com/deepset-ai/templates/blob/69519af7178095d53cb5e879c8ac696d77c96aed/pipelines/GenerativeQuestionAnswering_gpt.yaml#L6), but we will simplify it slightly to suit our needs.
-```
+
+```yaml
 # pipeline yaml from Haystack: https://github.com/deepset-ai/templates/blob/69519af7178095d53cb5e879c8ac696d77c96aed/pipelines/GenerativeQuestionAnswering_gpt.yaml#L6  
   
 version: "1.15.1"  
@@ -163,6 +164,7 @@ Since we will just focus on indexing files, we will not load and run the query p
 2.  **AnswerGen**  — OpenAI’s  `text-davinci-003`  model receives a prompt, which includes the retrieved text from step 1, and generates an answer in response.
 
 In the next step, we will load the pipeline so that we can run indexing for local files.
+
 ```python
 # pipeline.py   
 # link to file: https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/pipeline.py  
@@ -181,6 +183,7 @@ Now that we can generate documents for local files, we need to write the “glue
 ## Glue Code for Indexing with SQS and S3
 
 Let’s start with creating a class  `S3Client`  that can upload and download files to Amazons s3 service. AWS offers a convenient way to communicate with resources through  [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). We will use this library and write simple wrappers for its methods.
+
 ```python
 # aws_service.py  
 # link to file: https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/aws_service.py  
@@ -229,6 +232,7 @@ class S3Client:
   
         return paths
 ```
+
 After implementing the file upload and download functionality, we need to enable consumers to fetch pending S3 keys that are queued up for indexing. To do this, we create a  `SQSClient` class that can publish and receive messages from the Amazon SQS service. Similar to the  `S3Client`,  [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)  provides some simple methods for this purpose.
 
 ```python
@@ -312,7 +316,7 @@ class AWSService:
 
 We use  [LocalStack](https://localstack.cloud/)  to simplify the development process and avoid the need to use real AWS infrastructure. To start LocalStack, run docker-compose up in the terminal using the  `docker-compose.yaml` file.
 
-```
+```yaml
 # docker-compose.yaml   
 # link to file:https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/docker-compose.yaml  
   
@@ -371,7 +375,7 @@ while True:
 
 We will now create an image of our application using the Haystack GPU base image, which has most of our dependencies pre-installed.
 
-```
+```bash
 # Dockerfile   
 # link to file: https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/Dockerfile  
   
@@ -384,7 +388,7 @@ RUN pip3 install -r requirements.txt
 CMD ["python3", "consumer.py"]
 ```
 By adding the startup configuration to docker-compose, we can not only run LocalStack but also our application in Docker by calling docker-compose up.
-```
+```yaml
 # docker-compose.yaml  
 # link to file: https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/docker-compose.yaml  
 ...  
@@ -415,7 +419,7 @@ aws_service.upload_file(Path("./data/test.txt"))
 
 If we run python3  `upload.py`  upload.py now, we will see the following output in our Docker console.
 
-```
+```bash
 haystack-keda-indexing-localstack-1  | 2023-04-22T09:55:44.981  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS s3.GetObject => 200  
 haystack-keda-indexing-localstack-1  | 2023-04-22T09:55:45.007  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.DeleteMessage => 200  
 haystack-keda-indexing-consumer-1    | 2023-04-22 09:55:45 [info     ] Found files                    files=[PosixPath('/tmp/test.txt')]  

@@ -18,7 +18,7 @@ But how do we create a service that can turn files into searchable documents? An
 
 **The goal of this article is to build a system that can run use case-specific indexing pipelines for large-scale production NLP applications.**  It will focus on  **how to create, deploy, and dynamically scale these applications**  using  [Haystack](https://haystack.deepset.ai/)  and  [KEDA](https://keda.sh/). The first part covers creating a Python application with Haystack. The second part details how to deploy and scale the application using  [KEDA](https://keda.sh/)  on  [Kubernetes](https://kubernetes.io/de/).
 
-> This tutorial only covers turning files into text snippets, embeddings or arbitrary preprocessed data. We will not cover the augmented LLM application itself. If you are interested in creating such applications, feel free to use this tutorial:  [https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3](https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3)
+> This tutorial only covers turning files into text snippets, embeddings or arbitrary preprocessed data. We will not cover the augmented LLM application itself. If you are interested in creating such applications, feel free to use this tutorial:  [Build a Search Engine with GPT-3](https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3)
 
 ## Natural language processing basics
 

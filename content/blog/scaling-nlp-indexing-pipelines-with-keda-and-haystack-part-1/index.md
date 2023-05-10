@@ -312,7 +312,7 @@ class AWSService:
         self.s3_client.upload_file(local_path)  
         self.sqs_client.publish_key(local_path.name)
 ```
-# Set up a local AWS environment with LocalStack
+## Set up a local AWS environment with LocalStack
 
 We use  [LocalStack](https://localstack.cloud/)  to simplify the development process and avoid the need to use real AWS infrastructure. To start LocalStack, run docker-compose up in the terminal using the  `docker-compose.yaml` file.
 

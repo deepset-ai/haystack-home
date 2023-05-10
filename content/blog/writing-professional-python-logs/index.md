@@ -40,11 +40,11 @@ Basically, there is nothing wrong with this code snippet, which prints the follo
 These two log lines describe what is happening during a request. However, we could improve the notation of the retries, add more context and make the log lines more readable.
 
 
-# Classic logging challenges
+## Classic logging challenges
 
 Before we jump into the hands on part, let’s first understand some common logging challenges based on the example above.
 
-## 1. Missing contextual information
+### 1. Missing contextual information
 
 The log line precisely describes that a  `my_file`  failed to upload. This information might be sufficient for a development environment where there is only one user and one client sending requests, the data is stored on the local file system, and all requests are executed sequentially.
 
@@ -57,25 +57,25 @@ However, when encountering this kind of log in a production system, typical ques
 
 To obtain this information for log lines, we would need to add this extra information to each log line, and in the worst case, fetch the same value from a database multiple times to add this informational context throughout the codebase.
 
-## 2. Transition from development-only to machine readable logs
+### 2. Transition from development-only to machine readable logs
 
 Depending on the environment, you may want to have log lines that are prettified to allow humans to read them easily, but also provide them in a machine-readable format in a production system. Within our production deployment, we might want to count the total number of retries or filter for a failed file name. In this scenario, we would need to run substring matches. It would be much easier to write queries that let you filter, maybe even in an SQL-like manner for events.
 ```
 select file_name from logs where retry_count > 1
 ```
-## 3. Inconsistent wording
+### 3. Inconsistent wording
 
 It is common for log lines within the same Python module to look completely different from one another. Sometimes, important information is even missing. Depending on the author, log lines can look very diverse. Entities can be referred to by different names, and the values of variables may be added to the log with or without quotes, or their wording may be changed throughout the module.
 
 This makes searching for specific events difficult and time-consuming.
 
-# Structlog
+## Structlog
 
 > [Structlog](https://www.structlog.org/en/stable/)  offers a lot of nice features that help you write logs in a faster and less painful way. It helps you to add contextual data to your logger and offers a modular configuration for parsing your log lines in a machine readable and developer friendly way.
 
 In our case, this means that we get beautiful colored log lines within our development environment and parsed JSONs for our monitoring, add file names as contextual data and use some more convenience features. It is important to mention that although the native logger can be set up to log as JSON, structlog provides this capability out of the box.
 
-## First step — Replace python’s native logger with structlog
+### First step — Replace python’s native logger with structlog
 
 Let’s use structlog for the same code snippet as above. We need to obtain the logger and add the variables to our log messages. A code snippet could look like this:
 ```python
@@ -97,11 +97,11 @@ If we compare this to the solution we had before, we can see that the file name 
 
 ![](1.png)
 
-## Second step — Bind contextual data to loggers
+### Second step — Bind contextual data to loggers
 
 Generally there are two ways of adding contextual data to loggers with structlog.
 
-**#1 Explicitly binding variables**, by calling  `.debug(…)`  . We will update the previous code snipped by first binding the  `file_name`  to the logger and using the logger instance to print log messages.
+**1. Explicitly binding variables**, by calling  `.debug(…)`  . We will update the previous code snipped by first binding the  `file_name`  to the logger and using the logger instance to print log messages.
 ```python
 import structlog   
 logger = structlog.get_logger()  
@@ -114,7 +114,7 @@ log.error("Failed uploading file.", retries=retries)
 ```
 This allows us to remove the file name from all the log lines and move it to the top where it is just called once. Structlog will take care of adding it to each log line.
 
-**#2 Implicitly binding context variables**, by calling structlog.contextvars.bind_contextvars(…) — This function uses  [context variables](https://docs.python.org/3/library/contextvars.html)  that are used whenever the logger within the same thread prints log messages. A code snippet that prints the same log messages using context variables might look like this:
+**2. Implicitly binding context variables**, by calling structlog.contextvars.bind_contextvars(…) — This function uses  [context variables](https://docs.python.org/3/library/contextvars.html)  that are used whenever the logger within the same thread prints log messages. A code snippet that prints the same log messages using context variables might look like this:
 
 ```python
 # /controller/file.py  
@@ -141,9 +141,10 @@ def verify_user(request: Request) -> bool:
  structlog.contextvars.bind_contextvars(user_id=user_id)  
  return True 
 ```
+
 This way  [structlog](https://www.structlog.org/en/stable/)  will take care of adding this contextual information for us and we don’t need to worry about adding the user id manually.
 
-# Third Step — Configuration for machine readable logs
+## Third Step — Configuration for machine readable logs
 
 After learning how to attach information to log lines using structlog, we now want to configure it to send prettified log lines in our local development environment setup and parsed JSONs for our logging service. We will follow the first and simplest solution from the structlog docs. Before we proceed, we need to understand two concepts from structlog: Preprocessors and Renderers.
 
@@ -160,6 +161,7 @@ We will use default structlog preprocessors to define the content of our log lin
 Logging architecture from  [structlog docs](https://www.structlog.org/en/stable/standard-library.html#rendering-within-structlog)
 
 We begin by configuring a set of processors that add timestamps, set the log level, and merge the context variables used in step 2.
+
 ```python
 import structlog  
 from structlog.dev import ConsoleRenderer  
@@ -178,7 +180,9 @@ structlog_processors = [
     timestamper,  
 ]
 ```
+
 Now we want to define a function that either returns structlogs  `ConsoleRenderer`or  `JSONRenderer`, based on the environment settings and append this renderer to the processors.
+
 ```python
 # __init__.py  
   
@@ -204,6 +208,7 @@ structlog.configure(
     cache_logger_on_first_use=False,  
 )
 ```
+
 > ⚠️ This will only affect the log lines printed within your application and will not affect logs produced by modules used inside your application. If you also want these logs to be formatted as JSON, you need to follow  [tutorial 3 of the structlog documentation](https://www.structlog.org/en/stable/standard-library.html#rendering-using-structlog-based-formatters-within-logging).
 
 After setting the environment variable  `DEV_LOGS`  to  `False`  our log lines are printed as raw JSONs.
@@ -218,7 +223,7 @@ In our local environment we can still use the old colored log lines:
 ![Pretified logs](5.png)
 
 
-# Limitations
+## Limitations
 
 Although structlog alone will not solve all inconsistencies with logging, it can help to use a more consistent and less error-prone workflow.
 
@@ -232,7 +237,7 @@ To increase consistency in our codebase, we use a set of default naming conventi
 This is for sure not the only possible naming, but the one that works for us best.
 
 
-# Summary
+## Summary
 
 We have learned the following:
 

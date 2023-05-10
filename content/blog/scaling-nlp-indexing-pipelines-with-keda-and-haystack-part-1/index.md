@@ -20,7 +20,7 @@ But how do we create a service that can turn files into searchable documents? An
 
 > This tutorial only covers turning files into text snippets, embeddings or arbitrary preprocessed data. We will not cover the augmented LLM application itself. If you are interested in creating such applications, feel free to use this tutorial:  [https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3](https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3)
 
-# Natural language processing basics
+## Natural language processing basics
 
 The idea behind using documents for search is to fill in the gaps in the model’s knowledge, such as the latest news. This is known as Retrieval-Augmented Generation (RAG), which means that in addition to its own knowledge, the model also uses the documents you provide to generate answers. You can find a step-by-step tutorial on how to create a search engine that uses preprocessed documents by this tutorial  [here](https://haystack.deepset.ai/blog/build-a-search-engine-with-gpt-3).
 
@@ -31,7 +31,7 @@ The diagram illustrates the process of passing text files (🔡) through a model
 Now, let’s discuss how to efficiently generate these documents and input them into a vector database.
 
 
-# How to scale indexing applications
+## How to scale indexing applications
 
 For a proof of concept, engineers typically create embeddings on virtual machines with GPUs and add them to vector databases as a one-time job. Once in production, we will need to run these jobs  **periodically**  or  **on demand**  whenever a new file needs to be added to the model’s knowledge base. There are two major factors that we want to optimize:
 
@@ -40,7 +40,7 @@ For a proof of concept, engineers typically create embeddings on virtual machine
 
 We will use stateless indexing consumers written in Python and learn how to use  [KEDA](https://keda.sh/)  for autoscaling on  [Kubernetes](https://kubernetes.io/de/). This will enable horizontal scaling for throughput and on-demand startup for latency. Let’s dive into designing the architecture!
 
-# Architecture
+## Architecture
 
 The main idea behind the architecture we are going to explore is to queue up indexing requests and spin up consumers that process these tasks in batches. Each consumer receives file-by-file messages and creates documents. We use the following concepts:
 
@@ -60,7 +60,7 @@ There are various technologies out there that we can use to implement this. We w
 
 You can find all the code snippets and configuration files used throughout this article in  [this repository](https://github.com/ArzelaAscoIi/haystack-keda-indexing). You can use them to recreate this project from scratch.  **Link to repo:** [**https://github.com/ArzelaAscoIi/haystack-keda-indexing**](https://github.com/ArzelaAscoIi/haystack-keda-indexing)
 
-# Indexing Consumer
+## Indexing Consumer
 
 This chapter will guide you through the process of creating an application that continuously pulls upload file notifications from an SQS queue for processing. Upon receiving a new message, the application fetches the corresponding file from S3 and converts it into multiple documents with embeddings.
 
@@ -72,7 +72,7 @@ These  _“consumers”_  are the core service of our architecture. We will depl
 
 We will start by creating a code snipped that receives a list of local, already downloaded, files and converts them into documents.
 
-# Indexing Pipeline
+## Indexing Pipeline
 
 Haystack provides a simple way to create pipelines using YAML files. In this example, we will use a  [standard template](https://github.com/deepset-ai/templates/blob/69519af7178095d53cb5e879c8ac696d77c96aed/pipelines/GenerativeQuestionAnswering_gpt.yaml#L6), but we will simplify it slightly to suit our needs.
 ```
@@ -178,7 +178,7 @@ def get_pipeline(yaml_path: str) -> Pipeline:
 ```
 Now that we can generate documents for local files, we need to write the “glue code” that connects our indexing pipelines with messages from SQS and files from S3. For testing purposes, we also create a code snipped to queue files for indexing.
 
-# Glue Code for Indexing with SQS and S3
+## Glue Code for Indexing with SQS and S3
 
 Let’s start with creating a class  `S3Client`  that can upload and download files to Amazons s3 service. AWS offers a convenient way to communicate with resources through  [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). We will use this library and write simple wrappers for its methods.
 ```python
@@ -230,6 +230,7 @@ class S3Client:
         return paths
 ```
 After implementing the file upload and download functionality, we need to enable consumers to fetch pending S3 keys that are queued up for indexing. To do this, we create a  `SQSClient` class that can publish and receive messages from the Amazon SQS service. Similar to the  `S3Client`,  [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)  provides some simple methods for this purpose.
+
 ```python
 class SQSClient:  
     def __init__(self, queue_name: str) -> None:  
@@ -281,10 +282,12 @@ class SQSClient:
         except Exception as error:  
             raise error
 ```
+
 We will now connect both of these clients to a service that has two methods:
 
 1.  `get_files`  - This method fetches file messages from SQS, downloads the corresponding file from S3, and returns the local path.
 2.  `upload_file`  - This method uploads a file from a local path to S3 and publishes the key on SQS to be picked up by the indexing consumers later.
+
 ```python
 # aws_service.py  
 # link to file: https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/aws_service.py  
@@ -308,6 +311,7 @@ class AWSService:
 # Set up a local AWS environment with LocalStack
 
 We use  [LocalStack](https://localstack.cloud/)  to simplify the development process and avoid the need to use real AWS infrastructure. To start LocalStack, run docker-compose up in the terminal using the  `docker-compose.yaml` file.
+
 ```
 # docker-compose.yaml   
 # link to file:https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/docker-compose.yaml  
@@ -328,13 +332,14 @@ services:
       # https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/scripts/sqs_bucket_bootstrap.sh  
       - ./scripts:/docker-entrypoint-initaws.d/ # startup script found here
 ```
+
 After startup, we will run  [a script](https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/scripts/sqs_bucket_bootstrap.sh)  that creates a  `test-queue`  and a  `test-bucket`  that we can use to test our application. In the next steps, we will create AWS clients to read messages from SQS and download files from s3.
 
-# Running the consumer
+## Running the consumer
 
 Now that we can run pipelines, upload and download files, and set up our local AWS environment, we need to write our main service. On a code level, all we need to implement is a simple loop to continuously pull messages and run indexing.
 
-  ```python
+```python
 # consumer.py  
 # link to file:https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/consumer.py  
   
@@ -363,7 +368,9 @@ while True:
     documents = pipeline.run(file_paths=files)  
     logger.info("Processed files", documents=documents)
 ```
+
 We will now create an image of our application using the Haystack GPU base image, which has most of our dependencies pre-installed.
+
 ```
 # Dockerfile   
 # link to file: https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/Dockerfile  
@@ -391,11 +398,13 @@ consumer:
       - AWS_ACCESS_KEY_ID=test  
       - AWS_SECRET_ACCESS_KEY=test
 ```
+
 We are now ready to test our application by uploading files and checking the logs for resulting documents.
 
-# Testing with Docker Compose
+## Testing with Docker Compose
 
 To start our Docker Compose stack, we use the command  `docker-compose up`. Additionally, we provide a code snippet for file uploading.
+
 ```python
 # upload.py  
 # link to file: <https://github.com/ArzelaAscoIi/haystack-keda-indexing/blob/main/upload.py>  
@@ -403,7 +412,9 @@ To start our Docker Compose stack, we use the command  `docker-compose up`. Addi
 aws_service = AWSService(SQS_QUEUE, S3_BUCKET, LOCAL_DOWNLOAD_DIR)  
 aws_service.upload_file(Path("./data/test.txt"))
 ```
+
 If we run python3  `upload.py`  upload.py now, we will see the following output in our Docker console.
+
 ```
 haystack-keda-indexing-localstack-1  | 2023-04-22T09:55:44.981  INFO --- [   asgi_gw_1] localstack.request.aws     : AWS s3.GetObject => 200  
 haystack-keda-indexing-localstack-1  | 2023-04-22T09:55:45.007  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.DeleteMessage => 200  
@@ -414,8 +425,9 @@ Batches: 100%|██████████| 1/1 [00:03<00:00,  3.18s/it]
 haystack-keda-indexing-consumer-1    | 2023-04-22 09:55:48 [info     ] Processed files                documents={'documents': [<Document: {'content': 'this is text', 'content_type': 'text', 'score': None, 'meta': {'_split_id': 0}, 'id_hash_keys': ['content'], 'embedding': '<embedding of shape (768,)>', 'id': '46ec22c7eafaea7c43eef7d996fd04ce'}>], 'file_paths': [PosixPath('/tmp/test.txt')], 'root_node': 'File', 'params': {}, 'node_id': 'Retriever'}  
 haystack-keda-indexing-localstack-1  | 2023-04-22T09:55:48.327  INFO --- [   asgi_gw_0] localstack.request.aws     : AWS sqs.GetQueueUrl => 200
 ```
+
 We have a stateless service that processes indexing requests asynchronously and can operate in Docker Compose. We can now deploy this service to Kubernetes, configure KEDA, and scale it.
 
-# Conclusion and next steps
+## Conclusion and next steps
 
 This article explains how to create a stateless consumer application that turns files into documents. We learned that we can use this application with different models, preprocessors, and file types which are defined in a single configuration file using Haystack. In order to ship this application to a production-ready deployment, we will deploy this service on Kubernetes and define custom autoscaling in  [the next chapter](scaling-nlp-indexing-pipelines-with-keda-and-haystack-part-2).

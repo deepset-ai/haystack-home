@@ -255,7 +255,7 @@
 
     {{/*  Search  */}}
     const searchTutorials = async (query) => {
-      searchModal.classList.remove("default", "not-found")
+      searchModal.classList.remove("default", "not-found", "error")
       searchModalCards.innerHTML = ""
       searchModal.classList.add("loading")
 
@@ -264,13 +264,15 @@
 
         if (response.status === 200) {
           const result = await response.json();
+          {{/*  console.log(result)  */}}
 
           if (result.results[0].documents.length > 0) {
             {{/*  build cards  */}}
             result.results[0].documents.forEach((doc) => {
-              const card = document.createElement("a")
-              card.classList.add("search-modal-card")
-              card.href = `/tutorials/${doc.meta.file_name.toLowerCase().replace(".txt", "")}`;
+              const card = document.createElement("a");
+              card.classList.add("search-modal-card");
+              const headline = doc.meta.headlines[0]?.headline;
+              card.href = `/tutorials/${doc.meta.file_name.toLowerCase().replace(".txt", "")}${headline ? `#${headline.toLowerCase().trim().replace(/ /g, "-")}` : "" }`;
               card.innerHTML = `
               <svg
               width="32"
@@ -349,10 +351,14 @@
           }
 
         } else {
-          console.error(response.statusText)
+          {{/*  console.error(response.statusText)  */}}
+          searchModal.classList.remove("loading")
+          searchModal.classList.add("error")
         }
       } catch (error) {
-        console.error("Error:", error);
+        {{/*  console.error("Error:", error);  */}}
+        searchModal.classList.remove("loading")
+        searchModal.classList.add("error")
       }
 
     }

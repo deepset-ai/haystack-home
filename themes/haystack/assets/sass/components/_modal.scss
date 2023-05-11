@@ -185,6 +185,10 @@
       display: flex;
     }
 
+    &.error .search-modal-info > .error {
+      display: flex;
+    }
+
     // Cards
     .search-modal-card {
       display: flex;
@@ -205,7 +209,11 @@
         flex-shrink: 0;
       }
 
-      h3,
+      h3 {
+        font-size: var(--text-body);
+        margin-bottom: 0.125rem;
+      }
+
       p {
         font-size: var(--text-base);
         margin-bottom: 0.125rem;

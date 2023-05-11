@@ -255,7 +255,7 @@
 
     {{/*  Search  */}}
     const searchTutorials = async (query) => {
-      if (query.length === 0) return
+      if (!query) return
       searchModal.classList.remove("default", "not-found", "error")
       searchModalCards.innerHTML = ""
       searchModal.classList.add("loading")

@@ -265,11 +265,11 @@
 
         if (response.status === 200) {
           const result = await response.json();
-          {{/*  console.log(result)  */}}
+          const documents = result.results[0].documents.filter(doc => doc.score > 0.01); // filter out low scored results
 
-          if (result.results[0].documents.length > 0) {
+          if (documents.length > 0) {
             {{/*  build cards  */}}
-            result.results[0].documents.forEach((doc) => {
+            documents.forEach((doc) => {
               const card = document.createElement("a");
               card.classList.add("search-modal-card");
               const headline = doc.meta.headlines[0]?.headline;

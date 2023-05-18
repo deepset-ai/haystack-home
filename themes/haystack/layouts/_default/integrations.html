@@ -4,12 +4,14 @@
     {{/* Hero */}}
     {{ partial "page-hero" . }}
 
+
     <div class="grid-page-content">
       <div class="container container-padded">
         <div class="inner inner-top">
           {{/* Section title */}}
           <h2 class="section-title">
-            {{ len (where .Site.Pages "Layout" "integration") }} Total Integrations
+            {{ len (where .Site.Pages "Layout" "integration") }} Total
+            Integrations
           </h2>
 
           {{/* Sorting options / Filters */}}
@@ -17,7 +19,12 @@
             <div class="filters">
               {{/* Search */}}
               <div class="search-wrapper">
-                <input id="search" type="text" placeholder="Search integrations" oninput="filterAndSort();" />
+                <input
+                  id="search"
+                  type="text"
+                  placeholder="Search integrations"
+                  oninput="filterAndSort();"
+                />
                 <div class="search-icon">
                   <svg
                     width="20"
@@ -40,24 +47,34 @@
               </button>
             </div>
 
-            {{/* Type filter */}}
-            <div class="select-wrapper">
-              <select id="type-select" onchange="filterAndSort();">
-                <option value="all">All Integrations</option>
+            <div class="select-group">
+              {{/* Type filter */}}
+              <div class="select-wrapper">
+                <select id="type-select" onchange="filterAndSort();">
+                  <option value="all">All Types</option>
 
-                {{ $types := slice }}
-                {{ range where .Site.Pages "Layout" "integration" }}
-                  {{ if .Params.type }}
-                    {{ if not (in $types .Params.type) }}
-                      {{ $types = $types | append .Params.type }}
+                  {{ $types := slice }}
+                  {{ range where .Site.Pages "Layout" "integration" }}
+                    {{ if .Params.type }}
+                      {{ if not (in $types .Params.type) }}
+                        {{ $types = $types | append .Params.type }}
+                      {{ end }}
                     {{ end }}
                   {{ end }}
-                {{ end }}
 
-                {{ range $types }}
-                  <option value="{{ . }}">{{ . }}</option>
-                {{ end }}
+                  {{ range $types }}
+                    <option value="{{ . }}">{{ . }}s</option>
+                  {{ end }}
+                </select>
+              </div>
+
+              {{/* Maintainer filter */}}
+              <div class="select-wrapper">
+              <select id="maintainer-select" onchange="filterAndSort();">
+                <option value="all">All Maintainers</option>
+                <option value="deepset">Maintained by deepset</option>
               </select>
+            </div>
             </div>
           </div>
 
@@ -102,7 +119,6 @@
                 {{ .Params.contribute.buttonText }}
               </a>
             </div>
-            </div>
           </div>
         </div>
       </div>
@@ -118,12 +134,14 @@
     const filterAndSort = () => {
       let integrations = [...integrationCards]
       const selectedType = document.querySelector("#type-select").value;
+      const selectedMaintainer = document.querySelector("#maintainer-select").value;
       const searchTerm = document.querySelector("#search").value;
 
-      {{/*  Filter by type  */}}
-      if (selectedType !== "all") {
-        integrations = integrations.filter(t => t.dataset.type === selectedType)
-      }
+      {{/*  Filter by type / maintainer  */}}
+      integrations = integrations.filter(i => {
+        return (selectedType === "all" || i.dataset.type === selectedType) &&
+        (selectedMaintainer === "all" || i.dataset.maintainer === "deepset")
+      });
 
       {{/*  Filter by search  */}}
       if (searchTerm) {
@@ -146,6 +164,7 @@
 
     const resetFilters = () => {
       document.querySelector("#type-select").value = "all";
+      document.querySelector("#maintainer-select").value = "all";
       document.querySelector("#search").value = "";
       filterAndSort();
     }

@@ -19,7 +19,15 @@
   {{ end }}
 
 
-  <title>{{ .Title | plainify }} | {{ .Site.Title }}</title>
+  {{/*  <title>{{ .Title | plainify }} | {{ .Site.Title }}</title>  */}}
+
+  <title>
+    {{ if eq .Params.layout "integration" }}
+      {{ .Params.Name | plainify }} | {{ .Site.Title }}
+    {{ else }}
+      {{ .Title | plainify }} | {{ .Site.Title }}
+    {{ end }}
+  </title>
 
   <link href="https://www.googletagmanager.com" rel="preconnect" crossorigin />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />

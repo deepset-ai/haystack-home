@@ -566,3 +566,35 @@ blockquote {
     margin-top: 0;
   }
 }
+
+
+// Integrations tag
+.integration-tag {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.4rem;
+  background-color: var(--color-white);
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  
+  span {
+    color: var(--color-dark-blue);
+    font-size: 0.875rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+  
+  svg {
+    flex-shrink: 0;
+  }
+
+  &.integration-tag-page {
+    border: 0.25rem solid var(--color-dark-blue);
+    margin-bottom: 1rem;
+
+    span {
+      font-size: 1rem;
+    }
+  }
+}

@@ -20,7 +20,7 @@ hero:
 # Logo garden
 logos:
   anchor: logos
-  title: Some companies from our community
+  title: People in our community work for
   logoItems:
     - image:
         url: /images/logos/databricks.svg

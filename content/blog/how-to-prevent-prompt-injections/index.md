@@ -1,9 +1,9 @@
 ---
 layout: blog-post
-title: How to Prevent Prompt Injections: An Incomplete Guide
+title: 'How to Prevent Prompt Injections: An Incomplete Guide'
 description: Learn how to prevent prompt injections leveraging our new open-source model and dataset.
-featured_image: thumbnail.png
-images: ["blog/how-to-prevent-prompt-injections/thumbnail.png"]
+featured_image: thumbnail.jpg
+images: ["blog/how-to-prevent-prompt-injections/thumbnail.jpg"]
 toc: True
 date: 2023-05-19
 last_updated: 2023-05-19
@@ -11,16 +11,15 @@ authors:
   - Jasper Schwenzow
 ---
 
-[ChatGPT](https://chat.openai.com/) is awesome, [HuggingChat](https://huggingface.co/chat/) is awesome, [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html) is awesome. However, if you want to **use these models in an application,** e.g., for your customer support, you encounter a problem: **Prompt injections**.
+[ChatGPT](https://chat.openai.com/) is awesome, [HuggingChat](https://huggingface.co/chat/) is awesome, [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html) is awesome. However, if you want to **use these models in an application,** for example, for your customer support, you may encounter a new problem that you should be aware of: **Prompt injections**.
 
-![](thumbnail.png)
+![](meme.png)
 
-This guide showcases approaches to handling prompt injections. It also includes one of the first public **prompt injection datasets** and one of the first **pre-trained prompt injection detection models** available on Hugging Face that you can use to combat attacks against your system.
+This guide showcases approaches to handling prompt injections. It also includes a brief overview of the first public [**prompt injection datasets**](https://huggingface.co/datasets/deepset/prompt-injections) and one of the first [**pre-trained prompt injection detection models**](https://huggingface.co/deepset/deberta-v3-base-injection) available on Hugging Face that you can use to combat attacks against your system.
 
 ## What are prompt injections?
 
-Prompt injections are prompts that trick a generative language model into writing something the model providers clearly did not intend, e.g., hate speech. [We can roughly distinguish two types of prompt injection](https://arxiv.org/abs/2211.09527): **goal hijacking & prompt leakage**.
-
+Prompt injections are prompts that trick a generative language model into writing something the model providers clearly did not intend,for example., hate speech. [We can roughly distinguish two types of prompt injection](https://arxiv.org/abs/2211.09527): **goal hijacking & prompt leakage**.
 
 ![](injection-classes.png)
 
@@ -49,18 +48,18 @@ To train an injection classifier, we first assembled a novel dataset of 662 wide
 
 ![](dataset.png)
 
-During the first model training, we made two main learnings that helped us enrich the dataset with adversarial examples:
+During the first model training, we had two main learnings that helped us enrich the dataset with adversarial examples:
 
--   **Including translations.** Simply switching the language of the prompt injection may help to bypass security measures. To prevent that, we included translations of both prompt injections as well as legitimate requests. We avoided leakage by making sure that each prompt and its respective translation always remain within the respective training or test set.
--   **Including stacked prompts.** Initially, we were able to fool our first models by combining both legitimate and injection prompts in one prompt. This was especially true if the legitimate part was a prompt that the model had seen during training. Consequently, we included adversarial examples by randomly stacking legitimate and injection prompts within the training and test set, respectively.
+-   **Including translations.** Simply switching the language of the prompt injection may cause security measures being bypassed. To prevent that, we included translations of both prompt injections as well as legitimate requests. We avoided leakage by making sure that each prompt and its respective translation always remain within the respective training or test set.
+-   **Including stacked prompts.** Initially, we were able to fool our first models into thinking a prompt was legitimate by combining both legitimate and injection prompts in one prompt. This was especially true if the legitimate part was a prompt that the model had seen during training. Consequently, we included adversarial examples by randomly stacking legitimate and injection prompts within the training and test set, respectively.
 
-The dataset is available on Hugging Face: [](https://huggingface.co/deepset/deberta-v3-base-injection)[https://huggingface.co/datasets/deepset/prompt-injections](https://huggingface.co/datasets/deepset/prompt-injections)
+The dataset is available on Hugging Face: [https://huggingface.co/datasets/deepset/prompt-injections](https://huggingface.co/datasets/deepset/prompt-injections)
 
 ### Training the model
 
 We fine-tuned the popular state-of-the-art [DeBERTa base](https://huggingface.co/microsoft/deberta-base) model [using the transformers library](https://huggingface.co/docs/transformers/training) and Google Colab. The resulting model achieves 99.1% accuracy on our holdout test set, only failing in one edge case.
 
-You can find and try the model on Hugging Face: [](https://huggingface.co/deepset/deberta-v3-base-injection)[https://huggingface.co/deepset/deberta-v3-base-injection](https://huggingface.co/deepset/deberta-v3-base-injection) It’s fully open-source.
+You can find and try the model on Hugging Face: [https://huggingface.co/deepset/deberta-v3-base-injection](https://huggingface.co/deepset/deberta-v3-base-injection). It’s fully open-source.
 
 ## Embedding the model in an AI system
 
@@ -72,10 +71,10 @@ Once you have a classification model, there are multiple ways you can put it int
 
 ## Final remarks
 
-Despite its surprisingly convincing performance, using the model as a filter does not guarantee that no prompt injections pass the check. The model should be treated as an additional layer of security, rather than as a complete solution to the problem of prompt injection.
+Despite its surprisingly convincing performance, using the model as a filter does not guarantee that no prompt injections pass the check. The model should be treated as an **additional layer of security**, rather than as a complete solution to the problem of prompt injection.
 
-Also, the model is trained for the chosen type of legitimate prompts. If your use case requires very different prompts to pass as legitimate, you might need to fine-tune using your own enriched dataset.
+Also, the model is trained for the chosen type of legitimate prompts. If your use case requires very different prompts to pass as legitimate, you can simply replace our legitimate prompts by yours and fine-tune the model.
 
-We hope the [model](https://huggingface.co/deepset/deberta-v3-base-injection) and [dataset](https://huggingface.co/datasets/deepset/prompt-injections) will prove as valuable for your LLM projects as it has been for ours!”
+We hope the [model](https://huggingface.co/deepset/deberta-v3-base-injection) and [dataset](https://huggingface.co/datasets/deepset/prompt-injections) will prove as valuable for your LLM projects as it has been for ours!
 
 ![](smily.png)

@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-title: How to prevent prompt injections: An incomplete guide
+title: How to Prevent Prompt Injections: An Incomplete Guide
 description: Learn how to prevent prompt injections leveraging our new open-source model and dataset.
 featured_image: thumbnail.png
 images: ["blog/how-to-prevent-prompt-injections/thumbnail.png"]
@@ -9,10 +9,7 @@ date: 2023-05-19
 last_updated: 2023-05-19
 authors:
   - Jasper Schwenzow
-canonical_url: https://www.deepset.ai/blog/how-to-prevent-prompt-injections
 ---
-
-# How to prevent prompt injections: An incomplete guide
 
 [ChatGPT](https://chat.openai.com/) is awesome, [HuggingChat](https://huggingface.co/chat/) is awesome, [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html) is awesome. However, if you want to **use these models in an application,** e.g., for your customer support, you encounter a problem: **Prompt injections**.
 

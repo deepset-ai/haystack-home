@@ -5,8 +5,8 @@ description: Which one is right for your use case?
 featured_image: thumbnail.png
 images: ["blog/generative-vs-extractive-models/thumbnail.png"]
 toc: True
-date: 2023-05-18
-last_updated: 2023-05-18
+date: 2023-05-22
+last_updated: 2023-05-22
 authors:
   - Bilge Yucel
 ---

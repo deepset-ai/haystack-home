@@ -11,8 +11,6 @@ authors:
   - Bilge Yucel
 ---
 
-_**Used by permission of the Folger Shakespeare Library under a Creative Commons Attribution-ShareAlike 4.0 International License.**_
-
 Generative language models like ChatGPT have taken the world by storm. Aside from their value in areas like programming and translation, generative models’ main selling point is their ability to come up with fluent, well-formed natural language responses. Like humans, these models seem to generate their answers out of thin air, and without looking up the answers in a factual database.
 
 This sets them apart from their humbler siblings: _extractive_ language models. Both extractive and generative models are based on the breakthrough Transformer architecture that ushered in a new generation of natural-language understanding (NLU) for machines.

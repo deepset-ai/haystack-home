@@ -17,7 +17,7 @@ This sets them apart from their humbler siblings: _extractive_ language models. 
 
 However, extractive models differ from generative models in that they explicitly need a context to extract information from at querying time, and they return that information as direct quotations from the source, whereas generative models are trained for generating language and capable of writing new text from scratch. Compared to the fluency of their generative counterparts, extractive models like RoBERTa and ELECTRA can therefore seem much less capable.
 
-![](shakespeare.png)
+![A comparison of extractive and generative models' responses to the question 'Who was Shakespeare?'. The generative model provides a detailed generated answer, while the extractive model gives a concise response extracted from a text.](shakespeare.png)
 
 But it is becoming increasingly clear that generative models suffer from their own set of problems, like their size, the fact that many of them are proprietary (which isn’t ideal for everyone), and most significantly, their tendency to make things up. What’s more, extractive models have a much better track record in real-world applications — for example, in private or public semantic search engines, or in information extraction systems.
 
@@ -37,11 +37,11 @@ Closed-source language models like those by OpenAI are only accessible through a
 
 In terms of architecture, broadly speaking, extractive models like those [based on BERT](https://haystack.deepset.ai/blog/the-definitive-guide-to-bertmodels) belong to the same family of language models as their generative counterparts, since both use the Transformers. However, the main distinction lies in the usage of these models. Unlike generative models, extractive models require both a query and a specific piece of text as the foundation for their response. It then encodes the query as a high-dimensional, semantically informed vector exactly like a generative model does. But rather than generating an answer from scratch based on the given context as generative models do, the extractive model marks the section in the text document that, according to the model’s prediction, provides the best answer to the query.
 
-![](hamlet.png)
+![A high-level explanation of how extractive models retrieve answers from a given document. The question 'Who is the main female character in 'Hamlet'?' is asked, and the Reader component, using an extractive language model, answers with 'Ophelia, Polonius's daughter' from the given document.](hamlet.png)
 
 So what’s the use of such a model, when you need to provide it with the document that contains the answer? Well, for one, it can be very useful when you need to extract the same kind of information from multiple documents: a classic [information extraction](https://www.deepset.ai/blog/automating-information-extraction-with-question-answering) scenario. But even more significantly, applied NLP has come up with an ingenious pipeline paradigm to allow extractive models to operate on a large collection of documents, too. In a [Retriever-Reader pipeline](https://haystack.deepset.ai/tutorials/01_basic_qa_pipeline#creating-the-retriever-reader-pipeline), a faster model pre-selects the best document “candidates,” which are then given a closer read by the extractive model to find the best answer possible.
 
-![](hamlet-retriever.png)
+![A high-level explanation of how an extractive question answering pipeline works. The question 'Who is the main female character in 'Hamlet'?' is asked. First, the Retriever component pre-selects the best document candidates, which are then passed to the Reader component. The Reader employs an extractive model to read the documents and determine the most suitable answer. In this case, the Reader component answers with 'Ophelia, Polonius's daughter'.](hamlet-retriever.png)
 
 Their purely extractive property means the model can only provide answers that quote verbatim from a text. Abstraction, paraphrasing, and the formation of well-formed answers are not in the repertoire of this model family.
 

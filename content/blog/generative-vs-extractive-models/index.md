@@ -51,7 +51,7 @@ Their relative smallness also makes it easier to share these models. In fact, th
 
 ## The problem with generative models — and how to combat it
 
-A recurring problem with generative models is that they sometimes make up information and treat it as ground truth. This behavior is commonly referred to as “hallucinations” and the main for this is the model’s ability to produce language rather than extracting the answer from a given text.
+A recurring problem with generative models is that they sometimes make up information and treat it as ground truth. This behavior is commonly referred to as “hallucinations” and the main reason for this is the model’s ability to produce language rather than extracting the answer from a given text.
 
 Hallucinations can occur when the model has insufficient information to answer a question accurately, when it receives the same prompt multiple times, or when it is prompted to come up with an argument that runs counter to commonly accepted facts. The last case shows how blurry the notion of hallucinations is. After all, it is perfectly common to make up facts: in fiction, for example, in hypothetical examples used for illustrative purposes, or in writing assignments for school.
 

@@ -1,2 +1,9 @@
-{{/*  Adds lazy loading to images added through markdown  */}}
-<img loading="lazy" src="{{.Destination | safeURL}}" alt="{{.Text}}" /> 
+{{/* Renders images in articles */}}
+{{ if .Title }}
+    <figure>
+        <img loading="lazy" src="{{.Destination | safeURL}}" alt="{{.Text}}" />
+        <figcaption>{{ .Title | markdownify }}</figcaption>
+    </figure>
+{{ else }}
+    <img loading="lazy" src="{{.Destination | safeURL}}" alt="{{.Text}}" />
+{{ end }}

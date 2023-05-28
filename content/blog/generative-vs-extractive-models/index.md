@@ -3,6 +3,7 @@ layout: blog-post
 title: Generative vs. Extractive Language Models
 description: Which one is right for your use case?
 featured_image: thumbnail.png
+featured_image_caption: Markdown *caption* with a **[bold link](/)**
 images: ["blog/generative-vs-extractive-models/thumbnail.png"]
 toc: True
 date: 2023-05-22
@@ -17,7 +18,7 @@ This sets them apart from their humbler siblings: _extractive_ language models. 
 
 However, extractive models differ from generative models in that they explicitly need a context to extract information from at querying time, and they return that information as direct quotations from the source, whereas generative models are trained for generating language and capable of writing new text from scratch. Compared to the fluency of their generative counterparts, extractive models like RoBERTa and ELECTRA can therefore seem much less capable.
 
-![A comparison of extractive and generative models' responses to the question 'Who was Shakespeare?'. The generative model provides a detailed generated answer, while the extractive model gives a concise response extracted from a text.](shakespeare.png)
+![A comparison of extractive and generative models' responses to the question 'Who was Shakespeare?'. The generative model provides a detailed generated answer, while the extractive model gives a concise response extracted from a text.](shakespeare.png "Markdown *caption* with a **[bold link](/)**")
 
 But it is becoming increasingly clear that generative models suffer from their own set of problems, like their size, the fact that many of them are proprietary (which isn’t ideal for everyone), and most significantly, their tendency to make things up. What’s more, extractive models have a much better track record in real-world applications — for example, in private or public semantic search engines, or in information extraction systems.
 

@@ -45,6 +45,14 @@
     gap: 4rem;
   }
 
+  .featured-image-wrapper {
+    width: 100%;
+    @include lg {
+      max-width: 30rem;
+      order: 2;
+    }
+  }
+
   .featured-image {
     border-radius: var(--border-radius-md);
     overflow: hidden;
@@ -53,8 +61,6 @@
 
     @include lg {
       height: 17rem;
-      max-width: 30rem;
-      order: 2;
     }
 
     > img {
@@ -64,6 +70,7 @@
       margin-top: 0;
     }
   }
+
 
   .blog-post-title {
     width: 100%;
@@ -596,5 +603,19 @@ blockquote {
     span {
       font-size: 1rem;
     }
+  }
+}
+
+// Image caption
+figcaption {
+  font-size: var(--text-base);
+  color: var(--color-dark-grey);
+  text-align: center;
+  margin-top: 0.75rem;
+
+  a {
+    font-size: var(--text-base);
+    color: var(--color-dark-grey);
+    text-decoration: underline;
   }
 }

@@ -18,15 +18,22 @@
         <article class="blog-post-content">
           {{/* Blog post header */}}
           <div class="blog-post-header">
-            {{/* Featured image */}}
-            {{ if .Params.featured_image }}
-              <div class="featured-image">
-                <img
-                  src="{{.Permalink}}{{ .Params.featured_image }}"
-                  alt="{{ .Params.alt_image }}"
-                />
-              </div>
-            {{ end }}
+
+            <figure class="featured-image-wrapper">
+              {{/* Featured image */}}
+              {{ if .Params.featured_image }}
+                <div class="featured-image">
+                  <img
+                    src="{{.Permalink}}{{ .Params.featured_image }}"
+                    alt="{{ .Params.alt_image }}"
+                  />
+                </div>
+                
+              {{ end }}
+              {{ if .Params.featured_image_caption}}
+              <figcaption>{{.Params.featured_image_caption | markdownify}}</figcaption>
+              {{ end }}
+            </figure>
 
 
             <div class="blog-post-title">

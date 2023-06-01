@@ -60,6 +60,10 @@ Second tab content here
 {{< /tabs >}}
 ```
 
+### Adding an image in article content
+
+![alt text](image path.png "Markdown *caption* with a **[bold link](/)**")
+
 ### Editing the theme
 
 HTML template files are located at /themes/haystack/layouts

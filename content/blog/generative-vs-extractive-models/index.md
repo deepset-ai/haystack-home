@@ -3,6 +3,7 @@ layout: blog-post
 title: Generative vs. Extractive Language Models
 description: Which one is right for your use case?
 featured_image: thumbnail.png
+featured_image_caption: Used by permission of the Folger Shakespeare Library under a Creative Commons Attribution-ShareAlike 4.0 International License.
 images: ["blog/generative-vs-extractive-models/thumbnail.png"]
 toc: True
 date: 2023-05-22

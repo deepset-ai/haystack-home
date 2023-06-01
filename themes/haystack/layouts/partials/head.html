@@ -14,9 +14,6 @@
   {{/* Canonical url */}}
   {{ if .Params.canonical_url }}
     <link rel="canonical" href="{{ .Params.canonical_url }}" />
-  {{ else }}
-    <link rel="canonical" href="{{ .Permalink }}" />
-  {{ end }}
 
 
   {{/*  <title>{{ .Title | plainify }} | {{ .Site.Title }}</title>  */}}

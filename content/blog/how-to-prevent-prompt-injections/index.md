@@ -3,6 +3,7 @@ layout: blog-post
 title: 'How to Prevent Prompt Injections: An Incomplete Guide'
 description: Learn how to prevent prompt injections leveraging our new open-source model and dataset.
 featured_image: thumbnail.jpg
+featured_image_caption: Photo by GuerrillaBuzz on Unsplash
 images: ["blog/how-to-prevent-prompt-injections/thumbnail.jpg"]
 toc: True
 date: 2023-05-19

@@ -273,7 +273,7 @@
               const card = document.createElement("a");
               card.classList.add("search-modal-card");
               const headline = doc.meta.headlines[0]?.headline;
-              card.href = `/tutorials/${doc.meta.file_name.toLowerCase().replace(".txt", "")}${headline ? `#${headline.toLowerCase().trim().replace(/ /g, "-").replace(/[.,\/!$%\^&\*;:{}=()]/g, "")}` : "" }`;
+              card.href = `/tutorials/${doc.meta.file_name.toLowerCase().replace(".txt", "")}${headline ? `#${headline.toLowerCase().trim().replace(/ /g, "-").replace(/[.,'\/!$%\^&\*;:{}=()]/g, "")}` : "" }`;
               card.innerHTML = `
               <svg
               width="32"

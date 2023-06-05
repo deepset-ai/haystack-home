@@ -105,4 +105,4 @@ Pushing the envelope, some directions of research are developing multimedia BERT
 
 If you want to learn more about BERT models through personal tinkering, our  [Haystack framework](https://haystack.deepset.ai/)  is a seamless tool for setting up a project. You can dive in right now with this  [tutorial on OpenAI’s GPT models for text generation](https://docs.haystack.deepset.ai/docs/answer_generator).
 
-If you’d like to ask about our tutorials around BERT or just connect with developers working at the cutting edge of NLP,  [our Discord](https://haystack.deepset.ai/community/join)  is full of friendly BERTologists ready to chat.
+If you’d like to ask about our tutorials around BERT or just connect with developers working at the cutting edge of NLP,  [our Discord](https://haystack.deepset.ai/community)  is full of friendly BERTologists ready to chat.

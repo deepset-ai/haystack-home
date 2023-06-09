@@ -31,7 +31,13 @@
       </span>
       <span>{{ .Params.type }}</span>
     </div>
+    
+    {{/* Logo */}}
+    {{ with .Params.logo }}
+      <img class="integration-card-logo" src="{{ . }}" alt="logo">
+    {{ end }}
   </div>
+
 
   {{/* Title */}}
   <h3>{{ .Params.name }}</h3>

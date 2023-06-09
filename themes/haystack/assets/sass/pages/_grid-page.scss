@@ -262,6 +262,14 @@
   .grid-page-card.integration-card {
     background-color: var(--color-bg-dark-blue);
 
+    .integration-card-logo {
+      width: auto;
+      height: 1.625rem;
+      margin-left: auto;
+      object-fit: contain;
+      max-width: 3.125rem;
+    }
+
     h3, p {
       color: var(--color-white);
     }

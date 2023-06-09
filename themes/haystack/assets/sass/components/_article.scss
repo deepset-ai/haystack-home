@@ -606,6 +606,14 @@ blockquote {
   }
 }
 
+// Integration logo
+.integration-logo {
+  height: 1.875rem;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+}
+
 // Image caption
 figcaption {
   font-size: var(--text-base);

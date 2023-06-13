@@ -141,7 +141,7 @@ serve run capitals:haystack_deployment
 You should see several log lines scrolling down in the shell, and if everything went well, a final message `Deployed Serve app successfully.` will tell us that the deployment is ready to accept connections - we can make a query now. We will use `curl` but really any HTTP client will work the same. From the command line:
 
 ```bash
-curl -X POST -d "What is the capital of Italy?" <http://localhost:8000> 
+curl -X POST -d "What is the capital of Italy?" http://localhost:8000 
 
 ```
 

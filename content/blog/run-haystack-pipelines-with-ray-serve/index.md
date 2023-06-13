@@ -131,7 +131,7 @@ A couple of things to note about the code above:
 -   We added a `__init__` method where we initialize the pipeline once and for the whole lifetime of the deployment.
 -   Every class decorated with `@serve.deployment` gets a `bind` method that tells Ray Serve to attach our `HaystackQA` class to a deployment object that we name `haystack_deployment`. In a moment, when we will start the server process, Ray Serve will pick up the value of this variable.
 
-The content of the Python file `[capitals.py](<http://capitals.py>)` is now all we need to “serve” our deployment. Ray Serve can be run from Python directly, but for this example we’ll show how to start the process from the command line, which is closer to what we would do in a production use case. From a shell where the Python environment containing `ray` is active, you can just run:
+The content of the Python file `capitals.py` is now all we need to “serve” our deployment. Ray Serve can be run from Python directly, but for this example we’ll show how to start the process from the command line, which is closer to what we would do in a production use case. From a shell where the Python environment containing `ray` is active, you can just run:
 
 ```bash
 serve run capitals:haystack_deployment

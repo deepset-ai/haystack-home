@@ -95,7 +95,7 @@ class MinimalIngress:
 
 ```
 
-The presence of an `async def __call__` method is the only contract we need to fulfil in order to spawn a Ray Serve deployment. To create a deployment that will run a Haystack pipeline, let’s create a file called `[capitals.py](<http://capitals.py>)` and add the following code:
+The presence of an `async def __call__` method is the only contract we need to fulfill in order to spawn a Ray Serve deployment. To create a deployment that will run a Haystack pipeline, let’s create a file called `capitals.py` and add the following code:
 
 ```python
 from pathlib import Path

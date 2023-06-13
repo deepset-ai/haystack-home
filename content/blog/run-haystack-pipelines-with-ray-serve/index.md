@@ -26,7 +26,7 @@ docker run -p 9200:9200 -p 9300:9300 -d deepset/elasticsearch-countries-and-capi
 
 ```
 
-The Elasticsearch instance will accept connections on `[localhost](<http://localhost>)` through the port `9200`.
+The Elasticsearch instance will accept connections on `localhost` through the port `9200`.
 
 ### Run the Haystack pipeline
 

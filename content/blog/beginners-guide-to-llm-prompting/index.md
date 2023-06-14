@@ -4,10 +4,11 @@ title: The Beginner's Guide to LLM Prompting
 description: How to engineer your natural language prompts to get the best answers from a large language model
 featured_image: thumbnail.png
 images: ["blog/beginners-guide-to-llm-prompting/thumbnail.png"]
-alt_image: Tester12345, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons
+featured_image_caption: Tester12345, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons
+alt_image: A light house standing in a sand dune is being illuminated by a setting sun.
 toc: True
-date: 2023-06-13
-last_updated:  2023-06-13
+date: 2023-06-15
+last_updated:  2023-06-15
 authors:
   - Isabelle Nguyen
 ---	
@@ -110,24 +111,20 @@ Here are some examples: Long walk to freedom, Wishful drinking, I know why the c
 
 Elements like quotation marks, bullet points, line breaks, etc. make it easier for humans to parse a text. And guess what? The same is true for LLMs. Let’s apply that insight to our previous example and spell out the full prompt once more.
 
-  
+```
+Generate a list of ten titles for my autobiography. The book is about my journey as an adventurer who has lived an unconventional life, meeting many different personalities and finally finding peace in gardening. Each title should be between two and five words long.
 
-    Generate a list of ten titles for my autobiography. The book is about my journey as an adventurer who has lived an unconventional life, meeting many different personalities and finally finding peace in gardening. Each title should be between two and five words long.
-        
-          
-    ### Examples of great titles ###  
+### Examples of great titles ###  
       
-    - “Long walk to freedom”  
-    - “Wishful drinking”  
-    - “I know why the caged bird sings”
-     
-
- 
+- “Long walk to freedom”  
+- “Wishful drinking”  
+- “I know why the caged bird sings”
+`` 
 
 Now that we’ve perfected our prompt, what does the LLM’s output look like? Here’s what ChatGPT came up with in response:
 
   
-![](titles.png)
+![An output of a list of ten titles in the ChatGPT interface. The titles are: 1. Trails of Wanderlust: Roaming Hearts, 2. Serendipity's Wild Ride: Life Unmapped, 3: Journeys Beyond Borders: Seeking Home, 4. Tales Unraveled: Nomadic Chronicles, 5. Discoveries in Unexpected Places, 6. From Vagabond to Green Thumb, 7. Ripples of Adventure: Tilling Tranquility, 8. Seeking Skies, Finding Roots, 9. Footprints and Seedlings: Unconventional Harmony, 10. Chasing Horizons, Cultivating Serenity](titles.png)
   
 
 “Seeking Skies, Finding Roots” is hilarious and I would absolutely consider reading that book.
@@ -141,13 +138,12 @@ Sometimes, the simplest techniques are the most effective. Researchers from Toky
 
 The model is forced to break down its solution into multiple, more manageable steps rather than being allowed to just hazard a guess. Seeing how this simple trick improves the model’s performance is pretty striking. Here is an example of a math puzzle that requires just a bit of recursive thinking:
   
-![](wrong-math.png)
-
+![ChatGPT input and output: The prompt "Add 1 and 3 and then divide by the latter and then add the former" elicits the answer "2" from the model.](wrong-math.png)
   
 
 The LLM confidently responds – with the wrong answer. Here’s what happens when we ask it to “think step by step:”
   
-![](correct-math.png)
+![ChatGPT input and output: The prompt "Add 1 and 3 and then divide by the latter and then add the former. Let's think step by step:" elicits the answer "Step1: Add 1 and 3. Result: 4, Step 2: Divide by the latter. Result: 4/3 = 1.333..., Step 3: Add the former. Result: 1.333...+1=2.333.... The final answer is 2.333..." from the model.](correct-math.png)
   
 
 And this time, the final answer is correct.

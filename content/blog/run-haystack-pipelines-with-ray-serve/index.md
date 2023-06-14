@@ -19,7 +19,7 @@ authors:
 
 ### Prepare a set of documents
 
-Let’s begin by serving locally a Haystack pipeline that’s simple but non-trivial: a question-answering system working on an existing set of documents. For simplicity, we’ll use a Docker image running Elasticsearch and populated with a set of documents that can be queried right ahead. So before we start, let’s run the image:
+Let’s begin by serving locally a Haystack pipeline that’s simple but non-trivial: a question-answering system working on an existing set of documents. For simplicity, we’ll use a Docker image running Elasticsearch and populated with a set of documents about countries and capitals that can be queried right ahead. So before we start, let’s run the image:
 
 ```docker
 docker run -p 9200:9200 -p 9300:9300 -d deepset/elasticsearch-countries-and-capitals:latest
@@ -30,7 +30,7 @@ The Elasticsearch instance will accept connections on `localhost` through the po
 
 ### Run the Haystack pipeline
 
-Haystack pipelines can be defined through Python code or a yaml definition that is eventually and transparently converted into Python code. We’ll use the latter format, so open an editor and save the following definition in a file called `pipeline.yml`
+Haystack pipelines can be defined through Python code or a [yaml definition](https://docs.haystack.deepset.ai/docs/pipelines#yaml-file-definitions) that is eventually and transparently converted into Python code. We’ll use the latter format, so open an editor and save the following definition in a file called `pipeline.yml`
 
 ```yaml
 version: ignore
@@ -182,4 +182,4 @@ The `autoscaling_config` parameters are self-explanatory and the [docs](https://
 
 ## What’s next
 
-The deployment strategy we introduced in this article is ok for many use cases ranging from trying out Haystack to demo applications and small POCs, but close readers will note the limit of scaling up and down a whole Haystack pipeline: certain nodes of a pipeline might benefit more than others of horizontal scaling and redundancy, can we do that with Ray Serve? The answer is yes, and we’ll see in an upcoming article how we can split a pipeline into multiple deployments that can be then managed by Ray Serve with different strategies
+The deployment strategy we introduced in this article is ok for many use cases ranging from trying out Haystack to demo applications and small POCs, but close readers will note the limit of scaling up and down a whole Haystack pipeline: certain nodes of a pipeline might benefit more than others of horizontal scaling and redundancy, can we do that with Ray Serve? The answer is yes, and we’ll see in an upcoming article how we can split a pipeline into multiple deployments that can be then managed by Ray Serve with different strategies.

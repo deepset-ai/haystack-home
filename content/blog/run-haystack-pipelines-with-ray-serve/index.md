@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-title: Run Haystack pipelines in production with Ray Serve
+title: Run Haystack Pipelines in production with Ray Serve
 description: A guide to scale Haystack pipelines for production with Ray Serve
 featured_image: thumbnail.png
 images: ["blog/run-haystack-pipelines-with-ray-serve/thumbnail.png"]

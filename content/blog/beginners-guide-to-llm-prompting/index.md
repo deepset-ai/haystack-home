@@ -3,7 +3,7 @@ layout: blog-post
 title: The Beginner's Guide to LLM Prompting
 description: How to engineer your natural language prompts to get the best answers from a large language model
 featured_image: thumbnail.png
-images: ["blog/announcing-haystack-blog/thumbnail.png"]
+images: ["blog/beginners-guide-to-llm-prompting/thumbnail.png"]
 alt_image: Tester12345, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons
 toc: False
 date: 2023-06-13
@@ -133,7 +133,6 @@ Now that we’ve perfected our prompt, what does the LLM’s output look like? H
 “Seeking Skies, Finding Roots” is hilarious and I would absolutely consider reading that book.
   
 
-![](https://lh6.googleusercontent.com/kI4UXKPdtQeKYPwAHdIpYbVQaBTFCPtRIusBHBr0D8YxX8QS_3_F9ErWoW4OJ-28qRXk2MOblm3pe16XwZrktJ8DAmcvOxVXT3b0GelDtLdUvIdTlRXZC5O612IxZF5xv-Wv2fdywabzvG9XpuHHC4c)![](https://lh6.googleusercontent.com/kI4UXKPdtQeKYPwAHdIpYbVQaBTFCPtRIusBHBr0D8YxX8QS_3_F9ErWoW4OJ-28qRXk2MOblm3pe16XwZrktJ8DAmcvOxVXT3b0GelDtLdUvIdTlRXZC5O612IxZF5xv-Wv2fdywabzvG9XpuHHC4c)
 ### Use leading words
 
 Sometimes, the simplest techniques are the most effective. Researchers from Tokyo University have shown that telling a model to “think step by step” before its response can [generate more accurate results](https://arxiv.org/pdf/2205.11916.pdf) and help the model correct its own mistakes. This method is known as using “leading words,” because we gently guide the model towards a more effective plan for problem-solving.

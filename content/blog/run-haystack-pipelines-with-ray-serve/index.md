@@ -5,8 +5,8 @@ description: A guide to scale Haystack pipelines for production with Ray Serve
 featured_image: thumbnail.png
 images: ["blog/run-haystack-pipelines-with-ray-serve/thumbnail.png"]
 toc: True
-date: 2023-06-13
-last_updated:  2023-06-13
+date: 2023-06-14
+last_updated:  2023-06-14
 authors:
   - Massimiliano Pippi
 ---

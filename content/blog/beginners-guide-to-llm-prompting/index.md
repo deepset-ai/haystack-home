@@ -5,7 +5,7 @@ description: How to engineer your natural language prompts to get the best answe
 featured_image: thumbnail.png
 images: ["blog/beginners-guide-to-llm-prompting/thumbnail.png"]
 alt_image: Tester12345, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons
-toc: False
+toc: True
 date: 2023-06-13
 last_updated:  2023-06-13
 authors:

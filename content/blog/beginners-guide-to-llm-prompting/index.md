@@ -111,6 +111,7 @@ Here are some examples: Long walk to freedom, Wishful drinking, I know why the c
 
 Elements like quotation marks, bullet points, line breaks, etc. make it easier for humans to parse a text. And guess what? The same is true for LLMs. Let’s apply that insight to our previous example and spell out the full prompt once more.
 
+
 ```
 Generate a list of ten titles for my autobiography. The book is about my journey as an adventurer who has lived an unconventional life, meeting many different personalities and finally finding peace in gardening. Each title should be between two and five words long.
 
@@ -119,7 +120,8 @@ Generate a list of ten titles for my autobiography. The book is about my journey
 - “Long walk to freedom”  
 - “Wishful drinking”  
 - “I know why the caged bird sings”
-`` 
+```
+
 
 Now that we’ve perfected our prompt, what does the LLM’s output look like? Here’s what ChatGPT came up with in response:
 

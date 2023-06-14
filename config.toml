@@ -133,7 +133,7 @@ paginatePath = "/"
   weight = 1
 
 [[menu.main]]
-  name = 'PromptHub'
+  name = 'Prompt Hub'
   url = 'https://prompthub.deepset.ai'
   parent = 'resources'
   weight = 2

@@ -7,8 +7,8 @@ images: ["blog/beginners-guide-to-llm-prompting/thumbnail.png"]
 featured_image_caption: Tester12345, CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>, via Wikimedia Commons
 alt_image: A light house standing in a sand dune is being illuminated by a setting sun.
 toc: True
-date: 2023-06-14
-last_updated:  2023-06-14
+date: 2023-06-15
+last_updated:  2023-06-15
 authors:
   - Isabelle Nguyen
 ---	

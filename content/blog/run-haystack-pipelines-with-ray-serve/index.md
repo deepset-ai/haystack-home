@@ -108,8 +108,8 @@ from haystack import Pipeline
 class HaystackQA:
     def __init__(self):
         # Load the pipeline from file and store it in self._pipeline
-	# so we can reuse it every time __call__ is invoked.
-	config = Path("pipeline.yml")
+        # so we can reuse it every time __call__ is invoked.
+        config = Path("pipeline.yml")
         self._pipeline = Pipeline.load_from_yaml(config, "query")
 
     async def __call__(self, request: Request) -> str:

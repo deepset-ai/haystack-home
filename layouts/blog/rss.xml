@@ -34,7 +34,24 @@
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
       {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
       <guid>{{ .Permalink }}</guid>
-      <description>{{ .Content | html }}</description>
+      <description>
+      <!-- {{ .Content | html }} -->
+      
+      {{ $html := htmlUnescape .Content | safeHTML }}
+      {{ $link := .Permalink }}
+
+      {{ $srcs := findRE "src=\"([^\"]*)\"" $html }}
+      {{ range $src := $srcs}}
+        {{ $absSrc := strings.TrimPrefix "src=\"" $src  }}
+        {{ $absSrc = strings.TrimSuffix "\"" $absSrc  }}
+
+        {{ $absSrc = printf "%s%s" $link $absSrc }}
+
+        {{ $html = replace $html $src $absSrc }}
+      {{ end }}
+
+      {{ $html }}
+      </description>
     </item>
     {{ end }}
   </channel>

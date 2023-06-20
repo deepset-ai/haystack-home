@@ -27,6 +27,7 @@
     {{- with .OutputFormats.Get "RSS" -}}
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end -}}
+    {{ $link := .Permalink }}
     {{ range $pages }}
     <item>
       <title>{{ .Title }}</title>
@@ -38,7 +39,6 @@
       <!-- {{ .Content | html }} -->
       
       {{ $html := htmlUnescape .Content | safeHTML }}
-      {{ $link := .Permalink }}
 
       {{ $srcs := findRE "src=\"([^\"]*)\"" $html }}
       {{ range $src := $srcs}}

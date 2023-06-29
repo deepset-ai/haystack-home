@@ -34,7 +34,7 @@ my_summarizer_prompt = PromptTemplate(prompt="deepset/summarization")
 
 Each prompt on the PromptHub will have instructions on how they are intended to be used, including instructions on what the best `output_parser` for that prompt might be.
 
-For example, the `**deepset/question-answering**` prompt is best used with an `output_parser` as described on the PromptHub.
+For example, the `deepset/question-answering` prompt is best used with an `output_parser` as described on the PromptHub.
 
 ```python
 
@@ -92,7 +92,7 @@ Which can be used in a `PromptTemplate` with the following code:
 ```python
 from haystack.nodes import PromptTemplate
 
-yoda_prompt = PromptTemplate(prompt="./my_prompt.yaml")
+yoda_prompt = PromptTemplate(prompt="./my_yoda_prompt.yaml")
 ```
 
 Just in case you were curious: When asked ‘What is the meaning of life’ with this prompt, GPT-4’s result was “42, the meaning of life is. But truly, in one's own understanding and experience, find the meaning of life, one must. Hmmmm.”

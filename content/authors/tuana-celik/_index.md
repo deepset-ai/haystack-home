@@ -20,4 +20,7 @@ socials:
     - name: Twitter
       url: https://twitter.com/tuanacelik
       icon: /images/icons/twitter-dark.svg
+    - name: GitHub
+      url: https://github.com/tuanacelik
+      icon: /images/icons/github.svg
 ---

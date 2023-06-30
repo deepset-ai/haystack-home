@@ -18,7 +18,7 @@ Prompts that are provided in PromptHub are all maintained in their own public re
 
 In the following sections, we will walk through how you may use prompts hosted on the PromtHub, as well as your own local prompts.
 
-## Using prompts on PromptHub via the API
+## Using Prompts on PromptHub via the API
 
 The easiest way to use prompts from the PromptHub is to simply copy over their identifier, and add this into the `prompt` field in a `PromptTemplate`.
 
@@ -43,9 +43,9 @@ from haystack.nodes import PromptTemplate, AnswerParser
 question_answering_template = PromptTemplate("deepset/question-answering", output_shapers=AnswerParser())
 ```
 
-Once you’ve created your `PromptTemplate`, you can use these in a `PromptNode` by setting it as the `default_prompt_template` or even setting it as the `prompt_template` in an single `prompt()` call.
+Once you’ve created your `PromptTemplate`, you can use it in a `PromptNode` by setting it as the `default_prompt_template` or even setting it as the `prompt_template` in a single `prompt()` call.
 
-Once you’ve pulled a prompt from the hub. the file will be cached on your machine. So you do not have to worry about making an API call each time.
+Once you’ve pulled a prompt from the hub, the file will be cached on your machine. So you do not have to worry about making an API call each time.
 
 ## Creating and Using Local Prompts
 
@@ -92,7 +92,7 @@ Which can be used in a `PromptTemplate` with the following code:
 ```python
 from haystack.nodes import PromptTemplate
 
-yoda_prompt = PromptTemplate(prompt="./my_yoda_prompt.yaml")
+yoda_prompt = PromptTemplate(prompt="path/to/my_yoda_prompt.yaml")
 ```
 
 Just in case you were curious: When asked ‘What is the meaning of life’ with this prompt, GPT-4’s result was “42, the meaning of life is. But truly, in one's own understanding and experience, find the meaning of life, one must. Hmmmm.”

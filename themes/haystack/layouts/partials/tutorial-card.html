@@ -1,6 +1,16 @@
 <a href="{{ .RelPermalink }}" class="grid-page-card" data-level="{{ .Params.level }}" data-created="{{ .Params.created_at }}" data-updated='{{ with .Lastmod }}{{ . | time.Format "2006-01-02" }}{{else}}{{ .Params.created_at }}{{ end }}' {{with .Params.featured}}data-featured="{{.}}"{{end}}>
     {{/*  Header / tags  */}}
     <div class="grid-page-card-header">
+
+        {{/*  Outdated tag  */}}
+        {{ with .Params.haystack_version }}
+            {{ if ne . "latest" }}
+                <div class="outdated">
+                    Outdated
+                </div>
+            {{ end }}
+        {{ end }}
+
         {{/*  level  */}}
         <div>
             <span class="icon"><svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">

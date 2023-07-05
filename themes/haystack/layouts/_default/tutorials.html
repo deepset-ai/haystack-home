@@ -254,7 +254,9 @@
     });
 
     {{/*  Search  */}}
-    const searchTutorials = async (query) => {
+    const searchTutorials = async () => {
+      const query = searchModalInput.value
+      
       if (!query) return
       searchModal.classList.remove("default", "not-found", "error")
       searchModalCards.innerHTML = ""
@@ -366,7 +368,7 @@
 
     searchModalInput.onkeydown = (e) => {
       if (e.keyCode == 13) {
-        searchTutorials(searchModalInput.value)
+        searchTutorials()
       }
     }
 

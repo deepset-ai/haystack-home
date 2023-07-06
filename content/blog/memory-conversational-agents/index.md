@@ -51,7 +51,7 @@ Consider the following [dialogue from the movie “Booksmart:”](https://en.wik
 
 This conversation only works because Amy and Molly know what was said previously. It’s clear from the context that the pronoun “he” refers back to Picasso, and when Amy says, “Name another one,” she doesn’t have to spell out that she means “another person who broke the rules.”
 
-# Large language models and memory
+## Large language models and memory
 
 By default, LLMs don’t have an inbuilt notion of memory. As far as an out-of-the-box LLM is concerned, every prompt it receives is the beginning of an entirely new interaction.
 

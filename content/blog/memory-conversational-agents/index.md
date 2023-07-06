@@ -23,7 +23,7 @@ Today we want to lift the hood on how memory is implemented in Haystack. We’ll
 
 If you want to understand how memory works computationally or start building your own conversational AI interface with Haystack, this article is for you.
 
-# Why memory matters
+## Why memory matters
 
 For an exchange of words to feel like a conversation, both parties require some kind of memory: they need to remember what’s been said before, and they need to be able to refer back to salient entities and concepts by using, for example, pronouns.
 

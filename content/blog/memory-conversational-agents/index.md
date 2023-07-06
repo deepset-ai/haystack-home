@@ -11,7 +11,7 @@ date: 2023-07-07
 last_updated:  2023-07-07
 authors:
   - Isabelle Nguyen
----	
+---
  
 
 Memory is what turns a powerful LLM into an empathetic interlocutor who can remember what you’ve said before. But how does it work?
@@ -34,19 +34,19 @@ Consider the following [dialogue from the movie “Booksmart:”](https://en.wik
 
   
 
->Amy: Name one person whose life was so much better because they broke a couple of rules.
+Amy: Name one person whose life was so much better because they broke a couple of rules.
 
->Molly: Picasso.
+Molly: Picasso.
 
->Amy: He broke art rules. Name a person who broke a real rule.
+Amy: He broke art rules. Name a person who broke a real rule.
 
->Molly: Rosa Parks.
+Molly: Rosa Parks.
 
->Amy: Name another one.
+Amy: Name another one.
 
->Molly: Susan B. Anthony.
+Molly: Susan B. Anthony.
 
->Amy: God dammit.
+Amy: God dammit.
 
   
 

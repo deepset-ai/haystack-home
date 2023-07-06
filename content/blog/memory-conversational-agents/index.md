@@ -248,7 +248,7 @@ Memory as a tool opens up a range of possibilities. You’re free to configure i
 
 In the extractive QA pipeline solution, your conversational agent sends a query to your memory database, and the pipeline seeks to return the most relevant snippets from the memory that help contextualize the user’s query. In the summarization pipeline solution, the memory tool returns a summary of relevant documents instead. Implementing memory as these tools again helps you avoid bumping into the LLM’s token limit.
 
-# Don’t forget to follow us
+## Don’t forget to follow us
 
 As a company, deepset is invested in bringing LLMs to every application. We also like sharing the latest insights on all things NLP with our community. If that sounds good to you, [follow us on Twitter](https://twitter.com/deepset_ai/).
 

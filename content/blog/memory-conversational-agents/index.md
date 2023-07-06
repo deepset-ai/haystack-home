@@ -33,19 +33,19 @@ Consider the following [dialogue from the movie “Booksmart:”](https://en.wik
 
   
 
-Amy: Name one person whose life was so much better because they broke a couple of rules.
+**Amy:** Name one person whose life was so much better because they broke a couple of rules.
 
-Molly: Picasso.
+**Molly:** Picasso.
 
-Amy: He broke art rules. Name a person who broke a real rule.
+**Amy:** He broke art rules. Name a person who broke a real rule.
 
-Molly: Rosa Parks.
+**Molly:** Rosa Parks.
 
-Amy: Name another one.
+**Amy:** Name another one.
 
-Molly: Susan B. Anthony.
+**Molly:** Susan B. Anthony.
 
-Amy: God dammit.
+**Amy:** God dammit.
 
   
 

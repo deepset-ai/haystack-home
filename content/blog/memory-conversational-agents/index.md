@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-title: Good Listener: How Memory Enables Conversational Agents
+title: "Good Listener: How Memory Enables Conversational Agents"
 description: ...and how we've implemented it in Haystack
 featured_image: thumbnail.png
 images: ["blog/memory-conversational-agents/thumbnail.png"]
@@ -12,7 +12,6 @@ last_updated:  2023-07-07
 authors:
   - Isabelle Nguyen
 ---
- 
 
 Memory is what turns a powerful LLM into an empathetic interlocutor who can remember what you’ve said before. But how does it work?
 

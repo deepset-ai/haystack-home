@@ -250,7 +250,7 @@ In the extractive QA pipeline solution, your conversational agent sends a query 
 
 # Don’t forget to follow us
 
-As a company, deepset is invested in bringing LLMs to every application. In the process, we also educate people everywhere on all things NLP. If that sounds interesting to you, [follow us on Twitter](https://twitter.com/deepset_ai/).
+As a company, deepset is invested in bringing LLMs to every application. We also like sharing the latest insights on all things NLP with our community. If that sounds good to you, [follow us on Twitter](https://twitter.com/deepset_ai/).
 
   
 

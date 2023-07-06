@@ -2,9 +2,9 @@
 layout: blog-post
 title: "Good Listener: How Memory Enables Conversational Agents"
 description: ...and how we've implemented it in Haystack
-featured_image: thumbnail.png
+featured_image: thumbnail.jpg
 images: ["blog/memory-conversational-agents/thumbnail.jpg"]
-featured_image_caption: rawing by Valery Carrick, via Wikimedia Commons
+featured_image_caption: Drawing by Valery Carrick, via Wikimedia Commons
 alt_image: A drawing in simple style of an elephant talking to a turtle.
 toc: True
 date: 2023-07-06

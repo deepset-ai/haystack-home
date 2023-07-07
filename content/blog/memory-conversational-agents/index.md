@@ -7,8 +7,8 @@ images: ["blog/memory-conversational-agents/thumbnail.jpg"]
 featured_image_caption: Drawing by Valery Carrick, via Wikimedia Commons
 alt_image: A drawing in simple style of an elephant talking to a turtle.
 toc: True
-date: 2023-07-06
-last_updated:  2023-07-06
+date: 2023-07-07
+last_updated:  2023-07-07
 authors:
   - Isabelle Nguyen
 ---

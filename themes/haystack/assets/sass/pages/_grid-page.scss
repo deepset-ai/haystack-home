@@ -233,6 +233,11 @@
         background-color: var(--color-yellow);
       }
 
+      &.outdated {
+        background-color: var(--color-dark-blue);
+        color: var(--color-white);
+      }
+
       .icon {
         flex-shrink: 0;
         display: flex;

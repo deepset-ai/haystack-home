@@ -179,4 +179,4 @@ Prompts also play a huge role in Agents: the latest fascinating trend that lets 
 
   
 
-Finally, you don’t always need to write your own prompts. Head over to our [prompt hub](https://prompthub.deepset.ai/), where you find prompts for all kinds of applications, which you can use out of the box or tune to your liking, to get the best answers from your LLM.
+Finally, you don’t always need to write your own prompts. Head over to our [PromptHub](https://prompthub.deepset.ai/), where you find prompts for all kinds of applications, which you can use out of the box or tune to your liking, to get the best answers from your LLM.

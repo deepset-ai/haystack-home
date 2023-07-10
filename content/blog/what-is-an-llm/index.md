@@ -97,7 +97,7 @@ A closed-source model, on the other hand, is even more of a black box than other
 
   
 
-But the NLP community responded to the companies’ proprietary aspirations with lightning speed, training and open-sourcing its own large language models. You can take a look at the [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) on Hugging Face or the “[Chatbot Arena](https://chat.lmsys.org/?arena),” which hides the predictive models’ identities during experiments, to find out about the best performing models in the space.
+But the NLP community responded to the companies’ proprietary aspirations with lightning speed, training and open-sourcing its own large language models. You can take a look at the [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) on Hugging Face or the [Chatbot Arena](https://chat.lmsys.org/?arena), which hides the predictive models’ identities during experiments, to find out about the best performing models in the space.
 
   
 

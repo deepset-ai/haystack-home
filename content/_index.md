@@ -10,7 +10,8 @@ hero:
   title: Open-source LLM framework to build production-ready applications
   bulletPoints:
     - "Use the latest LLMs: hosted models by OpenAI or Cohere, open-source LLMs, or other pre-trained models"
-    - "All tooling in one place: preprocessing, pipelines, agents & tools, prompts, evaluation and finetuning, document and vector databases (Elasticsearch, OpenSearch, Weaviate, Pinecone, Qdrant, Milvus and more)"
+    - "All tooling in one place: preprocessing, pipelines, agents & tools, prompts, evaluation and finetuning"
+    - "Choose your favorite database: Elasticsearch, OpenSearch, Weaviate, Pinecone, Qdrant, Milvus and more"
     - "Scale to millions of documents: use Haystack's proven retrieval architecture"
   buttons:
     - buttonText: Learn more

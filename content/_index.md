@@ -7,11 +7,11 @@ description: Haystack, the open source NLP framework
 
 # Hero
 hero:
-  title: An NLP Framework To Use Transformers In Your Applications
+  title: Open-source LLM framework to build production-ready applications
   bulletPoints:
-    - Apply the latest NLP technology to your own data with the use of Haystack's pipeline architecture
-    - Implement production-ready semantic search, question answering, summarization and document ranking for a wide range of NLP applications
-    - Evaluate components and fine-tune models
+    - "Use the latest LLMs: hosted models by OpenAI or Cohere, open-source LLMs, or other pre-trained models"
+    - "All tooling in one place: preprocessing, pipelines, agents & tools, prompts, evaluation and finetuning, document and vector databases (Elasticsearch, OpenSearch, Weaviate, Pinecone, Qdrant, Milvus and more)"
+    - "Scale to millions of documents: use Haystack's proven retrieval architecture"
   buttons:
     - buttonText: Learn more
       url: /overview/intro

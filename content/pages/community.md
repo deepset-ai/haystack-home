@@ -58,33 +58,21 @@ hero:
     contributors:
       title: Most active contributors
 
-# # Upcoming events
-# eventsSection:
-#   anchor: events
-#   title: Upcoming Events
-#   events:
-#     - title: >
-#         How to Make Audio Podcasts Searchable & NLP for Under-Represented Languages
-#       description: >
-#         We have 2 talks scheduled for the hybrid Open NLP Meetup:
-#         <br /> **1. How to Make Audio Podcasts Searchable** *by Nicolas Delahousse from ML6*
-#         <br /> **2. NLP for Under-Represented Languages** *by Sebastian Ruder from Google*
-#       date: "2023-05-11"
-#       time: "19:00 CET"
-#       location: Zoom and AI Campus, Berlin
-#       image: /images/meetup-may.png
-#       url: https://www.meetup.com/open-nlp-meetup/events/291727375/
-#       buttonText: Register
-#     - title: >
-#         Building Applications with LLM-based Agents
-#       description: >
-#         In this webinar, Julian will explain the concept of Agents, walk you through code examples, and show you how to create your own application with custom tools using Haystack.
-#       date: "2023-05-16"
-#       time: "17:00 CET"
-#       location: Zoom
-#       image: /images/webinar-agents.png
-#       url: https://hubs.li/Q01NFCny0
-#       buttonText: Register
+# Upcoming events
+eventsSection:
+  anchor: events
+  title: Upcoming Events
+  events:
+    - title: >
+        Securing LLMs: How to detect prompt injections
+      description: > 
+        During this webinar, we will provide a detailed walkthrough on how we curated a dataset and trained a classifier that serves to detect prompt injections, using data augmentation techniques including translations and adversarial examples. Then, we will discuss how you can integrate this model into your AI system to improve its security.
+      date: "2023-07-25"
+      time: "17:00 CET"
+      location: Zoom
+      image: /images/webinar-prompt-injection.jpg
+      url: https://hubs.li/Q01Xr4GB0
+      buttonText: Register
 
 # Open NLP Meetup section
 meetupSection:

@@ -82,7 +82,7 @@ We also organize live online and in-person events, webinars, and office hours, w
 ## Enter the Haystack universe
 
 - Visit our [GitHub repo](https://github.com/deepset-ai/haystack)
-- Start building with [tutorials](https://haystack.deepset.ai/tutorials) in Collab notebooks
+- Start building with [tutorials](https://haystack.deepset.ai/tutorials) in Colab notebooks
 - Have a look at the [documentation](https://docs.haystack.deepset.ai/)
 - Read and contribute to our [blog](https://haystack.deepset.ai/blog)
 

@@ -85,5 +85,3 @@ We also organize live online and in-person events, webinars, and office hours, w
 - Start building with [tutorials](https://haystack.deepset.ai/tutorials) in Colab notebooks
 - Have a look at the [documentation](https://docs.haystack.deepset.ai/)
 - Read and contribute to our [blog](https://haystack.deepset.ai/blog)
-
-Let’s make some NLP magic happen!

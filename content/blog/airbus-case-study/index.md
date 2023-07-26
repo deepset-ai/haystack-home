@@ -2,8 +2,8 @@
 layout: blog-post
 title: Question Answering in the Cockpit
 description: How Airbus used Haystack to build a combined table and text QA system for pilots, aircraft maintenance workers, and others
-featured_image: thumbnail.png
-images: ["blog/airbus-case-study/thumbnail.png"]
+featured_image: thumbnail.jpg
+images: ["blog/airbus-case-study/thumbnail.jpg"]
 featured_image_caption: Photo by [Andrés Dallimonti](https://unsplash.com/@dallimonti)
 alt_image: Controls in an A330 cockpit.
 toc: True

@@ -18,7 +18,7 @@ Based on smaller, open-source Transformer models, extractive question answering 
 
 One such company is Airbus. Using our open-source framework [Haystack](https://haystack.deepset.ai/) for applied NLP, they built a complex QA system to extract answers from their extensive manuals for pilots, which are used both in training and during flight. What makes this use case particularly interesting is that the manuals contain not only text but also a lot of tables. Thankfully, modern QA systems can handle those too, using a special technique known as table question answering (Table QA).
 
-This case study describes [Airbus’ artificial intelligence research unit](https://www.airbus.com/en/innovation/industry-4-0/artificial-intelligence)’s investigation into how NLP can help human agents find solutions in critical situations, based on their technical documentation. They solved the complex problem of processing both normal text and tables, using Haystack. The result of their work, a complex composite QA system for text and tables, will make the work of different teams in the company easier and more efficient.
+This case study describes how [Airbus’ artificial intelligence research unit](https://www.airbus.com/en/innovation/industry-4-0/artificial-intelligence) investigated how NLP could help human agents find solutions in critical situations, based on their technical documentation. They used Haystack to solve the complex problem of processing both text and tables. The result, a complex composite text and table QA system, will make work easier and more efficient for different teams in the company.
 
 ## The problem
 
@@ -82,7 +82,7 @@ While the system in its current form may still be too experimental for critical 
 
 Alexandre and his team had started the project to find out whether NLP technologies could be used in highly technical domains with strict accuracy requirements — or whether the quest for “browsing documentation in a more natural way,” as Alexandre puts it, was still out of reach. After concluding this phase of the project, Alexandre is confident: 
 
->**_The results are promising. While we still need to work on the robustness of such systems and the operational performance before any imaginable deployment, we now see the value and the potential of the technology. We want to make sure that we keep up to speed with the space of NLP, so that our organization can leverage it from day one once it's really perfectly useful for operations. This is really a gold mine._**
+>**_The results are promising. While we still need to work on the robustness of such systems and the operational performance before any imaginable deployment, we now see the value and the potential of the technology. We want to make sure that we keep up to speed with the space of NLP, so that our organization can leverage it from day one once it's really perfectly useful for operations. This is really a gold mine!_**
 
 ## Take your information retrieval system to new heights
 

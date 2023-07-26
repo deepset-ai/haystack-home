@@ -18,7 +18,7 @@ Based on smaller, open-source Transformer models, extractive question answering 
 
 One such company is Airbus. Using our open-source framework [Haystack](https://haystack.deepset.ai/) for applied NLP, they built a complex QA system to extract answers from their extensive manuals for pilots, which are used both in training and during flight. What makes this use case particularly interesting is that the manuals contain not only text but also a lot of tables. Thankfully, modern QA systems can handle those too, using a special technique known as table question answering (Table QA).
 
-This case study describes how [Airbus’ artificial intelligence research unit](https://www.airbus.com/en/innovation/industry-4-0/artificial-intelligence) investigated how NLP could help human agents find solutions in critical situations, based on their technical documentation. They used Haystack to solve the complex problem of processing both text and tables. The result, a complex composite text and table QA system, will make work easier and more efficient for different teams in the company.
+This case study describes how [Airbus’ artificial intelligence research unit](https://www.airbus.com/en/innovation/industry-4-0/artificial-intelligence) investigated how NLP could help human agents find solutions in critical situations, based on their technical documentation. They used Haystack to solve the complex problem of processing both text and tables. The result, a composite text and table QA system, will make work easier and more efficient for different teams in the company.
 
 ## The problem
 

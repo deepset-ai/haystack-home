@@ -34,7 +34,7 @@ A major downside of the keyword-based approach is that users need to know the ex
 
 It should be stressed that the current system works quite well for most of the experienced pilots, who have worked with it for many years, and have gotten very good at finding the information they need. But the AI team at Airbus wanted to see if it was possible to use newer, more advanced approaches to build a more intuitive system with a flatter learning curve that would return more accurate information within a shorter time.
 
->_**In stressful situations especially, pilots need to get to the info as quickly as possible to be able to react in time. We wanted to assess whether a deep learning-based system for advanced question answering could reduce the retrieval time._** — Alexandre Arnold, AI research unit, Airbus
+>**_In stressful situations especially, pilots need to get to the info as quickly as possible to be able to react in time. We wanted to assess whether a deep learning-based system for advanced question answering could reduce the retrieval time._** — Alexandre Arnold, AI research unit, Airbus
 
 Like many technical documents, the FCOM contains a lot of tables. During the project’s initial phase, the Airbus team realized that tables play such an integral part in the pilots’ information extraction process that their system wouldn’t be complete without a module that could do question answering on tables. Luckily, [TaPas](https://huggingface.co/docs/transformers/model_doc/tapas) — Google’s popular Table QA model — does just that. Having worked with [deepset](https://www.deepset.ai/) before and knowing of our expertise in working with TaPas-based models, the AI team at Airbus found it easy to decide on Haystack as the framework of choice for implementing a QA system for pilots that could handle both text and tables.
 
@@ -83,8 +83,6 @@ While the system in its current form may still be too experimental for critical 
 Alexandre and his team had started the project to find out whether NLP technologies could be used in highly technical domains with strict accuracy requirements — or whether the quest for “browsing documentation in a more natural way,” as Alexandre puts it, was still out of reach. After concluding this phase of the project, Alexandre is confident: 
 
 >**_The results are promising. While we still need to work on the robustness of such systems and the operational performance before any imaginable deployment, we now see the value and the potential of the technology. We want to make sure that we keep up to speed with the space of NLP, so that our organization can leverage it from day one once it's really perfectly useful for operations. This is really a gold mine._**
-
-The team also stresses that while the current system may still be too experimental to be applied in a critical “life-and-death” situation, it can be used for many other applications, such as in engineering and training. Having the proof of concept that modern applied NLP is fit for use, Alexandre and his team are confident about the future.
 
 ## Take your information retrieval system to new heights
 

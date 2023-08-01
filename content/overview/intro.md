@@ -8,11 +8,11 @@ weight: 1
 toc: true
 ---
 
-Haystack is the open source Python framework by deepset for building custom NLP-driven apps. It lets you quickly try out the latest models in natural language processing (NLP) while being flexible and easy to use. Our inspiring community of users and builders has helped shape Haystack into what it is today: a complete framework for building production-ready NLP apps.
+Haystack is the open source Python framework by deepset for building custom apps with large language models (LLMs). It lets you quickly try out the latest models in natural language processing (NLP) while being flexible and easy to use. Our inspiring community of users and builders has helped shape Haystack into what it is today: a complete framework for building production-ready NLP apps.
 
 ## Building with Haystack
 
-Haystack offers comprehensive tooling for developing state-of-the-art NLP systems that use Transformer models and LLMs (such as GPT-4, Falcon and similar). With Haystack, you can effortlessly experiment with various models hosted on platforms like Hugging Face, OpenAI, Cohere, or even your local models to find the perfect fit for your use case.
+Haystack offers comprehensive tooling for developing state-of-the-art NLP systems that use LLMs (such as GPT-4, Falcon and similar) and Transformer models . With Haystack, you can effortlessly experiment with various models hosted on platforms like Hugging Face, OpenAI, Cohere, or even models deployed on SageMaker and your local models to find the perfect fit for your use case.
 
 {{< img src="/images/model_providers.png" alt="Model Providers" styling="centered" width="800">}}
 

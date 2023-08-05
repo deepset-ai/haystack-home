@@ -7,31 +7,4 @@
     {{ partial "blog-list" . }}
     
   </div>
-
-
-  <script>
-    {{/*  const blogPosts = [
-      {{ $counter := 0 }}
-      {{ range $i, $p := $blogPosts }}
-        {{ if not .IsHome }}
-          {{ if gt $counter 0 }}, {{ end }}
-          {
-            "title": {{ .Title  }},
-            "url": {{ .Permalink  }},
-            "description": {{ .Description  }},
-            "image": {{ .Params.featured_image  }},
-            "tags": {{ if .Params.tags }}{{ .Params.tags }}{{ else }}[]{{ end }},
-            "authors": {{ if .Params.authors }}{{ .Params.authors }}{{ else }}[]{{ end }}
-          }
-          {{ $counter = add $counter 1 }}
-        {{ end }}
-      {{ end }}
-    ];  */}}
-    {{/*  console.log(blogPosts);
-
-    blogPosts.forEach((post) => {
-     
-      console.log(post.tags.length)}
-    );  */}}
-  </script>
 {{ end }}

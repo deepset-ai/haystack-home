@@ -1,80 +1,248 @@
 <div class="blog-list-content">
-    <div class="container container-padded">
-      <div class="inner inner-top">
-        <h2 class="author-blog-list-title">
-          {{ if or (eq .Type "authors") (eq .Type "tags") }}{{ .Params.title }}{{ else }}All articles{{end}}
-        </h2>
+  <div class="container container-padded">
+    <div class="inner inner-top">
+      <h2 class="author-blog-list-title">
+        {{ if or (eq .Type "authors") (eq .Type "tags") }}{{ .Params.title }}{{ else }}All articles{{end}}
+      </h2>
 
-        {{/* Blog posts grid */}}
-        <div class="blog-grid">
-          {{/* Get the blog posts */}}
-          {{ $blogPosts := .Data.Pages }}
-
-          {{/* Append homepage to blogposts and hide it later - hack to get 1 less post on the first page, to show a larger featured post */}}
-          {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
-            {{ $blogPosts = slice site.Home | append $blogPosts }}
-          {{ end }}
-          {{ $paginatedBlogPosts := .Paginate $blogPosts }}
-
-          {{/* Check if there is a next/previous page */}}
-          {{ $hasPrev := .Paginator.HasPrev }}
-          {{ $hasNext := .Paginator.HasNext }}
-
-          {{/* Latest/featured post */}}
-          {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
-            {{ if not $hasPrev }}
-              {{ range first 1 (after 1 $paginatedBlogPosts.Pages) }}
-                {{ partial "blog-card-featured" . }}
-              {{ end }}
-            {{ end }}
-          {{ end }}
-          
-          {{/* If on the first page, remove first 2 entries */}}
-          {{ $newPages := $paginatedBlogPosts.Pages }}
-          {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
-            {{ if not $hasPrev }}
-              {{ $newPages = after 2 $paginatedBlogPosts.Pages }}
-            {{ end }}
-          {{ end }}
-
-          {{ range $newPages }}
-            {{ if not .IsHome }}
-              {{ partial "blog-card" . }}
-            {{ end }}
-          {{ end }}
-        
-        </div>
-
-        <div class="blog-pagination">
-          {{ if $hasPrev }}
-            <a
-              class="pagination-prev"
-              href="{{ $paginatedBlogPosts.Prev.URL }}"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16px"
-                height="16px"
-                viewBox="0 0 13 14"
-                role="presentation"
-                focusable="false"
-              >
+      <div class="grid-page-options">
+        <div class="filters">
+          {{/* Search */}}
+          <div class="search-wrapper">
+            <input id="search" type="text" placeholder="Search for articles" oninput="filterAndSort();" />
+            <div class="search-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
-                  d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z"
-                  fill="#9090b2"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                ></path>
+                  d="M19.3187 18.0273L13.232 11.9406C14.1766 10.7195 14.6875 9.22656 14.6875 7.65625C14.6875 5.77656 13.9539 4.01406 12.6273 2.68516C11.3008 1.35625 9.53359 0.625 7.65625 0.625C5.77891 0.625 4.01172 1.35859 2.68516 2.68516C1.35625 4.01172 0.625 5.77656 0.625 7.65625C0.625 9.53359 1.35859 11.3008 2.68516 12.6273C4.01172 13.9562 5.77656 14.6875 7.65625 14.6875C9.22656 14.6875 10.7172 14.1766 11.9383 13.2344L18.025 19.3187C18.0428 19.3366 18.064 19.3508 18.0874 19.3604C18.1107 19.3701 18.1357 19.3751 18.1609 19.3751C18.1862 19.3751 18.2112 19.3701 18.2345 19.3604C18.2578 19.3508 18.279 19.3366 18.2969 19.3187L19.3187 18.2992C19.3366 18.2814 19.3508 18.2602 19.3604 18.2369C19.3701 18.2135 19.3751 18.1885 19.3751 18.1633C19.3751 18.138 19.3701 18.113 19.3604 18.0897C19.3508 18.0664 19.3366 18.0452 19.3187 18.0273ZM11.3688 11.3688C10.375 12.3602 9.05781 12.9062 7.65625 12.9062C6.25469 12.9062 4.9375 12.3602 3.94375 11.3688C2.95234 10.375 2.40625 9.05781 2.40625 7.65625C2.40625 6.25469 2.95234 4.93516 3.94375 3.94375C4.9375 2.95234 6.25469 2.40625 7.65625 2.40625C9.05781 2.40625 10.3773 2.95 11.3688 3.94375C12.3602 4.9375 12.9062 6.25469 12.9062 7.65625C12.9062 9.05781 12.3602 10.3773 11.3688 11.3688Z"
+                  fill="#2B2F55" />
               </svg>
-              Previous
-            </a>
-          {{ end }}
-          {{ if $hasNext }}
-            <div class="pagination-next">
-              {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Next" "url" $paginatedBlogPosts.Next.URL) }}
+            </div>
+          </div>
+
+          {{/* Topics filter */}}
+          {{ $type := .Type }}
+          {{ if not (or (eq $type "authors") (eq $type "tags")) }}
+            <div class="select-wrapper">
+              <select id="topic-select" onchange="filterAndSort();">
+                <option value="all">All Topics</option>
+                {{ range $key, $value := .Site.Taxonomies.tags }}
+                  {{ with $.Site.GetPage "taxonomyTerm" (printf "tags/%s" $key) }}
+                    <option value="{{ .Title }}">{{ .Title }}</option>
+                  {{ end }}
+                {{ end }}
+              </select>
             </div>
           {{ end }}
+
+          {{/* Reset filters btn */}}
+          <button class="reset-filters-btn reset-filters-desktop" onclick="resetFilters();">
+            Reset filters
+          </button>
         </div>
+
+        <div>
+          {{/* Sorting */}}
+          <div class="sort-wrapper">
+            <label for="sort">Sort By:</label>
+            <div class="select-wrapper">
+              <select name="sort" id="sort-select" onchange="filterAndSort();">
+                <option value="latest">Latest</option>
+                <option value="oldest">Oldest</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button class="reset-filters-btn reset-filters-mobile" onclick="resetFilters();">
+          Reset filters
+        </button>
+      </div>
+
+      {{/* Blog posts grid */}}
+      <div class="blog-grid blog-grid-static">
+        {{/* Get the blog posts */}}
+        {{ $blogPosts := .Data.Pages }}
+
+        {{/* Append homepage to blogposts and hide it later - hack to get 1 less post on the first page, to show a
+        larger featured post */}}
+        {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
+          {{ $blogPosts = slice site.Home | append $blogPosts }}
+        {{ end }}
+        {{ $paginatedBlogPosts := .Paginate $blogPosts }}
+
+        {{/* Check if there is a next/previous page */}}
+        {{ $hasPrev := .Paginator.HasPrev }}
+        {{ $hasNext := .Paginator.HasNext }}
+
+        {{/* Latest/featured post */}}
+        {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
+          {{ if not $hasPrev }}
+            {{ range first 1 (after 1 $paginatedBlogPosts.Pages) }}
+              {{ partial "blog-card-featured" . }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+
+        {{/* If on the first page, remove first 2 entries */}}
+        {{ $newPages := $paginatedBlogPosts.Pages }}
+        {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
+          {{ if not $hasPrev }}
+            {{ $newPages = after 2 $paginatedBlogPosts.Pages }}
+          {{ end }}
+        {{ end }}
+
+        {{ range $newPages }}
+          {{ if not .IsHome }}
+            {{ partial "blog-card" . }}
+          {{ end }}
+        {{ end }}
+
+      </div>
+
+      <div class="blog-grid blog-grid-search"></div>
+
+      <div class="blog-pagination">
+        {{ if $hasPrev }}
+          <a class="pagination-prev" href="{{ $paginatedBlogPosts.Prev.URL }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 13 14" role="presentation"
+              focusable="false">
+              <path
+                d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z"
+                fill="#9090b2" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+            Previous
+          </a>
+        {{ end }}
+        {{ if $hasNext }}
+          <div class="pagination-next">
+            {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Next" "url" $paginatedBlogPosts.Next.URL) }}
+          </div>
+        {{ end }}
       </div>
     </div>
   </div>
+</div>
+
+<script>
+  const blogPosts = [
+    {{ $counter := 0 }}
+    {{ range $i, $p := $blogPosts }}
+      {{ if not .IsHome }}
+        {{ if gt $counter 0 }}, {{ end }}
+        {
+          "title": {{ .Title  }},
+          "url": {{ .Permalink  }},
+          "description": {{ .Description  }},
+          "image": {{ .Params.featured_image  }},
+          "tags": {{ if .Params.tags }}{{ .Params.tags }}{{ else }}[]{{ end }},
+          "authors": [
+            {{ range $j, $a := .Params.authors }}
+              {{ $authorPage := $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize $a)) }}
+              {{ if gt $j 0 }}, {{ end }}
+              {
+                "name": {{ $a }},
+                "position": {{ if $authorPage.Params.position }}{{ $authorPage.Params.position }}{{ else }}""{{ end }},
+                "image": {{ if $authorPage.Params.image }}{{ $authorPage.Params.image }}{{ else }}""{{ end }}
+              }
+            {{ end }}
+          ],
+          date: {{ .Date }},
+          dateFormatted: {{ .Date | time.Format ":date_long" }}
+          
+        }
+        {{ $counter = add $counter 1 }}
+      {{ end }}
+    {{ end }}
+  ];
+  console.log(blogPosts);
+
+  const filterAndSort = () => {
+    let posts = [...blogPosts]
+    const selectedSort = document.querySelector("#sort-select").value;
+    const searchTerm = document.querySelector("#search").value;
+    const pagination = document.querySelector(".blog-pagination")
+    const blogGridStatic = document.querySelector(".blog-grid-static")
+    const blogGridSearch = document.querySelector(".blog-grid-search")
+    const selectedTopic = document.querySelector("#topic-select")?.value || "all";
+    
+    {{/*  Filter by search  */}}
+    if (searchTerm) {
+      const searchTermsArray = searchTerm.toLowerCase().split(" ").filter(term => term);
+
+      posts = posts.filter(i => {
+        const searchableText = (i.title + " " + i.description + " " + i.tags.join(" ") + " " + i.authors.map(a => a.name).join(" ")).toLowerCase();
+        return searchTermsArray.every(term => searchableText.includes(term));
+      });
+    }
+
+    {{/*  Filter by topic  */}}
+    if (selectedTopic !== "all") {
+      posts = posts.filter(i => i.tags.includes(selectedTopic));
+    }
+
+    {{/*  Sorting  */}}
+      posts = posts.sort((a, b) => {
+        const aDate = new Date(a.date);
+        const bDate = new Date(b.date);
+        if (selectedSort === "latest") return bDate - aDate;
+        else return aDate - bDate;
+      });
+
+    blogGridSearch.innerHTML = ""
+    {{/*  Create a blog card for each post and append it to grid  */}}
+    posts.forEach((post) =>{
+      const blogCard = document.createElement("div");
+      blogCard.classList.add("blog-card");
+      blogCard.innerHTML = `
+      <a href="${post.url}" class="blog-card">
+        <div class="blog-card-image">
+            <img src="${post.url}${post.image}" alt="${post.description}" loading="lazy">
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-tags">
+            ${post.tags.map(tag => `<div class="tag">${tag}</div>`).join("")}
+          </div>
+          <div class="blog-card-authors">
+            ${post.authors.map(author => `<div>
+              <div class="author-image">
+                  <img src="${author.image}" alt="${author.name}">
+              </div>
+              <div class="author-info">
+                <span class="name">${author.name}</span>
+                <span class="position">${author.position}</span>
+              </div>
+            </div>`)}
+                
+          </div>
+          <h2>${post.title}</h2>
+          <p>${post.description}</p>
+          <span class="date">${post.dateFormatted}</span>
+        </div>
+      </a>
+      `;
+      blogGridSearch.appendChild(blogCard)}
+    );
+
+    if (searchTerm.length > 0 || selectedSort !== "latest" || selectedTopic !== "all") {
+      pagination.style.display = "none";
+      blogGridSearch.style.display = "grid";
+      blogGridStatic.style.display = "none";
+    } else {
+      pagination.style.display = "flex";
+      blogGridSearch.style.display = "none";
+      blogGridStatic.style.display = "grid";
+    }
+  }
+
+  const resetFilters = () => {
+    const topicSelect = document.querySelector("#topic-select")
+    if (topicSelect) topicSelect.value = "all";
+    document.querySelector("#search").value = "";
+    filterAndSort();
+  }
+
+  {{/*  Reset filters on pageshow in case of back button  */}}
+  addEventListener('pageshow', () => {
+    resetFilters();
+  });
+</script>

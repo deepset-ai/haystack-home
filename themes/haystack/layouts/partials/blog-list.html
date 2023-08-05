@@ -1,0 +1,80 @@
+<div class="blog-list-content">
+    <div class="container container-padded">
+      <div class="inner inner-top">
+        <h2 class="author-blog-list-title">
+          {{ if or (eq .Type "authors") (eq .Type "tags") }}{{ .Params.title }}{{ else }}All articles{{end}}
+        </h2>
+
+        {{/* Blog posts grid */}}
+        <div class="blog-grid">
+          {{/* Get the blog posts */}}
+          {{ $blogPosts := .Data.Pages }}
+
+          {{/* Append homepage to blogposts and hide it later - hack to get 1 less post on the first page, to show a larger featured post */}}
+          {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
+            {{ $blogPosts = slice site.Home | append $blogPosts }}
+          {{ end }}
+          {{ $paginatedBlogPosts := .Paginate $blogPosts }}
+
+          {{/* Check if there is a next/previous page */}}
+          {{ $hasPrev := .Paginator.HasPrev }}
+          {{ $hasNext := .Paginator.HasNext }}
+
+          {{/* Latest/featured post */}}
+          {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
+            {{ if not $hasPrev }}
+              {{ range first 1 (after 1 $paginatedBlogPosts.Pages) }}
+                {{ partial "blog-card-featured" . }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          
+          {{/* If on the first page, remove first 2 entries */}}
+          {{ $newPages := $paginatedBlogPosts.Pages }}
+          {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
+            {{ if not $hasPrev }}
+              {{ $newPages = after 2 $paginatedBlogPosts.Pages }}
+            {{ end }}
+          {{ end }}
+
+          {{ range $newPages }}
+            {{ if not .IsHome }}
+              {{ partial "blog-card" . }}
+            {{ end }}
+          {{ end }}
+        
+        </div>
+
+        <div class="blog-pagination">
+          {{ if $hasPrev }}
+            <a
+              class="pagination-prev"
+              href="{{ $paginatedBlogPosts.Prev.URL }}"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16px"
+                height="16px"
+                viewBox="0 0 13 14"
+                role="presentation"
+                focusable="false"
+              >
+                <path
+                  d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z"
+                  fill="#9090b2"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              Previous
+            </a>
+          {{ end }}
+          {{ if $hasNext }}
+            <div class="pagination-next">
+              {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Next" "url" $paginatedBlogPosts.Next.URL) }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>

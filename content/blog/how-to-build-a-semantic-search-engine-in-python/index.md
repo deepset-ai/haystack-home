@@ -11,6 +11,7 @@ last_updated: 2022-11-23
 authors:
   - Tuana Celik
 canonical_url: https://www.deepset.ai/blog/how-to-build-a-semantic-search-engine-in-python
+tags: ["Prompting", "Generative AI"]
 ---
 
 Semantic search is the task of retrieving documents from a collection of documents (also known as a ‘corpus’) in response to a query asked in natural language. Powered by the latest Transformer language models, semantic search allows you to access the best matches from your document collection within seconds, and on the basis of meaning rather than keyword matches. As well as being helpful in its own right, semantic search also forms the basis for many complex tasks, like question answering or text summarization.

@@ -11,6 +11,7 @@ date: 2023-06-15
 last_updated:  2023-06-15
 authors:
   - Isabelle Nguyen
+tags: ["Prompting", "Generative AI"]
 ---	
 
 Large language models (LLMs) have made it possible for everyone to interact with an AI – not through code but using prompts in natural language. The fact that language now acts as an interface to complex models makes it necessary to investigate the prompts we use more closely.

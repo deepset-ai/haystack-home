@@ -10,19 +10,19 @@
 
   {{/* Content */}}
   <div class="blog-card-content">
-    {{/* Latest tag */}}
-    <span class="blog-card-tag">Latest</span>
+    {{/*  Tags  */}}
+    <div class="blog-card-tags">
+      <div class="tag featured">
+        Latest
+      </div>
+      {{ range .Params.tags }}
+        <div class="tag">
+          {{ . }}
+        </div>
+      {{ end }}
+    </div>
 
-    {{/* Title */}}
-    <h2>{{ .Params.title }}</h2>
-
-    {{/* Description */}}
-    <p>{{ .Params.description }}</p>
-
-    {{/* Date */}}
-    <span class="date">{{ .Params.date | time.Format ":date_long" }}</span>
-
-    {{/* Author section */}}
+     {{/* Author section */}}
     <div class="blog-card-authors">
       {{ range .Params.authors }}
         {{ with $.Site.GetPage "taxonomy" (printf "authors/%s" (urlize .)) }}
@@ -48,5 +48,14 @@
         {{ end }}
       {{ end }}
     </div>
+
+    {{/* Title */}}
+    <h2>{{ .Params.title }}</h2>
+
+    {{/* Description */}}
+    <p>{{ .Params.description }}</p>
+
+    {{/* Date */}}
+    <span class="date">{{ .Params.date | time.Format ":date_long" }}</span>
   </div>
 </a>

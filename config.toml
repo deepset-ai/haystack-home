@@ -9,6 +9,7 @@ paginatePath = "/"
 
 [taxonomies]
   author = "authors"
+  tag = "tags"
 
 [sitemap]
   changefreq = 'monthly'
@@ -24,6 +25,7 @@ paginatePath = "/"
 [permalinks]
   pages = "/:filename"
   authors = "/blog/authors/:slug"
+  tags = "/blog/tags/:slug"
 
 [security]
   [security.funcs]

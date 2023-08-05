@@ -13,34 +13,12 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  // grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
 
   @include md {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
 
-  // Small screen grid
-  .blog-grid-inner-sm {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-
-    @include md {
-      display: none;
-    }
-  }
-
-  // Large scren grid
-  .blog-grid-inner-lg {
-    display: none;
-    @include md {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      align-content: flex-start;
-    }
-  }
 
   // Blog post card
   .blog-card {
@@ -49,10 +27,14 @@
     text-decoration: none;
     border-radius: 0.5rem;
     transition: box-shadow var(--transition-fast) var(--ease);
-    align-self: flex-start;
+    // align-self: flex-start;
 
     .blog-card-image {
       height: 18rem;
+
+      @include md {
+        height: 12.5rem;
+      }
 
       > img {
         width: 100%;
@@ -64,7 +46,7 @@
     .blog-card-content {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1rem;
       padding: 1.5rem;
 
       h2 {
@@ -72,13 +54,22 @@
       }
 
       p {
-        color: var(--color-dark-grey);
+        color: var(--color-dark-blue);
+        font-size: var(--text-small);
+
       }
 
       .date {
         color: var(--color-dark-grey);
         font-size: var(--text-base);
         // margin-top: 1rem;
+      }
+
+      // Tags
+      .blog-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
       }
 
       // Author
@@ -94,8 +85,8 @@
 
           // Author Image
           .author-image {
-            width: 3rem;
-            height: 3rem;
+            width: 2.75rem;
+            height: 2.75rem;
             border-radius: 50%;
             overflow: hidden;
 
@@ -116,7 +107,7 @@
               display: block;
               color: var(--color-dark-grey);
             }
-            font-size: var(--text-base);
+            font-size: 0.875rem;
           }
         }
       }
@@ -130,21 +121,10 @@
 
   // Featured blog post card
   .blog-card.blog-card-featured {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    display: none;
     flex-direction: column;
 
     .blog-card-content {
       width: 100%;
-
-      h2 {
-        font-size: var(--h2-size);
-      }
-
-      p {
-        font-size: var(--h3-size);
-      }
 
       .blog-card-author {
         margin-top: auto;
@@ -152,7 +132,7 @@
     }
 
     .blog-card-image {
-      min-height: 25rem;
+      // min-height: 25rem;
       position: relative;
 
       > img {
@@ -174,18 +154,20 @@
 
     @include md {
       display: flex;
+      grid-column-start: 1;
+      grid-column-end: 3;
     }
     @include lg {
       flex-direction: row;
-      min-height: 25rem;
+      // min-height: 25rem;
 
       .blog-card-image {
-        width: 40%;
+        width: 50%;
         height: auto;
       }
 
       .blog-card-content {
-        width: 60%;
+        width: 50%;
       }
     }
   }

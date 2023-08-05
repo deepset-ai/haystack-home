@@ -218,35 +218,6 @@
       gap: 0.25rem;
     }
 
-    .grid-page-card-header > div {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.45rem;
-      background-color: var(--color-light-grey);
-      color: var(--color-dark-blue);
-      text-transform: capitalize;
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-
-      &.featured {
-        background-color: var(--color-yellow);
-      }
-
-      &.outdated {
-        background-color: var(--color-dark-blue);
-        color: var(--color-white);
-      }
-
-      .icon {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-items: center;
-        padding-bottom: 1px;
-      }
-    }
-
     // Title
     h3 {
       font-size: 1.25rem;
@@ -300,5 +271,34 @@
       margin-bottom: 0.1rem;
       flex-shrink: 0;
     }
+  }
+}
+
+.grid-page .grid-page-card-header > div, .tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.45rem;
+  background-color: var(--color-light-grey);
+  color: var(--color-dark-blue);
+  text-transform: capitalize;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  &.featured {
+    background-color: var(--color-yellow);
+  }
+
+  &.outdated {
+    background-color: var(--color-dark-blue);
+    color: var(--color-white);
+  }
+
+  .icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding-bottom: 1px;
   }
 }

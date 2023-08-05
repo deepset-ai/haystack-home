@@ -10,14 +10,14 @@
 
   {{/* Content */}}
   <div class="blog-card-content">
-    {{/* Title */}}
-    <h2>{{ .Params.title }}</h2>
-
-    {{/* Description */}}
-    <p>{{ .Params.description }}</p>
-
-    {{/* Date */}}
-    <span class="date">{{ .Params.date | time.Format ":date_long" }}</span>
+    {{/*  Tags  */}}
+    <div class="blog-card-tags">
+      {{ range .Params.tags }}
+        <div class="tag">
+          {{ . }}
+        </div>
+      {{ end }}
+    </div>
 
     {{/* Authors */}}
     <div class="blog-card-authors">
@@ -45,5 +45,16 @@
         {{ end }}
       {{ end }}
     </div>
+
+    {{/* Title */}}
+    <h2>{{ .Params.title }}</h2>
+
+    {{/* Description */}}
+    <p>{{ .Params.description }}</p>
+
+    {{/* Date */}}
+    <span class="date">{{ .Params.date | time.Format ":date_long" }}</span>
+
+    
   </div>
 </a>

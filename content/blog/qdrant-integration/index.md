@@ -10,6 +10,7 @@ last_updated: 2023-04-18
 authors:
   - Bilge Yucel
   - Kacper Lukawski
+tags: ["Prompting", "Generative AI"]
 ---
 
 We're thrilled to introduce the `QdrantDocumentStore`, the latest addition to the Haystack DocumentStore family by Qdrant. It's an open source package that provides powerful capabilities such as efficient search, high-dimensional vector retrieval, and flexible launch options. 

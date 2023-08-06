@@ -38,11 +38,7 @@
     // align-self: flex-start;
 
     .blog-card-image {
-      height: 18rem;
-
-      @include md {
-        height: 12.5rem;
-      }
+      height: 12.5rem;
 
       > img {
         width: 100%;
@@ -141,7 +137,12 @@
 
     .blog-card-image {
       // min-height: 25rem;
+      height: 18rem;
       position: relative;
+
+      @include lg {
+        height: auto;
+      }
 
       > img {
         position: absolute;

@@ -11,7 +11,7 @@ last_updated: 2023-01-31
 authors:
   - Isabelle Nguyen
 canonical_url: https://www.deepset.ai/blog/build-a-search-engine-with-gpt-3
-tags: ["Prompting", "Generative AI"]
+tags: ["LLM", "NLP", "GPT", "Generative AI"]
 
 ---
 

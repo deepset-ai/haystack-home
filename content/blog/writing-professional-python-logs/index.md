@@ -10,7 +10,7 @@ last_updated: 2023-05-09
 authors:
   - Kristof Hermann
 canonical_url: https://medium.com/@ArzelaAscoli/writing-professional-python-logs-e1f31635b60b
-tags: ["Prompting", "Generative AI"]
+tags: ["Python"]
 ---
 
 If you are a  **Python developer**  who has been  **struggling with inconsistent**  **and unhelpful logs**, then this article is for you! In this post, we will discuss how structlog can help you write logs that not only assist you in your daily work but also enforce certain best practices to ensure consistency in logging throughout your project.

@@ -10,7 +10,7 @@ last_updated: 2022-07-20
 authors:
   - Tuana Celik
 canonical_url: https://www.deepset.ai/blog/what-is-a-language-model
-tags: ["Prompting", "Generative AI"]
+tags: ["NLP", "Model Training"]
 ---
 
 Our aim at  [deepset](https://www.deepset.ai/)  is that everyone, no matter their level of technical background, can harness the power of modern natural language processing (NLP) and language models for their own use case.  [Haystack](https://haystack.deepset.ai/), our open-source framework, makes this a reality.

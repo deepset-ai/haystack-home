@@ -10,7 +10,7 @@ date: 2023-05-19
 last_updated: 2023-05-19
 authors:
   - Jasper Schwenzow
-tags: ["Prompting", "Generative AI"]
+tags: ["Prompting", "LLM"]
 ---
 
 [ChatGPT](https://chat.openai.com/) is awesome, [HuggingChat](https://huggingface.co/chat/) is awesome, [Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html) is awesome. However, if you want to **use these models in an application,** for example, for your customer support, you may encounter a new problem that you should be aware of: **Prompt injections**.

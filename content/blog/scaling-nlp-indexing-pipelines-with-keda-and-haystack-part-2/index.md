@@ -10,7 +10,7 @@ last_updated: 2023-05-09
 authors:
   - Kristof Hermann
 canonical_url: https://medium.com/@ArzelaAscoli/scaling-nlp-indexing-pipelines-with-keda-and-haystack-part-2-deployment-8750dc96171f
-tags: ["Prompting", "Generative AI"]
+tags: ["MLOps", "NLP", "LLM", "Python", "Deployment"]
 ---
 
 In the first part of this article series, we discussed the power of retrieval-augmented generation. We also explored how to create a Python application that converts files into searchable documents with embeddings via  [Haystack](https://haystack.deepset.ai/)  pipelines. However, merely having a Python program that converts files into text snippets and embeddings on a single machine is not enough for a production-ready deployment.

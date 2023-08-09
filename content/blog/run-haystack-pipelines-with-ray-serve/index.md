@@ -9,7 +9,7 @@ date: 2023-06-14
 last_updated:  2023-06-14
 authors:
   - Massimiliano Pippi
-tags: ["Prompting", "Generative AI"]
+tags: ["Integration", "Deployment", "MLOps"]
 ---
 
 [Ray Serve](https://docs.ray.io/en/latest/serve/index.html) is a library built on top of the Ray framework for building online inference APIs. Serve is designed to be framework-agnostic, and while its simple design lets you quickly integrate pretty much any Python logic you need to deploy, building up complex inference services is still possible and straightforward.

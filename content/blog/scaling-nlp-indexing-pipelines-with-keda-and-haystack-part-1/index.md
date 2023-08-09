@@ -10,7 +10,7 @@ last_updated: 2023-05-09
 authors:
   - Kristof Hermann
 canonical_url: https://medium.com/@ArzelaAscoli/scaling-nlp-indexing-pipelines-with-keda-and-haystack-part-1-the-application-45f54fcabd5d
-tags: ["Prompting", "Generative AI"]
+tags: ["MLOps", "NLP", "LLM", "Python", "Deployment"]
 ---
 
 Large language models have been one of the most hyped technologies lately. By combining them with a vector database that acts as a long-term memory or document store, you can improve prompts with additional context. Applications that use this technique, such as **ChatGPT Plugins**  and Google’s project  **Magi**, are rapidly gaining popularity. For many business users, the ability to enhance a prompt with private or recent data is what makes the  **difference between a prototype and a production-ready NLP application**.

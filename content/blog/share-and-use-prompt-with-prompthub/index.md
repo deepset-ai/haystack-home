@@ -10,7 +10,7 @@ last_updated: 2023-06-29
 authors:
   - Tuana Celik
   - Sara Zanzottera
-tags: ["Prompting", "Generative AI"]
+tags: ["Prompting", "Community", "Integration"]
 ---
 
 With the release of Haystack 1.18, we’ve also officially rolled out a new prompt sharing and collaboration service: [PromptHub](https://prompthub.deepset.ai). This new product currently (day of release: 29 June 2023) hosts a set of prompts we at deepset have created, with instructions on how to use them with the `PromptTemplate` and `PromptNode`. 

@@ -10,7 +10,7 @@ date: 2023-05-22
 last_updated: 2023-05-22
 authors:
   - Bilge Yucel
-tags: ["Prompting", "Generative AI"]
+tags: ["LLM", "NLP", "Generative AI", "Question Answering"]
 ---
 
 Generative language models like ChatGPT have taken the world by storm. Aside from their value in areas like programming and translation, generative models’ main selling point is their ability to come up with fluent, well-formed natural language responses. Like humans, these models seem to generate their answers out of thin air, and without looking up the answers in a factual database.

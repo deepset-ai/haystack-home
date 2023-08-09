@@ -12,7 +12,7 @@ authors:
 canonical_url: https://www.deepset.ai/blog/what-is-text-vectorization-in-nlp
 # opengraph images
 # images: [""]
-tags: ["Prompting", "Generative AI"]
+tags: ["NLP", "Text Embeddings", "Vector Databases"]
 ---
 
 For as long as we have had computers, there has been the question of how to represent data in a way that machines can work with. In natural language processing (NLP), we often talk about text vectorization — representing words, sentences, or even larger units of text as vectors (or “vector embeddings”). Other data types, like images, sound, and videos, may be encoded as vectors as well. But what exactly are those vectors, and how can you use them in your own applications?

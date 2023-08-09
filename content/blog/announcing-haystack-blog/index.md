@@ -10,7 +10,7 @@ date: 2023-03-03
 last_updated:  2023-03-03
 authors:
   - Bilge Yucel
-tags: ["Question Answering", "Generative AI"]
+tags: ["Community"]
 ---
 
 We are thrilled to announce the launch of our new blog, a space to learn and share! The Haystack community has been growing at an incredible speed, reaching over 7k stars on GitHub and 900+ members on Discord, and we’re always looking for ways to make our community experience even better. Haystack blog is another step in that direction. 🚀

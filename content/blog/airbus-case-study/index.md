@@ -11,6 +11,7 @@ date: 2023-07-26
 last_updated:  2023-07-26
 authors:
   - Isabelle Nguyen
+tags: ["Question Answering", "Case Study"]
 ---	
 Large language models (LLMs) are incredibly powerful, and we at deepset are stoked about their seemingly limitless potential. But while models like Llama 2 and GPT-4 continue to make waves, a related but less buzzworthy technology has consistently been delivering great value for a range of use cases. 
 

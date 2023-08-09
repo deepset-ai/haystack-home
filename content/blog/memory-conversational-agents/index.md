@@ -11,6 +11,7 @@ date: 2023-07-07
 last_updated:  2023-07-07
 authors:
   - Isabelle Nguyen
+tags: ["Agent", "LLM", "Prompting"]
 ---
 
 Memory is what turns a powerful LLM into an empathetic interlocutor who can remember what you’ve said before. But how does it work?

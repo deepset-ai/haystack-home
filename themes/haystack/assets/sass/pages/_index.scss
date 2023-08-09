@@ -75,7 +75,7 @@
 
     @include md {
       display: block;
-      width: 45%;
+      width: 22%;
       position: absolute;
       top: 0;
       right: 0;
@@ -86,8 +86,16 @@
       z-index: 0;
     }
 
+    @media (min-width: 56.25em) {
+      width: 45%;
+    }
+
     @include lg {
-      width: 55%;
+      width: 35%;
+    }
+
+    @media (min-width: 82em) {
+      width: 52%;
     }
   }
 }

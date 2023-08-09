@@ -9,6 +9,7 @@ paginatePath = "/"
 
 [taxonomies]
   author = "authors"
+  tag = "tags"
 
 [sitemap]
   changefreq = 'monthly'
@@ -24,6 +25,7 @@ paginatePath = "/"
 [permalinks]
   pages = "/:filename"
   authors = "/blog/authors/:slug"
+  tags = "/blog/tags/:slug"
 
 [security]
   [security.funcs]
@@ -150,17 +152,10 @@ paginatePath = "/"
   url = '/benchmarks'
   parent = 'resources'
   weight = 4
-  
-[[menu.main]]
-  identifier = 'annotation-tool'
-  name = 'Annotation Tool'
-  url = 'https://www.deepset.ai/annotation-tool-for-labeling-datasets'
-  parent = 'resources'
-  weight = 5
 
 [[menu.main]]
   name = 'NLP Resources'
   url = '/nlp-resources'
   parent = 'resources'
-  weight = 6
+  weight = 5
 

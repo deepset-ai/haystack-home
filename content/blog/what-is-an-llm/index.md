@@ -11,6 +11,7 @@ date: 2023-06-23
 last_updated: 2023-06-23
 authors:
   - Isabelle Nguyen
+tags: ["LLM", "Model Training"]
 ---
 
 AI is here to stay. But while applications like autonomous driving and even image generation have only touched few people's lives so far, generative AI in the form of high-quality chatbots has taken the world by storm. The informative, creative, and at times deceptively eloquent responses by the likes of ChatGPT are made possible by a novel technology known as large language models (LLMs).

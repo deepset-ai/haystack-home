@@ -11,6 +11,7 @@ last_updated: 2023-01-16
 authors:
   - Tuana Celik
 canonical_url: https://www.deepset.ai/blog/the-definitive-guide-to-bertmodels
+tags: ["NLP", "Model Training"]
 ---
 
 Anyone who has studied natural language processing (NLP) can tell you that the state of the art moves exceptionally fast. Big players like Google, Facebook, or OpenAI employ large teams of experts to come up with new solutions that bring computers ever closer to a seemingly human-like understanding of language. This results in model architectures and other approaches quickly becoming obsolete, and what was considered cutting-edge technology six months ago may almost seem outdated today. Nevertheless, some models make such an impact that they become foundational knowledge even as they are eclipsed by their successors.

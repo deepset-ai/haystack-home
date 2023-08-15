@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 title: Shaping Haystack 2.0 
-description: Learn how you can give feedback about Haystack 2.0 
+description: Details of the upcoming Haystack version and how you can give feedback 
 featured_image: thumbnail.png
 images: ["blog/shaping-haystack-v2/thumbnail.png"]
 alt_image: Shaping Haystack 2.0
@@ -56,6 +56,6 @@ Additionally, here is the complete list of proposals so far shaping the design o
 - **The Embedder will be a separate component instead of being a part of a Retriever.** Retrievers won’t be responsible for creating embeddings, the new Embedder component will handle the creation of embeddings. The Retriever class will be simplified, and adding support for new embedding providers and approaches will be more straightforward.
 - **Pipeline serialization will be more flexible and optimized for humans.** JSON, TOML, HCL will be used as serialization formats. Serialization and deserialization of pipelines sharing the same component instance will be possible.
 
-## What’s next?
+## ➡️ What’s next?
 
 As we iterate on Haystack 2.0, we’ll share the design proposals in [GitHub Discussion: Shaping Haystack 2.0](https://github.com/deepset-ai/haystack/discussions/5568) and start a conversation about topics where we need your input. As we share more information about Haystack 2.0, please feel free to share your feedback or concerns. You can always contact us using the comments section in the [GitHub Discussion](https://github.com/deepset-ai/haystack/discussions/5568) or the [Haystack Discord server](https://discord.com/invite/haystack) to ask questions.

@@ -169,6 +169,29 @@
       filterAndSort();
     }
 
+    {{/*  Resize all grid items to the height of the largest item */}}
+    const resizeGridItems = () => {
+      const gridItems = document.querySelectorAll('.grid-page-card');
+      let maxHeight = 0;
+      gridItems.forEach(item => {
+        item.style.height = 'auto';
+      });
+
+      gridItems.forEach(item => {
+        const itemHeight = item.offsetHeight;
+        if (itemHeight > maxHeight) {
+          maxHeight = itemHeight;
+        }
+      });
+    
+      gridItems.forEach(item => {
+        item.style.height = `${maxHeight}px`;
+      });
+    }
+    resizeGridItems();
+
+    window.addEventListener('resize', resizeGridItems);
+
     {{/*  Reset filters on pageshow in case of back button  */}}
     addEventListener('pageshow', () => {
       resetFilters();

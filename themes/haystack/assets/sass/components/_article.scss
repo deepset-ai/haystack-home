@@ -84,6 +84,13 @@
       order: 1;
     }
   }
+
+  .blog-post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
 }
 
 // Left sidebar / TOC

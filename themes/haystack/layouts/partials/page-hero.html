@@ -11,5 +11,9 @@
         <p>{{ .Params.subtitle | markdownify }}</p>
       {{ end }}
     </section>
+
+    {{ if or (eq .Type "integrations") (eq .Type "tutorials") }}
+        {{ partial "contribute-button" . }}
+    {{ end }}
   </div>
 </div>

@@ -90,6 +90,16 @@
     flex-wrap: wrap;
     gap: 0.25rem;
     margin-bottom: 0.25rem;
+
+    >a.tag {
+      transition: background-color var(--transition-fast) var(--ease), color var(--transition-fast) var(--ease);
+
+      &:hover {
+        // background-color: var(--color-dark-blue);
+        color: var(--color-white);
+        background-color: var(--color-dark-grey);
+      }
+    }
   }
 }
 

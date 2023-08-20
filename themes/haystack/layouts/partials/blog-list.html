@@ -85,11 +85,14 @@
               {{ range $currentTags }}
                 {{ $tag := . | urlize }}
                 {{ with $.Site.GetPage "taxonomyTerm" (printf "tags/%s" $tag) }}
-                    <div class="topic-select-child">
-                        <input class="checkbox" type="checkbox" name="{{.Title}}" id="{{.Title}}" onchange="filterAndSort();">
-                        <label for="{{.Title}}">{{.Title}}</label>
-                    </div>
-                {{ end }}
+                  {{ if not (eq $title .Params.title) }}
+                      <div class="topic-select-child">
+                          <input class="checkbox" type="checkbox" name="{{.Title}}" id="{{.Title}}" onchange="filterAndSort();"
+                          >
+                          <label for="{{.Title}}">{{.Title}}</label>
+                        </div>
+                        {{ end }}
+                  {{ end }}
               {{ end }}
 
               <button class="btn btn-green topic-confirm">Confirm</button>
@@ -290,8 +293,7 @@
               <span class="name">${author.name}</span>
               <span class="position">${author.position}</span>
             </div>
-          </div>`)}
-              
+          </div>`).join("")}
         </div>
         <h2>${post.title}</h2>
         <p>${post.description}</p>

@@ -26,7 +26,7 @@ That’s because dense encoder models need to be trained on data, and if that da
 
 Since both approaches have their advantages and disadvantages, it is a good idea to combine them. All you need is two retrievers and a way to merge their output. We also recommend using a ranker on top of them. As you’ll see, [Haystack](https://github.com/deepset-ai/haystack) makes it easy to put all these components together in a modular and reusable pipeline.
 
-# Recap: what is document retrieval and why do we care?
+## Recap: what is document retrieval and why do we care?
 
 In large-scale NLP systems, we often work with huge collections of documents. Now, what happens when we pass a query to such a system? It’s not really feasible to run a computationally demanding language model – like those used in generative AI or extractive question answering – on the entire corpus. Doing so would be a waste of resources and time. The solution? Retrievers.
 
@@ -38,11 +38,11 @@ Retrievers leverage different [document search techniques](https://www.deepset.a
 
 Retrievers are super useful in their own right, as they drive most search applications. But they’re most often discussed in the context of composite systems or pipelines. As a pre-selection mechanism, retrievers extract related documents in response to a query. They then pass those documents on to downstream tasks like extractive QA, generative AI (in what’s known as [a RAG scenario](https://www.deepset.ai/blog/llms-retrieval-augmentation)) or summarization.
 
-# What types of retrievers are there?
+## What types of retrievers are there?
 
 Retrievers can be roughly divided into two categories: on the one side, there’s the sparse, keyword-based approach à la Tf-Idf, on the other side, the dense, embedding-based approach that uses Transformers.
 
-## Characteristics of the sparse approach
+### Characteristics of the sparse approach
 
 Sparse retrievers produce vectors whose length equals the size of the vocabulary. Because every document in the corpus only contains a fraction of all the words in the corpus, these vectors are typically sparse: long, with many zeroes, and only few non-zero values. The [sparse retrieval algorithm most commonly used today is BM25](https://docs.haystack.deepset.ai/docs/retriever#bm25-recommended), an improved version of the classic Tf-Idf.
 
@@ -50,7 +50,7 @@ Sparse retrievers produce vectors whose length equals the size of the vocabulary
 
 Sparse embedding techniques are by definition lexical: they can only represent and match those words that are part of the vocabulary. They don’t require any training, making them language- and domain-agnostic.
 
-## Characteristics of the dense approach
+### Characteristics of the dense approach
 
 The biggest difference to the sparse approach is that a dense retriever requires data and training. During training, the language model learns how to best embed documents as vectors from the data itself.
 
@@ -66,11 +66,11 @@ Because dense retriever models have learned to represent their training data, th
 
 While it is always possible to fine-tune an existing model, this requires data, resources, and the know-how.
 
-## Combining dense and sparse retrievers
+### Combining dense and sparse retrievers
 
 To address the weaknesses of both retrievers (or, more positively, to take advantage of both), we can simply use two retrievers in our pipeline and merge their output. Such a hybrid retrieval pipeline is easy to set up in a modular framework like Haystack.
 
-# A hybrid retrieval pipeline in Haystack
+## A hybrid retrieval pipeline in Haystack
 
 Haystack uses modular pipelines and nodes to ensure straightforward customization. A basic retriever pipeline consists of an input (the query), a retriever node, optional additional nodes, and an output.
 
@@ -100,7 +100,7 @@ Adding a [SentenceTransformersRanker node](https://docs.haystack.deepset.ai/docs
 
 Unlike the embedding model used for retrieval, the ranker can only feasibly process a small number of documents, making it particularly suitable as a scoring mechanism after the retriever. Not only does it put the results of both retrievers in a more meaningful order, but it also standardizes the relevance scores of the documents, making it possible to use these scores for further downstream tasks.
 
-# Superior search with Haystack
+## Superior search with Haystack
 
 [Haystack](https://github.com/deepset-ai/haystack/tree/main) is the framework of choice for developers looking to build powerful, yet easily customizable natural language search systems that leverage state-of-the-art language models from any source.
 

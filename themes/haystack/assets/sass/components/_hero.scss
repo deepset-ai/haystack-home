@@ -4,8 +4,18 @@
   background: var(--color-bg-dark-blue) url("/images/hero-bg.jpg") center center /
     cover no-repeat;
 
+  >.container {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 4rem;
+    row-gap: 1.5rem;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
   // Heading
   .hero-heading {
+    width: 100%;
     max-width: 43.75rem;
 
     h1 {

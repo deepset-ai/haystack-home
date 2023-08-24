@@ -13,6 +13,31 @@
     gap: 1rem;
     margin-top: 2rem;
   }
+
+
+  .sidebar-toggle {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 3.25rem;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+    padding: 0 1rem;
+    border: 1px solid var(--color-light-grey);
+    border-radius: var(--border-radius-sm);
+    line-height: 1.25rem;
+    font-size: var(--text-small);
+    color: var(--color-dark-blue);
+    overflow: visible;
+    background-color: var(--color-white);
+    text-align: left;
+
+    @include sm {
+      display: none;
+    }
+  }
+
 }
 
 .blog-grid-container {
@@ -26,18 +51,27 @@
   }
 
   .blog-sidebar {
-    width: 100%;
-    max-width: 13.5rem;
-    flex-shrink: 0;
-    background-color: var(--color-white);
-    align-self: flex-start;
-    border-radius: var(--border-radius-sm);
-    padding: 1rem;
-
+    position: fixed;
+    inset: 0px;
+    z-index: 9999;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 
     @include sm {
       position: sticky;
       top: 0.75rem;
+      display: block;
+      width: 100%;
+      max-width: 13.5rem;
+      flex-shrink: 0;
+      align-self: flex-start;
+      max-height: calc(100vh - 1.5rem);
+      overflow-y: auto;
+      pointer-events: auto;
+      background-color: transparent;
+      opacity:1
     }
   
 
@@ -45,6 +79,22 @@
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
+      background-color: var(--color-white);
+      padding: 1rem;
+      border-radius: var(--border-radius-sm);
+      transition: transform 0.3s ease;
+      width: 70%;
+      height: 100vh;
+      overflow-y: auto;
+      position: absolute;
+      transform: translateX(-100%);
+
+      @include sm {
+        width: 100%;
+        height: auto;
+        position: relative;
+        transform: translateX(0);
+      }
 
       .topic-select-child {
         display: flex;
@@ -60,6 +110,40 @@
         >input {
           transform: translateY(1px);
         }
+      }
+
+      .topic-confirm {
+        margin-top: 0.5rem;
+        flex-shrink: 0;
+        @include sm {
+          display: none;
+        }
+      }
+    }
+
+    &.active {
+      pointer-events: auto;
+      background-color: rgba(0, 0, 0, 0.7);
+      opacity: 1;
+      #topic-select {
+        transform: translateX(0);
+      }
+    }
+
+    
+    .sidebar-close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      appearance: none;
+      background-color: transparent;
+      border: none;
+      z-index: 9999;
+
+      >svg {
+        width: 1rem;
+        height: 1rem;
+        pointer-events: none;
       }
     }
   }

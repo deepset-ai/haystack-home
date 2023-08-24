@@ -11,6 +11,7 @@
       <h2 class="section-title">
         {{ if or (eq .Type "authors") (eq .Type "tags") }}{{ .Params.title }}{{ else }}All articles{{end}}
       </h2>
+      <button class="sidebar-toggle">Select topics</button>
 
       {{/*  <div class="grid-page-options">
         <div class="filters">  */}}
@@ -72,18 +73,39 @@
       </div>  */}}
 
       <div class="blog-grid-container">
-        <div class="blog-sidebar">
-          <div id="topic-select">
-            {{ range $key, $value := .Site.Taxonomies.tags }}
-              {{ with $.Site.GetPage "taxonomyTerm" (printf "tags/%s" $key) }}
-                <div class="topic-select-child">
-                  <input class="checkbox" type="checkbox" name="{{.Title}}" id="{{.Title}}" onchange="filterAndSort();">
-                  <label for="{{.Title}}">{{.Title}}</label>
-                </div>
+        {{ $currentTags := slice }}
+        {{ range .Data.Pages }}
+          {{ $currentTags = union $currentTags .Params.tags }}
+        {{ end }}
+        {{ $currentTags = sort $currentTags }}
+        {{ if gt (len $currentTags) 1 }}
+          <div class="blog-sidebar">
+
+            <div id="topic-select">
+              {{ range $currentTags }}
+                {{ $tag := . | urlize }}
+                {{ with $.Site.GetPage "taxonomyTerm" (printf "tags/%s" $tag) }}
+                  {{ if not (eq $title .Params.title) }}
+                      <div class="topic-select-child">
+                          <input class="checkbox" type="checkbox" name="{{.Title}}" id="{{.Title}}" onchange="filterAndSort();"
+                          >
+                          <label for="{{.Title}}">{{.Title}}</label>
+                        </div>
+                        {{ end }}
+                  {{ end }}
               {{ end }}
-            {{ end }}
+
+              <button class="btn btn-green topic-confirm">Confirm</button>
+            </div>
+
+            {{/*  Mobile close btn  */}}
+            <button class="sidebar-close-btn" aria-label="Close sidebar">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" role="img" aria-label="Cross icon" focusable="false">
+                <path d="M1 1l12 12m0-12L1 13" stroke="#fff" stroke-linecap="round" stroke-width="2"></path>
+              </svg>
+            </button>
           </div>
-        </div>
+        {{ end }}
         {{/* Blog posts grid */}}
         <div class="blog-grid blog-grid-static">
           {{/* Get the blog posts */}}
@@ -271,8 +293,7 @@
               <span class="name">${author.name}</span>
               <span class="position">${author.position}</span>
             </div>
-          </div>`)}
-              
+          </div>`).join("")}
         </div>
         <h2>${post.title}</h2>
         <p>${post.description}</p>
@@ -313,6 +334,16 @@
     {{/*  document.querySelector("#sort-select").value = "latest";  */}}
     filterAndSort();
   }
+
+  const toggleSidebar = (e) => {
+    if (e.target !== e.currentTarget) return;
+    const sidebar = document.querySelector(".blog-sidebar");
+    sidebar.classList.toggle("active");
+  }
+
+  document.querySelectorAll(".sidebar-toggle, .sidebar-close-btn, .topic-confirm").forEach(i => i.addEventListener("click", toggleSidebar))
+  document.querySelector(".blog-sidebar").addEventListener("click", toggleSidebar);
+
 
   {{/*  Toggle multi-select dropdown */}}
   {{/*  function toggleChildren(e) {

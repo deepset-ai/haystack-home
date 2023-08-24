@@ -16,7 +16,7 @@
   .grid-page-grid {
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     gap: 1rem;
 
     @include sm {
@@ -65,9 +65,14 @@
   .grid-page-card.integration-card {
     background-color: var(--color-bg-dark-blue);
 
+    .grid-page-card-header {
+      align-items: flex-start;
+
+    }
+
     .integration-card-logo {
       width: auto;
-      height: 1.625rem;
+      height: 2.625rem;
       margin-left: auto;
       object-fit: contain;
       max-width: 3.125rem;

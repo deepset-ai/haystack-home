@@ -80,7 +80,7 @@ The selected documents are then passed to the LostInTheMiddleRanker. As we previ
 
 Finally, the merged paragraphs are passed to a PromptNode, which conditions an LLM to answer the question based on these selected paragraphs.
 
-![An illustration of a pipeline consists of WebRetriever, TopPSampler, DiversityRanker, LostInTheMiddleRanker and PromptNode](figure_3.png#small "LFQA/RAG pipeline — Image by author")
+![An illustration of a pipeline consists of WebRetriever, TopPSampler, DiversityRanker, LostInTheMiddleRanker and PromptNode](figure_3.jpg "LFQA/RAG pipeline — Image by author")
 
 The new rankers are already merged into Haystack’s main branch and will be available in the upcoming 1.20 release slated for the end of August 2023. We included a new LFQA/RAG pipeline demo in the project’s examples folder.
 

@@ -108,6 +108,8 @@
   > ul {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     gap: 2rem;
 
     // Dropdown menu parent
@@ -175,14 +177,16 @@
       }
     }
 
-    // Prevent last dropdown menu from going out of page
-    // li.dropdown-menu:last-of-type {
-    //   ul.sub-menu {
-    //     left: unset;
-    //     transform: unset;
-    //     right: 0%;
-    //   }
-    // }
+    // Prevent last dropdown menu from going out of page container
+    @media (max-width: 1350px) {
+      li.dropdown-menu:last-of-type {
+        ul.sub-menu {
+          left: unset;
+          transform: unset;
+          right: 0%;
+        }
+      }
+    }
   }
 }
 

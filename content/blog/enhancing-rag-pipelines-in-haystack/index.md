@@ -6,7 +6,7 @@ featured_image: thumbnail.png
 images: ["blog/enhancing-rag-pipelines-in-haystack/thumbnail.png"]
 alt_image: An artistic interpretation of the DiversityRanker algorithm’s document ordering process, courtesy of MidJourney
 toc: True
-date: 2023-08-08
+date: 2023-08-29
 last_updated:  2023-08-29
 authors:
   - Vladimir Blagojevic
@@ -64,7 +64,10 @@ The LostInTheMiddleRanker optimizes the layout of the selected documents in the 
 
 Although the authors of this research focused on a question-answering task — extracting the relevant spans of the answer from the text — we are speculating that the LLM’s attention mechanism will also have an easier time focusing on the paragraphs in the beginning and the end of the context window when generating answers.
 
-![A graph showing that accuracy of the LLM drops when the answer is needed to be extracted from the middle of the context](figure_2.png "LLMs struggle to extract answers from the middle of the context, adapted from Liu et al. (2023)[1]")
+<figure>
+  <img src="figure_2.png" width=50% alt="A graph showing that accuracy of the LLM drops when the answer is needed to be extracted from the middle of the context">
+  <figcaption>LLMs struggle to extract answers from the middle of the context, adapted from Liu et al. (2023)[1]</figcaption>
+</figure>
 
 LostInTheMiddleRanker is best positioned as the last ranker in the RAG pipeline as the given documents are already selected based on similarity (relevance) and ordered by diversity.
 

@@ -37,6 +37,15 @@
 
 
             <div class="blog-post-title">
+              {{/*  Tags  */}}
+              <div class="blog-post-tags">
+                {{ range .Params.tags }}
+                  <a class="tag" href="/blog/tags/{{ urlize . }}">
+                    {{ . }}
+                  </a>
+                {{ end }}
+              </div>
+              
               {{/* Title */}}
               <h1>{{ .Params.title }}</h1>
 

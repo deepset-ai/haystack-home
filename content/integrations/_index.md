@@ -4,9 +4,9 @@ title: Integrations
 description: Learn how to use Haystack with our integrations.
 
 subtitle: |
-  Haystack Integrations created and maintained by the community or the deepset team 🤍 
+  The Haystack ecosystem integrates with many other technologies, such as vector databases, model providers and even custom components made by the community. 
   
-  Filter for Custom Nodes, Document Stores or Agent Tools
+  Here you can explore our integrations, which may be maintined by deepset, or submitted by others.
   
 contribute:
   title: Want to contribute an integration?

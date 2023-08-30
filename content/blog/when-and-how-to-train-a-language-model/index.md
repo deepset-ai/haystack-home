@@ -12,6 +12,7 @@ authors:
 canonical_url: https://www.deepset.ai/blog/when-and-how-to-train-a-language-model
 # opengraph images
 # images: [""]
+tags: ["Model Training"]
 ---
 
 

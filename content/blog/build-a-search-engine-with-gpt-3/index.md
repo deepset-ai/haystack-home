@@ -9,8 +9,10 @@ toc: True
 date: 2023-01-31
 last_updated: 2023-01-31
 authors:
-  - Tuana Celik
+  - Isabelle Nguyen
 canonical_url: https://www.deepset.ai/blog/build-a-search-engine-with-gpt-3
+tags: ["LLM", "NLP", "GPT", "Generative AI"]
+
 ---
 
 If you’ve been online lately, then you’ve likely seen the excitement about OpenAI’s newest language model, ChatGPT. ChatGPT is astonishingly good at many things, including debugging code and rewriting text in whatever style you ask it. As an offshoot of GPT-3.5, a large language model (LLM) with billions of parameters, ChatGPT owes its impressive amount of knowledge to the fact that it’s seen a large portion of the internet during training — in the form of the Common Crawl corpus and other data.
@@ -226,7 +228,7 @@ Answers:
  contents on fire and turning the tower into a makeshift  
  chimney."""}]
 ```
-This answer — which was ranked lower than the correct answer — is so absurd that it’s funny. But it should serve as a reminder that the output of a generative model, even when it looks like a well-formed answer, can be entirely hallucinated and should be fact-checked.
+This answer — which was ranked lower than the correct answer — is rather absurd. But it should serve as a reminder that the output of a generative model, even when it looks like a well-formed answer, can be entirely hallucinated and should be fact-checked.
 
 ### Example 5
 ```python

@@ -9,6 +9,7 @@ date: 2023-03-30
 last_updated: 2023-03-30
 authors:
   - Tuana Celik
+tags: ["LLM", "Agent"]
 ---
 
 Wouldn’t it be cool if you could enter a query and an LLM makes decisions on-the-fly about what resources it needs to resolve the query? For example, that it needs to search the web and retrieve relevant resources. Or that it needs to search through your company files first. That’s now possible with Agents!

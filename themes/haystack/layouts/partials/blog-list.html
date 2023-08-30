@@ -1,0 +1,362 @@
+{{ $type := .Type }}
+{{ $title := "All articles" }}
+{{ if or (eq .Type "authors") (eq .Type "tags") }}
+  {{ $title = .Params.title }}
+{{end}}
+
+
+<div class="blog-list-content">
+  <div class="container container-padded">
+    <div class="inner inner-top">
+      <h2 class="section-title">
+        {{ if or (eq .Type "authors") (eq .Type "tags") }}{{ .Params.title }}{{ else }}All articles{{end}}
+      </h2>
+      <button class="sidebar-toggle">Select topics</button>
+
+      {{/*  <div class="grid-page-options">
+        <div class="filters">  */}}
+          {{/* Search */}}
+          {{/*  <div class="search-wrapper">
+            <input id="search" type="text" placeholder="Search for articles" oninput="filterAndSort();" />
+            <div class="search-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M19.3187 18.0273L13.232 11.9406C14.1766 10.7195 14.6875 9.22656 14.6875 7.65625C14.6875 5.77656 13.9539 4.01406 12.6273 2.68516C11.3008 1.35625 9.53359 0.625 7.65625 0.625C5.77891 0.625 4.01172 1.35859 2.68516 2.68516C1.35625 4.01172 0.625 5.77656 0.625 7.65625C0.625 9.53359 1.35859 11.3008 2.68516 12.6273C4.01172 13.9562 5.77656 14.6875 7.65625 14.6875C9.22656 14.6875 10.7172 14.1766 11.9383 13.2344L18.025 19.3187C18.0428 19.3366 18.064 19.3508 18.0874 19.3604C18.1107 19.3701 18.1357 19.3751 18.1609 19.3751C18.1862 19.3751 18.2112 19.3701 18.2345 19.3604C18.2578 19.3508 18.279 19.3366 18.2969 19.3187L19.3187 18.2992C19.3366 18.2814 19.3508 18.2602 19.3604 18.2369C19.3701 18.2135 19.3751 18.1885 19.3751 18.1633C19.3751 18.138 19.3701 18.113 19.3604 18.0897C19.3508 18.0664 19.3366 18.0452 19.3187 18.0273ZM11.3688 11.3688C10.375 12.3602 9.05781 12.9062 7.65625 12.9062C6.25469 12.9062 4.9375 12.3602 3.94375 11.3688C2.95234 10.375 2.40625 9.05781 2.40625 7.65625C2.40625 6.25469 2.95234 4.93516 3.94375 3.94375C4.9375 2.95234 6.25469 2.40625 7.65625 2.40625C9.05781 2.40625 10.3773 2.95 11.3688 3.94375C12.3602 4.9375 12.9062 6.25469 12.9062 7.65625C12.9062 9.05781 12.3602 10.3773 11.3688 11.3688Z"
+                  fill="#2B2F55" />
+              </svg>
+            </div>
+          </div>  */}}
+
+          {{/* Topics filter */}}
+          {{/*  {{ if not (or (eq $type "authors") (eq $type "tags")) }}
+           <div id="topic-select" class="multi-select-container">
+            <div class="select-wrapper">
+              <button class="multi-select-button">Topics</button>
+            </div>
+            <div class="close-children"></div>
+
+            <div class="multi-select-children">
+              {{ range $key, $value := .Site.Taxonomies.tags }}
+                {{ with $.Site.GetPage "taxonomyTerm" (printf "tags/%s" $key) }}
+                  <div>
+                    <input class="checkbox" type="checkbox" name="{{.Title}}" id="{{.Title}}" onchange="filterAndSort();">
+                    <label for="{{.Title}}">{{.Title}}</label>
+                  </div>
+                {{ end }}
+              {{ end }}
+            </div>
+           </div>
+          {{ end }}  */}}
+
+          {{/* Reset filters btn */}}
+          {{/*  <button class="reset-filters-btn reset-filters-desktop" onclick="resetFilters();">
+            Reset filters
+          </button>  */}}
+        {{/*  </div>  */}}
+
+        {{/*  <div>  */}}
+          {{/* Sorting */}}
+          {{/*  <div class="sort-wrapper">
+            <label for="sort">Sort By:</label>
+            <div class="select-wrapper">
+              <select name="sort" id="sort-select" onchange="filterAndSort();">
+                <option value="latest">Latest</option>
+                <option value="oldest">Oldest</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button class="reset-filters-btn reset-filters-mobile" onclick="resetFilters();">
+          Reset filters
+        </button>
+      </div>  */}}
+
+      <div class="blog-grid-container">
+        {{ $currentTags := slice }}
+        {{ range .Data.Pages }}
+          {{ $currentTags = union $currentTags .Params.tags }}
+        {{ end }}
+        {{ $currentTags = sort $currentTags }}
+        {{ if gt (len $currentTags) 1 }}
+          <div class="blog-sidebar">
+
+            <div id="topic-select">
+              {{ range $currentTags }}
+                {{ $tag := . | urlize }}
+                {{ with $.Site.GetPage "taxonomyTerm" (printf "tags/%s" $tag) }}
+                  {{ if not (eq $title .Params.title) }}
+                      <div class="topic-select-child">
+                          <input class="checkbox" type="checkbox" name="{{.Title}}" id="{{.Title}}" onchange="filterAndSort();"
+                          >
+                          <label for="{{.Title}}">{{.Title}}</label>
+                        </div>
+                        {{ end }}
+                  {{ end }}
+              {{ end }}
+
+              <button class="btn btn-green topic-confirm">Confirm</button>
+            </div>
+
+            {{/*  Mobile close btn  */}}
+            <button class="sidebar-close-btn" aria-label="Close sidebar">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" role="img" aria-label="Cross icon" focusable="false">
+                <path d="M1 1l12 12m0-12L1 13" stroke="#fff" stroke-linecap="round" stroke-width="2"></path>
+              </svg>
+            </button>
+          </div>
+        {{ end }}
+        {{/* Blog posts grid */}}
+        <div class="blog-grid blog-grid-static">
+          {{/* Get the blog posts */}}
+          {{ $blogPosts := .Data.Pages }}
+  
+          {{/* Append homepage to blogposts and hide it later - hack to get 1 less post on the first page, to show a
+          larger featured post */}}
+          {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
+            {{ $blogPosts = slice site.Home | append $blogPosts }}
+          {{ end }}
+          {{ $paginatedBlogPosts := .Paginate $blogPosts }}
+  
+          {{/* Check if there is a next/previous page */}}
+          {{ $hasPrev := .Paginator.HasPrev }}
+          {{ $hasNext := .Paginator.HasNext }}
+  
+          {{/* Latest/featured post */}}
+          {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
+            {{ if not $hasPrev }}
+              {{ range first 1 (after 1 $paginatedBlogPosts.Pages) }}
+                {{ partial "blog-card-featured" . }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+  
+          {{/* If on the first page, remove first 2 entries */}}
+          {{ $newPages := $paginatedBlogPosts.Pages }}
+          {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
+            {{ if not $hasPrev }}
+              {{ $newPages = after 2 $paginatedBlogPosts.Pages }}
+            {{ end }}
+          {{ end }}
+  
+          {{ range $newPages }}
+            {{ if not .IsHome }}
+              {{ partial "blog-card" . }}
+            {{ end }}
+          {{ end }}
+  
+        </div>
+  
+        <div class="blog-grid blog-grid-search"></div>
+        <div class="not-found">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            width="58"
+            height="58"
+            viewBox="0 0 58 58"
+          >
+            <path
+              d="M65.7328 61.751L46.9654 42.9836C49.8777 39.2186 51.4531 34.6152 51.4531 29.7734C51.4531 23.9777 49.1912 18.5434 45.101 14.4459C41.0107 10.3484 35.5619 8.09375 29.7734 8.09375C23.985 8.09375 18.5361 10.3557 14.4459 14.4459C10.3484 18.5361 8.09375 23.9777 8.09375 29.7734C8.09375 35.5619 10.3557 41.0107 14.4459 45.101C18.5361 49.1984 23.9777 51.4531 29.7734 51.4531C34.6152 51.4531 39.2113 49.8777 42.9764 46.9727L61.7438 65.7328C61.7988 65.7879 61.8641 65.8316 61.936 65.8614C62.008 65.8912 62.085 65.9065 62.1629 65.9065C62.2407 65.9065 62.3178 65.8912 62.3897 65.8614C62.4617 65.8316 62.527 65.7879 62.582 65.7328L65.7328 62.5893C65.7879 62.5342 65.8316 62.4689 65.8614 62.397C65.8912 62.3251 65.9065 62.248 65.9065 62.1701C65.9065 62.0923 65.8912 62.0152 65.8614 61.9433C65.8316 61.8713 65.7879 61.806 65.7328 61.751V61.751ZM41.2203 41.2203C38.1563 44.2772 34.0949 45.9609 29.7734 45.9609C25.452 45.9609 21.3906 44.2772 18.3266 41.2203C15.2697 38.1563 13.5859 34.0949 13.5859 29.7734C13.5859 25.452 15.2697 21.3834 18.3266 18.3266C21.3906 15.2697 25.452 13.5859 29.7734 13.5859C34.0949 13.5859 38.1635 15.2625 41.2203 18.3266C44.2772 21.3906 45.9609 25.452 45.9609 29.7734C45.9609 34.0949 44.2772 38.1635 41.2203 41.2203Z"
+              fill="#9090B2"
+            ></path>
+            <path
+              d="M27 37.5C27 38.2956 27.3161 39.0587 27.8787 39.6213C28.4413 40.1839 29.2044 40.5 30 40.5C30.7956 40.5 31.5587 40.1839 32.1213 39.6213C32.6839 39.0587 33 38.2956 33 37.5C33 36.7044 32.6839 35.9413 32.1213 35.3787C31.5587 34.8161 30.7956 34.5 30 34.5C29.2044 34.5 28.4413 34.8161 27.8787 35.3787C27.3161 35.9413 27 36.7044 27 37.5ZM28 19.5V31C28 31.275 28.225 31.5 28.5 31.5H31.5C31.775 31.5 32 31.275 32 31V19.5C32 19.225 31.775 19 31.5 19H28.5C28.225 19 28 19.225 28 19.5Z"
+              fill="#9090B2"
+            ></path>
+          </svg>
+  
+          <h2>No articles found</h2>
+          <p>
+            You may want to try different keywords or check for any possible
+            typos.
+          </p>
+        </div>
+      </div>
+
+      <div class="blog-pagination">
+        {{ if $hasPrev }}
+          <a class="pagination-prev" href="{{ $paginatedBlogPosts.Prev.URL }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 13 14" role="presentation"
+              focusable="false">
+              <path
+                d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z"
+                fill="#9090b2" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+            Previous
+          </a>
+        {{ end }}
+        {{ if $hasNext }}
+          <div class="pagination-next">
+            {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Next" "url" $paginatedBlogPosts.Next.URL) }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const blogPosts = [
+    {{ $counter := 0 }}
+    {{ range $i, $p := $blogPosts }}
+      {{ if not .IsHome }}
+        {{ if gt $counter 0 }}, {{ end }}
+        {
+          title: {{ .Title  }},
+          url: {{ .Permalink  }},
+          description: {{ .Description  }},
+          image: {{ .Params.featured_image  }},
+          tags: {{ if .Params.tags }}{{ .Params.tags }}{{ else }}[]{{ end }},
+          authors: [
+            {{ range $j, $a := .Params.authors }}
+              {{ $authorPage := $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize $a)) }}
+              {{ if gt $j 0 }}, {{ end }}
+              {
+                name: {{ $a }},
+                position: {{ if $authorPage.Params.position }}{{ $authorPage.Params.position }}{{ else }}""{{ end }},
+                image: {{ if $authorPage.Params.image }}{{ $authorPage.Params.image }}{{ else }}""{{ end }}
+              }
+            {{ end }}
+          ],
+          date: {{ .Date }},
+          dateFormatted: {{ .Date | time.Format ":date_long" }}
+          
+        }
+        {{ $counter = add $counter 1 }}
+      {{ end }}
+    {{ end }}
+  ];
+
+  const filterAndSort = () => {
+    let posts = [...blogPosts]
+    {{/*  const selectedSort = document.querySelector("#sort-select").value;  */}}
+    {{/*  const searchTerm = document.querySelector("#search").value;  */}}
+    const pagination = document.querySelector(".blog-pagination");
+    const blogGridStatic = document.querySelector(".blog-grid-static");
+    const blogGridSearch = document.querySelector(".blog-grid-search");
+    const sectionTitle = document.querySelector(".section-title");
+    const notFound = document.querySelector(".not-found");
+
+    const pageType = "{{ $type }}";
+    const topicSelect = document.querySelector("#topic-select");
+    let selectedTopics = [];
+    
+    {{/*  Filter by search  */}}
+    {{/*  if (searchTerm) {
+      const searchTermsArray = searchTerm.toLowerCase().split(" ").filter(term => term);
+
+      posts = posts.filter(i => {
+        const searchableText = (i.title + " " + i.description + " " + i.tags.join(" ") + " " + i.authors.map(a => a.name).join(" ")).toLowerCase();
+        return searchTermsArray.every(term => searchableText.includes(term));
+      });
+    }  */}}
+
+    {{/*  Filter by topic  */}}
+    if (topicSelect) {
+      selectedTopics = topicSelect.querySelectorAll("input:checked");
+      const selectedTopicsArray = [...selectedTopics].map(i => i.name);
+      
+      if (selectedTopicsArray.length > 0) {
+        posts = posts.filter(i => selectedTopicsArray.some(topic => i.tags.includes(topic)));
+      }
+    }
+
+    {{/*  Sorting  */}}
+    {{/*  posts = posts.sort((a, b) => {
+      const aDate = new Date(a.date);
+      const bDate = new Date(b.date);
+      if (selectedSort === "oldest") return aDate - bDate;
+      else return bDate - aDate;
+    });  */}}
+
+    blogGridSearch.innerHTML = ""
+    {{/*  Create a blog card for each post and append it to grid  */}}
+    posts.forEach((post) =>{
+      const blogCard = document.createElement("a");
+      blogCard.href = post.url
+      blogCard.classList.add("blog-card");
+      blogCard.innerHTML = `
+      <div class="blog-card-image">
+          <img src="${post.url}${post.image}" alt="${post.description}" loading="lazy">
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-tags">
+          ${post.tags.map(tag => `<div class="tag">${tag}</div>`).join("")}
+        </div>
+        <div class="blog-card-authors">
+          ${post.authors.map(author => `<div>
+            <div class="author-image">
+                <img src="${author.image}" alt="${author.name}">
+            </div>
+            <div class="author-info">
+              <span class="name">${author.name}</span>
+              <span class="position">${author.position}</span>
+            </div>
+          </div>`).join("")}
+        </div>
+        <h2>${post.title}</h2>
+        <p>${post.description}</p>
+        <span class="date">${post.dateFormatted}</span>
+      </div>
+      `;
+      blogGridSearch.appendChild(blogCard)}
+    );
+
+    {{/*  Show/hide not found message  */}}
+    if (posts.length === 0) {
+      notFound.style.display = "flex";
+    } else notFound.style.display = "none";
+
+    {{/*  Show/hide pagination, grids and update title  */}}
+    if (selectedTopics.length > 0 ) {
+      pagination.style.display = "none";
+      blogGridSearch.style.display = "grid";
+      blogGridStatic.style.display = "none";
+
+      if ((selectedTopics.length > 0) && pageType === "blog") {
+        sectionTitle.innerText = `${posts.length} article${posts.length !== 1 ? "s" :""} found`
+      } else sectionTitle.innerText = `{{$title}}`
+    } else {
+      pagination.style.display = "flex";
+      blogGridSearch.style.display = "none";
+      blogGridStatic.style.display = "grid";
+      sectionTitle.innerText = `{{$title}}`
+    }
+  }
+
+  const resetFilters = () => {
+    const topicSelect = document.querySelector("#topic-select")
+    if (topicSelect) { 
+      topicSelect.querySelectorAll("input:checked").forEach(i => i.checked = false);
+    }
+    {{/*  document.querySelector("#search").value = "";  */}}
+    {{/*  document.querySelector("#sort-select").value = "latest";  */}}
+    filterAndSort();
+  }
+
+  const toggleSidebar = (e) => {
+    if (e.target !== e.currentTarget) return;
+    const sidebar = document.querySelector(".blog-sidebar");
+    sidebar.classList.toggle("active");
+  }
+
+  document.querySelectorAll(".sidebar-toggle, .sidebar-close-btn, .topic-confirm").forEach(i => i.addEventListener("click", toggleSidebar))
+  document.querySelector(".blog-sidebar").addEventListener("click", toggleSidebar);
+
+
+  {{/*  Toggle multi-select dropdown */}}
+  {{/*  function toggleChildren(e) {
+    e.target.closest(".multi-select-container").classList.toggle("active")
+  }
+
+  document.querySelectorAll('.multi-select-button, .close-children').forEach(function(button) {
+    button.addEventListener('click', toggleChildren);
+  });  */}}
+
+
+  {{/*  Reset filters on pageshow in case of back button  */}}
+  addEventListener('pageshow', () => {
+    resetFilters();
+  });
+</script>

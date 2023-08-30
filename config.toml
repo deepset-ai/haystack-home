@@ -9,6 +9,7 @@ paginatePath = "/"
 
 [taxonomies]
   author = "authors"
+  tag = "tags"
 
 [sitemap]
   changefreq = 'monthly'
@@ -24,6 +25,7 @@ paginatePath = "/"
 [permalinks]
   pages = "/:filename"
   authors = "/blog/authors/:slug"
+  tags = "/blog/tags/:slug"
 
 [security]
   [security.funcs]
@@ -74,12 +76,18 @@ paginatePath = "/"
   name = 'Tutorials'
   url = '/tutorials'
   weight = 3
-  
+
+[[menu.main]]
+  identifier = 'integrations'
+  name = 'Integrations'
+  url = '/integrations'
+  weight = 4
+
 [[menu.main]]
   identifier = 'blog'
   name = 'Blog'
   url = '/blog'
-  weight = 4
+  weight = 5
 
 [[menu.main]]
   identifier = 'community'
@@ -91,7 +99,7 @@ paginatePath = "/"
   identifier = 'resources'
   name = 'Resources'
   url = '/'
-  weight = 6
+  weight = 7
   params = { tag = "New" }
 
 # Overview children
@@ -127,40 +135,27 @@ paginatePath = "/"
 
 # Resources children
 [[menu.main]]
-  name = 'Integrations'
-  url = '/integrations'
-  parent = 'resources'
-  weight = 1
-
-[[menu.main]]
   name = 'PromptHub'
   url = 'https://prompthub.deepset.ai'
   parent = 'resources'
-  weight = 2
+  weight = 1
   params = { tag = "New" }
 
 [[menu.main]]
   name = 'deepset Blog'
   url = 'https://www.deepset.ai/blog'
   parent = 'resources'
-  weight = 3
+  weight = 2
 
 [[menu.main]]
   name = 'Benchmarks'
   url = '/benchmarks'
   parent = 'resources'
-  weight = 4
-  
-[[menu.main]]
-  identifier = 'annotation-tool'
-  name = 'Annotation Tool'
-  url = 'https://www.deepset.ai/annotation-tool-for-labeling-datasets'
-  parent = 'resources'
-  weight = 5
+  weight = 3
 
 [[menu.main]]
   name = 'NLP Resources'
   url = '/nlp-resources'
   parent = 'resources'
-  weight = 6
+  weight = 4
 

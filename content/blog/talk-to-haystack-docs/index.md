@@ -40,7 +40,7 @@ Although knowledgeable users could use Google "site:" search syntax to manually 
 
 ## RAG pipeline setup
 
-To better understand the building blocks of the “talk to the website” use case, let's review each code section of the pipeline example [1]. Before assembling the RAG pipeline, we must set up the https://serper.dev API key and choose an LLM to use. It could be any LLM, but we’ll limit the choice to Anthropic Claude, OpenAI GPT models, and open-source models available on the free tier of Hugging Face inference API.
+To better understand the building blocks of the “talk to the website” use case, let's review each code section of the pipeline example [1]. Before assembling the RAG pipeline, we must set up the https://serper.dev API key and choose an LLM to use. It could be any LLM, but we’ll limit the choice to Anthropic Claude, OpenAI GPT models, and open-source models available on the free tier of Hugging Face Inference API.
 
 
 ```python
@@ -127,9 +127,9 @@ while True:
 
 ## Conclusion
 
-Haystack’s WebRetreiver enables users to quickly and effortlessly set up highly-specialized Q&A system drawing contents directly from the specified domains. Whether you are setting up an AI-powered Q&A assistant for your website, or an engineer sifting through a list of arXiv publications, Haystack’s modular architecture lets you quickly set up a RAG pipeline that fits your particular use case. 
+Haystack's WebRetriever enables users to quickly and effortlessly set up a highly-specialized Q&A system drawing content directly from the specified domains. Whether you are setting up an AI-powered Q&A assistant for your website, or if you are an engineer sifting through a list of arXiv publications, Haystack's modular architecture lets you quickly set up a RAG pipeline that fits your particular use case. 
 
-We’ve only scratched the surface with this simple example, but we hope it drives you further to explore Haystack RAG pipelines and components, allowing you to customize Haystack to your particular scenario. We look forward to seeing how the community utilizes WebRetriever and other Haystack components to address today’s complex information retrieval use case scenarios.
+We've only scratched the surface with this simple example, but we hope it encourages you to further explore Haystack RAG pipelines and components, allowing you to customize Haystack for your particular scenario. We look forward to seeing how the community utilizes WebRetriever and other Haystack components to address today's complex information retrieval challenges.
 
 ### References
 

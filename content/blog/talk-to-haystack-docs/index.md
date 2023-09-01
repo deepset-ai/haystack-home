@@ -7,8 +7,8 @@ images: ["blog/talk-to-haystack-docs/thumbnail.png"]
 featured_image_caption: An artistic interpretation of the WebRetriever courtesy of MidJourney.
 alt_image: An artistic interpretation of the WebRetriever courtesy of MidJourney. 
 toc: True
-date: 2023-09-04
-last_updated:  2023-09-04
+date: 2023-09-01
+last_updated:  2023-09-01
 authors:
   - Vladimir Blagojevic
 tags: ["LLM", "NLP", "Generative AI", "Retrieval"]
@@ -130,5 +130,7 @@ while True:
 Haystack’s WebRetreiver enables users to quickly and effortlessly set up highly-specialized Q&A system drawing contents directly from the specified domains. Whether you are setting up an AI-powered Q&A assistant for your website, or an engineer sifting through a list of arXiv publications, Haystack’s modular architecture lets you quickly set up a RAG pipeline that fits your particular use case. 
 
 We’ve only scratched the surface with this simple example, but we hope it drives you further to explore Haystack RAG pipelines and components, allowing you to customize Haystack to your particular scenario. We look forward to seeing how the community utilizes WebRetriever and other Haystack components to address today’s complex information retrieval use case scenarios.
+
+### References
 
 [1] https://github.com/deepset-ai/haystack/blob/main/examples/talk_to_website.py

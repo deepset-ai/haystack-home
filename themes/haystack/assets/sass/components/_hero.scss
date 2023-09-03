@@ -69,3 +69,39 @@
     }
   }
 }
+
+// Hacktoberfest hero
+.hacktoberfest-hero {
+  padding: 4rem 0;
+  background-color: #9090b2;
+  text-align: center;
+
+  >.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+
+    @include md {
+      padding-right: 10rem;
+      padding-left: 10rem;
+    }
+
+    .hacktoberfest-image {
+      width: 6.25rem;
+      object-fit: contain;
+
+      @include md {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 9.375rem;
+      }
+    }
+  }
+
+  h1, p {
+    color: #fff;
+  }
+}

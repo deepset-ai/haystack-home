@@ -28,6 +28,18 @@
     }
   }
 
+  // Integrations grid
+  .grid-page-grid.integrations-grid {
+   
+    @include sm {
+      grid-template-columns: repeat(auto-fill, minmax(16.5rem, 1fr));
+    }
+
+    @include md {
+      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    }
+  }
+
   // Tutorial cards
   .grid-page-card {
     background-color: var(--color-white);
@@ -48,6 +60,7 @@
     // Title
     h3 {
       font-size: 1.25rem;
+      word-break: break-word;
     }
 
     // Description
@@ -63,25 +76,112 @@
 
   // Integration cards
   .grid-page-card.integration-card {
+    position: relative;
     background-color: var(--color-bg-dark-blue);
 
-    .grid-page-card-header {
-      align-items: flex-start;
+     h3 {
+      font-size: 1.5rem;
+      text-align: center;
+      color: var(--color-white);
+    }
 
+    p {
+      font-size: 1rem;
+      color: var(--color-white);
     }
 
     .integration-card-logo {
-      width: auto;
-      height: 2.625rem;
-      margin-left: auto;
-      object-fit: contain;
-      max-width: 3.125rem;
+      width: 100%;
+      height: 6rem;
+      position: relative;
+      overflow: hidden;
+
+      > img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      > svg {
+        display: block;
+        width: auto;
+        height: 100%;
+        margin: 0 auto;
+      }
     }
 
-    h3,
-    p {
-      color: var(--color-white);
+    .integration-card-tags {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 0.25rem;
+
+      > div {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+        background-color: var(--color-light-grey);
+        color: var(--color-dark-blue);
+        text-transform: capitalize;
+        border-radius:999px;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+
+
+        .icon {
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-items: center;
+          padding-bottom: 1px;
+        }
+      }
     }
+
+    .integration-card-maintainer {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-end;
+      z-index: 999;
+     
+      .maintainer-icon {
+        background-color: var(--color-blue);
+        padding: 0.6rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 999px;
+        display: flex;
+        justify-items: center;
+        align-items: center;
+
+        > svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .maintainer-text {
+        display: none;
+      }
+
+      &:hover {
+        .maintainer-text {
+          display: block;
+          background-color: var(--color-bg-light-grey);
+          font-size: 0.75rem;
+          color: var(--color-dark-blue);
+          border-radius: 999px;
+          padding: 0.25rem 0.5rem;
+        }
+      }
+    }
+
+    
+
   }
 
   // Tutorial footer
@@ -98,9 +198,8 @@
       flex-direction: row;
       align-items: center;
     }
-
   }
-  
+
   .contribute-btn > svg {
     margin-right: 0.5rem;
     margin-bottom: 0.1rem;
@@ -190,7 +289,7 @@
       line-height: 1.1;
       z-index: 10;
 
-      >div {
+      > div {
         display: flex;
         align-items: baseline;
         gap: 0.0625rem;
@@ -199,11 +298,12 @@
           transform: translateY(0.125rem);
         }
 
-        >label {
+        > label {
           user-select: none;
         }
 
-        >label, .checkbox {
+        > label,
+        .checkbox {
           cursor: pointer;
         }
       }
@@ -225,8 +325,6 @@
       z-index: 9;
       pointer-events: auto;
     }
-
-    
   }
 
   // Filter selects
@@ -235,7 +333,8 @@
     min-width: 8rem;
     flex-shrink: 0;
 
-    > select, > button {
+    > select,
+    > button {
       appearance: none;
       -webkit-appearance: none;
       -moz-appearance: none;

@@ -79,7 +79,7 @@
           </div>
 
           {{/* Integrations grid */}}
-          <div class="grid-page-grid">
+          <div class="grid-page-grid integrations-grid">
             {{ range where .Site.Pages "Layout" "integration" }}
               {{ partial "integration-card" . }}
             {{ end }}
@@ -141,6 +141,7 @@
       );
 
       updateURL(selectedType, selectedMaintainer, searchTerm);
+      resizeGridItems()
     }
 
     const updateURL = (type, maintainer, search) => {

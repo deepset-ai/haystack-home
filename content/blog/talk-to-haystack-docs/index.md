@@ -7,8 +7,8 @@ images: ["blog/talk-to-haystack-docs/thumbnail.png"]
 featured_image_caption: An artistic interpretation of the WebRetriever courtesy of MidJourney.
 alt_image: An artistic interpretation of the WebRetriever courtesy of MidJourney. 
 toc: True
-date: 2023-09-01
-last_updated:  2023-09-01
+date: 2023-09-04
+last_updated:  2023-09-04
 authors:
   - Vladimir Blagojevic
 tags: ["LLM", "NLP", "Generative AI", "Retrieval"]

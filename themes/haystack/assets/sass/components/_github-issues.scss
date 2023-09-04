@@ -1,0 +1,127 @@
+.github-issues {
+  background-color: var(--color-light-grey);
+
+  .issue-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+
+    .issue {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      border-radius: var(--border-radius-sm);
+
+      // &.closed {
+      //   opacity: 0.6;
+      // }
+
+      @include lg {
+        flex-direction: row;
+        border-radius: 999px;
+      }
+
+      &:hover {
+        box-shadow: inset 0px 0px 0px 2px #43ab9d;
+      }
+
+      .issue-title-container {
+        width: 100%;
+        gap: 1rem;
+
+        @include lg {
+          width: 60%;
+          flex-shrink: 0;
+        }
+      }
+
+      .issue-title {
+        font-size: 1rem;
+        flex-shrink: 0;
+        margin-right: 0.5rem;
+        display: inline;
+
+        @include lg {
+          font-size: 1.125rem;
+        }
+      }
+
+      .issue-labels {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+
+        > span {
+          border-radius: 999px;
+          padding: 0.25rem 0.5rem;
+          font-size: 0.75rem;
+        }
+      }
+
+      .issue-repo-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+        margin-top: 1rem;
+
+        @include lg {
+          flex-wrap: nowrap;
+          width: 40%;
+          padding-left: 1rem;
+          margin-top: 0;
+        }
+      }
+
+      .issue-repo {
+        flex-shrink: 0;
+        color: var(--color-medium-grey);
+        font-size: 1rem;
+        max-width: 100%;
+        word-break: break-word;
+
+        > span {
+          color: var(--color-dark-blue);
+        }
+
+        @include lg {
+          max-width: 70%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      .issue-state {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-medium-grey);
+        font-size: 1rem;
+
+        > span.closed,
+        > span.open {
+          border-radius: 999px;
+          width: 1.5rem;
+          height: 1.5rem;
+          display: block;
+          flex-shrink: 0;
+        }
+
+        > span.closed {
+          background-color: red;
+        }
+
+        > span.open {
+          background-color: green;
+        }
+      }
+    }
+  }
+}

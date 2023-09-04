@@ -34,7 +34,11 @@ export default async function githubIssues(request, response) {
     });
 
     const res = await Promise.all(fetchPromises);
-    const issues = res.flat();
+    const issues = res.flat().sort((a, b) => {
+      if (a.state === "open" && b.state === "closed") return -1;
+      if (a.state === "closed" && b.state === "open") return 1;
+      return 0;
+    });
 
     response.status(200).send(issues);
   } catch (error) {

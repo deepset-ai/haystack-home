@@ -3,6 +3,9 @@
 {{/*  Default color  */}}
 {{ $theme := "dark" }}
 
+{{/*  Footer copyright year  */}}
+{{ $currentYear := now.Format "2006" }}
+
 {{/*  Get color from frontmatter if specified  */}}
 {{ with .Params.Footer }}
   {{ $theme = . }}
@@ -307,8 +310,7 @@
           </li>
         </ul>
 
-        <small class="copyright"
-          >© 2022 deepset GmbH. All rights reserved.</small
+        <small class="copyright">{{ print "© " $currentYear " deepset GmbH. All rights reserved." }}</small
         >
       </div>
     </div>

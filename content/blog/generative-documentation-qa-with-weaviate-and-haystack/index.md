@@ -100,8 +100,8 @@ You can explore other example prompts we’ve made use of, including a similar o
 
 Now to simply piece this all together. First, we define a  `PromptNode`, which is the interface for interacting with an LLM.
 
-from haystack.nodes import PromptNode  
  ```python 
+from haystack.nodes import PromptNode  
 prompt_node = PromptNode(model_name_or_path="gpt-4",   
                          api_key='YOUR_OPENAI_KEY',   
                          default_prompt_template=answer_with_references_prompt,   

@@ -1,10 +1,13 @@
 <div class="github-issues">
   <div class="container">
-    <div class="inner inner-top">
       <div class="issue-table-container">
-        <div class="issue-table"></div>
+        <div class="issue-table">
+          <div class="loading"></div>
+          <div class="loading"></div>
+          <div class="loading"></div>
+          <div class="loading"></div>
+        </div>
       </div>
-    </div>
   </div>
 </div>
 
@@ -65,6 +68,12 @@
       issueCard.appendChild(titleContainer);
       issueCard.appendChild(repoContainer);
       issueTable.appendChild(issueCard);
+
+    })
+
+    const loadingCards = document.querySelectorAll(".loading");
+    loadingCards.forEach((card) => {
+      card.remove();
     })
   };
 

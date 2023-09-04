@@ -23,7 +23,7 @@
   --color-dark-grey-rgb: 144, 144, 178;
   --color-blue-rgb: 24, 139, 245;
   --color-dark-blue-rgb: 43, 47, 85;
-  --color-light-blue-rgb:17,129,193;
+  --color-light-blue-rgb: 17, 129, 193;
   --color-green-rgb: 3, 175, 157;
   --color-yellow-rgb: 255, 197, 92;
 
@@ -132,4 +132,14 @@
   --shadow-filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.05))
     drop-shadow(0 -2px 5px rgba(0, 0, 0, 0.05))
     drop-shadow(0 0 2px rgba(0, 0, 0, 0.05));
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
 }

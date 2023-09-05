@@ -21,7 +21,7 @@ This technique is now being used to power many search systems. In this article, 
 
 A few weeks ago, a colleague and I built a custom component for Haystack: the  [**`ReadmeDocsFetcher`**](https://haystack.deepset.ai/integrations/readmedocs-fetcher)_._  Haystack’s design is centered around small units called components. The idea behind the framework is to provide simple building blocks that allow you to create your own custom components beyond the ones provided inherently through the Haystack project. The Haystack documentation is hosted through ReadMe, so we designed this node to fetch requested documentation pages from ReadMe and process them in a way that can be used in a full LLM pipeline.
 
-# The Indexing Pipeline
+## The Indexing Pipeline
 
 Now we can get started building our pipeline. First, we create an  [indexing pipeline](https://docs.haystack.deepset.ai/docs/pipelines#indexing-pipelines)  to write all the requested documentation pages on  [https://docs.haystack.deepset.ai](https://haystack.deepseet.ai/)  to our Weaviate database. The nice thing about building indexing pipelines is that they can be reused. If there are any new pages, we can push them through our indexing pipeline to ensure that the dabase that we we use for our RAG pipelines is always up to date.
 
@@ -63,7 +63,7 @@ indexing_pipeline.add_node(component=embedder, name="Embedder", inputs=["Preproc
 indexing_pipeline.add_node(component=document_store, name="DocumentStore", inputs=["Embedder"])  
 indexing_pipeline.run()
 ```
-# The Retrieval Augmented Generative (RAG) Pipeline
+## The Retrieval Augmented Generative (RAG) Pipeline
 
 Before we jump into the RAG pipeline itself, I’d like to talk about two key building blocks of the pipeline in isolation: the prompt and the LLM of choice.
 
@@ -71,7 +71,7 @@ As mentioned above, my aim here is to build a pipeline that can reference the do
 
 Here, we can say I ‘splashed out’. While you can use open-source LLMs with Haystack (from Hugging Face, hosted on SageMaker, locally deployed, the choice is really yours) I went with GPT-4. One of the main reasons for my choice is simply because, from experience, GPT-4 has been the most performant with the type of prompt (instruction) I intended to use for this application. That being said, please let me know if you have different observations 🙏
 
-## The Prompt
+### The Prompt
 
 Here is the prompt we use for this demo. It asks for each retrieved document to be followed by the URL that it comes from. The URL of each document is present in the metadata of the documents that we wrote to the  `WeaviateDocumentStore`  👇
 ```
@@ -96,7 +96,7 @@ answer_with_references_prompt = PromptTemplate(prompt = """You will be provided 
 ```
 You can explore other example prompts we’ve made use of, including a similar one for referencing on the  [PromptHub](https://prompthub.deepset.ai/?prompt=deepset%2Fquestion-answering-with-references).
 
-## The Pipeline
+### The Pipeline
 
 Now to simply piece this all together. First, we define a  `PromptNode`, which is the interface for interacting with an LLM.
 
@@ -171,7 +171,7 @@ URLs:
 - https://docs.haystack.deepset.ai/docs/installation  
 - https://docs.haystack.deepset.ai/docs/extras
 ```
-# Further Improvements
+## Further Improvements
 
 So far, we have only used a single retrieval technique. This could be considerably improved with a hybrid retrieval approach, which you can also implement with Weaviate and Haystack. This, in my opinion, would provide a healthier system that is intended for documentation search. While I am able to ask fully formed questions in this setup, I may want to provide a way for a user to simply search for ‘EmbeddingRetrievers’ for example.
 

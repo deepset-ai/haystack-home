@@ -1,8 +1,36 @@
-<div class="hacktoberfest-content inner inner-top">
-    <div class="container ">
-        <div>
+<div class="hacktoberfest-content">
+
+    <div class="hacktoberfest-events">
+        <div class="container">
+            <h2>Events</h2>
+            <div class="events-container">
+                {{ range .Params.events }}
+                    {{ $eventDate := dateFormat "2006-01-02" .date }}
+                        <div class="events-card {{ with .alt }}alt-card{{ end }}">
+                            <img src="{{ .image }}" alt="{{ .title }}">
+    
+                            <div class="content-section">
+                                <h3>{{ .title | markdownify }}</h3>
+                                <div class="details">
+                                    <span class="date">{{ dateFormat "02" .date | humanize }} {{ dateFormat "Jan 2006" .date
+                                        }}</span>
+                                    <span class="time">{{ .time }}</span>
+                                    <span class="location">{{ .location }}</span>
+                                </div>
+    
+                                <p>{{ .description | markdownify }}</p>
+                                {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
+                            </div>
+                        </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <div class="hacktoberfest-helpful-content">
+        <div class="container ">
             <h2>Helpful Content</h2>
-            <div class="helpful-content">
+            <div class="helpful-content-container">
                 {{range .Params.helpfulContent.list}}
                 <a href="{{ .RelPermalink }}" class="blog-card blog-card-featured">
                     {{/* Image */}}
@@ -58,34 +86,8 @@
                         {{/* Date */}}
                         <span class="date">{{ .date | time.Format ":date_long" }}</span>
     
-    
                     </div>
                 </a>
-                {{ end }}
-            </div>
-        </div>
-
-        <div>
-            <h2>Events</h2>
-            <div class="events-container">
-                {{ range .Params.events }}
-                    {{ $eventDate := dateFormat "2006-01-02" .date }}
-                        <div class="events-card {{ with .alt }}alt-card{{ end }}">
-                            <img src="{{ .image }}" alt="{{ .title }}">
-    
-                            <div class="content-section">
-                                <h3>{{ .title | markdownify }}</h3>
-                                <div class="details">
-                                    <span class="date">{{ dateFormat "02" .date | humanize }} {{ dateFormat "Jan 2006" .date
-                                        }}</span>
-                                    <span class="time">{{ .time }}</span>
-                                    <span class="location">{{ .location }}</span>
-                                </div>
-    
-                                <p>{{ .description | markdownify }}</p>
-                                {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
-                            </div>
-                        </div>
                 {{ end }}
             </div>
         </div>

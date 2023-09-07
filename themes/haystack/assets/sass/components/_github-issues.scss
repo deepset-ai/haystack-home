@@ -1,6 +1,15 @@
 .github-issues {
   background-color: var(--color-light-grey);
-  padding-top: 3rem;
+  
+  .container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    @include md {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
 
   .issue-table {
     display: flex;
@@ -141,46 +150,63 @@
 }
 
 .hacktoberfest-content {
-  background-color: var(--color-light-grey);
+  .container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 
-  > .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    @include md {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
 
-    @include lg {
-      grid-template-columns: 1fr 1fr;
+    > h2 {
+      text-align: center;
     }
   }
 
-  .helpful-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 1.5rem;
+  
 
-    @include md {
-      grid-template-columns: 1fr 1fr;
-    }
+  .hacktoberfest-events {
+    background-color: #9090b2;
 
-    @include lg {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .events-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 1.5rem;
-
-    @include md {
+    .events-container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+
+      @include md {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 62.5rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .events-card p {
+      font-size: var(--text-small);
     }
   }
 
-  .events-card p {
-    font-size: var(--text-small);
+  .hacktoberfest-helpful-content {
+    background-color: var(--color-light-grey);
+
+    .helpful-content-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+
+      >.blog-card {
+        grid-column-start: unset;
+        grid-column-end: unset;
+      }
+
+      @include md {
+        grid-template-columns: 1fr 1fr;
+      }
+     
+    }
   }
 }

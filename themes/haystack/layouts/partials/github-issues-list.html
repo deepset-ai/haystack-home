@@ -1,6 +1,32 @@
 <div class="github-issues">
   <div class="container">
       <div class="issue-table-container">
+        
+        <div class="grid-page-options hidden">
+          <div class="select-group">
+            {{/* Status filter */}}
+            <div class="select-wrapper">
+              <select id="status-select" onchange="filterAndSort();">
+                <option value="all">Status (All)</option>
+
+                <option value="open">Open</option>
+                <option value="closed">Closed</option>
+              </select>
+            </div>
+
+            {{/* Repo filter */}}
+            <div class="select-wrapper">
+            <select id="repo-select" onchange="filterAndSort();">
+              <option value="all">All Repos</option>
+            </select>
+            </div>
+             {{/* Reset filters btn */}}
+             <button class="reset-filters-btn" onclick="resetFilters();">
+              Reset filters
+            </button>
+          </div>
+        </div>
+
         <div class="issue-table">
           <div class="loading"></div>
           <div class="loading"></div>
@@ -12,11 +38,13 @@
 </div>
 
 <script>
-  buildIssues();
+  let issues;
 
-  async function buildIssues() {
-    const issues = await fetchIssues();
+  fetchIssues();
+
+  async function buildIssues(issues) {
     const issueTable = document.querySelector(".issue-table");
+    issueTable.innerHTML = "";
 
     issues.forEach((issue) => {
       {{/*  Issue card  */}}
@@ -78,15 +106,29 @@
   };
 
   async function fetchIssues() {
-    const res = await fetch("/api/github-issues", {
+    
+    const res = await fetch("http://localhost:3000/api/issues", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
+    
+    const data = await res.json();
+    issues = data;
+    buildIssues(issues);
 
-    const issues = await res.json();
-    return issues;
+    document.querySelector(".grid-page-options").classList.remove("hidden");
+
+    {{/*  Populate the repo select  */}}
+    const repoSelect = document.querySelector("#repo-select");
+    const repos = [...new Set(issues.map(i => i.repo))];
+    repos.forEach(repo => {
+      const option = document.createElement("option");
+      option.value = repo;
+      option.innerHTML = repo;
+      repoSelect.appendChild(option);
+    })
   };
 
   function getContrastTextColor(bgColor) {
@@ -99,4 +141,21 @@
     return luminance > 0.5 ? "000000" : "FFFFFF";
   }
 
+  const filterAndSort = () => {
+    let data = [...issues]
+    const selectedStatus = document.querySelector("#status-select").value;
+    const selectedRepo = document.querySelector("#repo-select").value;
+
+    {{/*  Filter by type / maintainer  */}}
+    data = data.filter(i => {
+      return (selectedStatus === "all" || i.state === selectedStatus) &&
+      (selectedRepo === "all" || i.repo === selectedRepo)
+    });
+
+    buildIssues(data)
+  }
+
+  const resetFilters = () => {
+    buildIssues(issues)
+  }
 </script>

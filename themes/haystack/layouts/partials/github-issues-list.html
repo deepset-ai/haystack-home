@@ -107,7 +107,7 @@
 
   async function fetchIssues() {
     
-    const res = await fetch("http://localhost:3000/api/issues", {
+    const res = await fetch("/api/github-issues", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

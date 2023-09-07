@@ -236,6 +236,10 @@
 
   .github-logo {
     width: 100%;
-    max-width: 7rem;
+    max-width: 5rem;
+
+    @include md {
+      max-width: 7rem;
+    }
   }
 }

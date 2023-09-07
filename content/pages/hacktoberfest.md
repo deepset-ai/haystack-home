@@ -17,6 +17,13 @@ hero:
   image: /images/happy-hacktoberfest.svg
   image2: /images/hacktoberfest-2.png
 
+comingSoon:
+  enabled: true
+  text: Eligible issues for Hacktoberfest 2023 will appear here in October
+  button:
+    url: /hacktoberfest
+    text: See How to Contribute
+
 helpfulContent:
   list:
     - title: The Beginner's Guide to LLM Prompting

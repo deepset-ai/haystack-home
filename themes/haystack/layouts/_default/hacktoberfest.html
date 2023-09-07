@@ -1,7 +1,10 @@
 {{/* Hacktoberfest */}}
 {{ define "main" }}
   {{ partial "hacktoberfest-hero" . }}
-  {{/*  {{ partial "github-issues-list" . }}  */}}
-  {{ partial "hacktoberfest-coming-soon" . }}
+  {{ if .Params.comingSoon.enabled }}
+    {{ partial "hacktoberfest-coming-soon" . }}
+  {{ else }}
+    {{ partial "github-issues-list" . }}
+  {{ end }}
   {{ partial "hacktoberfest-content" . }}
 {{ end }}

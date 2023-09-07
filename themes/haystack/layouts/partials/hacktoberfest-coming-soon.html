@@ -7,9 +7,12 @@
         fill-rule="evenodd" clip-rule="evenodd" />
     </svg>
 
-    <p>Eligible issues for Hacktoberfest 2023 will appear here in October</p>
-
+    {{ with .Params.comingSoon.text }}
+    <p>{{ . }}</p>
+    {{ end }}
    
-    {{ partial "arrow-button" (dict "context" . "type" "link" "text" "See How to Contribute" "url" "/bla" "color" "green")}}
+    {{ with .Params.comingSoon.button }}
+    {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "green")}}
+    {{ end }}
   </div>
 </div>

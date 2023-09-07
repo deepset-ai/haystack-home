@@ -1,0 +1,20 @@
+.announcement-bar {
+    display: block;
+    width: 100%;
+    background-color: var(--color-green);
+    color: var(--color-white);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    text-align: center;
+
+    .arrow {
+        margin-left: 0.25rem;
+        transition: transform var(--transition-fast) var(--ease);
+    }
+
+    &:hover {
+        .arrow {
+            transform: translateX(0.25rem);
+        }
+    }
+}

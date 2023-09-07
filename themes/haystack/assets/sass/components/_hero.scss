@@ -4,7 +4,7 @@
   background: var(--color-bg-dark-blue) url("/images/hero-bg.jpg") center center /
     cover no-repeat;
 
-  >.container {
+  > .container {
     display: flex;
     flex-wrap: wrap;
     column-gap: 4rem;
@@ -75,33 +75,66 @@
   padding: 4rem 0;
   background-color: #9090b2;
   text-align: center;
+  overflow: hidden;
 
-  >.container {
+  > .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
     position: relative;
 
-    @include md {
-      padding-right: 10rem;
-      padding-left: 10rem;
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+
+      @include md {
+        width: 60%;
+      }
+
+      @include lg {
+        width: 55%;
+      }
     }
 
     .hacktoberfest-image {
-      width: 6.25rem;
+      width: 100%;
+      max-width: 6.25rem;
       object-fit: contain;
 
       @include md {
         position: absolute;
-        left: 0;
+        left: 1rem;
+        top: 50%;
+        max-width: 7.375rem;
+        transform: translateY(-50%);
+      }
+
+      @include lg {
+        left: 1rem;
+        max-width: 9.375rem;
+      }
+    }
+
+    .hacktoberfest-image2 {
+      display: none;
+
+      @include lg {
+        display: block;
+        width: 100%;
+        max-width: 17.5rem;
+        object-fit: contain;
+        position: absolute;
+        right: 1rem;
         top: 0;
-        width: 9.375rem;
       }
     }
   }
 
-  h1, p {
+  h1,
+  p {
     color: #fff;
   }
 }

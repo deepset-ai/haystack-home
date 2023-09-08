@@ -21,17 +21,17 @@ In this article, I’ll be showing an example of how to leverage transcription m
 
 The example application I’ll showcase is able to answer questions based on the transcript extracted from the video. I’ll use the [video by Erika Cardenas](https://www.youtube.com/watch?v=h5id4erwD4s) as an example. In the video, she talks about chunking and preprocessing documents for RAG pipelines. Once we’re done, we will be able to query a Haystack pipeline that will respond based on the contents of the video.
 
-### Transcribing and Storing the Video
+## Transcribing and Storing the Video
 
 To get started, we first need to set up an [indexing pipeline](https://docs.haystack.deepset.ai/docs/pipelines#indexing-pipelines). These pipelines in Haystack are designed to be given files of some form (.pdf, .txt, .md and in our case, a YouTube link), and store them in a database. The indexing pipeline is also used to design and define how we would like files to be prepared. This often involves [file conversion](https://docs.haystack.deepset.ai/docs/file_converters) steps, some [preprocessing](https://docs.haystack.deepset.ai/docs/preprocessor), and maybe also some [embedding](https://docs.haystack.deepset.ai/docs/retriever#embedding-retrieval-recommended) creation and so on.
 
 The way we design the components and structure of this pipeline will also be important for another type of pipeline we will create in the next section: The RAG pipeline, also often referred to as the query or LLM pipeline too. While the indexing pipeline defines how we prepare and store data, an LLM pipeline **_uses_** said stored data. A simple example of the impact an indexing pipeline has on the RAG pipeline is that depending on the model we’re using, we may have to chunk our files to be longer or shorter.
 
-#### Reusability
+### Reusability
 
 The idea behind Haystack pipelines is that once created, they can be re-invoked when needed. This ensures that data is treated the same way each time. In terms of indexing pipelines, this means we have a way to keep our databases for RAG pipelines always up to date. In a practical sense for this example application, when there’s a new video we want to be able to query, we re-use the same indexing pipeline and run the new video through it.
 
-#### Creating the Indexing Pipeline
+### Creating the Indexing Pipeline
 
 In this example, we’re using Weaviate as our vector database for storage. However, Haystack provides a number of [Document Stores](https://haystack.deepset.ai/integrations?type=Document+Store) which you can pick from.
 
@@ -80,11 +80,11 @@ Now, we can run our indexing pipeline with a URL to a YouTube video:
 file_path = youtube2audio("https://www.youtube.com/watch?v=h5id4erwD4s")  
 indexing_pipeline.run(file_paths=[file_path])
 ```
-### The Retrieval Augmented Generative (RAG) Pipeline
+## The Retrieval Augmented Generative (RAG) Pipeline
 
 This part is certainly the fun part. We now define our RAG pipeline. This will be the pipeline that defines _how_ we query our videos. Although RAG pipelines often are built for question-answering, they can be designed for a number of other use cases. What the pipeline does in this case, is largely defined by what prompt you provide the LLM. You can find various prompts for different use cases in the [PromptHub](https://prompthub.deepset.ai/).
 
-#### The Prompt
+### The Prompt
 
 For this example, we’ve gone with a commonly used style of question-answering prompts, although you can of course change this prompt to do what you want to achieve. For example, changing it to a prompt that asks for a summary might be interesting. You could also make it more general. Here we’re also informing the model that the transcripts belong to Weaviate videos.
 ```
@@ -109,7 +109,7 @@ prompt_node = PromptNode(model_name_or_path="gpt-4",
                          api_key='OPENAI_KEY', 
                          default_prompt_template=video_qa_prompt)
 ```
-#### The Pipeline
+### The Pipeline
 
 Finally, we define our RAG pipeline. The important thing to note here is how the _documents_ input gets provided to the prompt we are using.
 
@@ -134,7 +134,7 @@ information from previous ones. Chunking can also help in providing extremely
 relevant information when making queries that are specific to titles or   
 sections.
 ```
-### Further Improvements
+## Further Improvements
 
 In this example, we’ve used a transcription model that is able to transcribe audio into text, but it is unable to distinguish between speakers. A follow up step I would like to try is to use a model that allows for speaker distinction. This would allow me to ask questions and in the response from the model, get an understanding of who provided that answer in the video.
 

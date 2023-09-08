@@ -105,7 +105,9 @@ video_qa_prompt = PromptTemplate(prompt="You will be provided some transcripts f
                                         "Query: {query}\n"  
                                         "Answer:", output_parser = AnswerParser())  
   
-prompt_node = PromptNode(model_name_or_path="gpt-4", api_key=api_key, default_prompt_template=video_qa_prompt)
+prompt_node = PromptNode(model_name_or_path="gpt-4", 
+                         api_key='OPENAI_KEY', 
+                         default_prompt_template=video_qa_prompt)
 ```
 #### The Pipeline
 

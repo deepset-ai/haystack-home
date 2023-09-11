@@ -1,0 +1,35 @@
+<div class="hacktoberfest-hero">
+  <div class="container">
+
+    {{ with .Params.hero.image }}
+      <img class="hacktoberfest-image" src="{{ . }}" alt="Hacktoberfest 2023">
+    {{ end }}
+
+    <div class="hero-content">
+      {{ with .Params.hero.title}}
+        <h1>{{ . }}</h1>
+      {{ end }}
+
+      {{ with .Params.hero.text}}
+        <p>{{ . }}</p>
+      {{ end }}
+
+      {{ with .Params.hero.registerButton}}
+        {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "dark-blue" )}}
+      {{ end }}
+
+      {{ with .Params.hero.discordText}}
+        <p>{{ . }}</p>
+      {{ end }}
+
+      {{ with .Params.hero.discordButton}}
+        {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "green" "icon"
+        "discord")}}
+      {{ end }}
+    </div>
+
+      {{ with .Params.hero.image2 }}
+        <img class="hacktoberfest-image2" src="{{ . }}" alt="Hacktoberfest 2023">
+      {{ end }}
+  </div>
+</div>

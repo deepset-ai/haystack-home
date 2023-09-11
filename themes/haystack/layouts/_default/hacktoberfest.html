@@ -1,0 +1,10 @@
+{{/* Hacktoberfest */}}
+{{ define "main" }}
+  {{ partial "hacktoberfest-hero" . }}
+  {{ if .Params.comingSoon.enabled }}
+    {{ partial "hacktoberfest-coming-soon" . }}
+  {{ else }}
+    {{ partial "github-issues-list" . }}
+  {{ end }}
+  {{ partial "hacktoberfest-content" . }}
+{{ end }}

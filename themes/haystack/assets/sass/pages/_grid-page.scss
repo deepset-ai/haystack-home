@@ -392,6 +392,10 @@
       }
     }
   }
+
+  &.hidden {
+    display: none;
+  }
 }
 
 // Search

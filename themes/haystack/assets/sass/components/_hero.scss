@@ -4,7 +4,7 @@
   background: var(--color-bg-dark-blue) url("/images/hero-bg.jpg") center center /
     cover no-repeat;
 
-  >.container {
+  > .container {
     display: flex;
     flex-wrap: wrap;
     column-gap: 4rem;
@@ -67,5 +67,74 @@
         }
       }
     }
+  }
+}
+
+// Hacktoberfest hero
+.hacktoberfest-hero {
+  padding: 4rem 0;
+  background-color: #9090b2;
+  text-align: center;
+  overflow: hidden;
+
+  > .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+
+      @include md {
+        width: 60%;
+      }
+
+      @include lg {
+        width: 55%;
+      }
+    }
+
+    .hacktoberfest-image {
+      width: 100%;
+      max-width: 6.25rem;
+      object-fit: contain;
+
+      @include md {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        max-width: 7.375rem;
+        transform: translateY(-50%);
+      }
+
+      @include lg {
+        left: 5rem;
+        max-width: 15.375rem;
+      }
+    }
+
+    .hacktoberfest-image2 {
+      display: none;
+
+      @include lg {
+        display: block;
+        width: 100%;
+        max-width: 17.5rem;
+        object-fit: contain;
+        position: absolute;
+        right: 1rem;
+        top: 0;
+      }
+    }
+  }
+
+  h1,
+  p {
+    color: #fff;
   }
 }

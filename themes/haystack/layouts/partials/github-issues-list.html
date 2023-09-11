@@ -1,0 +1,161 @@
+<div class="github-issues">
+  <div class="container">
+      <div class="issue-table-container">
+        
+        <div class="grid-page-options hidden">
+          <div class="select-group">
+            {{/* Status filter */}}
+            <div class="select-wrapper">
+              <select id="status-select" onchange="filterAndSort();">
+                <option value="all">Status (All)</option>
+
+                <option value="open">Open</option>
+                <option value="closed">Closed</option>
+              </select>
+            </div>
+
+            {{/* Repo filter */}}
+            <div class="select-wrapper">
+            <select id="repo-select" onchange="filterAndSort();">
+              <option value="all">All Repos</option>
+            </select>
+            </div>
+             {{/* Reset filters btn */}}
+             <button class="reset-filters-btn" onclick="resetFilters();">
+              Reset filters
+            </button>
+          </div>
+        </div>
+
+        <div class="issue-table">
+          <div class="loading"></div>
+          <div class="loading"></div>
+          <div class="loading"></div>
+          <div class="loading"></div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<script>
+  let issues;
+
+  fetchIssues();
+
+  async function buildIssues(issues) {
+    const issueTable = document.querySelector(".issue-table");
+    issueTable.innerHTML = "";
+
+    issues.forEach((issue) => {
+      {{/*  Issue card  */}}
+      const issueCard = document.createElement("a");
+      issueCard.href = issue.url;
+      issueCard.target = "_blank";
+      issueCard.classList.add("issue");
+      issueCard.classList.add(issue.state);
+
+      {{/*  Title & labels  */}}
+      const titleContainer = document.createElement("div");
+      titleContainer.classList.add("issue-title-container");
+
+      {{/*  Title  */}}
+      const issueTitle = document.createElement("h3");
+      issueTitle.classList.add("issue-title");
+      issueTitle.innerHTML = issue.title
+      titleContainer.appendChild(issueTitle);
+
+      {{/*  Labels  */}}
+      const issueLabels = document.createElement("div");
+      issueLabels.classList.add("issue-labels");
+      issue.labels.forEach((label) => {
+        const issueLabel = document.createElement("span");
+        const textColor = getContrastTextColor(label.color);
+        issueLabel.style.backgroundColor = `#${label.color}`;
+        issueLabel.style.color = `#${textColor}`;
+        issueLabel.innerHTML = label.name;
+        issueLabels.appendChild(issueLabel);
+      });
+      titleContainer.appendChild(issueLabels);
+
+      {{/*  Repo & state  */}}
+      const repoContainer = document.createElement("div");
+      repoContainer.classList.add("issue-repo-container");
+
+      {{/*  Repo  */}}
+      const issueRepo = document.createElement("div");
+      issueRepo.classList.add("issue-repo");
+      issueRepo.innerHTML = `<span>[repo]</span> ${issue.repo}`;
+      repoContainer.appendChild(issueRepo);
+
+      {{/*  State  */}}
+      const issueState = document.createElement("div");
+      issueState.classList.add("issue-state");
+      issueState.innerHTML = `<span>${issue.state}</span><span class="${issue.state}"></span>`
+      repoContainer.appendChild(issueState);
+
+      issueCard.appendChild(titleContainer);
+      issueCard.appendChild(repoContainer);
+      issueTable.appendChild(issueCard);
+
+    })
+
+    const loadingCards = document.querySelectorAll(".loading");
+    loadingCards.forEach((card) => {
+      card.remove();
+    })
+  };
+
+  async function fetchIssues() {
+    
+    const res = await fetch("/api/github-issues", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    
+    const data = await res.json();
+    issues = data;
+    buildIssues(issues);
+
+    document.querySelector(".grid-page-options").classList.remove("hidden");
+
+    {{/*  Populate the repo select  */}}
+    const repoSelect = document.querySelector("#repo-select");
+    const repos = [...new Set(issues.map(i => i.repo))];
+    repos.forEach(repo => {
+      const option = document.createElement("option");
+      option.value = repo;
+      option.innerHTML = repo;
+      repoSelect.appendChild(option);
+    })
+  };
+
+  function getContrastTextColor(bgColor) {
+    const r = parseInt(bgColor.slice(0, 2), 16);
+    const g = parseInt(bgColor.slice(2, 4), 16);
+    const b = parseInt(bgColor.slice(4, 6), 16);
+  
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  
+    return luminance > 0.5 ? "000000" : "FFFFFF";
+  }
+
+  const filterAndSort = () => {
+    let data = [...issues]
+    const selectedStatus = document.querySelector("#status-select").value;
+    const selectedRepo = document.querySelector("#repo-select").value;
+
+    {{/*  Filter by type / maintainer  */}}
+    data = data.filter(i => {
+      return (selectedStatus === "all" || i.state === selectedStatus) &&
+      (selectedRepo === "all" || i.repo === selectedRepo)
+    });
+
+    buildIssues(data)
+  }
+
+  const resetFilters = () => {
+    buildIssues(issues)
+  }
+</script>

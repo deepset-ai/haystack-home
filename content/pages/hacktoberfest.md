@@ -15,7 +15,7 @@ hero:
   discordButton:
     text: Join Discord
     url: https://discord.com/invite/VBpFzsgRVF
-  image: /images/happy-hacktoberfest.svg
+  image: /images/happy-hacktoberfest.png
   image2: /images/hacktoberfest-2.png
 
 comingSoon:

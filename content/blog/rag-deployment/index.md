@@ -11,7 +11,7 @@ date: 2023-09-13
 last_updated:  2023-09-13
 authors:
   - Isabelle Nguyen
-  - Kristof Hermann
+  - Kristof Herrmann
 tags: ["Deployment", "Generative AI", "MLOps", "Retrieval"]
 ---
 

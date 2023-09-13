@@ -25,7 +25,7 @@ With Haystack, developers can build complex LLM pipelines on top of their own te
 
 But deploying to production is an art in itself. And it can be intimidating. There are many elements that need to work together for a successful deployment, each of which is a potential source of failure. Fortunately, here at deepset, we have a team of knowledgeable people who deploy Haystack-powered pipelines to production on a regular basis. So in this article, I’ll share what I learned from them – so that you can get your RAG system into production ASAP.
 
-# From Prototype to Production
+## From Prototype to Production
 
 Prototyping is the process of building versions of your system – iteratively designing, deploying, and testing them – until you arrive at a configuration that meets your needs and has the potential to generate real value in production. While this process is challenging enough, it is only the beginning of your system’s life cycle.
 
@@ -37,7 +37,7 @@ The second important step in an applied AI project is deploying the system to pr
 
 When you deploy your system to production, it is also much harder to predict what people will use it for. That’s why you need to monitor your system’s performance and react accordingly. But LLM observability and pipeline monitoring are complex topics that we will leave for our next blog post.
 
-# The Use Case
+## The Use Case
 
 Not every machine learning powered system is the same. In fact, you could argue that they’re all different – their nature depends on the problem we’re solving, the pipeline design, the underlying data, and the scale of the project.
 
@@ -58,7 +58,7 @@ Let us consider a mid-sized project using a RAG pipeline. The pipeline is connec
 
 While the first two points are handled by an indexing pipeline, the second is handled by a query pipeline. In Haystack, you define both in the same yaml file.
 
-# Moving to Production
+## Moving to Production
 
 There are many tools you can use on your way to production. The exact choice depends on your needs and preferences – and if you have deployed a system before, you probably already have a preferred setup. Either way, let’s take stock of what you need for a successful deployment:
 
@@ -74,7 +74,7 @@ There are many tools you can use on your way to production. The exact choice dep
 
 ![Sketch of an indexing pipeline and a RAG pipeline in the cloud, with interfaces for incoming documents and user queries.](cloud.png)
 
-# Deploying the indexing pipeline to production
+## Deploying the indexing pipeline to production
 
 Indexing is the process of adding documents to your database. How you go about indexing in production depends a bit on whether you’re working with a keyword retriever or an embedding retriever (or both, in a [hybrid retrieval](https://haystack.deepset.ai/blog/hybrid-retrieval/) setup). A keyword retriever is fast and doesn’t require any special hardware. An embedding retriever is a different beast.
 
@@ -82,7 +82,7 @@ Indexing is the process of adding documents to your database. How you go about i
 
 Embedding methods take more time because they have to run your documents through a Transformer-based language model. The model spits out a dense, semantically rich vector that is added to the database, making it searchable for the later retrieval step. Because this step is computationally expensive, you’ll want to speed it up using GPUs.
 
-## Preparing the database
+### Preparing the database
 
 During indexing, documents and their corresponding text embeddings are stored in the database’s memory. Before signing up for a managed database, it’s recommended to have at least a rough idea of how much space your documents and vectors will take up. That’s because adding more space later is a hassle – yet buying too much space and then not using it can cost you thousands of $€¥.
 
@@ -94,7 +94,7 @@ The amount of space you need depends largely on the length of your vectors. For 
 
 Another concept you’ll encounter when setting up your managed database is “high availability.” This refers to storing your documents on more than one server in more than one physical location. This practice of redundancy ensures that your documents will still be available, even if one server is temporarily or permanently down.
 
-## Preprocessing and indexing your documents
+### Preprocessing and indexing your documents
 
 During prototyping, you have defined the indexing pipeline, which specifies how you preprocess your documents, before adding them to the database. For production, you’ll move the indexing pipeline to your cloud provider, where it will be deployed on virtual machines by Kubernetes. It’s useful to summarize all the details of your configuration – such as the credentials for your document store, the pipeline yaml itself, and rules for the scaling of pipelines and hardware – in a [Helm chart](https://helm.sh/docs/topics/charts/). Kubernetes will then deploy your system according to the settings specified in the chart.
 
@@ -110,7 +110,7 @@ Because indexing as a process is not as time-sensitive as querying, you can queu
 
 Once your document embeddings are ready, the service adds them to the database, where they can now be queried.
 
-# Deploying the Query Pipeline to Production
+## Deploying the Query Pipeline to Production
 
 Unlike indexing, querying is extremely time-sensitive. When your users query your RAG system, they expect answers quickly – even the slightest delay can cause them to give up on your product and look elsewhere. Therefore, it is critical that your production query pipeline is always available and able to handle even a large number of queries at once. This means, among other things, that the pipeline must be able to scale on demand.
 
@@ -135,7 +135,7 @@ While the nitty-gritty technical details of scaling are handled by Kubernetes, w
 
 Answering these questions will help you optimize your setup and can save you money – but don’t worry too much about these settings, because they can always be adjusted. First, you need to get your system into production, then you can monitor and improve it – more on that in our next blog post. 🙂
 
-# From RAGs to Riches
+## From RAGs to Riches
 
 It’s one thing to offer prototyping with LLMs, and quite another to provide all the elements needed to bring a system to production. Only the latter can actually help your users and customers gain valuable insights in the blink of an eye.
 

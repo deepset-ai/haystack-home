@@ -120,7 +120,7 @@ Again, Kubernetes is our friend. It receives the requests through the [Haystack 
 
 ![Sketch of multiple replicas of the RAG pipeline, receiving many user queries and communicating with the database.](replicas.png)
 
-While the nitty-gritty technical details of scaling are handled by Kubernetes, we have the ability to tweak it based on the type of pipeline. To do this, it’s useful to think about the following questions:
+The nitty-gritty technical details of scaling are handled by our orchestration tool. Additionally, model hosting services like [SageMaker](https://aws.amazon.com/sagemaker/) or [Hugging Face Inference](https://huggingface.co/inference-api) can be helpful to scale model inference separately. Aside from these automated solutions, we have the ability to tweak the scaling of our pipelines ourselves. To do this, it’s useful to think about the following questions:
 
   
 

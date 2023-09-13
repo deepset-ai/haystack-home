@@ -64,7 +64,7 @@ There are many tools you can use on your way to production. The exact choice dep
 
   
 
--   A production-ready, managed database, such as [OpenSearch](https://opensearch.org/) as a service. The advantage of using a database managed by a third party is that they take care of all the complex stuff like database maintenance and security for you.
+-   A production-ready, managed database, such as [OpenSearch](https://opensearch.org/), [Weaviate](https://weaviate.io/), or [Pinecone](https://www.pinecone.io/). The advantage of using a database managed by a third party is that they take care of all the complex stuff like database maintenance and security for you.
     
 -   A server that can host your database and compute infrastructure: you will need CPUs as well as GPUs – possibly for indexing, quite definitely for inference. There are many options for cloud providers, so choose the one you're most comfortable with. The largest are AWS, Azure, and GCP.
     

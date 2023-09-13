@@ -1,10 +1,10 @@
 ---
 layout: author
-title: Kristof Hermann
-name: Kristof Hermann
-slug: kristof-hermann
+title: Kristof Herrmann
+name: Kristof Herrmann
+slug: kristof-herrmann
 position: Software Engineer
-image: /images/authors/kristof-hermann.jpg
+image: /images/authors/kristof-herrmann.jpg
 socials:
   author_page:
     - name: LinkedIn

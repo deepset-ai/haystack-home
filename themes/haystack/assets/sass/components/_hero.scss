@@ -107,9 +107,9 @@
       @include md {
         position: absolute;
         left: 1rem;
-        top: 50%;
+        // top: 50%;
         max-width: 7.375rem;
-        transform: translateY(-50%);
+        // transform: translateY(-50%);
       }
 
       @include lg {

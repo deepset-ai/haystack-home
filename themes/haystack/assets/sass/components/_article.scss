@@ -32,6 +32,18 @@
 
   img {
     margin: auto;
+
+    &.medium {
+      @include md {
+        width: 70%;
+      }
+    }
+
+    &.small {
+      @include md {
+        width: 50%;
+      }
+    }
   }
 }
 

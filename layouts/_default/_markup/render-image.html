@@ -1,9 +1,14 @@
 {{/* Renders images in articles */}}
+{{ $hasHash := in .Destination "#" }}
+{{ $parts := cond $hasHash (split .Destination "#") (slice .Destination "") }}
+{{ $class := cond $hasHash (index $parts 1) "" }}
+{{ $imgSrc := index $parts 0 }}
+
 {{ if .Title }}
     <figure>
-        <img loading="lazy" src="{{.Destination | safeURL}}" alt="{{.Text}}" />
+        <img loading="lazy" src="{{ $imgSrc | safeURL }}" alt="{{.Text}}" {{ with $class }}class="{{ . }}"{{ end }} />
         <figcaption>{{ .Title | markdownify }}</figcaption>
     </figure>
 {{ else }}
-    <img loading="lazy" src="{{.Destination | safeURL}}" alt="{{.Text}}" />
+    <img loading="lazy" src="{{ $imgSrc | safeURL }}" alt="{{.Text}}" {{ with $class }}class="{{ . }}"{{ end }} />
 {{ end }}

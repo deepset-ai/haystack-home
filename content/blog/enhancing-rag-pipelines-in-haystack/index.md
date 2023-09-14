@@ -40,10 +40,7 @@ The DiversityRanker enhances the diversity of the paragraphs selected for the co
 
 The DiversityRanker is a novel component designed to enhance the diversity of the paragraphs selected for the context window in the RAG pipeline. It operates on the principle that a diverse set of documents can increase the LLM’s ability to generate answers with more breadth and depth.
 
-<figure style="width: 50%; margin: auto;">
-  <img src="enhancing-rag-pipelines-in-haystack/thumbnail.png" alt="An artistic interpretation of the DiversityRanker algorithm’s document ordering process, courtesy of MidJourney">
-  <figcaption>An artistic interpretation of the DiversityRanker algorithm’s document ordering process, courtesy of MidJourney. Please note that this visualization is more illustrative than precise.</figcaption>
-</figure>
+![An artistic interpretation of the DiversityRanker algorithm’s document ordering process, courtesy of MidJourney](thumbnail.png#small "An artistic interpretation of the DiversityRanker algorithm’s document ordering process, courtesy of MidJourney. Please note that this visualization is more illustrative than precise.")
 
 The DiversityRanker uses sentence transformers to calculate the similarity between documents. The sentence transformers library offers powerful embedding models for creating meaningful representations of sentences, paragraphs, and even whole documents. These representations, or embeddings, capture the semantic content of the text, allowing us to measure how similar two pieces of text are.
 
@@ -67,10 +64,7 @@ The LostInTheMiddleRanker optimizes the layout of the selected documents in the 
 
 Although the authors of this research focused on a question-answering task — extracting the relevant spans of the answer from the text — we are speculating that the LLM’s attention mechanism will also have an easier time focusing on the paragraphs in the beginning and the end of the context window when generating answers.
 
-<figure>
-  <img src="enhancing-rag-pipelines-in-haystack/figure_2.png" width=50% alt="A graph showing that accuracy of the LLM drops when the answer is needed to be extracted from the middle of the context">
-  <figcaption>LLMs struggle to extract answers from the middle of the context, adapted from Liu et al. (2023)[1]</figcaption>
-</figure>
+![A graph showing that accuracy of the LLM drops when the answer is needed to be extracted from the middle of the context](figure_2.png#small "LLMs struggle to extract answers from the middle of the context, adapted from Liu et al. (2023)[1]")
 
 LostInTheMiddleRanker is best positioned as the last ranker in the RAG pipeline as the given documents are already selected based on similarity (relevance) and ordered by diversity.
 

@@ -11,7 +11,7 @@ date: 2023-09-08
 last_updated:  2023-09-08
 authors:
   - Tuana Celik
-tags: ["LLM", "Generative AI", "Retrieval"]
+tags: ["LLM", "Generative AI", "Retrieval", "RAG"]
 ---
 
 

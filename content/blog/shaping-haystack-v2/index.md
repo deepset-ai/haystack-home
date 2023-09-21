@@ -10,7 +10,7 @@ date: 2023-08-14
 last_updated:  2023-08-14
 authors:
   - Bilge Yucel
-tags: ["Community"]
+tags: ["Community", "Haystack 2.0"]
 ---
 
 Since Haystack v1.15, we’ve been slowly introducing new components and features to Haystack in the background in preparation for Haystack 2.0 (or v2). After the work we’ve put into the new design of the Haystack API over the last few months, we’re at a point where we would love to start involving the Haystack community in our thought process and slowly gather your input and feedback. In this article, we would like to highlight where we are at for the design of the new Haystack API for v2, what we want to achieve with the new design, and what our current considerations are. 

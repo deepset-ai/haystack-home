@@ -6,8 +6,8 @@ featured_image: thumbnail.png
 images: ["blog/customizing-rag-to-summarize-hacker-news-posts-with-haystack2/thumbnail.png"]
 featured_image_caption: Customizing RAG Pipelines to Summarize Latest Hacker News Posts with Haystack 2.0
 toc: True
-date: 2023-09-22
-last_updated:  2023-09-22
+date: 2023-09-21
+last_updated:  2023-09-21
 authors:
   - Tuana Celik
 tags: ["RAG", "Haystack 2.0", "LLM"]

@@ -100,7 +100,7 @@ A pipeline is created with a few steps:
     `pipeline.add_component(instance=component_a, name=”ComponentA”)`  
     `pipeline.add_component(instance=component_b, name=”ComponentB”)`
 3.  Connect an output from one component to the input of another:  
-    `pipeline.connect("component_a.output_a", "component_n.input_b")`
+    `pipeline.connect("component_a.output_a", "component_b.input_b")`
 
 There are already enough components available in the Haystack 2.0 preview for us to build a simple RAG pipeline that uses our new`HackernewsNewestFetcher` for the retrieval augmentation step.
 

@@ -10,7 +10,7 @@ date: 2023-09-02
 last_updated: 2023-09-02
 authors:
   - Tuana Celik
-tags: ["LLM", "Generative AI", "Retrieval", "Prompting"]
+tags: ["LLM", "Generative AI", "Retrieval", "Prompting", "RAG"]
 ---
 
 _You can use this_ [_Colab_](https://colab.research.google.com/drive/1nO0tBVOAgo-bayfUnIqnWLZby_7zejOz?usp=sharing) _for a working example of the application described in this article._

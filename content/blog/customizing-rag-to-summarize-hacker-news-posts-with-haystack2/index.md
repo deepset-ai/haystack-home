@@ -109,14 +109,14 @@ There are already enough components available in the Haystack 2.0 preview for us
 To build a RAG pipeline that can create a summary for each of the latest _k_ posts on Hacker News, we will use two components from the Haystack 2.0 preview:
 
 -   The `PromptBuilder`: This component allows us to create prompt templates using [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) as our templating language.
--   The `GPT4Generator`: This component simply prompts GPT4. We can connect the `PromptBuilder` output to this component to customize how we interact with GPT4.
+-   The `GPTGenerator`: This component simply prompts the specified GPT model. We can connect the `PromptBuilder` output to this component to customize how we interact with our chosen model.
 
 First, we initialize all of the components we will need for the pipeline:
 
 ```python
 from haystack.preview import Pipeline  
 from haystack.preview.components.builders.prompt_builder import PromptBuilder  
-from haystack.preview.components.generators.openai.gpt4 import GPT4Generator  
+from haystack.preview.components.generators.openai import GPTGenerator  
   
 prompt_template = """  
 You will be provided a few of the latest posts in HackerNews, followed by their URL.  
@@ -130,7 +130,7 @@ Posts:
 """  
   
 prompt_builder = PromptBuilder(template=prompt_template)  
-llm = GPT4Generator(api_key='YOUR_API_KEY')  
+llm = GPTGenerator(model_name="gpt-4", api_key='YOUR_API_KEY')  
 fetcher = HackernewsNewestFetcher()
 ```
 Next, we add the components to a Pipeline:

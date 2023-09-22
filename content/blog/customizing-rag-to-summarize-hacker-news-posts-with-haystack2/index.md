@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-title: Customizing RAG Pipelines to Summarize Latest Hacker News Posts with Haystack 2.0
+title: Customizing RAG Pipelines to Summarize Latest Hacker News Posts with Haystack 2.0 Preview
 description: Take a look at how we are changing Haystack for advanced LLM pipelines, with an example that uses a custom component to fetch the latest Hacker News posts
 featured_image: thumbnail.png
 images: ["blog/customizing-rag-to-summarize-hacker-news-posts-with-haystack2/thumbnail.png"]

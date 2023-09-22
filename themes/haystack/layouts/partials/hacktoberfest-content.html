@@ -19,7 +19,7 @@
                                 </div>
     
                                 <p>{{ .description | markdownify }}</p>
-                                <!-- {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }} -->
+                                {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
                             </div>
                         </div>
                 {{ end }}

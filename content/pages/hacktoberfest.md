@@ -47,15 +47,17 @@ comingSoon:
 
 events:
   - title: >
-      Hacktoberfest Kick-off Event
+      Hacktoberfest Kick off Event
     description: >
-      TBA...
+      🎃 **Hacktoberfest is getting close!** 🎃
+
+      Join us on YouTube to learn about the Hacktoberfest, get familiar with Haystack and ILLA Cloud, and explore how to contribute to them!
     date: "2023-09-27"
-    time: "TBA"
-    location: TBA
-    image: /images/kick-off-event.png
-    # url: https://hubs.li/Q01Xr4GB0
-    # buttonText: Register
+    time: "17:00 CET/ 11:00 EDT"
+    location: YouTube @illacloud
+    image: /images/illa-haystack.png
+    url: https://www.youtube.com/watch?v=qSZ9JhjZ7HM
+    buttonText: Go to the Event
   # - title: >
   #     Securing LLMs: How to detect prompt injections
   #   description: >

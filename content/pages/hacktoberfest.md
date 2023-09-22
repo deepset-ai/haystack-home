@@ -19,7 +19,7 @@ hero:
   image2: /images/hacktoberfest-2.png
 
 comingSoon:
-  enabled: true
+  enabled: false
   text: You will find eligible issues for Hacktoberfest 2023 here once the party starts, stay tuned! 🎉 
   button:
     url: https://github.com/deepset-ai/haystack/contribute

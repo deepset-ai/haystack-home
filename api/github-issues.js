@@ -3,7 +3,7 @@ export default async function githubIssues(request, response) {
     response.status(500).send({ message: "Github access token not set" });
   }
 
-  const repos = ["deepset-ai/trial-repo", "deepset-ai/haystack-home"];
+  const repos = ["deepset-ai/haystack"];
 
   try {
     const fetchPromises = repos.map(async (repo) => {

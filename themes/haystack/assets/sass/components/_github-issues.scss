@@ -17,6 +17,9 @@
     gap: 0.5rem;
     width: 100%;
     margin-top: 2rem;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 
     .issue {
       width: 100%;
@@ -45,7 +48,7 @@
         gap: 1rem;
 
         @include lg {
-          width: 60%;
+          width: 70%;
           flex-shrink: 0;
         }
       }
@@ -84,7 +87,7 @@
 
         @include lg {
           flex-wrap: nowrap;
-          width: 40%;
+          width: 30%;
           padding-left: 1rem;
           margin-top: 0;
         }

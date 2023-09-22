@@ -8,7 +8,7 @@ export default async function githubIssues(request, response) {
   try {
     const fetchPromises = repos.map(async (repo) => {
       const res = await fetch(
-        `https://api.github.com/repos/${repo}/issues?state=all`,
+        `https://api.github.com/repos/${repo}/issues?state=all&labels=good-first-issues`,
         {
           method: "GET",
           headers: {

@@ -13,14 +13,14 @@ authors:
 tags: ["RAG", "Haystack 2.0", "LLM"]
 ---	
 
-Over the last few months, the team at [deepset](https://deepset.ai) has been working on a major upgrade in the Haystack repository. Along the way, we’ve been sharing our updates and design process for [Haystack 2.0](https://github.com/deepset-ai/haystack/tree/main/haystack/preview) with the community, as well as releasing new components in a preview package. This means that you can already start exploring features coming to Haystack 2.0 using the preview components available in the `haystack-ai` package (`pip install haystack-ai`).
+Over the last few months, the team at [deepset](https://deepset.ai) has been working on a major upgrade in the Haystack repository. Along the way, we’ve been sharing our updates and design process for the upcoming [Haystack 2.0](https://github.com/deepset-ai/haystack/tree/main/haystack/preview) with the community, as well as releasing new components in a preview package. This means that you can already start exploring features coming to Haystack 2.0 using the preview components available in the `haystack-ai` package (`pip install haystack-ai`).
 
 _You can run the example code showcased in this article in the accompanying_ [_Colab notebook_](https://colab.research.google.com/drive/1YWFvq29xkMAUCt5Aal0VPX0KxGM4xTku?usp=sharing)_._
 
 In this article, I’ll cover two major concepts in Haystack 2.0.
 
--   **Components:** These are the smallest building blocks in Haystack. They are meant to cover one simple task. As well as using components available in the core Haystack project, you can easily create your own custom components.
--   **Pipelines:** These are made by connecting components to each other.
+-   **Components:** These are the smallest building blocks in Haystack. They are meant to cover one simple task. As well as using components available in the core Haystack project, it will be easier than ever in 2.0, to create your own custom components.
+-   **Pipelines:** These are made by connecting components to each other. Pipelines in 2.0 are more flexible than ever and enable you various new connection patterns between your components.
 
 While components and pipelines have been at the core of Haystack since the beginning, Haystack 2.0 introduces some significant changes to how they are constructed.
 

@@ -23,7 +23,7 @@ These are the instructions for installing Haystack. The most straightforward way
 
 {{< tabs totalTabs="3">}}
 
-{{< tab tabName="Minimal Install"  >}}
+{{< tab tabName="Minimal"  >}}
 
 This command installs everything needed for basic Pipelines that use an InMemoryDocumentStore and external LLM provider (e.g. OpenAI).
 
@@ -33,7 +33,7 @@ pip install farm-haystack
 
 {{< /tab >}}
 
-{{< tab tabName="Basic Install"  >}}
+{{< tab tabName="Basic"  >}}
 
 This command installs everything you need for basic Pipelines that use an InMemoryDocumentStore, as well as all necessary dependencies for model inference on local machine, including torch.
 
@@ -43,7 +43,7 @@ pip install farm-haystack[inference]
 
 {{< /tab >}}
 
-{{< tab tabName="Full Install" >}}
+{{< tab tabName="Full" >}}
 
 This command installs further dependencies for more advanced features, like certain DocumentStores, FileConverters, OCR, or Ray.
 
@@ -64,13 +64,13 @@ For a more comprehensive installation guide, inlcuding methods for various opera
 Haystack is built around the concept of pipelines. A pipeline is a powerful structure made up of components that can be used to perform a task.
 For example, you can connect together a Retriever and a PromptNode to build a Generative Question Answering pipeline.
 
-To try out how Haystack answers questions about Game of Thrones using **Retrieval Augmented Generation (RAG)** approach, run the code below by providing an API key for your model.
+Try out how Haystack answers questions about Game of Thrones using **Retrieval Augmented Generation (RAG)** approach 👇
 
+Install Haystack in the minimal form:
 ```bash
-# Minimal Haystack Installation
 pip install farm-haystack
 ```
-
+Ask a question on your data after indexing your data to the DocumentStore and building a RAG pipeline: 
 ```python
 from haystack.document_stores import InMemoryDocumentStore
 from haystack.utils import build_pipeline, add_example_data, print_answers
@@ -94,6 +94,14 @@ result = pipeline.run(query="Who is the father of Arya Stark?")
 
 # For details, like which documents were used to generate the answer, look into the <result> object
 print_answers(result, details="medium")
+```
+The output of the pipeline will look like this, referencing the documents used to generate the answer:
+
+```text
+'Query: Who is the father of Arya Stark?'
+'Answers:'
+[{'answer': 'The father of Arya Stark is Lord Eddard Stark of '
+                'Winterfell. [Document 1, Document 4, Document 5]'}]
 ```
 
 For a hands-on guide to build your first RAG Pipeline, see our tutorial.

@@ -21,11 +21,11 @@ You can find the source code for Haystack on GitHub. This is also the main chann
 
 Use [pip](https://github.com/pypa/pip) to install the latest Haystack release:
 
-{{< tabs totalTabs="3">}}
+{{< tabs totalTabs="4">}}
 
 {{< tab tabName="Minimal"  >}}
 
-This command installs everything needed for basic Pipelines that use an InMemoryDocumentStore and an external LLM provider (for example, OpenAI).
+This command installs everything needed for basic Pipelines using InMemoryDocumentStore and an external LLM provider (for example, OpenAI). Use this installation method for basic features such as keyword-based retrieval, web search and text generation with LLMs including generative question answering.
 
 ```python
 pip install farm-haystack
@@ -35,20 +35,31 @@ pip install farm-haystack
 
 {{< tab tabName="Basic"  >}}
 
-This command installs everything you need for basic Pipelines that use an InMemoryDocumentStore, and necessary dependencies for model inference on a local machine, including torch.
+This command installs everything needed for basic Pipelines using InMemoryDocumentStore, and necessary dependencies for model inference on a local machine, including torch. Use this installation option for features such as document retrieval with semantic similarity and extractive question answering.
 
 ```python
-pip install farm-haystack[inference]
+pip install 'farm-haystack[inference]'
 ```
+
+{{< /tab >}}
+
+{{< tab tabName="Custom" >}}
+
+This command installs given dependencies. Use this installation option when you are using various features of Haystack and want to keep the dependency list as small as possible. 
+
+```python
+pip install 'farm-haystack[DEPENDENCY_OPTION_1, DEPENDENCY_OPTION_2, DEPENDENCY_OPTION_3...]'
+```
+
+For the full list of dependency options, read [Custom Installation](https://docs.haystack.deepset.ai/docs/installation#custom-installation) section in the documentation.
 
 {{< /tab >}}
 
 {{< tab tabName="Full" >}}
 
-This command installs further dependencies for more advanced features, like certain DocumentStores, FileConverters, OCR, or Ray.
+This command installs all dependencies required for all document stores, file converters, OCR, Ray and more. Use this installation option if you don't want to install dependencies separately or if you're still experimenting with Haystack and don't have a final list of features you want to use in your application.
 
 ```python
-pip install --upgrade pip
 pip install 'farm-haystack[all]' ## or 'all-gpu' for the GPU-enabled dependencies
 ```
 
@@ -66,7 +77,7 @@ For example, you can connect a Retriever and a PromptNode to build a Generative 
 
 Try out how Haystack answers questions about Game of Thrones using the **RAG** approach 👇
 
-Install Haystack in the minimal form:
+Run the minimal Haystack installation:
 ```bash
 pip install farm-haystack
 ```

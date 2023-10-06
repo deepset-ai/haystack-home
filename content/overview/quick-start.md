@@ -72,7 +72,7 @@ For a more comprehensive installation guide, including methods for various opera
 
 ## Build Your First Retrieval Augmented Generation (RAG) Pipeline
 
-Haystack is built around the concept of pipelines. A pipeline is a powerful structure that performs an NLP task. It's made up of components chained together.
+Haystack is built around the concept of pipelines. A pipeline is a powerful structure that performs an NLP task. It's made up of components connected together.
 For example, you can connect a Retriever and a PromptNode to build a Generative Question Answering pipeline that uses your own data.
 
 Try out how Haystack answers questions about Game of Thrones using the **RAG** approach 👇

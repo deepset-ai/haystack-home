@@ -8,7 +8,7 @@ toc: True
 date: 2023-05-01
 last_updated: 2023-05-09
 authors:
-  - Kristof Hermann
+  - Kristof Herrmann
 canonical_url: https://medium.com/@ArzelaAscoli/scaling-nlp-indexing-pipelines-with-keda-and-haystack-part-1-the-application-45f54fcabd5d
 tags: ["MLOps", "NLP", "LLM", "Python", "Deployment"]
 ---

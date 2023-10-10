@@ -33,7 +33,7 @@ hero:
       icon: /images/icons/hugging-face.png
 
     - title: Twitter
-      url: https://twitter.com/deepset_ai
+      url: https://twitter.com/haystack_ai
       icon: /images/icons/twitter.svg
 
     - title: LinkedIn
@@ -45,7 +45,7 @@ hero:
       icon: /images/icons/youtube.svg
 
   # Most active / new contributors
-  communityText: Most Active Community Members
+  # communityText: Most Active Community Members
   contributorsText: New Contributors on GitHub
 
   # Github section enabled/disabled

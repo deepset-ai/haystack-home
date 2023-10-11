@@ -8,7 +8,7 @@ toc: True
 date: 2023-04-13
 last_updated: 2023-05-09
 authors:
-  - Kristof Hermann
+  - Kristof Herrmann
 canonical_url: https://medium.com/@ArzelaAscoli/writing-professional-python-logs-e1f31635b60b
 tags: ["Python"]
 ---

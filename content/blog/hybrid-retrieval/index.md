@@ -102,6 +102,8 @@ Unlike the embedding model used for retrieval, the ranker can only feasibly proc
 
 ## Superior search with Haystack
 
+For a hands-on experience with hybrid retrieval, check out this [tutorial from Nicola](https://haystack.deepset.ai/tutorials/26_hybrid_retrieval), one of our community members. Follow along in Colab or in your IDE to see how you can build a hybrid retrieval pipeline in just a few lines of code!
+
 [Haystack](https://github.com/deepset-ai/haystack/tree/main) is the framework of choice for developers looking to build powerful, yet easily customizable natural language search systems that leverage state-of-the-art language models from any source.
 
   

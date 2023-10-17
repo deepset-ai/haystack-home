@@ -1,7 +1,7 @@
 ---
 layout: blog-post
-title: What Is an LLM?
-description: An introduction to large language models and how to use them
+title: What Is a Large Language Model (LLM)?
+description: An introduction to LLMs and how you can use them in your own applications with Haystack
 featured_image: thumbnail.png
 featured_image_caption: Photo by [Luis Ascenso](https://commons.wikimedia.org/wiki/File:Praia_do_Norte_beach_-_High_waves_-_Nazar%C3%A9_-_Portugal_(27553300758).jpg)
 images: ["blog/what-is-an-llm/thumbnail.png"]

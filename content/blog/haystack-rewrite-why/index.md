@@ -50,7 +50,7 @@ That's because no one even realized that Haystack, the semantic search framework
 
 And semantic search was going down *fast*.
 
-![Reader Models downloads graph](/posts/haystack-rewrite-why/reader-model-downloads.png)
+![Reader Models downloads graph](reader-model-downloads.png)
 
 The image above shows today's monthly downloads for one of deepset's most successful models on HuggingFace, 
 [deepset/roberta-base-squad2](https://huggingface.co/deepset/roberta-base-squad2). This model performs [extractive Question Answering](https://huggingface.co/tasks/question-answering), our former primary use case before the release of ChatGPT. Even with more than one and a half million downloads monthly, this model is experiencing a disastrous collapse in popularity, and in the current landscape, it is unlikely to ever recover.

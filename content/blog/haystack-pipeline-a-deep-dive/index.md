@@ -17,7 +17,7 @@ If you've ever looked at Haystack before, you must have come across the concept 
 
 In this post, I go into all the details of how the Pipeline abstraction works in Haystack now, why it works this way, and its strengths and weaknesses. This deep dive into the current state of the framework is also a premise for the next episode, where I will explain how Haystack 2.0 addresses this version's shortcomings.
 
-If you think you already know how Haystack Pipelines work, give this post a chance: I might mWanage to change your mind.
+If you think you already know how Haystack Pipelines work, give this post a chance: I might manage to change your mind.
 
 ## A Bit Of History
 

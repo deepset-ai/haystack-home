@@ -23,7 +23,7 @@ If you think you already know how Haystack Pipelines work, give this post a chan
 
 Interestingly, in the very first releases of Haystack, Pipelines were not a thing. Version 0.1.0 was released with a simpler object, the [Finder](https://github.com/deepset-ai/haystack/blob/d2c77f307788899eb562d3cb6e42c69b968b9f2a/haystack/__init__.py#L16), that did little more than gluing together a [Retriever](https://docs.haystack.deepset.ai/docs/retriever) and a [Reader](https://docs.haystack.deepset.ai/docs/reader), the two fundamental building blocks of a [semantic search](https://docs.haystack.deepset.ai/docs/glossary#semantic-search) application.
 
-In the next few months, however, the capabilities of language models expanded to enable many more use cases. One hot topic was [hybrid retrieval](https://haystack.deepset.ai/blog/hybrid-retrieval): a system composed of two different Retrievers, an optional [Ranker](https://docs.haystack.deepset.ai/docs/ranker), and an optional Reader. This kind of application clearly didn't fit the Finder's design, so in [version 0.6.0](https://github.com/deepset-ai/haystack/releases/tag/v0.6.0) the [Pipeline](https://docs.haystack.deepset.ai/docs/pipelines) object was introduced: a new abstraction that helped users build applications as a graph of components.
+In the next few months, however, the capabilities of language models expanded to enable many more use cases. One hot topic was [hybrid retrieval](https://haystack.deepset.aiblog/hybrid-retrieval): a system composed of two different Retrievers, an optional [Ranker](https://docs.haystack.deepset.ai/docs/ranker), and an optional Reader. This kind of application clearly didn't fit the Finder's design, so in [version 0.6.0](https://github.com/deepset-ai/haystack/releases/tag/v0.6.0) the [Pipeline](https://docs.haystack.deepset.ai/docs/pipelines) object was introduced: a new abstraction that helped users build applications as a graph of components.
 
 Pipeline's API was a huge step forward from Finder. It instantly enabled seemingly endless combinations of components, unlocked almost all use cases conceivable, and became a foundational Haystack concept meant to stay for a very long time. In fact, the API offered by the first version of Pipeline changed very little since its initial release. 
 
@@ -50,11 +50,11 @@ At this level, users don't need to know what kind of data the components need to
 
 For example, as long as the users know that their hybrid retrieval pipeline should look more or less like this (note: this is the output of `Pipeline.draw()`), translating it into a Haystack Pipeline object using a few `add_node` calls is mostly straightforward.
 
-![Hybrid Retrieval](/blog/haystack-pipeline-a-deep-dive/hybrid-retrieval.png)
+![Hybrid Retrieval](blog/haystack-pipeline-a-deep-dive/hybrid-retrieval.png)
 
 This fact is reflected by the documentation of the various components as well. For example, this is how the documentation page for Ranker opens:
 
-![Ranker Documentation](/blog/haystack-pipeline-a-deep-dive/ranker-docs.png)
+![Ranker Documentation](blog/haystack-pipeline-a-deep-dive/ranker-docs.png)
 
 Note how the first information about this component is *where to place it*. Right after, it specifies its inputs and outputs, even though it's not immediately clear why we need this information, and then lists which specific classes can cover the role of a Ranker. 
 
@@ -92,7 +92,7 @@ However, the focus was oriented so much on the initial stages of the user's jour
 
 For an example of these issues, let's talk about pipelines with branches. Here are two small, apparently very similar pipelines.
 
-![Query Classification vs Hybrid Retrieval](/blog/haystack-pipeline-a-deep-dive/branching-query-pipelines.png)
+![Query Classification vs Hybrid Retrieval](blog/haystack-pipeline-a-deep-dive/branching-query-pipelines.png)
 
 The first Pipeline represents the Hybrid Retrieval use case we've met with before. Here, the Query node sends its outputs to both retrievers, and they both produce some output. For the Reader to make sense of this data, we need a Join node that merges the two lists into one and a Ranker that takes the lists and sorts them again by similarity to the query. Ranker then sends the rearranged list to the Reader.
 
@@ -128,7 +128,7 @@ For example, imagine we want to expand language support to include French. The d
 
 Here is what the Pipeline ends up looking like. Language Classifier sends all French queries over `output_1` and all English queries over `output_2`. In this way, the query passes through the Translator node only if it is written in French.
 
-![Multilingual Hybrid Retrieval](/blog/haystack-pipeline-a-deep-dive/multilingual-hybrid-retrieval.png)
+![Multilingual Hybrid Retrieval](blog/haystack-pipeline-a-deep-dive/multilingual-hybrid-retrieval.png)
 
 ```python
 pipeline = Pipeline()
@@ -153,7 +153,7 @@ Well, let's look for a workaround. Given that we're Haystack power users by now,
 
 So here is our current Pipeline:
 
-![Multilingual Hybrid Retrieval with No-Op Joiner](/blog/haystack-pipeline-a-deep-dive/multilingual-hybrid-retrieval-with-noop.png)
+![Multilingual Hybrid Retrieval with No-Op Joiner](blog/haystack-pipeline-a-deep-dive/multilingual-hybrid-retrieval-with-noop.png)
 
 ```python
 pipeline = Pipeline()
@@ -185,7 +185,7 @@ One easy way out is to translate the query for both retrievers instead of only f
 
 The Pipeline looks like this now.
 
-![Multilingual Hybrid Retrieval with two Translators](/blog/haystack-pipeline-a-deep-dive/multilingual-hybrid-retrieval-two-translators.png)
+![Multilingual Hybrid Retrieval with two Translators](blog/haystack-pipeline-a-deep-dive/multilingual-hybrid-retrieval-two-translators.png)
 
 ```python
 pipeline = Pipeline()
@@ -212,7 +212,7 @@ Okay, so it seems like we can't re-use components in two places: there is an exp
 
 How about we first translate the query and then distribute it?
 
-![Multilingual Hybrid Retrieval, translate-and-distribute](/blog/haystack-pipeline-a-deep-dive/multilingual-hybrid-retrieval-translate-and-distribute.png)
+![Multilingual Hybrid Retrieval, translate-and-distribute](blog/haystack-pipeline-a-deep-dive/multilingual-hybrid-retrieval-translate-and-distribute.png)
 
 ```python
 pipeline = Pipeline()
@@ -241,7 +241,7 @@ Soon enough, one of the maintainers shows up and promises a workaround ASAP. You
 
 It's just not very pretty.
 
-![Multilingual Hybrid Retrieval, working version](/blog/haystack-pipeline-a-deep-dive/multilingual-hybrid-retrieval-workaround.png)
+![Multilingual Hybrid Retrieval, working version](blog/haystack-pipeline-a-deep-dive/multilingual-hybrid-retrieval-workaround.png)
 
 ```python
 pipeline = Pipeline()
@@ -290,7 +290,7 @@ Having learned only that it's better not to implement unusual branching patterns
 
 Indexing pipelines' main goal is to transform files into Documents from which a query pipeline can later retrieve information. They mostly look like the following.
 
-![Indexing Pipeline](/blog/haystack-pipeline-a-deep-dive/indexing-pipeline.png)
+![Indexing Pipeline](blog/haystack-pipeline-a-deep-dive/indexing-pipeline.png)
 
 And the code looks just like how you would expect it. 
 
@@ -320,7 +320,7 @@ The more we look at the error, the less it makes sense. What are non-default fil
 
 We head for the documentation, where we find a lead.
 
-![`FileTypeClassifier documentation`](/blog/haystack-pipeline-a-deep-dive/filetypeclassifier-docs.png)
+![`FileTypeClassifier documentation`](blog/haystack-pipeline-a-deep-dive/filetypeclassifier-docs.png)
 
 So it seems like the File Classifier can only process the files if they're all of the same type.
 
@@ -330,7 +330,7 @@ Turns out, this is *not* the same thing.
 
 Let's compare the three pipelines and try to spot the difference.
 
-![All branching pipelines, side by side](/blog/haystack-pipeline-a-deep-dive/all-branching-pipelines.png)
+![All branching pipelines, side by side](blog/haystack-pipeline-a-deep-dive/all-branching-pipelines.png)
 
 In the first case, Query sends the same identical value to both Retrievers. So, from the component's perspective, there's a single output being produced: the Pipeline takes care of copying it for all nodes connected to it.
 
@@ -355,7 +355,7 @@ p.add_node(component=retriever, name="Retriever", inputs=["Reader"])
 
 Up to this point, running the script raises no error. Haystack is happy to connect these two components in this order. You can even `draw()` this Pipeline just fine.
 
-![Swapper Retriever/Reader Pipeline](/blog/haystack-pipeline-a-deep-dive/swapped-retriever-reader.png)
+![Swapper Retriever/Reader Pipeline](blog/haystack-pipeline-a-deep-dive/swapped-retriever-reader.png)
 
 Alright, so what happens when we run it?
 

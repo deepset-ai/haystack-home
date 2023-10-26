@@ -2,7 +2,7 @@
 layout: blog-post
 title: Why rewriting Haystack?!
 description: A short history behind the inception and development of Haystack 2.0
-featured_image: thumbnail.jpg
+featured_image: thumbnail.png
 images: ["blog/haystack-rewrite-why/thumbnail.jpg"]
 alt_image: A GitHub diff with a large-letter "Rewrite" printed over
 toc: True

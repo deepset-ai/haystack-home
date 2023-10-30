@@ -7,10 +7,10 @@ description: Haystack, the open source LLM framework
 hero:
   title: Celebrate Hacktoberfest 2023 with Haystack
   text: |
-    Hacktoberfest is an annual month-long event that promotes open source and encourages contributions to open source projects. Join us to celebrate the 10th anniversary of Hacktoberfest together! 
+    🚀 Hacktoberfest 2023 has ended, but the open-source journey never stops! You can still contribute to Haystack and be a part of our vibrant community. Stay tuned for Hacktoberfest 2024!
   registerButton:
-    text: Register
-    url: https://hacktoberfest.com/
+    text: Contribute to Haystack
+    url: https://github.com/deepset-ai/haystack/contribute
   discordText: Join Haystack community on Discord
   discordButton:
     text: Join Discord
@@ -58,14 +58,4 @@ events:
     image: /images/illa-haystack.png
     url: https://www.youtube.com/watch?v=qSZ9JhjZ7HM
     buttonText: Go to the Event
-  # - title: >
-  #     Securing LLMs: How to detect prompt injections
-  #   description: >
-  #     During this webinar, we will provide a detailed walkthrough on how we curated a dataset and trained a classifier...
-  #   date: "2023-07-25"
-  #   time: "17:00 CET"
-  #   location: Zoom
-  #   image: /images/webinar-prompt-injection.jpg
-  #   url: https://hubs.li/Q01Xr4GB0
-  #   buttonText: Register
 ---

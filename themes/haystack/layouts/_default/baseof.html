@@ -10,9 +10,9 @@
     {{ partial "header" . }}
 
     {{/* Announcement Bar */}}
-    {{ if not (eq .Params.Layout "hacktoberfest") }}
+    <!-- {{ if not (eq .Params.Layout "hacktoberfest") }}
       {{ partial "announcement" . }}
-    {{ end}}
+    {{ end}} -->
 
     {{/*  Main  */}}
     <main>{{ block "main" . }}{{ end }}</main>

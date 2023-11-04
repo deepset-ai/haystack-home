@@ -50,4 +50,8 @@ haystack-integrations
 content/integrations/*.md
 !content/integrations/_index.md
 
+haystack-advent
+content/advent-of-haystack/*.md
+!content/advent-of-haystack/_index.md
+
 static/downloads

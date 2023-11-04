@@ -1,0 +1,60 @@
+.advent-content {
+  background-color: var(--color-bg-dark-grey);
+
+  > .container {
+    padding-bottom: 2rem;
+
+    @include md {
+      padding-bottom: 4rem;
+    }
+  }
+
+  .discuss-button {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+  }
+}
+
+.advent-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 3rem;
+  row-gap: 2rem;
+  max-width: 62.5rem;
+  margin: 0 auto;
+  padding-top: 2rem;
+
+  @include md {
+    padding-top: 3rem;
+  }
+
+  .door {
+    position: relative;
+    width: 100%;
+    max-width: 12rem;
+    flex-shrink: 0;
+    margin-bottom: 1rem;
+    user-select: none;
+
+    > img {
+      pointer-events: none;
+    }
+  }
+
+  .door:nth-child(13) {
+    max-width: 16rem;
+  }
+
+  .door-content {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    padding: 3rem 2rem 1rem;
+    text-decoration: none;
+    color: var(--color-black);
+    word-break: break-word;
+    text-align: center;
+  }
+}

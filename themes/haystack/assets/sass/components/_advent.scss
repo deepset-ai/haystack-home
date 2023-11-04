@@ -59,15 +59,37 @@
     > img {
       pointer-events: none;
     }
+
+    .door-number {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 3rem 2rem 1rem;
+      color: var(--color-white);
+      font-size: 3rem;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
   }
 
   .door:nth-child(13) {
     max-width: 16rem;
+
+    .door-number {
+      font-size: 4rem;
+    }
   }
 
   .door-content {
     position: absolute;
-    inset: 0;
+    // inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     overflow: hidden;
     padding: 3rem 2rem 1rem;
     text-decoration: none;
@@ -75,6 +97,7 @@
     word-break: break-word;
     text-align: center;
   }
+
 }
 
 .challenge-content {

@@ -17,12 +17,17 @@
                     {{ if le . $openDoors }}
                         {{ with (index $adventPages (sub . 1)) }}
                             <img src="/images/advent-door-open.png" alt="">
-                            <a href="{{ .RelPermalink }}" class="door-content">
+                            <a href="{{ .RelPermalink }}#challenge" class="door-content">
                                 {{ .Params.door_text }}
                             </a>
                         {{ end }}
                     {{ else }}
                         <img src="/images/advent-door.png" alt="">
+                        <div class="door-number">
+                            <span>
+                                {{ . }}
+                            </span>
+                        </div>
                     {{ end }}
                 </div>
             {{ end }}

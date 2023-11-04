@@ -157,7 +157,7 @@
     .hero-content {
       position: relative;
       z-index: 1;
-      
+
       @include md {
         width: 60%;
       }
@@ -187,7 +187,7 @@
     @include lg {
       max-width: 43.75rem;
       bottom: -5rem;
-  }
+    }
   }
 
   .advent-tree {

@@ -52,6 +52,7 @@
     position: relative;
     width: 100%;
     max-width: 12rem;
+    height: 17.125rem;
     flex-shrink: 0;
     margin-bottom: 1rem;
     user-select: none;
@@ -77,6 +78,7 @@
 
   .door:nth-child(13) {
     max-width: 16rem;
+    height: 22.8125rem;
 
     .door-number {
       font-size: 4rem;

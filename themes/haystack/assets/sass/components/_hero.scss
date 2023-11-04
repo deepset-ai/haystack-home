@@ -143,7 +143,6 @@
 .advent-hero {
   background-color: var(--color-dark-blue);
   text-align: center;
-  // overflow: hidden;
   position: relative;
 
   .container {
@@ -152,9 +151,13 @@
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    padding: 4rem 0;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 
     .hero-content {
+      position: relative;
+      z-index: 1;
+      
       @include md {
         width: 60%;
       }
@@ -173,7 +176,7 @@
     display: none;
     position: absolute;
     left: 0;
-    bottom: -5rem;
+    bottom: -3.5rem;
     width: 100%;
     max-width: 36rem;
 
@@ -183,7 +186,8 @@
 
     @include lg {
       max-width: 43.75rem;
-    }
+      bottom: -5rem;
+  }
   }
 
   .advent-tree {

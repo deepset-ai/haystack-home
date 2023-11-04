@@ -1,6 +1,10 @@
 .advent-content {
   background-color: var(--color-bg-dark-grey);
 
+  &.challenge {
+    background-color: var(--color-light-grey);
+  }
+
   > .container {
     padding-bottom: 2rem;
 
@@ -9,7 +13,21 @@
     }
   }
 
-  .discuss-button {
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    position: relative;
+    z-index: 1;
+
+    @include md {
+      column-gap: 1rem;
+    }
+  }
+
+  .discuss-link {
     display: flex;
     justify-content: flex-end;
     padding-top: 1rem;
@@ -56,5 +74,13 @@
     color: var(--color-black);
     word-break: break-word;
     text-align: center;
+  }
+}
+
+.challenge-content {
+  padding-top: 2rem;
+
+  @include md {
+    padding-top: 3rem;
   }
 }

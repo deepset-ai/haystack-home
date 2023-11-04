@@ -2,9 +2,7 @@
 layout: advent
 title: Advent of Haystack
 # description: Lorem Ipsum
-discuss_link:
-  text: Discuss
-  url: /
+discuss: /
 
 hero:
   title: Advent of Haystack

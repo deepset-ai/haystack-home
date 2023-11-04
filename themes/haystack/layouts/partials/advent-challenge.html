@@ -1,0 +1,20 @@
+<section class="advent-content challenge">
+    <div class="container">
+        <div class="links">
+            {{ with .Params.discuss }}
+                {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Discuss" "url" . "color" "dark-blue"
+                "icon"
+                "discuss")}}
+            {{ end }}
+
+            {{ with .Params.submit }}
+                {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Submit" "url" . "color" "green" "icon"
+                "discuss")}}
+            {{ end }}
+        </div>
+
+        <article class="challenge-content">
+            {{ .Content }}
+        </article>
+    </div>
+</section>

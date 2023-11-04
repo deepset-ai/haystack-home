@@ -4,9 +4,9 @@
         {{ $totalDoors := 13 }}
         {{ $openDoors := len $adventPages }}
 
-        {{ with .Params.discuss_link }}
-            <div class="discuss-button">
-                {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "dark-blue" "icon"
+        {{ with .Params.discuss }}
+            <div class="discuss-link">
+                {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Discuss" "url" . "color" "dark-blue" "icon"
             "discuss")}}
             </div>
         {{ end }}

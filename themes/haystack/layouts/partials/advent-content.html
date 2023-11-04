@@ -1,0 +1,31 @@
+<div class="advent-content">
+    <div class="container">
+        {{ $adventPages := sort (.GetPage "/advent-of-haystack").Pages "Params.day" }}
+        {{ $totalDoors := 13 }}
+        {{ $openDoors := len $adventPages }}
+
+        {{ with .Params.discuss_link }}
+            <div class="discuss-button">
+                {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "dark-blue" "icon"
+            "discuss")}}
+            </div>
+        {{ end }}
+
+        <div class="advent-grid">
+            {{ range (seq 1 $totalDoors) }}
+                <div class="door">
+                    {{ if le . $openDoors }}
+                        {{ with (index $adventPages (sub . 1)) }}
+                            <img src="/images/advent-door-open.png" alt="">
+                            <a href="{{ .RelPermalink }}" class="door-content">
+                                {{ .Params.door_text }}
+                            </a>
+                        {{ end }}
+                    {{ else }}
+                        <img src="/images/advent-door.png" alt="">
+                    {{ end }}
+                </div>
+            {{ end }}
+        </div>
+    </div>
+</div>

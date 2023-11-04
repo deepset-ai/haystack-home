@@ -1,0 +1,17 @@
+{{ $adventPage := .Site.GetPage "/advent-of-haystack" }}
+
+<div class="advent-hero">
+  <img class="advent-snowman" src="/images/snowman.png" alt="">
+
+  <div class="container">
+    <div class="hero-content">
+      <h1>{{ $adventPage.Params.hero.title }}</h1>
+
+      <div>
+        {{ $adventPage.Params.hero.text | markdownify }}
+      </div>
+    </div>
+
+    <img class="advent-tree" src="/images/tree.png" alt="">
+  </div>
+</div>

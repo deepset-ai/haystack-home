@@ -1,10 +1,10 @@
 ---
 layout: blog-post
-title: RAG Pipelines from scratch
+title: "RAG Pipelines from scratch"
 description: "Let's build a simple RAG Pipeline with Haystack 2.0 by just connecting three components: a Retriever, a PromptBuilder and a Generator."
 featured_image: thumbnail.png
 images: ["blog/rag-pipelines-from-scratch/thumbnail.png"]
-alt_image: The Republic of Rose Island, from Wikipedia (https://it.wikipedia.org/wiki/File:Isoladellerose.jpg)
+alt_image: The Republic of Rose Island
 toc: True
 date: 2023-10-27
 last_updated:  2023-10-28

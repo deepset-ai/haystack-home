@@ -1,7 +1,7 @@
 ---
 layout: blog-post
-title: "Canals: a new concept of Pipeline"
-description: How are Pipelines going to look like in the next Haystack version? Let's have a tour of Canals, the library powering Haystack's 2.0 Pipelines.
+title: "A New Approach to Haystack Pipelines"
+description: How are Pipelines going to look like in the next major Haystack version? Let's have a look at the design powering Haystack's 2.0 Pipelines.
 featured_image: thumbnail.png
 images: ["blog/canals-a-new-concept-of-pipeline/thumbnail.png"]
 alt_image: Canals logo
@@ -21,9 +21,9 @@ What does this mean in practice? Let's look at what Haystack Pipelines in 2.0 wi
 
 I've already written [at length](https://haystack.deepset.ai/blog/haystack-pipeline-a-deep-dive) about what made the original Pipeline concept so powerful and its weaknesses. Pipelines were overly effective for the use cases we could conceive while developing them, but they didn't generalize well on unforeseen situations.
 
-For a long time Haystack could afford not to focus on use cases that didn't fit its architecture, as I have mentioned in my [previous post](https://haystack.deepset.ai/blog/haystack-rewrite-why) about the reasons for the rewrite. The pipeline was then more than sufficient for its purposes.
+For a long time, Haystack was able to afford not focusing on use cases that didn't fit its architecture, as I have mentioned in my [previous post](https://haystack.deepset.ai/blog/haystack-rewrite-why) about the reasons for the rewrite. The pipeline was then more than sufficient for its purposes.
 
-However, the situation flipped as LLMs and Generative AI entered the scene abruptly at the end of 2022. Pipeline seemingly overfit its existing use cases, fossilized on them, and could not cope with the requirements set by the new landscape of the field.
+However, the situation flipped as LLMs and Generative AI "entered" the scene abruptly at the end of 2022 (although it's certainly been around for longer). Our `Pipeline` although useable and still quite powerful in many LLM use-cases, seemingly overfit the original use-cases it was designed for.
 
 Let's take one of these use cases and see where it leads us.
 
@@ -43,11 +43,11 @@ Question: What's the capital of France?
 Answer:
 ```
 
-In this situation, the task of the LLM becomes far easier: instead of drawing facts from its internal knowledge, which might be lacking, inaccurate, or out-of-date, the model only needs to rephrase the paragraph's content to answer the question, improving the model's performance significantly.
+In this situation, the task of the LLM becomes far easier: instead of drawing facts from its internal knowledge, which might be lacking, inaccurate, or out-of-date, the model can use the paragraph's content to answer the question, improving the model's performance significantly.
 
 We now have a new problem, though. How can we provide the correct snippets of text to the LLM? This is where the "retrieval" keyword comes up.
 
-One of Haystack's primary use cases has been [Extractive Question Answering](https://huggingface.co/tasks/question-answering): a system where a Retriever component searches into a Document Store (such as a vector or SQL database) for snippets of text that are the most relevant to a given question. It then sends such snippets to a Reader, which highlights the keywords that answer the original question.
+One of Haystack's primary use cases had been [Extractive Question Answering](https://huggingface.co/tasks/question-answering): a system where a Retriever component searches a Document Store (such as a vector or SQL database) for snippets of text that are the most relevant to a given question. It then sends such snippets to a Reader (an extractive model), which highlights the keywords that answer the original question.
 
 By replacing a Reader model with an LLM, we get a Retrieval Augmented Generation Pipeline. Easy!
 
@@ -57,7 +57,7 @@ So far, everything checks out. Supporting RAG with Haystack feels not only possi
 
 ## Web RAG
 
-At first impact, the task may not seem daunting. We surely need a special Retriever that, instead of searching through a DB, searches through the Internet using a search engine. But the core concepts stay the same, and so, we assume, should the pipeline's graph. The end result should be something like this:
+At first glance, the task may not seem daunting. We surely need a special Retriever that, instead of searching through a DB, searches through the Internet using a search engine. But the core concepts stay the same, and so, we assume, should the pipeline's graph. The end result should be something like this:
 
 ![Initial Web RAG Pipeline Graph](initial-web-rag-pipeline.png)
 
@@ -97,11 +97,11 @@ Therefore, the pipeline rewrite for Haystack 2.0 focused on one core principle: 
 
 Just as railways are excellent at going from A to B when you only need to take a few well-known routes and never another, highways are unbeatable at reaching every possible destination with the same effort, even though they need a driver for each wagon. A "highway" Pipeline requires more work from the Components' side, but it frees them to go wherever they need to with a precision that a "railway" pipeline cannot accomplish.
 
-## Canals
+## The Pipeline Structure of Haystack 2.0
 
-The code of this new, more powerful Pipeline object found its way into its dedicated library, [Canals](https://github.com/deepset-ai/canals). By design, Canals is not geared toward specific NLP use cases, but it's a minimal, generic [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load)-like Pipeline library written purely in Python.
+By design, pipelines in Haystack 2.0 is not geared toward specific NLP use cases, but it's a minimal, generic [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load)-like library written purely in Python.
 
-Canals brings two core elements to the table:
+The new pipelines brings two core elements to the table:
 
 - The `Component` protocol, a well-defined API that Python classes need to respect to be understood by the pipeline.
 
@@ -109,59 +109,32 @@ Canals brings two core elements to the table:
 
 Let's explore these two concepts one by one.
 
-## The Pipeline API
+### The Pipeline API
 
-The `Pipeline` object may remind vaguely of Haystack's original pipeline, and using one should feel familiar. For example, this is how you assemble a simple Canals Pipeline that performs a few additions.
+The new `Pipeline` object may remind vaguely of Haystack's original pipeline, and using one should feel very familiar. For example, this is how you assemble a simple Pipeline that performs word additions in Haystack 2.0.
 
 ```python
-from canals import Pipeline
-from sample_components import AddFixedValue
-
-# Create the Pipeline object
-pipeline = Pipeline()
-
-# Add the components - note the missing`inputs` parameter
-pipeline.add_component("add_one", AddFixedValue(add=1))
-pipeline.add_component("add_two", AddFixedValue(add=2))
-
-# Connect them together
-pipeline.connect("add_one.result", "add_two.value")
-
-# Draw the pipeline
-pipeline.draw("two_additions_pipeline.png")
-
-# Run the pipeline
-results = pipeline.run({"add_one": {"value": 1}})
-
-print(results)
-# prints '{"add_two": {"result": 4}}'
+Re-write with a language example.
 ```
 
-Creating the pipeline requires no special attention: however, you can now pass a `max_loops_allowed` parameter, to limit looping when it's a risk. On the contrary, old Haystack Pipelines did not support loops at all.
+Creating the pipeline requires no special attention: however, you can now pass a `max_loops_allowed` parameter, to limit looping when it's a risk. On the contrary, old Haystack 1.x Pipelines did not support loops at all.
 
-Next, components are added by calling the `Pipeline.add_component(name, component)` method. This is also subject to very similar limitations to the previous `pipeline.add_node` had:
-Every component needs a unique name.
-Some are reserved (for now, only `_debug`).
-Instances are not reusable.
-The object needs to be a component.
+Next, components are added by calling the `Pipeline.add_component(name, component)` method. This is also subject to very similar requirements to the previous `pipeline.add_node`:
+- Every component needs a unique name.
+- Some are reserved (for now, only `_debug`).
+- Instances are not reusable.
+- The object needs to be a component.
 However, we no longer connect the components to each other using this function because, although it is possible to implement in principle, it feels more awkward to use in the case of loops.
 
 Consequently, we introduced a new method, `Pipeline.connect()`. This method follows the syntax `("producer_component.output_name_", "consumer_component.input_name")`: so we don't simply line up two components one after the other, but we connect one of their outputs to one of their inputs in an explicit manner.
 
-This change allows Canals to perform a much more careful validation of such connections. As we will discover soon, Canals components must declare the type of their inputs and outputs. In this way, Canals not only can make sure that the inputs and outputs exist for the given component, but it can also check whether their types match and can explain connection failures in great detail. For example, if there were a type mismatch, `Pipeline.connect()` will return an error such as:
+This change allows pipelines to perform a much more careful validation of such connections. As we will discover soon, pipeline components in Haystack 2.0 must declare the type of their inputs and outputs. In this way, pipelines not only can make sure that the inputs and outputs exist for the given component, but they can also check whether their types match and can explain connection failures in great detail. For example, if there were a type mismatch, `Pipeline.connect()` will return an error such as:
 
 ```markdown
-Cannot connect 'greeter.greeting' with 'add_two.value': their declared input and output 
-types do not match.
-
-greeter:
-- greeting: str
-add_two:
-- value: int (available)
-- add: Optional[int] (available)
+Rewrite with NLP example
 ```
 
-Once the components are connected together, the resulting pipeline can be drawn. Canals pipeline drawings show far more details than their predecessors because the components are forced to share much more information about what they need to run, the types of these variables, and so on. The pipeline above draws the following image:
+Once the components are connected together, the resulting pipeline can be drawn. Pipeline drawings in Haystack 2.0 show far more details than their predecessors because the components are forced to share much more information about what they need to run, the types of these variables, and so on. The pipeline above draws the following image:
 
 ![A Pipeline making two additions](two_additions_pipeline.png)
 
@@ -207,34 +180,30 @@ One evident difficulty of this API is that it might be challenging to understand
 
 ## The Component API
 
-Now that we covered the Pipeline's API, let's have a look at what it takes for a Python class to be treated as a Canals' Component.
+Now that we covered the Pipeline's API, let's have a look at what it takes for a Python class to be treated as a pipeline component.
 
 You are going to need:
 
-- **A `@component` decorator**. All component classes must be decorated with the `@component` decorator. This allows Canals to discover and validate them.
+- **A `@component` decorator**. All component classes must be decorated with the `@component` decorator. This allows a pipeline to discover and validate them.
 
 - **A `run()` method**. This is the method where the main functionality of the component should be carried out. It's invoked by `Pipeline.run()` and has a few constraints, which we will describe later.
 
-- Optionally, **a `warm_up()` method**. It can be used to defer the loading of a heavy resource (think a local LLM or an embedding model) to the warm-up stage that occurs right before the first execution of the pipeline. Components that use `warm_up()` can be added to a Pipeline and connected before the heavy operations are carried out. In this way, the validation that Canals performs at that stage can happen before resources are wasted.
+- **A `@component.output_types()` decorator for the `run()` method**. This allows the pipeline to validate the connections between components.
+  
+- Optionally, **a `warm_up()` method**. It can be used to defer the loading of a heavy resource (think a local LLM or an embedding model) to the warm-up stage that occurs right before the first execution of the pipeline. Components that use `warm_up()` can be added to a Pipeline and connected before the heavy operations are carried out. In this way, the validation that a `Pipeline` performs can happen before resources are wasted.
 
-To summarize, a minimal Canals component can look like this:
+To summarize, a minimal component can look like this:
 
 ```python
-from canals import component
-
-@component
-class Double:
-
-    @component.output_types(result=int)
-    def run(self, value: int):
-        return {"result": value * 2}
+Rewrite with language exampole
 ```
 
-Note how the `run()` method has a few peculiar features. One is that all the method parameters need to be typed: if `value` was not declared as `value: int`, Canals would raise an exception demanding for typing.
+### Pipeline Validation
+Note how the `run()` method has a few peculiar features. One is that all the method parameters need to be typed: if `value` was not declared as `value: int`, the pipeline would raise an exception demanding for typing.
 
 This is the way components declare to the pipeline which inputs they expect and of which type: this is the first half of the information needed to perform the validation that `Pipeline.connect()` carries out.
 
-The other half of the information comes from the `@component.output_types` decorator. Canals demands that components declare how many outputs the component will produce and which type. One may ask why not rely on typing for the outputs, just as we've done for the inputs. So why not simply declare components as:
+The other half of the information comes from the `@component.output_types` decorator. Pipelines demand that components declare how many outputs the component will produce and of what type. One may ask why not rely on typing for the outputs, just as we've done for the inputs. So why not simply declare components as:
 
 
 ```python
@@ -245,7 +214,7 @@ class Double:
         return value * 2
 ```
 
-For `Double`, this is a legitimate solution. However, let's make an example with another component called `CheckParity`: if a component's input value is even, it sends it unchanged over the `even` output, while if it's odd, it will send it over the `odd` output. The following clearly doesn't work: we're not communicating anywhere to Canals which output is even and which one is odd.
+For `Double`, this is a legitimate solution. However, let's see an example with another component called `CheckParity`: if a component's input value is even, it sends it unchanged over the `even` output, while if it's odd, it will send it over the `odd` output. The following clearly doesn't work: we're not communicating anywhere to Canals which output is even and which one is odd.
 
 ```python
 @component
@@ -269,11 +238,11 @@ class CheckParity:
         return {"odd": value}
 ```
 
-This approach carries all the information required. However, such information is only available after the `run()` method is called. Unless we parse the method to discover all return statements and their keys (which is not always possible), Canals cannot know all the keys the return dictionary may have. So, it can't validate the connections when `Pipeline.connect()` is called.
+This approach carries all the information required. However, such information is only available after the `run()` method is called. Unless we parse the method to discover all return statements and their keys (which is not always possible), pipelines cannot know all the keys the return dictionary may have. So, it can't validate the connections when `Pipeline.connect()` is called.
 
 The decorator bridges the gap by allowing the class to declare in advance what outputs it will produce and of which type. Pipeline trusts this information to be correct and validates the connections accordingly.
 
-Okay, but what if the component is very dynamic? The output type may depend on the input type. Perhaps the number of inputs depends on some initialization parameter. In these cases, Canals allows components to declare the inputs and output types in their init method as such:
+Okay, but what if the component is very dynamic? The output type may depend on the input type. Perhaps the number of inputs depends on some initialization parameter. In these cases, pipelines allow components to declare the inputs and output types in their init method as such:
 
 ```python
 @component
@@ -287,10 +256,11 @@ class HighlyDynamicComponent:
         ...
 ```
 
-Note that there's no more typing on `run()`, and the decorator is gone. The information provided in the init method is sufficient for Canals to validate the connections.
+Note that there's no more typing on `run()`, and the decorator is gone. The information provided in the init method is sufficient for the pipeline to validate the connections.
 
-One more feature of the inputs and output declarations relates to optional and variadic values. Canals supports both through a mix of type checking and signature inspection. For example, let's have a look at how the `AddFixedValue` we've seen earlier looks like:
+One more feature of the inputs and output declarations relates to optional and variadic values. Pipelines in Haystack 2.0 support this both through a mix of type checking and signature inspection. For example, let's have a look at how the `AddFixedValue` we've seen earlier looks like:
 
+**TODO: change to language example**
 ```python
 from typing import Optional
 from canals import component
@@ -315,10 +285,11 @@ class AddFixedValue:
         return {"result": value + add}
 ```
 
-You can see that `add`, the optional parameter we met before, has a default value. Adding a default value to a parameter in the `run()` signature tells Canals that the parameter itself is optional, so the component can run even if that specific input doesn't receive any value from the pipeline's input or other components.
+You can see that `add`, the optional parameter we met before, has a default value. Adding a default value to a parameter in the `run()` signature tells the pipeline that the parameter itself is optional, so the component can run even if that specific input doesn't receive any value from the pipeline's input or other components.
 
 Another component that generalizes the sum operation is `Sum`, which instead looks like this:
 
+**TODO: change to language example**
 ```python
 from canals import component
 from canals. component.types import Variadic
@@ -337,18 +308,19 @@ class Sum:
         return {"total": sum(v for v in values if v is not None)}
 ```
 
-In this case, we used the special Canals type `Variadic` to tell Canals that the `values` input can receive data from multiple producers, instead of just one. Therefore, `values` is going to be a list type, but it can be connected to single `int` outputs, making it a valuable aggregator.
+In this case, we used the special type `Variadic` to tell the pipeline that the `values` input can receive data from multiple producers, instead of just one. Therefore, `values` is going to be a list type, but it can be connected to single `int` outputs, making it a valuable aggregator.
 
 ## Serialization
 
-Just like old Haystack Pipelines, Canals pipelines can be serialized. However, this feature suffered from similar problems plaguing the execution model,  so it was changed radically.
+Just like old Haystack Pipelines, the new pipelines can be serialized. However, this feature suffered from similar problems plaguing the execution model,  so it was changed radically.
 
-The original pipeline gathered intrusive information about each of its components when initialized, leveraging the shared `BaseComponent` class. Conversely, Canal's Pipelines delegate the serialization process entirely to its components.
+The original pipeline gathered intrusive information about each of its components when initialized, leveraging the shared `BaseComponent` class. Conversely, the `Pipeline` delegates the serialization process entirely to its components.
 
-In Canals, if a component wishes to be serializable, it must provide two additional methods, `to_dict` and `from_dict`, which perform serialization and deserialization to a dictionary. The pipeline limits itself to calling each of its component's methods, collecting their output, grouping them together with some limited extra information (such as the connections between them), and returning the result.
+If a component wishes to be serializable, it must provide two additional methods, `to_dict` and `from_dict`, which perform serialization and deserialization to a dictionary. The pipeline limits itself to calling each of its component's methods, collecting their output, grouping them together with some limited extra information (such as the connections between them), and returning the result.
 
 For example, if `AddFixedValue` were serializable, its serialized version could look like this:
 
+**TODO: Change to language example**
 ```python
 {
     "type": "AddFixedValue",
@@ -386,28 +358,26 @@ The entire pipeline we used above would end up as follows:
 }
 ```
 
-Notice how the components are free to perform serialization in the way they see fit. The only requirement imposed by Canals is the presence of two top-level keys, `type` and `init_parameters`, which are necessary for the pipeline to deserialize each component into the correct class.
+Notice how the components are free to perform serialization in the way they see fit. The only requirement imposed by the `Pipeline` is the presence of two top-level keys, `type` and `init_parameters`, which are necessary for the pipeline to deserialize each component into the correct class.
 
 This is useful, especially if the component's state includes some non-trivial values, such as objects, API keys, or other special values. Pipeline no longer needs to know how to serialize everything the Components may contain: the task is fully delegated to them, which always knows best what needs to be done.
 
 ## But... do we need any of this?
 
-Having done a tour of Canals features, one might have noticed one detail. Pipelines now are a bit harder to use than before: you can't just chain every component after every other. There are connections to be made, validation to perform, graphs to assemble, and so on.
+Having done a tour of the new `Pipeline` features, one might have noticed one detail. There's a bit more work involved in using a Pipeline than there was before: you can't just chain every component after every other. There are connections to be made, validation to perform, graphs to assemble, and so on.
 
-In exchange, the pipeline is now more powerful than before. Sure, but so is a plain Python script. Do we *really* need the Pipeline object? And what do we need it for?
-
-ETL frameworks often include an abstraction over the execution flow to make the same high-level system execute over different infrastructures, primarily for scalability and speed. They may leverage the abstraction to transparently distribute nodes on different machines, run them in parallel, increase throughput by adding replicas and other similar operations.
-
-For now, Canals doesn't provide anything of this kind. While we don't exclude that in the future, this abstraction may serve this purpose, there are a few other benefits that the pipeline is providing us right now:
+In exchange, the pipeline is now way more powerful than before. Sure, but so is a plain Python script. Do we *really* need the Pipeline object? And what do we need it for?
 
 - **Validation**. While components normally validate their inputs and outputs, the pipeline does all the validation before the components run, even before loading heavy resources. This makes the whole system far less likely to fail at runtime for a simple input/output mismatch, which can be priceless for complex applications.
 
 - **Serialization**. Redistributing code is always tricky: redistributing a JSON file is much safer. Pipelines make it possible to represent complex systems in a readable JSON file that can be edited, shared, stored, deployed, and re-deployed on different backends at need. 
 
-- **Drawing**: Canals offers a way to see your system clearly and automatically, which is often very handy for debugging, inspecting the system, and collaborating on the pipeline's design.
+- **Drawing**: The new Pipeline offers a way to see your system clearly and automatically, which is often very handy for debugging, inspecting the system, and collaborating on the pipeline's design.
 
+- **Branching**:
+- **Loops**:
+- **Flexible input and output types with customizable connections**:
+  
 - On top of this, the pipeline abstraction promotes flatter API surfaces by discouraging components nesting one within the other and providing easy-to-use, single-responsibility components that are easy to reason about.
 
 Having said all of this, however, we don't believe that the pipeline design makes Haystack win or lose. Pipelines are just a bonus on top of what provides the real value: a broad set of components that reliably perform well-defined tasks. That's why the Component API does not make the `run()` method awkward to use outside of a Pipeline: calling `Sum.run(values=[1, 2, 3])` feels Pythonic outside of a pipeline and always will.
-
-In the following posts, I will explore the world of Haystack components, starting from our now familiar use cases: RAG Pipelines.

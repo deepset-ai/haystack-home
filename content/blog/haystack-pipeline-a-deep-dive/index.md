@@ -13,7 +13,7 @@ authors:
 tags: ["Haystack 2.0"]
 ---	
 
-If you've ever looked at Haystack before, you must have come across the concept of Pipeline, one of the most prominent concepts of the framework. However, this abstraction is by no means an obvious choice when it comes to NLP libraries. Why did we adopt this concept, and what does it bring us? 
+If you've ever looked at Haystack before, you must have come across the [Pipeline](https://docs.haystack.deepset.ai/docs/pipelines), one of the most prominent concepts of the framework. However, this abstraction is by no means an obvious choice when it comes to NLP libraries. Why did we adopt this concept, and what does it bring us? 
 
 In this post, I go into all the details of how the Pipeline abstraction works in Haystack now, why it works this way, and its strengths and weaknesses. This deep dive into the current state of the framework is also a premise for the next episode, where I will explain how Haystack 2.0 addresses this version's shortcomings.
 
@@ -23,7 +23,7 @@ If you think you already know how Haystack Pipelines work, give this post a chan
 
 Interestingly, in the very first releases of Haystack, Pipelines were not a thing. Version 0.1.0 was released with a simpler object, the [Finder](https://github.com/deepset-ai/haystack/blob/d2c77f307788899eb562d3cb6e42c69b968b9f2a/haystack/__init__.py#L16), that did little more than gluing together a [Retriever](https://docs.haystack.deepset.ai/docs/retriever) and a [Reader](https://docs.haystack.deepset.ai/docs/reader), the two fundamental building blocks of a [semantic search](https://docs.haystack.deepset.ai/docs/glossary#semantic-search) application.
 
-In the next few months, however, the capabilities of language models expanded to enable many more use cases. One hot topic was [hybrid retrieval](https://haystack.deepset.aiblog/hybrid-retrieval): a system composed of two different Retrievers, an optional [Ranker](https://docs.haystack.deepset.ai/docs/ranker), and an optional Reader. This kind of application clearly didn't fit the Finder's design, so in [version 0.6.0](https://github.com/deepset-ai/haystack/releases/tag/v0.6.0) the [Pipeline](https://docs.haystack.deepset.ai/docs/pipelines) object was introduced: a new abstraction that helped users build applications as a graph of components.
+In the next few months, however, the capabilities of language models expanded to enable many more use cases. One hot topic was [hybrid retrieval](https://haystack.deepset.ai/blog/hybrid-retrieval): a system composed of two different Retrievers, an optional [Ranker](https://docs.haystack.deepset.ai/docs/ranker), and an optional Reader. This kind of application clearly didn't fit the Finder's design, so in [version 0.6.0](https://github.com/deepset-ai/haystack/releases/tag/v0.6.0) the [Pipeline](https://docs.haystack.deepset.ai/docs/pipelines) object was introduced: a new abstraction that helped users build applications as a graph of components.
 
 Pipeline's API was a huge step forward from Finder. It instantly enabled seemingly endless combinations of components, unlocked almost all use cases conceivable, and became a foundational Haystack concept meant to stay for a very long time. In fact, the API offered by the first version of Pipeline changed very little since its initial release. 
 
@@ -81,7 +81,7 @@ pipeline = ExtractiveQAPipeline(reader, retriever)
 is enough to get your Extractive QA applications ready to answer your questions. And you can do so with just another line.
 
 ```python
-answers = Pipeline.run(query="What did Einstein work on?")
+answers = pipeline.run(query="What did Einstein work on?")
 ```
 
 ## "Flexibility powered by DAGs"

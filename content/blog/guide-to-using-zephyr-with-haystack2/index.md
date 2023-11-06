@@ -9,8 +9,8 @@ toc: True
 date: 2023-11-06
 last_updated: 2023-11-06
 authors:
-  - Tuana Celik
   - Stefano Fiorucci
+  - Tuana Celik
 tags: ["Haystack 2.0", "LLM", "Open Source"]
 ---
 

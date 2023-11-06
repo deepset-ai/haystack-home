@@ -4,7 +4,7 @@ title: Stefano Fiorucci
 name: Stefano Fiorucci
 slug: stefano-fiorucci
 position: Open Source Engineer
-image: /images/authors/stefano-fiorucci.jpg
+image: /images/authors/stefano-fiorucci.png
 socials:
   author_page:
     - name: LinkedIn

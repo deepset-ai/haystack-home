@@ -99,7 +99,7 @@ Just as railways are excellent at going from A to B when you only need to take a
 
 ## The Pipeline Structure of Haystack 2.0
 
-By design, pipelines in Haystack 2.0 is not geared toward specific NLP use cases, but it's a minimal, generic [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load)-like library written purely in Python.
+By design, pipelines in Haystack 2.0 is not geared toward specific NLP use cases, but it's a minimal, generic [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load)-like class.
 
 The new pipelines brings two core elements to the table:
 

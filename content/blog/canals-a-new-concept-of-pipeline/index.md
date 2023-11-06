@@ -101,7 +101,7 @@ Just as railways are excellent at going from A to B when you only need to take a
 
 By design, pipelines in Haystack 2.0 is not geared toward specific NLP use cases, but it's a minimal, generic [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load)-like class.
 
-The new pipelines brings two core elements to the table:
+At its core, Haystack 2.0 builds upon these two fundamental concepts:
 
 - The `Component` protocol, a well-defined API that Python classes need to respect to be understood by the pipeline.
 

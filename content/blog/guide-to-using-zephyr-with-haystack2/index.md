@@ -187,7 +187,7 @@ results = rag.run({
     }
   )
 
-  answer = results["llm"]["replies"][0]
+answer = results["llm"]["replies"][0]
 ```
 
 The result we got from the pipeline above is the following:

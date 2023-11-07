@@ -17,17 +17,9 @@ In the previous post of the Haystack 2.0 series, we saw how to build RAG pipelin
 
 In this post, I will show you how to use Haystack 2.0 to create large amounts of documents from a few web pages and write them a document store that you can then use for retrieval.
 
-{{< notice info >}}
+> 💡 *Do you want to see the code in action? Check out the [Colab notebook](https://colab.research.google.com/drive/155CtcumiK5w3wX6FWyM1dG3OqnhwnCqy?usp=sharing) or the [gist](https://gist.github.com/ZanSara/ba7efd241c61ccfd12ed48195e23bb34).*
 
-💡 *Do you want to see the code in action? Check out the [Colab notebook](https://colab.research.google.com/drive/155CtcumiK5w3wX6FWyM1dG3OqnhwnCqy?usp=sharing) or the [gist](https://gist.github.com/ZanSara/ba7efd241c61ccfd12ed48195e23bb34).*
-
-{{< /notice >}}
-
-{{< notice warning >}}
-
-<i>⚠️ **Warning:**</i> *This code was tested on `haystack-ai==0.117.0`. Haystack 2.0 is still unstable, so later versions might introduce breaking changes without notice until Haystack 2.0 is officially released. The concepts and components, however, stay the same.*
-
-{{< /notice >}}
+> <i>⚠️ **Warning:**</i> *This code was tested on `haystack-ai==0.117.0`. Haystack 2.0 is still unstable, so later versions might introduce breaking changes without notice until Haystack 2.0 is officially released. The concepts and components, however, stay the same.*
 
 
 # The task
@@ -100,15 +92,7 @@ So far, each Document stored the content of an entire file. If a file was a whol
 
 That's where `TextDocumentSplitter` comes into play.
 
-{{< notice info >}}
-
-💡 *With LLMs in a race to offer the [largest context window](https://magic.dev/blog/ltm-1) and research showing that such a chase is [counterproductive](https://arxiv.org/abs/2307.03172), there is no general consensus about how splitting Documents for RAG impacts the LLM's performance.*
-
-*What you need to keep in mind is that splitting implies a tradeoff. Huge documents will always be slightly relevant for every question, but they will bring a lot of context, which may or may not confuse the model. On the other hand, tiny Documents are much more likely to be retrieved only for questions they're highly relevant for, but they might provide too little context for the LLM to really understand their meaning.*
-
-*Tweaking the size of your Documents for the specific LLM you're using and the topic of your documents is one way to optimize your RAG pipeline, so be ready to experiment with different Document sizes before committing to one.*
-
-{{< /notice >}}
+> 💡 *With LLMs in a race to offer the [largest context window](https://magic.dev/blog/ltm-1) and research showing that such a chase is [counterproductive](https://arxiv.org/abs/2307.03172), there is no general consensus about how splitting Documents for RAG impacts the LLM's performance. What you need to keep in mind is that splitting implies a tradeoff. Huge documents will always be slightly relevant for every question, but they will bring a lot of context, which may or may not confuse the model. On the other hand, tiny Documents are much more likely to be retrieved only for questions they're highly relevant for, but they might provide too little context for the LLM to really understand their meaning. Tweaking the size of your Documents for the specific LLM you're using and the topic of your documents is one way to optimize your RAG pipeline, so be ready to experiment with different Document sizes before committing to one.*
 
 How is it used?
 

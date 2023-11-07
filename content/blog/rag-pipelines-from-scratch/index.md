@@ -19,11 +19,7 @@ RAG is quickly becoming an essential technique to make LLMs more reliable and ef
 
 Let's see how to build such applications with Haystack 2.0, from a direct call to an LLM to a fully-fledged, production-ready RAG pipeline that scales. At the end of this post, we will have an application that can answer questions about world countries based on data stored in a private database. At that point, the knowledge of the LLM will be only limited by the content of our data store, and all of this can be accomplished without fine-tuning language models.
 
-{{< notice info >}}
-
-💡 *I recently gave a talk about RAG applications in Haystack 2.0, so if you prefer videos to blog posts, you can find the recording [here](https://zansara.dev/talks/2023-10-12-office-hours-rag-pipelines/). Keep in mind that the code might be slightly outdated.*
-
-{{< /notice >}}
+> 💡 *I recently gave a talk about RAG applications in Haystack 2.0, so if you prefer videos to blog posts, you can find the recording [here](https://zansara.dev/talks/2023-10-12-office-hours-rag-pipelines/). Keep in mind that the code might be slightly outdated.*
 
 # What is RAG?
 
@@ -42,18 +38,10 @@ As you can see in the image above (taken directly from the original paper), a sy
 
 Let's build one of these with Haystack 2.0!
 
-{{< notice info >}}
-
-💡 *Do you want to see this code in action? Check out the Colab notebook [here](https://colab.research.google.com/drive/1vX_2WIRuqsXmoPMsJbqE45SYn21yuDjf?usp=drive_link) or the [gist](https://gist.github.com/ZanSara/cad6f772d3a894058db34f566e2c4042).
-
-{{< /notice >}}
+> 💡 *Do you want to see this code in action? Check out the Colab notebook [here](https://colab.research.google.com/drive/1vX_2WIRuqsXmoPMsJbqE45SYn21yuDjf?usp=drive_link) or the [gist](https://gist.github.com/ZanSara/cad6f772d3a894058db34f566e2c4042).
 
 
-{{< notice warning >}}
-
-<i>⚠️ **Warning:**</i> *This code was tested on `haystack-ai==0.88.0`. Haystack 2.0 is still unstable, so later versions might introduce breaking changes without notice until Haystack 2.0 is officially released. The concepts and components however stay the same.*
-
-{{< /notice >}}
+> ⚠️ **Warning:** *This code was tested on `haystack-ai==0.88.0`. Haystack 2.0 is still unstable, so later versions might introduce breaking changes without notice until Haystack 2.0 is officially released. The concepts and components however stay the same.*
 
 # Generators: Haystack's LLM components
 
@@ -226,11 +214,7 @@ For now, we've been playing with prompts, but the fundamental question remains u
 
 Thankfully, retrieving relevant information from large [corpora](https://en.wikipedia.org/wiki/Text_corpus) (a technical term for extensive collections of data, usually text) is a task that Haystack excels at since its inception: the components that perform this task are called [Retrievers](https://docs.haystack.deepset.ai/docs/retriever).
  
-{{< notice warning >}}
-
-*At the time of writing, the [documentation](https://docs.haystack.deepset.ai/docs/retriever) still refers to the Haystack 1.x component. The high-level concepts are unchanged, but the code is very different.*
-
-{{< /notice >}}
+> ⚠️ *At the time of writing, the [documentation](https://docs.haystack.deepset.ai/docs/retriever) still refers to the Haystack 1.x component. The high-level concepts are unchanged, but the code is very different.*
 
 Retrieval can be performed on different data sources: to begin, let's assume we're searching for data in a local database, which is the use case that most Retrievers are geared towards.
 
@@ -356,11 +340,7 @@ Of course, scaling up a system to production readiness is no simple task that ca
 
 `InMemoryDocumentStore` is clearly a toy implementation: Haystack supports much more performant document stores such as [Elasticsearch](https://haystack.deepset.ai/integrations/elasticsearch-document-store), [ChromaDB](https://haystack.deepset.ai/integrations/chroma-documentstore) and [Marqo](https://haystack.deepset.ai/integrations/marqo-document-store). Since we have built our app with a BM25 retriever, let's select Elasticsearch as our production-ready document store of choice.
 
-{{< notice warning >}}
-
-<i>⚠️ **Warning:**</i> *at the time of writing, Elasticsearch support for Haystack 2.0 is still [unstable](https://github.com/deepset-ai/haystack-core-integrations/pull/41). Keep an eye on the [integrations repository](https://github.com/deepset-ai/haystack-core-integrations) for updates about its upcoming release. To know how to make it work today, check out [the Colab notebook](https://colab.research.google.com/drive/1vX_2WIRuqsXmoPMsJbqE45SYn21yuDjf?usp=drive_link) or the [gist](https://gist.github.com/ZanSara/cad6f772d3a894058db34f566e2c4042).*
-
-{{< /notice >}}
+> ⚠️ **Warning:**</i> *at the time of writing, Elasticsearch support for Haystack 2.0 is still [unstable](https://github.com/deepset-ai/haystack-core-integrations/pull/41). Keep an eye on the [integrations repository](https://github.com/deepset-ai/haystack-core-integrations) for updates about its upcoming release. To know how to make it work today, check out [the Colab notebook](https://colab.research.google.com/drive/1vX_2WIRuqsXmoPMsJbqE45SYn21yuDjf?usp=drive_link) or the [gist](https://gist.github.com/ZanSara/cad6f772d3a894058db34f566e2c4042).*
 
 How do we use Elasticsearch on our pipeline? All it takes is to swap out `InMemoryDocumentStore` and `InMemoryBM25Retriever` with their Elasticsearch counterparts, which offer nearly identical APIs.
 

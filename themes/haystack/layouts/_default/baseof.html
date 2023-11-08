@@ -10,7 +10,7 @@
     {{ partial "header" . }}
 
     {{/* Announcement Bar */}}
-     {{ if not (eq .Params.Layout "advent") }}
+     {{ if not (or (eq .Params.Layout "advent") (eq .Params.Layout "advent-challenge")) }}
       {{ partial "announcement" . }}
     {{ end}} 
 

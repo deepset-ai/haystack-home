@@ -151,3 +151,5 @@ print(results["answers"][0].answer)
 
 >> "Based on the information provided in the reviews, it seems that the accommodation can be very noisy, especially at night. Multiple reviewers mentioned..."
 ```
+
+To learn more about how you can use Cohere models in Haystack pipelines, check out our [integration page for Cohere](https://haystack.deepset.ai/integrations/cohere)🩵

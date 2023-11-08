@@ -36,6 +36,11 @@ if [[ "$DEPLOY_URL" != "localhost" ]]; then
     dir=$(dirname "{}" | sed -e "s,^.*content/blog/,," -e "s,/.*,,");
     sed -i "/\(http\|\/images\)/! s~!\[\([^]]*\)\]([./]*\([^)]*\))~![\1]($dir/\2)~g" "{}"
     ' \;
+
+    find ./content/advent-of-haystack -name "index.md" -type f -exec bash -c '
+    dir=$(dirname "{}" | sed -e "s,^.*content/advent-of-haystack/,," -e "s,/.*,,");
+    sed -i "/\(http\|\/images\)/! s~!\[\([^]]*\)\]([./]*\([^)]*\))~![\1]($dir/\2)~g" "{}"
+    ' \;
 fi
 
 echo "Deploy URL: ${DEPLOY_URL}"

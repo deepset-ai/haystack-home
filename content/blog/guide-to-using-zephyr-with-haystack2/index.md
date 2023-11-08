@@ -3,7 +3,7 @@ layout: blog-post
 title: Guide to Using Zephyr Models to Generate Answers on Your Data
 description: Learn how to use the new Zephyr models in Haystack 2.0 pipelines with the upcoming HuggingFaceLocalGenerator
 featured_image: thumbnail.png
-featured_image_caption: Build retrieval-augmented pipleines using open-source LLMs from Hugging Face 🪁
+featured_image_caption: Build retrieval-augmented pipelines using open-source LLMs from Hugging Face 🪁
 images: ["blog/guide-to-using-zephyr-with-haystack2/thumbnail.png"]
 toc: True
 date: 2023-11-06

@@ -21,7 +21,7 @@ cp ./haystack-integrations/integrations/*.md ./content/integrations
 
 rm -rf haystack-advent
 git clone --filter=tree:0 https://$GITHUB_USER_NAME:$GH_HAYSTACK_HOME_PAT@github.com/deepset-ai/advent-of-haystack.git haystack-advent
-cp ./haystack-advent/challenges/* ./content/advent-of-haystack
+cp -R ./haystack-advent/challenges/* ./content/advent-of-haystack
 
 npm install
 

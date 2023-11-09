@@ -4,6 +4,7 @@
   {{ $title = .Params.title }}
 {{end}}
 
+{{ $blogPosts := where .Data.Pages "Params.hidden" "!=" true }}
 
 <div class="blog-list-content">
   <div class="container container-padded">
@@ -74,7 +75,7 @@
 
       <div class="blog-grid-container">
         {{ $currentTags := slice }}
-        {{ range .Data.Pages }}
+        {{ range $blogPosts }}
           {{ $currentTags = union $currentTags .Params.tags }}
         {{ end }}
         {{ $currentTags = sort $currentTags }}
@@ -108,9 +109,6 @@
         {{ end }}
         {{/* Blog posts grid */}}
         <div class="blog-grid blog-grid-static">
-          {{/* Get the blog posts */}}
-          {{ $blogPosts := .Data.Pages }}
-  
           {{/* Append homepage to blogposts and hide it later - hack to get 1 less post on the first page, to show a
           larger featured post */}}
           {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}

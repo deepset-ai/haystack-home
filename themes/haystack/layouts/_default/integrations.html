@@ -1,16 +1,18 @@
 {{/* Integrations page */}}
 {{ define "main" }}
+  {{ $integrations := where .Data.Pages "Params.hidden" "!=" true }}
+
   <div class="grid-page">
     {{/* Hero */}}
     {{ partial "page-hero" . }}
 
-
     <div class="grid-page-content">
       <div class="container container-padded">
         <div class="inner inner-top">
+
           {{/* Section title */}}
           <h2 class="section-title">
-            {{ len (where .Site.Pages "Layout" "integration") }} Total
+            {{ len $integrations }} Total
             Integrations
           </h2>
 
@@ -54,7 +56,7 @@
                   <option value="all">All Types</option>
 
                   {{ $types := slice }}
-                  {{ range where .Site.Pages "Layout" "integration" }}
+                  {{ range $integrations }}
                     {{ if .Params.type }}
                       {{ if not (in $types .Params.type) }}
                         {{ $types = $types | append .Params.type }}
@@ -80,7 +82,7 @@
 
           {{/* Integrations grid */}}
           <div class="grid-page-grid integrations-grid">
-            {{ range where .Site.Pages "Layout" "integration" }}
+            {{ range $integrations }}
               {{ partial "integration-card" . }}
             {{ end }}
           </div>

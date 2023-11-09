@@ -3,10 +3,11 @@
   <div class="accordions">
     <span class="sidebar-title">Integrations</span>
     {{ $currentPage := . }}
+    {{ $integrations := where (.GetPage "/integrations").Pages "Params.hidden" "!=" true }}
 
     {{/*  Get all the integration types  */}}
     {{ $types := slice }}
-    {{ range where .Site.Pages "Layout" "integration" }}
+    {{ range $integrations }}
       {{ if .Params.type }}
         {{ if not (in $types .Params.type) }}
           {{ $types = $types | append .Params.type }}
@@ -25,7 +26,7 @@
         </summary>
 
         <ul class="content" role="list">
-          {{ range where (where $.Site.Pages "Section" "integrations")  ".Params.type" . }}
+          {{ range where $integrations ".Params.type" . }}
             <li>
               {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
                 <p>{{ .Params.name }}</p>

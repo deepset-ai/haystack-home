@@ -1,5 +1,6 @@
 {{/* Tutorials page */}}
 {{ define "main" }}
+  {{ $tutorials := where .Data.Pages "Params.hidden" "!=" true }}
   <div class="grid-page">
     {{/* Hero */}}
     {{ partial "page-hero" . }}
@@ -9,7 +10,7 @@
         <div class="inner inner-top">
           {{/* Section title */}}
           <h2 class="section-title">
-            {{ len (where .Site.Pages "Layout" "tutorial") }} tutorials for
+            {{ len $tutorials }} tutorials for
             <span>all</span> levels
           </h2>
 
@@ -92,13 +93,16 @@
 
           {{/* Tutorials grid */}}
           <div class="grid-page-grid">
+            {{ $featured := where $tutorials "Params.featured" true }}
+            {{ $notFeatured := where $tutorials "Params.featured" "!=" true }}
+
             {{/*  Featured tutorials  */}}
-            {{ range where (where .Site.Pages "Params.featured" true) "Layout" "tutorial" }}
+            {{ range $featured }}
               {{ partial "tutorial-card" . }}
             {{ end }}
 
             {{/*  Other tutorials  */}}
-            {{ range where (where .Site.Pages "Params.featured" "!=" true) "Layout" "tutorial" }}
+            {{ range $notFeatured }}
               {{ partial "tutorial-card" . }}
             {{ end }}
           </div>

@@ -2,6 +2,8 @@
 <aside class="toc-sidebar">
   <div class="accordions">
     {{ $currentPage := . }}
+    {{ $tutorials := where  (.GetPage "/tutorials").Pages "Params.hidden" "!=" true }}
+
     {{/* Beginner */}}
     <details
       class="accordion-js"
@@ -11,7 +13,7 @@
         <div class="accordion-title-child">Beginner</div>
       </summary>
       <ul class="content" role="list">
-        {{ range where (where .Site.Pages "Section" "tutorials")  ".Params.level" "beginner" }}
+        {{ range where $tutorials ".Params.level" "beginner" }}
           <li>
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>
@@ -45,7 +47,7 @@
         <div class="accordion-title-child">Intermediate</div>
       </summary>
       <ul class="content" role="list">
-        {{ range where (where .Site.Pages "Section" "tutorials")  ".Params.level" "intermediate" }}
+        {{ range where $tutorials ".Params.level" "intermediate" }}
           <li>
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>
@@ -79,7 +81,7 @@
         <div class="accordion-title-child">Advanced</div>
       </summary>
       <ul class="content" role="list">
-        {{ range where (where .Site.Pages "Section" "tutorials")  ".Params.level" "advanced" }}
+        {{ range where $tutorials ".Params.level" "advanced" }}
           <li>
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>

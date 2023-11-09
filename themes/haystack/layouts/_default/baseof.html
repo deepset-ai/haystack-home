@@ -9,10 +9,10 @@
     {{/*  Header  */}}
     {{ partial "header" . }}
 
-    {{/* Announcement Bar */}}
+<!--     {{/* Announcement Bar */}}
      {{ if not (or (eq .Params.Layout "advent") (eq .Params.Layout "advent-challenge")) }}
       {{ partial "announcement" . }}
-    {{ end}} 
+    {{ end}}  -->
 
     {{/*  Main  */}}
     <main>{{ block "main" . }}{{ end }}</main>

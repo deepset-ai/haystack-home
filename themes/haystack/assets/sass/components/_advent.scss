@@ -110,6 +110,10 @@
 .challenge-content {
   padding-top: 2rem;
 
+  img {
+    margin: auto;
+  }
+
   @include md {
     padding-top: 3rem;
   }

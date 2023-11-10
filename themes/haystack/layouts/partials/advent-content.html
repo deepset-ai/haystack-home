@@ -1,7 +1,7 @@
 <div class="advent-content image-bg">
     <div class="container">
         {{ $adventPages := sort (.GetPage "/advent-of-haystack").Pages "Params.day" }}
-        {{ $totalDoors := 13 }}
+        {{ $totalDoors := 10 }}
         {{ $openDoors := len $adventPages }}
 
         {{ with .Params.discuss }}

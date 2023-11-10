@@ -81,7 +81,7 @@ class HackernewsNewestFetcher():
         article = Article(url)  
         article.download()  
         article.parse()  
-        docs.append(Document(text=article.text, metadata={'title': article.title, 'url': url}))  
+        docs.append(Document(content=article.text, meta={'title': article.title, 'url': url}))  
       except:  
         print(f"Couldn't download {url}, skipped")  
     return {'articles': docs}
@@ -116,7 +116,7 @@ First, we initialize all of the components we will need for the pipeline:
 ```python
 from haystack.preview import Pipeline  
 from haystack.preview.components.builders.prompt_builder import PromptBuilder  
-from haystack.preview.components.generators.openai import GPTGenerator  
+from haystack.preview.components.generators import GPTGenerator  
   
 prompt_template = """  
 You will be provided a few of the latest posts in HackerNews, followed by their URL.  
@@ -124,8 +124,8 @@ For each post, provide a brief summary followed by the URL the full post can be 
   
 Posts:  
 {% for article in articles %}  
-  {{article.text}}  
-  URL: {{article.metadata['url']}}  
+  {{article.content}}  
+  URL: {{article.meta['url']}}  
 {% endfor %}  
 """  
   
@@ -151,8 +151,8 @@ Here, notice how we connect `hackernews_fetcher.articles` to `prompt_builder.art
 ```
 Posts:  
 {% for article in articles %}  
-  {{article.text}}  
-  URL: {{article.metadata['url']}}  
+  {{article.contnet}}  
+  URL: {{article.meta['url']}}  
 {% endfor %}
 ```
 The output and input keys do not need to have matching names. Additionally, `prompt_builder` makes _all_ of the input keys available to your prompt template. We could, for example, provide a `documents` input to `prompt_builder` instead of `articles`. Then our code might look like this:
@@ -164,8 +164,8 @@ For each post, provide a brief summary followed by the URL the full post can be 
   
 Posts:  
 {% for document in documents %}  
-  {{document.text}}  
-  URL: {{document.metadata['url']}}  
+  {{document.content}}  
+  URL: {{document.meta['url']}}  
 {% endfor %}  
 """  
   

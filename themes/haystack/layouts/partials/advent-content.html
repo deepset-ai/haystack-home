@@ -13,23 +13,29 @@
 
         <div class="advent-grid">
             {{ range (seq 1 $totalDoors) }}
-                <div class="door">
-                    {{ if le . $openDoors }}
-                        {{ with (index $adventPages (sub . 1)) }}
+                {{ $currentDay := . }}
+                {{ $dayExists := false }}
+                
+                {{ range $adventPages }}
+                    {{ if eq .Params.day $currentDay }}
+                        {{ $dayExists = true }}
+                        <div class="door">
                             <img src="/images/advent-door-open.png" alt="">
                             <a href="{{ .RelPermalink }}#challenge" class="door-content">
                                 {{ .Params.door_text }}
                             </a>
-                        {{ end }}
-                    {{ else }}
+                        </div>
+                        {{ break }}
+                    {{ end }}
+                {{ end }}
+                {{ if not $dayExists }}
+                    <div class="door">
                         <img src="/images/advent-door.png" alt="">
                         <div class="door-number">
-                            <span>
-                                {{ . }}
-                            </span>
+                            <span>{{ $currentDay }}</span>
                         </div>
-                    {{ end }}
-                </div>
+                    </div>
+                {{ end }}
             {{ end }}
         </div>
     </div>

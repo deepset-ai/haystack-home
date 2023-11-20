@@ -105,7 +105,7 @@ Here is the pipeline graph:
 
 ![Simple LLM pipeline](simple-llm-pipeline.png)
 
-# Make the LLM cheat
+## Make the LLM cheat
 
 Building the Generative part of a RAG application was very simple! So far, we only provided the question to the LLM, but no information to base its answers on. Nowadays, LLMs possess a lot of general knowledge, so questions about famous countries such as France or Germany are easy for them to reply to correctly. However, when using an app about world countries, some users may be interested in knowing more about obscure or defunct microstates that don't exist anymore. In this case, ChatGPT is unlikely to provide the correct answer without any help.
 

@@ -333,7 +333,7 @@ pipe.run({
 Congratulations! We've just built our first, true-to-its-name RAG Pipeline. 
 
 
-# Scaling up: Elasticsearch
+## Scaling up: Elasticsearch
 
 So, we now have our running prototype. What does it take to scale this system up for production workloads?
 

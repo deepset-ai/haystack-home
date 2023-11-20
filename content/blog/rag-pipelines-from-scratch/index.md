@@ -21,7 +21,7 @@ Let's see how to build such applications with Haystack 2.0, from a direct call t
 
 > 💡 *I recently gave a talk about RAG applications in Haystack 2.0, so if you prefer videos to blog posts, you can find the recording [here](https://zansara.dev/talks/2023-10-12-office-hours-rag-pipelines/). Keep in mind that the code might be slightly outdated.*
 
-# What is RAG?
+## What is RAG?
 
 The idea of Retrieval Augmented Generation was first defined in a [paper](https://arxiv.org/abs/2005.11401) by Meta in 2020. It was designed to solve a few of the inherent limitations of seq2seq models (language models that, given a sentence, can finish writing it for you), such as:
 

@@ -63,7 +63,7 @@ Note that in this case, we're passing the API key to the component's constructor
 Right now, Haystack supports HuggingFace models through the [`HuggingFaceLocalGenerator`](https://github.com/deepset-ai/haystack/blob/f76fc04ed05df7b941c658ba85adbf1f87723153/haystack/preview/components/generators/hugging_face/hugging_face_local.py#L65) component, and many more LLMs are coming soon.
 
 
-# PromptBuilder: structured prompts from templates
+## PromptBuilder: structured prompts from templates
 
 Let's imagine that our LLM-powered chatbot also comes with some pre-defined questions that the user can select instead of typing in full. For example, instead of asking them to type `What's the official language of France?`, we let them select `Tell me the official languages` from a list, and they simply need to type "France" (or "Wakanda" for a change - our chatbot needs some challenges too).
 

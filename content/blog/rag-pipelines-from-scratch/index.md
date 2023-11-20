@@ -43,7 +43,7 @@ Let's build one of these with Haystack 2.0!
 
 > ⚠️ **Warning:** *This code was tested on `haystack-ai==0.88.0`. Haystack 2.0 is still unstable, so later versions might introduce breaking changes without notice until Haystack 2.0 is officially released. The concepts and components however stay the same.*
 
-# Generators: Haystack's LLM components
+## Generators: Haystack's LLM components
 
 As every NLP framework that deserves its name, Haystack supports LLMs in different ways. The easiest way to query an LLM in Haystack 2.0 is through a Generator component: depending on which LLM and how you intend to query it (chat, text completion, etc...), you should pick the appropriate class.
 

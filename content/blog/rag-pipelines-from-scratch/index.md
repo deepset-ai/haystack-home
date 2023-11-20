@@ -3,7 +3,7 @@ layout: blog-post
 title: "RAG Pipelines from scratch"
 description: "Let's build a simple RAG Pipeline with Haystack 2.0 by just connecting three components: a Retriever, a PromptBuilder and a Generator."
 featured_image: thumbnail.png
-featured_image_caption: "A picture of the sea platform of Rose Island in black and white."
+featured_image_caption: "The Republic of Rose Island"
 images: ["blog/rag-pipelines-from-scratch/thumbnail.png"]
 alt_image: The Republic of Rose Island
 toc: True

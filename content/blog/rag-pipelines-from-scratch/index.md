@@ -83,7 +83,7 @@ Note how we defined a variable, `country`, by wrapping its name in double curly 
 
 This syntax comes from [Jinja2](https://jinja.palletsprojects.com/en/3.0.x/intro/), a popular templating library for Python. If you have ever used Flask, Django, or Ansible, you will feel at home with `PromptBuilder`. Instead, if you never heard of any of these libraries, you can check out the [syntax](https://jinja.palletsprojects.com/en/3.0.x/templates/) on Jinja's documentation. Jinja has a powerful templating language and offers way more features than you'll ever need in prompt templates, ranging from simple if statements and for loops to object access through dot notation, nesting of templates, variables manipulation, macros, full-fledged import and encapsulation of templates, and more.
 
-# A Simple Generative Pipeline
+## A Simple Generative Pipeline
 
 With these two components, we can assemble a minimal pipeline to see how they work together. Connecting them is trivial: `PromptBuilder` generates a `prompt` output, and `GPTGenerator` expects an input with the same name and type.
 

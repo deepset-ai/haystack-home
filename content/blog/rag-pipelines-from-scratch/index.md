@@ -341,7 +341,6 @@ Of course, scaling up a system to production readiness is no simple task that ca
 
 `InMemoryDocumentStore` is clearly a toy implementation: Haystack supports much more performant document stores such as [Elasticsearch](https://haystack.deepset.ai/integrations/elasticsearch-document-store), [ChromaDB](https://haystack.deepset.ai/integrations/chroma-documentstore) and [Marqo](https://haystack.deepset.ai/integrations/marqo-document-store). Since we have built our app with a BM25 retriever, let's select Elasticsearch as our production-ready document store of choice.
 
-> ⚠️ **Warning:**</i> *at the time of writing, Elasticsearch support for Haystack 2.0 is still [unstable](https://github.com/deepset-ai/haystack-core-integrations/pull/41). Keep an eye on the [integrations repository](https://github.com/deepset-ai/haystack-core-integrations) for updates about its upcoming release. To know how to make it work today, check out [the Colab notebook](https://colab.research.google.com/drive/1vX_2WIRuqsXmoPMsJbqE45SYn21yuDjf?usp=drive_link) or the [gist](https://gist.github.com/ZanSara/cad6f772d3a894058db34f566e2c4042).*
 
 How do we use Elasticsearch on our pipeline? All it takes is to swap out `InMemoryDocumentStore` and `InMemoryBM25Retriever` with their Elasticsearch counterparts, which offer nearly identical APIs.
 

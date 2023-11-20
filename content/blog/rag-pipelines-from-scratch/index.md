@@ -47,7 +47,7 @@ Let's build one of these with Haystack 2.0!
 
 As every NLP framework that deserves its name, Haystack supports LLMs in different ways. The easiest way to query an LLM in Haystack 2.0 is through a Generator component: depending on which LLM and how you intend to query it (chat, text completion, etc...), you should pick the appropriate class.
 
-We're going to use ChatGPT for these examples, so the component we need is [`GPTGenerator`](https://github.com/deepset-ai/haystack/blob/main/haystack/preview/components/generators/openai/gpt.py). Here is all the code required to use it to query OpenAI's ChatGPT:
+We're going to use `gpt-3.5-turbo` (the model behind ChatGPT) for these examples, so the component we need is [`GPTGenerator`](https://github.com/deepset-ai/haystack/blob/main/haystack/preview/components/generators/openai.py). Here is all the code required to use it to query OpenAI's `gpt-3.5-turbo` :
 
 ```python
 from haystack.preview.components.generators.openai.gpt import GPTGenerator

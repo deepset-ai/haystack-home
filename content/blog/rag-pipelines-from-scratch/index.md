@@ -314,6 +314,7 @@ pipe.connect("retriever", "prompt_builder.documents")
 pipe.connect("prompt_builder", "llm")
 
 pipe.run({
+   "retriever": {"query": country},
     "prompt_builder": {
         "country": "the Republic of Rose Island"
     }

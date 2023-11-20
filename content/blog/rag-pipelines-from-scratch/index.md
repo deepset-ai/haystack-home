@@ -32,7 +32,7 @@ The idea of Retrieval Augmented Generation was first defined in a [paper](https:
 
 RAG solves these issues of "grounding" the LLM to reality by providing some relevant, up-to-date, and trusted information to the model together with the question. In this way, the LLM doesn't need to draw information from its internal knowledge, but it can base its replies on the snippets provided by the user.
 
-![RAG Paper diagram](rag-paper-image.png)
+![RAG Paper diagram](rag-paper-image.png "a visual representation of how RAG works, from the original paper")
 
 As you can see in the image above (taken directly from the original paper), a system such as RAG is made of two parts: one that finds text snippets that are relevant to the question asked by the user and a generative model, usually an LLM, that rephrases the snippets into a coherent answer for the question.
 

@@ -62,8 +62,9 @@ Second tab content here
 
 ### Adding an image in article content
 
-![alt text](image path.png "Markdown *caption* with a **[bold link](/)**")
-
+```markdown
+![alt text](image_path.png#small "Markdown *caption* with a **[bold link](/)**")
+```
 ### Editing the theme
 
 HTML template files are located at /themes/haystack/layouts

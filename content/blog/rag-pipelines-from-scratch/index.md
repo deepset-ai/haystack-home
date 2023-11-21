@@ -7,8 +7,8 @@ featured_image_caption: "The Republic of Rose Island"
 images: ["blog/rag-pipelines-from-scratch/thumbnail.png"]
 alt_image: The Republic of Rose Island
 toc: True
-date: 2023-11-20
-last_updated:  2023-11-20
+date: 2023-11-21
+last_updated:  2023-11-21
 authors:
   - Sara Zanzottera
 tags: ["Haystack 2.0", "RAG"]

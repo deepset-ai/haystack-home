@@ -288,7 +288,7 @@ Context:
 Question: What's the official language of {{ country }}?
 ```
 
-Notice how, despite the slightly alien syntax for a Python programmer, what the template does is reasonably evident: it iterates over the documents and, for each of them, renders their `text` field.
+Notice how, despite the slightly alien syntax for a Python programmer, what the template does is reasonably evident: it iterates over the documents and, for each of them, renders their `content` field.
 
 With all these pieces set up, we can finally put them all together.
 

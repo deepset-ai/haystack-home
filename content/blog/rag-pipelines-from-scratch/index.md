@@ -12,7 +12,7 @@ last_updated:  2023-11-21
 authors:
   - Sara Zanzottera
 tags: ["Haystack 2.0", "RAG"]
-canonical_url: https://www.zansara.dev/posts/2023-11-05-haystack-series-minimal-indexing/
+canonical_url: https://www.zansara.dev/posts/2023-10-27-haystack-series-rag/
 ---	
 
 Retrieval Augmented Generation (RAG) is quickly becoming an essential technique to make LLMs more reliable and effective at answering any question, regardless of how specific. To stay relevant in today's NLP landscape, Haystack must enable it.

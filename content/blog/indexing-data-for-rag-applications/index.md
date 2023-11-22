@@ -11,6 +11,7 @@ last_updated:  2023-11-05
 authors:
   - Sara Zanzottera
 tags: ["Haystack 2.0"]
+canonical_url: https://www.zansara.dev/posts/2023-11-05-haystack-series-minimal-indexing/
 ---	
 
 In the previous post of the Haystack 2.0 series, we saw how to build RAG pipelines using a generator, a prompt builder, and a retriever with its document store. However, the content of our document store wasn't extensive, and populating one with clean, properly formatted data is not an easy task. How can we approach this problem?

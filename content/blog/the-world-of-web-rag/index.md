@@ -11,6 +11,7 @@ last_updated:  2023-11-09
 authors:
   - Sara Zanzottera
 tags: ["Haystack 2.0"]
+canonical_url: https://www.zansara.dev/posts/2023-11-09-haystack-series-simple-web-rag/
 ---	
 
 In an earlier post of the Haystack 2.0 series, we've seen how to build RAG and indexing pipelines. An application that uses these two pipelines is practical if you have an extensive, private collection of documents and need to perform RAG on such data only. However, in many cases, you may want to get data from the Internet: from news outlets, documentation pages, and so on.

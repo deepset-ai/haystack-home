@@ -20,8 +20,8 @@
             <div class="select-wrapper">
               <label for="sort">Haystack Version:</label>
               <select id="version-select" class="fixed" onchange="filterAndSort();">
-                <option value="1">1.0</option>
-                <option value="2">2.0-beta</option>
+                <option value="1.0">1.0</option>
+                <option value="2.0-beta">2.0-beta</option>
               </select>
             </div>
           </div>
@@ -163,7 +163,7 @@
       }
 
       {{/*  Filter by version  */}}
-      if (selectedVersion === "2") {
+      if (selectedVersion === "2.0-beta") {
         tutorials = tutorials.filter(t => t.dataset.haystack_2)
       } else {
         tutorials = tutorials.filter(t => !t.dataset.haystack_2)
@@ -199,7 +199,7 @@
       document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
 
       {{/*  Update the banner and hero title tag  */}}
-      if (selectedVersion === "2") {
+      if (selectedVersion === "2.0-beta") {
         banner.classList.add("v2")
         banner.children[0].innerHTML= `Looking for tutorials working with 1.x? Check out <span>here</span>`
         heroTitle.innerHTML = `Tutorials <span class="tag">2.0-beta</span>`
@@ -213,19 +213,42 @@
       tutorials.forEach((e) =>
         document.querySelector(".grid-page-grid").appendChild(e)
       );
+
+      updateURL(selectedVersion);
+    }
+
+    const updateURL = (version) => {
+      const params = new URLSearchParams();
+      if (version && version !== "1.0") params.set('v', version);
+    
+      if (params.toString() === '') {
+        history.replaceState(null, '', window.location.pathname);
+        return;
+      }
+      history.replaceState(null, '', '?' + params.toString());
+    }
+
+    const setFiltersFromParams = () => {
+      const params = new URLSearchParams(window.location.search);
+      
+      const version = params.get('v') || '1.0';
+      document.querySelector("#version-select").value = version;
+    
+      filterAndSort();
     }
 
     const resetFilters = () => {
       document.querySelector("#level-select").value = "all";
       document.querySelector("#sort-select").value = "level";
-      document.querySelector("#version-select").value = "1";
+      document.querySelector("#version-select").value = "1.0";
+      document.querySelector("#search").value = "";
       filterAndSort();
     }
 
     {{/*  Version toggle for banner  */}}
     const toggleVersion = () => {
       const versionSelect = document.querySelector("#version-select");
-      versionSelect.value = versionSelect.value === "1" ? "2" : "1";
+      versionSelect.value = versionSelect.value === "1.0" ? "2.0-beta" : "1.0";
 
       filterAndSort();
     }
@@ -407,9 +430,12 @@
     }  */}}
 
     {{/*  Reset filters on pageshow in case of back button  */}}
-    addEventListener('pageshow', () => {
+    {{/*  addEventListener('pageshow', () => {
       resetFilters();
-      searchModalInput.value = ""
+    });  */}}
+
+    addEventListener("DOMContentLoaded", () => {
+      setFiltersFromParams();
     });
   </script>
 {{ end }}

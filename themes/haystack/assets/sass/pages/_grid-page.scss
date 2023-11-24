@@ -13,10 +13,21 @@
 
     .title-container {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: start;
+      margin-bottom: 1rem;
+
+      @include md {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        h2 {
+          margin-bottom: 0rem;
+        }
+      }
     }
   }
-
 
   // Grid
   .grid-page-grid {
@@ -405,7 +416,9 @@
     text-align: left;
 
     &.fixed {
-      width: 10rem;
+      @include lg {
+        width: 10rem;
+      }
     }
 
     &:focus {
@@ -523,5 +536,4 @@ button.search-wrapper {
   span {
     text-decoration: underline;
   }
-
 }

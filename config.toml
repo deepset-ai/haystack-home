@@ -141,7 +141,6 @@ paginatePath = "/"
   url = 'https://prompthub.deepset.ai'
   parent = 'resources'
   weight = 1
-  params = { tag = "New" }
 
 [[menu.main]]
   name = 'deepset Blog'

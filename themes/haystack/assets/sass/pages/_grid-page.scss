@@ -236,7 +236,8 @@
   gap: 0.25rem;
 
   &.featured {
-    background-color: var(--color-yellow);
+    background-color: var(--color-green);
+    color: var(--color-white);
   }
 
   &.outdated {
@@ -245,8 +246,7 @@
   }
 
   &.haystack-2 {
-    background-color: var(--color-green);
-    color: var(--color-white);
+    background-color: var(--color-yellow);
   }
 
   .icon {

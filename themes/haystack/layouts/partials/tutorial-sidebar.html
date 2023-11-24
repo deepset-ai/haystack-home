@@ -17,7 +17,14 @@
           <li>
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>
-                <summary class="accordion-title">{{ .Params.title }}</summary>
+                <summary class="accordion-title">
+                  <span>
+                    {{ .Params.title }}
+                    {{ with .Params.haystack_2 }}
+                      <span class="beta-tag">2.0-beta</span>
+                    {{ end }}
+                  </span>
+                </summary>
                 {{if .Params.toc}}
                   <div class="content">
                     {{/* Page TOC */}}
@@ -30,10 +37,12 @@
                 class="tutorial-card category-{{ lower .Params.category }}"
                 href="{{ .RelPermalink }}"
               >
-                {{ .Params.title }}
-                {{ with .Params.haystack_2 }}
-                  <span class="tag-sm">2.0-beta</span>
-                {{ end }}
+                <span>
+                  {{ .Params.title }}
+                  {{ with .Params.haystack_2 }}
+                    <span class="beta-tag">2.0-beta</span>
+                  {{ end }}
+                </span>
               </a>
             {{ end }}
           </li>
@@ -54,7 +63,14 @@
           <li>
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>
-                <summary class="accordion-title">{{ .Params.title }}</summary>
+                <summary class="accordion-title">
+                  <span>
+                    {{ .Params.title }}
+                    {{ with .Params.haystack_2 }}
+                      <span class="beta-tag">2.0-beta</span>
+                    {{ end }}
+                  </span>
+                </summary>
                 {{if .Params.toc}}
                   <div class="content">
                     {{/* Page TOC */}}
@@ -67,10 +83,12 @@
                 class="tutorial-card category-{{ lower .Params.category }}"
                 href="{{ .RelPermalink }}"
               >
-                {{ .Params.title }}
-                {{ with .Params.haystack_2 }}
-                  <span class="tag-sm">2.0-beta</span>
-                {{ end }}
+                <span>
+                  {{ .Params.title }}
+                  {{ with .Params.haystack_2 }}
+                    <span class="beta-tag">2.0-beta</span>
+                  {{ end }}
+                </span>
               </a>
             {{ end }}
           </li>
@@ -95,8 +113,8 @@
                   <span>
                     {{ .Params.title }}
                     {{ with .Params.haystack_2 }}
-                    <span class="beta-tag">2.0-beta</span>
-                  {{ end }}
+                      <span class="beta-tag">2.0-beta</span>
+                    {{ end }}
                   </span>
                 </summary>
                 
@@ -112,12 +130,12 @@
                 class="tutorial-card category-{{ lower .Params.category }}"
                 href="{{ .RelPermalink }}"
               >
-              <span>
-                {{ .Params.title }}
-                {{ with .Params.haystack_2 }}
-                  <span class="beta-tag">2.0-beta</span>
-                {{ end }}
-              </span>
+                <span>
+                  {{ .Params.title }}
+                  {{ with .Params.haystack_2 }}
+                    <span class="beta-tag">2.0-beta</span>
+                  {{ end }}
+                </span>
               </a>
             {{ end }}
           </li>

@@ -4,15 +4,27 @@
   <div class="grid-page">
     {{/* Hero */}}
     {{ partial "page-hero" . }}
+    {{ partial "tutorials-banner" . }}
 
     <div class="grid-page-content">
       <div class="container container-padded">
         <div class="inner inner-top">
           {{/* Section title */}}
-          <h2 class="section-title">
-            {{ len $tutorials }} tutorials for
-            <span>all</span> levels
-          </h2>
+          <div class="title-container">
+            <h2 class="section-title">
+              {{ len $tutorials }} tutorials for
+              <span>all</span> levels
+            </h2>
+
+            {{/* Version select */}}
+            <div class="select-wrapper">
+              <label for="sort">Haystack Version:</label>
+              <select id="version-select" class="fixed" onchange="filterAndSort();">
+                <option value="1">1.0</option>
+                <option value="2">2.0-beta</option>
+              </select>
+            </div>
+          </div>
 
           {{/* Sorting options / Filters */}}
           <div class="grid-page-options">
@@ -74,16 +86,14 @@
 
             <div>
               {{/* Sorting */}}
-              <div class="sort-wrapper">
-                <label for="sort">Sort By:</label>
                 <div class="select-wrapper">
-                  <select name="sort" id="sort-select" onchange="filterAndSort();">
+                  <label for="sort">Sort By:</label>
+                  <select name="sort" id="sort-select" class="fixed" onchange="filterAndSort();">
                     <option value="level">Level</option>
                     <option value="updated">Last Updated</option>
                     <option value="created">Newest</option>
                   </select>
                 </div>
-              </div>
             </div>
 
             <button class="reset-filters-btn reset-filters-mobile" onclick="resetFilters();">
@@ -133,22 +143,27 @@
       document.querySelectorAll(".grid-page-card")
     );
 
+    const banner = document.querySelector(".tutorials-banner")
+
+    {{/*  Filter and sort  */}}
     const filterAndSort = () => {
       let tutorials = [...tutorialCards]
       {{/*  Get selected filter, sort, and task options   */}}
       const selectedLevel = document.querySelector("#level-select").value;
       const selectedSort = document.querySelector("#sort-select").value;
-      {{/*  const selectedTask = document.querySelector("#task-select").value;  */}}
+      const selectedVersion = document.querySelector("#version-select").value;
 
       {{/*  Filter by level  */}}
       if (selectedLevel !== "all") {
         tutorials = tutorials.filter(t => t.dataset.level === selectedLevel)
       }
 
-      {{/*  Filter by task  */}}
-      {{/*  if (selectedTask !== "all") {
-        tutorials = tutorials.filter(t => t.dataset.task === selectedTask)
-      }  */}}
+      {{/*  Filter by version  */}}
+      if (selectedVersion === "2") {
+        tutorials = tutorials.filter(t => t.dataset.haystack_2)
+      } else {
+        tutorials = tutorials.filter(t => !t.dataset.haystack_2)
+      }
 
       {{/*  Sorting  */}}
       if (selectedSort === "created" || selectedSort === "updated") {
@@ -168,6 +183,14 @@
 
       {{/*  Update section title  */}}
       document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
+
+      {{/*  Update the banner  */}}
+      if (selectedVersion === "2") {
+        banner.classList.toggle("v2")
+        banner.children[0].innerHTML= `Looking tutorials working with 1.x? Check out <span>here</span>`
+      } else {
+        banner.children[0].innerHTML= `Looking for 2.0 beta tutorials? Check out <span>here</span>`
+      }
 
       document.querySelector(".grid-page-grid").innerHTML = ""
       tutorials.forEach((e) =>

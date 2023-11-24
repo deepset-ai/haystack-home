@@ -70,12 +70,15 @@ paginatePath = "/"
   name = 'Documentation'
   url = 'https://docs.haystack.deepset.ai/docs'
   weight = 2
+  params = { tag = "2.0-beta" }
+
 
 [[menu.main]]
   identifier = 'tutorials'
   name = 'Tutorials'
   url = '/tutorials'
   weight = 3
+  params = { tag = "2.0-beta" }
 
 [[menu.main]]
   identifier = 'integrations'
@@ -100,7 +103,6 @@ paginatePath = "/"
   name = 'Resources'
   url = '/'
   weight = 7
-  params = { tag = "New" }
 
 # Overview children
 [[menu.main]]

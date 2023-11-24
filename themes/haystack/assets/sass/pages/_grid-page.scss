@@ -233,6 +233,11 @@
     color: var(--color-white);
   }
 
+  &.haystack-2 {
+    background-color: var(--color-green);
+    color: var(--color-white);
+  }
+
   .icon {
     flex-shrink: 0;
     display: flex;

@@ -146,6 +146,7 @@
     );
 
     const banner = document.querySelector(".tutorials-banner")
+    const heroTitle = document.querySelector(".page-hero h1")
 
     {{/*  Filter and sort  */}}
     const filterAndSort = () => {
@@ -197,13 +198,15 @@
       {{/*  Update section title  */}}
       document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
 
-      {{/*  Update the banner  */}}
+      {{/*  Update the banner and hero title tag  */}}
       if (selectedVersion === "2") {
         banner.classList.add("v2")
         banner.children[0].innerHTML= `Looking tutorials working with 1.x? Check out <span>here</span>`
+        heroTitle.innerHTML = `Tutorials <span class="tag">2.0-beta</span>`
       } else {
         banner.classList.remove("v2")
         banner.children[0].innerHTML= `Looking for 2.0 beta tutorials? Check out <span>here</span>`
+        heroTitle.innerHTML = `Tutorials`
       }
 
       document.querySelector(".grid-page-grid").innerHTML = ""

@@ -19,7 +19,16 @@
     max-width: 43.75rem;
 
     h1 {
+      position: relative;
+      display: inline-block;
       margin-bottom: 1rem;
+
+      >.tag {
+        position: absolute;
+        top: -1.25rem;
+        right: -2rem;
+        background-color: var(--color-yellow);
+      }
     }
 
     h1,

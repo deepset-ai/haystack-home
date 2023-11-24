@@ -33,6 +33,13 @@
             </div>
         {{ end }}
 
+        {{/*  2.0-Beta  */}}
+        {{ with .Params.haystack_2 }}
+            <div class="haystack-2">
+                2.0-Beta
+            </div>
+        {{ end }}
+
         {{/*  Featured  */}}
         {{ if eq .Params.featured true }}
             <div class="featured">Featured</div>

@@ -11,7 +11,7 @@ hero:
 
     with a challenge a day 🎉
 
-    Every day for the next X days, we will publish a challenge.
+    Every day for the next 10 days, we will publish a challenge.
 
     Submit your results and discuss solutions with the community
 ---

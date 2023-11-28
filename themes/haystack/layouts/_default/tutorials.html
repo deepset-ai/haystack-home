@@ -21,7 +21,7 @@
               <label for="sort">Haystack Version:</label>
               <select id="version-select" class="fixed" onchange="filterAndSort();">
                 <option value="1.0">1.0</option>
-                <option value="2.0-beta">2.0-beta</option>
+                <option value="2.0">2.0-beta</option>
               </select>
             </div>
           </div>
@@ -163,7 +163,7 @@
       }
 
       {{/*  Filter by version  */}}
-      if (selectedVersion === "2.0-beta") {
+      if (selectedVersion === "2.0") {
         tutorials = tutorials.filter(t => t.dataset.haystack_2)
       } else {
         tutorials = tutorials.filter(t => !t.dataset.haystack_2)
@@ -199,7 +199,7 @@
       document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
 
       {{/*  Update the banner and hero title tag  */}}
-      if (selectedVersion === "2.0-beta") {
+      if (selectedVersion === "2.0") {
         banner.classList.add("v2")
         banner.children[0].innerHTML= `Looking for tutorials working with 1.x? Check out <span>here</span>`
         heroTitle.innerHTML = `Tutorials <span class="tag">2.0-beta</span>`
@@ -248,7 +248,7 @@
     {{/*  Version toggle for banner  */}}
     const toggleVersion = () => {
       const versionSelect = document.querySelector("#version-select");
-      versionSelect.value = versionSelect.value === "1.0" ? "2.0-beta" : "1.0";
+      versionSelect.value = versionSelect.value === "1.0" ? "2.0" : "1.0";
 
       filterAndSort();
     }

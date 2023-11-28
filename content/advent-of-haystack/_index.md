@@ -1,7 +1,7 @@
 ---
 layout: advent
 title: Advent of Haystack
-image: /images/advent-meta-image.png
+images: ["/images/advent-meta-image.png"]
 # description: Lorem Ipsum
 discuss: /
 

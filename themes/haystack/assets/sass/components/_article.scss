@@ -30,6 +30,20 @@
 .blog-post-content {
   overflow: hidden;
 
+  table {
+    margin: var(--sm-text-spacing) auto;
+  }
+
+  th, td {
+    padding: 5px;
+    border: 1px solid black;
+  }
+
+  th {
+    background-color: var(--color-dark-grey);
+    color: white;
+  }
+
   img {
     margin: auto;
 

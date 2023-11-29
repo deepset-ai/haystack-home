@@ -1,17 +1,17 @@
 ---
 layout: advent
 title: Advent of Haystack
-# description: Lorem Ipsum
+description: '10 challenges to discover Haystack 2.0-Beta'
 discuss: /
 
 hero:
   title: Advent of Haystack
   text: |
-    Try out the first stable release of Haystack 2.0
+    Try out Haystack 2.0-Beta to discover what's coming in the next major release
 
-    with a challenge a day 🎉
+    with 10 challenges in the month of December 🎉
 
-    Every day for the next 10 days, we will publish a challenge.
+    Every few days one of the doors in this page will open to reveal a new challenge
 
-    Submit your results and discuss solutions with the community
+    Submit your results and discuss solutions with the community 🎄
 ---

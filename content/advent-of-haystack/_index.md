@@ -1,6 +1,8 @@
 ---
 layout: advent
 title: Advent of Haystack
+featured_image: /images/advent-meta-image.png
+images: ["/images/advent-meta-image.png"]
 description: '10 challenges to discover Haystack 2.0-Beta'
 discuss: https://github.com/deepset-ai/haystack/discussions/6441
 

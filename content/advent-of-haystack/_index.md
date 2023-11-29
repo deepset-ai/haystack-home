@@ -2,7 +2,7 @@
 layout: advent
 title: Advent of Haystack
 description: '10 challenges to discover Haystack 2.0-Beta'
-discuss: /
+discuss: https://github.com/deepset-ai/haystack/discussions/6441
 
 hero:
   title: Advent of Haystack

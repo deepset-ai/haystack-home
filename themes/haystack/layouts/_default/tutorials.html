@@ -21,7 +21,7 @@
               <label for="sort">Haystack Version:</label>
               <select id="version-select" class="fixed" onchange="filterAndSort();">
                 <option value="1.0">1.0</option>
-                <option value="2.0">2.0-beta</option>
+                <option value="2.0">2.0-Beta</option>
               </select>
             </div>
           </div>
@@ -202,7 +202,7 @@
       if (selectedVersion === "2.0") {
         banner.classList.add("v2")
         banner.children[0].innerHTML= `Looking for tutorials working with 1.x? Check out <span>here</span>`
-        heroTitle.innerHTML = `Tutorials <span class="tag">2.0-beta</span>`
+        heroTitle.innerHTML = `Tutorials <span class="tag">2.0-Beta</span>`
       } else {
         banner.classList.remove("v2")
         banner.children[0].innerHTML= `Looking for 2.0 beta tutorials? Check out <span>here</span>`

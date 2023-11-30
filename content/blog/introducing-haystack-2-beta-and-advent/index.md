@@ -10,7 +10,7 @@ date: 2023-11-30
 last_updated:  2023-11-30
 authors:
   - Tuana Celik
-  - Massimilano Pippi
+  - Massimiliano Pippi
 tags: ["Open Source", "Community", "Haystack 2.0"]
 ---
 

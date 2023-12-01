@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 title: "Using Generative AI to Query Large BI Tables: Our Findings"
-description: We evaluated different LLM-based approaches to business intelligence question answering, aka Text to SQL
+description: We evaluated different LLM-based approaches to business intelligence question answering, aka text-to-SQL
 featured_image: thumbnail.jpg
 featured_image_caption: Nesting tables in black and gold lacquer by Chautard.
 images: ["blog/business-intelligence-sql-queries-llm/thumbnail.jpg"]
@@ -24,11 +24,11 @@ Their findings in a nutshell: business intelligence (BI) is hard, and so is eval
 
 > We’re also releasing our benchmark: [the code used to prompt and evaluate the LLMs](https://github.com/deepset-ai/biqa-llm), as well as the [dataset we created for this project](https://huggingface.co/datasets/deepset/stackoverflow-survey-2023-text-sql). We hope you find them useful 🙂!
 
-## BIQA is different from Table QA
+## Business Intelligence Question Answering is different from Table QA
 
 At [deepset](https://www.deepset.ai/), we have long been interested in the task of using language models to answer questions based on tabular data. Most recently, we wrote about [our project with Airbus](https://haystack.deepset.ai/blog/airbus-case-study/), which involved retrieving tables from pilot manuals and extracting answers from them – sometimes even using simple aggregation functions such as finding the maximum or average value of a column.
 
-BI use cases, however, operate on a completely different scale. A query language like SQL can execute much more powerful operations on much larger tables; for example, it can perform queries across multiple tables, join them, and reorder them according to complex criteria. To distinguish this problem from the simpler (and mostly solved) [task of Table QA](https://www.deepset.ai/blog/question-answering-on-structured-data), we call it "Business Intelligence Question Answering," or BIQA for short. It's also often referred to as "Text to SQL".
+BI use cases, however, operate on a completely different scale. A query language like SQL can execute much more powerful operations on much larger tables; for example, it can perform queries across multiple tables, join them, and reorder them according to complex criteria. To distinguish this problem from the simpler (and mostly solved) [task of Table QA](https://www.deepset.ai/blog/question-answering-on-structured-data), we call it "Business Intelligence Question Answering," or BIQA for short. It's also often referred to as "text-to-SQL".
 
 The BI use case is difficult, even for humans. This is because of the inherent ambiguity of natural language, which becomes particularly apparent when we try to map it to a formal language such as SQL. As a result, a question in natural language can have multiple interpretations in SQL. Let’s say we want to find out how many developers use Python in their day-to-day work. When we formulate this as an SQL query, we have to be specific: who exactly counts as a developer? How do we define "day-to-day"?
 
@@ -44,7 +44,7 @@ The ability to query large databases in natural language would save people a lot
 
 When we started, it seemed like we had a wide range of approaches to choose from. Over the past few months, many teams have tried to use the natural language understanding (NLU) capabilities of LLMs to generate SQL queries.
 
-But when we looked more closely at their results, we found that they were lacking: Often, the best-performing model only solved a very specific problem at hand and wasn't able to generalize to other BI use cases. This also meant that models performed very differently across benchmarks. Because we wanted data points that best reflected a common, real-world use case – and to ensure that the evaluation set consisted of data that the LLMs hadn’t seen before – we decided to create our own dataset and benchmark.
+But when we looked more closely at their results, we found that they were lacking: Often, the best-performing model only solved a very specific problem at hand and wasn't able to generalize to other BI use cases. This also meant that models performed very differently across benchmarks. We decided to create our own dataset and benchmark because we wanted data points that best reflected a common, real-world use case – and to ensure that the evaluation set consisted of data that the LLMs hadn’t seen before.
 
 ### The dataset
 

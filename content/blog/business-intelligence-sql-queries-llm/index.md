@@ -48,7 +48,7 @@ But when we looked more closely at their results, we found that they were lackin
 
 ### The dataset
 
-For our dataset, we used the latest [Developer Survey by StackOverflow](https://survey.stackoverflow.co/2023/). Every year, the platform polls developers and community members at large about their use of programming languages and other tools. The survey results are displayed as interactive charts on their website. In addition, StackOverflow publishes the entire dataset of questions and answers. For our dataset, we reverse-engineered SO’s SQL queries and ended up with about 120 query-answer pairs.
+For our dataset, we used the latest [Developer Survey by StackOverflow](https://survey.stackoverflow.co/2023/). Every year, the platform polls developers and community members at large about their use of programming languages and other tools. The survey results are displayed as interactive charts on their website. In addition, StackOverflow publishes the entire dataset of questions and answers. For our dataset, we reverse-engineered StackOverflow’s SQL queries and ended up with about 120 query-answer pairs.
 
 To make the database more like a real production environment, we normalized the database schema. For example, we split tables whose columns allowed multiple values at once into separate, related tables. Each data point consists of a natural language query and a corresponding label, the SQL equivalent of the query.
 

@@ -160,7 +160,7 @@ The poor performance of the RAG approach is partly due to the unbalanced dataset
 
 ### Fine-tuning an existing OSS model
 
-**Approach**: We can use a smaller open source LLM and fine-tune it on a suitable dataset. For that purpose, we fine-tuned a number of models on an EC2 instance using the resource-efficient [QLoRA approach](https://arxiv.org/abs/2305.14314) and a subset of the [Spider dataset](https://yale-lily.github.io/spider). These models included Llama 2 70 b and, in particular, all code-specific models available at the time (e.g., Starcoderbase, New Hope, Codegen 2.5).
+**Approach**: We can use a smaller open source LLM and fine-tune it on a suitable dataset. For that purpose, we fine-tuned a number of models on an EC2 instance using the resource-efficient [QLoRA approach](https://arxiv.org/abs/2305.14314) and a subset of the [Spider dataset](https://yale-lily.github.io/spider). These models included Llama 2 70B and, in particular, all code-specific models available at the time (e.g., Starcoderbase, New Hope, Codegen 2.5).
 
 **Observations**: Unfortunately, all of our OSS approaches failed, most likely because the dataset we used for fine-tuning wasn't up to the task. The Spider dataset is academically oriented and doesn't really capture the real-world business use cases that we were interested in (and that our evaluation dataset reflects quite accurately). The performance scores were correspondingly low, around 10%.
 

@@ -20,7 +20,9 @@ In organizations with large collections of data in tabular form, it’s the job 
 
 Granted, most LLMs can output at least some SQL queries based on natural language input. But can they handle large, multi-table databases in a real-world setting? In other words, can they do the job of a data analyst? A small team here at deepset set out to answer that question. Over the course of three months, we tried to find the best way to generate SQL queries on a real dataset.
 
-Their findings in a nutshell: business intelligence (BI) is hard, and so is evaluating BI use cases. Current approaches that claim high accuracy probably don't tell the whole story, and GPT-4 is one of the best models available for generating SQL queries. If you want to learn more about our findings – and find out which of the approaches we evaluated performed the best – then this article is for you. We’re also releasing our benchmark: [the code used to prompt and evaluate the LLMs](https://github.com/deepset-ai/biqa-llm), as well as the [dataset we created for this project](https://huggingface.co/datasets/deepset/stackoverflow-survey-2023-text-sql). We hope you find them useful 🙂!
+Their findings in a nutshell: business intelligence (BI) is hard, and so is evaluating BI use cases. Current approaches that claim high accuracy probably don't tell the whole story, and GPT-4 is one of the best models available for generating SQL queries. If you want to learn more about our findings – and find out which of the approaches we evaluated performed the best – then this article is for you. 
+
+> We’re also releasing our benchmark: [the code used to prompt and evaluate the LLMs](https://github.com/deepset-ai/biqa-llm), as well as the [dataset we created for this project](https://huggingface.co/datasets/deepset/stackoverflow-survey-2023-text-sql). We hope you find them useful 🙂!
 
 ## BIQA is different from Table QA
 

@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 title: "Using Generative AI to Query Large BI Tables: Our Findings"
-description: We evaluated different LLM-based approaches to business intelligence question answering, aka text-to-SQL
+description: We evaluated different LLM-based approaches to text-to-SQL
 featured_image: thumbnail.jpg
 featured_image_caption: Nesting tables in black and gold lacquer by Chautard.
 images: ["blog/business-intelligence-sql-queries-llm/thumbnail.jpg"]
@@ -24,11 +24,11 @@ Their findings in a nutshell: business intelligence (BI) is hard, and so is eval
 
 > We’re also releasing our benchmark: [the code used to prompt and evaluate the LLMs](https://github.com/deepset-ai/biqa-llm), as well as the [dataset we created for this project](https://huggingface.co/datasets/deepset/stackoverflow-survey-2023-text-sql). We hope you find them useful 🙂!
 
-## Business Intelligence Question Answering is different from Table QA
+## Text-to-SQL is different from Table QA
 
 At [deepset](https://www.deepset.ai/), we have long been interested in the task of using language models to answer questions based on tabular data. Most recently, we wrote about [our project with Airbus](https://haystack.deepset.ai/blog/airbus-case-study/), which involved retrieving tables from pilot manuals and extracting answers from them – sometimes even using simple aggregation functions such as finding the maximum or average value of a column.
 
-BI use cases, however, operate on a completely different scale. A query language like SQL can execute much more powerful operations on much larger tables; for example, it can perform queries across multiple tables, join them, and reorder them according to complex criteria. To distinguish this problem from the simpler (and mostly solved) [task of Table QA](https://www.deepset.ai/blog/question-answering-on-structured-data), we call it "Business Intelligence Question Answering," or BIQA for short. It's also often referred to as "text-to-SQL".
+BI use cases, however, operate on a completely different scale. A query language like SQL can execute much more powerful operations on much larger tables; for example, it can perform queries across multiple tables, join them, and reorder them according to complex criteria. To distinguish this problem from the simpler (and mostly solved) [task of Table QA](https://www.deepset.ai/blog/question-answering-on-structured-data), we called it "Business Intelligence Question Answering," or BIQA for short. It's also often referred to as "text-to-SQL".
 
 The BI use case is difficult, even for humans. This is because of the inherent ambiguity of natural language, which becomes particularly apparent when we try to map it to a formal language such as SQL. As a result, a question in natural language can have multiple interpretations in SQL. Let’s say we want to find out how many developers use Python in their day-to-day work. When we formulate this as an SQL query, we have to be specific: who exactly counts as a developer? How do we define "day-to-day"?
 
@@ -36,7 +36,7 @@ High standards for data quality can go a long way toward simplifying the ambigui
 
 ## The project
 
-The goal of our BIQA project was to find the best solution for converting natural language text into valid SQL queries that produce the correct result for the user. The generated query is returned along with the result so that users with some knowledge of SQL can verify that it is correct.
+The goal of our project was to find the best solution for converting natural language text into valid SQL queries that produce the correct result for the user. The generated query is returned along with the result so that users with some knowledge of SQL can verify that it is correct.
 
 The ability to query large databases in natural language would save people a lot of time. The LLM approach also means that you can make typos, query in languages other than English, and even integrate the SQL capability into a more complex workflow – it could be used as a [tool for an agent](https://haystack.deepset.ai/blog/introducing-haystack-agents), for example.
 
@@ -185,15 +185,15 @@ All of the evaluation results we report in this article are based on the new sch
 | Schema-aware + column-level descriptions + distinct-20 + few-shot | 70.0              |
 | Schema-aware + perfect retrieval (sqlcoder-34b-alpha @ 8bit)      | 35.8              |
 
-## Challenges and Takeaways
+## Challenges and takeaways
 
 Creating a general-purpose, LLM-driven solution for business intelligence in SQL is still a largely unsolved problem - which makes it all the more interesting to explore further. The main challenges relate to the following two factors:
 
 ### Dataset creation and evaluation is very time-consuming
 
-Creating a dataset for evaluating BIQA approaches is much harder than for, say, extractive question answering. Essentially, you have to write a piece of code (the SQL query) for each data point. That query needs to be tested and debugged before it can go into the dataset.
+Creating a dataset for evaluating text-to-SQL approaches is much harder than for, say, extractive question answering. Essentially, you have to write a piece of code (the SQL query) for each data point. That query needs to be tested and debugged before it can go into the dataset.
 
-And it's not just the creation of the dataset - the evaluation itself is time-consuming because, as we described earlier, it cannot be fully automated. BIQA evaluation, as we can do it now, isn't exactly scalable. Projects that want an accurate evaluation of their methods need to take into account that it will take a lot of their time.
+And it's not just the creation of the dataset - the evaluation itself is time-consuming because, as we described earlier, it cannot be fully automated. Text-to-SQL evaluation, as we can do it now, isn't exactly scalable. Projects that want an accurate evaluation of their methods need to take into account that it will take a lot of their time.
 
 ### The ambiguity of language and databases
 
@@ -203,7 +203,7 @@ Another factor that comes into play here is that databases themselves can be amb
 
 ## Demo
 
-In addition to our dataset and benchmarks, we also published a [demo](https://dev.cloud.dpst.dev/shared_prototypes?share_token=prototype_eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3NzIxNTcuNDg4LCJhdWQiOiJleHRlcm5hbCB1c2VyIiwiaXNzIjoiZEMiLCJ3b3Jrc3BhY2VfaWQiOiJmNWU5NDI1MC0xZmVkLTRkNTgtOGQ5MC1kZmUxMjY5ZWUzMjUiLCJ3b3Jrc3BhY2VfbmFtZSI6InN0YWNrb3ZlcmZsb3ctc3VydmV5Iiwib3JnYW5pemF0aW9uX2lkIjoiMGZiMzIyNDYtOWQ5OS00YTE1LWE0YzYtMzk3OWYyNDM1NzNhIiwic2hhcmVfaWQiOiI3ZDk4ZGI1Ny1mZWY3LTRlZDctOTc2My1jNDc2YWJmMzYxNGIifQ.ohlV-FwNa_0H_e4p86uS3MaKboLBn_dlKxPt4XcYYHg) of our best-performing BIQA approach to share with colleagues, friends, and now you, our readers. It serves to validate whether our accuracy results are representative of a real-world scenario. We found that user feedback was quite close to our results. The demo is hosted on deepset's [enterprise platform, deepset Cloud](https://www.deepset.ai/deepset-cloud), which creates an out-of-the-box user interface. Here's what it looks like:
+In addition to our dataset and benchmarks, we also published a [demo](https://dev.cloud.dpst.dev/shared_prototypes?share_token=prototype_eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3NzIxNTcuNDg4LCJhdWQiOiJleHRlcm5hbCB1c2VyIiwiaXNzIjoiZEMiLCJ3b3Jrc3BhY2VfaWQiOiJmNWU5NDI1MC0xZmVkLTRkNTgtOGQ5MC1kZmUxMjY5ZWUzMjUiLCJ3b3Jrc3BhY2VfbmFtZSI6InN0YWNrb3ZlcmZsb3ctc3VydmV5Iiwib3JnYW5pemF0aW9uX2lkIjoiMGZiMzIyNDYtOWQ5OS00YTE1LWE0YzYtMzk3OWYyNDM1NzNhIiwic2hhcmVfaWQiOiI3ZDk4ZGI1Ny1mZWY3LTRlZDctOTc2My1jNDc2YWJmMzYxNGIifQ.ohlV-FwNa_0H_e4p86uS3MaKboLBn_dlKxPt4XcYYHg) of our best-performing text-to-SQL approach to share with colleagues, friends, and now you, our readers. It serves to validate whether our accuracy results are representative of a real-world scenario. We found that user feedback was quite close to our results. The demo is hosted on deepset's [enterprise platform, deepset Cloud](https://www.deepset.ai/deepset-cloud), which creates an out-of-the-box user interface. Here's what it looks like:
 
 !["Screenshot of deepset Cloud search interface."](dc.png)
 
@@ -225,7 +225,7 @@ We can now reuse this generated content by copying the table into a csv file (or
 
 Now we can see that even though the class of newbies (as defined by the LLM) is much larger than the cohort of experienced developers, the expectations of both groups from AI tools seem to be very similar. 
 
-This is just a glimpse of what the BIQA approach can do. Feel free to play around with the demo and give us your feedback!
+This is just a glimpse of what our text-to-SQL solution can do. Feel free to play around with the demo and give us your feedback!
 
 ## Conclusion
 
@@ -235,6 +235,6 @@ However, in the same way that Copilot increases developer productivity, an AI co
 
 It's really hard to create a general-purpose SQL model – most success stories involve very specific use cases. For now, you can create specialized models with better fine-tuning datasets for specific use cases only. But keep in mind that creating datasets is time consuming.
 
-A robust evaluation that still allows you to move quickly is essential to making progress. If your organization has good data management practices in place, you're likely to be more successful in your BIQA efforts.
+A robust evaluation that still allows you to move quickly is essential to making progress. If your organization has good data management practices in place, you're likely to be more successful in your text-to-SQL efforts.
   
 Interested in moving beyond the AI hype and using LLMs where they can add real value? Check out our [Haystack repo](https://github.com/deepset-ai/haystack) on GitHub and [join us on Discord](https://discord.com/invite/VBpFzsgRVF)!

@@ -72,7 +72,7 @@ We also experimented with including rows from the database in the prompt to help
 
 !["Screenshot of shell with three tables, named 'Employment', 'Languages', and 'Coding activities', with three rows each. One of the values in the languages table is 'HTML/CSS'."](html-css.png#small)
 
-**Observations**: Schema-aware prompting produces very long prompts. We have 66 tables in our database, and including detailed information about each of them resulted in a prompt with about 3000 tokens. That's not only expensive, it also means that the model has to process more information at once, which can negatively affect its output. The simple combination of schema-aware prompting and GPT-4 got us to about 48 percent accuracy. The model errors ranged from invalid SQL queries that didn't match the actual schema, to more subtle errors where the SQL query returned a result that wasn't the correct answer to the question. Including sample rows in the prompt certainly improved performance.
+**Observations**: Schema-aware prompting produces very long prompts. We have 66 tables in our database, and including detailed information about each of them resulted in a prompt with about 3000 tokens. That's not only expensive, it also means that the model has to process more information at once, which can negatively affect its output. The simple combination of schema-aware prompting and GPT-4 got us to about 48% accuracy. The model errors ranged from invalid SQL queries that didn't match the actual schema, to more subtle errors where the SQL query returned a result that wasn't the correct answer to the question. Including sample rows in the prompt certainly improved performance.
 
 
 ### Agent-driven navigation of the database

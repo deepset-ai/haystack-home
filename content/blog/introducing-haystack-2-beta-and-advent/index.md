@@ -28,7 +28,7 @@ To get started: `pip install haystack-ai` 🎉
 
 > Haystack 2.0-Beta does not have feature parity with Haystack 1.x yet. The stable release of Haystack 2.0 will happen once a higher level of feature parity exists. To see a full list of available features in this beta release, check out our **release notes[link].**
 
-# Why is Haystack Changing
+## Why is Haystack Changing
 
 When the [first proper release of Haystack](https://github.com/deepset-ai/haystack/releases/tag/0.2.1) came about in 2020, a lot of the design centered around retrieval, embedding creation, indexing, semantic search and extractive QA. As you may have seen, that completely pivoted in the past (nearly two) years. With the rise of LLMs, we want to build more applications that make use of retrieval-augmented generation (RAG), agents and the ever-expanding LLM capabilities.
 
@@ -36,13 +36,13 @@ While the Haystack 1.x design - and especially the pipeline architecture - was f
 
 With Haystack 2.0, our aim is to be a lot more explicit about what each component does, and (to possibly exploit an overused term) to make the code self-explanatory, on top of making the Pipeline and Component architecture a lot more flexible, extendable, customizable while maintaining our high standards in terms of production readiness.
 
-# How is Haystack Changing
+## How is Haystack Changing
 
 Although Haystack 2.0 is a complete overhaul of the framework, it remains rooted in the fundamental abstractions that contributed to its prior success: users can continue using pipelines, document stores and nodes, which have now been rebranded as “components”.
 
 Here we will briefly highlight what some of the major changes are, with particular regard to developer experience. To see where we are in terms of feature parity with Haystack 1.x, check out our **release notes[link].**
 
-## Components
+### Components
 
 Nodes have always been considered the building blocks of Haystack pipelines, but that analogy isn’t completely true. If somebody is given building blocks, they assume they can arrange them however they want, but that’s not the case with nodes: for example, you can only put a Node of type Document Store at the very end of a pipeline. If you wonder why this happens, imagine building something with Legos, just the bricks all have different stubs and tubes sizes, and you have to try which one can possibly fit the other.
 
@@ -72,11 +72,11 @@ For a full example, you can check out a custom component Tuana built that [fetch
 
 > You can find the complete documentation of Haystack 2.0-Beta components [here](https://docs.haystack.deepset.ai/v2.0/docs/components).
 
-## Pipelines
+### Pipelines
 
 Pipelines are a core offering of Haystack, and that’s not changing. What’s different is what a Pipeline can do and how it can be assembled. In fact, the first challenge in Advent of Haystack exposes you to the most obvious changes.
 
-### Connections
+#### Connections
 
 Connecting pipeline components is becoming a lot more flexible. We’re moving away from having a rigid contract requiring “Query” or “File” as the first input, and every component can be connected to any other compatible one (or even more than one), being explicit about which output is being connected to which input. As a result, the final input and output of a Pipeline run will be solely determined by how components are laid out.
 
@@ -105,7 +105,7 @@ pipeline.connect("my_component_1.output_3", "my_component_2.input_1")
 
 ```
 
-### Directed (Multi)Graphs (out with the acyclical)
+#### Directed (Multi)Graphs (out with the acyclical)
 
 Haystack 1.x pipelines are implemented as directed acyclic graphs (DAGs). Massi’s analogy of it is that using a pipeline in Haystack 1.x is like going down a water slide. A very powerful architecture that can branch out from a platform and join up at the main pool, building pipelines in Haystack 1.x is a matter of stringing together the Nodes that you require to build out the NLP application you’re aiming for. But it’s always one directional with a clear start and end.
 
@@ -113,15 +113,15 @@ In Haystack 2.0, we are getting rid of the A in DAG (acyclic), meaning we can ha
 
 These new pipelines are also technically multigraphs, meaning a single component with multiple outputs can connect to another single component with multiple inputs.
 
-### Serialization
+#### Serialization
 
 Serialization means converting a pipeline to a format that you can save on your disk or send over the wire to load it later. In both Haystack 1.x and in Haystack 2.0-beta we use YAML for this, although we will be extending the support to other formats for Haystack 2.0.
 
 However, one of the major changes to Haystack in terms of serialization is the addition of “Marshallers” to the core project. Marshallers are how we make available different serialization formats to pipelines, and they can be used to add any format that Haystack doesn’t support out of the box. For example, if you want to represent pipelines with TOML you can create a TOML Marshaller that you can pass to the serialization API.
 
-> You can find our complete documentation on Haystack 2.0-Beta Pipelines [here](https://docs.haystack.deepset.ai/v2.0/docs/pipelines) You can find our complete documentation on Haystack 2.0-Beta Pipeline Serialization [here](https://docs.haystack.deepset.ai/v2.0/docs/serialization)
+> You can find our complete documentation on Haystack 2.0-Beta Pipelines [here](https://docs.haystack.deepset.ai/v2.0/docs/pipelines). You can find our complete documentation on Haystack 2.0-Beta Pipeline Serialization [here](https://docs.haystack.deepset.ai/v2.0/docs/serialization)
 
-## Prompt Templating
+### Prompt Templating
 
 One other change we are excited about is how prompt templating is changing in Haystack 2.0, which is already available in this Beta release. We are now using Jinja templating for prompts, making it very clean and readable to build prompts that have loops and that can even make use of functions inside the prompt. For example, below is a simple prompt template in Haystack 2.0 which loops through documents and also adds some meta information from those documents into the prompt.
 

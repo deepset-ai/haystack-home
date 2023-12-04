@@ -5,15 +5,15 @@ description: Learn more about why we are upgrading Haystack and our learnings th
 featured_image: thumbnail.png
 images: ["blog/our-motivation-for-haystack-2/thumbnail.png"]
 toc: True
-date: 2023-03-30
-last_updated: 2023-03-30
+date: 2023-12-03
+last_updated: 2023-12-03
 authors:
   - Malte Pietsch
   - Timo Moller
 tags: ["Haystack 2.0", "LLM", "Community"]
 ---
 
-This week, we released Haystack 2.0-Beta. And today, we would like to gibe you some insight into our motivation for working on Haystack 2.0, and where we are at with the task at hand. At its core, reworking our pipeline design with **production readiness, ease of use, and customizability** at the forefront. We want to outline what this means and showcase the new Haystack 2.0 code and documentation.
+This week, we released Haystack 2.0-Beta. And today, we would like to give you some insight into our motivation for working on Haystack 2.0, and where we are at with the task at hand. At its core, reworking our pipeline design with **production readiness, ease of use, and customizability** at the forefront. We want to outline what this means and showcase the new Haystack 2.0 code and documentation.
 
 ### 🚂 Pillars of Production Readiness
 

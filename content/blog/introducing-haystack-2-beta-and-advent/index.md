@@ -6,15 +6,15 @@ featured_image: thumbnail.png
 images: ["blog/introducing-haystack-2-beta-and-advent/thumbnail.png"]
 alt_image: An image with a snowman and christmas tree. The title says Haystack 2.0-beta and Advent of Haystack
 toc: True
-date: 2023-11-30
-last_updated:  2023-11-30
+date: 2023-12-04
+last_updated:  2023-12-04
 authors:
   - Tuana Celik
   - Massimiliano Pippi
 tags: ["Open Source", "Community", "Haystack 2.0"]
 ---
 
-Today, we are really happy to announce that we have released Haystack 2.0-Beta **[link to release notes]**, alongside our first-ever [Advent of Haystack](https://haystack.deepset.ai/advent-of-haystack): a set of 10 challenges that we will publish throughout the month of December, each introducing the features and design of Haystack 2.0-Beta.
+Today, we are really happy to announce that we have released [Haystack 2.0-Beta](https://github.com/deepset-ai/haystack/releases/tag/v2.0.0-beta.1), alongside our first-ever [Advent of Haystack](https://haystack.deepset.ai/advent-of-haystack): a set of 10 challenges that we will publish throughout the month of December, each introducing the features and design of Haystack 2.0-Beta.
 
 ## What does this release mean for me?
 
@@ -26,7 +26,9 @@ But should you use Haystack 2.0-Beta? Yes! Because Haystack 2.0-Beta introduces 
 
 To get started: `pip install haystack-ai` 🎉
 
-> Haystack 2.0-Beta does not have feature parity with Haystack 1.x yet. The stable release of Haystack 2.0 will happen once a higher level of feature parity exists. To see a full list of available features in this beta release, check out our **release notes[link].**
+> Haystack 2.0-Beta does not have feature parity with Haystack 1.x yet. The stable release of Haystack 2.0 will happen once a higher level of feature parity exists. To see a full list of available features in this beta release, check out our [release notes](https://github.com/deepset-ai/haystack/releases/tag/v2.0.0-beta.1).
+
+> Over the last few months, we've also been working with some of our partners and community members on extending the [Haystack integrations](https://haystack.deepset.ai/integrations) with integrations compatible with Haystack 2.0. Today, you can also start using those with this Beta release.
 
 ## Why is Haystack Changing
 
@@ -40,7 +42,7 @@ With Haystack 2.0, our aim is to be a lot more explicit about what each componen
 
 Although Haystack 2.0 is a complete overhaul of the framework, it remains rooted in the fundamental abstractions that contributed to its prior success: users can continue using pipelines, document stores and nodes, which have now been rebranded as “components”.
 
-Here we will briefly highlight what some of the major changes are, with particular regard to developer experience. To see where we are in terms of feature parity with Haystack 1.x, check out our **release notes[link].**
+Here we will briefly highlight what some of the major changes are, with particular regard to developer experience. To see where we are in terms of feature parity with Haystack 1.x, check out the table in our [release notes](https://github.com/deepset-ai/haystack/releases/tag/v2.0.0-beta.1).
 
 ### Components
 

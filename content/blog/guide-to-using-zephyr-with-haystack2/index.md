@@ -7,7 +7,7 @@ featured_image_caption: Build retrieval-augmented pipelines using open-source LL
 images: ["blog/guide-to-using-zephyr-with-haystack2/thumbnail.png"]
 toc: True
 date: 2023-11-06
-last_updated: 2023-11-06
+last_updated: 2023-12-05
 authors:
   - Stefano Fiorucci
   - Tuana Celik
@@ -18,23 +18,24 @@ Hugging Face recently announced their new open-source LLM, Zephyr-7B Beta, which
 
 Following the theme of [our previous article](https://haystack.deepset.ai/blog/customizing-rag-to-summarize-hacker-news-posts-with-haystack2), we will show you how to build a pipeline that uses Zephyr with Haystack, but we will also take the opportunity and show you how to do this with the preview package of Haystack 2.0.
 
+> Update: we released Haystack 2.0-Beta on December 4th 2023, the code in this article has been updated to work with this new release.
+
 *You can run the example code showcased in this article in the accompanying* *[Colab notebook.](https://colab.research.google.com/drive/1gvfDSWyx2uJQokxO2DG1EXBZIFI-2D0N)*
 
 ## Querying Zephyr with Haystack
 
-To start with, let’s see how to query [Zephyr-7B-Beta](https://huggingface.co/HuggingFaceH4/zephyr-7b-beta) with Haystack as it is. To load and manage open-source LLMs in Haystack 2.0, we can use the `HuggingFaceLocalGenerator`. If you are using a free Colab instance (with limited resources), you can load the model using **4-bit quantization** (passing the appropriate `pipeline_kwargs` to our Generator). For an introduction to Quantization in Hugging Face Transformers, you can read [this simple blog post](https://huggingface.co/blog/merve/quantization).
+To start with, let’s see how to query [Zephyr-7B-Beta](https://huggingface.co/HuggingFaceH4/zephyr-7b-beta) with Haystack as it is. To load and manage open-source LLMs in Haystack 2.0, we can use the `HuggingFaceLocalGenerator`. If you are using a free Colab instance (with limited resources), you can load the model using **4-bit quantization** (passing the appropriate `huggingface_pipeline_kwargs` to our Generator). For an introduction to Quantization in Hugging Face Transformers, you can read [this simple blog post](https://huggingface.co/blog/merve/quantization).
 
 ```python
-from haystack.preview.components.generators import HuggingFaceLocalGenerator
+from haystack.components.generators import HuggingFaceLocalGenerator
 
 generator = HuggingFaceLocalGenerator("HuggingFaceH4/zephyr-7b-beta",
-                                      pipeline_kwargs={"device_map":"auto",
-                                                       "model_kwargs":{"load_in_4bit":True,
-                                                                       "bnb_4bit_use_double_quant":True,
-                                                                       "bnb_4bit_quant_type":"nf4",
-                                                                       "bnb_4bit_compute_dtype":torch.bfloat16}},
-                                      generation_kwargs={"max_new_tokens": 350}
-                                      )
+                                          huggingface_pipeline_kwargs={"device_map":"auto",
+                                                        "model_kwargs":{"load_in_4bit":True,
+                                                          "bnb_4bit_use_double_quant":True,
+                                                          "bnb_4bit_quant_type":"nf4",
+                                                          "bnb_4bit_compute_dtype":torch.bfloat16}},
+                                          generation_kwargs={"max_new_tokens": 350})
 ```
 
 Once we have initialized this generator, we can simply call `run()` with a query. Here’s an example that we tried:
@@ -67,7 +68,7 @@ The first step is to define a prompt template that will effectively describe the
 We create a prompt template with the following format, using tags that Zephyr expects to identify “user”, “assistant” and “system”: `<|system|>\nSYSTEM MESSAGE</s>\n<|user|>\nUSER MESSAGE</s>\n<|assistant|>`
 
 ```python
-from haystack.preview.components.builders.prompt_builder import PromptBuilder
+from haystack.components.builders import PromptBuilder
 
 prompt_template = """<|system|>Using the information contained in the context, 
 give a comprehensive answer to the question.
@@ -122,10 +123,10 @@ Now that we have our data in place in a document store, here are the rest of the
 Once again, let’s define all of our components:
 
 ```python
-from haystack.preview.components.builders.prompt_builder import PromptBuilder
-from haystack.preview.components.embedders import SentenceTransformersTextEmbedder
-from haystack.preview.components.generators import HuggingFaceLocalGenerator
-from haystack.preview.components.retrievers import InMemoryEmbeddingRetriever
+from haystack.components.builders.prompt_builder import PromptBuilder
+from haystack.components.embedders import SentenceTransformersTextEmbedder
+from haystack.components.generators import HuggingFaceLocalGenerator
+from haystack.components.retrievers import InMemoryEmbeddingRetriever
 
 SentenceTransformersTextEmbedder(model_name_or_path="thenlper/gte-large")
 

@@ -654,7 +654,10 @@ blockquote {
   height: 4rem;
   width: auto;
   object-fit: contain;
-  margin-bottom: 1.5rem;
+  background-color: var(--color-dark-blue);
+  border-radius: 50%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 // Image caption

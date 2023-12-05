@@ -13,7 +13,8 @@ authors:
 tags: ["RAG", "Haystack 2.0", "LLM"]
 ---	
 
-Over the last few months, the team at [deepset](https://deepset.ai) has been working on a major upgrade in the Haystack repository. Along the way, we’ve been sharing our updates and design process for the upcoming [Haystack 2.0](https://github.com/deepset-ai/haystack/tree/main/haystack/preview) with the community, as well as releasing new components in a preview package. This means that you can already start exploring features coming to Haystack 2.0 using the preview components available in the `haystack-ai` package (`pip install haystack-ai`).
+Over the last few months, the team at [deepset](https://deepset.ai) has been working on a major upgrade in the Haystack repository. Along the way, we’ve been sharing our updates and design process for the upcoming [Haystack 2.0](https://github.com/deepset-ai/haystack/discussions/5568) with the community, as well as releasing new components in a preview package. This means that you can already start exploring features coming to Haystack 2.0 using the preview components available in the `haystack-ai` package (`pip install haystack-ai`).
+> Update: we released Haystack 2.0-Beta on December 4th 2023, the code in this article has been updated to work with this new release.
 
 _You can run the example code showcased in this article in the accompanying_ [_Colab notebook_](https://colab.research.google.com/drive/1YWFvq29xkMAUCt5Aal0VPX0KxGM4xTku?usp=sharing)_._
 
@@ -46,7 +47,7 @@ I’ll admit, the idea for this custom component came from one of our amazing Ha
 First, we create a `HackernewsNewestFetcher`. For it to be a valid Haystack component, it will also need a `run` function. For now, let’s create a stub function that simply returns a dictionary containing a single key `‘articles’` with the value ‘Hello world!’.
 
 ```python
-from haystack.preview import component  
+from haystack import component  
   
 @component  
 class HackernewsNewestFetcher():  
@@ -59,7 +60,7 @@ Now let’s make our component actually fetch the latest posts from Hacker News.
 
 ```python
 from typing import List  
-from haystack.preview import component, Document  
+from haystack import component, Document  
 from newspaper import Article  
 import requests  
   
@@ -67,7 +68,7 @@ import requests
 class HackernewsNewestFetcher():  
     
   @component.output_types(articles=List[Document])  
-  def run(self, last_k: int = 5):  
+  def run(self, last_k: int):  
     newest_list = requests.get(url='https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty')  
     articles = []  
     for id in newest_list.json()[0:last_k]:  
@@ -114,9 +115,9 @@ To build a RAG pipeline that can create a summary for each of the latest _k_ pos
 First, we initialize all of the components we will need for the pipeline:
 
 ```python
-from haystack.preview import Pipeline  
-from haystack.preview.components.builders.prompt_builder import PromptBuilder  
-from haystack.preview.components.generators import GPTGenerator  
+from haystack import Pipeline  
+from haystack.components.builders.prompt_builder import PromptBuilder  
+from haystack.components.generators import GPTGenerator  
   
 prompt_template = """  
 You will be provided a few of the latest posts in HackerNews, followed by their URL.  

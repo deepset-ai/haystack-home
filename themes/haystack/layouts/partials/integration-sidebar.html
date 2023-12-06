@@ -29,7 +29,15 @@
           {{ range where $integrations ".Params.type" . }}
             <li>
               {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
-                <p>{{ .Params.name }}</p>
+              <details class="accordion-js accordion-child" open>
+                <summary class="accordion-title">{{ .Params.name }}</summary>
+                {{if .Params.toc}}
+                  <div class="content">
+                    {{/* Page TOC */}}
+                    {{ .TableOfContents }}
+                  </div>
+                {{ end }}
+              </details>
               {{ else }}
                 <a
                   class="tutorial-card category-{{ lower .Params.category }}"

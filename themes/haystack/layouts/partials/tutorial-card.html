@@ -1,4 +1,4 @@
-<a href="{{ .RelPermalink }}" class="grid-page-card" data-level="{{ .Params.level }}" data-created="{{ .Params.created_at }}" data-updated='{{ with .Lastmod }}{{ . | time.Format "2006-01-02" }}{{else}}{{ .Params.created_at }}{{ end }}' {{with .Params.featured}}data-featured="{{.}}"{{end}}>
+<a href="{{ .RelPermalink }}" class="grid-page-card" data-level="{{ .Params.level }}" data-created="{{ .Params.created_at }}" data-updated='{{ with .Lastmod }}{{ . | time.Format "2006-01-02" }}{{else}}{{ .Params.created_at }}{{ end }}' {{with .Params.featured}}data-featured="{{.}}"{{end}} {{with .Params.haystack_2}}data-haystack_2="{{.}}"{{end}}>
     {{/*  Header / tags  */}}
     <div class="grid-page-card-header">
 
@@ -30,6 +30,13 @@
                 </span>
                 
                 <span>{{ . }}</span>
+            </div>
+        {{ end }}
+
+        {{/*  2.0-Beta  */}}
+        {{ with .Params.haystack_2 }}
+            <div class="haystack-2">
+                2.0-Beta
             </div>
         {{ end }}
 

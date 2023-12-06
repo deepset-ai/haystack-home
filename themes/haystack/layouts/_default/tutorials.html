@@ -4,21 +4,55 @@
   <div class="grid-page">
     {{/* Hero */}}
     {{ partial "page-hero" . }}
+    {{ partial "tutorials-banner" . }}
 
     <div class="grid-page-content">
       <div class="container container-padded">
         <div class="inner inner-top">
           {{/* Section title */}}
-          <h2 class="section-title">
-            {{ len $tutorials }} tutorials for
-            <span>all</span> levels
-          </h2>
+          <div class="title-container">
+            <h2 class="section-title">
+              {{ len $tutorials }} tutorials for
+              <span>all</span> levels
+            </h2>
+
+            {{/* Version select */}}
+            <div class="select-wrapper">
+              <label for="sort">Haystack Version:</label>
+              <select id="version-select" class="fixed" onchange="filterAndSort();">
+                <option value="1.0">1.0</option>
+                <option value="2.0">2.0-Beta</option>
+              </select>
+            </div>
+          </div>
 
           {{/* Sorting options / Filters */}}
           <div class="grid-page-options">
             <div class="filters">
               {{/* Search */}}
-              <button class="search-wrapper" onclick="openModal();">
+              <div class="search-wrapper">
+                <input
+                  id="search"
+                  type="text"
+                  placeholder="Search Tutorials"
+                  oninput="filterAndSort();"
+                />
+                <div class="search-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M19.3187 18.0273L13.232 11.9406C14.1766 10.7195 14.6875 9.22656 14.6875 7.65625C14.6875 5.77656 13.9539 4.01406 12.6273 2.68516C11.3008 1.35625 9.53359 0.625 7.65625 0.625C5.77891 0.625 4.01172 1.35859 2.68516 2.68516C1.35625 4.01172 0.625 5.77656 0.625 7.65625C0.625 9.53359 1.35859 11.3008 2.68516 12.6273C4.01172 13.9562 5.77656 14.6875 7.65625 14.6875C9.22656 14.6875 10.7172 14.1766 11.9383 13.2344L18.025 19.3187C18.0428 19.3366 18.064 19.3508 18.0874 19.3604C18.1107 19.3701 18.1357 19.3751 18.1609 19.3751C18.1862 19.3751 18.2112 19.3701 18.2345 19.3604C18.2578 19.3508 18.279 19.3366 18.2969 19.3187L19.3187 18.2992C19.3366 18.2814 19.3508 18.2602 19.3604 18.2369C19.3701 18.2135 19.3751 18.1885 19.3751 18.1633C19.3751 18.138 19.3701 18.113 19.3604 18.0897C19.3508 18.0664 19.3366 18.0452 19.3187 18.0273ZM11.3688 11.3688C10.375 12.3602 9.05781 12.9062 7.65625 12.9062C6.25469 12.9062 4.9375 12.3602 3.94375 11.3688C2.95234 10.375 2.40625 9.05781 2.40625 7.65625C2.40625 6.25469 2.95234 4.93516 3.94375 3.94375C4.9375 2.95234 6.25469 2.40625 7.65625 2.40625C9.05781 2.40625 10.3773 2.95 11.3688 3.94375C12.3602 4.9375 12.9062 6.25469 12.9062 7.65625C12.9062 9.05781 12.3602 10.3773 11.3688 11.3688Z"
+                      fill="#2B2F55"
+                    />
+                  </svg>
+                </div>
+              </div>
+              {{/*  <button class="search-wrapper" onclick="openModal();">
                 <div class="btn-input">Search tutorials</div>
                 <div class="search-icon">
                   <svg
@@ -34,7 +68,7 @@
                     />
                   </svg>
                 </div>
-              </button>
+              </button>  */}}
 
               {{/* Levels filter */}}
               <div class="select-wrapper">
@@ -46,26 +80,6 @@
                 </select>
               </div>
 
-              {{/* Tasks filter */}}
-              {{/*  <div class="select-wrapper">
-                <select id="task-select" onchange="filterAndSort();">
-                  <option value="all">All tasks</option>
-
-                  {{ $tasks := slice }}
-                  {{ range where .Site.Pages "Layout" "tutorial" }}
-                    {{ if .Params.task }}
-                      {{ if not (in $tasks .Params.task) }}
-                        {{ $tasks = $tasks | append .Params.task }}
-                      {{ end }}
-                    {{ end }}
-                  {{ end }}
-
-                  {{ range $tasks }}
-                    <option value="{{ . }}">{{ . }}</option>
-                  {{ end }}
-                </select>
-              </div>  */}}
-
               {{/* Reset filters btn */}}
               <button class="reset-filters-btn reset-filters-desktop" onclick="resetFilters();">
                 Reset filters
@@ -74,16 +88,14 @@
 
             <div>
               {{/* Sorting */}}
-              <div class="sort-wrapper">
-                <label for="sort">Sort By:</label>
                 <div class="select-wrapper">
-                  <select name="sort" id="sort-select" onchange="filterAndSort();">
+                  <label for="sort">Sort By:</label>
+                  <select name="sort" id="sort-select" class="fixed" onchange="filterAndSort();">
                     <option value="level">Level</option>
                     <option value="updated">Last Updated</option>
                     <option value="created">Newest</option>
                   </select>
                 </div>
-              </div>
             </div>
 
             <button class="reset-filters-btn reset-filters-mobile" onclick="resetFilters();">
@@ -133,22 +145,39 @@
       document.querySelectorAll(".grid-page-card")
     );
 
+    const banner = document.querySelector(".tutorials-banner")
+    const heroTitle = document.querySelector(".page-hero h1")
+
+    {{/*  Filter and sort  */}}
     const filterAndSort = () => {
       let tutorials = [...tutorialCards]
       {{/*  Get selected filter, sort, and task options   */}}
       const selectedLevel = document.querySelector("#level-select").value;
       const selectedSort = document.querySelector("#sort-select").value;
-      {{/*  const selectedTask = document.querySelector("#task-select").value;  */}}
+      const selectedVersion = document.querySelector("#version-select").value;
+      const searchTerm = document.querySelector("#search").value;
 
       {{/*  Filter by level  */}}
       if (selectedLevel !== "all") {
         tutorials = tutorials.filter(t => t.dataset.level === selectedLevel)
       }
 
-      {{/*  Filter by task  */}}
-      {{/*  if (selectedTask !== "all") {
-        tutorials = tutorials.filter(t => t.dataset.task === selectedTask)
-      }  */}}
+      {{/*  Filter by version  */}}
+      if (selectedVersion === "2.0") {
+        tutorials = tutorials.filter(t => t.dataset.haystack_2)
+      } else {
+        tutorials = tutorials.filter(t => !t.dataset.haystack_2)
+      }
+
+      {{/*  Filter by search  */}}
+      if (searchTerm) {
+        const searchTermsArray = searchTerm.toLowerCase().split(" ").filter(term => term);
+
+        tutorials = tutorials.filter(i => {
+          let text = i.innerText.toLowerCase();
+          return searchTermsArray.every(term => text.includes(term));
+        });
+      }
 
       {{/*  Sorting  */}}
       if (selectedSort === "created" || selectedSort === "updated") {
@@ -169,27 +198,71 @@
       {{/*  Update section title  */}}
       document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
 
+      {{/*  Update the banner and hero title tag  */}}
+      if (selectedVersion === "2.0") {
+        banner.classList.add("v2")
+        banner.children[0].innerHTML= `Looking for tutorials working with 1.x? Check out <span>here</span>`
+        heroTitle.innerHTML = `Tutorials <span class="tag">2.0-Beta</span>`
+      } else {
+        banner.classList.remove("v2")
+        banner.children[0].innerHTML= `Looking for 2.0 beta tutorials? Check out <span>here</span>`
+        heroTitle.innerHTML = `Tutorials`
+      }
+
       document.querySelector(".grid-page-grid").innerHTML = ""
       tutorials.forEach((e) =>
         document.querySelector(".grid-page-grid").appendChild(e)
       );
+
+      updateURL(selectedVersion);
+    }
+
+    const updateURL = (version) => {
+      const params = new URLSearchParams();
+      if (version && version !== "1.0") params.set('v', version);
+    
+      if (params.toString() === '') {
+        history.replaceState(null, '', window.location.pathname);
+        return;
+      }
+      history.replaceState(null, '', '?' + params.toString());
+    }
+
+    const setFiltersFromParams = () => {
+      const params = new URLSearchParams(window.location.search);
+      
+      const version = params.get('v') || '1.0';
+      document.querySelector("#version-select").value = version;
+    
+      filterAndSort();
     }
 
     const resetFilters = () => {
       document.querySelector("#level-select").value = "all";
       document.querySelector("#sort-select").value = "level";
-      {{/*  document.querySelector("#task-select").value = "all";  */}}
+      document.querySelector("#version-select").value = "1.0";
+      document.querySelector("#search").value = "";
       filterAndSort();
     }
-    
+
+    {{/*  Version toggle for banner  */}}
+    const toggleVersion = () => {
+      const versionSelect = document.querySelector("#version-select");
+      versionSelect.value = versionSelect.value === "1.0" ? "2.0" : "1.0";
+
+      filterAndSort();
+    }
+
+    document.querySelector(".tutorials-banner").onclick = toggleVersion;
+
     {{/*  Modal  */}}
-    const searchModalContainer = document.querySelector(".search-modal-container");
+    {{/*  const searchModalContainer = document.querySelector(".search-modal-container");
     const searchModal = document.querySelector(".search-modal");
     const searchModalInput = document.querySelector("#modal-search");
-    const searchModalCards = document.querySelector(".search-modal-cards");
+    const searchModalCards = document.querySelector(".search-modal-cards");  */}}
     
     {{/*  Open modal  */}}
-    const openModal = () => {
+    {{/*  const openModal = () => {
       searchModalContainer.classList.add("is-active");
 
       const body = document.querySelector("body");
@@ -202,10 +275,10 @@
       }
 
       searchModalInput.focus();
-    };
+    };  */}}
 
     {{/*  Close modal  */}}
-    const closeModal = () => {
+    {{/*  const closeModal = () => {
       searchModalContainer.classList.remove("is-active");
       
       const body = document.querySelector("body");
@@ -220,24 +293,24 @@
         searchModalCards.innerHTML = ""
       }, 200)
 
-    };
+    };  */}}
 
     {{/*  Close modal on esc  */}}
-    document.addEventListener("keydown", (e) => {
+    {{/*  document.addEventListener("keydown", (e) => {
       if (e.keyCode === 27) {
         closeModal();
       }
-    });
+    });  */}}
 
     {{/*  Close modal on outside click  */}}
-    searchModalContainer.addEventListener("click", (e) => {
+    {{/*  searchModalContainer.addEventListener("click", (e) => {
       if (e.target === searchModalContainer) {
         closeModal();
       }
-    });
+    });  */}}
 
     {{/*  Search  */}}
-    const searchTutorials = async () => {
+    {{/*  const searchTutorials = async () => {
       const query = searchModalInput.value
       
       if (!query) return
@@ -253,7 +326,6 @@
           const documents = result.results[0].documents.filter(doc => doc.score > 0.01); // filter out low scored results
 
           if (documents.length > 0) {
-            {{/*  build cards  */}}
             documents.forEach((doc) => {
               const card = document.createElement("a");
               card.classList.add("search-modal-card");
@@ -337,32 +409,33 @@
           }
 
         } else {
-          {{/*  console.error(response.statusText)  */}}
           searchModal.classList.remove("loading")
           searchModal.classList.add("error")
         }
       } catch (error) {
-        {{/*  console.error("Error:", error);  */}}
         searchModal.classList.remove("loading")
         searchModal.classList.add("error")
       }
 
-    }
+    }  */}}
 
-    searchModalInput.onkeydown = (e) => {
+    {{/*  searchModalInput.onkeydown = (e) => {
       if (e.keyCode == 13) {
         searchTutorials()
       }
-    }
+    }  */}}
 
-    function sleep(ms) {
+    {{/*  function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    }  */}}
 
     {{/*  Reset filters on pageshow in case of back button  */}}
-    addEventListener('pageshow', () => {
+    {{/*  addEventListener('pageshow', () => {
       resetFilters();
-      searchModalInput.value = ""
+    });  */}}
+
+    addEventListener("DOMContentLoaded", () => {
+      setFiltersFromParams();
     });
   </script>
 {{ end }}

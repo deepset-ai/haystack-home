@@ -10,6 +10,23 @@
 
   .grid-page-content {
     background-color: var(--color-bg-light-grey);
+
+    .title-container {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      margin-bottom: 1rem;
+
+      @include md {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        h2 {
+          margin-bottom: 0rem;
+        }
+      }
+    }
   }
 
   // Grid
@@ -219,12 +236,17 @@
   gap: 0.25rem;
 
   &.featured {
-    background-color: var(--color-yellow);
+    background-color: var(--color-green);
+    color: var(--color-white);
   }
 
   &.outdated {
     background-color: var(--color-dark-blue);
     color: var(--color-white);
+  }
+
+  &.haystack-2 {
+    background-color: var(--color-yellow);
   }
 
   .icon {
@@ -242,7 +264,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  max-width: 1100px;
+  // max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
 
@@ -254,15 +276,15 @@
   }
 
   // Sorting select
-  .sort-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    label {
-      font-size: var(--text-small);
-      color: var(--color-medium-grey);
-    }
-  }
+  // .sort-wrapper {
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 0.5rem;
+  //   label {
+  //     font-size: var(--text-small);
+  //     color: var(--color-medium-grey);
+  //   }
+  // }
 
   .select-group {
     display: flex;
@@ -329,48 +351,6 @@
     }
   }
 
-  // Filter selects
-  .select-wrapper {
-    position: relative;
-    min-width: 8rem;
-    flex-shrink: 0;
-
-    > select,
-    > button {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      width: 100%;
-      // max-width: 12rem;
-      height: 3.25rem;
-      cursor: pointer;
-      display: inline-block;
-      margin: 0;
-      padding: 0 2rem 0 1rem;
-      border: 1px solid var(--color-light-grey);
-      border-radius: var(--border-radius-sm);
-      line-height: 1.25rem;
-      font-size: var(--text-small);
-      color: var(--color-dark-blue);
-      overflow: visible;
-      background-color: var(--color-white);
-      text-align: left;
-
-      &:focus {
-        outline: 0;
-      }
-    }
-  }
-
-  .select-wrapper:after {
-    content: url("/images/icons/dropdown-arrow.svg");
-    position: absolute;
-    right: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-
   .reset-filters-btn {
     background-color: transparent;
     border: none;
@@ -398,6 +378,62 @@
   &.hidden {
     display: none;
   }
+}
+
+// Filter selects
+.select-wrapper {
+  position: relative;
+  min-width: 8rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  label {
+    font-size: var(--text-small);
+    color: var(--color-medium-grey);
+    flex-shrink: 0;
+  }
+
+  > select,
+  > button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    // max-width: 12rem;
+    height: 3.25rem;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+    padding: 0 2rem 0 1rem;
+    border: 1px solid var(--color-light-grey);
+    border-radius: var(--border-radius-sm);
+    line-height: 1.25rem;
+    font-size: var(--text-small);
+    color: var(--color-dark-blue);
+    overflow: visible;
+    background-color: var(--color-white);
+    text-align: left;
+
+    &.fixed {
+      @include lg {
+        width: 10rem;
+      }
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+.select-wrapper:after {
+  content: url("/images/icons/dropdown-arrow.svg");
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 // Search
@@ -474,5 +510,30 @@ button.search-wrapper {
     @include sm {
       border-left: 1px solid var(--color-light-grey);
     }
+  }
+}
+
+.tutorials-banner {
+  display: block;
+  width: 100%;
+  background-color: var(--color-orange);
+  color: var(--color-dark-blue);
+  padding: 0.5rem 0;
+  text-align: center;
+  font-size: var(--text-base);
+  border: none;
+  cursor: pointer;
+
+  &.v2 {
+    background-color: var(--color-green);
+    color: var(--color-white);
+  }
+
+  @include md {
+    font-size: var(--text-body);
+  }
+
+  span {
+    text-decoration: underline;
   }
 }

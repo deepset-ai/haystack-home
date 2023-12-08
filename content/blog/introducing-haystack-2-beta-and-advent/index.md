@@ -137,6 +137,7 @@ Context:
   {{doc.content}}  
   URL: {{article.meta['url']}}  
 {% endfor %}  
+Question: {{question}}
 """  
   
 prompt_builder = PromptBuilder(template=prompt_template)

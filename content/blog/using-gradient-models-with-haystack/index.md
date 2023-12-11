@@ -16,7 +16,7 @@ tags: ["Open Source", "Community", "Haystack 2.0", "Model Training", "MLOps", "L
 
 One of the more cumbersome aspects of creating LLM applications is model management. Especially in cases where we need to fine-tune, host, and scale the models ourselves. In this case, having options at hand can be great. Today, we’ve expanded the Haystack 2.0 ecosystem with a new integration that can help you with just that
 
-[Gradient](https://gradient.ai) is an LLM development platform that offers web APIs for fine-tuning, embeddings, and inference on state-of-the-art open-source models. In this article, let’s tave a look at the new Gradient integration for Haystack, and how you can use it in your retrieval-augmented generative pipelines.
+[Gradient](https://gradient.ai) is an LLM development platform that offers web APIs for fine-tuning, embeddings, and inference on state-of-the-art open-source models. In this article, let’s take a look at the new Gradient integration for Haystack, and how you can use it in your retrieval-augmented generative pipelines.
 
 > You can find [an example Colab here](https://colab.research.google.com/drive/1CQZoKrU0AM3bJtWcAicYA2q5FTu-nPJj?usp=sharing), which uses embedding and generative models from Gradient for a RAG pipeline on Notion pages.
 
@@ -34,11 +34,11 @@ The Gradient platform provides an embeddings endpoint (at the time of writing, i
 
 To fine-tune and use models via Gradient, the first step is to create a workspace.
 
-![Create a workspace](workspace.png)
+![Create a workspace](workspace.png#medium "Create a workspace")
 
 Once you have a workspace, you will be able to select a base model and start a fine-tuning job.
 
-![Fine-tune a model](fine-tuning.png)
+![Fine-tune a model](fine-tuning.png#small "Fine-tune a model")
 
 ### Using the GradientGenerator
 

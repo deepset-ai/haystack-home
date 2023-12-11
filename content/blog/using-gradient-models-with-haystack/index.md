@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 title: Use Gradient Models with Haystack Pipelines
-description: Introducing the new Haystack Integration, allowing use models fine-tuned and deployed with Gradient
+description: Introducing the new Haystack Integration, allowing you to easily fine-tune and deploy models on the Gradient platform which you can use in Haystack pipelines
 featured_image: thumbnail.png
 images: ["blog/using-gradient-models-with-haystack/thumbnail.png"]
 alt_image: An image with the Haystack and Gradient logos

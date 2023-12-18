@@ -20,12 +20,12 @@ socials:
     - name: LinkedIn
       url: https://www.linkedin.com/in/annthurium/
       icon: /images/icons/linkedin-dark.svg
-    - name: Twitter
-      url: https://twitter.com/annthurium
-      icon: /images/icons/twitter-dark.svg
     - name: Mastodon
       url: https://tech.lgbt/@annthurium
       icon: /images/icons/mastodon-dark.svg
+    - name: Twitter
+      url: https://twitter.com/annthurium
+      icon: /images/icons/twitter-dark.svg
     - name: GitHub
       url: https://github.com/annthurium
       icon: /images/icons/github.svg

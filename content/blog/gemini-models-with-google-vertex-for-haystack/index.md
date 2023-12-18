@@ -56,10 +56,10 @@ import requests
 from haystack.dataclasses.byte_stream import ByteStream
 
 URLS = [
-    "<https://raw.githubusercontent.com/silvanocerza/robots/main/robot1.jpg>",
-    "<https://raw.githubusercontent.com/silvanocerza/robots/main/robot2.jpg>",
-    "<https://raw.githubusercontent.com/silvanocerza/robots/main/robot3.jpg>",
-    "<https://raw.githubusercontent.com/silvanocerza/robots/main/robot4.jpg>"
+    "https://raw.githubusercontent.com/silvanocerza/robots/main/robot1.jpg",
+    "https://raw.githubusercontent.com/silvanocerza/robots/main/robot2.jpg",
+    "https://raw.githubusercontent.com/silvanocerza/robots/main/robot3.jpg",
+    "https://raw.githubusercontent.com/silvanocerza/robots/main/robot4.jpg"
 ]
 images = [
     ByteStream(data=requests.get(url).content, mime_type="image/jpeg")
@@ -195,7 +195,7 @@ Once we have the pipeline, we can run it with a query about Haystack 2.0-Beta:
 question = "What do graphs have to do with Haystack?"
 result = pipeline.run({"prompt_builder": {"question": question},
                    "ranker": {"query": question},
-                   "fetcher": {"urls": ["<https://haystack.deepset.ai/blog/introducing-haystack-2-beta-and-advent>"]}})
+                   "fetcher": {"urls": ["https://haystack.deepset.ai/blog/introducing-haystack-2-beta-and-advent"]}})
 
 for answer in result["gemini"]["answers"]:
   print(answer)

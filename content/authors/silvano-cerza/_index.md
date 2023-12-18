@@ -3,7 +3,7 @@ layout: author
 title: Silvano Cerza
 name: Silvano Cerza
 slug: silvano-cerze
-position: Senior oftware Engineer
+position: Senior Software Engineer
 image: /images/authors/silvano-cerza.jpg
 socials:
   author_page:

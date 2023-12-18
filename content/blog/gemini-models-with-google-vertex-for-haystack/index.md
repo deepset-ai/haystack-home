@@ -142,7 +142,7 @@ res["replies"][0].content
 
 ## Building a Full Retrieval-Augmented Generative Pipeline
 
-Alongside the individual use of the new Gemini components above, you can of course also use them in full [Haystack pipelines](https://docs.haystack.deepset.ai/v2.0/docs/pipelines). Here is an example of a RAG pipeline that does question-answering on webpages using the `[LinkContentFetcher](<https://docs.haystack.deepset.ai/v2.0/docs/linkcontentfetcher>)` and the `GeminiGenerator` using the `gemini-pro-vision` model 👇
+Alongside the individual use of the new Gemini components above, you can of course also use them in full [Haystack pipelines](https://docs.haystack.deepset.ai/v2.0/docs/pipelines). Here is an example of a RAG pipeline that does question-answering on webpages using the [`LinkContentFetcher`](https://docs.haystack.deepset.ai/v2.0/docs/linkcontentfetcher) and the `GeminiGenerator` using the `gemini-pro-vision` model 👇
 
 > As we are working on the full release of Haystack 2.0, components that are currently available in the Beta release are mostly focused on text. So, truly multi-modal applications as full Haystack pipelines is not yet possible. We are creating components that can easily handle other medias like images, audio, and video and will be back with examples soon!
 

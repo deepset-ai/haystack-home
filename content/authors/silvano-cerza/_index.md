@@ -1,26 +1,26 @@
 ---
 layout: author
-title: Tuana Çelik
-name: Tuana Celik
-slug: tuana-celik
-position: Lead Developer Advocate
-image: /images/authors/tuana-celik.jpg
+title: Silvano Cerza
+name: Silvano Cerza
+slug: silvano-cerze
+position: Senior Software Engineer
+image: /images/authors/silvano-cerza.jpg
 socials:
   author_page:
     - name: LinkedIn
-      url: https://linkedin.com/in/tuanacelik
+      url: https://www.linkedin.com/in/silvanocerza/
       icon: /images/icons/linkedin-white.svg
     - name: Twitter
-      url: https://twitter.com/tuanacelik
+      url: https://twitter.com/SilvanoCerza
       icon: /images/icons/twitter-white.svg
   blog_posts:
     - name: LinkedIn
-      url: https://linkedin.com/in/tuanacelik
+      url: https://www.linkedin.com/in/silvanocerza/
       icon: /images/icons/linkedin-dark.svg
     - name: Twitter
-      url: https://twitter.com/tuanacelik
+      url: https://twitter.com/SilvanoCerza
       icon: /images/icons/twitter-dark.svg
     - name: GitHub
-      url: https://github.com/tuanacelik
+      url: https://github.com/silvanocerza
       icon: /images/icons/github.svg
 ---

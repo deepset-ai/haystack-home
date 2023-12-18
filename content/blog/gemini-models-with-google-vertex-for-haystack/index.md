@@ -4,7 +4,7 @@ title: Gemini Models with Google Vertex AI Integration for Haystack
 description: Multi-Modal components and function calling with the new Gemini integrations for Haystack
 featured_image: thumbnail.jpg
 images: ["blog/gemini-models-with-google-vertex-for-haystack/thumbnail.jpg"]
-featured_image_caption: An image or a robot looking at pictures of other robots
+featured_image_caption: An image of a robot looking at pictures of other robots (generated with DALL-E)
 toc: True
 date: 2023-12-18
 last_updated:  2023-12-18

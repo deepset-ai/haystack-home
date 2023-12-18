@@ -11,14 +11,14 @@ socials:
       url: https://www.linkedin.com/in/silvanocerza/
       icon: /images/icons/linkedin-white.svg
     - name: Mastodon
-      url: https://mastodon.world/@silvanocerza@mastodon.world
+      url: https://mastodon.world/@silvanocerza
       icon: /images/icons/mastodon-white.svg
   blog_posts:
     - name: LinkedIn
       url: https://www.linkedin.com/in/silvanocerza/
       icon: /images/icons/linkedin-dark.svg
     - name: Mastodon
-      url: https://mastodon.world/@silvanocerza@mastodon.world
+      url: https://mastodon.world/@silvanocerza
       icon: /images/icons/mastodon-dark.svg
     - name: GitHub
       url: https://github.com/silvanocerza

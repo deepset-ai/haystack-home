@@ -12,7 +12,7 @@ socials:
       icon: /images/icons/linkedin-white.svg
     - name: Mastodon
       url: https://sigmoid.social/@tuana
-      icon: /images/icons/twitter-dark.svg
+      icon: /images/icons/mastodon-dark.svg
     - name: Twitter
       url: https://twitter.com/tuanacelik
       icon: /images/icons/twitter-white.svg
@@ -22,7 +22,7 @@ socials:
       icon: /images/icons/linkedin-dark.svg
     - name: Mastodon
       url: https://sigmoid.social/@tuana
-      icon: /images/icons/twitter-dark.svg
+      icon: /images/icons/mastodon-dark.svg
     - name: Twitter
       url: https://twitter.com/tuanacelik
       icon: /images/icons/twitter-dark.svg

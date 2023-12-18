@@ -10,6 +10,9 @@ socials:
     - name: LinkedIn
       url: https://linkedin.com/in/tuanacelik
       icon: /images/icons/linkedin-white.svg
+    - name: Mastodon
+      url: https://sigmoid.social/@tuana
+      icon: /images/icons/twitter-dark.svg
     - name: Twitter
       url: https://twitter.com/tuanacelik
       icon: /images/icons/twitter-white.svg
@@ -17,6 +20,9 @@ socials:
     - name: LinkedIn
       url: https://linkedin.com/in/tuanacelik
       icon: /images/icons/linkedin-dark.svg
+    - name: Mastodon
+      url: https://sigmoid.social/@tuana
+      icon: /images/icons/twitter-dark.svg
     - name: Twitter
       url: https://twitter.com/tuanacelik
       icon: /images/icons/twitter-dark.svg

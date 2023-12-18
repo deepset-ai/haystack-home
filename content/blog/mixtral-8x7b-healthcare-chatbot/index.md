@@ -137,3 +137,31 @@ pipe.connect("prompt_builder.prompt", "llm.prompt")
 ```
 
 Try it for yourself and see!
+
+```python
+What are the most current treatments for long COVID?
+  The COVID-19 pandemic has led to a significant increase in the number of patients with post-acute COVID-19 syndrome (PACS), also known as long COVID. PACS is a complex, multisystem disorder that can affect various organs and systems, including the respiratory, cardiovascular, neurological, and gastrointestinal systems. The pathophysiology of PACS is not yet fully understood, but it is believed to be related to immune dysregulation, persistent inflammation, and microvascular injury.
+The management of PACS is challenging due to its heterogeneous presentation and the lack of evidence-based treatments. Current treatment approaches are mainly supportive and aim to alleviate symptoms and improve quality of life. These include:
+- Pulmonary rehabilitation for respiratory symptoms
+- Cardiac rehabilitation for cardiovascular symptoms
+- Cognitive-behavioral therapy for neurological symptoms
+- Dietary modifications and medications for gastrointestinal symptoms
+- Vaccination to prevent reinfection and further complications
+- Symptomatic treatment with medications such as nonsteroidal anti-inflammatory drugs (NSAIDs), corticosteroids, and antihistamines
+- Experimental treatments such as antiviral therapy, immunomodulatory therapy, and cell-based therapy
+```
+
+## Potential issues and workarounds
+
+PubMed API wasn’t built for high scalability, so this approach wouldn’t be great for a high traffic production system. In that case, you could consider pulling articles into a [Haystack `DocumentStore`](https://docs.haystack.deepset.ai/v2.0/docs/document-store) that is backed by persistent storage
+
+Alternately, you could experiment with models that has been trained on a medical dataset, such as [Gradient](https://gradient.ai/healthcare)'s.
+
+## Wrapping it up
+
+Today you learned how to use Mixtral 8x7B and Haystack RAG pipelines to build a medical chatbot. Thanks for reading! If you want to learn more about Haystack 2.0 or RAG Pipelines, these posts might be of interest:
+- [Getting started with Mixtral 8x7b and Haystack](https://colab.research.google.com/drive/1gsxurwwWK08ZZcPpzz_8yXlsLNZEDqUz?usp=sharing#scrollTo=O2LloFrDAe6M)
+- [Customizing RAG Pipelines to Summarize Latest Hacker News Posts](https://haystack.deepset.ai/blog/customizing-rag-to-summarize-hacker-news-posts-with-haystack2)
+
+
+

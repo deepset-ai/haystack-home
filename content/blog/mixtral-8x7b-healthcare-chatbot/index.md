@@ -32,7 +32,7 @@ Therefore, I decided to use a RAG pipeline to combine PubMed data with a LLM.
 
 ## High Level Architecture Overview
 
-Retrieval augmented generative AI, or RAG, is a way of giving a LLM context so it can better answer questions. 
+Retrieval augmented generation, or RAG, is a way of giving a LLM context so it can better answer questions. 
 
 You pass the LLM some documents, along with a query, and prompt the LLM to use the documents when answering the question.
 

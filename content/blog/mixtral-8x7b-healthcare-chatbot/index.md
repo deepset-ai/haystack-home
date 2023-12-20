@@ -31,7 +31,7 @@ Building a medical chatbot presents some challenges.
 
 Therefore, I decided to use a RAG pipeline to combine PubMed data with a LLM.
 
-## High Level Architecture Overview
+## The PubMed RAG Pipeline
 
 Retrieval augmented generation, or RAG, is a way of giving a LLM context so it can better answer questions. 
 
@@ -39,7 +39,7 @@ You pass the LLM some documents, along with a query, and prompt the LLM to use t
 
 ![](RAG.png)
 
-PubMed has up to date, trustworthy medical information so it seemed like a solid document source. Plus, there's a [PyMed wrapper for the PubMed API](https://github.com/gijswobben/pymed) that made querying easy peasy. We'll wrap this in a Haystack custom component to format the results as `Document`s so that Haystack can use them, and add some light error handling.
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/) has up to date, trustworthy medical information so it seemed like a solid document source. Plus, there's a [PyMed wrapper for the PubMed API](https://github.com/gijswobben/pymed) that made querying easy peasy. We'll wrap this in a Haystack custom component to format the results as `Document`s so that Haystack can use them, and add some light error handling.
 
 ```python
 from pymed import PubMed
@@ -72,10 +72,10 @@ class PubMedFetcher():
     return results
 ```
 
-For the model, I went with Mixtral's 8x7b. Mixtral is a unique new kind of model that uses 8 “experts” that queries can be routed to. Each expert has 7 billion parameters, yet the queries can be pretrained quickly and have faster inference.  [This HuggingFace blog post explains MoE](https://huggingface.co/blog/moe) in more detail. 
+For the model, I went with Mixtral's 8x7b. Mixtral is a unique kind of model that uses 8 *"experts"* and an internal *"routing"* mechanism that routes a token to a specific expert. This also means that during inferencing, not all parameters are used, which allows the model to response remarkably fast.  [This HuggingFace blog post explains MoE](https://huggingface.co/blog/moe) in more detail. 
 
 
-## Prompts and queries
+## Generating Keywords for PubMed with Mixtral/LLMs
 
 First, I tried an approach where I passed a plain query to PubMed. e.g. *"What are the most  current treatments for long COVID?"* Unfortunately, that didn't work too well. The articles returned weren't very relevant. Which makes sense, because PubMed isnt optimized for natural language search. It is optimized for keywords, though. And you know what's great at generating keywords? LLMs!
 
@@ -94,7 +94,7 @@ from haystack.components.builders.prompt_builder import PromptBuilder
 keyword_prompt_template = """
 Your task is to convert the follwing question into 3 keywords that can be used to find relevant medical research papers on PubMed.
 Here is an examples:
-question: "What are the latest treatments for major depressive disorder?"
+question: "What are the latest treatments for major depre###ssive disorder?"
 keywords:
 Antidepressive Agents
 Depressive Disorder, Major

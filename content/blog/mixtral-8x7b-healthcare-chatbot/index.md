@@ -17,7 +17,7 @@ Unfortunately, countless people around the world have inadequate access to healt
 
 Technology can empower people to take charge of their health. Large language models can power chatbots where people can ask medical questions. 
 
-In this post, I’ll show you how I built a medical chatbot with Haystack 2.0, and the Mixtral 8x7B model that pulls research papers from PubMed.
+In this post, I’ll show you how I built a medical chatbot with Haystack 2.0-Beta, and the Mixtral 8x7B model by pulling research papers from PubMed.
 
 You can follow along [with this Colab](https://colab.research.google.com/drive/1Pl8gyfWthqoj7PTCQrteAvtOsswHvkzV). You’ll need a HuggingFace API key. [Sign up for a free account here](https://huggingface.co/join).
 

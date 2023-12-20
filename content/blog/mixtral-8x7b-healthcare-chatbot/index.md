@@ -6,8 +6,8 @@ featured_image: thumbnail.png
 images: ["blog/mixtral-8x7b-healthcare-chatbot/thumbnail.png"]
 alt_image: The Mixtral logo and the Haystack logo against a white background.
 toc: True
-date: 2023-12-19
-last_updated:  2023-12-19
+date: 2024-01-02
+last_updated:  2024-01-02
 authors:
   - Tilde Thurium
   - Tuana Celik

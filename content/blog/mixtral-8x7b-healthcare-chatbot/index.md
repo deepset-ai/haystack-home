@@ -10,6 +10,7 @@ date: 2023-12-19
 last_updated:  2023-12-19
 authors:
   - Tilde Thurium
+  - Tuana Celik
 tags: ["RAG", "LLM", "Haystack 2.0"]
 ---
 

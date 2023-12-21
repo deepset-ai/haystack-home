@@ -2,7 +2,7 @@
 layout: overview
 header: dark
 footer: dark
-title: Quick Start
+title: Get Started
 description: Guide to setting up and installing Haystack. 
 weight: 2
 toc: true
@@ -17,7 +17,97 @@ You can find the source code for Haystack on GitHub. This is also the main chann
 
 {{< button url="https://github.com/deepset-ai/haystack" text="View Source Code" color="green">}} -->
 
-## Installation
+Haystack is an open source Python framework that helps developers build LLM empowered custom application. In December 2023, a significant update, version 2.0-Beta, was released. This page provides information for both Haystack 1.x and the latest version, 2.0-Beta. For more information on Haystack 2.0-Beta, you can also read the [announcement post](https://haystack.deepset.ai/blog/introducing-haystack-2-beta-and-advent).
+
+## Installation 
+
+Use [pip](https://github.com/pypa/pip) to install Haystack 2.0-Beta release:
+
+```python
+pip install haystack-ai
+```
+
+For more details, refer to our 2.0-Beta documentation.
+
+{{< button url="https://docs.haystack.deepset.ai/v2.0/docs/installation" text="Docs: Installation (2.0-Beta)" color="green">}}
+
+## Build Your First RAG Pipeline
+
+To build modern search pipelines with LLMs, you need two things: powerful components and an easy way to put them together. The Haystack pipeline is built for this purpose and enables you to design and scale your interactions with LLMs. Learn how to create pipelines [here](https://docs.haystack.deepset.ai/v2.0/docs/creating-pipelines).
+
+By connecting three components, a [Retriever](https://docs.haystack.deepset.ai/v2.0/docs/retrievers), a [PromptBuilder](https://docs.haystack.deepset.ai/v2.0/docs/promptbuilder) and a [Generator](https://docs.haystack.deepset.ai/v2.0/docs/generators), you can build your first Retrieval Augmented Generation (RAG) pipeline with Haystack.
+
+Try out how Haystack answers questions about the given documents using the **RAG** approach 👇
+
+First, install Haystack 2.0-Beta:
+```bash
+pip install haystack-ai
+```
+
+Then, index your data to the DocumentStore, build a RAG pipeline, and ask a question on your data: 
+```python
+import os
+
+from haystack import Pipeline, Document
+from haystack.document_stores import InMemoryDocumentStore
+from haystack.components.retrievers import InMemoryBM25Retriever
+from haystack.components.generators import GPTGenerator
+from haystack.components.builders.prompt_builder import PromptBuilder
+
+# Write documents to InMemoryDocumentStore
+document_store = InMemoryDocumentStore()
+document_store.write_documents([
+    Document(text="My name is Jean and I live in Paris."), 
+    Document(text="My name is Mark and I live in Berlin."), 
+    Document(text="My name is Giorgio and I live in Rome.")
+])
+
+# Build a RAG pipeline
+prompt_template = """
+Given these documents, answer the question.
+Documents:
+{% for doc in documents %}
+    {{ doc.content }}
+{% endfor %}
+Question: {{question}}
+Answer:
+"""
+
+document_store = InMemoryDocumentStore()
+retriever = InMemoryBM25Retriever(document_store=document_store)
+prompt_builder = PromptBuilder(template=prompt_template)
+llm = GPTGenerator(api_key=api_key)
+
+rag_pipeline = Pipeline()
+rag_pipeline.add_component("retriever", retriever)
+rag_pipeline.add_component("prompt_builder", prompt_builder)
+rag_pipeline.add_component("llm", llm)
+rag_pipeline.connect("retriever", "prompt_builder.documents")
+rag_pipeline.connect("prompt_builder", "llm")
+
+# Ask a question
+question = "Who lives in Paris?"
+results = rag_pipeline.run(
+    {
+        "retriever": {"query": question},
+        "prompt_builder": {"question": question},
+    }
+)
+
+print(results["llm"]["replies"])
+```
+The pipeline uses the given documents to generate the answer:
+
+```text
+['Jean lives in Paris.']
+```
+
+For a hands-on guide on how to build your first RAG Pipeline with Haystack 2.0-Beta, see our tutorial.
+
+{{< button url="https://haystack.deepset.ai/tutorials/27_first_rag_pipeline" text="Tutorial: Creating a RAG Pipeline" color="green">}}
+
+
+## Installation (1.x)
 
 Use [pip](https://github.com/pypa/pip) to install the latest Haystack release:
 
@@ -70,7 +160,7 @@ For a more comprehensive installation guide, including methods for various opera
 
 {{< button url="https://docs.haystack.deepset.ai/docs/installation" text="Docs: Installation" color="green">}}
 
-## Build Your First Retrieval Augmented Generation (RAG) Pipeline
+## Build Your First RAG Pipeline with Haystack 1.x
 
 Haystack is built around the concept of pipelines. A pipeline is a powerful structure that performs an NLP task. It's made up of components connected together.
 For example, you can connect a Retriever and a PromptNode to build a Generative Question Answering pipeline that uses your own data.

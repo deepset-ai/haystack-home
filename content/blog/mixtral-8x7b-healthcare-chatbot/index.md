@@ -39,7 +39,7 @@ You pass the LLM some documents, along with a query, and prompt the LLM to use t
 
 ![](RAG.png)
 
-[PubMed](https://pubmed.ncbi.nlm.nih.gov/) has up to date, trustworthy medical information so it seemed like a solid document source. Plus, there's a [PyMed wrapper for the PubMed API](https://github.com/gijswobben/pymed) that made querying easy peasy. We'll wrap this in a Haystack custom component to format the results as `Document`s so that Haystack can use them, and add some light error handling.
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/) has up to date, trustworthy medical information so it seemed like a solid document source. Plus, there's a [PyMed wrapper for the PubMed API](https://github.com/gijswobben/pymed) that made querying easy peasy. We'll wrap this in a [Haystack custom component](https://docs.haystack.deepset.ai/v2.0/docs/custom-components) to format the results as `Document`s so that Haystack can use them, and add some light error handling.
 
 ```python
 from pymed import PubMed

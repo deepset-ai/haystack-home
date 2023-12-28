@@ -17,7 +17,7 @@ You can find the source code for Haystack on GitHub. This is also the main chann
 
 {{< button url="https://github.com/deepset-ai/haystack" text="View Source Code" color="green">}} -->
 
-Haystack is an open source Python framework that helps developers build LLM empowered custom application. In December 2023, a significant update, version 2.0-Beta, was released. This page provides information for both Haystack 1.x and the latest version, 2.0-Beta. For more information on Haystack 2.0-Beta, you can also read the [announcement post](https://haystack.deepset.ai/blog/introducing-haystack-2-beta-and-advent).
+Haystack is an open source Python framework that helps developers build LLM powered custom applications. In December 2023, a significant update, version 2.0-Beta, was released. This page provides information for both Haystack 1.x and the latest version, 2.0-Beta. For more information on Haystack 2.0-Beta, you can also read the [announcement post](https://haystack.deepset.ai/blog/introducing-haystack-2-beta-and-advent).
 
 ## Installation 
 

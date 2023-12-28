@@ -93,7 +93,7 @@ from haystack.components.builders.prompt_builder import PromptBuilder
 keyword_prompt_template = """
 Your task is to convert the follwing question into 3 keywords that can be used to find relevant medical research papers on PubMed.
 Here is an examples:
-question: "What are the latest treatments for major depre###ssive disorder?"
+question: "What are the latest treatments for major depressive disorder?"
 keywords:
 Antidepressive Agents
 Depressive Disorder, Major

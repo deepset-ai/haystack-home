@@ -76,7 +76,7 @@ For the model, I went with Mixtral's 8x7b. Mixtral is a unique kind of model tha
 
 ## Generating Keywords for PubMed with Mixtral/LLMs
 
-First, I tried an approach where I passed a plain query to PubMed. e.g. *"What are the most  current treatments for long COVID?"* Unfortunately, that didn't work too well. The articles returned weren't very relevant. Which makes sense, because PubMed isnt optimized for natural language search. It is optimized for keywords, though. And you know what's great at generating keywords? LLMs!
+First, I tried an approach where I passed a plain query to PubMed. e.g. *"What are the most  current treatments for long COVID?"* Unfortunately, that didn't work too well. The articles returned weren't very relevant. Which makes sense, because PubMed isn't optimized for natural language search. It is optimized for keywords, though. And you know what's great at generating keywords? LLMs!
 
 So now our flow is as follows:
 - Our user inputs a question, such as, "

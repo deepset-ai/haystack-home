@@ -80,7 +80,7 @@ First, I tried an approach where I passed a plain query to PubMed. e.g. *"What a
 
 So now our flow is as follows:
 - Our user inputs a question, such as, "
-- We prompt the LLM to turn tha question into keywords
+- We prompt the LLM to turn the question into keywords
 - Search PubMed and return top_k articles based on those keywords
 - Pass those articles to the LLM and ask them to reference it when formulating an answer.
 

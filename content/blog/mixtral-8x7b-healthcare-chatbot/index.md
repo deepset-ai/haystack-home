@@ -86,6 +86,18 @@ So now our flow is as follows:
 
 ![A flowchart showing the architecture of the Healthcare Chatbot. The boxes are Query, Keyword Prompt, LLM, Keywords, PubMedFetcher, Articles, Query Prompt, LLM, Ansswer.](HealthcareChatbotArchitecture.png)
 
+First, initialize the LLMs and warm them up.
+```python
+from haystack.components.generators import HuggingFaceTGIGenerator
+
+keyword_llm = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1", token=huggingface_token)
+keyword_llm.warm_up()
+
+llm = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1", token=huggingface_token)
+llm.warm_up()
+```
+
+Next, we create our prompts and our pipeline and hook everything up.
 ```python
 from haystack import Pipeline
 from haystack.components.builders.prompt_builder import PromptBuilder
@@ -137,6 +149,12 @@ pipe.connect("prompt_builder.prompt", "llm.prompt")
 ```
 
 Try it for yourself and see!
+
+```python
+pipe.run(data={"keyword_prompt_builder":{"question":question},
+               "prompt_builder":{"question": question},
+               "llm":{"generation_kwargs": {"max_new_tokens": 500}}})
+```
 
 ```python
 What are the most current treatments for long COVID?

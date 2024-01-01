@@ -4,7 +4,7 @@ title: Building a healthcare chatbot with Mixtral 8x7b, Haystack, and PubMed
 description: Have a look into our first commitment to what will eventually become Haystack 2.0
 featured_image: thumbnail.png
 images: ["blog/mixtral-8x7b-healthcare-chatbot/thumbnail.png"]
-alt_image: The Mixtral logo and the Haystack logo against a white background.
+alt_image: A brightly colored AI-generated image of a person with long hair looking at articles on the PubMed website. They are surrounded by books and have a flower on their desk.
 toc: True
 date: 2024-01-02
 last_updated:  2024-01-02
@@ -36,7 +36,7 @@ Retrieval augmented generation, or RAG, is a way of giving a LLM context so it c
 
 You pass the LLM some documents, along with a query, and prompt the LLM to use the documents when answering the question.
 
-![](RAG.png)
+![A flowchart diagram showing the architecture of a retrieval augmented generative pipeline. The boxes are Query, Retriever, Your Documents, Prompt, LLM, Output.](RAG.png)
 
 [PubMed](https://pubmed.ncbi.nlm.nih.gov/) has up to date, trustworthy medical information so it seemed like a solid document source. Plus, there's a [PyMed wrapper for the PubMed API](https://github.com/gijswobben/pymed) that made querying easy peasy. We'll wrap this in a [Haystack custom component](https://docs.haystack.deepset.ai/v2.0/docs/custom-components) to format the results as `Document`s so that Haystack can use them, and add some light error handling.
 
@@ -76,15 +76,15 @@ For the model, I went with Mixtral's 8x7b. Mixtral is a unique kind of model tha
 
 ## Generating Keywords for PubMed with Mixtral/LLMs
 
-First, I tried an approach where I passed a plain query to PubMed. e.g. *"What are the most  current treatments for long COVID?"* Unfortunately, that didn't work too well. The articles returned weren't very relevant. Which makes sense, because PubMed isn't optimized for natural language search. It is optimized for keywords, though. And you know what's great at generating keywords? LLMs!
+First, I tried an approach where I passed a plain query to PubMed. e.g. *"What are the most current treatments for long COVID?"* Unfortunately, that didn't work too well. The articles returned weren't very relevant. Which makes sense, because PubMed isn't optimized for natural language search. It is optimized for keywords, though. And you know what's great at generating keywords? LLMs!
 
 So now our flow is as follows:
-- Our user inputs a question, such as, "
+- Our user inputs a question, such as, "What are the most current treatments for long COVID?"
 - We prompt the LLM to turn the question into keywords
 - Search PubMed and return top_k articles based on those keywords
 - Pass those articles to the LLM and ask them to reference it when formulating an answer.
 
-![](HealthcareChatbotArchitecture.png)
+![A flowchart showing the architecture of the Healthcare Chatbot. The boxes are Query, Keyword Prompt, LLM, Keywords, PubMedFetcher, Articles, Query Prompt, LLM, Ansswer.](HealthcareChatbotArchitecture.png)
 
 ```python
 from haystack import Pipeline

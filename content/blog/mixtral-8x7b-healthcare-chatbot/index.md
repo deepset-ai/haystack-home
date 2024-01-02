@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 title: Building a Healthcare Chatbot with Mixtral 8x7b, Haystack, and PubMed
-description: Have a look into our first commitment to what will eventually become Haystack 2.0
+description: Learn how to create a custom medical chatbot using PubMed and Mixtral 8x7B for keyword and answer generation
 featured_image: thumbnail.png
 images: ["blog/mixtral-8x7b-healthcare-chatbot/thumbnail.png"]
 alt_image: A brightly colored AI-generated image of a person with long hair looking at articles on the PubMed website. They are surrounded by books and have a flower on their desk.

@@ -6,6 +6,7 @@ title: Use Cases
 description: Discover how you can use Haystack.
 weight: 5
 toc: true
+hidden: true
 ---
 
 ## Semantic Search System

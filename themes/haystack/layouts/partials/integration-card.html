@@ -10,6 +10,7 @@
   class="grid-page-card integration-card"
   data-type="{{ .Params.type }}"
   data-maintainer="{{ $maintainer }}"
+  {{with .Params.version}}data-version="{{ . }}"{{end}}
 >
   {{/* Header / tags */}}
   <div class="integration-card-logo">

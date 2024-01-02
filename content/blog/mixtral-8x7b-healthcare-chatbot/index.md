@@ -156,7 +156,7 @@ pipe.run(data={"keyword_prompt_builder":{"question":question},
                "llm":{"generation_kwargs": {"max_new_tokens": 500}}})
 ```
 
-```python
+```shell
 What are the most current treatments for long COVID?
   The COVID-19 pandemic has led to a significant increase in the number of patients with post-acute COVID-19 syndrome (PACS), also known as long COVID. PACS is a complex, multisystem disorder that can affect various organs and systems, including the respiratory, cardiovascular, neurological, and gastrointestinal systems. The pathophysiology of PACS is not yet fully understood, but it is believed to be related to immune dysregulation, persistent inflammation, and microvascular injury.
 The management of PACS is challenging due to its heterogeneous presentation and the lack of evidence-based treatments. Current treatment approaches are mainly supportive and aim to alleviate symptoms and improve quality of life. These include:

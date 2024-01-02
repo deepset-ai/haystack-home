@@ -179,7 +179,7 @@ Alternately, you could experiment with models that has been trained on a medical
 ## Wrapping it up
 
 Today you learned how to use Mixtral 8x7B and Haystack RAG pipelines to build a medical chatbot. Thanks for reading! If you want to learn more about Haystack 2.0 or RAG Pipelines, these posts might be of interest:
-- [Getting started with Mixtral 8x7b and Haystack](https://colab.research.google.com/drive/1gsxurwwWK08ZZcPpzz_8yXlsLNZEDqUz?usp=sharing#scrollTo=O2LloFrDAe6M)
+- [Getting started with Mixtral 8x7b and Haystack](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/mixtral-8x7b-for-web-qa.ipynb)
 - [Customizing RAG Pipelines to Summarize Latest Hacker News Posts](https://haystack.deepset.ai/blog/customizing-rag-to-summarize-hacker-news-posts-with-haystack2)
 
 

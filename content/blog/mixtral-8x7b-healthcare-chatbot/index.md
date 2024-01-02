@@ -151,6 +151,7 @@ pipe.connect("prompt_builder.prompt", "llm.prompt")
 Try it for yourself and see!
 
 ```python
+question="What are the most current treatments for long COVID?"
 pipe.run(data={"keyword_prompt_builder":{"question":question},
                "prompt_builder":{"question": question},
                "llm":{"generation_kwargs": {"max_new_tokens": 500}}})

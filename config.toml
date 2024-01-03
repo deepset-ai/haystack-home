@@ -112,7 +112,7 @@ paginatePath = "/"
   weight = 1
 
 [[menu.main]]
-  name = 'Quick Start'
+  name = 'Get Started'
   url = '/overview/quick-start'
   parent = 'overview'
   weight = 2

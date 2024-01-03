@@ -18,7 +18,7 @@ tags: ["RAG", "Haystack 2.0", "LLM"]
 
 In this article, we will introduce you to the new Google Vertex AI Integration for Haystack 2.0-Beta. While this integration introduces several new components to the Haystack eco-system (feel free to explore the full integration repo!), we’d like to start by showcasing two components in particular: the [`VertexAIGeminiGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/vertexaigeminigenerator) and the [`VertexAIGeminiChatGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/vertexaigeminichatgenerator), using the `gemini-pro` and `gemini-pro-vision` models.
 
-> 💚 _You can run the example code showcased in this article in the accompanying_ _[Colab Notebook](https://colab.research.google.com/drive/10SdXvH2ATSzqzA3OOmTM8KzD5ZdH_Q6Z?usp=sharing)_
+> 💚 _You can run the example code showcased in this article in the accompanying_ _[Colab Notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/vertexai-gemini-examples.ipynb)_
 
 > **PSA:** This integration, its documentation pages and resources are going through some final refinements. So more resources will follow!
 

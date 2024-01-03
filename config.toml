@@ -129,12 +129,6 @@ paginatePath = "/"
   parent = 'overview'
   weight = 5
 
-[[menu.main]]
-  name = 'Use Cases'
-  url = '/overview/use-cases'
-  parent = 'overview'
-  weight = 3
-
 # Resources children
 [[menu.main]]
   name = 'PromptHub'

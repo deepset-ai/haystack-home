@@ -8,7 +8,7 @@
         {{/* Sidebar */}}
         <aside class="toc-sidebar">
           <ul class="content" role="list">
-            {{ range where .Site.Pages "Section" "overview" }}
+            {{ range where (where .Site.Pages "Section" "overview") "Params.hidden" "!=" true }}
               <li>
                 {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
                   <details class="accordion-js accordion-child" open>

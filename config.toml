@@ -112,7 +112,7 @@ paginatePath = "/"
   weight = 1
 
 [[menu.main]]
-  name = 'Quick Start'
+  name = 'Get Started'
   url = '/overview/quick-start'
   parent = 'overview'
   weight = 2
@@ -128,12 +128,6 @@ paginatePath = "/"
   url = '/overview/roadmap'
   parent = 'overview'
   weight = 5
-
-[[menu.main]]
-  name = 'Use Cases'
-  url = '/overview/use-cases'
-  parent = 'overview'
-  weight = 3
 
 # Resources children
 [[menu.main]]

@@ -16,7 +16,7 @@ tags: ["RAG", "Haystack 2.0", "LLM"]
 ---	
 
 
-In this article, we will introduce you to the new Google Vertex AI Integration for Haystack 2.0-Beta. While this integration introduces several new components to the Haystack eco-system (feel free to explore the full integration repo!), we’d like to start by showcasing two components in particular: the `GeminiGenerator` and the `GeminiChatGenerator`, using the `gemini-pro` and `gemini-pro-vision` models.
+In this article, we will introduce you to the new Google Vertex AI Integration for Haystack 2.0-Beta. While this integration introduces several new components to the Haystack eco-system (feel free to explore the full integration repo!), we’d like to start by showcasing two components in particular: the [`VertexAIGeminiGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/vertexaigeminigenerator) and the [`VertexAIGeminiChatGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/vertexaigeminichatgenerator), using the `gemini-pro` and `gemini-pro-vision` models.
 
 > 💚 _You can run the example code showcased in this article in the accompanying_ _[Colab Notebook](https://colab.research.google.com/drive/10SdXvH2ATSzqzA3OOmTM8KzD5ZdH_Q6Z?usp=sharing)_
 
@@ -24,9 +24,9 @@ In this article, we will introduce you to the new Google Vertex AI Integration f
 
 The great news is, to authenticate for access to the Gemini models, you will only need to do a Google authentication in the Colab (instructions in the Colab)
 
-## GeminiGenerator for Question Answering on Images
+## VertexAIGeminiGenerator for Question Answering on Images
 
-The new `GeminiGenerator` component allows you to query Gemini models such as `gemini-pro` and `gemini-pro-vision`. In this example, let’s use the latter, allowing us to also make use of images in our queries.
+The new `VertexAIGeminiGenerator` component allows you to query Gemini models such as `gemini-pro` and `gemini-pro-vision`. In this example, let’s use the latter, allowing us to also make use of images in our queries.
 
 To get started, you will need to install Haystack and the `google-vertex-haystack` the integration:
 
@@ -38,9 +38,9 @@ To get started, you will need to install Haystack and the `google-vertex-haystac
 Just like any other [generator component in Haystack 2.0-Beta](https://docs.haystack.deepset.ai/v2.0/docs/generators), to run the `GeminiGenerator` on its own, we simply have to call the `run()` method. However, unlike our other components, the run method here expects `parts` as input. A `Part` in the Google Vertex AI API can be anything from a message, to images, or even function calls. Here are the docstrings from the source code for the most up-to-date reference we could find [here.](https://github.com/googleapis/python-aiplatform/blob/5f6ad8df5a08e78a121a72a21e21d95abb072e58/vertexai/generative_models/_generative_models.py#L1427-L1446) Let’s run this component with a simple query 👇
 
 ```python
-from google_vertex_haystack.generators.gemini import GeminiGenerator
+from google_vertex_haystack.generators.gemini import VertexAIGeminiGenerator
 
-gemini = GeminiGenerator(model="gemini-pro-vision", project_id='YOUR-GCP-PROJECT-ID')
+gemini = VertexAIGeminiGenerator(model="gemini-pro-vision", project_id='YOUR-GCP-PROJECT-ID')
 gemini.run(parts = ["What is the most interesting thing you know?"])
 
 ```
@@ -78,7 +78,7 @@ for answer in result["answers"]:
 
 With `gemini-pro`, we can also start introducing function calling! So let's see how we can do that. An important feature to note here is that function calling in this context refers to using Gemini to identify _how_ a function should be called. To see what we mean by this, let's see if we can build a system that can run a `get_current_weather` function, based on a question asked in natural language.
 
-For this section, we will be using the new `GeminiChatGenerator` component, which can optionally be initialized by providing a list of `tools`. This will become handy in a moment because we will be able to define functions and provide them to the generator as a list of tools.
+For this section, we will be using the new `VertexAIGeminiChatGenerator` component, which can optionally be initialized by providing a list of `tools`. This will become handy in a moment because we will be able to define functions and provide them to the generator as a list of tools.
 
 For demonstration purposes, we're simply creating a `get_current_weather` function that returns an object which will _always_ tell us it's 'Sunny, and 21.8 degrees'.. If it's Celsius, that's a good day! ☀️
 
@@ -115,13 +115,13 @@ tool = Tool([get_current_weather_func])
 
 ```
 
-We can use this tool with the `GeminiChatGenerator` and ask it to tell us how the function should be called to answer the question “What is the temperature in celsius in Berlin?”:
+We can use this tool with the `VertexAIGeminiChatGenerator` and ask it to tell us how the function should be called to answer the question “What is the temperature in celsius in Berlin?”:
 
 ```python
-from google_vertex_haystack.generators.chat.gemini import GeminiChatGenerator
+from google_vertex_haystack.generators.chat.gemini import VertexAIGeminiChatGenerator
 from haystack.dataclasses import ChatMessage
 
-gemini_chat = GeminiChatGenerator(model="gemini-pro", project_id='YOUR-GCP-PROJECT-ID', tools=[tool])
+gemini_chat = VertexAIGeminiChatGenerator(model="gemini-pro", project_id='YOUR-GCP-PROJECT-ID', tools=[tool])
 
 messages = [ChatMessage.from_user(content = "What is the temperature in celsius in Berlin?")]
 res = gemini_chat.run(messages=messages)
@@ -142,12 +142,12 @@ res["replies"][0].content
 
 ## Building a Full Retrieval-Augmented Generative Pipeline
 
-Alongside the individual use of the new Gemini components above, you can of course also use them in full [Haystack pipelines](https://docs.haystack.deepset.ai/v2.0/docs/pipelines). Here is an example of a RAG pipeline that does question-answering on webpages using the [`LinkContentFetcher`](https://docs.haystack.deepset.ai/v2.0/docs/linkcontentfetcher) and the `GeminiGenerator` using the `gemini-pro-vision` model 👇
+Alongside the individual use of the new Gemini components above, you can of course also use them in full [Haystack pipelines](https://docs.haystack.deepset.ai/v2.0/docs/pipelines). Here is an example of a RAG pipeline that does question-answering on webpages using the [`LinkContentFetcher`](https://docs.haystack.deepset.ai/v2.0/docs/linkcontentfetcher) and the `VertexAIGeminiGenerator` using the `gemini-pro-vision` model 👇
 
 > As we are working on the full release of Haystack 2.0, components that are currently available in the Beta release are mostly focused on text. So, truly multi-modal applications as full Haystack pipelines is not yet possible. We are creating components that can easily handle other medias like images, audio, and video and will be back with examples soon!
 
 ```python
-from google_vertex_haystack.generators.gemini import GeminiGenerator
+from google_vertex_haystack.generators.gemini import VertexAIGeminiGenerator
 from haystack.components.fetchers.link_content import LinkContentFetcher
 from haystack.components.converters import HTMLToDocument
 from haystack.components.preprocessors import DocumentSplitter
@@ -159,7 +159,7 @@ fetcher = LinkContentFetcher()
 converter = HTMLToDocument()
 document_splitter = DocumentSplitter(split_by="word", split_length=50)
 similarity_ranker = TransformersSimilarityRanker(top_k=3)
-gemini = GeminiGenerator(model="gemini-pro-vision", project_id=project_id)
+gemini = VertexAIGeminiGenerator(model="gemini-pro-vision", project_id=project_id)
 
 prompt_template = """
 According to these documents:

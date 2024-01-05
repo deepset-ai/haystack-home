@@ -22,7 +22,7 @@ A big thank you for being part of this journey! Here's to a wonderful New Year f
 
 ## 💫 Haystack Highlights
 
-- The biggest highlight of the year was [**Haystack 2.0-Beta**](https://haystack.deepset.ai/blog/introducing-haystack-2-beta-and-advent), which is a more flexible, extendable, customizable version of Haystack v1 💯
+- The biggest highlight of the year was [**Haystack 2.0-Beta**](https://haystack.deepset.ai/blog/introducing-haystack-2-beta-and-advent), which is a more flexible, extendable, customizable version of Haystack 💯
 - Haystack surpassed [**12,000 stars**](https://github.com/deepset-ai/haystack) on GitHub 🌟
 - It has been exactly 2 years since the [first stable release](https://github.com/deepset-ai/haystack/releases/tag/v1.0.0) of Haystack 🎉
 - We introduced [Haystack Integrations](https://haystack.deepset.ai/integrations) to highlight community-contributed external packages and incorporate additional technologies like **Amazon**, **VertexAI**, **Elasticsearch**, **OpenSearch**, **Chroma**, **Pinecone**, **Cohere**, **Gradient**, **Jina**, and **Ollama** that seamlessly integrate with Haystack 🧩
@@ -65,7 +65,7 @@ Here are the most visited blog posts of 2023:
 - [How to Prevent Prompt Injections](https://haystack.deepset.ai/blog/how-to-prevent-prompt-injections): Prevent prompt injections leveraging our new open-source model and dataset
 - [Enhancing RAG Pipelines in Haystack](https://haystack.deepset.ai/blog/enhancing-rag-pipelines-in-haystack): How the latest rankers optimize LLM context window utilization in RAG pipelines
 
-![An image of a robot looking at pictures of other robots](blog-highlights.jpeg#small "_We published '[Gemini Models with Google Vertex AI Integration for Haystack](https://haystack.deepset.ai/blog/gemini-models-with-google-vertex-for-haystack)'_")
+![An image of a robot looking at pictures of other robots](blog-highlight.jpg#small "_We published '[Gemini Models with Google Vertex AI Integration for Haystack](https://haystack.deepset.ai/blog/gemini-models-with-google-vertex-for-haystack)'_")
 
 ## 👏 Some of Your Work
 

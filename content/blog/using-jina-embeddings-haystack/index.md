@@ -23,7 +23,7 @@ With the [Jina Haystack extension](https://haystack.deepset.ai/integrations/jina
 
 - **Handling long documents.** The large token window, accommodating up to 8192 tokens, allows you to break the embeddings into larger chunks. It's more computationally and memory-efficient to use a few larger vectors than a lot of small ones, so this allows Jina v2 to process large documents efficiently. 
 - **Improved semantic understanding.** Larger text chunks also contain more *context* within each chunk, which can help LLMs better understand your documents. Improved understanding means better long document retrieval, semantic textual similarity, text reranking, recommendation, RAG and LLM-based generative search.
-- **Fully open source 💙**  # There are both small and large embedding models available, depending on your computing resources and requirements. To run the embedding models yourself, [check out this documentation on HuggingFace](https://huggingface.co/jinaai/jina-embeddings-v2-base-en).  Alternately, you can use Jina's fully managed embedding service to handle that for you, which we'll be doing for this demo.
+- **Fully open source 💙** There are both small and large embedding models available, depending on your computing resources and requirements. To run the embedding models yourself, [check out this documentation on HuggingFace](https://huggingface.co/jinaai/jina-embeddings-v2-base-en).  Alternately, you can use Jina's fully managed embedding service to handle that for you, which we'll be doing for this demo.
 
 ## Getting started using Jina Embeddings v2 with Haystack
 
@@ -99,8 +99,6 @@ writer = DocumentWriter(document_store=document_store, policy=DuplicatePolicy.SK
 
 retriever = ChromaEmbeddingRetriever(document_store=document_store)
 
-# There are both small and large embedding models available, depending on your computing resources and requirements.
-# Here we're using the larger model.
 document_embedder = JinaDocumentEmbedder(api_key=jina_api_key, model_name="jina-embeddings-v2-base-en")
 
 indexing_pipeline = Pipeline()
@@ -192,3 +190,8 @@ LLC: https://www.supremecourt.gov/opinions/22pdf/22-148_3e04.pdf
 Note: if you want to change the prompt template, you'll also need to re-run the code blocks starting where the `DocumentStore` is defined.
 
 ## Wrapping it up
+
+Thanks for reading! If you're interested in learning more about the technologies used here, check out these blog posts:
+- [Embeddings in Depth](https://jina.ai/news/embeddings-in-depth/)
+- [What is text vectorization in NLP?](https://haystack.deepset.ai/blog/what-is-text-vectorization-in-nlp)
+- [The definitive guide to BERT models](https://haystack.deepset.ai/blog/the-definitive-guide-to-bertmodels)

@@ -15,7 +15,7 @@ tags: ["Community", "Embeddings, "Open Source", "Integration"]
 
 [Jina.ai](https://jina.ai/) recently upgraded and expanded the capabilities of their previous embedding model in a v2 release. 
 
-With the [Jina Haystack extension](https://haystack.deepset.ai/integrations/jina), you can now take advantage of these new text embedders in your Haystack pipelines! In this post, we'll show you how. 
+With the [Jina Haystack extension](https://haystack.deepset.ai/integrations/jina), you can now take advantage of these new text embedders in your Haystack pipelines! In this post, we'll show what's cool about Jina Embeddings v2 and how to use them.
 
 > You can follow along in the accompanying [Colab notebook of a RAG pipeline that uses the Jina Haystack extension](https://colab.research.google.com/drive/1l8GbQhqxnWXkdktgJfs9Rz4EAtNbHK_L#scrollTo=_coq_qCuItbN).
 
@@ -33,12 +33,12 @@ You can use Jina Embedding models with two Haystack components: `JinaTextEmbedde
 
 To create semantic embeddings for documents, use`JinaDocumentEmbedder` in your indexing pipeline. For generating embeddings for queries, use `JinaTextEmbedder`. 
 
-In the following code we'll demonstrate how to use both components, but you can also [check out the Haystack docs for a simpler example](https://haystack.deepset.ai/integrations/jina).
+In the following code we'll demonstrate how to use both components. You can also [see the Haystack docs for some minimum viable code examples.](https://haystack.deepset.ai/integrations/jina).
 
 
-## Building a Haystack RAG Pipeline to summarize legal text
+## Summarizing legal text with a Haystack RAG pipeline
 
-I don't know about you, but I'm not a lawyer! Neither are large language models. But LLMs are good at analyzing long, complex documents. So let's try using the Jina v2 embedding models for some legal summarization.
+I'm not a lawyer, and neither are large language models. But LLMs are good at analyzing long, complex documents. So let's try using the Jina v2 embedding models for some legal summarization.
 
 Although I narrowly escaped jury duty last fall, I had slight FOMO since the case sounded interesting (Google v. Sonos). Let's see how it turned out.
 
@@ -50,7 +50,7 @@ First, let's install all the packages we'll need.
 ```bash
 pip haystack-ai jina-haystack chroma-haystack pypdf
 ```
-Then let's input our credentials. Or you can set them as environment variables if you're feeling fancy.
+Then let's input our credentials. Or you can set them as environment variables instead if you're feeling fancy.
 
 ```python
 import getpass
@@ -175,7 +175,7 @@ print(result['generator']['replies'][0])
 Answer: Google v. Sonos is a patent infringement case in which Sonos sued Google for infringing on two of its patents related to customizing and saving overlapping groups of smart speakers or other zone players according to a common theme..
 ```
 
-## Alternate cases and questions
+## Exploring more questions and documents
 
 You can swap the `question` variable out and then call `pipeline.run` again:
 - What role did If This Then That play in Google v. Sonos?
@@ -191,7 +191,9 @@ Note: if you want to change the prompt template, you'll also need to re-run the 
 
 ## Wrapping it up
 
-Thanks for reading! If you're interested in learning more about the technologies used here, check out these blog posts:
+Thanks for reading! If you want to stay on top of the latest Haystack developments, you can [subscribe to our newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=using-jina-embeddings-haystack) or [join our Discord community](https://discord.com/invite/haystack).
+
+To learn more about the technologies used here, check out these blog posts:
 - [Embeddings in Depth](https://jina.ai/news/embeddings-in-depth/)
 - [What is text vectorization in NLP?](https://haystack.deepset.ai/blog/what-is-text-vectorization-in-nlp)
 - [The definitive guide to BERT models](https://haystack.deepset.ai/blog/the-definitive-guide-to-bertmodels)

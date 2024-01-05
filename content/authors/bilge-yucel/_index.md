@@ -10,6 +10,9 @@ socials:
     - name: LinkedIn
       url: https://www.linkedin.com/in/bilge-yucel
       icon: /images/icons/linkedin-white.svg
+    - name: Mastodon
+      url: https://sigmoid.social/@bilgeyucel
+      icon: /images/icons/mastodon-dark.svg
     - name: Twitter
       url: https://twitter.com/bilgeycl
       icon: /images/icons/twitter-white.svg
@@ -17,6 +20,9 @@ socials:
     - name: LinkedIn
       url: https://www.linkedin.com/in/bilge-yucel
       icon: /images/icons/linkedin-dark.svg
+    - name: Mastodon
+      url: https://sigmoid.social/@bilgeyucel
+      icon: /images/icons/mastodon-dark.svg
     - name: Twitter
       url: https://twitter.com/bilgeycl
       icon: /images/icons/twitter-dark.svg

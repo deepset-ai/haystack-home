@@ -13,7 +13,5 @@ hero:
 
     with 10 challenges in the month of December 🎉
 
-    Every few days one of the doors in this page will open to reveal a new challenge
-
-    Submit your results and discuss solutions with the community 🎄
+    From January 5th to 19th, you will also find the solutions of each challenge.
 ---

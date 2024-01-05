@@ -1,0 +1,164 @@
+---
+layout: blog-post
+title: 'Using Jina Embeddings v2 with Haystack 2.0 pipelines to summarize legal documents'
+description: Learn how to use the Jina v2 Embedding models in a RAG pipeline with our new Haystack integration.
+featured_image: thumbnail.png
+images: ["blog/using-jina-embeddings-haystack/thumbnail.png"]
+alt_image: The logos for Haystack and Jina AI sit against a blue background with cartoonish art of a man and a woman holding a magnifying glass up to a large clipboard, next to a gavel.
+toc: True
+date: 2024-01-03
+last_updated: 2024-01-03
+authors:
+  - Tilde Thurium
+tags: ["Community", "Embeddings, "Open Source", "Integration"]
+---
+
+[Jina.ai](https://jina.ai/) recently upgraded and expanded the capabilities of their previous embedding model in a v2 release. 
+
+With the [Jina Haystack extension](https://haystack.deepset.ai/integrations/jina), you can now take advantage of these new text embedders in your Haystack pipelines! In this post, we'll show you how. 
+
+> You can follow along in the accompanying [Colab notebook of a RAG pipeline that uses the Jina Haystack extension](https://colab.research.google.com/drive/1l8GbQhqxnWXkdktgJfs9Rz4EAtNbHK_L#scrollTo=_coq_qCuItbN).
+
+## Advantages of Jina Embeddings v2
+
+- **Handling long documents.** The large token window, accommodating up to 8192 tokens, allows you to break the embeddings into larger chunks. It's more computationally and memory-efficient to use a few larger vectors than a lot of small ones, so this allows Jina v2 to process large documents efficiently. 
+- **Improved semantic understanding.** Larger text chunks also contain more *context* within each chunk, which can help LLMs better understand your documents. Improved understanding means better long document retrieval, semantic textual similarity, text reranking, recommendation, RAG and LLM-based generative search.
+- **Fully open source 💙**  # There are both small and large embedding models available, depending on your computing resources and requirements. To run the embedding models yourself, [check out this documentation on HuggingFace](https://huggingface.co/jinaai/jina-embeddings-v2-base-en).  Alternately, you can use Jina's fully managed embedding service to handle that for you, which we'll be doing for this demo.
+
+## Getting started using Jina Embeddings v2 with Haystack
+
+To use the integration you'll need a free Jina api key - get one [here](https://jina.ai/embeddings/). 
+
+You can use Jina Embedding models with two Haystack components: `JinaTextEmbedder` and `JinaDocumentEmbedder`.
+
+To create semantic embeddings for documents, use`JinaDocumentEmbedder` in your indexing pipeline. For generating embeddings for queries, use `JinaTextEmbedder`. 
+
+In the following code we'll demonstrate how to use both components, but you can also [check out the Haystack docs for a simpler example](https://haystack.deepset.ai/integrations/jina).
+
+
+## Building a Haystack RAG Pipeline to summarize legal text
+
+I don't know about you, but I'm not a lawyer! Neither are large language models. But LLMs are good at analyzing long, complex documents. So let's try using the Jina v2 embedding models for some legal summarization.
+
+Although I narrowly escaped jury duty last fall, I had slight FOMO since the case sounded interesting (Google v. Sonos). Let's see how it turned out.
+
+To follow along with this demo, in addition to a Jina api key you'll also need a [Hugging Face access token](https://huggingface.co/docs/hub/security-tokens), since we'll use the [Mixtral 8x7b LLM](https://mistral.ai/news/mixtral-of-experts/) for question answering. 
+
+First, let's install all the packages we'll need.
+
+```bash
+pip haystack-ai jina-haystack chroma-haystack pypdf
+```
+Then let's input our credentials. Or you can set them as environment variables if you're feeling fancy.
+
+```python
+import getpass
+
+jina_api_key  = getpass.getpass("JINA api key:")
+hf_token = getpass.getpass("Enter your HuggingFace api token:")
+```
+
+## Building the indexing pipeline
+
+Our indexing pipeline will preprocess the legal document, turn it into vectors, and store them. We'll use the [Chroma DocumentStore](https://docs.trychroma.com/getting-started) to store the vector embeddings, via the [Chroma Document Store Haystack integration](https://haystack.deepset.ai/integrations/chroma-documentstore).
+
+```python
+from chroma_haystack.document_store import ChromaDocumentStore
+document_store = ChromaDocumentStore()
+```
+
+At a high level, the `LinkContentFetcher` pulls this document from its URL. Then we convert it from a PDF into a Document object Haystack can understand.
+
+We preprocess it by removing whitespace and redundant substrings. Then split it into chunks, generate embeddings, and write these embeddings into the `ChromaDocumentStore`.
+
+```python
+from haystack import Pipeline
+
+from haystack.components.fetchers import LinkContentFetcher
+from haystack.components.converters import PyPDFToDocument
+from haystack.components.writers import DocumentWriter
+from haystack.components.preprocessors import DocumentCleaner
+from haystack.components.preprocessors import DocumentSplitter
+from chroma_haystack.retriever import ChromaEmbeddingRetriever
+from haystack.document_stores import DuplicatePolicy
+
+from jina_haystack.document_embedder import JinaDocumentEmbedder
+from jina_haystack.text_embedder import JinaTextEmbedder
+
+fetcher = LinkContentFetcher()
+converter = PyPDFToDocument()
+# remove repeated substrings to get rid of headers/footers
+cleaner = DocumentCleaner(remove_repeated_substrings=True)
+
+# Since jina-v2 can handle 8192 tokens, 500 words seems like a safe chunk size
+splitter = DocumentSplitter(split_by="word", split_length=500)
+
+# DuplicatePolicy.SKIP is optional but helps avoid errors if you want to re-run the pipeline
+writer = DocumentWriter(document_store=document_store, policy=DuplicatePolicy.SKIP)
+
+retriever = ChromaEmbeddingRetriever(document_store=document_store)
+
+# There are both small and large embedding models available, depending on your computing resources and requirements.
+# Here we're using the larger model.
+document_embedder = JinaDocumentEmbedder(api_key=jina_api_key, model_name="jina-embeddings-v2-base-en")
+
+indexing_pipeline = Pipeline()
+indexing_pipeline.add_component(instance=fetcher, name="fetcher")
+indexing_pipeline.add_component(instance=converter, name="converter")
+indexing_pipeline.add_component(instance=cleaner, name="cleaner")
+indexing_pipeline.add_component(instance=splitter, name="splitter")
+indexing_pipeline.add_component(instance=document_embedder, name="embedder")
+indexing_pipeline.add_component(instance=writer, name="writer")
+
+indexing_pipeline.connect("fetcher.streams", "converter.sources")
+indexing_pipeline.connect("converter.documents", "cleaner.documents")
+indexing_pipeline.connect("cleaner.documents", "splitter.documents")
+indexing_pipeline.connect("splitter.documents", "embedder.documents")
+indexing_pipeline.connect("embedder.documents", "writer.documents")
+
+# This case references Google V Sonos, October 2023
+urls = ["https://cases.justia.com/federal/district-courts/california/candce/3:2020cv06754/366520/813/0.pdf"]
+
+indexing_pipeline.run(data={"fetcher": {"urls": urls}})
+```
+
+## Building the query pipeline
+
+Now the real fun begins. Let's create a query pipeline so we can actually start asking questions. We write a prompt allowing us to pass our documents to the Mixtral-8x7B LLM. Then we initiatialize the LLM via the `HuggingFaceTGIGenerator`.
+
+In Haystack 2.0 `retriever`s are tightly coupled to `DocumentStores`. If we pass in the `retriever` we initialized earlier, this pipeline can access those embeddings we generated, and pass them to the LLM.
+
+```python
+
+from haystack.components.generators import HuggingFaceTGIGenerator
+from haystack.components.builders.prompt_builder import PromptBuilder
+
+from jina_haystack.text_embedder import JinaTextEmbedder
+prompt = """ Answer the question, based on the
+content in the documents. If you can't answer based on the documents, say so.
+
+Documents:
+{% for doc in documents %}
+  {{doc.content}}
+{% endfor %}
+
+question: {{question}}
+"""
+
+text_embedder = JinaTextEmbedder(api_key=jina_api_key, model_name="jina-embeddings-v2-base-en")
+generator = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1", token=hf_token)
+generator.warm_up()
+
+prompt_builder = PromptBuilder(template=prompt)
+query_pipeline = Pipeline()
+query_pipeline.add_component("text_embedder",text_embedder)
+query_pipeline.add_component(instance=prompt_builder, name="prompt_builder")
+query_pipeline.add_component("retriever", retriever)
+query_pipeline.add_component("generator", generator)
+
+query_pipeline.connect("text_embedder.embedding", "retriever.query_embedding")
+query_pipeline.connect("retriever.documents", "prompt_builder.documents")
+query_pipeline.connect("prompt_builder.prompt", "generator.prompt")
+```
+
+## Wrapping it up

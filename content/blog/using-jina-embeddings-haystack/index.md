@@ -42,7 +42,8 @@ I don't know about you, but I'm not a lawyer! Neither are large language models.
 
 Although I narrowly escaped jury duty last fall, I had slight FOMO since the case sounded interesting (Google v. Sonos). Let's see how it turned out.
 
-To follow along with this demo, in addition to a Jina api key you'll also need a [Hugging Face access token](https://huggingface.co/docs/hub/security-tokens), since we'll use the [Mixtral 8x7b LLM](https://mistral.ai/news/mixtral-of-experts/) for question answering. 
+To follow along with this demo, in addition to a Jina api key you'll also need a [Hugging Face access token](https://huggingface.co/docs/hub/security-tokens), since we'll use the [Mixtral 8x7b LLM](https://mistral.ai/news/mixtral-of-experts/) for question answering.
+
 
 First, let's install all the packages we'll need.
 
@@ -160,5 +161,34 @@ query_pipeline.connect("text_embedder.embedding", "retriever.query_embedding")
 query_pipeline.connect("retriever.documents", "prompt_builder.documents")
 query_pipeline.connect("prompt_builder.prompt", "generator.prompt")
 ```
+Time to ask a question!
+
+```python
+question = "Summarize what happened in Google v. Sonos"
+
+result = query_pipeline.run(data={"text_embedder":{"text": question},
+                                  "retriever": {"top_k": 3},
+                                  "prompt_builder":{"question": question},
+                                  "generator": {"generation_kwargs": {"max_new_tokens": 350}}})
+
+print(result['generator']['replies'][0])
+```
+```
+Answer: Google v. Sonos is a patent infringement case in which Sonos sued Google for infringing on two of its patents related to customizing and saving overlapping groups of smart speakers or other zone players according to a common theme..
+```
+
+## Alternate cases and questions
+
+You can swap the `question` variable out and then call `pipeline.run` again:
+- What role did If This Then That play in Google v. Sonos?
+- What judge presided over Google v. Sonos?
+- What should Sonos have done differently?
+
+The indexing pipeline is written so that you can swap in other documents and analyze them. can You can try plugging the following URLs (or any PDF written in English) into the indexing pipeline and re-running all the code blocks below it.
+- Google v. Oracle: https://supreme.justia.com/cases/federal/us/593/18-956/case.pdf
+- JACK DANIEL’S PROPERTIES, INC. v. VIP PRODUCTS
+LLC: https://www.supremecourt.gov/opinions/22pdf/22-148_3e04.pdf
+
+Note: if you want to change the prompt template, you'll also need to re-run the code blocks starting where the `DocumentStore` is defined.
 
 ## Wrapping it up

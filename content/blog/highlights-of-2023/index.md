@@ -30,7 +30,7 @@ A big thank you for being part of this journey! Here's to a wonderful New Year f
 - **Over 80 pull requests from the community** were merged 🚀
 - We launched [Haystack Blog](https://haystack.deepset.ai/blog), where we publish articles about Haystack, LLMs, demos, and use cases 📚 **P.S.** Did you know that you can [contribute to Haystack Blog](https://github.com/deepset-ai/haystack-home/pulls)?
 
-![Festive-themed visual with snowman, christmas tree and text displaying 'Haystack 2.0-Beta' and 'Advent of Haystack.](haystack-highlight.png#small "_We announced [Haystack 2.0-Beta](https://haystack.deepset.ai/blog/introducing-haystack-2-beta-and-advent) and hosted the first [Advent of Haystack](https://haystack.deepset.ai/advent-of-haystack)_")
+![Festive-themed visual with snowman, christmas tree and text displaying 'Haystack 2.0-Beta' and 'Advent of Haystack.](haystack-highlight.png#small "_We announced Haystack 2.0-Beta and hosted the first Advent of Haystack_")
 
 ## 👥 Community Highlights
 
@@ -65,7 +65,7 @@ Here are the most visited blog posts of 2023:
 - [How to Prevent Prompt Injections](https://haystack.deepset.ai/blog/how-to-prevent-prompt-injections): Prevent prompt injections leveraging our new open-source model and dataset
 - [Enhancing RAG Pipelines in Haystack](https://haystack.deepset.ai/blog/enhancing-rag-pipelines-in-haystack): How the latest rankers optimize LLM context window utilization in RAG pipelines
 
-![An image of a robot looking at pictures of other robots](blog-highlight.jpg#small "_We published '[Gemini Models with Google Vertex AI Integration for Haystack](https://haystack.deepset.ai/blog/gemini-models-with-google-vertex-for-haystack)'_")
+![An image of a robot looking at pictures of other robots](blog-highlight.jpg#small "_We published 'Gemini Models with Google Vertex AI Integration for Haystack'_")
 
 ## 👏 Some of Your Work
 

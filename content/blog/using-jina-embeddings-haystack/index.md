@@ -9,7 +9,7 @@ date: 2024-01-03
 last_updated: 2024-01-03
 authors:
   - Tilde Thurium
-tags: ["Community", "Embeddings, "Open Source", "Integration"]
+tags: ["Community", "Embeddings", "Open Source", "Integration"]
 ---
 
 [Jina.ai](https://jina.ai/) recently upgraded and expanded the capabilities of their previous embedding model in a v2 release. 

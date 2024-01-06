@@ -39,7 +39,7 @@ In the following code we'll demonstrate how to use both components. You can also
 
 I'm not a lawyer, and neither are large language models. But LLMs are good at analyzing long, complex documents. So let's try using the Jina v2 embedding models for some legal summarization.
 
-Although I narrowly escaped jury duty last fall, I had slight FOMO since the case sounded interesting (Google v. Sonos). Let's see how it turned out.
+In October 2023, I narrowly escaped jury duty. I had slight FOMO since the case sounded interesting (Google v. Sonos). Let's see how it turned out.
 
 To follow along with this demo, in addition to a Jina api key you'll also need a [Hugging Face access token](https://huggingface.co/docs/hub/security-tokens), since we'll use the [Mixtral 8x7b LLM](https://mistral.ai/news/mixtral-of-experts/) for question answering.
 

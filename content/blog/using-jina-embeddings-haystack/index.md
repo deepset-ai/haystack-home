@@ -32,7 +32,7 @@ You can use Jina Embedding models with two Haystack components: `JinaTextEmbedde
 
 To create semantic embeddings for documents, use`JinaDocumentEmbedder` in your indexing pipeline. For generating embeddings for queries, use `JinaTextEmbedder`. 
 
-In the following code we'll demonstrate how to use both components. You can also [see the Haystack docs for some minimum viable code examples.](https://haystack.deepset.ai/integrations/jina).
+In the following code we'll demonstrate how to use both components. You can also [see the Haystack docs for some minimum viable code examples.](https://haystack.deepset.ai/integrations/jina)
 
 
 ## Summarizing legal text with a Haystack RAG pipeline

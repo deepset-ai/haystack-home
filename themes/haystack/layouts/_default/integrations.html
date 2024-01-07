@@ -22,7 +22,6 @@
               <label for="sort">Haystack Version:</label>
               <select id="version-select" class="fixed" onchange="filterAndSort();">
                 <option value="all">All</option>
-                <option value="1.0">1.x</option>
                 <option value="2.0">2.0-Beta</option>
               </select>
             </div>
@@ -150,8 +149,6 @@
       {{/*  Filter by version  */}}
       if (selectedVersion === "2.0") {
         integrations = integrations.filter(t => t.dataset.version === "Haystack 2.0")
-      } else if (selectedVersion === "1.0") {
-        integrations = integrations.filter(t => t.dataset.version !== "Haystack 2.0")
       }
 
       {{/*  Update section title  */}}

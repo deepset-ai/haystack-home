@@ -7,6 +7,7 @@ images: ["blog/using-jina-embeddings-haystack/thumbnail.png"]
 alt_image: The logos for Haystack and Jina AI sit against a blue background with cartoonish art of a man and a woman holding a magnifying glass up to a large clipboard, next to a gavel.
 date: 2024-01-03
 last_updated: 2024-01-03
+toc: True
 authors:
   - Tilde Thurium
 tags: ["Community", "Embeddings", "Open Source", "Integration"]

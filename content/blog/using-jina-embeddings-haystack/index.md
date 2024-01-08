@@ -68,7 +68,7 @@ from chroma_haystack.document_store import ChromaDocumentStore
 document_store = ChromaDocumentStore()
 ```
 
-At a high level, the `LinkContentFetcher` pulls this document from its URL. Then we convert it from a PDF into a Document object Haystack can understand.
+At a high level, the [`LinkContentFetcher`](https://docs.haystack.deepset.ai/v2.0/docs/linkcontentfetcher) pulls this document from its URL. Then we convert it from a PDF into a Document object Haystack can understand.
 
 We preprocess it by removing whitespace and redundant substrings. Then split it into chunks, generate embeddings, and write these embeddings into the `ChromaDocumentStore`.
 

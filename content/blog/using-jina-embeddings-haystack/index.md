@@ -125,7 +125,7 @@ indexing_pipeline.run(data={"fetcher": {"urls": urls}})
 
 Now the real fun begins. Let's create a query pipeline so we can actually start asking questions. We write a prompt allowing us to pass our documents to the Mixtral-8x7B LLM. Then we initiatialize the LLM via the `HuggingFaceTGIGenerator`.
 
-In Haystack 2.0 `retriever`s are tightly coupled to `DocumentStores`. If we pass in the `retriever` we initialized earlier, this pipeline can access those embeddings we generated, and pass them to the LLM.
+In Haystack 2.0 `retriever`s are tightly coupled to `DocumentStores`. If we pass the document store in the `retriever` we initialized earlier, this pipeline can access those embeddings we generated, and pass them to the LLM.
 
 ```python
 

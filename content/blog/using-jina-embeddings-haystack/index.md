@@ -11,6 +11,7 @@ toc: True
 authors:
   - Tilde Thurium
 tags: ["Community", "Embeddings", "Open Source", "Integration"]
+cookbook: jina-embeddings-v2-legal-analysis-rag.ipynb
 ---
 
 [Jina.ai](https://jina.ai/) recently upgraded and expanded the capabilities of their previous embedding model in a v2 release. 

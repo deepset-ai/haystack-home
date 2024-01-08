@@ -48,7 +48,7 @@ To follow along with this demo, in addition to a Jina api key you'll also need a
 First, let's install all the packages we'll need.
 
 ```bash
-pip haystack-ai jina-haystack chroma-haystack pypdf
+pip install jina-haystack chroma-haystack pypdf
 ```
 Then let's input our credentials. Or you can set them as environment variables instead if you're feeling fancy.
 

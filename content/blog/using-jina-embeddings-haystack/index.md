@@ -182,7 +182,7 @@ You can swap the `question` variable out and then call `pipeline.run` again:
 - What judge presided over Google v. Sonos?
 - What should Sonos have done differently?
 
-The indexing pipeline is written so that you can swap in other documents and analyze them. can You can try plugging the following URLs (or any PDF written in English) into the indexing pipeline and re-running all the code blocks below it.
+The indexing pipeline is written so that you can swap in other documents and analyze them. You can try plugging the following URLs (or any PDF written in English) into the indexing pipeline and re-running all the code blocks below it.
 - Google v. Oracle: https://supreme.justia.com/cases/federal/us/593/18-956/case.pdf
 - JACK DANIEL’S PROPERTIES, INC. v. VIP PRODUCTS
 LLC: https://www.supremecourt.gov/opinions/22pdf/22-148_3e04.pdf

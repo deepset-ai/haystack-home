@@ -31,7 +31,7 @@ To use the integration you'll need a free Jina api key - get one [here](https://
 
 You can use Jina Embedding models with two Haystack components: `JinaTextEmbedder` and `JinaDocumentEmbedder`.
 
-To create semantic embeddings for documents, use`JinaDocumentEmbedder` in your indexing pipeline. For generating embeddings for queries, use `JinaTextEmbedder`. 
+To create semantic embeddings for documents, use `JinaDocumentEmbedder` in your indexing pipeline. For generating embeddings for queries, use `JinaTextEmbedder`. 
 
 In the following code we'll demonstrate how to use both components. You can also [see the Haystack docs for some minimum viable code examples.](https://haystack.deepset.ai/integrations/jina)
 

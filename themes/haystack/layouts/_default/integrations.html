@@ -11,10 +11,21 @@
         <div class="inner inner-top">
 
           {{/* Section title */}}
-          <h2 class="section-title">
-            {{ len $integrations }} Total
-            Integrations
-          </h2>
+          <div class="title-container">
+            <h2 class="section-title">
+              {{ len $integrations }} Total
+              Integrations
+            </h2>
+
+            {{/* Version select */}}
+            <div class="select-wrapper">
+              <label for="sort">Haystack Version:</label>
+              <select id="version-select" class="fixed" onchange="filterAndSort();">
+                <option value="all">All</option>
+                <option value="2.0">2.0-Beta</option>
+              </select>
+            </div>
+          </div>
 
           {{/* Sorting options / Filters */}}
           <div class="grid-page-options">
@@ -116,6 +127,7 @@
       let integrations = [...integrationCards]
       const selectedType = document.querySelector("#type-select").value;
       const selectedMaintainer = document.querySelector("#maintainer-select").value;
+      const selectedVersion = document.querySelector("#version-select").value;
       const searchTerm = document.querySelector("#search").value;
 
       {{/*  Filter by type / maintainer  */}}
@@ -134,6 +146,11 @@
         });
       }
 
+      {{/*  Filter by version  */}}
+      if (selectedVersion === "2.0") {
+        integrations = integrations.filter(t => t.dataset.version === "Haystack 2.0")
+      }
+
       {{/*  Update section title  */}}
       document.querySelector(".section-title").innerHTML = `${integrations.length} ${selectedType === "all" ? "Total" : selectedType} Integration${integrations.length === 1 ? "":"s"}`
 
@@ -142,14 +159,15 @@
         document.querySelector(".grid-page-grid").appendChild(e)
       );
 
-      updateURL(selectedType, selectedMaintainer, searchTerm);
+      updateURL(selectedType, selectedMaintainer, selectedVersion, searchTerm);
       resizeGridItems()
     }
 
-    const updateURL = (type, maintainer, search) => {
+    const updateURL = (type, maintainer, version, search) => {
       const params = new URLSearchParams();
       if (search) params.set('search', search);
       if (type !== 'all') params.set('type', type);
+      if (version !== 'all') params.set('version', version);
       if (maintainer !== 'all') params.set('maintainer', maintainer);
     
       if (params.toString() === '') {
@@ -164,10 +182,12 @@
       
       const search = params.get('search') || '';
       const type = params.get('type') || 'all';
+      const version = params.get('version') || 'all';
       const maintainer = params.get('maintainer') || 'all';
     
       document.querySelector("#search").value = search;
       document.querySelector("#type-select").value = type;
+      document.querySelector("#version-select").value = version;
       document.querySelector("#maintainer-select").value = maintainer;
     
       filterAndSort();
@@ -176,6 +196,7 @@
     const resetFilters = () => {
       document.querySelector("#type-select").value = "all";
       document.querySelector("#maintainer-select").value = "all";
+      document.querySelector("#version-select").value = "all";
       document.querySelector("#search").value = "";
       filterAndSort();
     }

@@ -13,6 +13,7 @@ authors:
   - Tilde Thurium
   - Silvano Cerza
 tags: ["RAG", "Haystack 2.0", "LLM"]
+cookbook: vertexai-gemini-examples.ipynb
 ---	
 
 

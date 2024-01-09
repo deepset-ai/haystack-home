@@ -14,7 +14,7 @@ tags: ["Community", "Embeddings", "Open Source", "Integration"]
 cookbook: jina-embeddings-v2-legal-analysis-rag.ipynb
 ---
 
-[Jina.ai](https://jina.ai/) recently upgraded and expanded the capabilities of their previous embedding model in a v2 release. 
+[Jina.ai](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai/) recently upgraded and expanded the capabilities of their previous embedding model in a v2 release. 
 
 With the [Jina Haystack extension](https://haystack.deepset.ai/integrations/jina), you can now take advantage of these new text embedders in your Haystack pipelines! In this post, we'll show what's cool about Jina Embeddings v2 and how to use them.
 

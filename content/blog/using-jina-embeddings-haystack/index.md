@@ -5,8 +5,8 @@ description: Learn how to use the Jina v2 Embedding models in a RAG pipeline wit
 featured_image: thumbnail.png
 images: ["blog/using-jina-embeddings-haystack/thumbnail.png"]
 alt_image: The logos for Haystack and Jina AI sit against a blue background with cartoonish art of a man and a woman holding a magnifying glass up to a large clipboard, next to a gavel.
-date: 2024-01-08
-last_updated: 2024-01-08
+date: 2024-01-10
+last_updated: 2024-01-10
 toc: True
 authors:
   - Tilde Thurium

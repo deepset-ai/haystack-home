@@ -51,15 +51,15 @@ import os
 from haystack import Pipeline, Document
 from haystack.document_stores import InMemoryDocumentStore
 from haystack.components.retrievers import InMemoryBM25Retriever
-from haystack.components.generators import GPTGenerator
+from haystack.components.generators import OpenAIGenerator
 from haystack.components.builders.prompt_builder import PromptBuilder
 
 # Write documents to InMemoryDocumentStore
 document_store = InMemoryDocumentStore()
 document_store.write_documents([
-    Document(text="My name is Jean and I live in Paris."), 
-    Document(text="My name is Mark and I live in Berlin."), 
-    Document(text="My name is Giorgio and I live in Rome.")
+    Document(content="My name is Jean and I live in Paris."), 
+    Document(content="My name is Mark and I live in Berlin."), 
+    Document(content="My name is Giorgio and I live in Rome.")
 ])
 
 # Build a RAG pipeline
@@ -73,10 +73,9 @@ Question: {{question}}
 Answer:
 """
 
-document_store = InMemoryDocumentStore()
 retriever = InMemoryBM25Retriever(document_store=document_store)
 prompt_builder = PromptBuilder(template=prompt_template)
-llm = GPTGenerator(api_key=api_key)
+llm = OpenAIGenerator(api_key=api_key)
 
 rag_pipeline = Pipeline()
 rag_pipeline.add_component("retriever", retriever)

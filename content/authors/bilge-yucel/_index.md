@@ -3,7 +3,7 @@ layout: author
 title: Bilge Yücel
 name: Bilge Yucel
 slug: bilge-yucel
-position: Developer Advocate
+position: Developer Relations Engineer
 image: /images/authors/bilge-yucel.jpg
 socials:
   author_page:

@@ -1,17 +1,17 @@
 ---
 layout: blog-post
-title: Effortless QA Application Development with Amazon Bedrock and Haystack
+title: PDF-Based Question Answering with Amazon Bedrock and Haystack
 description: Create a generative QA application tailored for PDF files using Amazon Bedrock
 featured_image: thumbnail.png
-images: ["blog/qa-application-development/thumbnail.png"]
-alt_image: Thumbnail image with "Effortless QA Application Development with Amazon Bedrock and Haystack" text and Amazon Bedrock, Haystack, OpenSearch logos on top of a input box that writes "What is Amazon Bedrock"
+images: ["blog/pdf-qa-application-with-bedrock/thumbnail.png"]
+alt_image: Thumbnail image with "PDF-Based Question Answering with Amazon Bedrock and Haystack" text and Amazon Bedrock, Haystack, OpenSearch logos on top of a input box that writes "What is Amazon Bedrock"
 toc: True
 date: 2024-01-15
 last_updated:  2024-01-15
 cookbook: amazon_bedrock_for_documentation_qa.ipynb
 authors:
   - Bilge Yucel
-tags: ["Generative AI", "LLM", "Haystack 2.0", "Integration"]
+tags: ["Generative AI", "LLM", "Haystack 2.0", "Integration", "Question Answering"]
 ---
 
 [Amazon Bedrock](https://aws.amazon.com/bedrock/) is a fully managed service that provides high-performing foundation models from leading AI startups and Amazon through a single API. You can choose from various foundation models to find the one best suited for your use case. 
@@ -22,18 +22,26 @@ In this article, I'll guide you through the process of **creating a generative q
 
 - It provides access to a **diverse range of foundation models** sourced from leading AI startups, including AI21 Labs, Anthropic, Cohere, Meta, and Stability AI, along with Amazon Titan models.
 - You can **experiment with different large language models (LLMs)** seamlessly using Amazon Bedrock. No need for multiple API keys; just modify the model name and test your application with various prompts and configurations to identify the optimal model for your specific use case.
-- Amazon Bedrock doesn’t use your prompts and continuations in training AWS models or share them with third parties. Your training data is not employed in training the core Amazon Titan models or distributed externally. Additionally, other usage data, such as timestamps and account IDs, is not employed in model training. [Source](https://docs.aws.amazon.com/bedrock/latest/userguide/data-protection.html)
+- **Amazon Bedrock doesn’t use your prompts and continuations** in training AWS models or share them with third parties. Your training data is not employed in training the core Amazon Titan models or distributed externally. Additionally, other usage data, such as timestamps and account IDs, is not employed in model training. [Source](https://docs.aws.amazon.com/bedrock/latest/userguide/data-protection.html)
 - You **don’t need to manage infrastructure** for hosting your models when deploying your application after the prototyping phase. Amazon Bedrock takes care of the hosting infrastructure, providing a seamless deployment experience.
 
 ## Set Up Amazon Bedrock
 
-To use Amazon Bedrock, start by signing up for an AWS account. Afterward, create an administrative user and grant programmatic access, as Bedrock requires the use of foundation models outside of the AWS Management Console. Keep in mind that, by default, users do not have model access. Admin users should address this by adding the necessary [model access](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html). Learn more about the process in the [Set up Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/setting-up.html).
+To use Amazon Bedrock, start by [signing up for an AWS account](https://portal.aws.amazon.com/billing/signup). Once you have successfully logged in, go to [Amazon Bedrock Console](https://us-east-1.console.aws.amazon.com/bedrock/home) and get started. Keep in mind that, by default, users do not have model access. You should request access from [Model Access Page](https://us-east-1.console.aws.amazon.com/bedrock/home#/modelaccess). For this application, we're going to use "Titan Text G1 - Express" model by Amazon. Unfortunately, there is no free tier for Amazon Bedrock, therefore, you might need to provide payment information at this step.
+
+Learn more about the process in this [set up Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/setting-up.html) guide.
+
+![Model access page in AWS Console with model names and an orange 'Manage model access' button](model-access.png#medium "Manage model access")
 
 ## API Keys
 
-To use Amazon Bedrock, you need `aws_access_key_id`, `aws_secret_access_key`, and indicate the `aws_region_name`. Once logged into your account, locate the access keys under the IAM user's "Security Credentials" section. For detailed guidance, refer to the documentation on [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
+To use Amazon Bedrock, you need `aws_access_key_id`, `aws_secret_access_key`, and indicate the `aws_region_name`. Once logged into your account, create the access keys in "Security Credentials" section. For detailed guidance, refer to the documentation on [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html).
 
-![A dropdown menu with several options including "Security Credentials"](amazon-keys.png "Find the access keys under the IAM user's 'Security Credentials' section")
+![User dropdown menu in AWS Console with several options including "Security Credentials"](security-credentials.png "1- Find the access keys under 'Security Credentials' section")
+
+![Access keys section in AWS Console, the button with text 'Create access key' is marked in a red box](create-keys.png#medium "2- Create a new key (or use an existing one)")
+
+![Retrieve Keys page in in AWS Console, giving details about the newly created keys](retrieve-keys.png#medium "3- Copy and store your **`aws_access_key_id`** and **`aws_secret_access_key`** keys before you press 'Done'")
 
  
 
@@ -118,9 +126,9 @@ indexing_pipeline.run({"converter": {"sources": [Path("/content/bedrock-document
 
 > Pipelines for indexing files into document stores are convenient when you need to add additional files to your document store. Feel free to rerun the pipeline with new documents whenever necessary.
 
-## **Building the Query Pipeline**
+## Building the Query Pipeline
 
-Let’s create another pipeline to query our application. In this pipeline, we’ll use [OpenSearchBM25Retriever](https://docs.haystack.deepset.ai/v2.0/docs/opensearchbm25retriever) to retrieve relevant information from the OpenSearchDocumentStore and an Amazon Titan model `amazon.titan-text-express-v1` to generate answers with [AmazonBedrockGenerator](https://docs.haystack.deepset.ai/v2.0/docs/amazonbedrockgenerator). You can find other model options in [supported foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids-arns.html). Then, we’ll define a prompt based on our task, in this case, to generate answers based on the given context and connect these three components to each other to finalize the pipeline.
+Let’s create another pipeline to query our application. In this pipeline, we’ll use [OpenSearchBM25Retriever](https://docs.haystack.deepset.ai/v2.0/docs/opensearchbm25retriever) to retrieve relevant information from the OpenSearchDocumentStore and an Amazon Titan model `amazon.titan-text-express-v1` to generate answers with [AmazonBedrockGenerator](https://docs.haystack.deepset.ai/v2.0/docs/amazonbedrockgenerator). You can find other model options in [supported foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids-arns.html). Next, we'll create a prompt for our task using the Retrieval-Augmented Generation (RAG) approach with [PromptBuilder](https://docs.haystack.deepset.ai/v2.0/docs/promptbuilder). This prompt will help generate answers by considering the provided context. Finally, we'll connect these three components to complete the pipeline.
 
 ```python
 from haystack.components.builders import PromptBuilder

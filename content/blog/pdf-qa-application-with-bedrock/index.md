@@ -94,7 +94,7 @@ from haystack.components.converters import PyPDFToDocument
 from haystack.components.preprocessors import DocumentCleaner, DocumentSplitter
 from haystack.components.writers import DocumentWriter
 from haystack.document_stores import DuplicatePolicy
-from opensearch_haystack import OpenSearchDocumentStore
+from haystack_integrations.document_stores.opensearch import OpenSearchDocumentStore
 
 ## Initialize the OpenSearchDocumentStore
 document_store = OpenSearchDocumentStore(hosts="http://localhost:9200", use_ssl=True, verify_certs=False, http_auth=("admin", "admin"))
@@ -134,7 +134,7 @@ Letâ€™s create another pipeline to query our application. In this pipeline, weâ€
 from haystack.components.builders import PromptBuilder
 from haystack.pipeline import Pipeline
 from amazon_bedrock_haystack.generators.amazon_bedrock import AmazonBedrockGenerator
-from opensearch_haystack import OpenSearchBM25Retriever
+from haystack_integrations.components.retrievers.opensearch import OpenSearchBM25Retriever
 
 ## Create pipeline components
 retriever = OpenSearchBM25Retriever(document_store=document_store, top_k=15)

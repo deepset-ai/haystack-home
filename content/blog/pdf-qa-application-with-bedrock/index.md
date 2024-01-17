@@ -140,7 +140,7 @@ from opensearch_haystack import OpenSearchBM25Retriever
 retriever = OpenSearchBM25Retriever(document_store=document_store, top_k=15)
 
 ## Initialize the AmazonBedrockGenerator with an Amazon Bedrock model
-generator = AmazonBedrockGenerator(model_name='amazon.titan-text-express-v1',
+generator = AmazonBedrockGenerator(model='amazon.titan-text-express-v1',
                                    aws_access_key_id="aws_access_key_id",
                                    aws_secret_access_key="aws_secret_access_key",
                                    aws_region_name="aws_region_name",

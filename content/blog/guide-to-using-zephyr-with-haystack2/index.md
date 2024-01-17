@@ -12,6 +12,7 @@ authors:
   - Stefano Fiorucci
   - Tuana Celik
 tags: ["Haystack 2.0", "LLM", "Open Source"]
+cookbook: zephyr-7b-beta-for-rag.ipynb
 ---
 
 Hugging Face recently announced their new open-source LLM, Zephyr-7B Beta, which is a fine-tuned version of Mistral 7B V.01 that focuses on helpfulness and outperforms many larger models on MT-Bench and AlpacaEval benchmarks. In this article, we’re going to show you how to use the new Zephyr models in a full retrieval-augmented generation pipeline, in a way that can work on your own private data.
@@ -19,8 +20,6 @@ Hugging Face recently announced their new open-source LLM, Zephyr-7B Beta, which
 Following the theme of [our previous article](https://haystack.deepset.ai/blog/customizing-rag-to-summarize-hacker-news-posts-with-haystack2), we will show you how to build a pipeline that uses Zephyr with Haystack, but we will also take the opportunity and show you how to do this with the preview package of Haystack 2.0.
 
 > Update: we released Haystack 2.0-Beta on December 4th 2023, the code in this article has been updated to work with this new release.
-
-*You can run the example code showcased in this article in the accompanying* *[Colab notebook.](https://colab.research.google.com/drive/1gvfDSWyx2uJQokxO2DG1EXBZIFI-2D0N)*
 
 ## Querying Zephyr with Haystack
 
@@ -128,7 +127,7 @@ from haystack.components.embedders import SentenceTransformersTextEmbedder
 from haystack.components.generators import HuggingFaceLocalGenerator
 from haystack.components.retrievers import InMemoryEmbeddingRetriever
 
-SentenceTransformersTextEmbedder(model_name_or_path="thenlper/gte-large")
+SentenceTransformersTextEmbedder(model="thenlper/gte-large")
 
 InMemoryEmbeddingRetriever(document_store=document_store, top_k=5)
 
@@ -161,7 +160,7 @@ And then we build our pipeline. Our first step is to add these components to the
 
 ```python
 rag = Pipeline()
-rag.add_component("text_embedder", SentenceTransformersTextEmbedder(model_name_or_path="thenlper/gte-large", device="cuda:0"))
+rag.add_component("text_embedder", SentenceTransformersTextEmbedder(model="thenlper/gte-large", device="cuda:0"))
 rag.add_component("retriever", InMemoryEmbeddingRetriever(document_store=document_store, top_k=5))
 rag.add_component("prompt_builder", prompt_builder)
 rag.add_component("llm", generator)

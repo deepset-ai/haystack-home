@@ -11,12 +11,12 @@ last_updated:  2023-12-05
 authors:
   - Tuana Celik
 tags: ["RAG", "Haystack 2.0", "LLM"]
+cookbook: hackernews-custom-component-rag.ipynb
 ---	
 
 Over the last few months, the team at [deepset](https://deepset.ai) has been working on a major upgrade in the Haystack repository. Along the way, we’ve been sharing our updates and design process for the upcoming [Haystack 2.0](https://github.com/deepset-ai/haystack/discussions/5568) with the community, as well as releasing new components in a preview package. This means that you can already start exploring features coming to Haystack 2.0 using the preview components available in the `haystack-ai` package (`pip install haystack-ai`).
 > Update: we released Haystack 2.0-Beta on December 4th 2023, the code in this article has been updated to work with this new release.
 
-_You can run the example code showcased in this article in the accompanying_ [_Colab notebook_](https://colab.research.google.com/drive/1YWFvq29xkMAUCt5Aal0VPX0KxGM4xTku?usp=sharing)_._
 
 In this article, I’ll cover two major concepts in Haystack 2.0.
 
@@ -110,14 +110,14 @@ There are already enough components available in the Haystack 2.0 preview for us
 To build a RAG pipeline that can create a summary for each of the latest _k_ posts on Hacker News, we will use two components from the Haystack 2.0 preview:
 
 -   The `PromptBuilder`: This component allows us to create prompt templates using [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) as our templating language.
--   The `GPTGenerator`: This component simply prompts the specified GPT model. We can connect the `PromptBuilder` output to this component to customize how we interact with our chosen model.
+-   The `OpenAIGenerator`: This component simply prompts the specified GPT model. We can connect the `PromptBuilder` output to this component to customize how we interact with our chosen model.
 
 First, we initialize all of the components we will need for the pipeline:
 
 ```python
 from haystack import Pipeline  
 from haystack.components.builders.prompt_builder import PromptBuilder  
-from haystack.components.generators import GPTGenerator  
+from haystack.components.generators import OpenAIGenerator  
   
 prompt_template = """  
 You will be provided a few of the latest posts in HackerNews, followed by their URL.  
@@ -131,7 +131,7 @@ Posts:
 """  
   
 prompt_builder = PromptBuilder(template=prompt_template)  
-llm = GPTGenerator(model_name="gpt-4", api_key='YOUR_API_KEY')  
+llm = OpenAIGenerator(mode="gpt-4", api_key='YOUR_API_KEY')  
 fetcher = HackernewsNewestFetcher()
 ```
 Next, we add the components to a Pipeline:

@@ -6,8 +6,8 @@ featured_image: thumbnail.png
 images: ["blog/pdf-qa-application-with-bedrock/thumbnail.png"]
 alt_image: Thumbnail image with "PDF-Based Question Answering with Amazon Bedrock and Haystack" text and Amazon Bedrock, Haystack, OpenSearch logos on top of a input box that writes "What is Amazon Bedrock"
 toc: True
-date: 2024-01-15
-last_updated:  2024-01-15
+date: 2024-01-17
+last_updated:  2024-01-17
 cookbook: amazon_bedrock_for_documentation_qa.ipynb
 authors:
   - Bilge Yucel
@@ -179,13 +179,13 @@ print(response["llm"]["replies"][0])
 Example result:
 
 ```bash
-Amazon Bedrock is a fully managed service that makes high-performing foundation models (FMs) from leading AI startups and Amazon available for your use through a uniﬁed API. You can choose from a wide range of foundation models to ﬁnd the model that is best suited for your use case. Amazon Bedrock also oﬀers a broad set of capabilities to build generative AI applications with security, privacy, and responsible AI. Using Amazon Bedrock, you can easily experiment with and evaluate top foundation models for your use cases, privately customize them with your data using techniques such as ﬁne-tuning and Retrieval Augmented Generation (RAG), and build agents that execute tasks using your enterprise systems and data sources.
+Amazon Bedrock is a fully managed service that makes high-performing foundation models (FMs) from leading AI startups and Amazon available for your use through a uniﬁed API. You can choose from a wide range of foundation models to ﬁnd the model that is best suited for your use case. Amazon Bedrock also offers a broad set of capabilities to build generative AI applications with security, privacy, and responsible AI. Using Amazon Bedrock, you can easily experiment with and evaluate top foundation models for your use cases, privately customize them with your data using techniques such as ﬁne-tuning and Retrieval Augmented Generation (RAG), and build agents that execute tasks using your enterprise systems and data sources.
 With Amazon Bedrock's serverless experience, you can get started quickly, privately customize foundation models with your own data, and easily and securely integrate and deploy them into your applications using AWS tools without having to manage any infrastructure.
 ```
 
 > Keep in mind that generative models are not deterministic and the response you get might differ.
 
-### Other question you can try
+### Other questions you can try
 
 - How can I set up Amazon Bedrock?
 - How should I form my prompts for Amazon Titan models?

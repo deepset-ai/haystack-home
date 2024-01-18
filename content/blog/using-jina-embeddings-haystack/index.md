@@ -83,7 +83,7 @@ from haystack.components.writers import DocumentWriter
 from haystack.components.preprocessors import DocumentCleaner
 from haystack.components.preprocessors import DocumentSplitter
 from chroma_haystack.retriever import ChromaEmbeddingRetriever
-from haystack.document_stores import DuplicatePolicy
+from haystack.document_stores.types import DuplicatePolicy
 
 from jina_haystack.document_embedder import JinaDocumentEmbedder
 from jina_haystack.text_embedder import JinaTextEmbedder

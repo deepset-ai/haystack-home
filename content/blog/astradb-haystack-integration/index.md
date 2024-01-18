@@ -3,8 +3,8 @@ layout: blog-post
 title: Announcing the Astra DB Haystack Integration
 description: Learn how to use the new AstraDB integrations for Haystack 2.0 in your RAG pipelines.
 featured_image: thumbnail.jpg
-images: ["TBD"]
-featured_image_caption: 
+images: ["blog/astradb-haystack-integration/thumbnail.png"]
+alt_image: The logos for Haystack and Astra DB hang out on a blue background in front of some people tending to pipelines, and inexplicably a giant lightbulb.
 toc: True
 date: 2024-01-18
 last_updated:  2024-01-18

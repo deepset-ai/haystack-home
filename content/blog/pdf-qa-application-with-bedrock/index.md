@@ -93,7 +93,7 @@ from haystack import Pipeline
 from haystack.components.converters import PyPDFToDocument
 from haystack.components.preprocessors import DocumentCleaner, DocumentSplitter
 from haystack.components.writers import DocumentWriter
-from haystack.document_stores import DuplicatePolicy
+from haystack.document_stores.types import DuplicatePolicy
 from haystack_integrations.document_stores.opensearch import OpenSearchDocumentStore
 
 ## Initialize the OpenSearchDocumentStore

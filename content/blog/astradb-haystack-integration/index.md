@@ -15,22 +15,22 @@ cookbook: astradb_haystack_integrations.ipynb
 ---	
 The Haystack extension family is growing so fast, it's hard to keep up! Our last addition is the Astra DB extension by [Datastax](https://datastax.com/). It's an open source package that helps you use Astra DB as a vector database for your Haystack pipelines.
 
-Let's learn about the benefits of AstraDB and how to use it with Haystack.
+Let's learn about the benefits of Astra DB and how to use it with Haystack.
 
-### Benefits of AstraDB
+### Benefits of Astra DB
 
 DataStax Astra DB is a serverless vector database built on [Apache Cassandra](https://cassandra.apache.org/_/index.html). What makes Astra DB special?
 
-- Interoperability with Cassandra's open source ecosystem and tooling. 
-- Astra DB a supports variety of different embedding models. One Astra database instance can have multiple `collections` with different vector sizes. This makes it easy to test different embedding models and find the best one for your use case.
-- It's serverless. What does that mean for a database? You don't have to manage individual instances, or deal with cumbersome upgrading or scaling. All of that is taken care of for you behind the scenes.
-- Enterprise scalability. Astra DB can be deployed across the major cloud provides (AWS, GCP, or Azure) across multiple regions depending on your needs.
-- As of the time of this writing, there's a free tier available so you can try it without putting down a credit card.
+- **Interoperability** with Cassandra's open source ecosystem and tooling. 
+- Astra DB a **supports variety of different embedding models**. One Astra database instance can have multiple `collections` with different vector sizes. This makes it easy to test different embedding models and find the best one for your use case.
+- **It's serverless**. What does that mean for a database? You don't have to manage individual instances, or deal with cumbersome upgrading or scaling. All of that is taken care of for you behind the scenes.
+- **Enterprise scalability**. Astra DB can be deployed across the major cloud provides (AWS, GCP, or Azure) across multiple regions depending on your needs.
+- As of the time of this writing, **there's a free tier available** so you can try it without putting down a credit card.
 
 ### Creating your Astra DB database
 To ensure these instructions remain up to date, we're going to point you to the Astra DB docs to explain how to create a database.
 
-Follow the first step in this [this tutorial to create a free Astra DB database](https://docs.datastax.com/en/astra-serverless/docs/manage/db/manage-create.html) Make a note of your credentials - you'll need your database ID, application token, keyspace, and database region to use the Haystack extension.
+Follow the first step in this [this tutorial to create a free Astra DB database](https://docs.datastax.com/en/astra-serverless/docs/manage/db/manage-create.html). Make a note of your credentials - you'll need your database ID, application token, keyspace, and database region to use the Haystack extension.
 
 [Follow these steps to create a collection](https://docs.datastax.com/en/astra/astra-db-vector/databases/manage-collections.html). Save the name of your collection since you'll need this as well. 
 
@@ -44,7 +44,7 @@ First, you need to install it:
 pip install astra-haystack sentence-transformers
 ```
 
-Remember earlier when I mentioned you were going to need your credentials? I hope you saved them. If not, that's okay, you can go back to the Astra console and grab them.
+Remember earlier when I mentioned you were going to need your credentials? I hope you saved them. If not, that's okay, you can go back to the [Astra console](https://astra.datastax.com/) and grab them.
 
 > Note: if you were running this code in production, you'd want to save these as environment variables to keep things nice and secure.
 
@@ -172,4 +172,4 @@ The output should be something like this:
 
 ## Wrapping it up
 
-If you've gotten this far, now you know how to use AstraDB as a data source for your Haystack pipeline. Thanks for reading! To learn more about Haystack, [join us on Discord](https://discord.gg/QMP5jgMH) or [sign up for our Monthly newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=astradb-haystack-notebook).
+If you've gotten this far, now you know how to use AstraDB as a data source for your Haystack pipeline. Thanks for reading! To learn more about Haystack, [join us on Discord](https://discord.gg/QMP5jgMH) or [sign up for our monthly newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=astradb-haystack-notebook).

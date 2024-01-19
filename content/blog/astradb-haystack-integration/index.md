@@ -44,7 +44,7 @@ First, you need to install it:
 pip install astra-haystack sentence-transformers
 ```
 
-Remember earlier when I mentioned you were going to need your credentials? I hope you saved them. If not, that's okay, you can go back to the [Astra console](https://astra.datastax.com/) and grab them.
+Remember earlier when I mentioned you were going to need your credentials? I hope you saved them. If not, that's okay, you can go back to the [Astra Portal](https://astra.datastax.com/) and grab them.
 
 > Note: if you were running this code in production, you'd want to save these as environment variables to keep things nice and secure.
 

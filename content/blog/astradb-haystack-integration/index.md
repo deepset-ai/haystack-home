@@ -165,7 +165,7 @@ result = rag_pipeline.run(
 
 print(result)
 ```
-The output should be something like this:
+The output should look like this:
 ```bash
 {'answer_builder': {'answers': [GeneratedAnswer(data='There are over 7,000 languages spoken around the world today.', query='How many languages are there in the world today?', documents=[Document(id=cfe93bc1c274908801e6670440bf2bbba54fad792770d57421f85ffa2a4fcc94, content: 'There are over 7,000 languages spoken around the world today.', score: 0.9267925, embedding: vector of size 384), Document(id=6f20658aeac3c102495b198401c1c0c2bd71d77b915820304d4fbc324b2f3cdb, content: 'Elephants have been observed to behave in a way that indicates a high level of self-awareness, such ...', score: 0.5357444, embedding: vector of size 384)], meta={'model': 'gpt-3.5-turbo-0613', 'index': 0, 'finish_reason': 'stop', 'usage': {'completion_tokens': 14, 'prompt_tokens': 83, 'total_tokens': 97}})]}}
 ```

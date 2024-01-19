@@ -60,7 +60,7 @@ ASTRA_DB_KEYSPACE_NAME = getpass("Enter your Astra keyspace name:")
 ```
 
 ## Using the Astra DocumentStore in an index pipeline 
-Next we'll make a Haystack pipeline, create some embeddings from documents, and add them into the [`AstraDocumentStore`](https://docs.haystack.deepset.ai/v2.0/docs/astradocumentstore).
+Next, we'll make a Haystack pipeline, create some embeddings from documents, and add them into the [`AstraDocumentStore`](https://docs.haystack.deepset.ai/v2.0/docs/astradocumentstore).
 
 ```python
 import logging

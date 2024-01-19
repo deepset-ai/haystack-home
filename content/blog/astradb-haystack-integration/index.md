@@ -6,8 +6,8 @@ featured_image: thumbnail.png
 images: ["blog/astradb-haystack-integration/thumbnail.png"]
 alt_image: The logos for Haystack and Astra DB hang out on a blue background in front of some people tending to pipelines, and inexplicably a giant lightbulb.
 toc: True
-date: 2024-01-18
-last_updated:  2024-01-18
+date: 2024-01-19
+last_updated:  2024-01-19
 authors:
   - Tilde Thurium
 tags: ["Embeddings", "Haystack 2.0", "Vector Database"]

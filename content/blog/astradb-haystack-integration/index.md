@@ -27,7 +27,7 @@ DataStax Astra DB is a serverless vector database built on [Apache Cassandra](ht
 - **Enterprise scalability**. Astra DB can be deployed across the major cloud providers (AWS, GCP, or Azure) and across multiple regions depending on your needs.
 - At the time of this writing, **there's a free tier available** so you can try it without a credit card.
 
-### Creating your Astra DB database
+### Create your Astra DB database
 To ensure these instructions remain up to date, we're going to point you to the Astra DB docs to explain how to create a database.
 
 Follow the first step in this [this tutorial to create a free Astra DB database](https://docs.datastax.com/en/astra-serverless/docs/manage/db/manage-create.html). Make a note of your credentials - you'll need your database ID, application token, keyspace, and database region to use the Haystack extension.

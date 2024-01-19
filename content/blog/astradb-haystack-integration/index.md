@@ -30,11 +30,9 @@ DataStax Astra DB is a serverless vector database built on [Apache Cassandra](ht
 ### Create your Astra DB database
 To ensure these instructions remain up to date, we're going to point you to the Astra DB docs to explain how to create a database.
 
-Follow the first step in this [this tutorial to create a free Astra DB database](https://docs.datastax.com/en/astra-serverless/docs/manage/db/manage-create.html). Make a note of your credentials - you'll need your database ID, application token, keyspace, and database region to use the Haystack extension.
-
-[Follow these steps to create a collection](https://docs.datastax.com/en/astra/astra-db-vector/databases/manage-collections.html). Save the name of your collection since you'll need this as well. 
-
-Choose the number of dimensions that matches the [embedding model](https://haystack.deepset.ai/blog/what-is-text-vectorization-in-nlp) you plan on using. For this example we'll use a 384-dimension model, [`sentence-transformers/all-MiniLM-L6-v2`](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2).
+1. [Create a free Astra DB database](https://docs.datastax.com/en/astra/astra-db-vector/databases/create-database.html#create-vector-database). Make a note of your credentials - you'll need your database ID, application token, keyspace, and database region to use the Haystack extension.
+2. Choose the number of dimensions that matches the [embedding model](https://haystack.deepset.ai/blog/what-is-text-vectorization-in-nlp) you plan on using. For this example we'll use a 384-dimension model, [`sentence-transformers/all-MiniLM-L6-v2`](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2).
+3. [Create a collection](https://docs.datastax.com/en/astra/astra-db-vector/databases/manage-collections.html#create-collection) with the same number of dimensions as your embedding model. Save the name of your collection since you'll need this as well. 
 
 ### Getting started with the AstraDB Haystack Integration
 

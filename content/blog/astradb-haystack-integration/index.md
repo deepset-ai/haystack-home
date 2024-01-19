@@ -118,7 +118,7 @@ If all has gone well, there should be 3 documents. 🎉
 
 ## Using the `AstraRetriever` in a Haystack RAG pipeline
 
-In Haystack, every `DocumentStore` is tightly coupled with the `Retriever` that fetches from it. Astra is no exception. Here we'll create a RAG pipeline, where the [`AstraRetriever`](https://docs.haystack.deepset.ai/v2.0/docs/astraretriever) will fetch documents relevant to our query.
+In Haystack, every `DocumentStore` is tightly coupled with the `Retriever` that fetches from it. Astra DB is no exception. Here we'll create a RAG pipeline, where the [`AstraRetriever`](https://docs.haystack.deepset.ai/v2.0/docs/astraretriever) will fetch documents relevant to our query.
 
 ```python
 from haystack.components.builders.answer_builder import AnswerBuilder

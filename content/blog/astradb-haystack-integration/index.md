@@ -36,7 +36,7 @@ To ensure these instructions remain up to date, we're going to point you to the 
 
 ### Getting started with the AstraDB Haystack Integration
 
-First, you need to install it:
+First, install the integration:
 
 ```bash
 pip install astra-haystack sentence-transformers

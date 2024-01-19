@@ -116,7 +116,7 @@ print(document_store.count_documents())
 ```
 If all has gone well, there should be 3 documents. 🎉
 
-## Using the `AstraRetriever` in a Haystack RAG pipeline
+## Use the `AstraRetriever` in a Haystack RAG pipeline
 
 In Haystack, every `DocumentStore` is tightly coupled with the `Retriever` that fetches from it. Astra DB is no exception. Here we'll create a RAG pipeline, where the [`AstraRetriever`](https://docs.haystack.deepset.ai/v2.0/docs/astraretriever) will fetch documents relevant to our query.
 

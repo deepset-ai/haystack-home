@@ -172,4 +172,4 @@ The output should be something like this:
 
 ## Wrapping it up
 
-If you've gotten this far, now you know how to use AstraDB as a data source for your Haystack pipeline. Thanks for reading! To learn more about Haystack, [join us on Discord](https://discord.gg/QMP5jgMH) or [sign up for our monthly newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=astradb-haystack-notebook).
+If you've gotten this far, now you know how to use Astra DB as a data source for your Haystack pipeline. To learn more about Haystack, [join us on Discord](https://discord.gg/QMP5jgMH) or [sign up for our monthly newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=astradb-haystack-notebook).

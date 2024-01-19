@@ -34,7 +34,7 @@ To ensure these instructions remain up to date, we're going to point you to the 
 2. Choose the number of dimensions that matches the [embedding model](https://haystack.deepset.ai/blog/what-is-text-vectorization-in-nlp) you plan on using. For this example we'll use a 384-dimension model, [`sentence-transformers/all-MiniLM-L6-v2`](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2).
 3. [Create a collection](https://docs.datastax.com/en/astra/astra-db-vector/databases/manage-collections.html#create-collection) with the same number of dimensions as your embedding model. Save the name of your collection since you'll need this as well. 
 
-### Getting started with the AstraDB Haystack Integration
+### Get started with the Astra DB Haystack Integration
 
 First, install the integration:
 

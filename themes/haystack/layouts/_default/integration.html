@@ -53,6 +53,12 @@
                           <img src="/images/icons/twitter-dark.svg" class="twitter-icon" alt="{{ . }}" />
                         </a>
                       {{ end }}
+
+                      {{ with .linkedin }}
+                        <a href="{{ . }}" target="_blank" rel="noopener noreferrer">
+                          <img src="/images/icons/linkedin-dark.svg" class="linkedin-icon" alt="" />
+                        </a>
+                      {{ end }}
                     </div>
                   {{ end }}
                 </div>

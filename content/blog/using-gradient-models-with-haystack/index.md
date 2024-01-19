@@ -72,10 +72,10 @@ In this article, I’ve provided an example [Colab](https://colab.research.googl
 2.  Generate a response using our own fine-tuned LLM from Gradient:
 
 ```python
-from haystack.components.retrievers import InMemoryEmbeddingRetriever
+from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
 from haystack.components.builders import PromptBuilder
-from gradient_haystack.embedders.gradient_text_embedder import GradientTextEmbedder
-from gradient_haystack.generator.base import GradientGenerator
+from haystack_integrations.components.embedders.gradient import GradientTextEmbedder
+from haystack_integrations.components.generators.gradient import GradientGenerator
 
 prompt = """ Answer the query, based on the
 content in the documents.

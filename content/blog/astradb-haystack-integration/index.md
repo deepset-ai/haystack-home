@@ -22,7 +22,7 @@ Let's learn about the benefits of Astra DB and how to use it with Haystack.
 DataStax Astra DB is a serverless vector database built on [Apache Cassandra](https://cassandra.apache.org/_/index.html). What makes Astra DB special?
 
 - **Interoperability** with Cassandra's open source ecosystem and tooling. 
-- Astra DB a **supports variety of different embedding models**. One Astra database instance can have multiple `collections` with different vector sizes. This makes it easy to test different embedding models and find the best one for your use case.
+- Astra DB **supports a variety of different embedding models**. One Astra database instance can have multiple `collections` with different vector sizes. This makes it easy to test different embedding models and find the best one for your use case.
 - **It's serverless**. What does that mean for a database? You don't have to manage individual instances, or deal with cumbersome upgrading or scaling. All of that is taken care of for you behind the scenes.
 - **Enterprise scalability**. Astra DB can be deployed across the major cloud providers (AWS, GCP, or Azure) and across multiple regions depending on your needs.
 - As of the time of this writing, **there's a free tier available** so you can try it without putting down a credit card.

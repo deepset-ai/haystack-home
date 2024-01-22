@@ -101,7 +101,7 @@ writer = DocumentWriter(document_store=document_store, policy=DuplicatePolicy.SK
 
 retriever = ChromaEmbeddingRetriever(document_store=document_store)
 
-document_embedder = JinaDocumentEmbedder(api_key=jina_api_key, model="jina-embeddings-v2-base-en")
+document_embedder = JinaDocumentEmbedder(api_key=jina_api_key, model_name="jina-embeddings-v2-base-en")
 
 indexing_pipeline = Pipeline()
 indexing_pipeline.add_component(instance=fetcher, name="fetcher")
@@ -146,7 +146,7 @@ Documents:
 question: {{question}}
 """
 
-text_embedder = JinaTextEmbedder(api_key=jina_api_key, model="jina-embeddings-v2-base-en")
+text_embedder = JinaTextEmbedder(api_key=jina_api_key, model_name="jina-embeddings-v2-base-en")
 generator = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1", token=hf_token)
 generator.warm_up()
 

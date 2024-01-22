@@ -56,7 +56,7 @@ generator = OpenAIGenerator(api_key=api_key)
 generator.run(prompt="What's the official language of France?")
 # returns {"replies": ['The official language of France is French.']}
 ```
-You can select your favorite OpenAI model by specifying a `model_name` at initialization, for example, `gpt-4`. It also supports setting an `api_base_url` for private deployments, a `streaming_callback` if you want to see the output generated live in the terminal, and optional `kwargs` to let you pass whatever other parameter the model understands, such as the number of answers (`n`), the temperature (`temperature`), etc.
+You can select your favorite OpenAI model by specifying a `model` at initialization, for example, `gpt-4`. It also supports setting an `api_base_url` for private deployments, a `streaming_callback` if you want to see the output generated live in the terminal, and optional `kwargs` to let you pass whatever other parameter the model understands, such as the number of answers (`n`), the temperature (`temperature`), etc.
 
 Note that in this case, we're passing the API key to the component's constructor. This is unnecessary: `OpenAIGenerator` can read the value from the `OPENAI_API_KEY` environment variable and also from the `api_key` module variable of [`openai`'s SDK](https://github.com/openai/openai-python#usage).
 

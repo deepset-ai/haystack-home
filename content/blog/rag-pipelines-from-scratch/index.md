@@ -38,27 +38,27 @@ As you can see in the image above (taken directly from the original paper), a sy
 
 Let's build one of these with Haystack 2.0!
 
-> 💡 *Do you want to see this code in action? Check out the Colab notebook [here](https://colab.research.google.com/drive/1TrDGHwY23OCZ3-cQrYa_vbniK10fEezA?usp=sharing).* 
+> 💡 *Do you want to see this code in action? Check out the Colab notebook [here](https://colab.research.google.com/drive/1FkDNS3hTO4oPXHFbXQcldls0kf-KTq-r?usp=sharing).* 
 
 
-> ⚠️ **Warning:** *This code was tested on `haystack-ai==0.149.0`. Haystack 2.0 is still unstable, so later versions might introduce breaking changes without notice until Haystack 2.0 is officially released. The concepts and components however stay the same.*
+> ⚠️ **Warning:** *This code was tested on `haystack-ai==2.0.0b5`. Haystack 2.0 is still unstable, so later versions might introduce breaking changes without notice until Haystack 2.0 is officially released. The concepts and components however stay the same.*
 
 ## Generators: Haystack's LLM components
 
 As every NLP framework that deserves its name, Haystack supports LLMs in different ways. The easiest way to query an LLM in Haystack 2.0 is through a Generator component: depending on which LLM and how you intend to query it (chat, text completion, etc...), you should pick the appropriate class.
 
-We're going to use `gpt-3.5-turbo` (the model behind ChatGPT) for these examples, so the component we need is [`GPTGenerator`](https://github.com/deepset-ai/haystack/blob/main/haystack/preview/components/generators/openai.py). Here is all the code required to use it to query OpenAI's `gpt-3.5-turbo` :
+We're going to use `gpt-3.5-turbo` (the model behind ChatGPT) for these examples, so the component we need is [`OpenAIGenerator`](https://github.com/deepset-ai/haystack/blob/main/haystack/preview/components/generators/openai.py). Here is all the code required to use it to query OpenAI's `gpt-3.5-turbo` :
 
 ```python
-from haystack.preview.components.generators import GPTGenerator
+from haystack.components.generators import OpenAIGenerator
 
-generator = GPTGenerator(api_key=api_key)
+generator = OpenAIGenerator(api_key=api_key)
 generator.run(prompt="What's the official language of France?")
 # returns {"replies": ['The official language of France is French.']}
 ```
 You can select your favorite OpenAI model by specifying a `model_name` at initialization, for example, `gpt-4`. It also supports setting an `api_base_url` for private deployments, a `streaming_callback` if you want to see the output generated live in the terminal, and optional `kwargs` to let you pass whatever other parameter the model understands, such as the number of answers (`n`), the temperature (`temperature`), etc.
 
-Note that in this case, we're passing the API key to the component's constructor. This is unnecessary: `GPTGenerator` can read the value from the `OPENAI_API_KEY` environment variable and also from the `api_key` module variable of [`openai`'s SDK](https://github.com/openai/openai-python#usage).
+Note that in this case, we're passing the API key to the component's constructor. This is unnecessary: `OpenAIGenerator` can read the value from the `OPENAI_API_KEY` environment variable and also from the `api_key` module variable of [`openai`'s SDK](https://github.com/openai/openai-python#usage).
 
 Right now, Haystack supports HuggingFace models through the [`HuggingFaceLocalGenerator`](https://github.com/deepset-ai/haystack/blob/main/haystack/preview/components/generators/hugging_face_local.py) and [`HuggingFaceTGIGenerator`](https://github.com/deepset-ai/haystack/blob/main/haystack/preview/components/generators/hugging_face_tgi.py) components, and many more LLMs are coming soon.
 
@@ -72,7 +72,7 @@ In this scenario, we have two pieces of the prompt: a variable (the country name
 Haystack offers a component that can render variables into prompt templates: it's called [`PromptBuilder`](https://github.com/deepset-ai/haystack/blob/main/haystack/preview/components/builders/prompt_builder.py). As the generators we've seen before, also `PromptBuilder` is nearly trivial to initialize and use.
 
 ```python
-from haystack.preview.components.builders.prompt_builder import PromptBuilder
+from haystack.components.builders.prompt_builder import PromptBuilder
 
 prompt_builder = PromptBuilder(template="What's the official language of {{ country }}?")
 prompt_builder.run(country="France")
@@ -85,16 +85,16 @@ This syntax comes from [Jinja2](https://jinja.palletsprojects.com/en/3.0.x/intro
 
 ## A Simple Generative Pipeline
 
-With these two components, we can assemble a minimal pipeline to see how they work together. Connecting them is trivial: `PromptBuilder` generates a `prompt` output, and `GPTGenerator` expects an input with the same name and type.
+With these two components, we can assemble a minimal pipeline to see how they work together. Connecting them is trivial: `PromptBuilder` generates a `prompt` output, and `OpenAIGenerator` expects an input with the same name and type.
 
 ```python
-from haystack.preview import Pipeline
-from haystack.preview.components.generators import GPTGenerator
-from haystack.preview.components.builders.prompt_builder import PromptBuilder
+from haystack import Pipeline
+from haystack.components.generators import OpenAIGenerator
+from haystack.components.builders.prompt_builder import PromptBuilder
 
 pipe = Pipeline()
 pipe.add_component("prompt_builder", PromptBuilder(template="What's the official language of {{ country }}?"))
-pipe.add_component("llm", GPTGenerator(api_key=api_key))
+pipe.add_component("llm", OpenAIGenerator(api_key=api_key))
 pipe.connect("prompt_builder", "llm")
 
 pipe.run({"prompt_builder": {"country": "France"}})
@@ -147,7 +147,7 @@ language_template = "What's the official language of {{ country }}?"
 pipe = Pipeline()
 pipe.add_component("context_prompt", PromptBuilder(template=context_template))
 pipe.add_component("language_prompt", PromptBuilder(template=language_template))
-pipe.add_component("llm", GPTGenerator(api_key=api_key))
+pipe.add_component("llm", OpenAIGenerator(api_key=api_key))
 pipe.connect("language_prompt", "context_prompt.question")
 pipe.connect("context_prompt", "llm")
 
@@ -187,7 +187,7 @@ Question: What's the official language of {{ country }}?
 """
 pipe = Pipeline()
 pipe.add_component("prompt_builder", PromptBuilder(template=template))
-pipe.add_component("llm", GPTGenerator(api_key=api_key))
+pipe.add_component("llm", OpenAIGenerator(api_key=api_key))
 pipe.connect("prompt_builder", "llm")
 
 pipe.run({
@@ -221,8 +221,8 @@ Let's create a small local database to store information about some European cou
 So, let's initialize an `InMemoryDocumentStore` and write some `Documents` into it.
 
 ```python
-from haystack.preview.dataclasses import Document
-from haystack.preview.document_stores import InMemoryDocumentStore
+from haystack.dataclasses import Document
+from haystack.document_stores.in_memory import InMemoryDocumentStore
 
 documents = [
     Document(content="German is the the official language of Germany."), 
@@ -247,7 +247,7 @@ Once the document store is set up, we can initialize a retriever. In Haystack 2.
 Let's start with the BM25-based retriever, which is slightly easier to set up. Let's first use it in isolation to see how it behaves.
 
 ```python
-from haystack.preview.components.retrievers import InMemoryBM25Retriever
+from haystack.components.retrievers.in_memory import InMemoryBM25Retriever
 
 retriever = InMemoryBM25Retriever(document_store=docstore)
 retriever.run(query="Rose Island", top_k=1)
@@ -307,7 +307,7 @@ pipe = Pipeline()
 
 pipe.add_component("retriever", InMemoryBM25Retriever(document_store=docstore))
 pipe.add_component("prompt_builder", PromptBuilder(template=template))
-pipe.add_component("llm", GPTGenerator(api_key=api_key))
+pipe.add_component("llm", OpenAIGenerator(api_key=api_key))
 pipe.connect("retriever", "prompt_builder.documents")
 pipe.connect("prompt_builder", "llm")
 
@@ -361,7 +361,7 @@ docstore = ElasticsearchDocumentStore(
 Now, let's write again our four documents into the store. In this case, we specify the duplicate policy, so if the documents were already present, they would be overwritten. All Haystack document stores offer three policies to handle duplicates: `FAIL` (the default), `SKIP`, and `OVERWRITE`.
 
 ```python
-from haystack.preview.document_stores import DuplicatePolicy
+from haystack.document_stores import DuplicatePolicy
 documents = [
     Document(content="German is the the official language of Germany."), 
     Document(content="The capital of France is Paris, and its official language is French."),
@@ -390,7 +390,7 @@ Question: What's the official language of {{ country }}?
 pipe = Pipeline()
 pipe.add_component("retriever", ElasticsearchBM25Retriever(document_store=docstore))
 pipe.add_component("prompt_builder", PromptBuilder(template=template))
-pipe.add_component("llm", GPTGenerator(api_key=api_key))
+pipe.add_component("llm", OpenAIGenerator(api_key=api_key))
 pipe.connect("retriever", "prompt_builder.documents")
 pipe.connect("prompt_builder", "llm")
 

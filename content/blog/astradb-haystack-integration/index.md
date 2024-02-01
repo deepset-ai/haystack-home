@@ -68,8 +68,7 @@ from haystack import Document, Pipeline
 from haystack.components.embedders import SentenceTransformersDocumentEmbedder, SentenceTransformersTextEmbedder
 from haystack.components.writers import DocumentWriter
 from haystack.document_stores.types import DuplicatePolicy
-
-from astra_haystack.document_store import AstraDocumentStore
+from haystack_integrations.document_stores.astra import AstraDocumentStore
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -122,7 +121,7 @@ In Haystack, every `DocumentStore` is tightly coupled with the `Retriever` that 
 from haystack.components.builders.answer_builder import AnswerBuilder
 from haystack.components.builders.prompt_builder import PromptBuilder
 from haystack.components.generators import OpenAIGenerator
-from astra_haystack.retriever import AstraRetriever
+from haystack_integrations.components.retrievers.astra import AstraRetriever
 
 prompt_template = """
                 Given these documents, answer the question.

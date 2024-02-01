@@ -75,7 +75,7 @@ for answer in result["answers"]:
 
 > 💡 **Fun fact:** We’ve notices that Gemini consistently misidentifies the 3rd robot! Often the response is: “The third image is of Gort from the 1951 film The Day the Earth Stood Still. Gort is a robot who is sent to Earth to warn humanity about the dangers of nuclear war. He is a powerful and intelligent robot, but he is also compassionate and understanding.”. However, this robot is [Marvin the Paranoid Android](https://en.wikipedia.org/wiki/Marvin_the_Paranoid_Android) from the _[The Hitchhiker's Guide to the Galaxy](https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy)_ series. It would have been pretty silly if Gort looked like that! 😅
 
-## GeminiChatGenerator for Function Calling
+## VertexAIGeminiChatGenerator for Function Calling
 
 With `gemini-pro`, we can also start introducing function calling! So let's see how we can do that. An important feature to note here is that function calling in this context refers to using Gemini to identify _how_ a function should be called. To see what we mean by this, let's see if we can build a system that can run a `get_current_weather` function, based on a question asked in natural language.
 

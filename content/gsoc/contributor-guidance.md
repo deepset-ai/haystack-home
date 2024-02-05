@@ -24,11 +24,11 @@ Google Summer of Code (GSoC) is an annual program sponsored by Google that encou
 
 As a mentoring organisation, we provide a list of project ideas to improve Haystack by adding new feature or improving existing ones. All the projects are meant to be eventually shipped with a Haystack release, and our team of mentors will help you to push them through the finish line. Being Haystack is written in Python, that’s the language of choice for most of the projects, but writing Python extension in C or Rust, or user interfaces in Javascript might be an option at times.
 
-You can get all the details about the latest projects and the programming language in our projects page.
+You can get all the details about the latest projects and the programming language in our [projects page](https://haystack.deepset.ai/gsoc/projects).
 
 ## Before you apply
 
-It's considered good practice to establish contact with and work alongside organisations and mentors way ahead of your application. Doing so will greatly increase your chances of being accepted. You can reach out to the Haystack core contributors through Github or by joining our Discord server.
+It's considered good practice to establish contact with and work alongside organisations and mentors way ahead of your application. Doing so will greatly increase your chances of being accepted. You can reach out to the Haystack core contributors through [Github](https://github.com/deepset-ai/haystack/discussions/new/choose) or by [joining our Discord server](https://discord.com/invite/VBpFzsgRVF).
 
 Please read the [Google Summer of Code student guide](https://google.github.io/gsocguides/student/), it contains a lot of helpful information about the program and about participating as a student.
 
@@ -41,7 +41,7 @@ Another good resource is the [Google Summer of Code FAQ](https://developers.goog
     - What do you like about Haystack that got you interested?
     - How can our mentors help you getting the best out of this experience?
     - Is there anything that you’ll be studying or working on whilst working alongside us?
-- After selecting a project assignment from the ideas page, please create a well-defined schedule (can be weekly or bi-weekly). This schedule should include clear milestones and deliverables associated with the project.
+- After selecting a project assignment from the [ideas page](https://haystack.deepset.ai/gsoc/projects), please create a well-defined schedule (can be weekly or bi-weekly). This schedule should include clear milestones and deliverables associated with the project.
 
 During the application review we might ask students follow-up questions about their skills and experience, and how well and promptly they communicate with us will be part of the evaluation process.
 

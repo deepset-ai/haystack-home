@@ -9,7 +9,7 @@ toc: true
 
 ## spaCy Integration in Haystack: Seamless NLP Pipelines
 
-- **Proposed mentors:** Madeesh Kannan, Stefano Fiorucci
+- **Proposed mentors:** [Madeesh Kannan](https://www.linkedin.com/in/m-kannan/), [Stefano Fiorucci](https://www.linkedin.com/in/stefano-fiorucci/)
 - **Languages/skills:** Python, spaCy
 - **Estimated Project Length:** 175 hours
 - **Difficulty:** medium
@@ -18,7 +18,7 @@ spaCy and Haystack are two NLP frameworks with different strengths that compleme
 
 ## Knowledge Graphs and SQL Databases as data sources for RAG pipelines
 
-- **Proposed mentors:** Vladimir Blagojevic, Julian Risch
+- **Proposed mentors:** [Vladimir Blagojevic](https://www.linkedin.com/in/blagojevicvladimir/), [Julian Risch](https://www.linkedin.com/in/julianrisch/)
 - **Languages/skills:** Python, SQL, SPARQL (or other graph query language)
 - **Estimated Project Length:** 350 hours
 - **Difficulty:** hard
@@ -27,7 +27,7 @@ One of the features many members in Haystack’s large community wish for is the
 
 ## Command Line Interface: Streamlined Development and User-friendly NLP Pipelines
 
-- **Proposed mentors:** Silvano Cerza, Massimiliano Pippi
+- **Proposed mentors:** [Silvano Cerza](https://www.linkedin.com/in/silvanocerza/), [Massimiliano Pippi](https://www.linkedin.com/in/masci/)
 - **Languages/skills:** Prior experience with creating a CLI tool is preferred
 - **Estimated Project Length:** 175 hours
 - **Difficulty:** medium
@@ -36,7 +36,7 @@ While Haystack provides cutting-edge features for building large language model 
 
 ## Multi-modal Support: Audio and Image Data Inputs
 
-- **Proposed mentors:** Sara Zanzottera, Silvano Cerza
+- **Proposed mentors:** [Sara Zanzottera](https://www.linkedin.com/in/sarazanzottera/), [Silvano Cerza](https://www.linkedin.com/in/silvanocerza/)
 - **Languages/skills:** Python, Basic understanding of embedding models is preferred
 - **Estimated Project Length:** 350 hours
 - **Difficulty:** medium
@@ -45,11 +45,9 @@ Haystack is well known for supporting text-based use cases but for non-textual d
 
 ## Table QA: Enhancing Question Answering on Tabular Data
 
-- **Proposed mentors:** Julian Risch, Stefano Fiorucci
+- **Proposed mentors:** [Julian Risch](https://www.linkedin.com/in/julianrisch/), [Stefano Fiorucci](https://www.linkedin.com/in/stefano-fiorucci/)
 - **Languages/skills:** Python, Usage of Large Language Models
 - **Estimated Project Length:** 350 hours
 - **Difficulty:** hard
 
 Haystack supports retrieval of tables and extractive question answering on them for more than two years, yet users would greatly benefit from an extension of those features in order to build fully production-ready applications. The aim of this project is therefore to leverage generative models for table reading and to address challenges like extraction and preprocessing of tables spanning multiple PDF pages, inconsistent formatting, and merged cells. The task is further to implement validation procedures, including unit tests and end-to-end tests, to ensure robust performance of table retrieval and reading components in real-world scenarios. To make the newly added features more accessible to a diverse range of users and contributors, a tutorial containing best practices for configuring the new components completes the project.
-
-[Project Idea Brainstorming](https://www.notion.so/53b4ae9c39bd43f4ba8dcda8f77189ff?pvs=21)

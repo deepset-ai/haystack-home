@@ -55,10 +55,11 @@ pip install jina-haystack chroma-haystack pypdf
 Then let's input our credentials. Or you can set them as environment variables instead if you're feeling fancy.
 
 ```python
-import getpass
+from getpass import getpass
+import os
 
-jina_api_key  = getpass.getpass("JINA api key:")
-hf_token = getpass.getpass("Enter your HuggingFace api token:")
+jina_api_key  = getpass("JINA api key:")
+os.environ["HF_API_TOKEN"] = getpass("Enter your HuggingFace api token: ")
 ```
 
 ## Building the indexing pipeline
@@ -147,7 +148,7 @@ question: {{question}}
 """
 
 text_embedder = JinaTextEmbedder(api_key=jina_api_key, model="jina-embeddings-v2-base-en")
-generator = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1", token=hf_token)
+generator = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1")
 generator.warm_up()
 
 prompt_builder = PromptBuilder(template=prompt)

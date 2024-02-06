@@ -89,11 +89,12 @@ So now our flow is as follows:
 First, initialize the LLMs and warm them up.
 ```python
 from haystack.components.generators import HuggingFaceTGIGenerator
+from haystack.utils import Secret
 
-keyword_llm = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1", token=huggingface_token)
+keyword_llm = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1", token=Secret.from_token(huggingface_token))
 keyword_llm.warm_up()
 
-llm = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1", token=huggingface_token)
+llm = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1", token=Secret.from_token(huggingface_token))
 llm.warm_up()
 ```
 

@@ -48,8 +48,9 @@ Remember earlier when I mentioned you were going to need your credentials? I hop
 
 ```python
 from getpass import getpass
+import os
 
-OPENAI_API_KEY = getpass("Enter your openAI key:")
+os.environ["OPENAI_API_KEY"] = getpass("Enter your openAI key:")
 ASTRA_DB_ID = getpass("Enter your Astra database ID:")
 ASTRA_DB_APPLICATION_TOKEN = getpass("Enter your Astra application token (e.g.AstraCS:xxx ):")
 ASTRA_DB_REGION = getpass("Enter your AstraDB Region: ")
@@ -140,7 +141,7 @@ rag_pipeline.add_component(
 )
 rag_pipeline.add_component(instance=AstraRetriever(document_store=document_store), name="retriever")
 rag_pipeline.add_component(instance=PromptBuilder(template=prompt_template), name="prompt_builder")
-rag_pipeline.add_component(instance=OpenAIGenerator(api_key=OPENAI_API_KEY), name="llm")
+rag_pipeline.add_component(instance=OpenAIGenerator(), name="llm")
 rag_pipeline.add_component(instance=AnswerBuilder(), name="answer_builder")
 rag_pipeline.connect("embedder", "retriever")
 rag_pipeline.connect("retriever", "prompt_builder.documents")

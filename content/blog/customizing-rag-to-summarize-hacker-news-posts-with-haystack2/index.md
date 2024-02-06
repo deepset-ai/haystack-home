@@ -117,7 +117,7 @@ First, we initialize all of the components we will need for the pipeline:
 ```python
 from haystack import Pipeline  
 from haystack.components.builders.prompt_builder import PromptBuilder  
-from haystack.components.generators import OpenAIGenerator  
+from haystack.components.generators import OpenAIGenerator
   
 prompt_template = """  
 You will be provided a few of the latest posts in HackerNews, followed by their URL.  
@@ -131,7 +131,7 @@ Posts:
 """  
   
 prompt_builder = PromptBuilder(template=prompt_template)  
-llm = OpenAIGenerator(mode="gpt-4", api_key='YOUR_API_KEY')  
+llm = OpenAIGenerator(mode="gpt-4", api_key=Secret.from_token('YOUR_API_KEY'))  
 fetcher = HackernewsNewestFetcher()
 ```
 Next, we add the components to a Pipeline:

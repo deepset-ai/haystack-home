@@ -118,7 +118,7 @@ First, we initialize all of the components we will need for the pipeline:
 from haystack import Pipeline  
 from haystack.components.builders.prompt_builder import PromptBuilder  
 from haystack.components.generators import OpenAIGenerator
-  
+  from haystack.utils import Secret
 prompt_template = """  
 You will be provided a few of the latest posts in HackerNews, followed by their URL.  
 For each post, provide a brief summary followed by the URL the full post can be found at.  

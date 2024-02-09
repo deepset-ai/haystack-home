@@ -39,7 +39,7 @@ To get started, you will need to install Haystack and the `google-vertex-haystac
 Just like any other [generator component in Haystack 2.0-Beta](https://docs.haystack.deepset.ai/v2.0/docs/generators), to run the `GeminiGenerator` on its own, we simply have to call the `run()` method. However, unlike our other components, the run method here expects `parts` as input. A `Part` in the Google Vertex AI API can be anything from a message, to images, or even function calls. Here are the docstrings from the source code for the most up-to-date reference we could find [here.](https://github.com/googleapis/python-aiplatform/blob/5f6ad8df5a08e78a121a72a21e21d95abb072e58/vertexai/generative_models/_generative_models.py#L1427-L1446) Let’s run this component with a simple query 👇
 
 ```python
-from google_vertex_haystack.generators.gemini import VertexAIGeminiGenerator
+from haystack_integrations.components.generators.google_vertex import VertexAIGeminiGenerator
 
 gemini = VertexAIGeminiGenerator(model="gemini-pro-vision", project_id='YOUR-GCP-PROJECT-ID')
 gemini.run(parts = ["What is the most interesting thing you know?"])
@@ -75,7 +75,7 @@ for answer in result["answers"]:
 
 > 💡 **Fun fact:** We’ve notices that Gemini consistently misidentifies the 3rd robot! Often the response is: “The third image is of Gort from the 1951 film The Day the Earth Stood Still. Gort is a robot who is sent to Earth to warn humanity about the dangers of nuclear war. He is a powerful and intelligent robot, but he is also compassionate and understanding.”. However, this robot is [Marvin the Paranoid Android](https://en.wikipedia.org/wiki/Marvin_the_Paranoid_Android) from the _[The Hitchhiker's Guide to the Galaxy](https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy)_ series. It would have been pretty silly if Gort looked like that! 😅
 
-## GeminiChatGenerator for Function Calling
+## VertexAIGeminiChatGenerator for Function Calling
 
 With `gemini-pro`, we can also start introducing function calling! So let's see how we can do that. An important feature to note here is that function calling in this context refers to using Gemini to identify _how_ a function should be called. To see what we mean by this, let's see if we can build a system that can run a `get_current_weather` function, based on a question asked in natural language.
 
@@ -119,7 +119,7 @@ tool = Tool([get_current_weather_func])
 We can use this tool with the `VertexAIGeminiChatGenerator` and ask it to tell us how the function should be called to answer the question “What is the temperature in celsius in Berlin?”:
 
 ```python
-from google_vertex_haystack.generators.chat.gemini import VertexAIGeminiChatGenerator
+from haystack_integrations.components.generators.google_vertex import VertexAIGeminiChatGenerator
 from haystack.dataclasses import ChatMessage
 
 gemini_chat = VertexAIGeminiChatGenerator(model="gemini-pro", project_id='YOUR-GCP-PROJECT-ID', tools=[tool])
@@ -148,7 +148,7 @@ Alongside the individual use of the new Gemini components above, you can of cour
 > As we are working on the full release of Haystack 2.0, components that are currently available in the Beta release are mostly focused on text. So, truly multi-modal applications as full Haystack pipelines is not yet possible. We are creating components that can easily handle other medias like images, audio, and video and will be back with examples soon!
 
 ```python
-from google_vertex_haystack.generators.gemini import VertexAIGeminiGenerator
+from haystack_integrations.components.generators.google_vertex import VertexAIGeminiGenerator
 from haystack.components.fetchers.link_content import LinkContentFetcher
 from haystack.components.converters import HTMLToDocument
 from haystack.components.preprocessors import DocumentSplitter

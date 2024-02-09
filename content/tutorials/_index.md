@@ -1,5 +1,7 @@
 ---
 layout: tutorials
+featured_image: /images/tutorials.png
+images: ["/images/tutorials.png"]
 header: dark
 footer: dark
 title: Tutorials

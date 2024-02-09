@@ -125,7 +125,7 @@ Once again, let’s define all of our components:
 from haystack.components.builders.prompt_builder import PromptBuilder
 from haystack.components.embedders import SentenceTransformersTextEmbedder
 from haystack.components.generators import HuggingFaceLocalGenerator
-from haystack.components.retrievers import InMemoryEmbeddingRetriever
+from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
 
 SentenceTransformersTextEmbedder(model="thenlper/gte-large")
 

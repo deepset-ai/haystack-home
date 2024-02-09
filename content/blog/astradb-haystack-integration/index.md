@@ -48,8 +48,9 @@ Remember earlier when I mentioned you were going to need your credentials? I hop
 
 ```python
 from getpass import getpass
+import os
 
-OPENAI_API_KEY = getpass("Enter your openAI key:")
+os.environ["OPENAI_API_KEY"] = getpass("Enter your openAI key:")
 ASTRA_DB_ID = getpass("Enter your Astra database ID:")
 ASTRA_DB_APPLICATION_TOKEN = getpass("Enter your Astra application token (e.g.AstraCS:xxx ):")
 ASTRA_DB_REGION = getpass("Enter your AstraDB Region: ")
@@ -68,8 +69,7 @@ from haystack import Document, Pipeline
 from haystack.components.embedders import SentenceTransformersDocumentEmbedder, SentenceTransformersTextEmbedder
 from haystack.components.writers import DocumentWriter
 from haystack.document_stores.types import DuplicatePolicy
-
-from astra_haystack.document_store import AstraDocumentStore
+from haystack_integrations.document_stores.astra import AstraDocumentStore
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -122,7 +122,7 @@ In Haystack, every `DocumentStore` is tightly coupled with the `Retriever` that 
 from haystack.components.builders.answer_builder import AnswerBuilder
 from haystack.components.builders.prompt_builder import PromptBuilder
 from haystack.components.generators import OpenAIGenerator
-from astra_haystack.retriever import AstraRetriever
+from haystack_integrations.components.retrievers.astra import AstraRetriever
 
 prompt_template = """
                 Given these documents, answer the question.
@@ -141,7 +141,7 @@ rag_pipeline.add_component(
 )
 rag_pipeline.add_component(instance=AstraRetriever(document_store=document_store), name="retriever")
 rag_pipeline.add_component(instance=PromptBuilder(template=prompt_template), name="prompt_builder")
-rag_pipeline.add_component(instance=OpenAIGenerator(api_key=OPENAI_API_KEY), name="llm")
+rag_pipeline.add_component(instance=OpenAIGenerator(), name="llm")
 rag_pipeline.add_component(instance=AnswerBuilder(), name="answer_builder")
 rag_pipeline.connect("embedder", "retriever")
 rag_pipeline.connect("retriever", "prompt_builder.documents")

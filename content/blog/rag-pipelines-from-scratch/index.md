@@ -47,7 +47,7 @@ Let's build one of these with Haystack 2.0!
 
 As every NLP framework that deserves its name, Haystack supports LLMs in different ways. The easiest way to query an LLM in Haystack 2.0 is through a Generator component: depending on which LLM and how you intend to query it (chat, text completion, etc...), you should pick the appropriate class.
 
-We're going to use `gpt-3.5-turbo` (the model behind ChatGPT) for these examples, so the component we need is [`OpenAIGenerator`](https://github.com/deepset-ai/haystack/blob/main/haystack/preview/components/generators/openai.py). Here is all the code required to use it to query OpenAI's `gpt-3.5-turbo` :
+We're going to use `gpt-3.5-turbo` (the model behind ChatGPT) for these examples, so the component we need is [`OpenAIGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/openaigenerator). Here is all the code required to use it to query OpenAI's `gpt-3.5-turbo` :
 
 ```python
 from haystack.components.generators import OpenAIGenerator
@@ -60,7 +60,7 @@ You can select your favorite OpenAI model by specifying a `model` at initializat
 
 Note that in this case, we're passing the API key to the component's constructor. This is unnecessary: `OpenAIGenerator` can read the value from the `OPENAI_API_KEY` environment variable and also from the `api_key` module variable of [`openai`'s SDK](https://github.com/openai/openai-python#usage).
 
-Right now, Haystack supports HuggingFace models through the [`HuggingFaceLocalGenerator`](https://github.com/deepset-ai/haystack/blob/main/haystack/preview/components/generators/hugging_face_local.py) and [`HuggingFaceTGIGenerator`](https://github.com/deepset-ai/haystack/blob/main/haystack/preview/components/generators/hugging_face_tgi.py) components, and many more LLMs are coming soon.
+Right now, Haystack supports HuggingFace models through the [`HuggingFaceLocalGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/huggingfacelocalgenerator) and [`HuggingFaceTGIGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/huggingfacetgigenerator) components, and many more LLMs are coming soon.
 
 
 ## PromptBuilder: structured prompts from templates
@@ -69,7 +69,7 @@ Let's imagine that our LLM-powered application also comes with some pre-defined 
 
 In this scenario, we have two pieces of the prompt: a variable (the country name, like "France") and a prompt template, which in this case is `"What's the official language of {{ country }}?"`
 
-Haystack offers a component that can render variables into prompt templates: it's called [`PromptBuilder`](https://github.com/deepset-ai/haystack/blob/main/haystack/preview/components/builders/prompt_builder.py). As the generators we've seen before, also `PromptBuilder` is nearly trivial to initialize and use.
+Haystack offers a component that can render variables into prompt templates: it's called [`PromptBuilder`](https://docs.haystack.deepset.ai/v2.0/docs/promptbuilder). As the generators we've seen before, also `PromptBuilder` is nearly trivial to initialize and use.
 
 ```python
 from haystack.components.builders.prompt_builder import PromptBuilder

@@ -114,15 +114,15 @@ print(document_store.count_documents())
 ```
 If all has gone well, there should be 3 documents. 🎉
 
-## Use the `AstraRetriever` in a Haystack RAG pipeline
+## Use the `AstraEmbeddingRetriever` in a Haystack RAG pipeline
 
-In Haystack, every `DocumentStore` is tightly coupled with the `Retriever` that fetches from it. Astra DB is no exception. Here we'll create a RAG pipeline, where the [`AstraRetriever`](https://docs.haystack.deepset.ai/v2.0/docs/astraretriever) will fetch documents relevant to our query.
+In Haystack, every `DocumentStore` is tightly coupled with the `Retriever` that fetches from it. Astra DB is no exception. Here we'll create a RAG pipeline, where the [`AstraEmbeddingRetriever`](https://docs.haystack.deepset.ai/v2.0/docs/astraretriever) will fetch documents relevant to our query.
 
 ```python
 from haystack.components.builders.answer_builder import AnswerBuilder
 from haystack.components.builders.prompt_builder import PromptBuilder
 from haystack.components.generators import OpenAIGenerator
-from haystack_integrations.components.retrievers.astra import AstraRetriever
+from haystack_integrations.components.retrievers.astra import AstraEmbeddingRetriever
 
 prompt_template = """
                 Given these documents, answer the question.
@@ -139,7 +139,7 @@ rag_pipeline.add_component(
     instance=SentenceTransformersTextEmbedder(model=embedding_model_name),
     name="embedder",
 )
-rag_pipeline.add_component(instance=AstraRetriever(document_store=document_store), name="retriever")
+rag_pipeline.add_component(instance=AstraEmbeddingRetriever(document_store=document_store), name="retriever")
 rag_pipeline.add_component(instance=PromptBuilder(template=prompt_template), name="prompt_builder")
 rag_pipeline.add_component(instance=OpenAIGenerator(), name="llm")
 rag_pipeline.add_component(instance=AnswerBuilder(), name="answer_builder")

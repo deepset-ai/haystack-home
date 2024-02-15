@@ -27,7 +27,7 @@ Specifically, we will see how to use it to deal with two common scenarios:
 
 > 💡 *Do you want to see the code in action? Check out Tutorial __: [Managing Pipeline inputs with Multiplexer](#)*
 
-If you've ever build a Haystack pipeline with more than 3-4 components, you probably noticed an annoying problem: the number of inputs to pass to the `run()` method of the pipeline seems to grow endlessly. New components take some of their input from the other components of a pipeline, but many of them also require additional input from the user. As a result, the dictionary input of `pipeline.run()` grows and grows until it becomes very repetitive.
+If you've ever built a Haystack pipeline with more than 3-4 components, you probably noticed an annoying problem: the number of inputs to pass to the `run()` method of the pipeline seems to grow endlessly. New components take some of their input from the other components of a pipeline, but many of them also require additional input from the user. As a result, the dictionary input of `pipeline.run()` grows and grows until it becomes very repetitive.
 
 One common example of this problem is **hybrid search pipelines**, like this one:
 

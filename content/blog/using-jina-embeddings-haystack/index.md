@@ -58,7 +58,7 @@ Then let's input our credentials. Or you can set them as environment variables i
 from getpass import getpass
 import os
 
-jina_api_key  = getpass("JINA api key:")
+os.environ["JINA_API_KEY"] = getpass("JINA api key:")
 os.environ["HF_API_TOKEN"] = getpass("Enter your HuggingFace api token: ")
 ```
 
@@ -102,7 +102,7 @@ writer = DocumentWriter(document_store=document_store, policy=DuplicatePolicy.SK
 
 retriever = ChromaEmbeddingRetriever(document_store=document_store)
 
-document_embedder = JinaDocumentEmbedder(api_key=jina_api_key, model="jina-embeddings-v2-base-en")
+document_embedder = JinaDocumentEmbedder(model="jina-embeddings-v2-base-en")
 
 indexing_pipeline = Pipeline()
 indexing_pipeline.add_component(instance=fetcher, name="fetcher")
@@ -147,7 +147,7 @@ Documents:
 question: {{question}}
 """
 
-text_embedder = JinaTextEmbedder(api_key=jina_api_key, model="jina-embeddings-v2-base-en")
+text_embedder = JinaTextEmbedder(model="jina-embeddings-v2-base-en")
 generator = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1")
 generator.warm_up()
 

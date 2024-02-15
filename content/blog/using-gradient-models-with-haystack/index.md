@@ -47,9 +47,10 @@ You can use the `GradientGenerator` either with any of the available [base model
 For example, to use the `llama2-7b-chat` model:
 
 ```python
-generator = GradientGenerator(access_token='YOUR_GRADIENT_ACCESS_TOKEN',
-                              workspace_id="YOUR_WORKSPACE_ID",
-                              base_model_slug="llama2-7b-chat",
+os.environ["GRADIENT_ACCESS_TOKEN"] = "YOUR_GRADIENT_ACCESS_TOKEN"
+os.environ["GRADIENT_WORKSPACE_ID"] = "YOUR_WORKSPACE_ID"
+
+generator = GradientGenerator(base_model_slug="llama2-7b-chat",
                               max_generated_token_count=350)
 
 ```
@@ -57,9 +58,10 @@ generator = GradientGenerator(access_token='YOUR_GRADIENT_ACCESS_TOKEN',
 Or, to use a model that you’ve fine-tuned on the Gradient platform, provide your `model_adapter_id`
 
 ```python
-generator = GradientGenerator(access_token='YOUR_GRADIENT_ACCESS_TOKEN',
-                              workspace_id="YOUR_WORKSPACE_ID",
-                              model_adapter_id="your_finetuned_model_adapter_id",
+os.environ["GRADIENT_ACCESS_TOKEN"] = "YOUR_GRADIENT_ACCESS_TOKEN"
+os.environ["GRADIENT_WORKSPACE_ID"] = "YOUR_WORKSPACE_ID"
+
+generator = GradientGenerator(model_adapter_id="your_finetuned_model_adapter_id",
                               max_generated_token_count=350)
 
 ```
@@ -72,6 +74,7 @@ In this article, I’ve provided an example [Colab](https://colab.research.googl
 2.  Generate a response using our own fine-tuned LLM from Gradient:
 
 ```python
+import os
 from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
 from haystack.components.builders import PromptBuilder
 from haystack_integrations.components.embedders.gradient import GradientTextEmbedder
@@ -87,13 +90,13 @@ Documents:
 
 Query: {{query}}
 """
-text_embedder = GradientTextEmbedder(access_token='YOUR_GRADIENT_ACCESS_TOKEN',
-				                             workspace_id="YOUR_WORKSPACE_ID",)
+os.environ["GRADIENT_ACCESS_TOKEN"] = "YOUR_GRADIENT_ACCESS_TOKEN"
+os.environ["GRADIENT_WORKSPACE_ID"] = "YOUR_WORKSPACE_ID"
+
+text_embedder = GradientTextEmbedder()
 retriever = InMemoryEmbeddingRetriever(document_store=document_store)
 prompt_builder = PromptBuilder(template=prompt)
-generator = GradientGenerator(access_token='YOUR_GRADIENT_ACCESS_TOKEN',
-                              workspace_id="YOUR_WORKSPACE_ID",
-                              model_adapter_id="your_finetuned_model_adapter_id",
+generator = GradientGenerator(model_adapter_id="your_finetuned_model_adapter_id",
                               max_generated_token_count=350)
 
 rag_pipeline = Pipeline()

@@ -13,7 +13,7 @@ authors:
 tags: ["Haystack 2.0", "Pipelines", "RAG"]
 ---
 
-Building Haystack Pipelines is not always easy and fun. When Pipelines start including several components, branches, loops and so on, connecting everything together if often a complex task. Sometimes it even looks impossible without writing your own components!
+In Haystack 2.0, Pipelines are quite customizable and flexible. However, due to their customizable nature, when Pipelines start including several components, branches, loops and so on, connecting everything together often becomes a complex task. Sometimes, it even looks impossible without writing your own components!
 
 In this blog post we will explore a small component that often flies under the radar of even expert Haystack 2.0 users, a component that can help a lot building complex pipelines without wrappers and custom components. This component is the [`Multiplexer`](https://docs.haystack.deepset.ai/v2.0/docs/multiplexer).
 

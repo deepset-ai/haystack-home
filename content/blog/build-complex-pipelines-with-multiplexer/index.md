@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-title: Build complex pipelines with Multiplexer
+title: Build Complex Pipelines with Multiplexer
 description: Learn how to use Multiplexer to simplify your pipeline inputs and build feedback loops
 featured_image: thumbnail.png
 images: ["blog/build-complex-pipelines-with-multiplexer/thumbnail.png"]

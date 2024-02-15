@@ -160,9 +160,9 @@ Haystack 2.0 doesn't have such component yet, but we can take inspiration from a
 
 I'm going to create a similar component for Haystack 2.0, which we will call `HallucinationChecker`. If you're interested in the exact implementation of this component, you can check it out own here, but given that custom components are not the focus of this post, I won't describe the process. If you're interested, check out [this guide](https://docs.haystack.deepset.ai/v2.0/docs/custom-components) on the topic.
 
+<br>
 <details>
-
-<summary>HallucinationChecker</summary>
+<summary><h4 style="display: inline; margin-top:0;">See the <code>HallucinationChecker</code> implementation</h4></summary>
 
 ```python
 from typing import List

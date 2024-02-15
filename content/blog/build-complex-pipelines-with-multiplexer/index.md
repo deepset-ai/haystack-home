@@ -234,7 +234,7 @@ Our first attempt may look like this:
 Let's try to write it in code:
 
 ```python
-# Tip: when your pipeline has loops is always a good idea to set a low number
+# Tip: when your pipeline has loops, it is always a good idea to set a low number
 # for the max_loops_allowed parameter. The default is 100.
 pipe = Pipeline(max_loops_allowed=5)
 

@@ -340,7 +340,7 @@ results = pipeline.run({
 ![Multiplexer limitation](broken_pipeline.png)
 
 
-# Conclusions
+## Conclusions
 
 `Multiplexer` is a very versatile component that enhances the capabilities of Pipeline in different ways, and helps you connecting components into non-trivial ways.
 

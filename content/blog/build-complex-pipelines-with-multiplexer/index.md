@@ -278,7 +278,7 @@ pipe.connect("correction_prompt_builder", "llm")
 #    with 'llm.prompt': llm.prompt is already connected to ['prompt_builder'].
 ```
 
-The error message is reasonable: the LLM is already receiving a prompt from another PromptBuilder and it does not expect more than one. How can we close this loop?
+The error message is reasonable: the LLM is already receiving a `prompt` input from another `PromptBuilder` and it does not expect more than one `prompt` input. How can we complete this loop?
 
 In these cases, a Multiplexer needs to be placed in front of the prompt input of the Generator. Multiplexer has a variadic input, which means that you can connect any number of components to it as long as the type is correct. Multiplexer then makes sure that the Generator always receives only one prompt at a time, so it can run effectively.
 

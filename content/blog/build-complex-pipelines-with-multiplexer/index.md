@@ -225,9 +225,13 @@ class HallucinationChecker:
 
 </details>
 
-With this new component ready we can now start to build the pipeline. 
+With this new component ready we can now start to build the pipeline. The idea is the following:
+- The query passes to the retriever, then to the prompt builder, and then to the LLM like in a regular RAG pipeline.
+- After the LLM, the reply is given to the `HallucinationChecker` along with the documents returned by the retriever.
+- If `HallucinationChecker` decides that the reply is not a hallucination, the pipeline finishes. Otherwise, `HallucinationChecker` sends the LLM output to another prompt builder, that creates a new prompt for the LLM. In this new prompt, the error that the LLM made in the first pass is highlighted and the model is asked to correct it.
+- The new prompt is sent to the LLM again and the loop restarts.
 
-Our first attempt may look like this:
+Let's implement it. Our first attempt may look like this:
 
 ![Self correcting pipeline without Multiplexer](auto_correction_loop_no_multiplexer.png)
 

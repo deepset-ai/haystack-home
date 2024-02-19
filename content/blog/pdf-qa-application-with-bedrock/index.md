@@ -139,12 +139,13 @@ from haystack_integrations.components.retrievers.opensearch import OpenSearchBM2
 ## Create pipeline components
 retriever = OpenSearchBM25Retriever(document_store=document_store, top_k=15)
 
+## Set the AWS credentials as environment variables
+os.environ["AWS_ACCESS_KEY_ID"] = "aws_access_key_id"
+os.environ["AWS_SECRET_ACCESS_KEY"] = "aws_secret"
+os.environ["AWS_REGION_NAME"] = "aws_region_name"
+
 ## Initialize the AmazonBedrockGenerator with an Amazon Bedrock model
-generator = AmazonBedrockGenerator(model='amazon.titan-text-express-v1',
-                                   aws_access_key_id="aws_access_key_id",
-                                   aws_secret_access_key="aws_secret_access_key",
-                                   aws_region_name="aws_region_name",
-                                   max_length=500)
+generator = AmazonBedrockGenerator(model='amazon.titan-text-express-v1', max_length=500)
 template = """
 {% for document in documents %}
     {{ document.content }}

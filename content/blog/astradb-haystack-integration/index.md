@@ -51,8 +51,8 @@ from getpass import getpass
 import os
 
 os.environ["OPENAI_API_KEY"] = getpass("Enter your openAI key:")
-os.environ["ASTRA_API_ENDPOINT"] = getpass("Enter your Astra API Endpoint:")
-os.environ["ASTRA_TOKEN"] = getpass("Enter your Astra application token (e.g.AstraCS:xxx ):")
+os.environ["ASTRA_DB_API_ENDPOINT"] = getpass("Enter your Astra API Endpoint:")
+os.environ["ASTRA_DB_APPLICATION_TOKEN"] = getpass("Enter your Astra application token (e.g.AstraCS:xxx ):")
 ```
 
 ## Using the Astra DocumentStore in an index pipeline 
@@ -73,7 +73,7 @@ logging.basicConfig(level=logging.INFO)
 
 embedding_model_name = "sentence-transformers/all-MiniLM-L6-v2"
 
-# Make sure ASTRA_API_ENDPOINT and ASTRA_TOKEN environment variables are set before proceeding
+# Make sure ASTRA_DB_API_ENDPOINT and ASTRA_DB_APPLICATION_TOKEN environment variables are set before proceeding
 
 # embedding_dim is the number of dimensions the embedding model supports.
 document_store = AstraDocumentStore(

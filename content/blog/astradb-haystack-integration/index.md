@@ -78,7 +78,7 @@ embedding_model_name = "sentence-transformers/all-MiniLM-L6-v2"
 # embedding_dim is the number of dimensions the embedding model supports.
 document_store = AstraDocumentStore(
     duplicates_policy=DuplicatePolicy.SKIP,
-    embedding_dim=384,
+    embedding_dimension=384,
 )
 
 

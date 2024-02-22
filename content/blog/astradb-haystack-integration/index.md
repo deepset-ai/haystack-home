@@ -30,7 +30,7 @@ DataStax Astra DB is a serverless vector database built on [Apache Cassandra](ht
 ### Create your Astra DB database
 To ensure these instructions remain up to date, we're going to point you to the Astra DB docs to explain how to create a database.
 
-1. [Create a free Astra DB database](https://docs.datastax.com/en/astra/astra-db-vector/databases/create-database.html#create-vector-database). Make a note of your credentials - you'll need your database ID, application token, keyspace, and database region to use the Haystack extension.
+1. [Create a free Astra DB database](https://docs.datastax.com/en/astra/astra-db-vector/databases/create-database.html#create-vector-database). Make a note of your credentials - you'll need your Astra API endpoint and Astra application token  to use the Haystack extension.
 2. Choose the number of dimensions that matches the [embedding model](https://haystack.deepset.ai/blog/what-is-text-vectorization-in-nlp) you plan on using. For this example we'll use a 384-dimension model, [`sentence-transformers/all-MiniLM-L6-v2`](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2).
 3. [Create a collection](https://docs.datastax.com/en/astra/astra-db-vector/databases/manage-collections.html#create-collection) with the same number of dimensions as your embedding model. Save the name of your collection since you'll need this as well. 
 
@@ -51,11 +51,8 @@ from getpass import getpass
 import os
 
 os.environ["OPENAI_API_KEY"] = getpass("Enter your openAI key:")
-ASTRA_DB_ID = getpass("Enter your Astra database ID:")
-ASTRA_DB_APPLICATION_TOKEN = getpass("Enter your Astra application token (e.g.AstraCS:xxx ):")
-ASTRA_DB_REGION = getpass("Enter your AstraDB Region: ")
-ASTRA_DB_COLLECTION_NAME = getpass("enter your Astra collection name:")
-ASTRA_DB_KEYSPACE_NAME = getpass("Enter your Astra keyspace name:")
+os.environ["ASTRA_DB_API_ENDPOINT"] = getpass("Enter your Astra API Endpoint:")
+os.environ["ASTRA_DB_APPLICATION_TOKEN"] = getpass("Enter your Astra application token (e.g.AstraCS:xxx ):")
 ```
 
 ## Using the Astra DocumentStore in an index pipeline 
@@ -76,15 +73,12 @@ logging.basicConfig(level=logging.INFO)
 
 embedding_model_name = "sentence-transformers/all-MiniLM-L6-v2"
 
+# Make sure ASTRA_DB_API_ENDPOINT and ASTRA_DB_APPLICATION_TOKEN environment variables are set before proceeding
+
 # embedding_dim is the number of dimensions the embedding model supports.
 document_store = AstraDocumentStore(
-    astra_id=ASTRA_DB_ID,
-    astra_region=ASTRA_DB_REGION,
-    astra_collection=ASTRA_DB_COLLECTION_NAME,
-    astra_keyspace=ASTRA_DB_KEYSPACE_NAME,
-    astra_application_token=ASTRA_DB_APPLICATION_TOKEN,
     duplicates_policy=DuplicatePolicy.SKIP,
-    embedding_dim=384,
+    embedding_dimension=384,
 )
 
 

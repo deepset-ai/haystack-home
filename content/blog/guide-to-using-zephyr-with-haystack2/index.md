@@ -126,10 +126,12 @@ from haystack.components.builders.prompt_builder import PromptBuilder
 from haystack.components.embedders import SentenceTransformersTextEmbedder
 from haystack.components.generators import HuggingFaceLocalGenerator
 from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
+from haystack.utils import ComponentDevice
 
-SentenceTransformersTextEmbedder(model="thenlper/gte-large")
+text_embedder = SentenceTransformersTextEmbedder(model="thenlper/gte-large",
+                                                 device=ComponentDevice.from_str("cuda:0"))
 
-InMemoryEmbeddingRetriever(document_store=document_store, top_k=5)
+retriever = InMemoryEmbeddingRetriever(document_store=document_store, top_k=5)
 
 prompt_template = """<|system|>Using the information contained in the context, 
 give a comprehensive answer to the question.
@@ -160,8 +162,8 @@ And then we build our pipeline. Our first step is to add these components to the
 
 ```python
 rag = Pipeline()
-rag.add_component("text_embedder", SentenceTransformersTextEmbedder(model="thenlper/gte-large", device="cuda:0"))
-rag.add_component("retriever", InMemoryEmbeddingRetriever(document_store=document_store, top_k=5))
+rag.add_component("text_embedder", text_embedder)
+rag.add_component("retriever", retriever)
 rag.add_component("prompt_builder", prompt_builder)
 rag.add_component("llm", generator)
 

@@ -7,16 +7,30 @@ description: Haystack, the open source NLP framework
 
 # Hero
 hero:
-  title: Open-source LLM framework to build production-ready applications
-  bulletPoints:
-    - "Use the latest LLMs: hosted models by OpenAI or Cohere, open-source LLMs, or other pre-trained models"
-    - "All tooling in one place: preprocessing, pipelines, agents & tools, prompts, evaluation and finetuning"
-    - "Choose your favorite database: Elasticsearch, OpenSearch, Weaviate, Pinecone, Qdrant, Milvus and more"
-    - "Scale to millions of documents: use Haystack's proven retrieval architecture"
+  title: The Next Generation<br/> AI Open Source Framework
   buttons:
-    - buttonText: Learn more
-      url: /overview/intro
-  image: /images/hero.png
+    - buttonText: Haystack 2.0 is live 🎉
+      url: /
+    - buttonText: Get Started
+      url: /
+
+  features:
+    - title: Highly<br> customizable
+      highlightedText: Don’t just use Haystack, build on top of it.
+      text: The flexible components and pipelines architecture allows you to build around your own specifications and use-cases. Whether you’re building a simple retrieval-augmented generation (RAG) app or a complex architecture with many moving parts.
+
+    - title: Build with leading LLM providers and AI tools
+      highlightedText: Have the freedom of choice.
+      text: Thanks to our partnerships with many leading LLM providers, vector databases, and AI tools such as OpenAI, Mistral, Weaviate, Pinecone and so much more
+
+    - title: Production is where it gets real
+      highlightedText: Get your application in front of the world.
+      text: Haystack 2.0 is built from the ground-up with production in mind. Our pipelines are fully serializable and perfect for K8s native workflows. Logging and monitoring integrations give you the transparency you need. Our deployment guides walk you through full-scale deployments on all clouds and on-prem.
+
+  CTA:
+    link: https://www.deepset.ai/deepset-cloud
+    text: Are you looking for a hosted solution to build highly scalable and always available NLP solutions for your customers?
+    logo: /images/logos/deepset-cloud.svg
 
 # Logo garden
 logos:

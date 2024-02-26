@@ -138,9 +138,11 @@ button.nav-toggle-close {
     }
 
     &:hover {
-      background-color: rgba($color: #{var(--color-dark-grey-rgb)}, $alpha: 0.9);
+      background-color: rgba(
+        $color: #{var(--color-dark-grey-rgb)},
+        $alpha: 0.9
+      );
     }
-
   }
 }
 
@@ -277,13 +279,17 @@ button.nav-toggle-close {
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: var(--color-dark-grey);
-  font-weight: var(--font-weight-links);
+  color: #8a8a8a;
+  font-weight: var(--font-weight-heading);
+  font-size: var(--text-base);
+
+  @include md {
+    font-size: 1.1875rem;
+  }
 
   svg {
-    width: 1.25rem;
+    width: 1.75rem;
     flex-shrink: 0;
-    fill: var(--color-dark-grey);
     transition: fill var(--transition-fast) var(--ease);
   }
 
@@ -308,9 +314,14 @@ button.nav-toggle-close {
       width: 1.25rem;
     }
   }
+
+  .separator {
+    font-weight: 400;
+  }
 }
 
-.colab-btn, .download-btn {
+.colab-btn,
+.download-btn {
   gap: 0.5rem;
   // margin-top: var(--sm-text-spacing);
   font-weight: var(--font-weight-links);
@@ -318,7 +329,7 @@ button.nav-toggle-close {
 
 // Colab button
 .colab-btn > svg {
-  width: 2rem; 
+  width: 2rem;
 }
 
 // Download button

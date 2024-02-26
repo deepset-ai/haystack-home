@@ -1,4 +1,4 @@
-{{/*  Homepage logo garden section  */}}
+{{/* Homepage logo garden section */}}
 <section class="index-logos" {{ if .Params.logos.anchor }} id="{{ .Params.logos.anchor }}" {{ end }}>
   <div class="container container-padded">
     <div class="inner">
@@ -8,14 +8,11 @@
       {{/* Showcase items */}}
       <div class="logos-items">
         {{ range .Params.logos.logoItems }}
-          <div class="logos-item">
-            <div>
-              <img
-                class="logos-image"
-                src="{{ .image.url }}"
-              />
-            </div>
+        <div class="logos-item">
+          <div>
+            <img class="logos-image" src="{{ .image.url }}" alt="{{ .image.alt }}" />
           </div>
+        </div>
         {{ end }}
       </div>
     </div>

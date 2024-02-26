@@ -6,6 +6,7 @@ title: Haystack
 description: Haystack, the open source NLP framework
 
 # Hero
+header: light
 hero:
   title: The Next Generation<br/> AI Open Source Framework
   buttons:
@@ -35,18 +36,20 @@ hero:
 # Logo garden
 logos:
   anchor: logos
-  title: People in our community work for
+  title: "People in our community work for:"
   logoItems:
     - image:
-        url: /images/logos/databricks.svg
+        url: /images/logos/aws-dark.svg
+        alt: AWS
     - image:
-        url: /images/logos/rakuten.svg
+        url: /images/logos/nvidia-dark.svg
+        alt: Nvidia
     - image:
-        url: /images/logos/nvidia.svg
+        url: /images/logos/ibm-dark.svg
+        alt: IBM
     - image:
-        url: /images/logos/aws.svg
-    - image:
-        url: /images/logos/betterup.svg
+        url: /images/logos/intel-dark.svg
+        alt: Intel
 
 # Showcase
 showcase:

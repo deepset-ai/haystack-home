@@ -13,7 +13,18 @@
             
             <div class="community-cards">
               {{/* Discord card */}}
-              {{ partial "discord-card" . }}
+              <div class="discord-card">
+                <img src="{{ .community.discord.icon }}" alt="Discord" />
+                <h3>{{ .community.discord.title }}</h3>
+                {{ with .community.discord.text}}
+                  <p>{{ . }}</p>
+                {{ end }}
+                <div class="button-container">
+                  {{ range .community.discord.buttons }}
+                    {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
+                  {{ end }}
+                </div>
+              </div>
               
               {{/* Github section */}}
               {{ with .github}}

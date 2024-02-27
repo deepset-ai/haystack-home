@@ -15,13 +15,14 @@
     appearance: none;
     background: var(--color-white);
     color: var(--color-dark-blue);
-    border: 2px solid var(--color-light-grey);
-    border-radius: var(--border-radius-sm);
-    height: 2.45rem;
+    border: 1px solid #D0D5DD;
+    border-radius: 0.5rem;
+    height: 2.75rem;
     min-width: 6rem;
-    padding: 0 0.5rem;
+    padding: 0 0.875rem;
     flex-grow: 1;
     transition: border-color var(--transition-fast) var(--ease);
+    font-size: 1rem;
 
     &::placeholder {
       color: var(--color-medium-grey);
@@ -36,10 +37,12 @@
 
   > button {
     border: none;
-    height: 2.45rem;
+    height: 2.75rem;
     flex-shrink: 0;
     transition: opacity var(--transition-fast) var(--ease);
     opacity: 1;
+    font-size: 1rem;
+    letter-spacing: 0.8px;
   }
 
   .success-message {

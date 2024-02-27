@@ -71,53 +71,33 @@ useCases:
       text: Build highly performant RAG pipelines with a multitude of retrieval and generation strategies. From hybrid retrieval to self-correction loops, Haystack has got you covered.
       icon: /images/icons/use-case-1.svg
 
-# Features
-features:
-  anchor: features
-  featureItems:
-    - title: Latest Models
-      text: Pick any Transformer model from Hugging Face's Model Hub, experiment, find the one that works.
-      icon: /images/icons/transformer-models.svg
-    - title: Flexible Document Store
-      text: Use Haystack NLP components on top of Elasticsearch, OpenSearch, or plain SQL.
-      icon: /images/icons/document-store.svg
-    - title: Vector Databases
-      text: Boost search performance with Pinecone, Milvus, FAISS, or Weaviate vector databases, and dense passage retrieval.
-      icon: /images/icons/vector-databases.svg
-    - title: Scalable
-      text: Build semantic search and question answering applications that can scale to millions of documents.
-      icon: /images/icons/scalable.svg
-    - title: End-to-end
-      text: Building blocks for the entire product development cycle such as file converters, indexing functions, models, labeling tools, domain adaptation modules, and REST API.
-      icon: /images/icons/end-to-end.svg
-    - title: Pipelines
-      text: It's not one-size-fits-all! Combine nodes into flexible and scalable pipelines and launch powerful natural language processing systems.
-      icon: /images/icons/pipelines.svg
-
-# Github section
-github:
-  anchor: github
-  title: Start exploring Haystack!
-  buttons:
-    - buttonText: Check on Github
-      url: https://github.com/deepset-ai/haystack
-  contributors:
-    title: Most active contributors
-
 # Community
 community:
   anchor: community
+  title: Join the community
   discord:
-    title: Join our community
+    title: Join our Discord
     text: Our community on Discord is for everyone interested in NLP, using Haystack or even just getting started!
-    icon: /images/icons/discord.svg
-    buttons:
-      - buttonText: Join Discord
-        url: https://discord.com/invite/VBpFzsgRVF
+    ctaText: GET STARTED
+    url: https://discord.com/invite/VBpFzsgRVF
   newsletter:
-    title: Sign up for community updates
+    title: Sign up for<br> Haystack updates
     text: Stay tuned for the latest Haystack community news and events.
-    icon: /images/icons/email.svg
-    inputPlaceholder: Email address...
-    buttonText: Submit
+    inputPlaceholder: Enter your email
+    buttonText: Subscribe
+    successMessage: Thanks! You'll soon receive a confirmation email 📧
+
+  communityTalks:
+    - title: "AWS Summit Berlin 2023: Building Generative AI Applications on AWS featuring deepset"
+      description: Name | Company | Date
+      videoId: Hns424sFY7s
+
+    - title: Building Applications with LLM-Based Agents
+      description: Name | Company | Date
+      videoId: 1NPcnlqPf2U
+
+    - title: "Open NLP Meetup #13: Hosting LLM Apps @ Scale with Haystack, Titan ML & Jina AI"
+      description: Name | Company | Date
+      videoId: CWSn-9s955g
+      
 ---

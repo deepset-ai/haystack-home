@@ -48,17 +48,11 @@
   </div>
 </section>
 
-{{ $splidecss := resources.Get "/sass/splide-core.min.css" }}
-<link rel="stylesheet" href="{{ $splidecss.RelPermalink }}" />
-
-{{ $splidejs := resources.Get "/js/splide.min.js" }}
-<script src="{{ $splidejs.RelPermalink }}"></script>
-
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var splide = new Splide(".splide", {
+    var splide = new Splide(".usecases-slider", {
       type: "loop",
-      perPage: 5,
+      perPage: 4,
       perMove: 1,
       flickMaxPages: 1,
       arrows: true,
@@ -68,18 +62,22 @@
       flickMaxPages: 1,
 
       breakpoints: {
-        1536: {
-          perPage: 4,
-        },
         1280: {
           perPage: 3,
         },
         1024: {
           perPage: 2,
         },
-        512: {
+        624: {
           perPage: 1,
         },
+      },
+
+      classes: {
+        arrows: "splide__arrows arrow-div",
+        arrow : "splide__arrow arrow",
+        prev  : "splide__arrow--prev arrow-prev",
+        next  : "splide__arrow--next arrow-next",
       },
     });
     splide.mount();

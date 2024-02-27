@@ -3,7 +3,11 @@
 {{ partial "index-hero" . }}
 {{ partial "index-logos" . }}
 {{ partial "index-usecases" . }}
-{{/* {{ partial "index-features" . }}
-{{ partial "index-github" . }}
-{{ partial "index-community" . }} */}}
+{{ partial "index-community" . }}
+
+{{ $splidecss := resources.Get "/sass/splide-core.min.css" }}
+<link rel="stylesheet" href="{{ $splidecss.RelPermalink }}" />
+
+{{ $splidejs := resources.Get "/js/splide.min.js" }}
+<script src="{{ $splidejs.RelPermalink }}"></script>
 {{ end }}

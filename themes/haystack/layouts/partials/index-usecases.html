@@ -18,7 +18,7 @@
           </div>
 
           <div class="slide-content">
-            <h3>{{ .title }}</h3>
+            <h3>{{ .title | safeHTML }}</h3>
             <span class="slide-separator"></span>
             <p>{{ .text }}</p>
           </div>

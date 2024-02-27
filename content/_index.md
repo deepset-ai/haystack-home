@@ -55,19 +55,19 @@ useCases:
   anchor: use-cases
   title: Haystack Use Cases
   items:
-    - title: Multimodal AI
+    - title: Multimodal<br> AI
       text: Architect a next generation AI app around all modalities, not just text. Haystack can do tasks like image generation, image captioning and audio transcription too.
       icon: /images/icons/use-case-1.svg
-    - title: Conversational AI
+    - title: Conversational<br> AI
       text: All of our generators provide a standardized chat interface so that you can focus on building the perfect bot for your users.
       icon: /images/icons/use-case-2.svg
-    - title: Content Generation
+    - title: Content<br> Generation
       text: The flexibility and composability of Haystack’s prompt flow is unparalleled. Leverage our Jinja-2 templates and build a content generation engine that exactly matches your workflow.
       icon: /images/icons/use-case-3.svg
-    - title: Agentic Pipelines
+    - title: Agentic<br> Pipelines
       text: All our LLM generators come with a standard function-calling interface so that your LLM can leverage tools to achieve more. Our pipeline architecture provides branching and looping to support complex agent workflows.
       icon: /images/icons/use-case-4.svg
-    - title: Advanced RAG
+    - title: Advanced<br> RAG
       text: Build highly performant RAG pipelines with a multitude of retrieval and generation strategies. From hybrid retrieval to self-correction loops, Haystack has got you covered.
       icon: /images/icons/use-case-1.svg
 

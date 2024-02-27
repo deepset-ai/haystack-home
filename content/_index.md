@@ -6,7 +6,6 @@ title: Haystack
 description: Haystack, the open source NLP framework
 
 # Hero
-header: light
 hero:
   title: The Next Generation<br/> AI Open Source Framework
   buttons:
@@ -71,7 +70,6 @@ useCases:
     - title: Advanced RAG
       text: Build highly performant RAG pipelines with a multitude of retrieval and generation strategies. From hybrid retrieval to self-correction loops, Haystack has got you covered.
       icon: /images/icons/use-case-1.svg
-
 
 # Features
 features:

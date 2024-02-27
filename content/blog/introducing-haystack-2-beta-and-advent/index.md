@@ -70,7 +70,7 @@ class MyCustomComponent():
 
 ```
 
-For a full example, you can check out a custom component Tuana built that [fetches the latest Hacker News articles](https://www.notion.so/0940a3356d264669964c948840433b88?pvs=21).
+For a full example, you can check out a custom component Tuana built that [fetches the latest Hacker News articles](https://haystack.deepset.ai/blog/customizing-rag-to-summarize-hacker-news-posts-with-haystack2).
 
 > You can find the complete documentation of Haystack 2.0-Beta components [here](https://docs.haystack.deepset.ai/v2.0/docs/components).
 

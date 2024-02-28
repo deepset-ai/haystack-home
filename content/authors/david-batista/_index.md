@@ -2,7 +2,7 @@
 layout: author
 name: David Batista
 slug: david-batista
-position: NLP Engineer
+position: Senior NLP Engineer
 image: /images/authors/david-batista.png
 socials:
   author_page:

@@ -14,9 +14,10 @@ tags: ["Generative AI", "Retrieval"]
 cookbook: using_hyde_for_improved_retrieval.ipynb
 ---
 
-[Hypothetical Document Embeddings (HyDE)](https://docs.haystack.deepset.ai/v2.0/docs/hypothetical-document-embeddings-hyde) is a technique that allows us to generate “fake” hypothetical documents given a query and originates from the paper “[Precise Zero-Shot Dense Retrieval without Relevance Labels](https://aclanthology.org/2023.acl-long.99/)”. Based on the findings in the paper, this is done 5 times, and then we encode each hypothetical document into an embedding vector and average them. 
+[Hypothetical Document Embeddings (HyDE)](https://docs.haystack.deepset.ai/v2.0/docs/hypothetical-document-embeddings-hyde) is a technique proposed in the paper “[Precise Zero-Shot Dense Retrieval without Relevance Labels](https://aclanthology.org/2023.acl-long.99/)” which improves retrieval by generating “fake” hypothetical documents based on a given query, and then uses those “fake” documents embeddings to retrieve similar documents from the same embedding space.
 
-In this article, we will see how we can use this approach to improve retrieval, and how we can easily incorporate it into Haystack by creating a [custom component](https://docs.haystack.deepset.ai/v2.0/docs/custom-components) that implements HyDE. 
+In this article, we will see how to implement and incorporate it into Haystack by creating a [custom component](https://docs.haystack.deepset.ai/v2.0/docs/custom-components) that implements HyDE.
+
 
 > To learn more about how HyDE works, and where it's useful, check out our guide on [Hypothetical Document Embeddings (HyDE)](https://docs.haystack.deepset.ai/v2.0/docs/hypothetical-document-embeddings-hyde) 
 
@@ -49,7 +50,7 @@ template="""Given a question, generate a paragraph of text that answers the ques
 prompt_builder = PromptBuilder(template=template)
 ```
 
-This will output a list of hypothetical documents. We then use the `SentenceTransformersDocumentEmbedder` to encode these hypothetical documents into embeddings.
+This will output a list of 5 hypothetical documents, the same number the authors used for the experiments in the paper. We then use the `SentenceTransformersDocumentEmbedder` to encode these hypothetical documents into embeddings.
 
 But, the `SentenceTransformersDocumentEmbedder` expects `List[Document]` objects as input, so we need to adapt the output of the `OpenAIGenerator` to be compatible with the input of the `SentenceTransformersDocumentEmbedder`. For this, we use an `OutputAdapter` with a `custom filter`:
 

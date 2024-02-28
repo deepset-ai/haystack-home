@@ -211,6 +211,15 @@
     background-color: rgba(255, 255, 255, 0.75);
     padding: 2.125rem 1.625rem;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    transition: background-color var(--transition-fast) var(--ease);
+
+    &:hover {
+      background-color: var(--color-bg-light-grey);
+
+      .logo-container {
+        background-color: var(--color-bg-light-grey);
+      }
+    }
 
     @include md {
       padding: 0.75rem;
@@ -262,6 +271,7 @@
       width: 100%;
       flex-shrink: 0;
       margin-top: 1.875rem;
+      transition: background-color var(--transition-fast) var(--ease);
 
       @include md {
         width: 300px;

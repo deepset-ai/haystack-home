@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-title: "Optimizing Retrival with HyDE" 
+title: "Optimizing Retrieval with HyDE" 
 description: See how you can easily incorporate HyDE into Haystack RAG pipelines to optimize retrieval
 featured_image: thumbnail.png
 featured_image_caption: 

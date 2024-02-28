@@ -94,13 +94,14 @@
   --container-max-width: 90rem; // 1440px
 
   // Paddings
-  --container-padding: 2rem; // Container right & left
-  --container-padding-lg: 2rem;
+  --container-padding: 1rem; // Container right & left
+  --container-padding-lg: 1rem;
   --header-padding: 1.5rem; // Header top/bottom
   --inner-padding: 3rem; // Inner section top/bottom
   --footer-padding: 2.5rem;
 
   @include md {
+    --container-padding: 2rem;
     --container-padding-lg: 5rem;
     // --header-padding: 2rem;
     --inner-padding: 5rem;

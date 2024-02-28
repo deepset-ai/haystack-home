@@ -7,7 +7,7 @@ description: Haystack, the open source NLP framework
 
 # Hero
 hero:
-  title: The Next Generation<br/> AI Open Source Framework
+  title: The Next Generation<br/> Open Source AI Framework
   buttons:
     - buttonText: Haystack 2.0 is live 🎉
       url: /

@@ -11,6 +11,7 @@ last_updated: 2024-02-28
 authors:
   - David Batista
 tags: ["Generative AI", "Retrieval"]
+cookbook: astradb_haystack_integration.ipynb
 ---
 
 [Hypothetical Document Embeddings (HyDE)](https://docs.haystack.deepset.ai/v2.0/docs/hypothetical-document-embeddings-hyde) is a technique that allows us to generate “fake” hypothetical documents given a query and originates from the paper “[Precise Zero-Shot Dense Retrieval without Relevance Labels](https://aclanthology.org/2023.acl-long.99/)”. Based on the findings in the paper, this is done 5 times, and then we encode each hypothetical document into an embedding vector and average them. 

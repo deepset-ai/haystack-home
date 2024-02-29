@@ -99,7 +99,7 @@ print(result["llm"]["replies"][0])
 {{< /tab  >}}
 
 {{< tab tabName="Pipeline Graph"  >}}
-![](/images/chat_with_web.png)
+<img src="/images/chat_with_web.png" width="400" quality="70" style="margin:15px auto"/>
 {{< /tab  >}}
 
 {{< /tabs >}}

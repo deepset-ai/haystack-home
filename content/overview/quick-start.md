@@ -27,11 +27,11 @@ For more details, refer to our documentation.
 
 This is a very simple pipeline that can answer questions about the contents of a webpage. It uses GPT-3.5-Turbo with the `OpenAIGenerator`.
 
-Run the following **Quickstart Pipeline** or the equivalent **Complete Pipeline** below. See the pipeline visualized in **Pipeline Graph**.
+Run the following **Quickstart** or the equivalent **Corresponding Pipeline** below. See the pipeline visualized in **Pipeline Graph**.
 
 {{< tabs totalTabs="3">}}
 
-{{< tab tabName="Quickstart Pipeline"  >}}
+{{< tab tabName="Quickstart"  >}}
 First, install Haystack:
 ```bash
 pip install haystack-ai
@@ -52,7 +52,7 @@ print(result["llm"]["replies"][0])
 ```
 {{< /tab  >}}
 
-{{< tab tabName="Complete Pipeline"  >}}
+{{< tab tabName="Corresponding Pipeline"  >}}
 ```bash
 pip install haystack-ai
 ```

@@ -12,7 +12,7 @@ hero:
     - buttonText: Haystack 2.0 is live 🎉
       url: /
     - buttonText: Get Started
-      url: /
+      url: /overview/quick-start/
 
   features:
     - title: Highly<br> customizable

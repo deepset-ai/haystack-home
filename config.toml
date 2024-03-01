@@ -137,12 +137,6 @@ paginatePath = "/"
   weight = 2
 
 [[menu.main]]
-  name = 'Benchmarks'
-  url = '/benchmarks'
-  parent = 'resources'
-  weight = 3
-
-[[menu.main]]
   name = 'NLP Resources'
   url = '/nlp-resources'
   parent = 'resources'

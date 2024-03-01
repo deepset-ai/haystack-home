@@ -3,7 +3,7 @@ layout: overview
 header: dark
 footer: dark
 title: Get Started
-description: Guide to setting up and installing Haystack. 
+description: Get started with Haystack pipelines. Build your first RAG application! 
 weight: 2
 toc: true
 aliases: [get-started]

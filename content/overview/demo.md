@@ -7,6 +7,7 @@ description: Check out our live demo with Haystack.
 weight: 3
 toc: false
 aliases: [quick-demo]
+hidden: true
 ---
 
 <!-- <video autoplay loop muted playsinline poster="/images/haystack-demo-poster.jpg" class="responsive"><source src="/images/haystack-demo-short.mp4" type="video/mp4"></video> -->

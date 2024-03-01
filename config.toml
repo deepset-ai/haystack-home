@@ -118,12 +118,6 @@ paginatePath = "/"
   weight = 2
 
 [[menu.main]]
-  name = 'Demo'
-  url = '/overview/demo'
-  parent = 'overview'
-  weight = 4
-
-[[menu.main]]
   name = 'Roadmap'
   url = '/overview/roadmap'
   parent = 'overview'

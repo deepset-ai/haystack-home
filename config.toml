@@ -125,8 +125,8 @@ paginatePath = "/"
 
 # Resources children
 [[menu.main]]
-  name = 'PromptHub'
-  url = 'https://prompthub.deepset.ai'
+  name = 'Release Notes'
+  url = '/release-notes'
   parent = 'resources'
   weight = 1
 

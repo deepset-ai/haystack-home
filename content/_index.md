@@ -10,7 +10,7 @@ hero:
   title: The Production-Ready<br/> Open Source AI Framework
   buttons:
     - buttonText: Haystack 2.0 is live 🎉
-      url: /
+      url: /blog/haystack-2-release
     - buttonText: Get Started
       url: /overview/quick-start/
 

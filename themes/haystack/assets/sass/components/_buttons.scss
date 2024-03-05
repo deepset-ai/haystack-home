@@ -324,10 +324,15 @@ button.nav-toggle-close {
 }
 
 .colab-btn,
-.download-btn {
+.download-btn,
+.github-btn {
   gap: 0.5rem;
   // margin-top: var(--sm-text-spacing);
   font-weight: var(--font-weight-links);
+}
+
+.github-btn {
+  margin-right: auto;
 }
 
 // Colab button

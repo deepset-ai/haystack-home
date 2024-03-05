@@ -8,5 +8,6 @@ toc: True
 date: 2024-03-04
 last_updated:  2024-03-04
 tags: ["Release Notes"]
+link: https://github.com
 ---	
 ## Some new features blablabla

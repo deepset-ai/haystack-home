@@ -89,15 +89,12 @@ community:
 
   communityTalks:
     - title: "AWS Summit Berlin 2023: Building Generative AI Applications on AWS featuring deepset"
-      description: Name | Company | Date
       videoId: Hns424sFY7s
 
     - title: Building Applications with LLM-Based Agents
-      description: Name | Company | Date
       videoId: 1NPcnlqPf2U
 
     - title: "Open NLP Meetup #13: Hosting LLM Apps @ Scale with Haystack, Titan ML & Jina AI"
-      description: Name | Company | Date
       videoId: CWSn-9s955g
       
 ---

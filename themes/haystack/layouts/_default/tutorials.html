@@ -20,8 +20,8 @@
             <div class="select-wrapper">
               <label for="sort">Haystack Version:</label>
               <select id="version-select" class="fixed" onchange="filterAndSort();">
-                <option value="1.0">1.0</option>
                 <option value="2.0">2.0</option>
+                <option value="1.0">1.0</option>
               </select>
             </div>
           </div>
@@ -199,14 +199,14 @@
       document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
 
       {{/*  Update the banner and hero title tag  */}}
-      if (selectedVersion === "2.0") {
-        banner.classList.add("v2")
-        banner.children[0].innerHTML= `Looking for tutorials working with 1.x? Check out <span>here</span>`
-        heroTitle.innerHTML = `Tutorials <span class="tag">2.0</span>`
-      } else {
+      if (selectedVersion === "1.0") {
         banner.classList.remove("v2")
         banner.children[0].innerHTML= `Looking for 2.0 tutorials? Check out <span>here</span>`
         heroTitle.innerHTML = `Tutorials`
+      } else {
+        banner.classList.add("v2")
+        banner.children[0].innerHTML= `Looking for tutorials working with 1.x? Check out <span>here</span>`
+        heroTitle.innerHTML = `Tutorials <span class="tag">2.0</span>`
       }
 
       document.querySelector(".grid-page-grid").innerHTML = ""
@@ -219,7 +219,7 @@
 
     const updateURL = (version) => {
       const params = new URLSearchParams();
-      if (version && version !== "1.0") params.set('v', version);
+      if (version && version !== "2.0") params.set('v', version);
     
       if (params.toString() === '') {
         history.replaceState(null, '', window.location.pathname);
@@ -231,7 +231,7 @@
     const setFiltersFromParams = () => {
       const params = new URLSearchParams(window.location.search);
       
-      const version = params.get('v') || '1.0';
+      const version = params.get('v') || '2.0';
       document.querySelector("#version-select").value = version;
     
       filterAndSort();
@@ -240,7 +240,7 @@
     const resetFilters = () => {
       document.querySelector("#level-select").value = "all";
       document.querySelector("#sort-select").value = "level";
-      document.querySelector("#version-select").value = "1.0";
+      document.querySelector("#version-select").value = "2.0";
       document.querySelector("#search").value = "";
       filterAndSort();
     }
@@ -248,7 +248,7 @@
     {{/*  Version toggle for banner  */}}
     const toggleVersion = () => {
       const versionSelect = document.querySelector("#version-select");
-      versionSelect.value = versionSelect.value === "1.0" ? "2.0" : "1.0";
+      versionSelect.value = versionSelect.value === "2.0" ? "1.0" : "2.0";
 
       filterAndSort();
     }

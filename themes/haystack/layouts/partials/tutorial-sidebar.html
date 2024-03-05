@@ -2,7 +2,7 @@
 <aside class="toc-sidebar">
   <div class="accordions">
     {{ $currentPage := . }}
-    {{ $tutorials := where  (.GetPage "/tutorials").Pages "Params.hidden" "!=" true }}
+    {{ $tutorials := where (where (.GetPage "/tutorials").Pages "Params.hidden" "!=" true) "Params.haystack_2" true }}
 
     {{/* Beginner */}}
     <details
@@ -20,9 +20,6 @@
                 <summary class="accordion-title">
                   <span>
                     {{ .Params.title }}
-                    {{ with .Params.haystack_2 }}
-                      <span class="beta-tag">2.0</span>
-                    {{ end }}
                   </span>
                 </summary>
                 {{if .Params.toc}}
@@ -39,9 +36,6 @@
               >
                 <span>
                   {{ .Params.title }}
-                  {{ with .Params.haystack_2 }}
-                    <span class="beta-tag">2.0</span>
-                  {{ end }}
                 </span>
               </a>
             {{ end }}

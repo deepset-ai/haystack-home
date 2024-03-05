@@ -7,7 +7,7 @@ description: Haystack, the composable open-source AI framework
 
 # Hero
 hero:
-  title: The Next Generation<br/> Open Source AI Framework
+  title: The Production-Ready<br/> Open Source AI Framework
   buttons:
     - buttonText: Haystack 2.0 is live 🎉
       url: /
@@ -28,8 +28,8 @@ hero:
       text: Haystack 2.0 is built from the ground-up with production in mind. Our pipelines are fully serializable and perfect for K8s native workflows. Logging and monitoring integrations give you the transparency you need. Our deployment guides walk you through full-scale deployments on all clouds and on-prem.
 
   CTA:
-    link: https://www.deepset.ai/deepset-cloud
-    text: Are you looking for a hosted solution to build highly scalable and always available NLP solutions for your customers?
+    link: https://www.deepset.ai/deepset-cloud?utm_campaign=developer-relations&utm_source=haystack&utm_medium=website
+    text: Looking for a managed solution to accelerate your time to value?
     logo: /images/logos/deepset-cloud.svg
 
 # Logo garden

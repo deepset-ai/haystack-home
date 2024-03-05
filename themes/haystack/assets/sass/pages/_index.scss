@@ -602,10 +602,10 @@
   }
 
   .upcoming-events {
-    padding: 3.5rem 0;
+    padding-top: 3.5rem;
 
     @include md {
-      padding: 5.3125rem 0;
+      padding-top: 5.3125rem;
     }
 
     h3 {
@@ -614,17 +614,7 @@
     }
 
     .luma-embed {
-      display: none;
-
-      @include md {
-        margin-top: 3.5rem;
-        display: grid;
-        gap: 1rem;
-      }
-
-      @include lg {
-        gap: 2rem;
-      }
+      margin-top: 3.5rem;
     }
   }
 

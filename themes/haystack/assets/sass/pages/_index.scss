@@ -608,6 +608,33 @@
     }
   }
 
+  .upcoming-events {
+    padding: 3.5rem 0;
+
+    @include md {
+      padding: 5.3125rem 0;
+    }
+
+    h3 {
+      font-size: 1.875rem;
+      font-weight: var(--font-weight-extra-bold);
+    }
+
+    .luma-embed {
+      display: none;
+
+      @include md {
+        margin-top: 3.5rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      @include lg {
+        gap: 2rem;
+      }
+    }
+  }
+
   .community-talks {
     padding: 3.5rem 0;
 

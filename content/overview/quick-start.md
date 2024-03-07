@@ -9,7 +9,7 @@ toc: true
 aliases: [get-started]
 ---
 
-Haystack is an open-source Python framework that helps developers build LLM-powered custom applications. In March 2024, we released Haystack 2.0, a significant update. For more information on Haystack 2.0, you can also read the [announcement post]().
+Haystack is an open-source Python framework that helps developers build LLM-powered custom applications. In March 2024, we released Haystack 2.0, a significant update. For more information on Haystack 2.0, you can also read the [announcement post](https://haystack.deepset.ai/blog/haystack-2-release).
 
 ## Installation
 
@@ -21,7 +21,7 @@ pip install haystack-ai
 
 For more details, refer to our documentation.
 
-{{< button url="https://docs.haystack.deepset.ai/v2.0/docs/installation" text="Docs: Installation" color="green">}}
+{{< button url="https://docs.haystack.deepset.ai/v2.0/docs/installation?utm_campaign=developer-relations&utm_source=haystack&utm_medium=website" text="Docs: Installation" color="green">}}
 
 ## Ask Questions to a Webpage
 
@@ -234,4 +234,4 @@ print(result["llm"]["replies"][0])
 
 For a hands-on guide on how to build your first RAG Pipeline with Haystack 2.0, see our tutorial.
 
-{{< button url="https://haystack.deepset.ai/tutorials/27_first_rag_pipeline" text="Tutorial: Creating a RAG Pipeline" color="green">}}
+{{< button url="https://haystack.deepset.ai/tutorials/27_first_rag_pipeline?utm_campaign=developer-relations&utm_source=haystack&utm_medium=website" text="Tutorial: Creating a RAG Pipeline" color="green">}}

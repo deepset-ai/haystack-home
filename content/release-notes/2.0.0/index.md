@@ -220,7 +220,7 @@ Thanks to Haystack 2.0’s flexible infrastructure, pipelines can be easily exte
 
 Starting with 2.0, [integrations](https://docs.haystack.deepset.ai/v2.0/docs/integrations) are divided into two categories:
 
-- Core integrations - These are maintained by deepset and part of the `[haystack-core-integrations` GitHub repository](https://github.com/deepset-ai/haystack-core-integrations/tree/f8efcfe3126fd4066e708872386c06716f5415a4).
+- Core integrations - These are maintained by deepset and part of the [`haystack-core-integrations` GitHub repository](https://github.com/deepset-ai/haystack-core-integrations/tree/f8efcfe3126fd4066e708872386c06716f5415a4).
 - Community and partner integrations - These are maintained by community members and our partners.
 
 Please refer to the [official integrations](https://haystack.deepset.ai/integrations) website for more information.

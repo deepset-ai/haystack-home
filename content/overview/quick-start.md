@@ -3,33 +3,111 @@ layout: overview
 header: dark
 footer: dark
 title: Get Started
-description: Guide to setting up and installing Haystack. 
+description: Get started with Haystack pipelines. Build your first RAG application! 
 weight: 2
 toc: true
 aliases: [get-started]
 ---
 
-<!-- ## Haystack Source Code
+Haystack is an open-source Python framework that helps developers build LLM-powered custom applications. In March 2024, we released Haystack 2.0, a significant update. For more information on Haystack 2.0, you can also read the [announcement post](https://haystack.deepset.ai/blog/haystack-2-release).
 
-Haystack is an open source Python framework that helps developers build LLM empowered custom application.
+## Installation
 
-You can find the source code for Haystack on GitHub. This is also the main channel for raising issues, asking questions and contributing to the project.
+Use [pip](https://github.com/pypa/pip) to install Haystack:
 
-{{< button url="https://github.com/deepset-ai/haystack" text="View Source Code" color="green">}} -->
-
-Haystack is an open source Python framework that helps developers build LLM powered custom applications. In December 2023, a significant update, version 2.0-Beta, was released. This page provides information for both Haystack 1.x and the latest version, 2.0-Beta. For more information on Haystack 2.0-Beta, you can also read the [announcement post](https://haystack.deepset.ai/blog/introducing-haystack-2-beta-and-advent).
-
-## Installation (2.0-Beta) 
-
-Use [pip](https://github.com/pypa/pip) to install Haystack 2.0-Beta release:
-
-```python
+```bash
 pip install haystack-ai
 ```
 
-For more details, refer to our 2.0-Beta documentation.
+For more details, refer to our documentation.
 
-{{< button url="https://docs.haystack.deepset.ai/v2.0/docs/installation" text="Docs: Installation (2.0-Beta)" color="green">}}
+{{< button url="https://docs.haystack.deepset.ai/v2.0/docs/installation?utm_campaign=developer-relations&utm_source=haystack&utm_medium=website" text="Docs: Installation" color="green">}}
+
+## Ask Questions to a Webpage
+
+This is a very simple pipeline that can answer questions about the contents of a webpage. It uses GPT-3.5-Turbo with the `OpenAIGenerator`.
+
+Run the following **Quickstart** or the equivalent **Corresponding Pipeline** below. See the pipeline visualized in **Pipeline Graph**.
+
+{{< tabs totalTabs="3">}}
+
+{{< tab tabName="Quickstart: Ready-Made Template" >}}
+First, install Haystack:
+```bash
+pip install haystack-ai
+```
+
+```python
+import os
+from haystack import Pipeline, PredefinedPipeline
+
+os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
+
+pipeline = Pipeline.from_template(PredefinedPipeline.CHAT_WITH_WEBSITE)
+result = pipeline.run({
+    "fetcher": {"urls": ["https://haystack.deepset.ai/overview/quick-start"]},
+    "prompt": {"query": "How should I install Haystack?"}}
+)
+print(result["llm"]["replies"][0])
+```
+{{< /tab  >}}
+
+{{< tab tabName="Corresponding Pipeline"  >}}
+First, install Haystack:
+```bash
+pip install haystack-ai
+```
+
+```python
+import os
+
+from haystack import Pipeline
+from haystack.components.fetchers import LinkContentFetcher
+from haystack.components.converters import HTMLToDocument
+from haystack.components.builders import PromptBuilder
+from haystack.components.generators import OpenAIGenerator
+
+os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
+
+fetcher = LinkContentFetcher()
+converter = HTMLToDocument()
+prompt_template = """
+According to the contents of this website:
+{% for document in documents %}
+  {{document.content}}
+{% endfor %}
+Answer the given question: {{query}}
+Answer:
+"""
+prompt_builder = PromptBuilder(template=prompt_template)
+llm = OpenAIGenerator()
+
+pipeline = Pipeline()
+pipeline.add_component("fetcher", fetcher)
+pipeline.add_component("converter", converter)
+pipeline.add_component("prompt", prompt_builder)
+pipeline.add_component("llm", llm)
+
+pipeline.connect("fetcher.streams", "converter.sources")
+pipeline.connect("converter.documents", "prompt.documents")
+pipeline.connect("prompt.prompt", "llm.prompt")
+
+pipeline.run({"fetcher": {"urls": ["https://haystack.deepset.ai/overview/quick-start"]},
+              "prompt": {"query": "How should I install Haystack?"}})
+
+print(result["llm"]["replies"][0])
+```
+{{< /tab  >}}
+
+{{< tab tabName="Pipeline Graph"  >}}
+<div class="row" style="display:flex">
+  <div class="column" style="margin:15px auto" >
+    <img src="/images/chat_with_web.png" width="300" quality="70"/>
+  </div>
+</div>
+{{< /tab  >}}
+
+{{< /tabs >}}
 
 ## Build Your First RAG Pipeline
 
@@ -39,172 +117,121 @@ By connecting three components, a [Retriever](https://docs.haystack.deepset.ai/v
 
 Try out how Haystack answers questions about the given documents using the **RAG** approach 👇
 
-First, install Haystack 2.0-Beta:
+{{< tabs totalTabs="3">}}
+
+{{< tab tabName="Quickstart: Ready-Made Template"  >}}
+First, install Haystack and the [Chroma integration](https://haystack.deepset.ai/integrations/chroma-documentstore) (we will use it as our document store):
 ```bash
-pip install haystack-ai
+pip install haystack-ai chroma-haystack
 ```
 
-Then, index your data to the DocumentStore, build a RAG pipeline, and ask a question on your data: 
 ```python
 import os
 
-from haystack import Pipeline, Document
-from haystack.utils import Secret
-from haystack.document_stores.in_memory import InMemoryDocumentStore
-from haystack.components.retrievers.in_memory import InMemoryBM25Retriever
+from haystack import Pipeline, PredefinedPipeline
+import urllib.request
+
+os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
+urllib.request.urlretrieve("https://www.gutenberg.org/cache/epub/7785/pg7785.txt", "davinci.txt")  
+
+indexing_pipeline =  Pipeline.from_template(PredefinedPipeline.INDEXING)
+indexing_pipeline.run(data={"sources": ["davinci.txt"]})
+
+rag_pipeline =  Pipeline.from_template(PredefinedPipeline.RAG)
+
+query = "How old was he when he died?"
+result = rag_pipeline.run(data={"prompt_builder": {"query":query}, "text_embedder": {"text": query}})
+print(result["llm"]["replies"][0])
+```
+{{< /tab  >}}
+
+{{< tab tabName="Corresponding Pipeline"  >}}
+First, install Haystack and the [Chroma integration](https://haystack.deepset.ai/integrations/chroma-documentstore) (we will use it as our document store):
+```bash
+pip install haystack-ai chroma-haystack
+```
+```python
+import os
+
+from haystack import Pipeline
+from haystack_integrations.document_stores.chroma import ChromaDocumentStore
+from haystack.components.converters import TextFileToDocument
+from haystack.components.preprocessors import DocumentCleaner, DocumentSplitter
+from haystack.components.embedders import OpenAIDocumentEmbedder, OpenAITextEmbedder
+from haystack.components.writers import DocumentWriter
+
+from haystack_integrations.components.retrievers.chroma import ChromaEmbeddingRetriever
+from haystack.components.builders import PromptBuilder
 from haystack.components.generators import OpenAIGenerator
-from haystack.components.builders.prompt_builder import PromptBuilder
+import urllib.request
 
-# Write documents to InMemoryDocumentStore
-document_store = InMemoryDocumentStore()
-document_store.write_documents([
-    Document(content="My name is Jean and I live in Paris."), 
-    Document(content="My name is Mark and I live in Berlin."), 
-    Document(content="My name is Giorgio and I live in Rome.")
-])
+os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
+urllib.request.urlretrieve("https://www.gutenberg.org/cache/epub/7785/pg7785.txt", "davinci.txt")  
 
-# Build a RAG pipeline
-prompt_template = """
-Given these documents, answer the question.
-Documents:
-{% for doc in documents %}
-    {{ doc.content }}
-{% endfor %}
-Question: {{question}}
-Answer:
-"""
+document_store = ChromaDocumentStore(persist_path=".")
 
-retriever = InMemoryBM25Retriever(document_store=document_store)
-prompt_builder = PromptBuilder(template=prompt_template)
-llm = OpenAIGenerator(api_key=Secret.from_token(api_key))
+text_file_converter = TextFileToDocument()
+cleaner = DocumentCleaner()
+splitter = DocumentSplitter()
+embedder = OpenAIDocumentEmbedder()
+writer = DocumentWriter(document_store)
+
+indexing_pipeline = Pipeline()
+indexing_pipeline.add_component("converter", text_file_converter)
+indexing_pipeline.add_component("cleaner", cleaner)
+indexing_pipeline.add_component("splitter", splitter)
+indexing_pipeline.add_component("embedder", embedder)
+indexing_pipeline.add_component("writer", writer)
+
+indexing_pipeline.connect("converter.documents", "cleaner.documents")
+indexing_pipeline.connect("cleaner.documents", "splitter.documents")
+indexing_pipeline.connect("splitter.documents", "embedder.documents")
+indexing_pipeline.connect("embedder.documents", "writer.documents")
+indexing_pipeline.run(data={"sources": ["davinci.txt"]})
+
+text_embedder = OpenAITextEmbedder()
+retriever = ChromaEmbeddingRetriever(document_store)
+template = """Given these documents, answer the question.
+              Documents:
+              {% for doc in documents %}
+                  {{ doc.content }}
+              {% endfor %}
+              Question: {{query}}
+              Answer:"""
+prompt_builder = PromptBuilder(template=template)
+llm = OpenAIGenerator()
 
 rag_pipeline = Pipeline()
+rag_pipeline.add_component("text_embedder", text_embedder)
 rag_pipeline.add_component("retriever", retriever)
 rag_pipeline.add_component("prompt_builder", prompt_builder)
 rag_pipeline.add_component("llm", llm)
-rag_pipeline.connect("retriever", "prompt_builder.documents")
+
+rag_pipeline.connect("text_embedder.embedding", "retriever.query_embedding")
+rag_pipeline.connect("retriever.documents", "prompt_builder.documents")
 rag_pipeline.connect("prompt_builder", "llm")
 
-# Ask a question
-question = "Who lives in Paris?"
-results = rag_pipeline.run(
-    {
-        "retriever": {"query": question},
-        "prompt_builder": {"question": question},
-    }
-)
-
-print(results["llm"]["replies"])
+query = "How old was he when he died?"
+result = rag_pipeline.run(data={"prompt_builder": {"query":query}, "text_embedder": {"text": query}})
+print(result["llm"]["replies"][0])
 ```
-The pipeline uses the given documents to generate the answer:
+{{< /tab  >}}
 
-```text
-['Jean lives in Paris.']
-```
+{{< tab tabName="Pipeline Graph"  >}}
+<div class="row" style="display:flex">
+  <div class="column" style="margin:15px auto" >
+    <p>Indexing Pipeline</p>
+    <img src="/images/indexing.png" width="300" quality="70"/>
+  </div>
+  <div class="column" style="margin:15px auto" >
+    <p>RAG Pipeline</p>
+    <img src="/images/rag.png" width="300" quality="70"/>
+  </div>
+</div>
+{{< /tab  >}}
 
-For a hands-on guide on how to build your first RAG Pipeline with Haystack 2.0-Beta, see our tutorial.
-
-{{< button url="https://haystack.deepset.ai/tutorials/27_first_rag_pipeline" text="Tutorial: Creating a RAG Pipeline" color="green">}}
-
-
-## Installation (1.x)
-
-Use [pip](https://github.com/pypa/pip) to install the latest Haystack release:
-
-{{< tabs totalTabs="4">}}
-
-{{< tab tabName="Minimal"  >}}
-
-This command installs everything needed for basic Pipelines using InMemoryDocumentStore and an external LLM provider (for example, OpenAI). Use this installation method for basic features such as keyword-based retrieval, web search and text generation with LLMs including generative question answering.
-
-```python
-pip install farm-haystack
-```
-
-{{< /tab >}}
-
-{{< tab tabName="Basic"  >}}
-
-This command installs everything needed for basic Pipelines using InMemoryDocumentStore, and necessary dependencies for model inference on a local machine, including torch. Use this installation option for features such as document retrieval with semantic similarity and extractive question answering.
-
-```python
-pip install 'farm-haystack[inference]'
-```
-
-{{< /tab >}}
-
-{{< tab tabName="Custom" >}}
-
-This command installs given dependencies. Use this installation option when you are using various features of Haystack and want to keep the dependency list as small as possible. 
-
-```python
-pip install 'farm-haystack[DEPENDENCY_OPTION_1, DEPENDENCY_OPTION_2, DEPENDENCY_OPTION_3...]'
-```
-
-For the full list of dependency options, read [Custom Installation](https://docs.haystack.deepset.ai/docs/installation#custom-installation) section in the documentation.
-
-{{< /tab >}}
-
-{{< tab tabName="Full" >}}
-
-This command installs all dependencies required for all document stores, file converters, OCR, Ray and more. Use this installation option if you don't want to install dependencies separately or if you're still experimenting with Haystack and don't have a final list of features you want to use in your application.
-
-```python
-pip install 'farm-haystack[all]' ## or 'all-gpu' for the GPU-enabled dependencies
-```
-
-{{< /tab >}}
 {{< /tabs >}}
 
-For a more comprehensive installation guide, including methods for various operating systems, refer to our documentation.
+For a hands-on guide on how to build your first RAG Pipeline with Haystack 2.0, see our tutorial.
 
-{{< button url="https://docs.haystack.deepset.ai/docs/installation" text="Docs: Installation" color="green">}}
-
-## Build Your First RAG Pipeline with Haystack 1.x
-
-Haystack is built around the concept of pipelines. A pipeline is a powerful structure that performs an NLP task. It's made up of components connected together.
-For example, you can connect a Retriever and a PromptNode to build a Generative Question Answering pipeline that uses your own data.
-
-Try out how Haystack answers questions about Game of Thrones using the **RAG** approach 👇
-
-Run the minimal Haystack installation:
-```bash
-pip install farm-haystack
-```
-Index your data to the DocumentStore, build a RAG pipeline, and ask a question on your data: 
-```python
-from haystack.document_stores import InMemoryDocumentStore
-from haystack.utils import build_pipeline, add_example_data, print_answers
-
-# We are model agnostic :) Here, you can choose from: "anthropic", "cohere", "huggingface", and "openai".
-provider = "openai"
-API_KEY = "sk-..." # ADD YOUR KEY HERE
-
-# We support many different databases. Here we load a simple and lightweight in-memory database.
-document_store = InMemoryDocumentStore(use_bm25=True)
-
-# Download and add Game of Thrones TXT articles to Haystack DocumentStore.
-# You can also provide a folder with your local documents.
-add_example_data(document_store, "data/GoT_getting_started")
-
-# Build a pipeline with a Retriever to get relevant documents to the query and a PromptNode interacting with LLMs using a custom prompt.
-pipeline = build_pipeline(provider, API_KEY, document_store)
-
-# Ask a question on the data you just added.
-result = pipeline.run(query="Who is the father of Arya Stark?")
-
-# For details, like which documents were used to generate the answer, look into the <result> object
-print_answers(result, details="medium")
-```
-The output of the pipeline references the documents used to generate the answer:
-
-```text
-'Query: Who is the father of Arya Stark?'
-'Answers:'
-[{'answer': 'The father of Arya Stark is Lord Eddard Stark of '
-                'Winterfell. [Document 1, Document 4, Document 5]'}]
-```
-
-For a hands-on guide on how to build your first RAG Pipeline, see our tutorial.
-
-{{< button url="https://haystack.deepset.ai/tutorials/22_pipeline_with_promptnode" text="Tutorial: Creating a RAG Pipeline" color="green">}}
+{{< button url="https://haystack.deepset.ai/tutorials/27_first_rag_pipeline?utm_campaign=developer-relations&utm_source=haystack&utm_medium=website" text="Tutorial: Creating a RAG Pipeline" color="green">}}

@@ -1,0 +1,85 @@
+{{/* Homepage showcase section */}}
+<section class="index-usecases" {{ if .Params.useCases.anchor }} id="{{ .Params.useCases.anchor }}" {{ end }}>
+  <div class="container container-padded">
+    <div class="inner">
+      {{/* Title */}}
+      <h2>{{ .Params.useCases.title }}</h2>
+    </div>
+  </div>
+
+  {{/* Slider */}}
+  <div class="splide usecases-slider" aria-label="Use Cases Slider">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {{ range .Params.useCases.items }}
+        <li class="splide__slide usecase-slide">
+          <div class="slide-icon">
+            <img src="{{ .icon }}" alt="" />
+          </div>
+
+          <div class="slide-content">
+            <h3>{{ .title | safeHTML }}</h3>
+            <span class="slide-separator"></span>
+            <p>{{ .text }}</p>
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+
+    <div class="splide__arrows arrow-div">
+      <button class="splide__arrow splide__arrow--prev arrow arrow-prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="20" fill="#EDEDED" />
+          <path d="M23 13L16 20L23 27" stroke="black" stroke-width="2" />
+        </svg>
+      </button>
+      <button class="splide__arrow splide__arrow--next arrow arrow-next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="20" transform="rotate(-180 20 20)" fill="#EDEDED" />
+          <path d="M17 27L24 20L17 13" stroke="black" stroke-width="2" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="container container-padded">
+    <div class="inner border-div"></div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var splide = new Splide(".usecases-slider", {
+      type: "loop",
+      perPage: 4,
+      perMove: 1,
+      flickMaxPages: 1,
+      arrows: true,
+      pagination: false,
+      drag: true,
+      padding: { right: "20%" },
+      flickMaxPages: 1,
+
+      breakpoints: {
+        1280: {
+          perPage: 3,
+        },
+        1024: {
+          perPage: 2,
+        },
+        624: {
+          perPage: 1,
+        },
+      },
+
+      classes: {
+        arrows: "splide__arrows arrow-div",
+        arrow : "splide__arrow arrow",
+        prev  : "splide__arrow--prev arrow-prev",
+        next  : "splide__arrow--next arrow-next",
+      },
+    });
+    splide.mount();
+  });
+</script>

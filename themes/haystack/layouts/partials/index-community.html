@@ -1,8 +1,131 @@
 <section class="index-community" {{ if .Params.community.anchor }} id="{{ .Params.community.anchor }}" {{ end }}>
-  <div class="container">
+  <div class="container container-padded">
     <div class="inner">
-      {{ partial "discord-card" (dict "context" . "community" .Params.community) }}
-      {{ partial "newsletter-card" (dict "context" . "community" .Params.community) }}
+
+      {{/* Title */}}
+      <h2>{{ .Params.community.title }}</h2>
+
+      {{/* Cards */}}
+      <div class="community-cards">
+        {{ partial "discord-card" (dict "context" . "community" .Params.community) }}
+        {{ partial "newsletter-card" (dict "context" . "community" .Params.community) }}
+      </div>
+
+      {{/* Upcoming Events */}}
+      <div class="upcoming-events">
+        <h3>Upcoming Haystack Events</h3>
+        <div class="luma-embed">
+          <iframe
+                src="https://lu.ma/embed/calendar/cal-O155CdRencJk5U2/events?lt=light"
+                width="100%"
+                height="450"
+                frameborder="0"
+                style="border: 2px solid #01AE9D; border-radius: 4px;"
+                allowfullscreen=""
+                aria-hidden="false"
+                tabindex="0"
+                ></iframe>
+        </div>
+      </div>
+
+      {{/* Community talks */}}
+      <div class="community-talks">
+        <h3>Haystack Commmunity Talks</h3>
+
+        {{/* Videos (Desktop) */}}
+        <div class="video-grid">
+          {{ range .Params.community.communityTalks }}
+          <div class="video-card">
+            <div class="video-container">
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ .videoId }}"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+
+            <div class="talks-slide-content">
+              <h4>{{ .title }}</h4>
+              <p>{{ .description }}</p>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {{/* Slider (mobile) */}}
+  <div class="splide talks-slider" aria-label="Community Talks Slider">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {{ range .Params.community.communityTalks }}
+        <li class="splide__slide talks-slide">
+          <div class="video-card">
+            <div class="video-container">
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ .videoId }}"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+
+            <div class="talks-slide-content">
+              <h4>{{ .title }}</h4>
+            </div>
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+
+    <div class="splide__arrows talks-arrow-div">
+      <button class="splide__arrow splide__arrow--prev talks-arrow talks-arrow-prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="20" fill="#EDEDED" />
+          <path d="M23 13L16 20L23 27" stroke="black" stroke-width="2" />
+        </svg>
+      </button>
+      <button class="splide__arrow splide__arrow--next talks-arrow talks-arrow-next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="20" transform="rotate(-180 20 20)" fill="#EDEDED" />
+          <path d="M17 27L24 20L17 13" stroke="black" stroke-width="2" />
+        </svg>
+      </button>
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var splide = new Splide(".talks-slider", {
+      type: "slide",
+      perPage: 1,
+      perMove: 1,
+      flickMaxPages: 1,
+      arrows: true,
+      pagination: false,
+      drag: true,
+      padding: { right: "20%" },
+      flickMaxPages: 1,
+
+      mediaQuery: "min",
+      breakpoints: {
+        768: {
+          destroy: true,
+        },
+
+        512: {
+          perPage: 2,
+        },
+      },
+
+      classes: {
+        arrows: "splide__arrows talks-arrow-div",
+        arrow: "splide__arrow talks-arrow",
+        prev: "splide__arrow--prev talks-arrow-prev",
+        next: "splide__arrow--next talks-arrow-next",
+      },
+    });
+    splide.mount();
+  });
+</script>

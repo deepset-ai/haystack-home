@@ -1,11 +1,6 @@
-// Links
-.footer a {
-  text-decoration: none;
-  color: var(--color-dark-grey);
-
-  &:hover {
-    color: var(--color-dark-blue);
-  }
+// Footer
+.footer {
+  background-color: var(--color-bg-dark-blue);
 }
 
 // Inner container
@@ -16,8 +11,16 @@
   padding: var(--footer-padding) 0;
 
   @include md {
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-between;
+  }
+}
+
+// Links
+.footer a {
+  text-decoration: none;
+  &:hover {
+    color: var(--color-light-grey);
   }
 }
 
@@ -25,25 +28,115 @@
 .footer-main-links {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 5rem;
+  column-gap: 2rem;
   row-gap: 2rem;
+  margin-top: 2.5rem;
+  padding-top: 1.875rem;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.25);
+
+  @include md {
+    margin-top: 4.5rem;
+    padding-top: 0;
+    border-top: none;
+    column-gap: 5rem;
+    row-gap: 3rem;
+  }
 
   ul {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.25rem;
+
+    @include md {
+      gap: 0.5rem;
+    }
 
     li.footer-label {
-      font-size: var(--text-base);
-      font-weight: var(--font-weight-heading);
-      color: var(--color-medium-grey);
-      opacity: 0.7;
-      letter-spacing: 0.06rem;
+      font-size: 0.75rem;
+      font-weight: var(--font-weight-extra-bold);
+      letter-spacing: 1.2px;
+      color: var(--color-white);
       margin-bottom: 1rem;
       text-transform: uppercase;
+
+      @include md {
+        font-size: 1rem;
+      }
+    }
+
+    li > a {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      color: var(--color-white);
+      line-height: 120%;
+      letter-spacing: 0.26px;
+
+      @include md {
+        font-size: 1.3125rem;
+      }
+    }
+  }
+}
+
+// Socials
+.footer-socials {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3.25rem;
+  max-width: 17.5rem;
+
+  svg {
+    height: 1.875rem;
+    fill: var(--color-white);
+    transition-property: fill, opacity;
+    transition-duration: var(--transition-fast);
+    transition-timing-function: var(--ease);
+    // opacity: 0.5;
+  }
+
+  a:hover {
+    svg {
+      fill: var(--color-dark-grey);
+      opacity: 1;
     }
   }
 
+  .twitter-icon {
+    width: 2.3125rem;
+    @include md {
+      width: 2.75rem;
+    }
+  }
+
+  .github-icon {
+    width: 2.5rem;
+    @include md {
+      width: 2.125rem;
+    }
+  }
+
+  .linkedin-icon {
+    width: 2.4375rem;
+    @include md {
+      width: 2rem;
+    }
+  }
+
+  .youtube-icon {
+    width: 2.9375rem;
+    @include md {
+      width: 2.5rem;
+    }
+  }
+
+  .discord-icon {
+    width: 2.875rem;
+    @include md {
+      width: 2.4375rem;
+    }
+  }
 }
 
 .footer .newsletter-card {
@@ -54,8 +147,10 @@
   border-radius: var(--border-radius-md);
   margin-top: 2rem;
 
-
-  h3, small, span.success-message, input  {
+  h3,
+  small,
+  span.success-message,
+  input {
     color: var(--color-medium-grey);
   }
 
@@ -70,110 +165,84 @@
 
 // Secondary links
 .footer-secondary-links {
+  display: flex;
+  flex-direction: column;
+
   // Logo
   a.footer-deepset-logo svg {
-    height: 2rem;
+    width: 10.375rem;
+
+    @include md {
+      width: 15.1875rem;
+    }
+
     path,
     circle {
-      fill: var(--color-dark-grey);
+      fill: var(--color-blue);
       transition: fill var(--transition-fast) var(--ease);
     }
 
     &:hover {
       path,
       circle {
-        fill: var(--color-dark-blue);
+        fill: var(--color-light-grey);
       }
     }
   }
 
   // Tagline
   .footer-tagline {
-    color: var(--color-medium-grey);
-    max-width: 14.5rem;
-    margin-top: 1rem;
+    color: var(--color-white);
+    margin-top: 1.875rem;
+    font-size: 1.4375rem;
+    line-height: 130%;
+
+    @include md {
+      max-width: 36.5rem;
+    }
+  }
+}
+
+// Legal
+.footer-legal {
+  display: flex;
+  gap: 2.75rem;
+
+  &.desktop {
+    display: none;
+    @include md {
+      display: flex;
+      padding-top: 5rem;
+      margin-top: auto;
+  }
   }
 
-  // Socials
-  .footer-socials {
-    display: flex;
+  &.mobile {
+    margin-top: 5rem;
     align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
-
-    svg {
-      height: 1.45rem;
-      fill: var(--color-medium-grey);
-      transition-property: fill, opacity;
-      transition-duration: var(--transition-fast);
-      transition-timing-function: var(--ease);
-      opacity: 0.5;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    @include md {
+      display: none;
     }
 
-    a:hover {
-      svg {
-        fill: var(--color-dark-grey);
-        opacity: 1;
-      }
+    .legal-links {
+      display: flex;
+      column-gap: 2.75rem;
+      row-gap: 1rem;
     }
   }
 
-  // Legal
-  .footer-legal {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-
-    a {
-      font-size: var(--text-base);
-    }
+  a {
+    font-size: 0.8125rem;
+    color: var(--color-white);
   }
 
   // Copyright
   small.copyright {
     display: block;
     color: var(--color-medium-grey);
-    margin-top: 3rem;
-  }
-}
-
-.footer-dark {
-  background-color: var(--color-bg-dark-blue);
-
-  a.footer-deepset-logo svg {
-    height: 2rem;
-    path,
-    circle {
-      fill: var(--color-light-grey);
-      transition: fill var(--transition-fast) var(--ease);
-    }
-
-    &:hover {
-      path,
-      circle {
-        fill: var(--color-medium-grey);
-      }
-    }
-  }
-
-  a {
-    color: var(--color-light-grey);
-
-    &:hover {
-      color: var(--color-medium-grey);
-    }
-  }
-
-
-  .newsletter-card {
-    h3, small, span.success-message, input {
-      color: var(--color-light-grey);
-    }
-  
-    .mail-icon {
-      fill: var(--color-light-grey);
-    }
-
-  
+    font-size: 0.8125rem;
+    color: var(--color-white);
   }
 }

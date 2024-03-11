@@ -3,7 +3,7 @@
   "baseUrl": ".",
   "paths": {
    "*": [
-    "../themes/haystack/assets/*"
+    "..\\themes\\haystack\\assets\\*"
    ]
   }
  }

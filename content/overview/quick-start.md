@@ -44,11 +44,13 @@ from haystack import Pipeline, PredefinedPipeline
 os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
 
 pipeline = Pipeline.from_template(PredefinedPipeline.CHAT_WITH_WEBSITE)
+query = "How should I install Haystack?"
 result = pipeline.run({
     "fetcher": {"urls": ["https://haystack.deepset.ai/overview/quick-start"]},
-    "prompt": {"query": "How should I install Haystack?"}}
+    "prompt": {"query": query}}
 )
-print(result["llm"]["replies"][0])
+answer = result["llm"]["replies"][0]
+print(f"Query: {query}\nAnswer: {answer}")
 ```
 {{< /tab  >}}
 

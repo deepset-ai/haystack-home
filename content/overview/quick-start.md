@@ -92,7 +92,7 @@ pipeline.connect("fetcher.streams", "converter.sources")
 pipeline.connect("converter.documents", "prompt.documents")
 pipeline.connect("prompt.prompt", "llm.prompt")
 
-pipeline.run({"fetcher": {"urls": ["https://haystack.deepset.ai/overview/quick-start"]},
+result = pipeline.run({"fetcher": {"urls": ["https://haystack.deepset.ai/overview/quick-start"]},
               "prompt": {"query": "How should I install Haystack?"}})
 
 print(result["llm"]["replies"][0])

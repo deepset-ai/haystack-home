@@ -3,7 +3,7 @@ layout: blog-post
 title: 'Hosted or self-hosted RAG? Full flexibility with NVIDIA NIM integration in Haystack 2.0'
 description: Meet Haystack 2.0, a more flexible, customizable LLM framework
 featured_image: thumbnail.png
-images: ["blog/haystack-2-release/thumbnail.png"]
+images: ["blog/haystack-nvidia-integration/thumbnail.png"]
 toc: True
 date: 2024-03-18
 last_updated: 2024-03-18
@@ -53,3 +53,23 @@ API catalog. When ready to deploy, enterprises can export models to a downloadab
 NIM container which is included with the NVIDIA AI Enterprise license, and run it anywhere,
 giving them ownership to their customizations and full control of their IP and AI application.
 
+## Use NVIDIA AI with Haystack 2.0
+
+Now we’ll walk through the nitty-gritty details of how to build a RAG pipeline with Haystack and
+hosted NVIDIA APIs. At a high level, you’ll build a couple of [Haystack pipelines](https://docs.haystack.deepset.ai/docs/pipelines): an indexing
+pipeline to create and store documents, and a RAG pipeline to query those documents.
+
+In order for this code to work, you’ll need an [NVIDIA API key](https://org.ngc.nvidia.com/setup). Set it as an environment variable,
+NVIDIA_API_KEY.
+
+First: install the Haystack NVIDIA integration:
+
+```bash
+pip install nvidia-haystack
+```
+Next, build an indexing pipeline. This example uses one of NVIDIA’s embedding models to turn
+documents into vectors, and adds them to the `document_store`.
+
+```python
+
+```

@@ -73,3 +73,22 @@ documents into vectors, and adds them to the `document_store`.
 ```python
 
 ```
+
+Then create a RAG pipeline to query the data.
+
+```python
+```
+
+When switching to self-deployed containers, you simply pass an additional `api_url` init
+parameter to the embedder and generator - that’s all.
+
+```python
+```
+
+## Wrapping it up
+- Want to learn more about Haystack 2.0? Get started with our [tutorials](https://haystack.deepset.ai/tutorials[), [cookbooks](https://github.com/deepset-ai/haystack-cookbook/), and
+[blog posts](https://haystack.deepset.ai/blog).
+- Have more questions? [Join our community on Discord](https://discord.com/invite/VBpFzsgRVF) or [sign up for our monthly
+newsletter](https://landing.deepset.ai/haystack-community-updates).
+- Want to learn more about NVIDIA NIM and how to run the containers? Be on the lookout
+for a more in-depth technical blog about how to use NIM with Haystack.

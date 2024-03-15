@@ -5,9 +5,9 @@ git clone --filter=tree:0 https://github.com/deepset-ai/haystack-tutorials.git
 
 cd haystack-tutorials
 echo "Installing requirements for haystack-tutorials..."
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 echo "Generating markdown files into ./content/tutorials..."
-python scripts/generate_markdowns.py --index index.toml --notebooks all --output ../content/tutorials
+python3 scripts/generate_markdowns.py --index index.toml --notebooks all --output ../content/tutorials
 cd ..
 ls ./content/tutorials
 mkdir ./static/downloads

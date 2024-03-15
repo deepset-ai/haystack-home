@@ -41,10 +41,10 @@ resources
 # Env
 .env*
 
-# Tutorial files are pulled at build time
-haystack-tutorials
-content/tutorials
-!content/tutorials/_index.md
+# # Tutorial files are pulled at build time
+# haystack-tutorials
+# content/tutorials
+# !content/tutorials/_index.md
 
 haystack-integrations
 content/integrations/*.md

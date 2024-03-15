@@ -1,20 +1,5 @@
 #!/bin/bash
 
-rm -rf haystack-tutorials
-git clone --filter=tree:0 https://github.com/deepset-ai/haystack-tutorials.git
- 
-cd haystack-tutorials
-echo "Installing requirements for haystack-tutorials..."
-pip3 install -r requirements.txt
-echo "Generating markdown files into ./content/tutorials..."
-python3 scripts/generate_markdowns.py --index index.toml --notebooks all --output ../content/tutorials
-cd ..
-ls ./content/tutorials
-mkdir ./static/downloads
-echo "Copying notebook files into ./static/downloads..."
-cp ./haystack-tutorials/tutorials/*.ipynb ./static/downloads
-ls ./static/downloads
-
 rm -rf haystack-integrations
 git clone --filter=tree:0 https://github.com/deepset-ai/haystack-integrations.git
 cp ./haystack-integrations/integrations/*.md ./content/integrations

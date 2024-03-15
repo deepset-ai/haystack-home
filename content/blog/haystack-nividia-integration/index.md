@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 title: 'Hosted or self-hosted RAG? Full flexibility with NVIDIA NIM integration in Haystack 2.0'
-description: Meet Haystack 2.0, a more flexible, customizable LLM framework
+description: New integrations with microservices from the NVIDIA AI Enterprise software platform, including NVIDIA NIM and NeMo Retriever, now allow you to iterate even faster across your RAG development cycle
 featured_image: thumbnail.png
 images: ["blog/haystack-nvidia-integration/thumbnail.png"]
 toc: True
@@ -23,7 +23,7 @@ We often see our users iterate fifty or more times before settling on the design
 
 Two crucial features are needed to support rapid prototyping during RAG development: the flexibility to experiment with many different models and features, and the ability to quickly switch between them.
 
-Both are at the heart of our design for Haystack 2.0. New integrations with microservices from the NVIDIA AI Enterprise software platform, including NVIDIA NIM and NeMo Retriever, now allow you to iterate even faster across your RAG developmentcycle and give you full flexibility with deployment options: - [NVIDIA API Catalog](https://ai.nvidia.com)to quickly experiment with the latest GPU-accelerated generative AI models on NVIDIA-hosted API endpoints. And then switch easily to self-hosted NVIDIA NIM microservice containers that can run in your own VPC or self-hosted cloud.
+Both are at the heart of our design for Haystack 2.0. New integrations with microservices from the NVIDIA AI Enterprise software platform, including NVIDIA NIM and NeMo Retriever, now allow you to iterate even faster across your RAG development cycle and give you full flexibility with deployment options: - [NVIDIA API Catalog](https://ai.nvidia.com)to quickly experiment with the latest GPU-accelerated generative AI models on NVIDIA-hosted API endpoints. And then switch easily to self-hosted NVIDIA NIM microservice containers that can run in your own VPC or self-hosted cloud.
 
 ## What is NVIDIA NIM?
 

@@ -1,6 +1,4 @@
 #!/bin/bash
-apt-get install python3-pip
-pip3 install --upgrade pip
 
 rm -rf haystack-tutorials
 git clone --filter=tree:0 https://github.com/deepset-ai/haystack-tutorials.git

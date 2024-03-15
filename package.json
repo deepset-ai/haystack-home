@@ -9,5 +9,8 @@
     "postcss-cli": "^10.0.0",
     "prettier": "^2.7.1",
     "prettier-plugin-go-template": "^0.0.13"
+  },
+  "scripts": {
+    "build": "apt-get install python3-pip; pip3 install --upgrade pip"
   }
 }

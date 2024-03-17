@@ -1,5 +1,5 @@
 ---
-layout: blog-post
+layout: single
 title: 'Hosted or self-hosted RAG? Full flexibility with NVIDIA NIM integration in Haystack 2.0'
 description: New integrations with microservices from the NVIDIA AI Enterprise software platform, including NVIDIA NIM and NeMo Retriever, now allow you to iterate even faster across your RAG development cycle
 toc: True
@@ -32,8 +32,7 @@ to deploy, NVIDIA AI Enterprise subscribers can export the model to a downloadab
 
 ## Use NVIDIA AI with Haystack 2.0
 
-Now we’ll walk through the nitty-gritty details of how to build a RAG pipeline with Haystack and
-hosted NVIDIA APIs. You will build two [Haystack pipelines](https://docs.haystack.deepset.ai/docs/pipelines): an indexing pipeline to create and store documents, and a RAG pipeline to query those documents.
+Now we’ll walk through the nitty-gritty details of how to build a RAG pipeline with Haystack and hosted NVIDIA APIs. You will build two [Haystack pipelines](https://docs.haystack.deepset.ai/docs/pipelines): an indexing pipeline to create and store documents, and a RAG pipeline to query those documents.
 
 In order for this code to work, you will need an [NVIDIA API key](https://org.ngc.nvidia.com/setup). Set it as an environment variable, `NVIDIA_API_KEY`.
 

@@ -21,7 +21,7 @@ We often see our users iterate fifty or more times before settling on the design
 
 Two crucial features are needed to support rapid prototyping during RAG development: the flexibility to experiment with many different models and features, and the ability to quickly switch between them.
 
-Both are at the heart of our design for Haystack 2.0. New integrations with microservices from the NVIDIA AI Enterprise software platform, including NVIDIA NIM and NeMo Retriever, now allow you to iterate even faster across your RAG development cycle and give you full flexibility with deployment options: - Visit [NVIDIA API Catalog](https://ai.nvidia.com)to quickly experiment with the latest GPU-accelerated generative AI models on NVIDIA-hosted API endpoints. And then switch easily to self-hosted NVIDIA NIM microservice containers that can run in your own VPC or self-hosted cloud. [Learn more about taking RAG applications from pilot to production in this NVIDIA blog](https://developer.nvidia.com/blog/how-to-take-a-rag-application-from-pilot-to-production-in-four-steps/).
+Both are at the heart of our design for Haystack 2.0. New integrations with microservices from the NVIDIA AI Enterprise software platform, including NVIDIA NIM and NeMo Retriever, now allow you to iterate even faster across your RAG development cycle and give you full flexibility with deployment options: - Visit [NVIDIA API Catalog](https://ai.nvidia.com) to quickly experiment with the latest GPU-accelerated generative AI models on NVIDIA-hosted API endpoints. And then switch easily to self-hosted NVIDIA NIM microservice containers that can run in your own VPC or self-hosted cloud. [Learn more about taking RAG applications from pilot to production in this NVIDIA blog](https://developer.nvidia.com/blog/how-to-take-a-rag-application-from-pilot-to-production-in-four-steps/).
 
 ## What is NVIDIA NIM?
 
@@ -42,7 +42,7 @@ First: install the Haystack NVIDIA connector:
 pip install nvidia-haystack
 ```
 Next, build an indexing pipeline. This example uses one of NVIDIA’s embedding models to turn
-documents into vectors, and adds them to the `document_store`-
+documents into vectors, and adds them to the `document_store`:
 
 ```python
 from haystack_integrations.components.generators.nvidia import NvidiaGenerator

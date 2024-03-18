@@ -3,8 +3,8 @@ layout: single
 title: 'Hosted or self-hosted RAG? Full flexibility with NVIDIA NIM integration in Haystack 2.0'
 description: New integrations with microservices from the NVIDIA AI Enterprise software platform, including NVIDIA NIM and NeMo Retriever, now allow you to iterate even faster across your RAG development cycle
 toc: True
-date: 2024-03-17
-last_updated: 2024-03-17
+date: 2024-03-18
+last_updated: 2024-03-18
 authors:
   - Malte Pietsch
 tags: ["Haystack 2.0", "Integration"]

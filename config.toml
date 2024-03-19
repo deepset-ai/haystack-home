@@ -117,12 +117,6 @@ paginatePath = "/"
   parent = 'overview'
   weight = 2
 
-[[menu.main]]
-  name = 'Roadmap'
-  url = '/overview/roadmap'
-  parent = 'overview'
-  weight = 5
-
 # Resources children
 [[menu.main]]
   name = 'Release Notes'

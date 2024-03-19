@@ -141,7 +141,7 @@ Using the NVIDIA Haystack connector, Deepset customers can apply the benefits of
 applications quickly and easily.
 
 ## Wrapping it up
-- Want to learn more about Haystack 2.0? Get started with our [tutorials](https://haystack.deepset.ai/tutorials[), [cookbooks](https://github.com/deepset-ai/haystack-cookbook/), and
+- Want to learn more about Haystack 2.0? Get started with our [tutorials](https://haystack.deepset.ai/tutorials), [cookbooks](https://github.com/deepset-ai/haystack-cookbook/), and
 [blog posts](https://haystack.deepset.ai/blog).
 - Have more questions? [Join our community on Discord](https://discord.com/invite/VBpFzsgRVF) or [sign up for our monthly newsletter](https://landing.deepset.ai/haystack-community-updates).
 - Want to learn more about NVIDIA NIM and how to run the containers? Be on the lookout

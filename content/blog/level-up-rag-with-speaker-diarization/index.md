@@ -125,7 +125,7 @@ Check out the [documentation](https://www.assemblyai.com/docs/integrations/hayst
 To use this piece of code, make sure you create an [AssemblyAI account](https://www.assemblyai.com/) and get your free API key. You need an [access token from Hugging Face](https://huggingface.co/settings/tokens) to access the free Inference API as well. 
 
 First, initialize the required Haystack components to index documents with embeddings:
-* `InMemoryDocumentStore`: to store your documents without external dependencies or extra setup
+* [`InMemoryDocumentStore`](https://docs.haystack.deepset.ai/docs/inmemorydocumentstore): to store your documents without external dependencies or extra setup
 * `AssemblyAITranscriber`: to create speaker_labels for the given audio file and convert them into documents
 * `DocumentSplitter`: to split your documents into smaller chunks
 * `SentenceTransformersDocumentEmbedder`: to create embeddings for each document using sentence-transformers models

@@ -128,7 +128,7 @@ First, initialize the required Haystack components to index documents with embed
 * [`InMemoryDocumentStore`](https://docs.haystack.deepset.ai/docs/inmemorydocumentstore): to store your documents without external dependencies or extra setup
 * [`AssemblyAITranscriber`](https://haystack.deepset.ai/integrations/assemblyai): to create speaker_labels for the given audio file and convert them into documents
 * [`DocumentSplitter`](https://docs.haystack.deepset.ai/docs/documentsplitter): to split your documents into smaller chunks
-* `SentenceTransformersDocumentEmbedder`: to create embeddings for each document using sentence-transformers models
+* [`SentenceTransformersDocumentEmbedder`](https://docs.haystack.deepset.ai/docs/sentencetransformersdocumentembedder): to create embeddings for each document using sentence-transformers models
 * [`DocumentWriter`](https://docs.haystack.deepset.ai/docs/documentwriter): to write these documents into your document store
 
 After creating all these components, initialize a Pipeline object, add these components to your pipeline, and `connect()` the components by indicating which component should be connected to which component next.

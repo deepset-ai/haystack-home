@@ -126,7 +126,7 @@ To use this piece of code, make sure you create an [AssemblyAI account](https://
 
 First, initialize the required Haystack components to index documents with embeddings:
 * [`InMemoryDocumentStore`](https://docs.haystack.deepset.ai/docs/inmemorydocumentstore): to store your documents without external dependencies or extra setup
-* `AssemblyAITranscriber`: to create speaker_labels for the given audio file and convert them into documents
+* [`AssemblyAITranscriber`](https://haystack.deepset.ai/integrations/assemblyai): to create speaker_labels for the given audio file and convert them into documents
 * `DocumentSplitter`: to split your documents into smaller chunks
 * `SentenceTransformersDocumentEmbedder`: to create embeddings for each document using sentence-transformers models
 * `DocumentWriter`: to write these documents into your document store

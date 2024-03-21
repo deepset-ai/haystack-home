@@ -106,7 +106,7 @@ Unless it is explicitly mentioned in the recording, the transcription applicatio
 
 ## Code explanation
 
-Let’s see now how to build an application with speaker labels using Haystack and AssemblyAI. In this [Colab notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/using_speaker_diarization_with_assemblyai.ipynb), you will find the code if you’d like to get started quickly. 
+Let’s now see how to build an application with speaker labels using Haystack and AssemblyAI. In this [Colab notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/using_speaker_diarization_with_assemblyai.ipynb), you will find the code if you’d like to get started quickly. 
 
 [Haystack](https://github.com/deepset-ai/haystack) is an open-source Python framework for building production-ready LLM applications. It provides the tools needed to implement an end-to-end application and comes with the [AssemblyAI integration](https://haystack.deepset.ai/integrations/assemblyai) that allows you to incorporate transcription, summarization, and speaker labeling for audio data into your pipeline. For more, check out [Haystack documentation](https://docs.haystack.deepset.ai/docs/intro).
 

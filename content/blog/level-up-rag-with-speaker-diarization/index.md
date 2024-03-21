@@ -4,14 +4,15 @@ title: 'Level up Your RAG Application with Speaker Diarization'
 description: Leverage speaker labels with AssemblyAI and Haystack
 featured_image: thumbnail.png
 images: ["blog/level-up-rag-with-speaker-diarization/thumbnail.png"]
+alt_image: "'Level up Your RAG Application with Speaker Diarization' text with AssemblyAI and Haystack logos" 
 toc: True
-date: 2024-03-20
+date: 2024-03-21
 last_updated: 2024-03-21
 authors:
   - Misra Turp
   - Bilge Yucel
 tags: ["RAG", "Generative AI", "Multimodality"]
-cookbook: https://colab.research.google.com/drive/13uFc9n4WLV8JLz9CMyEYwhJ_QLojkzDc?usp=sharing
+cookbook: using-speaker-diarization-with-assemblyai.ipynb
 ---
 
 LLMs work wonders on text data. Using LLMs, you can get answers to complex questions on long documents without having to read the document or even do a CTRL+F search. But what if you work with audio or video recordings?
@@ -20,11 +21,11 @@ The easiest way is to provide the LLM with the transcription of the recording. T
 
 On audio or video recordings with multiple speakers, only transcribing the recording will not provide all there is to know to the LLM. The data on how many people are speaking, what each of them says is lost in written format.
 
+So is it not possible to use LLMs to their full potential with multi-speaker recordings? Of course it is with **Speaker Diarization**!
+
 ## Introduction to Speaker Diarization
 
-So is it not possible to use LLMs to their full potential with multi-speaker recordings? Of course it is! 
-
-With the [assemblyai-haystack Python package](https://pypi.org/project/assemblyai-haystack/) by [AssemblyAI](https://www.assemblyai.com/), this would take you only 10 minutes to build. Thanks to the built-in speaker diarization feature, you can get the transcript of your audio or video recording in plain format and also speaker annotated format where each utterance in the recording is attributed to a speaker. Here is what it looks like:
+With the [assemblyai-haystack Python package](https://pypi.org/project/assemblyai-haystack/) by [AssemblyAI](https://www.assemblyai.com/), this would take you only 10 minutes to build. The Speaker Diarization model lets you detect multiple speakers in an audio file and what each speaker said. Thanks to the built-in speaker diarization feature, you can get the transcript of your audio or video recording in plain format and also speaker annotated format where each utterance in the recording is attributed to a speaker. Here is what it looks like:
 
 >...
 >
@@ -105,9 +106,9 @@ Unless it is explicitly mentioned in the recording, the transcription applicatio
 
 ## Code explanation
 
-Let’s see now how to build an application with speaker labels using Haystack and AssemblyAI. In this Colab notebook, you will find the code if you’d like to get started quickly. 
+Let’s see now how to build an application with speaker labels using Haystack and AssemblyAI. In this [Colab notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/using_speaker_diarization_with_assemblyai.ipynb), you will find the code if you’d like to get started quickly. 
 
-[Haystack](https://github.com/deepset-ai/haystack) is an open-source Python framework for building production-ready LLM applications. It provides the tools needed to implement an end-to-end application and comes with the [AssemblyAI integration](https://haystack.deepset.ai/integrations/assemblyai) that allows you to incorporate transcription, summarization, and speaker labeling for audio data into your pipeline. 
+[Haystack](https://github.com/deepset-ai/haystack) is an open-source Python framework for building production-ready LLM applications. It provides the tools needed to implement an end-to-end application and comes with the [AssemblyAI integration](https://haystack.deepset.ai/integrations/assemblyai) that allows you to incorporate transcription, summarization, and speaker labeling for audio data into your pipeline. For more, check out [Haystack documentation](https://docs.haystack.deepset.ai/docs/intro).
 
 We will use haystack as well as [assemblyai-haystack package](https://pypi.org/project/assemblyai-haystack/) for this application. Install all required packages using pip.
 
@@ -241,6 +242,8 @@ result["llm"]["replies"][0]
 
 ## Conclusion
 
-Thanks for reading! By combining the transcription capabilities of AssemblyAI with the power of Haystack, you can enhance your Q&A systems with speaker labels, ensuring a more comprehensive and accurate understanding of the content. If you want to stay on top of the latest Haystack developments, you can [subscribe to our newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=assembly-ai&utm_medium=article) or [join our Discord community](https://discord.com/invite/haystack). Don’t forget to [get your free API key](https://www.assemblyai.com/) from AssemblyAI and [subscribe to AssemblyAI’s YouTube channel](https://www.youtube.com/@AssemblyAI) for weekly videos and tutorials on the latest developments in the AI world.
+Thanks for reading! By combining the transcription capabilities of AssemblyAI with the power of Haystack, you can enhance your RAG systems with speaker labels, ensuring a more comprehensive and accurate understanding of the content. 
+
+If you want to stay on top of the latest Haystack developments, you can [subscribe to our newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=assembly-ai&utm_medium=article) or [join our Discord community](https://discord.com/invite/haystack). Don’t forget to [get your free API key](https://www.assemblyai.com/) from AssemblyAI and [subscribe to AssemblyAI’s YouTube channel](https://www.youtube.com/@AssemblyAI) for weekly videos and tutorials on the latest developments in the AI world.
 
 

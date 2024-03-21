@@ -181,7 +181,7 @@ indexing_pipeline.run(
 Next, it is time to set up the retrieval augmentation (RAG) pipeline for speaker labels. For a RAG pipeline, we need:
 * [`SentenceTransformersTextEmbedder`](https://docs.haystack.deepset.ai/docs/sentencetransformerstextembedder): To create an embedding for the user query using sentence-transformers models
 * [`InMemoryEmbeddingRetriever`](https://docs.haystack.deepset.ai/docs/inmemoryembeddingretriever): to retrieve `top_k` relevant documents to the user query
-* `PromptBuilder`: to provide a RAG prompt template with instructions to be filled with retrieved documents and the user query
+* [`PromptBuilder`](https://docs.haystack.deepset.ai/docs/promptbuilder): to provide a RAG prompt template with instructions to be filled with retrieved documents and the user query
 * `HuggingFaceTGIGenerator`: to infer models served through Hugging Face free Inference API or Hugging Face TGI
 
 ```python

@@ -41,7 +41,7 @@ hero:
       icon: /images/icons/linkedin.svg
 
     - title: Youtube
-      url: https://www.youtube.com/@deepset_ai
+      url: https://www.youtube.com/@haystack_ai
       icon: /images/icons/youtube.svg
 
   # Most active / new contributors

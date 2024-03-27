@@ -21,7 +21,7 @@ pip install haystack-ai
 
 For more details, refer to our documentation.
 
-{{< button url="https://docs.haystack.deepset.ai/v2.0/docs/installation?utm_campaign=developer-relations&utm_source=haystack&utm_medium=website" text="Docs: Installation" color="green">}}
+{{< button url="https://docs.haystack.deepset.ai/docs/installation?utm_campaign=developer-relations&utm_source=haystack&utm_medium=website" text="Docs: Installation" color="green">}}
 
 ## Ask Questions to a Webpage
 
@@ -46,7 +46,7 @@ os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
 pipeline = Pipeline.from_template(PredefinedPipeline.CHAT_WITH_WEBSITE)
 result = pipeline.run({
     "fetcher": {"urls": ["https://haystack.deepset.ai/overview/quick-start"]},
-    "prompt": {"query": "How should I install Haystack?"}}
+    "prompt": {"query": "Which components do I need for a RAG pipeline?"}}
 )
 print(result["llm"]["replies"][0])
 ```
@@ -93,7 +93,7 @@ pipeline.connect("converter.documents", "prompt.documents")
 pipeline.connect("prompt.prompt", "llm.prompt")
 
 result = pipeline.run({"fetcher": {"urls": ["https://haystack.deepset.ai/overview/quick-start"]},
-              "prompt": {"query": "How should I install Haystack?"}})
+              "prompt": {"query": "Which components do I need for a RAG pipeline?"}})
 
 print(result["llm"]["replies"][0])
 ```
@@ -111,9 +111,9 @@ print(result["llm"]["replies"][0])
 
 ## Build Your First RAG Pipeline
 
-To build modern search pipelines with LLMs, you need two things: powerful components and an easy way to put them together. The Haystack pipeline is built for this purpose and enables you to design and scale your interactions with LLMs. Learn how to create pipelines [here](https://docs.haystack.deepset.ai/v2.0/docs/creating-pipelines).
+To build modern search pipelines with LLMs, you need two things: powerful components and an easy way to put them together. The Haystack pipeline is built for this purpose and enables you to design and scale your interactions with LLMs. Learn how to create pipelines [here](https://docs.haystack.deepset.ai/docs/creating-pipelines).
 
-By connecting three components, a [Retriever](https://docs.haystack.deepset.ai/v2.0/docs/retrievers), a [PromptBuilder](https://docs.haystack.deepset.ai/v2.0/docs/promptbuilder) and a [Generator](https://docs.haystack.deepset.ai/v2.0/docs/generators), you can build your first Retrieval Augmented Generation (RAG) pipeline with Haystack.
+By connecting three components, a [Retriever](https://docs.haystack.deepset.ai/docs/retrievers), a [PromptBuilder](https://docs.haystack.deepset.ai/docs/promptbuilder) and a [Generator](https://docs.haystack.deepset.ai/docs/generators), you can build your first Retrieval Augmented Generation (RAG) pipeline with Haystack.
 
 Try out how Haystack answers questions about the given documents using the **RAG** approach 👇
 

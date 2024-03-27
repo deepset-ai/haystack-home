@@ -68,7 +68,7 @@ images = [
 ]
 
 result = gemini.run(parts = ["What can you tell me about this robots?", *images])
-for answer in result["answers"]:
+for answer in result["replies"]:
     print(answer)
 
 ```
@@ -198,7 +198,7 @@ result = pipeline.run({"prompt_builder": {"question": question},
                    "ranker": {"query": question},
                    "fetcher": {"urls": ["https://haystack.deepset.ai/blog/introducing-haystack-2-beta-and-advent"]}})
 
-for answer in result["gemini"]["answers"]:
+for answer in result["gemini"]["replies"]:
   print(answer)
 
 ```

@@ -8,8 +8,14 @@
 
         {{/* Tutorial */}}
         <article class="article-content">
-          {{ with .Params.title }}
-            <h1> Tutorial: {{.}} </h1>
+          {{ $title := .Params.title}}
+          {{ with .Params.guide}}
+          {{ if eq . true}}
+            <h1> {{ $title }} </h1>
+            <br>
+          {{ end }}
+          {{ else }}
+            <h1> Tutorial: {{ $title }} </h1>
             <br>
           {{ end }}
           

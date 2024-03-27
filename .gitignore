@@ -55,3 +55,4 @@ content/advent-of-haystack/*
 !content/advent-of-haystack/_index.md
 
 static/downloads
+assets/jsconfig.json

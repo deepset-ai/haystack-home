@@ -12,7 +12,7 @@
           {{/* Section title */}}
           <div class="title-container">
             <h2 class="section-title">
-              {{ len $tutorials }} tutorials for
+              {{ len $tutorials }} tutorials & walkthroughs for
               <span>all</span> levels
             </h2>
 
@@ -105,8 +105,16 @@
 
           {{/* Tutorials grid */}}
           <div class="grid-page-grid">
+            {{ $guide := where $tutorials "Params.guide" true }}
             {{ $featured := where $tutorials "Params.featured" true }}
             {{ $notFeatured := where $tutorials "Params.featured" "!=" true }}
+            {{ $notGuide := where $tutorials "Params.guide" "!=" true }}
+            {{ $filtered := $notFeatured | intersect $notGuide }}
+
+            {{/*  Guides  */}}
+            {{ range $guide }}
+              {{ partial "tutorial-guide-card" . }}
+            {{ end }}
 
             {{/*  Featured tutorials  */}}
             {{ range $featured }}
@@ -114,9 +122,10 @@
             {{ end }}
 
             {{/*  Other tutorials  */}}
-            {{ range $notFeatured }}
+            {{ range $filtered }}
               {{ partial "tutorial-card" . }}
             {{ end }}
+
           </div>
 
           {{/* Footer */}}
@@ -196,17 +205,17 @@
 
 
       {{/*  Update section title  */}}
-      document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
+      document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials & walkthroughs for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
 
       {{/*  Update the banner and hero title tag  */}}
       if (selectedVersion === "1.0") {
         banner.classList.remove("v2")
         banner.children[0].innerHTML= `Looking for 2.0 tutorials? Check out <span>here</span>`
-        heroTitle.innerHTML = `Tutorials`
+        heroTitle.innerHTML = `Tutorials & Walkthroughs`
       } else {
         banner.classList.add("v2")
         banner.children[0].innerHTML= `Looking for tutorials working with 1.x? Check out <span>here</span>`
-        heroTitle.innerHTML = `Tutorials <span class="tag">2.0</span>`
+        heroTitle.innerHTML = `Tutorials & Walkthroughs <span class="tag">2.0</span>`
       }
 
       document.querySelector(".grid-page-grid").innerHTML = ""

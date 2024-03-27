@@ -75,7 +75,7 @@ paginatePath = "/"
 
 [[menu.main]]
   identifier = 'tutorials'
-  name = 'Tutorials'
+  name = 'Learn'
   url = '/tutorials'
   weight = 3
   params = { tag = "2.0" }

@@ -12,7 +12,7 @@ authors:
   - Misra Turp
   - Bilge Yucel
 tags: ["RAG", "Generative AI", "Multimodality"]
-cookbook: using-speaker-diarization-with-assemblyai.ipynb
+cookbook: using_speaker_diarization_with_assemblyai.ipynb
 ---
 
 LLMs work wonders on text data. Using LLMs, you can get answers to complex questions on long documents without having to read the document or even do a CTRL+F search. But what if you work with audio or video recordings?

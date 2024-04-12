@@ -1,0 +1,24 @@
+#release-notes {
+    ul {
+        list-style: none;
+        padding: 0 0 0.5rem 0.75rem;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+
+        li {
+          line-height: 1.15;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-dark-grey);
+            font-weight: var(--font-weight-links);
+
+            &:hover {
+              color: var(--color-dark-blue);
+            }
+        }
+      }
+}

@@ -9,8 +9,7 @@ description: Haystack, the composable open-source AI framework
 hero:
   title: The Production-Ready<br/> Open Source AI Framework
   buttons:
-    - buttonText: Haystack 2.0 is live 🎉
-      url: /blog/haystack-2-release
+    - buttonText: pip install haystack-ai
     - buttonText: Get Started
       url: /overview/quick-start/
 

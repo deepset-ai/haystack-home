@@ -33,7 +33,10 @@ So, here are 4 things I did and that I’m showing you here. Not all solve all o
 Before we dive in, a quick note on the data at hand. I won’t show all the code to get that into the database here because, frankly, it’s the most boring step… A few bullet points:
 
 - I used a CSV file called ‘Absenteeism_at_work’ that the JupySQL team uses to show their examples. Very handy! I took inspiration from [the first demo we created with them](https://ploomber.io/blog/jupysql-haystack-agent/) and wrote this table to my SQLite database.
-- The resulting table has the following columns: `ID;Reason_for_absence;Month_of_absence;Day_of_the_week;Seasons;Transportation_expense;Distance_from_Residence_to_Work;Service_time;Age;Work_load_Average_day_;Hit_target;Disciplinary_failure;Education;Son;Social_drinker;Social_smoker;Pet;Weight;Height;Body_mass_index;Absenteeism_time_in_hours`
+- The resulting table has the following columns: 
+```bash
+ID;Reason_for_absence;Month_of_absence;Day_of_the_week;Seasons;Transportation_expense;Distance_from_Residence_to_Work;Service_time;Age;Work_load_Average_day_;Hit_target;Disciplinary_failure;Education;Son;Social_drinker;Social_smoker;Pet;Weight;Height;Body_mass_index;Absenteeism_time_in_hours
+```
 - I’ve populated a database called `absenteeism.db` that represents this table, which we will be using here on out.
 
 > 🧑‍🍳 You can see and run all the code required for the SQL database setup in the [provided Cookbook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/chat_with_SQL_3_ways.ipynb)

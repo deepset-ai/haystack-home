@@ -10,7 +10,7 @@ date: 2024-01-19
 last_updated:  2024-01-19
 authors:
   - Tilde Thurium
-tags: ["Embeddings", "Haystack 2.0", "Vector Database"]
+tags: ["Embeddings", "Haystack 2.0", "Vector Databases"]
 cookbook: astradb_haystack_integration.ipynb
 ---
 The Haystack extension family is growing so fast, it's hard to keep up! Our latest addition is the Astra DB extension by [Datastax](https://datastax.com/). It's an open source package that helps you use Astra DB as a vector database for your Haystack pipelines.

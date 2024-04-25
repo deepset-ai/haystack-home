@@ -27,7 +27,7 @@ hero:
       text: Haystack 2.0 is built from the ground-up with production in mind. Our pipelines are fully serializable and perfect for K8s native workflows. Logging and monitoring integrations give you the transparency you need. Our deployment guides walk you through full-scale deployments on all clouds and on-prem.
 
   CTA:
-    link: https://www.deepset.ai/deepset-cloud?utm_campaign=developer-relations&utm_source=haystack&utm_medium=website
+    link: https://www.deepset.ai/deepset-cloud
     text: Looking for a managed solution to accelerate your time to value?
     logo: /images/logos/deepset-cloud.svg
 

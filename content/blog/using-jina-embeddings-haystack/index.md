@@ -194,7 +194,7 @@ Note: if you want to change the prompt template, you'll also need to re-run the 
 
 ## Wrapping it up
 
-Thanks for reading! If you want to stay on top of the latest Haystack developments, you can [subscribe to our newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=using-jina-embeddings-haystack) or [join our Discord community](https://discord.com/invite/haystack).
+Thanks for reading! If you want to stay on top of the latest Haystack developments, you can [subscribe to our newsletter](https://landing.deepset.ai/haystack-community-updates) or [join our Discord community](https://discord.com/invite/haystack).
 
 To learn more about the technologies used here, check out these blog posts:
 - [Embeddings in Depth](https://jina.ai/news/embeddings-in-depth/)

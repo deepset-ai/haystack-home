@@ -244,6 +244,6 @@ result["llm"]["replies"][0]
 
 Thanks for reading! By combining the transcription capabilities of AssemblyAI with the power of Haystack, you can enhance your RAG systems with speaker labels, ensuring a more comprehensive and accurate understanding of the content. 
 
-If you want to stay on top of the latest Haystack developments, you can [subscribe to our newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=assembly-ai&utm_medium=article) or [join our Discord community](https://discord.com/invite/haystack). Don’t forget to [get your free API key](https://www.assemblyai.com/) from AssemblyAI and [subscribe to AssemblyAI’s YouTube channel](https://www.youtube.com/@AssemblyAI) for weekly videos and tutorials on the latest developments in the AI world.
+If you want to stay on top of the latest Haystack developments, you can [subscribe to our newsletter](https://landing.deepset.ai/haystack-community-updates) or [join our Discord community](https://discord.com/invite/haystack). Don’t forget to [get your free API key](https://www.assemblyai.com/) from AssemblyAI and [subscribe to AssemblyAI’s YouTube channel](https://www.youtube.com/@AssemblyAI) for weekly videos and tutorials on the latest developments in the AI world.
 
 

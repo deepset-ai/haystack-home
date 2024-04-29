@@ -125,7 +125,7 @@ paginatePath = "/"
 
 [[menu.main]]
   name = '🧑‍🍳 Cookbooks'
-  url = 'https://github.com/deepset-ai/haystack-cookbook'
+  url = 'https://github.com/deepset-ai/haystack-cookbook?tab=readme-ov-file#-haystack-cookbook'
   parent = 'learn'
   weight = 2
 

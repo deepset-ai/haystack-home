@@ -182,11 +182,11 @@ Next, it is time to set up the retrieval augmentation (RAG) pipeline for speaker
 * [`SentenceTransformersTextEmbedder`](https://docs.haystack.deepset.ai/docs/sentencetransformerstextembedder): To create an embedding for the user query using sentence-transformers models
 * [`InMemoryEmbeddingRetriever`](https://docs.haystack.deepset.ai/docs/inmemoryembeddingretriever): to retrieve `top_k` relevant documents to the user query
 * [`PromptBuilder`](https://docs.haystack.deepset.ai/docs/promptbuilder): to provide a RAG prompt template with instructions to be filled with retrieved documents and the user query
-* [`HuggingFaceTGIGenerator`](https://docs.haystack.deepset.ai/docs/huggingfacetgigenerator): to infer models served through Hugging Face free Inference API or Hugging Face TGI
+* [`HuggingFaceAPIGenerator`](https://docs.haystack.deepset.ai/docs/huggingfaceapigenerator): to infer models served through Hugging Face free Serverless Inference API or Hugging Face TGI
 
 ```python
 from haystack.components.builders.prompt_builder import PromptBuilder
-from haystack.components.generators import HuggingFaceTGIGenerator
+from haystack.components.generators import HuggingFaceAPIGenerator
 from haystack.components.embedders import SentenceTransformersTextEmbedder
 from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
 from haystack.utils import ComponentDevice
@@ -206,7 +206,10 @@ GPT4 Correct Assistant:
 
 retriever = InMemoryEmbeddingRetriever(speaker_document_store)
 text_embedder = SentenceTransformersTextEmbedder(device=ComponentDevice.from_str("cuda:0"))
-answer_generator = HuggingFaceTGIGenerator("openchat/openchat-3.5-0106", generation_kwargs={"max_new_tokens":500})
+answer_generator = HuggingFaceAPIGenerator(
+    api_type="serverless_inference_api",
+    api_params={"model": "openchat/openchat-3.5-0106"},
+    generation_kwargs={"max_new_tokens":500})
 prompt_builder = PromptBuilder(template=open_chat_prompt)
 ```
 

@@ -18,7 +18,7 @@ cookbook: jina-embeddings-v2-legal-analysis-rag.ipynb
 
 With the [Jina Haystack extension](https://haystack.deepset.ai/integrations/jina), you can now take advantage of these new text embedders in your Haystack pipelines! In this post, we'll show what's cool about Jina Embeddings v2 and how to use them.
 
-> You can follow along in the accompanying [Colab notebook of a RAG pipeline that uses the Jina Haystack extension](https://colab.research.google.com/drive/1l8GbQhqxnWXkdktgJfs9Rz4EAtNbHK_L#scrollTo=_coq_qCuItbN).
+> You can follow along in the accompanying [Colab notebook of a RAG pipeline that uses the Jina Haystack extension](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/jina-embeddings-v2-legal-analysis-rag.ipynb).
 
 ## Advantages of Jina Embeddings v2
 
@@ -126,13 +126,15 @@ indexing_pipeline.run(data={"fetcher": {"urls": urls}})
 
 ## Building the query pipeline
 
-Now the real fun begins. Let's create a query pipeline so we can actually start asking questions. We write a prompt allowing us to pass our documents to the Mixtral-8x7B LLM. Then we initiatialize the LLM via the `HuggingFaceTGIGenerator`.
+Now the real fun begins. Let's create a query pipeline so we can actually start asking questions. We write a prompt allowing us to pass our documents to the Mixtral-8x7B LLM. Then we initiatialize the LLM via the `HuggingFaceAPIGenerator`.
+
+To use this model, you need to accept the conditions here: https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1
 
 In Haystack 2.0 `retriever`s are tightly coupled to `DocumentStores`. If we pass the document store in the `retriever` we initialized earlier, this pipeline can access those embeddings we generated, and pass them to the LLM.
 
 ```python
 
-from haystack.components.generators import HuggingFaceTGIGenerator
+from haystack.components.generators import HuggingFaceAPIGenerator
 from haystack.components.builders.prompt_builder import PromptBuilder
 
 from jina_haystack.text_embedder import JinaTextEmbedder
@@ -148,8 +150,9 @@ question: {{question}}
 """
 
 text_embedder = JinaTextEmbedder(model="jina-embeddings-v2-base-en")
-generator = HuggingFaceTGIGenerator("mistralai/Mixtral-8x7B-Instruct-v0.1")
-generator.warm_up()
+generator = HuggingFaceAPIGenerator(
+    api_type="serverless_inference_api",
+    api_params={"model": "mistralai/Mixtral-8x7B-Instruct-v0.1"})  
 
 prompt_builder = PromptBuilder(template=prompt)
 query_pipeline = Pipeline()

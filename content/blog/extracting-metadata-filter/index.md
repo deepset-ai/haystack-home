@@ -1,9 +1,9 @@
 ---
 layout: blog-post
-title: Extracting Metadata Filter from a Query
-description: Use LLMs to extract metadata filters from queries to improve retrieval in RAG applications
+title: "Advanced Retrieval: Extract Metadata from Queries to Improve Retrieval"
+description: Use LLMs to extract metadata from queries to use as filters that improve retrieval in RAG applications. 
 featured_image: thumbnail.png
-featured_image_caption: Extracting Metadata Filter from a Query
+alt_image: A colorful cartoon-style digital illustration of a V60 coffee filter displayed on a computer screen standing in front of an orange background. There are papers going into the filter.
 images: ["blog/extracting-metadata-filter/thumbnail.png"]
 toc: True
 date: 2024-05-09
@@ -17,7 +17,7 @@ cookbook: extracting_metadata_filters_from_a_user_query.ipynb
 
 > This is part one of the **Advanced Use Cases** series:
 >
-> 1️⃣ Extract Metadata Filters from a Query
+> 1️⃣ Extract Metadata from Queries to Improve Retrieval
 >
 > 2️⃣ Automatic Metadata Enrichment 🔜
 >
@@ -26,17 +26,17 @@ cookbook: extracting_metadata_filters_from_a_user_query.ipynb
 > 4️⃣ Query Expansion 🔜
 
 
-In Retrieval-Augmented Generation (RAG) applications, the retrieval step, which provides relevant context to your large language model (LLM), is vital for generating high-quality responses. There are possible ways of improving retrieval and **metadata filtering** is one of the easiest ways. [Metadata filtering](https://docs.haystack.deepset.ai/docs/metadata-filtering), the approach of limiting the search space based on some concrete metadata,  can greatly enhance the quality of the retrieved documents. Here are some advantages of using metadata filtering:
+In Retrieval-Augmented Generation (RAG) applications, the retrieval step, which provides relevant context to your large language model (LLM), is vital for generating high-quality responses. There are possible ways of improving retrieval and **metadata filtering** is one of the easiest ways. [Metadata filtering](https://docs.haystack.deepset.ai/docs/metadata-filtering), the approach of limiting the search space based on some concrete metadata,  can really enhance the quality of the retrieved documents. Here are some advantages of using metadata filtering:
 
 1. **Relevance**: Metadata filtering narrows down the information being retrieved. This ensures that the generated responses align with the specific query or topic.
 2. **Accuracy**: Filtering based on metadata such as domain, source, date, or topic guarantees that the information used for generation is accurate and trustworthy. This is particularly important for applications where accuracy is paramount. For instance, if you need information about a specific year, using the year as a metadata filter will retrieve only pertinent data.
 3. **Efficiency**: Eliminating irrelevant or low-quality information boosts the efficiency of your RAG application, reduces the amount of processing needed, and speeds up retrieval response times.
 
-You have two options for applying the metadata filter: you can either specify it directly when running the pipeline or extract it from the query itself. In this article, we'll focus on extracting filters from a query to improve the quality of generated responses in RAG applications. Let's get started.
+You have two options for applying the metadata filter: you can either specify it directly when running the pipeline or, you can extract it from the query itself. In this article, we'll focus on extracting  filters from a query to improve the quality of generated responses in RAG applications. Let's get started.
 
 ## Introduction to Metadata Filters
 
-First things first, what is metadata? Metadata (or meta tag) is actually data about your data, used to categorize, sort, and filter information based on various attributes such as date, topic, source, or any other information that you find relevant. After incorporating meta information into your data, you can apply filters to queries used with Retrievers to limit the scope of your search based on this metadata and ensure that your answers come from a specific slice of your data. 
+First things first, what is metadata? Metadata (or meta tag) is actually data about your data, used to categorize, sort, and filter information based on various attributes such as date, topic, source, or any other information that you find relevant. After incorporating meta information into your data, you can apply filters to queries used with [Retrievers](https://docs.haystack.deepset.ai/docs/retrievers) to limit the scope of your search based on this metadata and ensure that your answers come from a specific slice of your data. 
 
 Imagine that you have following Documents in your document store:
 
@@ -100,9 +100,11 @@ In LLM-based applications, queries are written in natural language. From time to
 
 Thankfully, LLMs are highly capable of extracting structured information from unstructured text. Let’s see step-by-step how we can implement a custom component that uses an LLM to extract keywords, phrases, or entities from the query and formulate the metadata filter.
 
-## Implementing `MetadataFilterExtractor`
+## Implementing `QueryMetadataExtractor`
 
-We start by creating a [custom component](https://docs.haystack.deepset.ai/docs/custom-components), `MetadataFilterExtractor`, which takes `query` and `metadata_fields` as inputs and outputs `filters`. This component encapsulates a generative pipeline, made up of [`PromptBuilder`](https://docs.haystack.deepset.ai/docs/promptbuilder) and [`OpenAIGenerator`](https://docs.haystack.deepset.ai/docs/openaigenerator). The pipeline instructs the LLM to extract keywords, phrases, or entities from a given query which can then be used as metadata filters. In the prompt, we include instructions to ensure the output format is in JSON and provide `metadata_fields` along with the `query` to ensure the correct entities are extracted from the query. 
+> 🧑‍🍳 You can find and run all the code in our cookbook [Extrating Metadata Filter from a Query](https://github.com/deepset-ai/haystack-cookbook/blob/main/notebooks/extracting_metadata_filters_from_a_user_query.ipynb)
+
+We start by creating a [custom component](https://docs.haystack.deepset.ai/docs/custom-components), `QueryMetadataExtractor`, which takes `query` and `metadata_fields` as inputs and outputs `filters`. This component encapsulates a generative pipeline, made up of [`PromptBuilder`](https://docs.haystack.deepset.ai/docs/promptbuilder) and [`OpenAIGenerator`](https://docs.haystack.deepset.ai/docs/openaigenerator). The pipeline instructs the LLM to extract keywords, phrases, or entities from a given query which can then be used as metadata filters. In the prompt, we include instructions to ensure the output format is in JSON and provide `metadata_fields` along with the `query` to ensure the correct entities are extracted from the query. 
 
 Once the pipeline is initialized in the `init` method of the component, we post-process the LLM output in the `run` method. This step ensures the extracted metadata is correctly formatted to be used as a metadata filter.
 
@@ -115,7 +117,7 @@ from haystack.components.builders import PromptBuilder
 from haystack.components.generators import OpenAIGenerator
 
 @component()
-class MetadataFilterExtractor:
+class QueryMetadataExtractor:
 
     def __init__(self):
         prompt = """
@@ -161,10 +163,10 @@ class MetadataFilterExtractor:
         return {"filters": {"operator": "AND", "conditions": filters}}
 ```
 
-First, let's test the `MetadataFilterExtractor` in isolation, passing a query and a list of metadata fields.
+First, let's test the `QueryMetadataExtractor` in isolation, passing a query and a list of metadata fields.
 
 ```python
-extractor = MetadataFilterExtractor()
+extractor = QueryMetadataExtractor()
 
 query = "What were the most influential publications in 2022 regarding Parkinson's disease?"
 metadata_fields = {"disease", "year"}
@@ -184,13 +186,13 @@ The result should look like this:
 }
 ```
 
-Notice that the `MetadataFilterExtractor` has extracted the metadata fields from the query and returned them in a format that can be used as filters passed directly to a `Retriever`. By default, the `MetadataFilterExtractor` will use all metadata fields as conditions together with an `AND` operator.
+Notice that the `QueryMetadataExtractor` has extracted the metadata fields from the query and returned them in a format that can be used as filters passed directly to a `Retriever`. By default, the `QueryMetadataExtractor` will use all metadata fields as conditions together with an `AND` operator.
 
-## Using `MetadataFilterExtractor` in a Pipeline
+## Using `QueryMetadataExtractor` in a Pipeline
 
-Now, let's plug the `MetadataFilterExtractor` into a `Pipeline` with a `Retriever` connected to a `DocumentStore` to see how it works in practice.
+Now, let's plug the `QueryMetadataExtractor` into a `Pipeline` with a `Retriever` connected to a `DocumentStore` to see how it works in practice.
 
-We start by creating a `InMemoryDocumentStore` and adding some documents to it. We include info about “year” and “disease” in the “meta” field of each document. 
+We start by creating a [`InMemoryDocumentStore`](https://docs.haystack.deepset.ai/docs/inmemorydocumentstore) and adding some documents to it. We include info about “year” and “disease” in the “meta” field of each document. 
 
 ```python
 from haystack import Document
@@ -218,7 +220,7 @@ document_store = InMemoryDocumentStore(bm25_algorithm="BM25Plus")
 document_store.write_documents(documents=documents, policy=DuplicatePolicy.OVERWRITE)
 ```
 
-We then create a pipeline consisting of the `MetadataFilterExtractor` and a `InMemoryBM25Retriever` connected to the `InMemoryDocumentStore` created above.
+We then create a pipeline consisting of the `QueryMetadataExtractor` and a [`InMemoryBM25Retriever`](https://docs.haystack.deepset.ai/docs/inmemoryembeddingretriever) connected to the `InMemoryDocumentStore` created above.
 
 > Learn about connecting components and creating pipelines in [Docs: Creating Pipelines](https://docs.haystack.deepset.ai/docs/creating-pipelines).
 > 
@@ -228,7 +230,7 @@ from haystack import Pipeline, Document
 from haystack.components.retrievers.in_memory import InMemoryBM25Retriever
 
 retrieval_pipeline = Pipeline()
-metadata_extractor = MetadataFilterExtractor()
+metadata_extractor = QueryMetadataExtractor()
 retriever = InMemoryBM25Retriever(document_store=document_store)
 
 retrieval_pipeline.add_component(instance=metadata_extractor, name="metadata_extractor")
@@ -247,7 +249,7 @@ retrieval_pipeline.run(data={"metadata_extractor": {"query": query, "metadata_fi
 
 This returns only documents whose metadata field `year = 2023` and `disease = Alzheimer` 
 
-```bash
+```python
 {'documents': 
  [Document(
      id=e3b0bfd497a9f83397945583e77b293429eb5bdead5680cc8f58dd4337372aa3, 
@@ -259,6 +261,6 @@ This returns only documents whose metadata field `year = 2023` and `disease = Al
 
 ## Conclusion
 
-Metadata filtering stands out as a powerful technique for improving the relevance and accuracy of retrieved documents, thus enabling the generation of high-quality responses in RAG applications. Using the custom component `MetadataFilterExtractor` we implemented, we can extract filters from user queries and directly use them with Retrievers.
+Metadata filtering stands out as a powerful technique for improving the relevance and accuracy of retrieved documents, thus enabling the generation of high-quality responses in RAG applications. Using the custom component `QueryMetadataExtractor` we implemented, we can extract filters from user queries and directly use them with Retrievers.
 
 This article was part one of the **Advanced Use Cases** series. If you want to stay on top of the latest Haystack developments, you can [subscribe to our newsletter](https://landing.deepset.ai/haystack-community-updates) or [join our Discord community](https://discord.gg/DzJEUKkuHp) 💙

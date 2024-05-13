@@ -69,7 +69,7 @@ from haystack.document_stores.in_memory import InMemoryDocumentStore
 from haystack_integrations.components.connectors.langfuse import LangfuseConnector
 ```
 
-Next, write a function that returns a Haystack RAG pipeline. 
+Next, write a function that takes a `DocumentStore` and returns a Haystack RAG pipeline. 
 ```python
 def get_pipeline(document_store: InMemoryDocumentStore):
     retriever = InMemoryEmbeddingRetriever(document_store=document_store, top_k=2)
@@ -114,15 +114,18 @@ embedder = SentenceTransformersDocumentEmbedder("sentence-transformers/all-MiniL
 embedder.warm_up()
 docs_with_embeddings = embedder.run([Document(**ds) for ds in dataset]).get("documents") or []  # type: ignore
 document_store.write_documents(docs_with_embeddings)
-
+```
+Run the pipeline and ask it a question.
+```python
 pipeline = get_pipeline(document_store)
 question = "What does Rhodes Statue look like?"
 response = pipeline.run({"text_embedder": {"text": question}, "prompt_builder": {"question": question}})
 ```
-
+Setting the `HAYSTACK_CONTENT_TRACING_ENABLED` environment variable automatically traces every request that the pipeline runs. If all goes well you should receive something like the following output:
 ```python
 # {'tracer': {'name': 'Basic RAG Pipeline', 'trace_url': 'https://cloud.langfuse.com/trace/3d52b8cc-87b6-4977-8927-5e9f3ff5b1cb'}, 'llm': {'replies': ['The Rhodes Statue was described as being about 105 feet tall, with iron tie bars and brass plates forming the skin. It was built on a white marble pedestal near the Rhodes harbour entrance. The statue was filled with stone blocks as construction progressed.', 'The Rhodes Statue was described as being about 32 meters (105 feet) tall, built with iron tie bars, brass plates for skin, and filled with stone blocks. It stood on a 15-meter-high white marble pedestal near the Rhodes harbor entrance.'], 'meta': [{'model': 'gpt-3.5-turbo-0125', 'index': 0, 'finish_reason': 'stop', 'usage': {'completion_tokens': 100, 'prompt_tokens': 453, 'total_tokens': 553}}, {'model': 'gpt-3.5-turbo-0125', 'index': 1, 'finish_reason': 'stop', 'usage': {'completion_tokens': 100, 'prompt_tokens': 453, 'total_tokens': 553}}]}}
 ```
+Dumping tracing output in the terminal, is pretty cool, but the integration also sends the info to Langfuse. The Langfuse dashboard has a much more comprehensive and beautiful UI so you can make sense of your pipeline. Let's hop over there and take a look.
 
 ## Explore the Langfuse dashboard
 Once you’ve run these code samples, [head over to the Langfuse dashboard](https://langfuse.com/docs/demo) to see and interact with traces. As of the time of this writing, the demo is free to try.
@@ -132,7 +135,7 @@ Once you’ve run these code samples, [head over to the Langfuse dashboard](http
 Being able to compare  costs of different models is super useful. 
 
 ## Use Langfuse in a RAG pipeline with chat
-
+Agent and chat use cases are rising in popularity. If you wanted to use the integration to trace a pipeline that includes a chat generator component, here's an example of how to do so.
 ```python
 from haystack import Pipeline
 from haystack.components.builders import DynamicChatPromptBuilder
@@ -160,4 +163,4 @@ print(response["tracer"]["trace_url"])
 # https://cloud.langfuse.com/trace/YOUR_UNIQUE_IDENTIFYING_STRING
 ```
 
-## Wrapping it up
+## Wrapping it up 

@@ -130,9 +130,13 @@ Dumping tracing output in the terminal, is pretty cool, but the integration also
 ## Explore the Langfuse dashboard
 Once you’ve run these code samples, [head over to the Langfuse dashboard](https://langfuse.com/docs/demo) to see and interact with traces. As of the time of this writing, the demo is free to try.
 
-![Screenshot of the Langfuse dashboard showing Traces, Scores, Model Cost, Model Usage, .](langfuse-tracing-dashboard.png)
+![Screenshot of the Langfuse dashboard showing Traces, Scores, Model Cost, Model Usage.](langfuse-tracing-dashboard.png)
 
-Being able to compare  costs of different models is super useful. 
+### Trace Detail 
+
+Trace details show  cost and latency for a specific end-to-end request. This is helpful for estinating usage and cost of a RAG application in production. For example, here is the trace detail for the text embedder step of the pipeline we just ran. 
+
+![Screenshot of the Langfuse dashboard showing a trace detail including inputs, outputs, and metadata for the text_embedder component of a Haystack RAG pipeline.](langfuse-embedder-span.png)
 
 ## Use Langfuse in a RAG pipeline with chat
 Agent and chat use cases are rising in popularity. If you wanted to use the integration to trace a pipeline that includes a chat generator component, here's an example of how to do so.

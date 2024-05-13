@@ -22,13 +22,12 @@ With the new [Haystack Langfuse integration](https://haystack.deepset.ai/integra
 Langfuse is an open source LLM engineering platform. It offers a ton of features to help you understand how your LLM application is performing.
 
 ### Features
-- Easy integration with Haystack pipelines
-- Capture the full context of the execution
 - Track model usage and cost
 - Collect user feedback
 - Identify low-quality outputs
 - Build fine-tuning and testing datasets
-- Open source 
+- Open source
+- as of the time of this writing, free to try out 🤑
 
 ## Getting started
 
@@ -172,6 +171,8 @@ Trace details that are tagged "generation" also show the monetary cost of the re
 
 ![Screenshot of the Langfuse dashboard showing a trace detail including inputs, outputs, cost, and metadata for the generator component of a Haystack RAG pipeline.](langfuse-generation-span.png)
 
+Traces can also be segmented by user or by session, so you can more granularly understand the user's journey. 
+
 ### Evaluation
 Evaluation helps us understand the quality of the results the LLM application is returning to the end user. There are currently 4 ways to add scores into Langfuse:
 - Manual evaluation
@@ -213,8 +214,15 @@ The Rhodes Statue was described as being about 105 feet tall, with iron tie bars
 ```
 This seems like a decent quality response, based on the inputs and outputs. Click on the "Add score" button and give it a score of 1. The score is even editable, in case you make a mistake.
 
-Now clicking on the "Scores" section, the score we added is visible.
+Now clicking on the "Scores" section, the score we added is visible. Over time, this data helps build a comprehensive picture of the quality of our LLM application.
 
 ![Screenshot of the Langfuse dashboard showing a manually added score for the Haystack demo RAG pipeline.](langfuse-score.png)
 
 ## Wrapping it up 
+
+If you've been following along, today you've learned:
+- How Langfuse can help give you better visibility into your Haystack pipelines, giving you confidence to ship into production
+- How to integrate Langfuse into Haystack RAG and chat pipelines
+- The basics of LLM tracing and evaluation with the Langfuse dashboard
+
+For a small team, Langfuse ships new features with incredible velocity. We can't wait to see what they build next. To stay in the loop for future updates, be sure to follow [Langfuse](https://x.com/langfuse and [Haystack](https://twitter.com/haystack_ai) on Twitter. Thanks for reading! 

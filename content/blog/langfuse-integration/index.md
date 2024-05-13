@@ -4,7 +4,7 @@ title: 'Monitor and trace your Haystack pipelines with Langfuse'
 description: With the new Langfuse integration, it's easier than ever to have visibility into how your pipelines are performing.
 featured_image: thumbnail.png
 images: ["blog/langfuse-integration/thumbnail.png"]
-alt_image:  
+alt_image: An image of a robot tracing a self-portrait, with the logos for Haystack and Langfuse overlaid on top.
 toc: True
 date: 2024-05-13
 last_updated: 2024-05-13

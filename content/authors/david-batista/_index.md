@@ -1,5 +1,6 @@
 ---
 layout: author
+title: David Batista
 name: David Batista
 slug: david-batista
 position: Senior NLP Engineer

@@ -10,8 +10,7 @@ date: 2024-05-13
 last_updated: 2024-05-13
 authors:
   - Tilde Thurium
-tags: ["Monitoring", "Generative AI", "Tracing"]
-cookbook: langfuse_integration.ipynb
+tags: ["Monitoring", "Evaluation", "Tracing"]
 ---
 
 Getting your LLM application into production is a huge milestone, but that's only the beginning. It's critical to monitor how your pipeline is performing in the real world so you can keep improving performance and cost, and proactively address any issues that might arise. 
@@ -134,9 +133,60 @@ Once you’ve run these code samples, [head over to the Langfuse dashboard](http
 
 ### Trace Detail 
 
-Trace details show  cost and latency for a specific end-to-end request. This is helpful for estinating usage and cost of a RAG application in production. For example, here is the trace detail for the text embedder step of the pipeline we just ran. 
+Trace details show  cost and latency for a specific end-to-end request. This data is helpful for estinating usage and cost of a RAG application in production. For example, here is the trace detail for the text embedder step of the pipeline we just ran. For [a comprehensive explanation of LLM tracing, see the Langfuse docs](https://langfuse.com/docs/tracing).
 
 ![Screenshot of the Langfuse dashboard showing a trace detail including inputs, outputs, and metadata for the text_embedder component of a Haystack RAG pipeline.](langfuse-embedder-span.png)
+
+The right sidebar shows latency for every step of the pipeline, which helps to pinpoint performance bottlenecks.
+
+Trace details that are tagged "generation" also show the monetary cost of the request. 
+
+![Screenshot of the Langfuse dashboard showing a trace detail including inputs, outputs, cost, and metadata for the generator component of a Haystack RAG pipeline.](langfuse-generation-span.png)
+
+### Evaluation
+Evaluation helps us understand the quality of the results the LLM application is returning to the end user. There are currently 4 ways to add scores into Langfuse:
+- Manual evaluation
+- User feedback
+- Model-based evaluation
+- Custom via SDKs/API
+
+For the sake of time, this post will only cover manual evaluation, but [see the Langfuse docs for comprehensive info on all the evaluation methods](https://langfuse.com/docs/scores/overview). 
+
+Clicking on a trace, you can manually add a score to note the quality of that specific request.
+
+For this trace, the `input` shows us our prompt, interpolated with the actual context that was passed to the LLM. Cool!
+
+```
+Input:
+
+    Given the following information, answer the question.
+    Context:
+    
+        Within it, too, are to be seen large masses of rock, by the weight of which the artist steadied it while erecting it.[22][23]
+Destruction of the remains[edit]
+The ultimate fate of the remains of the statue is uncertain. Rhodes has two serious earthquakes per century, owing to its location on the seismically unstable Hellenic Arc. Pausanias tells us, writing ca. 174, how the city was so devastated by an earthquake that the Sibyl oracle foretelling its destruction was considered fulfilled.[24] This means the statue could not have survived for long if it was ever repaired. By the 4th century Rhodes was Christianized, meaning any further maintenance or rebuilding, if there ever was any before, on an ancient pagan statue is unlikely. The metal would have likely been used for coins and maybe also tools by the time of the Arab wars, especially during earlier conflicts such as the Sassanian wars.[9]
+The onset of Islamic naval incursions against the Byzantine empire gave rise to a dramatic account of what became of the Colossus. 
+    
+        Construction[edit]
+Timeline and map of the Seven Wonders of the Ancient World, including the Colossus of Rhodes
+Construction began in 292 BC. Ancient accounts, which differ to some degree, describe the structure as being built with iron tie bars to which brass plates were fixed to form the skin. The interior of the structure, which stood on a 15-metre-high (49-foot) white marble pedestal near the Rhodes harbour entrance, was then filled with stone blocks as construction progressed.[14] Other sources place the Colossus on a breakwater in the harbour. According to most contemporary descriptions, the statue itself was about 70 cubits, or 32 metres (105 feet) tall.[15] Much of the iron and bronze was reforged from the various weapons Demetrius's army left behind, and the abandoned second siege tower may have been used for scaffolding around the lower levels during construction.
+
+    
+    Question: What does Rhodes Statue look like?
+    Answer:
+    
+```
+```
+Output:
+The Rhodes Statue was described as being about 105 feet tall, with iron tie bars and brass plates forming the skin. It was built on a white marble pedestal near the Rhodes harbour entrance. The statue was filled with stone blocks as construction progressed."
+1: "The Rhodes Statue was described as being about 32 meters (105 feet) tall, built with iron tie bars, brass plates for skin, and filled with stone blocks. It stood on a 15-meter-high white marble pedestal near the Rhodes harbor entrance."
+]
+```
+This seems like a decent quality response, based on the inputs and outputs. Click on the "Add score" button and give it a score of 1. The score is even editable, in case you make a mistake.
+
+Now clicking on the "Scores" section, the score we added is visible.
+
+![Screenshot of the Langfuse dashboard showing a manually added score for the Haystack demo RAG pipeline.](langfuse-score.png)
 
 ## Use Langfuse in a RAG pipeline with chat
 Agent and chat use cases are rising in popularity. If you wanted to use the integration to trace a pipeline that includes a chat generator component, here's an example of how to do so.

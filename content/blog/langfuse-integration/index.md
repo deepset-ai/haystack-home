@@ -14,7 +14,9 @@ tags: ["Monitoring", "Generative AI", "Tracing"]
 cookbook: langfuse_integration.ipynb
 ---
 
-Getting your LLM application into production is a huge milestone, but that's only the beginning. It's critical to monitor how your pipeline is performing in the real world. With the new [Haystack Langfuse integration](https://haystack.deepset.ai/integrations/langfuse), it's now easier than ever to have visibility into your pipelines. In this post, we'll explain more about Langfuse, and demonstrate how to trace an end to end request to a Haystack pipeline.
+Getting your LLM application into production is a huge milestone, but that's only the beginning. It's critical to monitor how your pipeline is performing in the real world so you can keep improving performance and cost, and proactively address any issues that might arise. 
+
+With the new [Haystack Langfuse integration](https://haystack.deepset.ai/integrations/langfuse), it's now easier than ever to have visibility into your pipelines. In this post, we'll explain more about Langfuse, and demonstrate how to trace an end to end request to a Haystack pipeline.
 
 ### What is Langfuse? 
 
@@ -53,7 +55,9 @@ To use Langfuse in a pipeline you'll need a few additional dependencies:
 pip install sentence-transformers datasets
 ```
 
-## Using Langfuse in a RAG pipeline
+## Use Langfuse in a RAG pipeline
+
+First, import all the modules you'll need.
 ```python
 from datasets import load_dataset
 from haystack import Document, Pipeline
@@ -63,8 +67,10 @@ from haystack.components.generators import OpenAIGenerator
 from haystack.components.retrievers import InMemoryEmbeddingRetriever
 from haystack.document_stores.in_memory import InMemoryDocumentStore
 from haystack_integrations.components.connectors.langfuse import LangfuseConnector
+```
 
-
+Next, write a function that returns a Haystack RAG pipeline. 
+```python
 def get_pipeline(document_store: InMemoryDocumentStore):
     retriever = InMemoryEmbeddingRetriever(document_store=document_store, top_k=2)
 
@@ -97,7 +103,11 @@ def get_pipeline(document_store: InMemoryDocumentStore):
     basic_rag_pipeline.connect("prompt_builder", "llm")
 
     return basic_rag_pipeline
+```
 
+Now, instantiate the pipeline using an memory document storage to keep things simple. Generate some embeddings based on the 7 wonders of the world dataset, and populate them into our document store. If you were running this code in production, you'd probably want to use an indexing pipeline to load the data into the store, but for demo purposes this approach reduces complexity.
+
+```python
 document_store = InMemoryDocumentStore()
 dataset = load_dataset("bilgeyucel/seven-wonders", split="train")
 embedder = SentenceTransformersDocumentEmbedder("sentence-transformers/all-MiniLM-L6-v2")
@@ -108,11 +118,46 @@ document_store.write_documents(docs_with_embeddings)
 pipeline = get_pipeline(document_store)
 question = "What does Rhodes Statue look like?"
 response = pipeline.run({"text_embedder": {"text": question}, "prompt_builder": {"question": question}})
-# {'tracer': {'name': 'Basic RAG Pipeline', 'trace_url': 'https://cloud.langfuse.com/trace/3d52b8cc-87b6-4977-8927-5e9f3ff5b1cb'}, 'llm': {'replies': ['The Rhodes Statue was described as being about 105 feet tall, with iron tie bars and brass plates forming the skin. It was built on a white marble pedestal near the Rhodes harbour entrance. The statue was filled with stone blocks as construction progressed.', 'The Rhodes Statue was described as being about 32 meters (105 feet) tall, built with iron tie bars, brass plates for skin, and filled with stone blocks. It stood on a 15-meter-high white marble pedestal near the Rhodes harbor entrance.'], 'meta': [{'model': 'gpt-3.5-turbo-0125', 'index': 0, 'finish_reason': 'stop', 'usage': {'completion_tokens': 100, 'prompt_tokens': 453, 'total_tokens': 553}}, {'model': 'gpt-3.5-turbo-0125', 'index': 1, 'finish_reason': 'stop', 'usage': {'completion_tokens': 100, 'prompt_tokens': 453, 'total_tokens': 553}}]}}
-
 ```
+
+```python
+# {'tracer': {'name': 'Basic RAG Pipeline', 'trace_url': 'https://cloud.langfuse.com/trace/3d52b8cc-87b6-4977-8927-5e9f3ff5b1cb'}, 'llm': {'replies': ['The Rhodes Statue was described as being about 105 feet tall, with iron tie bars and brass plates forming the skin. It was built on a white marble pedestal near the Rhodes harbour entrance. The statue was filled with stone blocks as construction progressed.', 'The Rhodes Statue was described as being about 32 meters (105 feet) tall, built with iron tie bars, brass plates for skin, and filled with stone blocks. It stood on a 15-meter-high white marble pedestal near the Rhodes harbor entrance.'], 'meta': [{'model': 'gpt-3.5-turbo-0125', 'index': 0, 'finish_reason': 'stop', 'usage': {'completion_tokens': 100, 'prompt_tokens': 453, 'total_tokens': 553}}, {'model': 'gpt-3.5-turbo-0125', 'index': 1, 'finish_reason': 'stop', 'usage': {'completion_tokens': 100, 'prompt_tokens': 453, 'total_tokens': 553}}]}}
+```
+
+## Explore the Langfuse dashboard
 Once you’ve run these code samples, [head over to the Langfuse dashboard](https://langfuse.com/docs/demo) to see and interact with traces. As of the time of this writing, the demo is free to try.
 
 ![Screenshot of the Langfuse dashboard showing Traces, Scores, Model Cost, Model Usage, .](langfuse-tracing-dashboard.png)
 
-## Using Langfuse in a RAG pipeline with chat
+Being able to compare  costs of different models is super useful. 
+
+## Use Langfuse in a RAG pipeline with chat
+
+```python
+from haystack import Pipeline
+from haystack.components.builders import DynamicChatPromptBuilder
+from haystack.components.generators.chat import OpenAIChatGenerator
+from haystack.dataclasses import ChatMessage
+from haystack_integrations.components.connectors.langfuse import LangfuseConnector
+
+pipe = Pipeline()
+pipe.add_component("tracer", LangfuseConnector("Chat example"))
+pipe.add_component("prompt_builder", DynamicChatPromptBuilder())
+pipe.add_component("llm", OpenAIChatGenerator(model="gpt-3.5-turbo"))
+
+pipe.connect("prompt_builder.prompt", "llm.messages")
+messages = [
+    ChatMessage.from_system("Always respond in German even if some input data is in other languages."),
+    ChatMessage.from_user("Tell me about {{location}}"),
+]
+
+response = pipe.run(
+    data={"prompt_builder": {"template_variables": {"location": "Berlin"}, "prompt_source": messages}}
+)
+print(response["llm"]["replies"][0])
+print(response["tracer"]["trace_url"])
+# ChatMessage(content='Berlin ist die Hauptstadt von Deutschland und zugleich eines der bekanntesten kulturellen Zentren Europas. Die Stadt hat eine faszinierende Geschichte, die bis in die Zeiten des Zweiten Weltkriegs und des Kalten Krieges zurückreicht. Heute ist Berlin für seine vielfältige Kunst- und Musikszene, seine historischen Stätten wie das Brandenburger Tor und die Berliner Mauer sowie seine lebendige Street-Food-Kultur bekannt. Berlin ist auch für seine grünen Parks und Seen beliebt, die den Bewohnern und Besuchern Raum für Erholung bieten.', role=<ChatRole.ASSISTANT: 'assistant'>, name=None, meta={'model': 'gpt-3.5-turbo-0125', 'index': 0, 'finish_reason': 'stop', 'usage': {'completion_tokens': 137, 'prompt_tokens': 29, 'total_tokens': 166}})
+# https://cloud.langfuse.com/trace/YOUR_UNIQUE_IDENTIFYING_STRING
+```
+
+## Wrapping it up

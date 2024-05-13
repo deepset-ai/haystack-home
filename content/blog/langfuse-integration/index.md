@@ -19,14 +19,16 @@ With the new [Haystack Langfuse integration](https://haystack.deepset.ai/integra
 
 ### What is Langfuse? 
 
-Langfuse is an open source LLM engineering platform. It offers a ton of features to help you understand how your LLM application is performing.
+Langfuse is an open source LLM engineering platform. It offers a ton of features to help you understand how your LLM application is performing under the hood.
 
-### Features
+### Langfuse features and benefits
 - Track model usage and cost
 - Collect user feedback
 - Identify low-quality outputs
 - Build fine-tuning and testing datasets
-- Open source
+- Open source 💙
+- Self-hosted version available
+- Frequent releases with new features and improvements
 - as of the time of this writing, free to try out 🤑
 
 ## Getting started

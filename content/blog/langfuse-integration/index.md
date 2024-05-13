@@ -126,6 +126,35 @@ Setting the `HAYSTACK_CONTENT_TRACING_ENABLED` environment variable automaticall
 ```
 Dumping tracing output in the terminal, is pretty cool, but the integration also sends the info to Langfuse. The Langfuse dashboard has a much more comprehensive and beautiful UI so you can make sense of your pipeline. Let's hop over there and take a look.
 
+## Use Langfuse in a RAG pipeline with chat
+Agent and chat use cases are rising in popularity. If you wanted to use the integration to trace a pipeline that includes a chat generator component, here's an example of how to do so.
+```python
+from haystack import Pipeline
+from haystack.components.builders import DynamicChatPromptBuilder
+from haystack.components.generators.chat import OpenAIChatGenerator
+from haystack.dataclasses import ChatMessage
+from haystack_integrations.components.connectors.langfuse import LangfuseConnector
+
+pipe = Pipeline()
+pipe.add_component("tracer", LangfuseConnector("Chat example"))
+pipe.add_component("prompt_builder", DynamicChatPromptBuilder())
+pipe.add_component("llm", OpenAIChatGenerator(model="gpt-3.5-turbo"))
+
+pipe.connect("prompt_builder.prompt", "llm.messages")
+messages = [
+    ChatMessage.from_system("Always respond in German even if some input data is in other languages."),
+    ChatMessage.from_user("Tell me about {{location}}"),
+]
+
+response = pipe.run(
+    data={"prompt_builder": {"template_variables": {"location": "Berlin"}, "prompt_source": messages}}
+)
+print(response["llm"]["replies"][0])
+print(response["tracer"]["trace_url"])
+# ChatMessage(content='Berlin ist die Hauptstadt von Deutschland und zugleich eines der bekanntesten kulturellen Zentren Europas. Die Stadt hat eine faszinierende Geschichte, die bis in die Zeiten des Zweiten Weltkriegs und des Kalten Krieges zurückreicht. Heute ist Berlin für seine vielfältige Kunst- und Musikszene, seine historischen Stätten wie das Brandenburger Tor und die Berliner Mauer sowie seine lebendige Street-Food-Kultur bekannt. Berlin ist auch für seine grünen Parks und Seen beliebt, die den Bewohnern und Besuchern Raum für Erholung bieten.', role=<ChatRole.ASSISTANT: 'assistant'>, name=None, meta={'model': 'gpt-3.5-turbo-0125', 'index': 0, 'finish_reason': 'stop', 'usage': {'completion_tokens': 137, 'prompt_tokens': 29, 'total_tokens': 166}})
+# https://cloud.langfuse.com/trace/YOUR_UNIQUE_IDENTIFYING_STRING
+```
+
 ## Explore the Langfuse dashboard
 Once you’ve run these code samples, [head over to the Langfuse dashboard](https://langfuse.com/docs/demo) to see and interact with traces. As of the time of this writing, the demo is free to try.
 
@@ -187,34 +216,5 @@ This seems like a decent quality response, based on the inputs and outputs. Clic
 Now clicking on the "Scores" section, the score we added is visible.
 
 ![Screenshot of the Langfuse dashboard showing a manually added score for the Haystack demo RAG pipeline.](langfuse-score.png)
-
-## Use Langfuse in a RAG pipeline with chat
-Agent and chat use cases are rising in popularity. If you wanted to use the integration to trace a pipeline that includes a chat generator component, here's an example of how to do so.
-```python
-from haystack import Pipeline
-from haystack.components.builders import DynamicChatPromptBuilder
-from haystack.components.generators.chat import OpenAIChatGenerator
-from haystack.dataclasses import ChatMessage
-from haystack_integrations.components.connectors.langfuse import LangfuseConnector
-
-pipe = Pipeline()
-pipe.add_component("tracer", LangfuseConnector("Chat example"))
-pipe.add_component("prompt_builder", DynamicChatPromptBuilder())
-pipe.add_component("llm", OpenAIChatGenerator(model="gpt-3.5-turbo"))
-
-pipe.connect("prompt_builder.prompt", "llm.messages")
-messages = [
-    ChatMessage.from_system("Always respond in German even if some input data is in other languages."),
-    ChatMessage.from_user("Tell me about {{location}}"),
-]
-
-response = pipe.run(
-    data={"prompt_builder": {"template_variables": {"location": "Berlin"}, "prompt_source": messages}}
-)
-print(response["llm"]["replies"][0])
-print(response["tracer"]["trace_url"])
-# ChatMessage(content='Berlin ist die Hauptstadt von Deutschland und zugleich eines der bekanntesten kulturellen Zentren Europas. Die Stadt hat eine faszinierende Geschichte, die bis in die Zeiten des Zweiten Weltkriegs und des Kalten Krieges zurückreicht. Heute ist Berlin für seine vielfältige Kunst- und Musikszene, seine historischen Stätten wie das Brandenburger Tor und die Berliner Mauer sowie seine lebendige Street-Food-Kultur bekannt. Berlin ist auch für seine grünen Parks und Seen beliebt, die den Bewohnern und Besuchern Raum für Erholung bieten.', role=<ChatRole.ASSISTANT: 'assistant'>, name=None, meta={'model': 'gpt-3.5-turbo-0125', 'index': 0, 'finish_reason': 'stop', 'usage': {'completion_tokens': 137, 'prompt_tokens': 29, 'total_tokens': 166}})
-# https://cloud.langfuse.com/trace/YOUR_UNIQUE_IDENTIFYING_STRING
-```
 
 ## Wrapping it up 

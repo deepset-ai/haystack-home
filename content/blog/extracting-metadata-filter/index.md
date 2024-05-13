@@ -6,8 +6,8 @@ featured_image: thumbnail.png
 alt_image: A colorful cartoon-style digital illustration of a V60 coffee filter displayed on a computer screen standing in front of an orange background. There are papers going into the filter.
 images: ["blog/extracting-metadata-filter/thumbnail.png"]
 toc: True
-date: 2024-05-09
-last_updated: 2024-05-09
+date: 2024-05-13
+last_updated: 2024-05-13
 authors:
   - David Batista
   - Bilge Yucel

@@ -227,4 +227,4 @@ If you've been following along, today you've learned:
 - How to integrate Langfuse into Haystack RAG and chat pipelines
 - The basics of LLM tracing and evaluation with the Langfuse dashboard
 
-For a small team, Langfuse ships new features with incredible velocity. We can't wait to see what they build next. To stay in the loop for future updates, be sure to follow [Langfuse](https://x.com/langfuse and [Haystack](https://twitter.com/haystack_ai) on Twitter. Thanks for reading! 
+For a small team, Langfuse ships new features with incredible velocity. We can't wait to see what they build next. To stay in the loop for future updates, be sure to follow [Langfuse](https://x.com/langfuse) and [Haystack](https://twitter.com/haystack_ai) on Twitter. Thanks for reading! 

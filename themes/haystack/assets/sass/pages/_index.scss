@@ -90,6 +90,7 @@
           color: var(--color-dark-blue);
           background-color: var(--color-white);
           transition: background-color var(--transition-fast) var(--ease);
+          cursor: pointer;
           
           svg {
             transition: transform var(--transition-fast) var(--ease);
@@ -97,9 +98,9 @@
 
           &:hover {
             background-color: var(--color-bg-light-grey);
-            svg {
-              transform: translateX(0.25rem);
-            }
+            // svg {
+            //   transform: translateX(0.25rem);
+            // }
           }
         }
 

@@ -6,8 +6,8 @@ featured_image: thumbnail.png
 images: ["blog/langfuse-integration/thumbnail.png"]
 alt_image: An image of a robot tracing a self-portrait, with the logos for Haystack and Langfuse overlaid on top.
 toc: True
-date: 2024-05-13
-last_updated: 2024-05-13
+date: 2024-05-14
+last_updated: 2024-05-14
 authors:
   - Tilde Thurium
 tags: ["Monitoring", "Evaluation", "Tracing"]
@@ -69,7 +69,7 @@ from haystack.document_stores.in_memory import InMemoryDocumentStore
 from haystack_integrations.components.connectors.langfuse import LangfuseConnector
 ```
 
-Next, write a function that takes a `DocumentStore` and returns a Haystack RAG pipeline. 
+Next, write a function that takes a `DocumentStore` and returns a Haystack RAG pipeline. Add the [`LangfuseConnector`](https://docs.haystack.deepset.ai/docs/langfuseconnector) to your pipeline, but don't connect it to any other component in the pipeline.
 ```python
 def get_pipeline(document_store: InMemoryDocumentStore):
     retriever = InMemoryEmbeddingRetriever(document_store=document_store, top_k=2)
@@ -105,7 +105,7 @@ def get_pipeline(document_store: InMemoryDocumentStore):
     return basic_rag_pipeline
 ```
 
-Now, instantiate the pipeline using an memory document storage to keep things simple. Generate some embeddings based on the 7 wonders of the world dataset, and populate them into our document store. If you were running this code in production, you'd probably want to use an indexing pipeline to load the data into the store, but for demo purposes this approach reduces complexity.
+Now, instantiate the pipeline using an `InMemoryDocumentStore` to keep things simple. Generate some embeddings based on the [7 wonders of the world dataset](https://huggingface.co/datasets/bilgeyucel/seven-wonders), and populate them into our document store. If you were running this code in production, you'd probably want to use an indexing pipeline to load the data into the store, but for demo purposes this approach reduces complexity.
 
 ```python
 document_store = InMemoryDocumentStore()

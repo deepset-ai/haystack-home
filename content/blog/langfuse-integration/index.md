@@ -6,8 +6,8 @@ featured_image: thumbnail.png
 images: ["blog/langfuse-integration/thumbnail.png"]
 alt_image: An image of a robot tracing a self-portrait, with the logos for Haystack and Langfuse overlaid on top.
 toc: True
-date: 2024-05-14
-last_updated: 2024-05-14
+date: 2024-05-17
+last_updated: 2024-05-17
 authors:
   - Tilde Thurium
 tags: ["Monitoring", "Evaluation", "Tracing"]

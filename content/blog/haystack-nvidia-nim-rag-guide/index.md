@@ -169,6 +169,10 @@ metadata: {}
 
 To deploy the RAG pipeline, execute `hayhooks deploy rag.yaml` which will expose the pipeline on localhost:1416/rag by default. You can then visit http://localhost:1416/docs and try out your pipeline. 
 
+![](nvidia-image-3.png) 
+
+![](nvidia-image-4.png) 
+
 For production, Haystack provides Helm charts and [instructions](https://docs.haystack.deepset.ai/docs/kubernetes) to create services running Hayhooks with a container orchestrator like Kubernetes. 
 
 In the next sections, we will show how to self deploy NVIDIA NIM on a Kubernetes cluster, monitor the application using the NIM microservice’s exposed metrics and autoscale the application according to predefined metrics. Finally, we will provide instructions on how to use the self-deployed NIM in the Haystack RAG pipeline. 
@@ -186,6 +190,8 @@ As part of this setup, we deploy two NIMs into the Kubernetes cluster using Helm
 - The NeMo Retriever Embedding NIM, which uses the model [`NV-Embed-QA`](https://build.nvidia.com/nvidia/embed-qa-4)
 
 The Helm chart for the LLM NIM is located in [GitHub](https://github.com/NVIDIA/nim-deploy) whereas the embedding NIM is located in the NGC private registry. For the embedding NIM, you would need EA access.  Figure 3 illustrates the deployment of NIM on a Kubernetes cluster running on a DGX H100. The GPU Operator components are deployed via its Helm chart and are part of the GPU Operator stack. Prometheus and Grafana are deployed via Helm charts for monitoring the Kubernetes cluster and the NIM.
+
+![Figure 3 - NIM and  vector database deployment on a Kubernetes cluster ](nvidia-image-5.png#small "_Figure 3 - NIM and  vector database deployment on a Kubernetes cluster _") 
 
 The LLM NIM Helm chart contains the LLM NIM container, which runs within a pod and references the model on the host via [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) (PV) and [Persistent Volume Claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) (PVC). The LLM NIM pods are autoscaled using the [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA) based on custom metrics and are exposed via Kubernetes [ClusterIP](https://kubernetes.io/docs/concepts/services-networking/service/#type-clusterip) service. To access the LLM NIM, we deploy an [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) and expose it at the `/llm` endpoint.
 
@@ -444,7 +450,13 @@ kubectl apply -f service-monitor-nim-llm.yaml
 
 In the prometheus UI under Status -> Targets, you can see the below service monitor once it’s deployed.
 
-3. Let’s check some inference metrics on the Prometheus UI. Figure showing the stacked graph for request_success_total metric.
+![](nvidia-image-6.png) 
+
+
+3. Let’s check some inference metrics on the Prometheus UI. Figure showing the stacked graph for `request_success_total` metric.
+
+![Figure 4 - Prometheus UI showing the plot of request_success_total metric indicating number of finished requests. ](nvidia-image-7.png#small "_Figure 4 - Prometheus UI showing the plot of request_success_total metric indicating number of finished requests. _") 
+
 
 ### Autoscaling NIMs
 
@@ -493,6 +505,8 @@ kubectl apply -f prometheus_rule_nims.yaml
 ```
 
 3. In prometheus UI, under Status -> Rules, you can see the above two created rules as shown in Figure 5.
+
+![Figure 5 - Prometheus rules tab showing the created custom rules to record GPU usage by NIMs. ](nvidia-image-8.png#small "_Figure 5 - Prometheus rules tab showing the created custom rules to record GPU usage by NIMs. _") 
 
 4. Install prometheus-adapter to query the custom metrics based on the custom recording rules created above and register them to the custom metrics API for HPA to fetch. Replace in belo command `<prometheus-service-name>` with the name of the prometheus service in Kubernetes.
 
@@ -569,7 +583,9 @@ nim-llm-0   1/1     Running   0          3h47m
 nim-llm-1   1/1     Running   0          3m30s
 ```
 
-Also, Figure 5 shows the prometheus graph showing the scaling of LLM NIM. 
+Also, Figure 6 shows the prometheus graph showing the scaling of LLM NIM. 
+
+![Figure 6 - Prometheus graph showing the scaling of LLM NIMs. ](nvidia-image-9.png#small "_Figure 6 - Prometheus graph showing the scaling of LLM NIMs. _") 
 
 We have now deployed NIMs in a scalable fashion. We can now use these self-hosted NIMs and configure them in the RAG pipeline. The next section provides the details for the same. 
 

@@ -189,3 +189,380 @@ Users and other applications can access the exposed NIMs via the ingress.
 The vector database Qdrant is deployed using this [helm chart](https://qdrant.tech/documentation/guides/installation/#kubernetes).
 
 Now, let's take a closer look at the deployment process for each NIM: 
+
+### LLM NIM deployment
+
+Let’s create a Kubernetes pod to run the NIM serving the LLM model. 
+
+1. Create the namespace, if it is not already created yet:
+
+```kubectl create namespace nim-llm```
+
+2. Add a Docker registry secret that will be used for pulling NIM containers from NGC and replace `<ngc-cli-api-key>` with the API key from NGC. Follow this [link](https://docs.nvidia.com/ngc/gpu-cloud/ngc-user-guide/index.html#generating-api-key) for generating an API key in NGC. 
+
+```
+kubectl create secret -n nim-llm docker-registry nvcrimagepullsecret \
+    --docker-server=nvcr.io \
+    --docker-username='$oauthtoken' --docker-password=<ngc-cli-api-key>  
+
+```
+
+3. Create a generic secret `ngc-api`, which is used to pull the model within the NIM container.
+
+```
+kubectl create secret -n nim-llm generic ngc-api \
+    --from-literal=NGC_CLI_API_KEY=<ngc-cli-api-key> 
+```
+
+4. Create `nim-llm-values.yaml` file with the below content. Adjust `repository` and `tag` values depending on your environment. 
+
+```yaml
+image:
+   repository: "nvcr.io/nvidia/nim/nim-llm/meta-llama3-8b-instruct" # container location
+    tag: 24.05 # NIM version you want to deploy
+
+model:
+  ngcAPISecret: ngc-api  # name of a secret in the cluster that includes a key named NGC_CLI_API_KEY and is an NGC API key
+resources:
+  limits:
+    nvidia.com/gpu: 1
+  requests:
+    nvidia.com/gpu: 1
+persistence:
+  enabled: true
+  size: 30Gi
+imagePullSecrets:
+  - name: nvcrimagepullsecret # secret created to pull nvcr.io image
+```
+
+5. We assume that the helm chart for the LLM is located here: "./nims/helm/nim-llm/". You can change the command accordingly depending on where the helm chart is located.  Deploy the LLM NIM by running the following command:
+
+```helm -n nim-llm install nim-llm -f ./nims/helm/nim-llm/ nim-llm-values.yaml```
+
+6. The deployment takes a few minutes to start the containers, download models, and become ready. You can monitor the pods with the below command: 
+
+```
+kubectl get pods -n nim-llm
+```
+
+#### Example Output
+
+```
+NAME        READY   STATUS    RESTARTS   AGE
+nim-llm-0   1/1     Running   0          8m21s
+```
+
+7. Create a file `ingress-nim-llm.yaml` with the below content to create the ingress for the LLM NIM. Make sure to change the host (here nims.example.com) with your domain name. Make sure you have installed an [ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/). 
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nim-llm-ingress
+  namespace: nim-llm
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: nims.example.com
+      http:
+        paths:
+          - path: /llm(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: nim-llm
+                port:
+                  number: 8000
+```
+
+Deploy the ingress with the below command: 
+
+```
+kubectl apply -f ingress-nim-llm.yaml
+```
+8. Access the exposed service by making a curl request for testing (replace `nims.example.com` with you own fully qualified domain name)
+
+```bash
+curl -X 'POST' 'http://nims.example.com/llm/v1/chat/completions' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "messages": [
+    {
+      "content": "You are a polite and respectful chatbot helping people plan a vacation.",
+      "role": "system"
+    },
+    {
+      "content": "What shall i do in France in one line?",
+      "role": "user"
+    }
+  ],
+  "model": "meta-llama3-8b-instruct",
+  "temperature": 0.5,
+  "max_tokens": 1024,
+  "top_p": 1,
+  "stream": false
+}'
+```
+
+#### Example output: 
+
+```json
+{"id":"cmpl-0027fdbe808747e987c444d1f86b0543","object":"chat.completion","created":1716325880,"model":"meta-llama3-8b-instruct","choices":[{"index":0,"message":{"role":"assistant","content":"In France, you can stroll along the Seine River in Paris, visit the iconic Eiffel Tower, indulge in croissants and cheese, and explore the charming streets of Montmartre, or head to the French Riviera for a luxurious getaway."},"logprobs":null,"finish_reason":null,"stop_reason":null}],"usage":{"prompt_tokens":39,"total_tokens":92,"completion_tokens":53}}
+```
+
+Now, we have the LLM NIM up and running.
+
+### Retrieval Embedding NIM deployment 
+
+The deployment of the Retrieval embedding NIM is similar to the LLM NIM. 
+
+1. Follow steps 1 - 3 as LLM NIM deployment but replace namespace with nim-embedding in the commands.
+2. Create nim-embedding-values.yaml file with the below content. Adjust following: 
+    a. `ngcModel.org`: The ID of the org where model is located in NGC
+    b. `ngcModel.path`: Replace `<org-id>` with the ID of the organization and `<team-name>` with the team name under the organization where the model is located.
+    c. `image.repository` and `image.tag` values depending on your environment.
+
+    ```yaml
+    ngcModel:
+  directoryName: nv-embed-qa_v4
+  org: <org-id>
+  path: <org-id>/<team-name>/nv-embed-qa:4
+  template: NV-Embed-QA_template.yaml
+  name: NV-Embed-QA-4.nemo
+
+replicaCount: 1
+
+image:
+  repository: nvcr.io/nvidia/nim/nemo-retriever-embedding-microservice
+  tag: "24.04"
+
+imagePullSecrets:
+  - name: nvcrimagepullsecret
+
+envVars:
+  - name: TRANSFORMERS_CACHE
+    value: /scratch/.cache
+
+modelStorage:
+  class: ""
+  size: 10Gi
+
+service:
+  type: ClusterIP
+  port: 8080
+    ``` 
+
+3. We assume that the helm chart for the embedding NIM is located here: `"./nims/helm/nim-embedding/"`. You can change the command accordingly depending on where the helm chart is located. Deploy the Embedding NIM by running the following command
+
+```
+cd ./nims/helm/nim-embedding/ && helm dependency build
+
+helm -n nim-embedding install nim-embedding -f ./nims/helm/nim-embedding/ nim-embedding-values.yaml
+```
+
+4. The deployment takes a few minutes to start the containers, download models, and become ready. You can monitor the pods with the below command: 
+
+```
+kubectl get pods -n nim-embedding
+```
+
+#### Example Output
+
+```
+NAME                                     READY   STATUS    RESTARTS   AGE
+nim-embedding-nemo-embedding-ms-d58c..   1/1     Running   0          87m
+```
+
+5. Create a file `ingress-nim-embedding.yaml` similar to the LLM NIM ingress with service name nim-embedding-nemo-embedding-ms, port 8080 and path as /embedding(/|$)(.*). Afterwards, deploy the ingress. 
+
+6. Access the exposed service by making a curl request for testing (replace in below the `nims.example.com`)
+
+```bash
+curl 'GET' \
+  'http://nims.example.com/embedding/v1/models' \
+  -H 'accept: application/json'
+```
+
+#### Example output: 
+
+```json
+{"object":"list","data":[{"id":"NV-Embed-QA","created":0,"object":"model","owned_by":"organization-owner"}]}
+```
+
+Now, we have the Embedding NIM up and running. 
+
+Once this setup procedure is completed, it provides service endpoints of NIMs provided LLMs and the retrieval embedding models.
+
+## Operational Considerations
+
+Monitoring and autoscaling are essential for deployed NIMs to ensure efficient, effective, and reliable operation. Monitoring tracks performance metrics, detects errors, and optimizes resource utilization, while autoscaling dynamically adjusts resources to match changing workloads, ensuring the NIMs can handle sudden spikes or dips in demand. This enables NIMs to provide accurate and timely responses, even under heavy loads, while optimizing costs and maintaining high availability.  In this section, we will delve into details of deploying monitoring and enabling autoscaling for NIMs.
+
+### Monitoring
+
+NVIDIA NIM metrics are collected with the open-source tool [Prometheus](https://prometheus.io/) and visualized with the [Grafana](https://grafana.com/) dashboards. NVIDIA [dcgm-exporter](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/dcgme2e.html#gpu-telemetry) is the preferred tool to collect GPU telemetry. We follow the instructions from [here](https://docs.nvidia.com/datacenter/cloud-native/gpu-telemetry/latest/kube-prometheus.html) for the deployment of Prometheus and Grafana. 
+
+#### Visualizing NIM Metrics
+
+By default, metrics are exposed at `http://localhost:8000/metrics` within the NIM. All the metrics are listed here https://docs.nvidia.com/nim/large-language-models/latest/observability.html. NIM metrics are only available from the endpoint. Using a service monitor they can be published to Prometheus and be viewed in the Grafana Dashboard. The [Prometheus ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/running-exporters.md#the-goal-of-servicemonitors) is used to define applications to scrape metrics from.
+
+
+1. Create a file `service-monitor-nim-llm.yaml` with the below content. We currently only configure it to scrape metrics from LLM NIM but can be extended to other NIMs as well. 
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: nim-llm-sm
+  namespace: nim-llm
+spec:
+  endpoints:
+  - interval: 30s
+    targetPort: 8000
+    path: /metrics
+  namespaceSelector:
+    matchNames:
+    - nim-llm
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nim-llm
+```
+
+2. Create service Monitor
+
+```
+kubectl apply -f service-monitor-nim-llm.yaml
+```
+
+In the prometheus UI under Status -> Targets, you can see the below service monitor once it’s deployed.
+
+3. Let’s check some inference metrics on the Prometheus UI. Figure showing the stacked graph for request_success_total metric.
+
+### Autoscaling NIMs
+
+In this tutorial, we use the [Kubernetes Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) - HPA to adjust the scaling of the NIM pods. We've devised custom metrics to monitor the average GPU usage of each NIM and are used by the Horizontal Pod Autoscaler (HPA) to dynamically adjust the number of NIM pods. See the metric definition below:
+
+| Metrics    | Expressions |
+| -------- | ------- |
+| **nim_llm_gpu_avg**  | avg by (kubernetes_node, pod, namespace, gpu) (DCGM_FI_DEV_GPU_UTIL{pod=~"nim-llm-.*"})    |
+| **nim_embedding_gpu_avg** | avg by (kubernetes_node, pod, namespace, gpu)  (DCGM_FI_DEV_GPU_UTIL{pod=~"nim-emedding-.*"})     |
+
+These metrics are example metrics and one should adjust them based on your environment. 
+
+Let’s deploy the HPA. 
+
+1. Create a file with the name `prometheus_rule_nims.yaml` with the content below to create  the prometheus rules for the above custom metric. Adjust the labels (app, other prometheus labels) in it according to the current deployed prometheus instance. 
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: kube-prometheus-stack
+    app.kubernetes.io/instance: kube-prometheus-stack-1710254997
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 56.8.2
+    chart: kube-prometheus-stack-56.8.2
+    heritage: Helm
+    release: kube-prometheus-stack-1710254997
+  name: kube-prometheus-stack-1709-gpu.rules
+  namespace: prometheus
+spec:
+  groups:
+  - name: gpu.rules
+    rules:
+    - expr: avg by (kubernetes_node, pod, namespace, gpu) (DCGM_FI_DEV_GPU_UTIL{pod=~"nim-llm-.*"})
+      record: nim_llm_gpu_avg
+    - expr: avg by (kubernetes_node, pod, namespace, gpu) (DCGM_FI_DEV_GPU_UTIL{pod=~"nim-embedding-.*"})
+      record: nim_embedding_gpu_avg
+```
+
+2. Create custom prometheus recording rules by running the below command: 
+
+```
+kubectl apply -f prometheus_rule_nims.yaml
+```
+
+3. In prometheus UI, under Status -> Rules, you can see the above two created rules as shown in Figure 5.
+
+4. Install prometheus-adapter to query the custom metrics based on the custom recording rules created above and register them to the custom metrics API for HPA to fetch. Replace in belo command `<prometheus-service-name>` with the name of the prometheus service in Kubernetes.
+
+```
+helm upgrade --install prometheus-adapter prometheus-community/prometheus-adapter --set prometheus.url="http://<prometheus-service-name>.prometheus.svc.cluster.local"
+```
+
+5. Query the custom metrics API to see if the metrics have been registered in the custom metrics API using below command: 
+
+```
+kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1 | jq -r . | grep llms
+```
+
+#### Example Output: 
+
+```
+"name": "namespaces/nim_embedding_gpu_avg",
+"name": "pods/nim_embedding_gpu_avg",
+"name": "pods/nim_llm_gpu_avg",
+"name": "namespaces/nim_llm_gpu_avg",
+```
+
+6. A separate HPA definition is created for the two NVIDIA NIM types. Within this definition, we specify the minimum and maximum number of replicas, the metric to monitor, and the target value for that metric. Below is the definition for the LLM NIM HPA and you can create the similar for the embedding NIM using nim_embedding_gpu_avg metric.
+
+NIM-LLM HPA file:
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nim-llm-hpa
+  namespace: nim-llm
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: nim-llm
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+    - type: Pods
+      pods:
+        metric:
+          name: nim_llm_gpu_avg
+        target:
+          type: AverageValue
+          averageValue: 30
+
+```
+
+7. Create the two HPAs using the below commands: 
+
+```
+kubectl apply -f hpa_nim_llm.yaml
+kubectl apply -f hpa_nim_embedding.yaml
+```
+
+8. Check the status of HPAs:
+
+```kubectl get hpa -A```
+
+#### Example Output: 
+
+```
+NAMESPACE       NAME                REFERENCE                                    TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+nim-embedding   nim-embedding-hpa   Deployment/nim-embedding-nemo-embedding-ms   0/30      1         4         1          94s
+nim-llm         nim-llm-hpa         StatefulSet/nim-llm                          0/30      1         4         1          94s
+```
+
+9. Send some requests to LLM NIM and see the LLM pod getting scaled as shown below: 
+
+```
+NAME        READY   STATUS    RESTARTS   AGE
+nim-llm-0   1/1     Running   0          3h47m
+nim-llm-1   1/1     Running   0          3m30s
+```
+
+Also, Figure 5 shows the prometheus graph showing the scaling of LLM NIM. 
+
+We have now deployed NIMs in a scalable fashion. We can now use these self-hosted NIMs and configure them in the RAG pipeline. The next section provides the details for the same. 

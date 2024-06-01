@@ -21,7 +21,11 @@ Retrieval-augmented generation (RAG) systems combine generative AI with informat
 
 ## About Haystack
 
-[Haystack](https://haystack.deepset.ai/), by [deepset](https://www.deepset.ai/), is an open source framework for building production-ready LLM applications, RAG pipelines and state-of-the-art search systems that work intelligently over large document collections. Haystack’s [growing ecosystem of community integrations](https://haystack.deepset.ai/integrations) provide tooling for evaluation, monitoring, transcription, data ingestion and more. The [NVIDIA Haystack integration](https://haystack.deepset.ai/integrations/nvidia) allows using NVIDIA models and NIM microservices in Haystack pipelines, [giving the flexibility to pivot from prototyping in the cloud to deploying on-prem](https://haystack.deepset.ai/blog/haystack-nvidia-integration).
+[Haystack](https://haystack.deepset.ai/), by [deepset](https://www.deepset.ai/), is an open source framework for building production-ready LLM applications, RAG pipelines and state-of-the-art search systems that work intelligently over large document collections. 
+
+![Diagram of a Haystack RAG pipeline](nvidia-image-1.png)
+
+Haystack’s [growing ecosystem of community integrations](https://haystack.deepset.ai/integrations) provide tooling for evaluation, monitoring, transcription, data ingestion and more. The [NVIDIA Haystack integration](https://haystack.deepset.ai/integrations/nvidia) allows using NVIDIA models and NIM microservices in Haystack pipelines, [giving the flexibility to pivot from prototyping in the cloud to deploying on-prem](https://haystack.deepset.ai/blog/haystack-nvidia-integration).
 
 ## About NVIDIA NIM
 
@@ -34,6 +38,8 @@ For RAG pipelines, Haystack provides 3 components that can be connected with NVI
 - [NvidiaDocumentEmbedder](https://docs.haystack.deepset.ai/docs/nvidiadocumentembedder): Document embedding with self-deployed NVIDIA NeMo
 - [Embedding NIM](https://build.nvidia.com/nvidia/embed-qa-4) to be stored in vector stores.
 - [NvidiaTextEmbedder](https://docs.haystack.deepset.ai/docs/nvidiatextembedder): Query embedding with self-deployed NeMo Retriever embedding NIM.
+
+![Fig. 1 - Haystack Indexing and RAG pipelines with self-deployed NVIDIA NIM](nvidia-image-2.png#small "_Fig. 1 - Haystack Indexing and RAG pipelines with self-deployed NVIDIA NIM_") 
 
 For this section, we have provided scripts and instructions for building a RAG pipeline with models hosted by NVIDIA (so you can start even if you do not have access to the `rag-with-nvidia-nims` [GitHub repository](https://github.com/deepset-ai/nvidia-haystack). A [self-hosted notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/rag-with-nims.ipynb) is provided for the same pipeline using self-hosted NIMs. 
 

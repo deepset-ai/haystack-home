@@ -3,7 +3,7 @@ layout: author
 title: Meriem Bendris
 name: Meriem Bendris
 slug: Meriem Bendris
-position: Senior Solutions Architect - Cloud AI @ NVIDIA
+position: Senior Solution Architect - AI at NVIDIA
 image: /images/authors/meriem-bendris.jpeg
 socials:
   author_page:

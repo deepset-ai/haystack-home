@@ -566,3 +566,46 @@ nim-llm-1   1/1     Running   0          3m30s
 Also, Figure 5 shows the prometheus graph showing the scaling of LLM NIM. 
 
 We have now deployed NIMs in a scalable fashion. We can now use these self-hosted NIMs and configure them in the RAG pipeline. The next section provides the details for the same. 
+
+## Use Self-hosted NVIDIA NIMs in the RAG Pipeline
+
+This section provides instructions to use previously self-hosted NIMs deployed on a Kubernetes cluster for NvidiaTextEmbedder, NvidiaDocumentEmbedder and NvidiaGenerator in the Haystack RAG pipeline, replacing  `<self-hosted-emedding-nim-url>` with the endpoint of the embedding NIM and `<self-hosted-llm-nim-url>` with the LLM NIM. The provided [notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/rag-with-nims.ipynb) in the repository has examples of how to use the self-deployed  NIMs. 
+
+*NvidiaDocumentEmbedder*:
+```python
+embedder = NvidiaDocumentEmbedder(
+    model=embedding_nim_model,
+    api_url="http://<self-hosted-emedding-nim-url>/v1"
+)
+```
+
+*NvidiaTextEmbedder*: 
+```python
+# initialize NvidiaTextEmbedder with the self-hosted Embedding NIM URL
+embedder = NvidiaTextEmbedder(
+    model=embedding_nim_model,
+    api_url="http://<self-hosted-embedding-nim-url>/v1"
+)
+```
+  
+
+*NvidiaGenerator*:
+```python
+# initialize NvidiaGenerator with the self-hosted LLM NIM URL
+generator = NvidiaGenerator(
+    model=llm_nim_model_name,
+    api_url="http://<self-hosted-llm-nim-url>/v1",
+    model_arguments={
+        "temperature": 0.5,
+        "top_p": 0.7,
+        "max_tokens": 2048,
+    },
+)
+```
+
+## Summary
+
+In this blog, we provide a comprehensive walkthrough for building robust and scalable RAG applications using Haystack and NVIDIA NIM. We cover both NVIDIA-hosted and self-hosted NIM deployment scenarios. Our step-by-step instructions detail how to deploy NIMs on a Kubernetes cluster, monitor their performance, and scale them as needed.
+
+By leveraging proven deployment patterns, our architecture ensures a responsive user experience and predictable query times, even in the face of high or bursty user queries and document indexing workloads. Moreover, our deployment recipe is flexible, allowing for easy implementation in cloud, on-premise, or air-gapped environments. This guide is a valuable resource for anyone looking to build reliable and performant RAG applications at scale.
+

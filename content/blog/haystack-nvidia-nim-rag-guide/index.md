@@ -121,3 +121,71 @@ Executing `docker-compose up` will launch 3 containers: **qdrant**, **hayhooks**
 
 ### Serializing Pipelines
 
+Haystack pipelines defined in Python can be serialized to YAML by calling **dump()** on the pipeline object, as shown in [our RAG pipeline tutorial](https://github.com/deepset-ai/nvidia-haystack/blob/77cc316193e718de51b8a56e756749604b8032e9/rag.py#L44C1-L45C16). The [YAML](https://github.com/deepset-ai/nvidia-haystack/blob/main/rag.yaml) definition is the following:
+
+```yaml
+components:
+  embedder:
+    ...
+    type: haystack_integrations.components.embedders.nvidia.text_embedder.NvidiaTextEmbedder
+  generator:
+    init_parameters:
+      api_key:
+        ...
+    type: haystack_integrations.components.generators.nvidia.generator.NvidiaGenerator
+  prompt:
+    init_parameters:
+      template: "Answer the question given the context.\nQuestion: {{ query }}\nContext:\n\
+        {% for document in documents %}\n    {{ document.content }}\n{% endfor %}\n\
+        Answer:"
+    type: haystack.components.builders.prompt_builder.PromptBuilder
+  retriever:
+    init_parameters:
+      document_store:
+        init_parameters:
+          ...
+        type: haystack_integrations.document_stores.qdrant.document_store.QdrantDocumentStore
+      ...
+    type: haystack_integrations.components.retrievers.qdrant.retriever.QdrantEmbeddingRetriever
+
+connections:
+- receiver: retriever.query_embedding
+  sender: embedder.embedding
+- receiver: prompt.documents
+  sender: retriever.documents
+- receiver: generator.prompt
+  sender: prompt.prompt
+max_loops_allowed: 100
+metadata: {}
+```
+
+### Deploy the RAG Pipeline
+
+To deploy the RAG pipeline, execute `hayhooks deploy rag.yaml` which will expose the pipeline on localhost:1416/rag by default. You can then visit http://localhost:1416/docs and try out your pipeline. 
+
+For production, Haystack provides Helm charts and [instructions](https://docs.haystack.deepset.ai/docs/kubernetes) to create services running Hayhooks with a container orchestrator like Kubernetes. 
+
+In the next sections, we will show how to self deploy NVIDIA NIM on a Kubernetes cluster, monitor the application using the NIM microservice’s exposed metrics and autoscale the application according to predefined metrics. Finally, we will provide instructions on how to use the self-deployed NIM in the Haystack RAG pipeline. 
+
+## Deployment of NVIDIA NIM on a Kubernetes Cluster
+
+### Kubernetes Cluster Environment
+
+In this tutorial, the setup environment consists of a DGX H100 with 8 H100 GPUs each having 80GB of memory as GPU host and with Ubuntu as the operating system. Docker is used as the container engine. Kubernetes is deployed on it using [Minikube](https://minikube.sigs.k8s.io/). To enable GPU utilization in Kubernetes, we install essential NVIDIA software components using the [GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/getting-started.html).
+
+### NVIDIA NIM Deployment
+
+As part of this setup, we deploy two NIMs into the Kubernetes cluster using Helm charts:
+- The LLM NIM, which uses the model [`llama3-8b-instruct`](https://build.nvidia.com/meta/llama3-8b)
+- The NeMo Retriever Embedding NIM, which uses the model [`NV-Embed-QA`](https://build.nvidia.com/nvidia/embed-qa-4)
+
+The Helm chart for the LLM NIM is located in [GitHub](https://github.com/NVIDIA/nim-deploy) whereas the embedding NIM is located in the NGC private registry. For the embedding NIM, you would need EA access.  Figure 3 illustrates the deployment of NIM on a Kubernetes cluster running on a DGX H100. The GPU Operator components are deployed via its Helm chart and are part of the GPU Operator stack. Prometheus and Grafana are deployed via Helm charts for monitoring the Kubernetes cluster and the NIM.
+
+The LLM NIM Helm chart contains the LLM NIM container, which runs within a pod and references the model on the host via [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) (PV) and [Persistent Volume Claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) (PVC). The LLM NIM pods are autoscaled using the [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA) based on custom metrics and are exposed via Kubernetes [ClusterIP](https://kubernetes.io/docs/concepts/services-networking/service/#type-clusterip) service. To access the LLM NIM, we deploy an [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) and expose it at the `/llm` endpoint.
+
+Similarly, the NeMo Retriever Embedding microservice Helm chart includes the Retrieval Embedding NIM container, which runs within a pod and references the model on the host via Persistent Volume and Persistent Volume Claim. The Retrieval Embedding NIM pods are also autoscaled via HPA and are exposed via Kubernetes ClusterIP service. To access the embedding NIM, we deploy an ingress and expose it at the `/embedding` endpoint.
+
+Users and other applications can access the exposed NIMs via the ingress.
+The vector database Qdrant is deployed using this [helm chart](https://qdrant.tech/documentation/guides/installation/#kubernetes).
+
+Now, let's take a closer look at the deployment process for each NIM: 

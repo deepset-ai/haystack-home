@@ -50,3 +50,74 @@ embedder = NvidiaDocumentEmbedder(model="snowflake/arctic-embed-l",
                                   api_url="https://ai.api.nvidia.com/v1/retrieval/snowflake/arctic-embed-l",
                                   batch_size=1)
 ```
+
+## Creating the Haystack RAG Pipeline
+
+In our example, we will create a simple question/answering RAG pipeline using both Embedding Retrieval and LLM NIMs. For this pipeline, we use the NvidiaTextEmbedder to embed the query for retrieval, and the NvidiaGenerator to generate a response. An example is shown below for how to instantiate the generator using [`meta/llama3-70b-instruct` as an NVIDIA hosted LLM NIM](https://build.nvidia.com/meta/llama3-70b).
+
+```python
+generator = NvidiaGenerator(
+    model="meta/llama3-70b-instruct",
+    api_url="https://integrate.api.nvidia.com/v1",
+    model_arguments={
+        "max_tokens": 1024
+    }
+)
+```
+
+
+We use Haystack pipelines to connect various components of this RAG pipeline including query embedders and LLM generators. Below is an example of a RAG pipeline:
+
+```python
+from haystack import Pipeline
+from haystack.utils.auth import Secret
+from haystack.components.builders import PromptBuilder
+from haystack_integrations.components.embedders.nvidia import NvidiaTextEmbedder
+from haystack_integrations.components.generators.nvidia import NvidiaGenerator
+from haystack_integrations.components.retrievers.qdrant import QdrantEmbeddingRetriever
+from haystack_integrations.document_stores.qdrant import QdrantDocumentStore
+
+document_store = QdrantDocumentStore(embedding_dim=1024, host="qdrant")
+
+embedder = NvidiaTextEmbedder(model="snowflake/arctic-embed-l", 
+                                  api_key=Secret.from_env_var("NVIDIA_EMBEDDINGS_KEY"), 
+                                  api_url="https://ai.api.nvidia.com/v1/retrieval/snowflake/arctic-embed-l")
+
+retriever = QdrantEmbeddingRetriever(document_store=document_store)
+
+prompt = """Answer the question given the context.
+Question: {{ query }}
+Context:
+{% for document in documents %}
+    {{ document.content }}
+{% endfor %}
+Answer:"""
+prompt_builder = PromptBuilder(template=prompt)
+
+generator = NvidiaGenerator(
+    model="meta/llama3-70b-instruct",
+    api_url="https://integrate.api.nvidia.com/v1",
+    model_arguments={
+        "max_tokens": 1024
+    }
+)
+
+rag = Pipeline()
+rag.add_component("embedder", embedder)
+rag.add_component("retriever", retriever)
+rag.add_component("prompt", prompt_builder)
+rag.add_component("generator", generator)
+
+rag.connect("embedder.embedding", "retriever.query_embedding")
+rag.connect("retriever.documents", "prompt.documents")
+rag.connect("prompt", "generator")
+```
+
+## Indexing Files and Deploying the Haystack RAG Pipeline
+
+[Hayhooks](https://docs.haystack.deepset.ai/docs/hayhooks) allows the deployment of RAG pipelines in a containerized environment. In our example, we have provided [a docker-compose file](https://github.com/deepset-ai/nvidia-haystack/blob/main/docker-compose.yml) to set up both the Qdrant database, and the RAG pipeline. As we are using NVIDIA-hosted models, we need to set the API keys for the listed models on the .env file. The instructions below expect an `NVIDIA_API_KEY` (for `NvidiaGenerator`) and `NVIDIA_EMBEDDINGS_KEY` (for `NvidiaDocumentEmbedder` and `NvidiaTextEmbedder`). 
+
+Executing `docker-compose up` will launch 3 containers: **qdrant**, **hayhooks** and **qdrant-setup** (which will run our indexing pipeline and stop). The Qdrant database will be deployed on the localhost and exposed at port 6333. The Qdrant dashboard allows users to inspect the vectorized documents at **localhost:6333/dashboard**.
+
+### Serializing Pipelines
+

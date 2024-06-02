@@ -451,7 +451,7 @@ spec:
 kubectl apply -f service-monitor-nim-llm.yaml
 ```
 
-In the prometheus UI under `Status -> Targets`, you will see the below ServiceMonitor once it’s deployed.
+In the Prometheus UI under `Status -> Targets`, you will see the below ServiceMonitor once it’s deployed.
 
 ![](nvidia-image-6.png) 
 
@@ -474,7 +474,7 @@ These metrics are example metrics and one should adjust them based on their envi
 
 Let’s deploy the HPA. 
 
-1. Create a file with the name `prometheus_rule_nims.yaml` with the below content to create  the prometheus rules for the above custom metric. Adjust the labels (app, other prometheus labels) according to the current deployed prometheus instance. 
+1. Create a file with the name `prometheus_rule_nims.yaml` with the below content to create  the Prometheus rules for the above custom metric. Adjust the labels (app, other Prometheus labels) according to the current deployed Prometheus instance. 
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -501,17 +501,17 @@ spec:
       record: nim_embedding_gpu_avg
 ```
 
-2. Create custom prometheus recording rules by running the below command: 
+2. Create custom Prometheus recording rules by running the below command: 
 
 ```
 kubectl apply -f prometheus_rule_nims.yaml
 ```
 
-3. In prometheus UI, under `Status -> Rules`, you can see the above two created rules as shown in Figure 5.
+3. In Prometheus UI, under `Status -> Rules`, you can see the above two created rules as shown in Figure 5.
 
 ![Figure 5 - Prometheus rules tab showing the created custom rules to record GPU usage by NVIDIA NIM. ](nvidia-image-8.png#small "_Figure 5 - Prometheus rules tab showing the created custom rules to record GPU usage by NVIDIA NIM._") 
 
-4. Install [prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter) to query the custom metrics based on the custom recording rules created above and register them to the custom metrics API for HPA to fetch. Replace in below command `<prometheus-service-name>` with the name of the prometheus service in Kubernetes.
+4. Install [prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter) to query the custom metrics based on the custom recording rules created above and register them to the custom metrics API for HPA to fetch. Replace in below command `<prometheus-service-name>` with the name of the Prometheus service in Kubernetes.
 
 ```
 helm upgrade --install prometheus-adapter prometheus-community/prometheus-adapter --set prometheus.url="http://<prometheus-service-name>.prometheus.svc.cluster.local"
@@ -587,7 +587,7 @@ nim-llm-0   1/1     Running   0          3h47m
 nim-llm-1   1/1     Running   0          3m30s
 ```
 
-Also, Figure 6 shows the prometheus graph showing the scaling of LLM NIM. 
+Also, Figure 6 shows the Prometheus graph showing the scaling of LLM NIM. 
 
 ![Figure 6 - Prometheus graph showing the scaling of LLM NIM. ](nvidia-image-9.png#small "_Figure 6 - Prometheus graph showing the scaling of LLM NIM._") 
 

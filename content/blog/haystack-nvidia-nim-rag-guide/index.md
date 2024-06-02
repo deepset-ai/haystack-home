@@ -22,7 +22,7 @@ Retrieval-augmented generation (RAG) systems combine generative AI with informat
 
 [Haystack](https://haystack.deepset.ai/), by [deepset](https://www.deepset.ai/), is an open source framework for building production-ready LLM applications, RAG pipelines and state-of-the-art search systems that work intelligently over large document collections. 
 
-![Figure 1 - Haystack Retrieval-augmented generation (RAG) pipeline. ](nvidia-image-1.png#small "_Figure 1 - Haystack Retrieval-augmented generation (RAG) pipeline._") 
+![Figure 1 - Haystack Retrieval-augmented generation (RAG) pipeline. ](nvidia-image-1.png#small "_Figure 1 - Haystack Retrieval-augmented generation (RAG) pipeline_") 
 
 
 Haystack’s [growing ecosystem of community integrations](https://haystack.deepset.ai/integrations) provide tooling for evaluation, monitoring, transcription, data ingestion and more. The [NVIDIA Haystack integration](https://haystack.deepset.ai/integrations/nvidia) allows using NVIDIA models and NIM microservices in Haystack pipelines, [giving the flexibility to pivot from prototyping in the cloud to deploying on-prem](https://haystack.deepset.ai/blog/haystack-nvidia-integration).
@@ -459,7 +459,7 @@ In the Prometheus UI under `Status -> Targets`, you will see the below ServiceMo
 
 3. Let’s check some inference metrics on the Prometheus UI. Figure 6 shows the stacked graph for `request_success_total` NIM metric.
 
-![Figure 6 - Prometheus UI showing the plot of request_success_total metric indicating number of finished requests. ](nvidia-image-7.png#small "_Figure 6 - Prometheus UI showing the plot of request_success_total metric indicating number of finished requests._") 
+![Figure 6 - Prometheus UI showing the plot of request_success_total metric indicating number of finished requests. ](nvidia-image-7.png#small "_Figure 6 - Prometheus UI showing the plot of request_success_total metric indicating number of finished requests_") 
 
 
 ### Autoscaling NVIDIA NIM
@@ -510,7 +510,7 @@ kubectl apply -f prometheus_rule_nims.yaml
 
 3. In Prometheus UI, under `Status -> Rules`, you can see the above two created rules as shown in Figure 7.
 
-![Figure 7 - Prometheus rules tab showing the created custom rules to record GPU usage by NVIDIA NIM. ](nvidia-image-8.png#small "_Figure 7 - Prometheus rules tab showing the created custom rules to record GPU usage by NVIDIA NIM._") 
+![Figure 7 - Prometheus rules tab showing the created custom rules to record GPU usage by NVIDIA NIM. ](nvidia-image-8.png#small "_Figure 7 - Prometheus rules tab showing the created custom rules to record GPU usage by NVIDIA NIM_") 
 
 4. Install [prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter) to query the custom metrics based on the custom recording rules created above and register them to the custom metrics API for HPA to fetch. Replace in below command `<prometheus-service-name>` with the name of the Prometheus service in Kubernetes.
 

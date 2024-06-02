@@ -6,8 +6,8 @@ images: ["blog/haystack-nvidia-nim-rag-guide/nvidia-image-2.png"]
 featured_image_caption: Diagram of a RAG pipeline connecting NVIDIA NeMo Retriever Embedding NIM and LLM NIM with Haystack
 alt_image: Diagram of a RAG pipeline connecting NVIDIA NeMo Retriever Embedding NIM and LLM NIM with Haystack
 toc: True
-date: 2024-06-01
-last_updated:  2024-06-01
+date: 2024-06-02
+last_updated:  2024-06-02
 authors:
   - Anshul Jindal
   - Meriem Bendris

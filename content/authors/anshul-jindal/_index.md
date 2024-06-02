@@ -3,7 +3,7 @@ layout: author
 title: Anshul Jindal
 name: Anshul Jindal
 slug: anshul-jindal
-position: Senior Solution Architect (Cloud Services) NVIDIA
+position: Senior Solution Architect - Cloud Services at NVIDIA
 image: /images/authors/anshul-jindal.jpeg
 socials:
   author_page:

@@ -28,22 +28,27 @@ Haystack’s [growing ecosystem of community integrations](https://haystack.deep
 
 ## About NVIDIA NIM
 
-NVIDIA NIM is a collection of containerized microservices designed for optimized inference of state-of-the-art  AI models.  The container uses a variety of components to serve AI models and exposes them via standard API. Models are optimized using [TensorRT](https://developer.nvidia.com/tensorrt) or TensorRT-LLM (depending on the type of the model), applying procedures such as quantization, model distribution, optimized kernel/runtimes and inflight- or continuous batching among others allowing even further optimization if needed. Learn more about NIM here.
+NVIDIA NIM is a collection of containerized microservices designed for optimized inference of state-of-the-art  AI models.  The container uses a variety of components to serve AI models and exposes them via standard API. Models are optimized using [TensorRT](https://developer.nvidia.com/tensorrt) or [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) (depending on the type of the model), applying procedures such as quantization, model distribution, optimized kernel/runtimes and inflight- or continuous batching among others allowing even further optimization if needed. Learn more about NIM [here](https://developer.nvidia.com/blog/nvidia-nim-offers-optimized-inference-microservices-for-deploying-ai-models-at-scale/).
 
-## Build a Haystack RAG pipeline with NVIDIA NIM
+
+This tutorial shows how to build a Haystack RAG pipeline leveraging NIM microservices hosted on the [NVIDIA API catalog](https://build.nvidia.com/). Then, we provide instructions on deploying NIM microservices 
+on your infrastructure in a Kubernetes environment for self-hosting [AI foundation models](https://www.nvidia.com/en-us/ai-data-science/foundation-models/?_gl=1*3m0pk5*_gcl_au*ODg0NTI0MDQ3LjE3MTczMTI1MDE.). Note that hosting NIM microservices requires [NVIDIA AI Enterprise license](https://www.nvidia.com/en-us/data-center/products/ai-enterprise/?_gl=1*1crq8g6*_gcl_au*NzMwODYxMzc1LjE3MTczMTIxMzg.). 
+
+
+## Build a Haystack RAG Pipeline with NVIDIA NIM microservices hosted on the NVIDIA API Catalog 
 
 For RAG pipelines, Haystack provides 3 components that can be connected with NVIDIA NIM: 
 - [NvidiaGenerator](https://docs.haystack.deepset.ai/docs/nvidiagenerator): Text generation with LLM NIM.
 - [NvidiaDocumentEmbedder](https://docs.haystack.deepset.ai/docs/nvidiadocumentembedder): Document embedding with [NVIDIA NeMo Retriever Embedding NIM](https://build.nvidia.com/nvidia/embed-qa-4).
 - [NvidiaTextEmbedder](https://docs.haystack.deepset.ai/docs/nvidiatextembedder): Query embedding with  NVIDIA NeMo Retriever Embedding NIM.
 
-![Fig. 1 -  Haystack Indexing and RAG pipelines with self-hosted NVIDIA NIM](nvidia-image-2.png#small "_Fig. 1 - Haystack Indexing and RAG pipelines with self-hosted NVIDIA NIM_") 
+![Fig. 1 -  Haystack Indexing and RAG pipeline with NVIDIA NIM microservices](nvidia-image-2.png#small "_Fig. 1 - Haystack Indexing and RAG pipelines with NVIDIA NIM microservices_") 
 
-For this section, we have provided scripts and instructions for building a RAG pipeline with NVIDIA-hosted NIM as part of the [GitHub repository](https://github.com/deepset-ai/nvidia-haystack). We also provide a [Jupyter Notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/rag-with-nims.ipynb) for building the same RAG pipeline using self-hosted NVIDIA NIM. 
+For this section, we have provided scripts and instructions for building a RAG pipeline leveraging NIM microservices hosted on the [NVIDIA API catalog](https://build.nvidia.com/) as part of the [GitHub repository](https://github.com/deepset-ai/nvidia-haystack). We also provide a [Jupyter Notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/rag-with-nims.ipynb) for building the same RAG pipeline using NIM microservices deployed on your infrastructure in a Kubernetes environment. 
 
 ## Vectorize Documents with Haystack Indexing Pipelines
 
-Our indexing pipeline implementation is available in the [indexing tutorial](https://github.com/deepset-ai/nvidia-haystack/blob/main/indexing.py). Haystack provides several [preprocessing](https://docs.haystack.deepset.ai/docs/preprocessors) components for document cleaning, splitting, [embedders](https://docs.haystack.deepset.ai/docs/converters), as well as [converters](https://docs.haystack.deepset.ai/docs/converters) extracting data from files in different formats. In this tutorial, we will store PDF files in a `QdrantDocumentStore`. `NvidiaDocumentEmbedder` is used to connect with NVIDIA-hosted NIM accessible [here](https://build.nvidia.com/explore/retrieval). Below is an example of how to initialize the embedder component with the NVIDIA-hosted [`snowflake/arctic-embed-l`](https://build.nvidia.com/snowflake/arctic-embed-l) NIM.
+Our indexing pipeline implementation is available in the [indexing tutorial](https://github.com/deepset-ai/nvidia-haystack/blob/main/indexing.py). Haystack provides several [preprocessing](https://docs.haystack.deepset.ai/docs/preprocessors) components for document cleaning, splitting, [embedders](https://docs.haystack.deepset.ai/docs/converters), as well as [converters](https://docs.haystack.deepset.ai/docs/converters) extracting data from files in different formats. In this tutorial, we will store PDF files in a `QdrantDocumentStore`. `NvidiaDocumentEmbedder` is used to connect with NIM microservices hosted on the [NVIDIA API catalog](https://build.nvidia.com/). Below is an example of how to initialize the embedder component with the [`snowflake/arctic-embed-l`](https://build.nvidia.com/snowflake/arctic-embed-l) NIM hosted on the NVIDIA API catalog.
 
 ```python
 from haystack.utils.auth import Secret
@@ -57,7 +62,7 @@ embedder = NvidiaDocumentEmbedder(model="snowflake/arctic-embed-l",
 
 ## Creating the Haystack RAG Pipeline
 
-In our example, we will create a simple question/answering RAG pipeline using both NVIDIA NeMo Retriever Embedding NIM and LLM NIM. For this pipeline, we use the NvidiaTextEmbedder to embed the query for retrieval, and the NvidiaGenerator to generate a response. Example below shows how to instantiate the generator using NVIDIA-hosted [`meta/llama3-70b-instruct`](https://build.nvidia.com/meta/llama3-70b) LLM NIM.
+In our example, we will create a simple question/answering RAG pipeline using both NVIDIA NeMo Retriever Embedding NIM and LLM NIM. For this pipeline, we use the `NvidiaTextEmbedder` to embed the query for retrieval, and the `NvidiaGenerator` to generate a response. Example below shows how to instantiate the generator using [`meta/llama3-70b-instruct`](https://build.nvidia.com/meta/llama3-70b) LLM NIM hosted on the NVIDIA API catalog.
 
 ```python
 generator = NvidiaGenerator(
@@ -119,13 +124,13 @@ rag.connect("prompt", "generator")
 
 ## Indexing Files and Deploying the Haystack RAG Pipeline
 
-[Hayhooks](https://docs.haystack.deepset.ai/docs/hayhooks) allows the deployment of RAG pipelines in a containerized environment. In our example, we have provided a [docker-compose file](https://github.com/deepset-ai/nvidia-haystack/blob/main/docker-compose.yml) to setup both the Qdrant database, and the RAG pipeline. As we are using NVIDIA-hosted NIM, we need to set the API keys for the NIM on the .env file. The instructions below expect `NVIDIA_API_KEY` (for `NvidiaGenerator`) and `NVIDIA_EMBEDDINGS_KEY` (for `NvidiaDocumentEmbedder` and `NvidiaTextEmbedder`). 
+[Hayhooks](https://docs.haystack.deepset.ai/docs/hayhooks) allows the deployment of RAG pipelines in a containerized environment. In our example, we have provided a [docker-compose file](https://github.com/deepset-ai/nvidia-haystack/blob/main/docker-compose.yml) to setup both the Qdrant database, and the RAG pipeline. As we are leveraging NIM microservices hosted on the [NVIDIA API catalog](https://build.nvidia.com/), we need to set the API keys for the NIM microservices in the `.env` file. The instructions below expect `NVIDIA_API_KEY` (for `NvidiaGenerator`) and `NVIDIA_EMBEDDINGS_KEY` (for `NvidiaDocumentEmbedder` and `NvidiaTextEmbedder`). 
 
 Executing `docker-compose up` will launch `3` containers: **qdrant**, **hayhooks** and **qdrant-setup** (which will run our indexing pipeline and stop). The Qdrant database will be deployed on the localhost and exposed at port `6333`. The Qdrant dashboard allows users to inspect the vectorized documents at [localhost:6333/dashboard](localhost:6333/dashboard).
 
 ### Serializing Pipelines
 
-Haystack pipelines defined in Python can be serialized to YAML by calling `dump()` on the pipeline object, as shown in our [RAG pipeline tutorial](https://github.com/deepset-ai/nvidia-haystack/blob/77cc316193e718de51b8a56e756749604b8032e9/rag.py#L44C1-L45C16). The [YAML](https://github.com/deepset-ai/nvidia-haystack/blob/main/rag.yaml) definition is the following:
+Haystack pipelines defined in Python can be serialized to YAML by calling `dump()` on the pipeline object, as shown in our [RAG pipeline tutorial](https://github.com/deepset-ai/nvidia-haystack/blob/77cc316193e718de51b8a56e756749604b8032e9/rag.py#L44C1-L45C16). The [YAML](https://github.com/deepset-ai/nvidia-haystack/blob/main/rag.yaml) definition is as follows:
 
 ```yaml
 components:
@@ -173,29 +178,30 @@ To deploy the RAG pipeline, execute `hayhooks deploy rag.yaml` which will expose
 
 For production, Haystack provides Helm charts and [instructions](https://docs.haystack.deepset.ai/docs/kubernetes) to create services running Hayhooks with a container orchestrator like Kubernetes. 
 
-In the next sections, we will show how to self deploy, monitor and autoscale the NVIDIA NIM on a Kubernetes cluster. Finally, we will provide instructions on how to use the self-hosted NIM in the Haystack RAG pipeline.
+In the next sections, we will show how to deploy, monitor and autoscale NIM microservices 
+on your infrastructure in a Kubernetes environment for self-hosting [AI foundation models](https://www.nvidia.com/en-us/ai-data-science/foundation-models/?_gl=1*3m0pk5*_gcl_au*ODg0NTI0MDQ3LjE3MTczMTI1MDE.). Finally, we will provide instructions on how to use them in the Haystack RAG pipeline.
 
-## Deployment of NVIDIA NIM on a Kubernetes Cluster
+## Self-hosting NVIDIA NIM microservices on a Kubernetes cluster
 
 ### Kubernetes Cluster Environment
 
 In this tutorial, the setup environment consists of a DGX H100 with 8 H100 GPUs each having 80GB of memory as host and with Ubuntu as the operating system. Docker is used as the container runtime. Kubernetes is deployed on it using [Minikube](https://minikube.sigs.k8s.io/). To enable GPU utilization in Kubernetes, we install essential NVIDIA software components using the [GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/getting-started.html).
 
-### NVIDIA NIM Deployment
+### NVIDIA NIM Microservices Deployment
 
-As part of this setup, we deploy following NVIDIA NIM into the Kubernetes cluster using Helm charts:
+As part of this setup, we deploy following NVIDIA NIM microservices into the Kubernetes cluster using Helm charts:
 - The LLM NIM, which uses the model [`llama3-8b-instruct`](https://build.nvidia.com/meta/llama3-8b)
 - The NVIDIA NeMo Retriever Embedding NIM, which uses the model [`NV-Embed-QA`](https://build.nvidia.com/nvidia/embed-qa-4)
 
-The Helm chart for the LLM NIM is located in [GitHub](https://github.com/NVIDIA/nim-deploy) whereas for the NVIDIA NeMo Retriever Embedding NIM it is located in the NGC private registry and at the moment need EA access [apply for Early Access](https://developer.nvidia.com/nemo-microservices).  Figure 3 illustrates the deployment of NIM on a Kubernetes cluster running on a DGX H100. The GPU Operator components are deployed via its Helm chart and are part of the GPU Operator stack. Prometheus and Grafana are deployed via Helm charts for monitoring the Kubernetes cluster and the NIM.
+The Helm chart for the LLM NIM is located in [GitHub](https://github.com/NVIDIA/nim-deploy) whereas the helm chart for NVIDIA NeMo Retriever Embedding NIM is located in the NGC private registry and at the moment need EA access ([apply for Early Access](https://developer.nvidia.com/nemo-microservices)).  Figure 3 illustrates the deployment of NIM microservices on a Kubernetes cluster running on a DGX H100. The GPU Operator components are deployed via its Helm chart and are part of the GPU Operator stack. Prometheus and Grafana are deployed via Helm charts for monitoring the Kubernetes cluster and the NIM.
 
-![Figure 3 - NVIDIA NIM and  other components deployment on a Kubernetes cluster ](nvidia-image-5.png#small "_Figure 3 - NVIDIA NIM and  other components deployment on a Kubernetes cluster_") 
+![Figure 3 - NVIDIA NIM microservices and  other components deployment on a Kubernetes cluster ](nvidia-image-5.png#small "_Figure 3 - NVIDIA NIM microservices and  other components deployment on a Kubernetes cluster_") 
 
 The LLM NIM Helm chart contains the LLM NIM container, which runs within a pod and references the model via [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) (PV) and [Persistent Volume Claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) (PVC). The LLM NIM pods are autoscaled using the [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA) based on custom metrics and are exposed via Kubernetes [ClusterIP](https://kubernetes.io/docs/concepts/services-networking/service/#type-clusterip) service. To access the LLM NIM, we deploy an [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) and expose it at the `/llm` endpoint.
 
 Similarly, the NeMo Retriever Embedding NIM Helm chart includes the Retriever Embedding NIM container, which runs within a pod and references the model on the host via PV and PVC. The NeMo Retriever Embedding NIM pods are also autoscaled via HPA and are exposed via Kubernetes ClusterIP service. To access the NeMo Retriever Embedding NIM, we deploy an ingress and expose it at the `/embedding` endpoint.
 
-Users and other applications can access the exposed NVIDIA NIM via the ingress.
+Users and other applications can access the exposed NVIDIA NIM microservices via the ingress.
 The vector database Qdrant is deployed using this [helm chart](https://qdrant.tech/documentation/guides/installation/#kubernetes).
 
 Now, let's take a closer look at the deployment process for each NIM: 
@@ -243,7 +249,7 @@ imagePullSecrets:
   - name: nvcrimagepullsecret # secret created to pull nvcr.io image
 ```
 
-5. We assume that the helm chart for the LLM is located here: `./nims/helm/nim-llm/`. You can change the command accordingly depending on where the helm chart is located.  Deploy the LLM NIM by running the following command:
+5. We assume that the helm chart for the LLM NIM is located here: `./nims/helm/nim-llm/`. You can change the command accordingly depending on where the helm chart is located.  Deploy the LLM NIM by running the following command:
 
 ```helm -n nim-llm install nim-llm -f ./nims/helm/nim-llm/ nim-llm-values.yaml```
 
@@ -407,18 +413,18 @@ Once the above procedure is completed, you will have API endpoints of LLM NIM an
 
 ## Operational Considerations
 
-Monitoring and autoscaling are essential for deployed NVIDIA NIM to ensure efficient, effective, and reliable operation. Monitoring tracks performance metrics, detects errors, and optimizes resource utilization, while autoscaling dynamically adjusts resources to match changing workloads, ensuring the NVIDIA NIM can handle sudden spikes or dips in demand. This enables NVIDIA NIM to provide accurate and timely responses, even under heavy loads, while optimizing costs and maintaining high availability. In this section, we will delve into details of deploying monitoring and enabling autoscaling for NVIDIA NIM.
+Monitoring and autoscaling are essential for deployed NVIDIA NIM microservices to ensure efficient, effective, and reliable operation. Monitoring tracks performance metrics, detects errors, and optimizes resource utilization, while autoscaling dynamically adjusts resources to match changing workloads, ensuring the NVIDIA NIM microservices can handle sudden spikes or dips in demand. This enable NVIDIA NIM microservices to provide accurate and timely responses, even under heavy loads, while optimizing costs and maintaining high availability. In this section, we will delve into details of deploying monitoring and enabling autoscaling for NVIDIA NIM microservices.
 
 ### Monitoring
 
 NVIDIA NIM metrics are collected with the open-source tool [Prometheus](https://prometheus.io/) and visualized with the [Grafana](https://grafana.com/) dashboards. NVIDIA [dcgm-exporter](https://docs.nvidia.com/datacenter/cloud-native/kubernetes/dcgme2e.html#gpu-telemetry) is the preferred tool to collect GPU telemetry. We follow the instructions from [here](https://docs.nvidia.com/datacenter/cloud-native/gpu-telemetry/latest/kube-prometheus.html) for the deployment of Prometheus and Grafana. 
 
-#### Visualizing NIM Metrics
+#### Visualizing NVIDIA NIM Metrics
 
-By default, NIM metrics are exposed at [http://localhost:8000/metrics](http://localhost:8000/metrics) for the NIM container. All the exposed metrics are listed [here](https://docs.nvidia.com/nim/large-language-models/latest/observability.html). Using a Prometheus ServiceMonitor they can be published to Prometheus and be viewed in the Grafana. The [Prometheus ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/running-exporters.md#the-goal-of-servicemonitors) is used to define application to scrape metrics from within Kubernetes cluster.
+By default, NVIDIA NIM metrics are exposed at [http://localhost:8000/metrics](http://localhost:8000/metrics) by the NIM container. All the exposed metrics are listed [here](https://docs.nvidia.com/nim/large-language-models/latest/observability.html). Using a Prometheus ServiceMonitor they can be published to Prometheus and be viewed in the Grafana. The [Prometheus ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/running-exporters.md#the-goal-of-servicemonitors) is used to define application to scrape metrics from within Kubernetes cluster.
 
 
-1. Create a file `service-monitor-nim-llm.yaml` with the below content. We currently only configure it to scrape metrics from LLM NIM but can be extended to other NVIDIA NIM as well. 
+1. Create a file `service-monitor-nim-llm.yaml` with the below content. We currently only configure it to scrape metrics from LLM NIM but can be extended to other NVIDIA NIM microservices as well. 
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -457,7 +463,7 @@ In the prometheus UI under `Status -> Targets`, you will see the below ServiceMo
 
 ### Autoscaling NVIDIA NIM
 
-In this tutorial, we use the [Kubernetes Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) - HPA to adjust the scaling of the NIM pods. We have defined custom metrics to monitor the average GPU usage of each NIM and used by the Horizontal Pod Autoscaler (HPA) to dynamically adjust the number of NIM pods. See the metric definition below:
+In this tutorial, we use the [Kubernetes Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) - HPA to adjust the scaling of the NIM pods. We have defined custom metrics to monitor the average GPU usage of each NVIDIA NIM and used by the Horizontal Pod Autoscaler (HPA) to dynamically adjust the number of NIM pods. See the metric definition below:
 
 | Metrics    | Expressions |
 | -------- | ------- |
@@ -573,7 +579,7 @@ nim-embedding   nim-embedding-hpa   Deployment/nim-embedding-nemo-embedding-ms  
 nim-llm         nim-llm-hpa         StatefulSet/nim-llm                          0/30      1         4         1          94s
 ```
 
-9. Send some requests to LLM NIM and see the LLM pod getting scaled as shown below: 
+9. Send some requests to LLM NIM and see the LLM NIM pod getting scaled as shown below: 
 
 ```
 NAME        READY   STATUS    RESTARTS   AGE
@@ -585,11 +591,11 @@ Also, Figure 6 shows the prometheus graph showing the scaling of LLM NIM.
 
 ![Figure 6 - Prometheus graph showing the scaling of LLM NIM. ](nvidia-image-9.png#small "_Figure 6 - Prometheus graph showing the scaling of LLM NIM._") 
 
-We have now deployed NVIDIA NIM in a scalable fashion. We can now use the self-hosted NVIDIA NIM in the RAG pipeline. The next section provides the details for the same. 
+We have now deployed NVIDIA NIM microservices on your infrastructure in a scalable fashion. We can now use them in the RAG pipeline. The next section provides the details for the same. 
 
-## Use Self-hosted NVIDIA NIM in the RAG Pipeline
+## Use Self-hosted NVIDIA NIM microservices in the RAG Pipeline
 
-This section provides instructions to use previously deployed self-hosted NVIDIA NIM on a Kubernetes cluster for `NvidiaTextEmbedder`, `NvidiaDocumentEmbedder` and `NvidiaGenerator` in the Haystack RAG pipeline, replacing  `<self-hosted-emedding-nim-url>` with the endpoint of the NeMo Retriever Embedding NIM and `<self-hosted-llm-nim-url>` with the LLM NIM. The provided [notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/rag-with-nims.ipynb) in the repository has examples of how to use the self-hosted  NVIDIA NIM. 
+This section provides instructions to use previously deployed NVIDIA NIM microservices on your infrastructure in a Kubernetes cluster for `NvidiaTextEmbedder`, `NvidiaDocumentEmbedder` and `NvidiaGenerator` in the Haystack RAG pipeline, replacing  `<self-hosted-emedding-nim-url>` with the endpoint of the NeMo Retriever Embedding NIM and `<self-hosted-llm-nim-url>` with the LLM NIM. The provided [notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/rag-with-nims.ipynb) in the repository has examples of how to use the self-hosted NVIDIA NIM microservices. 
 
 *NvidiaDocumentEmbedder*:
 ```python
@@ -625,6 +631,6 @@ generator = NvidiaGenerator(
 
 ## Summary
 
-In this blog, we provide a comprehensive walkthrough for building robust and scalable RAG applications using Haystack and NVIDIA NIM. We cover both NVIDIA-hosted and self-hosted NIM deployment scenarios. Our step-by-step instructions detail how to deploy NVIDIA NIM on a Kubernetes cluster, monitor their performance, and scale them as needed.
+In this blog, we provide a comprehensive walkthrough for building robust and scalable RAG applications using Haystack and NVIDIA NIM microservices. We cover building the RAG pipeline by leveraging NVIDIA NIM microservices hosted on the [NVIDIA API catalog](https://build.nvidia.com/) and also using self-hosted NVIDIA NIM microservices deployed on your infrastructure in a Kubernetes environment. Our step-by-step instructions detail how to deploy NVIDIA NIM microservices in a Kubernetes cluster, monitor their performance, and scale them as needed.
 
 By leveraging proven deployment patterns, our architecture ensures a responsive user experience and predictable query times, even in the face of high or bursty user queries and document indexing workloads. Moreover, our deployment recipe is flexible, allowing for easy implementation in cloud, on-premise, or air-gapped environments. With this guide, we aim to provide a resource for anyone looking to build reliable and performant RAG applications at scale.

@@ -466,12 +466,12 @@ In the Prometheus UI under `Status -> Targets`, you will see the below ServiceMo
 
 In this tutorial, we use the [Kubernetes Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) - HPA to adjust the scaling of the NIM pods. We have defined custom metrics to monitor the average GPU usage of each NVIDIA NIM and used by the Horizontal Pod Autoscaler (HPA) to dynamically adjust the number of NIM pods. See the metric definition below:
 
-| Metrics    | Expressions |
-| -------- | ------- |
-| **nim_llm_gpu_avg**  | `avg by (kubernetes_node, pod, namespace, gpu) (DCGM_FI_DEV_GPU_UTIL{pod=~"nim-llm-.*"})`    |
+| Metrics                   | Expressions |
+| ------------------------  | ----------- |
+| **nim_llm_gpu_avg**       | `avg by (kubernetes_node, pod, namespace, gpu) (DCGM_FI_DEV_GPU_UTIL{pod=~"nim-llm-.*"})`    |
 | **nim_embedding_gpu_avg** | `avg by (kubernetes_node, pod, namespace, gpu)  (DCGM_FI_DEV_GPU_UTIL{pod=~"nim-emedding-.*"})`     |
 
-These metrics are example metrics and one should adjust them based on their environment. 
+The average GPU usage metric is used as an example and must be adjusted to the specific application environment.
 
 Let’s deploy the HPA. 
 

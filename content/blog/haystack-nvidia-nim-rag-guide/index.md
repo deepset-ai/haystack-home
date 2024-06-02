@@ -22,7 +22,8 @@ Retrieval-augmented generation (RAG) systems combine generative AI with informat
 
 [Haystack](https://haystack.deepset.ai/), by [deepset](https://www.deepset.ai/), is an open source framework for building production-ready LLM applications, RAG pipelines and state-of-the-art search systems that work intelligently over large document collections. 
 
-![Diagram of a Haystack RAG pipeline](nvidia-image-1.png)
+![Figure 1 - Haystack Retrieval-augmented generation (RAG) pipeline. ](nvidia-image-1.png#small "_Figure 1 - Haystack Retrieval-augmented generation (RAG) pipeline._") 
+
 
 Haystack’s [growing ecosystem of community integrations](https://haystack.deepset.ai/integrations) provide tooling for evaluation, monitoring, transcription, data ingestion and more. The [NVIDIA Haystack integration](https://haystack.deepset.ai/integrations/nvidia) allows using NVIDIA models and NIM microservices in Haystack pipelines, [giving the flexibility to pivot from prototyping in the cloud to deploying on-prem](https://haystack.deepset.ai/blog/haystack-nvidia-integration).
 
@@ -42,7 +43,7 @@ For RAG pipelines, Haystack provides 3 components that can be connected with NVI
 - [NvidiaDocumentEmbedder](https://docs.haystack.deepset.ai/docs/nvidiadocumentembedder): Document embedding with [NVIDIA NeMo Retriever Embedding NIM](https://build.nvidia.com/nvidia/embed-qa-4).
 - [NvidiaTextEmbedder](https://docs.haystack.deepset.ai/docs/nvidiatextembedder): Query embedding with  NVIDIA NeMo Retriever Embedding NIM.
 
-![Fig. 1 -  Haystack Indexing and RAG pipeline with NVIDIA NIM microservices](nvidia-image-2.png#small "_Fig. 1 - Haystack Indexing and RAG pipelines with NVIDIA NIM microservices_") 
+![Figure 2 -  Haystack Indexing and RAG pipeline with NVIDIA NIM microservices](nvidia-image-2.png#small "_Figure 2 - Haystack Indexing and RAG pipelines with NVIDIA NIM microservices_") 
 
 For this section, we have provided scripts and instructions for building a RAG pipeline leveraging NIM microservices hosted on the [NVIDIA API catalog](https://build.nvidia.com/) as part of the [GitHub repository](https://github.com/deepset-ai/nvidia-haystack). We also provide a [Jupyter Notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/rag-with-nims.ipynb) for building the same RAG pipeline using NIM microservices deployed on your infrastructure in a Kubernetes environment. 
 
@@ -174,7 +175,7 @@ To deploy the RAG pipeline, execute `hayhooks deploy rag.yaml` which will expose
 
 ![](nvidia-image-3.png) 
 
-![](nvidia-image-4.png) 
+![Figure 3 - API Doc UI interface for trying out the RAG Pipeline ](nvidia-image-4.png#small "_Figure 3 - API Doc UI interface for trying out the RAG Pipeline_") 
 
 For production, Haystack provides Helm charts and [instructions](https://docs.haystack.deepset.ai/docs/kubernetes) to create services running Hayhooks with a container orchestrator like Kubernetes. 
 
@@ -193,9 +194,9 @@ As part of this setup, we deploy following NVIDIA NIM microservices into the Kub
 - The LLM NIM, which uses the model [`llama3-8b-instruct`](https://build.nvidia.com/meta/llama3-8b)
 - The NVIDIA NeMo Retriever Embedding NIM, which uses the model [`NV-Embed-QA`](https://build.nvidia.com/nvidia/embed-qa-4)
 
-The LLM NIM Helm chart is on [GitHub](https://github.com/NVIDIA/nim-deploy), while the NVIDIA NeMo Retriever Embedding NIM Helm chart is in the NGC private registry, requiring Early Access ([apply for Early Access](https://developer.nvidia.com/nemo-microservices)).  Figure 3 illustrates the deployment of NIM microservices on a Kubernetes cluster running on a DGX H100. The GPU Operator components are deployed via its Helm chart and are part of the GPU Operator stack. Prometheus and Grafana are deployed via Helm charts for monitoring the Kubernetes cluster and the NIM.
+The LLM NIM Helm chart is on [GitHub](https://github.com/NVIDIA/nim-deploy), while the NVIDIA NeMo Retriever Embedding NIM Helm chart is in the NGC private registry, requiring Early Access ([apply for Early Access](https://developer.nvidia.com/nemo-microservices)).  Figure 4 illustrates the deployment of NIM microservices on a Kubernetes cluster running on a DGX H100. The GPU Operator components are deployed via its Helm chart and are part of the GPU Operator stack. Prometheus and Grafana are deployed via Helm charts for monitoring the Kubernetes cluster and the NIM.
 
-![Figure 3 - NVIDIA NIM microservices and  other components deployment on a Kubernetes cluster ](nvidia-image-5.png#small "_Figure 3 - NVIDIA NIM microservices and  other components deployment on a Kubernetes cluster_") 
+![Figure 4 - NVIDIA NIM microservices and  other components deployment on a Kubernetes cluster ](nvidia-image-5.png#small "_Figure 4 - NVIDIA NIM microservices and  other components deployment on a Kubernetes cluster_") 
 
 The LLM NIM Helm chart contains the LLM NIM container, which runs within a pod and references the model via [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) (PV) and [Persistent Volume Claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) (PVC). The LLM NIM pods are autoscaled using the [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA) based on custom metrics and are exposed via Kubernetes [ClusterIP](https://kubernetes.io/docs/concepts/services-networking/service/#type-clusterip) service. To access the LLM NIM, we deploy an [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) and expose it at the `/llm` endpoint.
 
@@ -453,12 +454,12 @@ kubectl apply -f service-monitor-nim-llm.yaml
 
 In the Prometheus UI under `Status -> Targets`, you will see the below ServiceMonitor once it’s deployed.
 
-![](nvidia-image-6.png) 
+![Figure 5 - Prometheus UI showing the deployed ServiceMonitor ](nvidia-image-6.png#small "_Figure 5 - Prometheus UI showing the deployed ServiceMonitor_") 
 
 
-3. Let’s check some inference metrics on the Prometheus UI. Figure 4 shows the stacked graph for `request_success_total` NIM metric.
+3. Let’s check some inference metrics on the Prometheus UI. Figure 6 shows the stacked graph for `request_success_total` NIM metric.
 
-![Figure 4 - Prometheus UI showing the plot of request_success_total metric indicating number of finished requests. ](nvidia-image-7.png#small "_Figure 4 - Prometheus UI showing the plot of request_success_total metric indicating number of finished requests._") 
+![Figure 6 - Prometheus UI showing the plot of request_success_total metric indicating number of finished requests. ](nvidia-image-7.png#small "_Figure 6 - Prometheus UI showing the plot of request_success_total metric indicating number of finished requests._") 
 
 
 ### Autoscaling NVIDIA NIM
@@ -507,9 +508,9 @@ spec:
 kubectl apply -f prometheus_rule_nims.yaml
 ```
 
-3. In Prometheus UI, under `Status -> Rules`, you can see the above two created rules as shown in Figure 5.
+3. In Prometheus UI, under `Status -> Rules`, you can see the above two created rules as shown in Figure 7.
 
-![Figure 5 - Prometheus rules tab showing the created custom rules to record GPU usage by NVIDIA NIM. ](nvidia-image-8.png#small "_Figure 5 - Prometheus rules tab showing the created custom rules to record GPU usage by NVIDIA NIM._") 
+![Figure 7 - Prometheus rules tab showing the created custom rules to record GPU usage by NVIDIA NIM. ](nvidia-image-8.png#small "_Figure 7 - Prometheus rules tab showing the created custom rules to record GPU usage by NVIDIA NIM._") 
 
 4. Install [prometheus-adapter](https://github.com/kubernetes-sigs/prometheus-adapter) to query the custom metrics based on the custom recording rules created above and register them to the custom metrics API for HPA to fetch. Replace in below command `<prometheus-service-name>` with the name of the Prometheus service in Kubernetes.
 
@@ -587,9 +588,9 @@ nim-llm-0   1/1     Running   0          3h47m
 nim-llm-1   1/1     Running   0          3m30s
 ```
 
-Also, Figure 6 shows the Prometheus graph showing the scaling of LLM NIM. 
+Also, Figure 8 shows the Prometheus graph showing the scaling of LLM NIM. 
 
-![Figure 6 - Prometheus graph showing the scaling of LLM NIM. ](nvidia-image-9.png#small "_Figure 6 - Prometheus graph showing the scaling of LLM NIM._") 
+![Figure 8 - Prometheus graph showing the scaling of LLM NIM. ](nvidia-image-9.png#small "_Figure 8 - Prometheus graph showing the scaling of LLM NIM._") 
 
 We have now deployed NVIDIA NIM microservices on your infrastructure in a scalable fashion. We can now use them in the RAG pipeline. The next section provides the details for the same. 
 

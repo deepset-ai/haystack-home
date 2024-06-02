@@ -193,7 +193,7 @@ As part of this setup, we deploy following NVIDIA NIM microservices into the Kub
 - The LLM NIM, which uses the model [`llama3-8b-instruct`](https://build.nvidia.com/meta/llama3-8b)
 - The NVIDIA NeMo Retriever Embedding NIM, which uses the model [`NV-Embed-QA`](https://build.nvidia.com/nvidia/embed-qa-4)
 
-The Helm chart for the LLM NIM is located in [GitHub](https://github.com/NVIDIA/nim-deploy) whereas the helm chart for NVIDIA NeMo Retriever Embedding NIM is located in the NGC private registry and at the moment need EA access ([apply for Early Access](https://developer.nvidia.com/nemo-microservices)).  Figure 3 illustrates the deployment of NIM microservices on a Kubernetes cluster running on a DGX H100. The GPU Operator components are deployed via its Helm chart and are part of the GPU Operator stack. Prometheus and Grafana are deployed via Helm charts for monitoring the Kubernetes cluster and the NIM.
+The LLM NIM Helm chart is on [GitHub](https://github.com/NVIDIA/nim-deploy), while the NVIDIA NeMo Retriever Embedding NIM helm chart is in the NGC private registry, requiring Early Access ([apply for Early Access](https://developer.nvidia.com/nemo-microservices)).  Figure 3 illustrates the deployment of NIM microservices on a Kubernetes cluster running on a DGX H100. The GPU Operator components are deployed via its Helm chart and are part of the GPU Operator stack. Prometheus and Grafana are deployed via Helm charts for monitoring the Kubernetes cluster and the NIM.
 
 ![Figure 3 - NVIDIA NIM microservices and  other components deployment on a Kubernetes cluster ](nvidia-image-5.png#small "_Figure 3 - NVIDIA NIM microservices and  other components deployment on a Kubernetes cluster_") 
 
@@ -336,8 +336,8 @@ The deployment of the NeMo Retriever Embedding NIM is similar to the LLM NIM.
 1. Follow steps 1 - 3 as LLM NIM deployment but replace namespace with `nim-embedding` in the commands.
 
 2. Create `nim-embedding-values.yaml` file with the below content. Adjust following: 
-    - `ngcModel.org`: The ID of the organization where the model is located in NGC.
-    - `ngcModel.path`: Replace `<org-id>` with the ID of the organization and `<team-name>` with the team name under the organization where the model is located.
+    - `ngcModel.org` : The ID of the organization where the model is located in NGC.
+    - `ngcModel.path` : Replace `<org-id>` with the ID of the organization and `<team-name>` with the team name under the organization where the model is located.
     - `image.repository` and `image.tag` values depending on your environment.
 
 ```yaml

@@ -2,7 +2,7 @@
 layout: single
 title: Building RAG Applications with NVIDIA NIM and Haystack on K8s
 description: How to self-host and orchestrate NVIDIA NIM for Haystack RAG pipelines in Kubernetes.
-images: ["blog/haystack-nvidia-nim-rag-guide/nvidia-image-2.png"]
+images: ["/images/nvidia-image-2.png"]
 featured_image_caption: Diagram of a RAG pipeline connecting NVIDIA NeMo Retriever Embedding NIM and LLM NIM with Haystack
 alt_image: Diagram of a RAG pipeline connecting NVIDIA NeMo Retriever Embedding NIM and LLM NIM with Haystack
 toc: True

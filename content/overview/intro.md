@@ -24,8 +24,8 @@ Haystack offers comprehensive tooling for developing state-of-the-art AI systems
 Some examples of what you can build include:
 
 - **Advanced RAG** on your own data source, powered by the latest retrieval and generation techniques
-- **Natural language chatbots** powered by cutting-edge generative models like GPT-4, that can even call external functions and services
-- **Generative multi-modal question answering** on a knowledge base containing mixed types of information: images, text, audio, and tables.
+- **Chatbots and agents** powered by cutting-edge generative models like GPT-4, that can even call external functions and services
+- **Generative multi-modal question answering** on a knowledge base containing mixed types of information: images, text, audio, and tables
 - **Information extraction** from documents to populate your database or build a knowledge graph
 
 This is just a small subset of the kinds of systems that can be created in Haystack.

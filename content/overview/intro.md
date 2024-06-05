@@ -8,11 +8,16 @@ weight: 1
 toc: true
 ---
 
-Haystack is the open source Python framework by deepset for building custom apps with large language models (LLMs). It lets you quickly try out the latest models in natural language processing (NLP) while being flexible and easy to use. Our inspiring community of users and builders has helped shape Haystack into what it is today: a complete framework for building production-ready NLP apps.
+Haystack is an open source framework for building production-ready *LLM applications*, *retrieval-augmented generative pipelines* and *state-of-the-art search systems* that work intelligently over large document collections. It lets you quickly try out the latest AI models while being flexible and easy to use. Our inspiring community of users and builders has helped shape Haystack into the modular, intuitive, complete framework it is today. 
 
 ## Building with Haystack
 
-Haystack offers comprehensive tooling for developing state-of-the-art NLP systems that use LLMs (such as GPT-4, Falcon and similar) and Transformer models . With Haystack, you can effortlessly experiment with various models hosted on platforms like Hugging Face, OpenAI, Cohere, or even models deployed on SageMaker and your local models to find the perfect fit for your use case.
+Haystack offers comprehensive tooling for developing state-of-the-art AI systems that use LLMs. 
+
+- Use models hosted on platforms like [Hugging Face](https://haystack.deepset.ai/integrations/huggingface), [OpenAI](https://haystack.deepset.ai/integrations/openai), [Cohere](https://haystack.deepset.ai/integrations/cohere), [Mistral](https://haystack.deepset.ai/integrations/mistral), [and more](https://haystack.deepset.ai/integrations?type=Model+Provider).
+- Use models deployed on [SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html), [Bedrock](https://haystack.deepset.ai/integrations/amazon-bedrock), [Azure](https://haystack.deepset.ai/integrations/azure)…
+- Take advantage of our document stores: [OpenSearch](https://haystack.deepset.ai/integrations/opensearch-document-store/), [Pinecone](https://haystack.deepset.ai/integrations/pinecone-document-store), [Weaviate](https://haystack.deepset.ai/integrations/weaviate-document-store), [QDrant](https://haystack.deepset.ai/integrations/qdrant-document-store) [and more](https://haystack.deepset.ai/integrations?type=Document+Store).
+- Our growing [ecosystem of community integrations](https://haystack.deepset.ai/integrations) provide tooling for [evaluation](https://haystack.deepset.ai/integrations?type=Evaluation+Framework), [monitoring](https://haystack.deepset.ai/integrations?type=Monitoring+Tool), [data ingestion](https://haystack.deepset.ai/integrations?type=Data+Ingestion): every layer of your LLM application.
 
 {{< img src="/images/model_providers.png" alt="Model Providers" styling="centered" width="800">}}
 

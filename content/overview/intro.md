@@ -38,11 +38,11 @@ A successful LLM project requires more than just the language models. As an end-
 - Integrate data sources for retrieval augmentation, [from anywhere on the web](https://docs.haystack.deepset.ai/v2.0/docs/linkcontentfetcher)
 - Advanced dynamic templates for LLM prompting via the Jinja2 templating language
 - [Cleaning and preprocessing functions](https://docs.haystack.deepset.ai/v2.0/docs/documentcleaner) for various data formats and sources
-- [Integrates with your preferred document store](https://docs.haystack.deepset.ai/docs/document_store) (including many popular vector databases like Faiss, Pinecone, Qdrant, or Weaviate): keep your GenAI apps up-to-date with Haystack’s indexing pipelines that help you prepare and maintain your data
+- [Integrates with your preferred document store](https://docs.haystack.deepset.ai/docs/document_store): keep your GenAI apps up-to-date with Haystack’s indexing pipelines that help you prepare and maintain your data
 - [Specialized evaluation tools](https://docs.haystack.deepset.ai/v2.0/docs/model-based-evaluation) that use different metrics to evaluate the entire system or its individual components
-- [Hayhooks module](https://docs.haystack.deepset.ai/v2.0/docs/hayhooks) to serve Haystack Pipelines through HTTP endpoints.
+- [Hayhooks module](https://docs.haystack.deepset.ai/v2.0/docs/hayhooks) to serve Haystack Pipelines through HTTP endpoints
 - A customizable [logging system](https://docs.haystack.deepset.ai/v2.0/docs/logging) that supports structured logging and tracing correlation out of the box.
-- [Code instrumentation collecting spans and traces](https://docs.haystack.deepset.ai/v2.0/docs/tracing) in strategic points of the execution path, with support for Open Telemetry and Datadog already in place.
+- [Code instrumentation collecting spans and traces](https://docs.haystack.deepset.ai/v2.0/docs/tracing) in strategic points of the execution path, with support for Open Telemetry and Datadog already in place
 
 But that’s not all: [metadata filtering](https://docs.haystack.deepset.ai/v2.0/docs/model-based-evaluation), [device management for locally running models](https://docs.haystack.deepset.ai/v2.0/docs/device-management), even advanced RAG techniques like [Hypothetical Document Embedding (HyDE)](https://docs.haystack.deepset.ai/v2.0/docs/hypothetical-document-embeddings-hyde). Whatever your AI heart desires, you’re likely to find it in Haystack. And if not? We’ll build it together.
 
@@ -54,7 +54,7 @@ Haystack uses two primary concepts to help you build fully functional and custom
 
 ### Components
 
-At the core of Haystack are its [components](https://docs.haystack.deepset.ai/docs/components_overview—fundamental building blocks that can perform tasks like [document retrieval](https://docs.haystack.deepset.ai/docs/retrievers), [text generation](https://docs.haystack.deepset.ai/docs/generators), or [creating embeddings](https://docs.haystack.deepset.ai/docs/embedders). A single component is already quite powerful. It can manage local language models or communicate with a hosted model through an API.
+At the core of Haystack are its [components](https://docs.haystack.deepset.ai/docs/components_overview—fundamental) building blocks that can perform tasks like [document retrieval](https://docs.haystack.deepset.ai/docs/retrievers), [text generation](https://docs.haystack.deepset.ai/docs/generators), or [creating embeddings](https://docs.haystack.deepset.ai/docs/embedders). A single component is already quite powerful. It can manage local language models or communicate with a hosted model through an API.
 
 While Haystack offers a bunch of components you can use out of the box, it also lets you create your own [custom components](https://docs.haystack.deepset.ai/docs/custom-components) — as easy as writing a Python class. Explore the [collection of integrations](https://haystack.deepset.ai/integrations) that includes custom components developed by our partners and community, which you can freely use.
 
@@ -68,7 +68,7 @@ You can connect components together to build *pipelines*, which are the foundati
 
 Pipelines are essentially graphs, or even multigraphs. A single component with multiple outputs can connect to another single component with multiple inputs or to multiple components, thanks to the flexibility of pipelines.
 
-To get you started, Haystack offers many [example pipelines](https://github.com/deepset-ai/haystack-cookbook) for different use cases: indexing, RAG, extractive, web search and more.
+To get you started, Haystack offers many [example pipelines](https://github.com/deepset-ai/haystack-cookbook) for different use cases: indexing, agentic chat, RAG, extractive QA, function calling, web search and more.
 
 ## Who’s it for?
 
@@ -86,9 +86,9 @@ We also organize [live online and in-person events](https://lu.ma/haystack), web
 
 🎥 Subscribe to [the Haystack YouTube channel](https://www.youtube.com/@haystack_ai)
 
-🐘 Follow us on [Twitter](https://x.com/Haystack_AI[) or [Mastodon](https://fosstodon.org/@haystack_ai).
+🐘 Follow us on [Twitter](https://x.com/Haystack_AI[) or [Mastodon](https://fosstodon.org/@haystack_ai)
 
-📆 [Subscribe to our lu.ma calendar](https://lu.ma/haystack) to stay informed about events.
+📆 [Subscribe to our lu.ma calendar](https://lu.ma/haystack) to stay informed about events
 
 ## Enter the Haystack universe
 

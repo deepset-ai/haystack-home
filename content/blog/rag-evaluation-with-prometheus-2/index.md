@@ -10,6 +10,7 @@ last_updated:  2024-06-14
 authors:
   - Stefano Fiorucci
 tags: ["Evaluation"]
+cookbook: prometheus2_evaluation.ipynb
 ---
 
 When building real-world applications based on Language Models (such as RAG), evaluation plays an important role. Recently, evaluating generated answers using powerful proprietary Language Models (such as GPT-4) has become popular and correlates well with human judgment, but it comes with its own limitations and challenges.
@@ -176,7 +177,7 @@ Let's run our RAG pipeline with a set of questions and save the data we need for
 
 ### Implement a PrometheusLLMEvaluator component
 
-To perform evaluation, we create a custom Haystack Evaluator component, based on Prometheus 2.
+To perform evaluation, we create [a custom Haystack Evaluator component](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/prometheus2_evaluation.ipynb#scrollTo=XVWnGSIJekey), based on Prometheus 2.
 
 This component allows you to develop a diverse range of evaluators.
 

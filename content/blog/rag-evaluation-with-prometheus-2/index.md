@@ -5,8 +5,8 @@ description: "Prometheus 2 is a SOTA open-source model trained specifically for 
 featured_image: thumbnail.png
 images: ["blog/rag-evaluation-with-prometheus-2/thumbnail.png"]
 toc: True
-date: 2024-06-14
-last_updated:  2024-06-14
+date: 2024-06-17
+last_updated:  2024-06-17
 authors:
   - Stefano Fiorucci
 tags: ["Evaluation"]

@@ -31,7 +31,7 @@ The article is organized as follows: we first describe the origin and authorship
 - `embedding_model`: the model used to encode the documents and the question.
 - `chunk_size`: the number of tokens in the input text that makes up segments of text to be embedded and indexed.
 
-Finally, we show and discuss the results of the evaluation.
+We end by discussing the results of the evaluation and sharing some lessons learned.
 
 ### The "ARAGOG: Advanced RAG Output Grading" Dataset
 

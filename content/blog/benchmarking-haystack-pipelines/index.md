@@ -358,7 +358,7 @@ We can now analyze the results in a single table:
 | 0.952544 | 0.893769 | 0.662694 | msmarco-distilroberta-base-v2 | 2 | 256 |
 | 0.964182 | 0.943925 | 0.62854 | msmarco-distilroberta-base-v2 | 3 | 256 |
 
-> We can see some NaN values for the faithfullness, an LLM-based evaluator. This is due to either some error when calling the OpenAI API.
+> We can see some NaN values for the faithfullness scores which is based on an LLM-based evaluator. This was due to network errors when calling the OpenAI API.
 > 
 
 Let's now see which parameter configuration yielded the **best Semantic Similarity Answer** score
@@ -423,12 +423,12 @@ plt.show()
 The box-plots above show that:
 
 - The `all-MiniLM-L6-v2` and the `msmarco-distilroberta-base-v2` embedding models outperform the `all-mpnet-base-v2`
-- `msmarco-distilroberta-base-v2` has more compact results, indicating that this model is more stable to `top_k` and `chunk_size` parameter variations than the other models
+- The `msmarco-distilroberta-base-v2` scores have less variance, indicating that this model is more stable to `top_k` and `chunk_size` parameter variations than the other models
 - All three embedding models have an outlier corresponding to the highest-scoring and lowest-scoring parameter combination
 - Not surprisingly, all the lowest scores outliers correspond to `top_k=1` and `chunk_size=64`
 - The highest scores outliers correspond to `top_k=3`  and a `chunk_size` of `128` or `256`
 
-Since we have the ground truth answers, we focus on the **Semantic Similarity Answer** in the previous analysis**,** but let’s also look at the **Faithfulness** and **Context Relevance** scores for a few examples. For that, we will need to load the detailed scores:
+Since we have the ground truth answers, we focuses on the **Semantic Similarity Answer**, but let’s also look at the **Faithfulness** and **Context Relevance** scores for a few examples. For that, we will need to load the detailed scores:
 
 ```python
 detailed_best_sas_df = pd.read_csv("results/aragog_results/detailed_all-MiniLM-L6-v2__top_k:3__chunk_size:128.csv")

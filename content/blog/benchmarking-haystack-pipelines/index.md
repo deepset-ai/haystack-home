@@ -521,7 +521,7 @@ Let’s take a look at another example:
 inspect(44)
 ```
 
-```html
+```
 Question: 
 How should future language model benchmarks be structured to ensure a holistic assessment of models' capabilities and knowledge breadth?
 

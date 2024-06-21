@@ -262,6 +262,8 @@ def parameter_tuning(out_path: str):
 This function will store the results in a directory specified by the `out_path` parameter. The results will be stored in `.csv` files. For each parameter combination, there will be two files generated, one with the aggregated score report overall questions (e.g.: 
 `score_report_all-MiniLM-L6-v2__top_k:3__chunk_size:128.csv`) and another with the detailed results for each question (e.g.: `detailed_all-MiniLM-L6-v2__top_k:3__chunk_size:128.csv`). 
 
+Note that we make use of the [EvaluationRunResult](https://docs.haystack.deepset.ai/reference/evaluation-api#evaluationrunresult) to store the results and generate the score report and the detailed results in the `.csv` files. 
+
 In the next section, we will show the evaluation results and discuss the insights gained from the experiment.
 
 ## Results Analysis

@@ -23,7 +23,7 @@ This article will guide you through building a Retrieval-Augmented Generation (R
 - [Faithfulness](https://docs.haystack.deepset.ai/docs/faithfulnessevaluator)
 - [Semantic Answer Similarity](https://docs.haystack.deepset.ai/docs/sasevaluator)
 
-We did this experiment by relying on three different Haystack pipelines with different purposes: one pipeline for indexing, another for retrieval augmented generation (RAG), and one for evaluation. We describe each of these pipelines in detail and show how to combine them together to evaluate the RAG pipeline. 
+We did this experiment by relying on three different Haystack pipelines with different purposes: one pipeline for indexing, another for RAG, and one for evaluation. We describe each of these pipelines in detail and show how to combine them together to evaluate the RAG pipeline. 
 
 The article is organized as follows: we first describe the origin and authorship of the ARAGOG dataset, then we build the pipelines. We then demonstrate how to integrate everything, performing multiple runs over the dataset and adjusting parameters. These parameters were chosen based on feedback from our community, reflecting how users optimize their pipelines:
 

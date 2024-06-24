@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf haystack-tutorials
-git clone -b walktroughs --filter=tree:0 https://github.com/deepset-ai/haystack-tutorials.git
+git clone -b walkthroughs --filter=tree:0 https://github.com/deepset-ai/haystack-tutorials.git
 
 cd haystack-tutorials
 echo "Installing requirements for haystack-tutorials..."

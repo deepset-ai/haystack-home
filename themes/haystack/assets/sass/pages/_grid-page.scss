@@ -90,6 +90,28 @@
     }
   }
 
+  // Guide cards
+  .grid-page-card.guide-card {
+    background-color: var(--color-bg-dark-blue);
+     // Title
+     h3 {
+      font-size: 2rem;
+      word-break: break-word;
+      color: white;
+    }
+
+    // Description
+    p {
+      font-size: 0.875rem;
+      color: var(--color-bg-light-grey)
+    }
+
+    &:hover {
+      box-shadow: 0px 0px 0px 2px #FFC55C,
+        0px 0px 8px 4px rgba(67, 171, 157, 0.32);
+    }
+  }
+
   // Integration cards
   .grid-page-card.integration-card {
     position: relative;
@@ -238,6 +260,15 @@
   &.featured {
     background-color: var(--color-green);
     color: var(--color-white);
+  }
+
+  &.guide {
+    background-color: var(--color-purple);
+    color: var(--color-white);
+    font-size: 1rem;
+    border-radius: 8px;
+    gap: 1rem;
+    display: block;
   }
 
   &.outdated {

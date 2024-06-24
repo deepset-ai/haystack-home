@@ -6,8 +6,8 @@ featured_image: thumbnail.png
 alt_image: "'Benchmarking Haystack Pipelines for Optimal Performance' text with illustrations about evaluation and benchmarking"
 images: ["blog/benchmarking-haystack-pipelines/thumbnail.png"]
 toc: True
-date: 2024-06-21
-last_updated: 2024-06-21
+date: 2024-06-24
+last_updated: 2024-06-24
 authors:
   - David Batista
 tags: ["Evaluation", "RAG"]
@@ -191,7 +191,7 @@ def run_rag(document_store, sample_questions, embedding_model, top_k):
     A function to run the basic rag model on a set of sample questions and answers
     """
 
-    rag = get_rag_pipeline(document_store=document_store, embedding_model=embedding_model, top_k=top_k)
+    rag = rag_pipeline(document_store=document_store, embedding_model=embedding_model, top_k=top_k)
 
     predicted_answers = []
     retrieved_contexts = []
@@ -655,17 +655,17 @@ You can see the detailed running times for each parameter combination in the [Be
 
 For detailed pricing information, visit [OpenAI Pricing](https://openai.com/api/pricing/) 💸
 
-## Conclusion
+## Lessons Learned
 
 In this article, we have shown how to use the Haystack [Evaluators](https://docs.haystack.deepset.ai/docs/evaluators) to find the best combination of parameters that yield the best performance of our RAG pipeline, as opposed to using only the default parameters.
 
 For this ARAGOG dataset, in particular, the best performance is achieved using the `msmarco-distilroberta-base-v2` embeddings model instead of the default model (`sentence-transformers/all-mpnet-base-v2`), together with a `top_k=3` and a `chunk_size=128`. 
 
-A few learnings are important to take:
+**A few learnings are important to take:**
 
-- When using an LLM through an external API, it is important to account for potential network errors or other issues. Ensure that during your experiments, running the questions through the RAG pipeline or evaluating the results doesn’t crash due to an error, for instance, by wrapping the call within a `try/except` code block.
-- Before starting your experiments, estimate the costs and time involved. If you plan to use an external LLM through an API, calculate approximately how many API calls you will need to run queries through your RAG pipeline and evaluate the results if you use LLM-based evaluators. This will help you understand the total costs and time required for your experiments.
-- Depending on your dataset size and running time, notebooks might not be the best approach to run your experiments; a Python script is probably a more reliable solution.
-- Beware of which parameters affect which components. For instance, for indexing, only the `embedding_model` and the `chunk_size`  are important—this can reduce the number of experiments you need to carry out.
+- When using an LLM through an external API, it is important to **account for potential network errors or other issues**. Ensure that during your experiments, running the questions through the RAG pipeline or evaluating the results doesn’t crash due to an error, for instance, by wrapping the call within a `try/except` code block.
+- Before starting your experiments, **estimate the costs and time involved**. If you plan to use an external LLM through an API, calculate approximately how many API calls you will need to run queries through your RAG pipeline and evaluate the results if you use LLM-based evaluators. This will help you understand the total costs and time required for your experiments.
+- Depending on your dataset size and running time, **Python notebooks might not be the best approach to run your experiments**; a Python script is probably a more reliable solution.
+- **Beware of which parameters affect which components**. For instance, for indexing, only the `embedding_model` and the `chunk_size` are important - this can reduce the number of experiments you need to carry out.
 
 Explore a variety of evaluation examples tailored to different use cases and datasets by visiting the [haystack-evaluation](https://github.com/deepset-ai/haystack-evaluation) repository on GitHub. 

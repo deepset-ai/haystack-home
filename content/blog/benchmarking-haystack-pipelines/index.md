@@ -27,9 +27,12 @@ We did this experiment by relying on three different Haystack pipelines with dif
 
 The article is organized as follows: we first describe the origin and authorship of the ARAGOG dataset, then we build the pipelines. We then demonstrate how to integrate everything, performing multiple runs over the dataset and adjusting parameters. These parameters were chosen based on feedback from our community, reflecting how users optimize their pipelines:
 
-- `top_k`: the maximum number of documents returned by the retriever.
-- `embedding_model`: the model used to encode the documents and the question.
-- `chunk_size`: the number of tokens in the input text that makes up segments of text to be embedded and indexed.
+- `top_k`: the maximum number of documents returned by the retriever. For this experiment, we tested our pipeline with `top_k` value of `[1, 2, 3]`.
+- `embedding_model`: the model used to encode the documents and the question. For this example, we used these sentence-transformers models:
+    * `all-MiniLM-L6-v2`
+    * `msmarco-distilroberta-base-v2`
+    * `all-mpnet-base-v2`
+- `chunk_size`: the number of tokens in the input text that makes up segments of text to be embedded and indexed. For this experiment, we tested our pipeline with `chunk_size` of `[64, 128, 256]`.
 
 We end by discussing the results of the evaluation and sharing some lessons learned.
 
@@ -651,7 +654,7 @@ The Evaluation pipeline also runs 27 times since all parameter combinations need
 
 You can see the detailed running times for each parameter combination in the [Benchmark Times Spreadsheet](https://docs.google.com/spreadsheets/d/1LTogSuZuzCVNDGBl7Jk5XjmaPYnBSWumaiOwn0WCOfc/edit?usp=sharing).
 
-### Princing
+### Pricing
 
 For detailed pricing information, visit [OpenAI Pricing](https://openai.com/api/pricing/) 💸
 

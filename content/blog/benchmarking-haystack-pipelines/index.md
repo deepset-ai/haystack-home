@@ -3,7 +3,7 @@ layout: blog-post
 title: "Benchmarking Haystack Pipelines for Optimal Performance"
 description: Step-by-step instructions to evaluate and optimize your RAG pipeline's performance 
 featured_image: thumbnail.png
-alt_image: "'Benchmarking Haystack Pipelines for Optimal Performance' text with illustrations about evaluation and benchmarking"
+alt_image: "'Benchmarking Haystack Pipelines for Optimal Performance' text in front of an image with illustrations about evaluation and benchmarking"
 images: ["blog/benchmarking-haystack-pipelines/thumbnail.png"]
 toc: True
 date: 2024-06-24

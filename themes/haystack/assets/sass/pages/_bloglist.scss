@@ -147,6 +147,12 @@
         pointer-events: none;
       }
     }
+
+    @include sm {
+      .sidebar-close-btn {
+        display: none;
+      }
+    }
   }
 }
 

@@ -1,10 +1,19 @@
 {{/* Release notes page */}}
+
 {{ define "main" }}
-  <div class="blog-list release-notes">
+  <div class="blog-list">
     {{/* Hero */}}
     {{ partial "page-hero" . }}
-
-    {{ partial "release-notes-list" . }}
-    
+    <div class="inner" id="release-notes">
+      <div class="container container-padded">
+      <ul>
+      {{ range .Pages }}
+      <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+      {{ end }}
+      </ul>
+    </div>
+    </div>
   </div>
 {{ end }}

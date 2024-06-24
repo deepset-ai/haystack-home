@@ -197,4 +197,4 @@ As the next step, feel free to enhance your document store by indexing additiona
 
 For this demonstration, we applied the BM25 method to generate text vectors. If you’d like to improve the application further, select an [Embedder](https://docs.haystack.deepset.ai/v2.0/docs/embedders) and generate dense embeddings for each file using a chosen embedding model before incorporating them into the document store.
 
-Thank you for your interest! Stay informed about the latest developments in Haystack by [subscribing to our newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=using-jina-embeddings-haystack) or [joining our Discord community](https://discord.com/invite/haystack).
+Thank you for your interest! Stay informed about the latest developments in Haystack by [subscribing to our newsletter](https://landing.deepset.ai/haystack-community-updates) or [joining our Discord community](https://discord.com/invite/haystack).

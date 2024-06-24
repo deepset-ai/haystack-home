@@ -4,6 +4,10 @@
     <div class="inner inner-top">
       <div class="article overview">
         <aside class="toc-sidebar">
+          {{/* Authors */}}
+          {{ if .Params.authors }}
+            {{ partial "blog-post-authors" . }}
+          {{ end }}
           <ul class="content" role="list">
             <li>
               {{ if (eq $currentPage.RelPermalink .RelPermalink) }}

@@ -14,7 +14,7 @@ authors:
 tags: ["Open Source", "Haystack 2.0", "Community"]
 ---	
 
-> *This post was originally shared through the Haystack newsletter. [Subscribe now](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=highlights_of_2023) to stay in the loop on all things Haystack, including the latest updates, new features, captivating content, and upcoming exciting events!* 🗞️
+> *This post was originally shared through the Haystack newsletter. [Subscribe now](https://landing.deepset.ai/haystack-community-updates) to stay in the loop on all things Haystack, including the latest updates, new features, captivating content, and upcoming exciting events!* 🗞️
 
 What a fantastic year it has been! In 2023, the world of AI saw tremendous progress, making it an exciting time for learning and growth. As we wind down and approach the new year, it's a good moment to take a breather, look back on the past year, and appreciate the highlights before gearing up for what's ahead. We've taken some time to review the noteworthy moments that made 2023 special for Haystack and its community.
 
@@ -92,4 +92,4 @@ deepset, the company behind Haystack, announced a **$30 million funding round** 
 - Dive into the world of Haystack 2.0-beta with our latest discussion entry, designed to be your go-to resource until the stable release of Haystack 2.0. Find the roadmap, release notes, and continually updated feature table in [the ultimate guide for Haystack 2.0-beta](https://github.com/deepset-ai/haystack/discussions/6684).
 - We have just introduced a new repository: [Haystack Cookbook](https://github.com/deepset-ai/haystack-cookbook). Stay tuned as we expand this collection with even more example notebooks throughout 2024.
 
-To stay informed about everything related to Haystack, such as the latest updates, new features, captivating content, and upcoming exciting events, be sure to [subscribe to the monthly Haystack newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=highlights_of_2023)! 🗞️
+To stay informed about everything related to Haystack, such as the latest updates, new features, captivating content, and upcoming exciting events, be sure to [subscribe to the monthly Haystack newsletter](https://landing.deepset.ai/haystack-community-updates)! 🗞️

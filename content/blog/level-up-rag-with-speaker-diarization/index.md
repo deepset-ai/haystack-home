@@ -12,7 +12,7 @@ authors:
   - Misra Turp
   - Bilge Yucel
 tags: ["RAG", "Generative AI", "Multimodality"]
-cookbook: using-speaker-diarization-with-assemblyai.ipynb
+cookbook: using_speaker_diarization_with_assemblyai.ipynb
 ---
 
 LLMs work wonders on text data. Using LLMs, you can get answers to complex questions on long documents without having to read the document or even do a CTRL+F search. But what if you work with audio or video recordings?
@@ -182,11 +182,11 @@ Next, it is time to set up the retrieval augmentation (RAG) pipeline for speaker
 * [`SentenceTransformersTextEmbedder`](https://docs.haystack.deepset.ai/docs/sentencetransformerstextembedder): To create an embedding for the user query using sentence-transformers models
 * [`InMemoryEmbeddingRetriever`](https://docs.haystack.deepset.ai/docs/inmemoryembeddingretriever): to retrieve `top_k` relevant documents to the user query
 * [`PromptBuilder`](https://docs.haystack.deepset.ai/docs/promptbuilder): to provide a RAG prompt template with instructions to be filled with retrieved documents and the user query
-* [`HuggingFaceTGIGenerator`](https://docs.haystack.deepset.ai/docs/huggingfacetgigenerator): to infer models served through Hugging Face free Inference API or Hugging Face TGI
+* [`HuggingFaceAPIGenerator`](https://docs.haystack.deepset.ai/docs/huggingfaceapigenerator): to infer models served through Hugging Face free Serverless Inference API or Hugging Face TGI
 
 ```python
 from haystack.components.builders.prompt_builder import PromptBuilder
-from haystack.components.generators import HuggingFaceTGIGenerator
+from haystack.components.generators import HuggingFaceAPIGenerator
 from haystack.components.embedders import SentenceTransformersTextEmbedder
 from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
 from haystack.utils import ComponentDevice
@@ -206,7 +206,10 @@ GPT4 Correct Assistant:
 
 retriever = InMemoryEmbeddingRetriever(speaker_document_store)
 text_embedder = SentenceTransformersTextEmbedder(device=ComponentDevice.from_str("cuda:0"))
-answer_generator = HuggingFaceTGIGenerator("openchat/openchat-3.5-0106", generation_kwargs={"max_new_tokens":500})
+answer_generator = HuggingFaceAPIGenerator(
+    api_type="serverless_inference_api",
+    api_params={"model": "openchat/openchat-3.5-0106"},
+    generation_kwargs={"max_new_tokens":500})
 prompt_builder = PromptBuilder(template=open_chat_prompt)
 ```
 
@@ -244,6 +247,6 @@ result["llm"]["replies"][0]
 
 Thanks for reading! By combining the transcription capabilities of AssemblyAI with the power of Haystack, you can enhance your RAG systems with speaker labels, ensuring a more comprehensive and accurate understanding of the content. 
 
-If you want to stay on top of the latest Haystack developments, you can [subscribe to our newsletter](https://landing.deepset.ai/haystack-community-updates?utm_campaign=developer-relations&utm_source=assembly-ai&utm_medium=article) or [join our Discord community](https://discord.com/invite/haystack). Don’t forget to [get your free API key](https://www.assemblyai.com/) from AssemblyAI and [subscribe to AssemblyAI’s YouTube channel](https://www.youtube.com/@AssemblyAI) for weekly videos and tutorials on the latest developments in the AI world.
+If you want to stay on top of the latest Haystack developments, you can [subscribe to our newsletter](https://landing.deepset.ai/haystack-community-updates) or [join our Discord community](https://discord.com/invite/haystack). Don’t forget to [get your free API key](https://www.assemblyai.com/) from AssemblyAI and [subscribe to AssemblyAI’s YouTube channel](https://www.youtube.com/@AssemblyAI) for weekly videos and tutorials on the latest developments in the AI world.
 
 

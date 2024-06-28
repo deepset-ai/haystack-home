@@ -120,9 +120,10 @@ Try out how Haystack answers questions about the given documents using the **RAG
 {{< tabs totalTabs="3">}}
 
 {{< tab tabName="Quickstart: Ready-Made Template"  >}}
-First, install Haystack and the [Chroma integration](https://haystack.deepset.ai/integrations/chroma-documentstore) (we will use it as our document store):
+Install Haystack:
+
 ```bash
-pip install haystack-ai chroma-haystack
+pip install haystack-ai 
 ```
 
 ```python
@@ -146,29 +147,29 @@ print(result["llm"]["replies"][0])
 {{< /tab  >}}
 
 {{< tab tabName="Corresponding Pipeline"  >}}
-First, install Haystack and the [Chroma integration](https://haystack.deepset.ai/integrations/chroma-documentstore) (we will use it as our document store):
+Install Haystack:
+
 ```bash
-pip install haystack-ai chroma-haystack
+pip install haystack-ai
 ```
 ```python
 import os
+import urllib.request
 
 from haystack import Pipeline
-from haystack_integrations.document_stores.chroma import ChromaDocumentStore
+from haystack.document_stores.in_memory import InMemoryDocumentStore
+from haystack.components.retrievers import InMemoryEmbeddingRetriever
 from haystack.components.converters import TextFileToDocument
 from haystack.components.preprocessors import DocumentCleaner, DocumentSplitter
 from haystack.components.embedders import OpenAIDocumentEmbedder, OpenAITextEmbedder
 from haystack.components.writers import DocumentWriter
-
-from haystack_integrations.components.retrievers.chroma import ChromaEmbeddingRetriever
 from haystack.components.builders import PromptBuilder
 from haystack.components.generators import OpenAIGenerator
-import urllib.request
 
 os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
 urllib.request.urlretrieve("https://www.gutenberg.org/cache/epub/7785/pg7785.txt", "davinci.txt")  
 
-document_store = ChromaDocumentStore(persist_path=".")
+document_store = InMemoryDocumentStore()
 
 text_file_converter = TextFileToDocument()
 cleaner = DocumentCleaner()
@@ -190,7 +191,7 @@ indexing_pipeline.connect("embedder.documents", "writer.documents")
 indexing_pipeline.run(data={"sources": ["davinci.txt"]})
 
 text_embedder = OpenAITextEmbedder()
-retriever = ChromaEmbeddingRetriever(document_store)
+retriever = InMemoryEmbeddingRetriever(document_store)
 template = """Given these documents, answer the question.
               Documents:
               {% for doc in documents %}
@@ -211,7 +212,7 @@ rag_pipeline.connect("text_embedder.embedding", "retriever.query_embedding")
 rag_pipeline.connect("retriever.documents", "prompt_builder.documents")
 rag_pipeline.connect("prompt_builder", "llm")
 
-query = "How old was he when he died?"
+query = "How old was Leonardo when he died?"
 result = rag_pipeline.run(data={"prompt_builder": {"query":query}, "text_embedder": {"text": query}})
 print(result["llm"]["replies"][0])
 ```

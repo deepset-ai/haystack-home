@@ -22,11 +22,11 @@ Choose the required components based on your use case and create your Haystack p
 
 ## 2. Human Evaluation
 
-As the first step, perform manual evaluation. Test a few queries (5-10 queries) and manually assess the accuracy, relevance, coherence, format, and overall quality of your pipeline’s output. This will provide an initial understanding of how well your system performs and highlight any obvious issues.
+As the first step, perform **manual evaluation**. Test a few queries (5-10 queries) and manually assess the accuracy, relevance, coherence, format, and overall quality of your pipeline’s output. This will provide an initial understanding of how well your system performs and highlight any obvious issues.
 
 To trace the data through each pipeline step, debug the intermediate components using the [include_outputs_from](https://docs.haystack.deepset.ai/reference/pipeline-api#pipelinerun) parameter. This feature is particularly useful for observing the retrieved documents or verifying the rendered prompt. By examining these intermediate outputs, you can pinpoint where issues may arise and identify specific areas for improvement, such as tweaking the prompt or trying out different models.
 
-## 2. Deciding on Metrics
+## 3. Deciding on Metrics
 
 Evaluation metrics are crucial for measuring the effectiveness of your pipeline. Common metrics are:
 
@@ -48,18 +48,17 @@ Some metrics might require labeled data, while others can be evaluated using LLM
 
 In addition to Haystack’s built-in evaluators, you can use metrics from other evaluation frameworks like [ragas](https://haystack.deepset.ai/integrations/ragas) and [DeepEval](https://haystack.deepset.ai/integrations/deepeval). For more detailed information on evaluation metrics, refer to 📖 [Docs: Evaluation](https://docs.haystack.deepset.ai/docs/evaluation). 
 
-## 3. Building an Evaluation Pipeline
+## 4. Building an Evaluation Pipeline
 
-Build a pipeline with your evaluators. To learn about evaluating with Haystack’s own metrics, you can follow 📚 [Tutorial: Evaluating RAG Pipelines](https://haystack.deepset.ai/tutorials/35_evaluating_rag_pipelines). 
+Build a pipeline with your evaluators. To learn about evaluating with Haystack’s evaluators, you can follow 📚 [Tutorial: Evaluating RAG Pipelines](https://haystack.deepset.ai/tutorials/35_evaluating_rag_pipelines). 
 
-> 🧑‍🍳 As well as Haystack’s own evaluation metrics, you can also integrate with a number of evaluation frameworks. See the integrations and examples below 👇
+> 🧑‍🍳 As well as Haystack’s own evaluation metrics, you can also integrate a Haystack pipeline with many evaluation frameworks. See the integrations and examples below 👇
 > 
 > - [Evaluate with DeepEval](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/rag_eval_deep_eval.ipynb)
 > - [Evaluate with ragas](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/rag_eval_ragas.ipynb)
 > - [Evaluate with UpTrain](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/rag_eval_uptrain.ipynb)
 
 For step-by-step instructions, watch [our video walkthrough](https://youtu.be/5PrzXaZ0-qk?feature=shared) 🎥 👇
-
 
 <iframe
   width="640"
@@ -73,7 +72,7 @@ For step-by-step instructions, watch [our video walkthrough](https://youtu.be/5P
 
 For a comprehensive evaluation, make sure to evaluate specific steps in the pipeline (e.g., retrieval or generation) and the performance of the entire pipeline. To get inspiration on evaluating your pipeline, have a look at 🧑🏼‍🍳 [Cookbook: Prompt Optimization with DSPy](https://github.com/deepset-ai/haystack-cookbook/blob/main/notebooks/prompt_optimization_with_dspy.ipynb), which explains the details of prompt optimization and evaluation, or read 📚 [Article: RAG Evaluation with Prometheus 2](https://haystack.deepset.ai/blog/rag-evaluation-with-prometheus-2), which explores using open LMs to evaluate with custom metrics.
 
-## 4. Running Evaluation
+## 5. Running Evaluation
 
 Evaluate your pipeline with different parameters, change the `top_k` value, and try a different embedding model, play with the `temperature` to find what works best for your use case. If you need labeled data for evaluation, you can use some datasets that come with ground-truth documents and ground-truth answers. You can find some datasets on [Hugging Face datasets](https://huggingface.co/datasets) or in the [haystack-evaluation](https://github.com/deepset-ai/haystack-evaluation/tree/main/datasets) repository. 
 
@@ -81,26 +80,23 @@ Make sure to set up your evaluation environment so that it’s easy to evaluate 
 
 Read more about how you can optimize your pipeline by trying different parameter combinations in 📚 [Article: Benchmarking Haystack Pipelines for Optimal Performance](https://haystack.deepset.ai/blog/benchmarking-haystack-pipelines)
 
-## 5. Analyzing Results
+## 6. Analyzing Results
 
 Visualize your data and your results to have a general understanding of your pipeline’s performance.
 
 - Create a report using [EvaluationRunResult.score_report()](https://docs.haystack.deepset.ai/reference/evaluation-api#evaluationrunresult) and transform the evaluation results into a Pandas DataFrame with the aggregated scores for each metric:
 
-![Untitled](score-report.png#small)
+![A table showing the aggregated Document MRR, Faithfulness and Semantic Answer Similarity scores](score-report.png#small)
 
 - Use Pandas to analyze the results for different parameters (`top_k`, `batch_size`, `embedding_model`) in a comprehensive view
 - Use libraries like Matplotlib or Seaborn to visually represent your evaluation results.
     
 ![Using box-plots makes sense when comparing different models](box-plot.png#medium "Using box-plots makes sense when comparing different models")
-    
-    
-    
 
 > Refer to 📚 [Benchmarking Haystack Pipelines for Optimal Performance: Results Analysis](https://haystack.deepset.ai/blog/benchmarking-haystack-pipelines#results-analysis) or 💻 [Notebook: Analyze ARAGOG Parameter Search](https://github.com/deepset-ai/haystack-evaluation/blob/main/evaluations/analyze_aragog_parameter_search.ipynb) to visualize evaluation results.
 > 
 
-## 6. Improving Your Pipeline
+## 7. Improving Your Pipeline
 
 After evaluation, analyze the results to identify areas of improvement. Here are some methods:
 
@@ -108,7 +104,7 @@ After evaluation, analyze the results to identify areas of improvement. Here are
 
 - **Data Cleaning**: Ensure your data is clean and well-structured before indexing using [DocumentCleaner](https://docs.haystack.deepset.ai/docs/documentcleaner) and [DocumentSplitter](https://docs.haystack.deepset.ai/docs/documentsplitter).
 - **Data Quality:** Enrich the semantics of your documents by [embedding meaningful metadata](https://haystack.deepset.ai/tutorials/39_embedding_metadata_for_improved_retrieval) alongside the document's contents.
-- **Metadata Filtering**: Limit the search space by using [metadata filters](https://docs.haystack.deepset.ai/docs/metadata-filtering) or extracting metadata from queries to use as filters. For more details, read 📚 [Extract Metadata from Queries to Improve Retrieval](https://haystack.deepset.ai/blog/extracting-metadata-filter).
+- **Metadata Filtering**: Limit the search space by using [metadata filters](https://docs.haystack.deepset.ai/docs/metadata-filtering) or extracting metadata from queries to use as filters. For more details, read 📚 [Article: Extract Metadata from Queries to Improve Retrieval](https://haystack.deepset.ai/blog/extracting-metadata-filter).
 - **Different Embedding Models:** Compare different embedding models from different model providers. See the full list of supported embedding providers in [Embedders](https://docs.haystack.deepset.ai/docs/embedders).
 - **Advanced Retrieval Techniques**: Leverage techniques like [hybrid retrieval](https://haystack.deepset.ai/tutorials/33_hybrid_retrieval), [sparse embeddings](https://docs.haystack.deepset.ai/docs/retrievers#sparse-embedding-based-retrievers), or [Hypothetical Document Embeddings (HYDE)](https://docs.haystack.deepset.ai/docs/hypothetical-document-embeddings-hyde).
 
@@ -121,6 +117,6 @@ After evaluation, analyze the results to identify areas of improvement. Here are
 - **Different Generators**: Try different large language models and benchmark the results. The full list of model providers is in [Generators](https://docs.haystack.deepset.ai/docs/generators).
 - **Prompt Engineering**: Use few-shot prompts or provide more instructions to enable the exact match.
 
-## 7. Monitoring:
+## 8. Monitoring:
 
 Implement strategies for [tracing](https://docs.haystack.deepset.ai/docs/tracing) the application post-deployment. By integrating [LangfuseConnector](https://docs.haystack.deepset.ai/docs/langfuseconnector) into your pipeline, you can collect the queries, documents, and answers and use them to continuously evaluate your application. Learn more about pipeline monitoring in 📚 [Article: Monitor and trace your Haystack pipelines with Langfuse](https://haystack.deepset.ai/blog/langfuse-integration).

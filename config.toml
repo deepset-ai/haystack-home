@@ -129,6 +129,12 @@ paginatePath = "/"
   parent = 'learn'
   weight = 2
 
+[[menu.main]]
+  name = '🗺️ Guides'
+  url = '/guides'
+  parent = 'learn'
+  weight = 3
+
 # Resources children
 [[menu.main]]
   name = 'Release Notes'

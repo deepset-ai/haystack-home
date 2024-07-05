@@ -1,0 +1,67 @@
+{{ $type := .Type }}
+{{ $title := "All Guides" }}
+{{ if or (eq .Type "authors") (eq .Type "tags") }}
+  {{ $title = .Params.title }}
+{{end}}
+
+{{ $guides := where .Data.Pages "Params.hidden" "!=" true }}
+
+<div class="blog-list-content">
+  <div class="container container-padded">
+    <div class="inner inner-top">
+      <h2 class="section-title">
+        {{ if or (eq .Type "authors") (eq .Type "tags") }}{{ .Params.title }}{{ else }}All Guides{{end}}
+      </h2>
+
+      <div class="blog-grid-container">
+        {{ $currentTags := slice }}
+        {{ range $guides }}
+          {{ $currentTags = union $currentTags .Params.tags }}
+        {{ end }}
+        {{ $currentTags = sort $currentTags }}
+        {{ if gt (len $currentTags) 1 }}
+          <div class="blog-sidebar">
+
+            <div id="topic-select">
+              {{ range $currentTags }}
+                {{ $tag := . | urlize }}
+                {{ with $.Site.GetPage "taxonomyTerm" (printf "tags/%s" $tag) }}
+                  {{ if not (eq $title .Params.title) }}
+                      <div class="topic-select-child">
+                          <input class="checkbox" type="checkbox" name="{{.Title}}" id="{{.Title}}" onchange="filterAndSort();"
+                          >
+                          <label for="{{.Title}}">{{.Title}}</label>
+                        </div>
+                        {{ end }}
+                  {{ end }}
+              {{ end }}
+
+              <button class="btn btn-green topic-confirm">Confirm</button>
+            </div>
+
+            {{/*  Mobile close btn  */}}
+            <button class="sidebar-close-btn" aria-label="Close sidebar">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" role="img" aria-label="Cross icon" focusable="false">
+                <path d="M1 1l12 12m0-12L1 13" stroke="#fff" stroke-linecap="round" stroke-width="2"></path>
+              </svg>
+            </button>
+          </div>
+        {{ end }}
+        {{/* Blog posts grid */}}
+        <div class="blog-grid blog-grid-static">
+  
+          <div class="grid-page-grid">
+            {{ range $guides }}
+              {{ partial "guide-card" . }}
+            {{ end }}
+          </div>
+
+  
+        </div>
+  
+        <div class="blog-grid blog-grid-search"></div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -59,6 +59,30 @@
       }
     }
   }
+
+  iframe {
+    display: block;
+    margin: var(--sm-text-spacing) auto;
+  }
+}
+
+.guide-content{
+
+  table {
+    font-size: var(--text-small);
+    // margin: var(--sm-text-spacing) auto;
+  }
+
+  th, td {
+    padding: 5px;
+    border: 1px solid black;
+  }
+
+  th {
+    background-color: var(--color-dark-grey);
+    color: white;
+  }
+    
 }
 
 .blog-post-header {

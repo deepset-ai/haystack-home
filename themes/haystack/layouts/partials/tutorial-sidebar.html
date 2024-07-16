@@ -1,9 +1,13 @@
 {{/*  Tutorial page sidebar  */}}
-<aside class="toc-sidebar">
+<aside class="toc-sidebar {{if .Params.guide}} blog-post-sidebar {{ end }}">
   <div class="accordions">
     {{ $currentPage := . }}
     {{ $tutorials := where (where (.GetPage "/tutorials").Pages "Params.hidden" "!=" true) "Params.haystack_2" true }}
-
+    {{/* Toc */}}
+    {{if .Params.guide}}
+      <span class="toc-heading">Table of contents</span>
+      {{ .TableOfContents }}
+    {{ else }}
     {{/* Beginner */}}
     <details
       class="accordion-js"
@@ -124,5 +128,6 @@
         {{ end }}
       </ul>
     </details>
+    {{ end }}
   </div>
 </aside>

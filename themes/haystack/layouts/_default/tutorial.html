@@ -7,9 +7,17 @@
         {{ partial "tutorial-sidebar" . }}
 
         {{/* Tutorial */}}
-        <article class="article-content">
-          {{ with .Params.title }}
-            <h1> Tutorial: {{.}} </h1>
+        <article class="article-content {{with .Params.guide}} blog-post-content guide-content{{end}}">
+          {{ $title := .Params.title}}
+         
+          {{ if .Params.guide}}
+            <h1> Walkthrough: {{ $title }} </h1>
+          
+            {{/* Description */}}
+            <p class="description">{{ .Params.description }}</p>
+          
+          {{ else }}
+            <h1> Tutorial: {{ $title }} </h1>
             <br>
           {{ end }}
           
@@ -113,6 +121,7 @@
           </div>
         </article>
 
+        {{ if not .Params.guide }}
         {{/* Stars/contribute sidebar */}}
         <aside class="right-sidebar">
           {{ partial "github-stars-button" . }}
@@ -133,6 +142,27 @@
             >
           </div>
         </aside>
+        {{ else}}
+        <aside class="right-sidebar">
+          {{ partial "github-stars-button" . }}
+          <div class="sidebar-buttons">
+            <a
+              href="https://github.com/deepset-ai/haystack-tutorials"
+              class="btn"
+              target="_blank"
+              rel="noopener"
+              >Edit on Github Bilge</a
+            >
+            <a
+              href="https://github.com/deepset-ai/haystack/discussions"
+              class="btn"
+              target="_blank"
+              rel="noopener"
+              >Start a Discussion!</a
+            >
+          </div>
+        </aside>
+        {{ end }}
       </div>
     </div>
   </div>

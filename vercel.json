@@ -74,32 +74,32 @@
       "permanent": true
     },
     {
-      "source": "/(pipeline_nodes|components|usage)/v:version/:seg1-:seg2-:seg3",
+      "source": "/(pipeline_nodes|components|guides|usage)/v:version/:seg1-:seg2-:seg3",
       "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1*_:seg2*_:seg3",
       "permanent": true
     },
     {
-      "source": "/(pipeline_nodes|components|usage)/v:version/:seg1-:seg2",
+      "source": "/(pipeline_nodes|components|guides|usage)/v:version/:seg1-:seg2",
       "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1*_:seg2",
       "permanent": true
     },
     {
-      "source": "/(pipeline_nodes|components|usage)/v:version/:seg1",
+      "source": "/(pipeline_nodes|components|guides|usage)/v:version/:seg1",
       "destination": "https://docs.haystack.deepset.ai/v:version/docs/:seg1",
       "permanent": true
     },
     {
-      "source": "/(pipeline_nodes|components|usage)/:seg1-:seg2-:seg3",
+      "source": "/(pipeline_nodes|components|guides|usage)/:seg1-:seg2-:seg3",
       "destination": "https://docs.haystack.deepset.ai/docs/:seg1*_:seg2*_:seg3",
       "permanent": true
     },
     {
-      "source": "/(pipeline_nodes|components|usage)/:seg1-:seg2",
+      "source": "/(pipeline_nodes|components|guides|usage)/:seg1-:seg2",
       "destination": "https://docs.haystack.deepset.ai/docs/:seg1*_:seg2",
       "permanent": true
     },
     {
-      "source": "/(pipeline_nodes|components|usage)/:seg1",
+      "source": "/(pipeline_nodes|components|guides|usage)/:seg1",
       "destination": "https://docs.haystack.deepset.ai/docs/:seg1",
       "permanent": true
     },

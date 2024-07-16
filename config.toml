@@ -118,7 +118,7 @@ paginatePath = "/"
   weight = 2
 
 [[menu.main]]
-  name = '📚 Tutorials'
+  name = '📚 Tutorials & Walkthroughs'
   url = '/tutorials'
   parent = 'learn'
   weight = 1
@@ -128,12 +128,6 @@ paginatePath = "/"
   url = 'https://github.com/deepset-ai/haystack-cookbook'
   parent = 'learn'
   weight = 2
-
-[[menu.main]]
-  name = '🗺️ Guides'
-  url = '/guides'
-  parent = 'learn'
-  weight = 3
 
 # Resources children
 [[menu.main]]

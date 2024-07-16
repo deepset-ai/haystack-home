@@ -10,7 +10,6 @@ last_updated:  2024-07-16
 authors:
   - Sebastian Lee
   - Madeesh Kannan
-  - Tuana Celik
 tags: ["Embeddings","Retrieval"]
 ---	
 

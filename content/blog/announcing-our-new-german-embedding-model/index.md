@@ -32,7 +32,9 @@ Our model is based on [intfloat/multilingual-e5-large](https://huggingface.co/in
 
   
 
-To learn more and get a deeper dive into benchmarks on real-world data, read our full announcement article with mixedbread. Like our influential [German BERT model](https://www.deepset.ai/german-bert), we hope that this state-of-the-art model will enable the German-speaking AI community to build innovative products in the field of retrieval-augmented generation (RAG) and beyond!
+> To learn more and get a deeper dive into benchmarks on real-world data, read our full announcement article with mixedbread.
+
+Like our influential [German BERT model](https://www.deepset.ai/german-bert), we hope that this state-of-the-art model will enable the German-speaking AI community to build innovative products in the field of retrieval-augmented generation (RAG) and beyond!
 
   
 

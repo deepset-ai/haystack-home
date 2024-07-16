@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-title: Announcing our New German Embedding Model
+title: 'mixedbead 🤝 deepset: Announcing our New German Embedding Model'
 description: Learn about the new open-source German embedding model by deepset and mixedbread.ai
 featured_image: thumbnail.png
 images: ["blog/announcing-our-new-german-embedding-model/thumbnail.pnf"]
@@ -14,7 +14,7 @@ authors:
 tags: ["Embeddings","Retrieval"]
 ---	
 
-It’s 2024 and yet, most models today are still geared towards English speaking markets. Today, we’re announcing our latest contribution towards changing that landscape: A new open-source German embedding model - [deepset-mxbai-embed-de-large-v1](https://huggingface.co/mixedbread-ai/deepset-mxbai-embed-de-large-v1) - trained in collaboration with [mixedbread](https://www.mixedbread.ai/).
+It’s 2024 and yet, most models today are still geared towards English speaking markets. Today, [deepset](https://deepset.ai) and [mixedbread](https://www.mixedbread.ai/) are jointly announcing our latest contribution towards changing that landscape: A new open-source German embedding model - [deepset-mxbai-embed-de-large-v1](https://huggingface.co/mixedbread-ai/deepset-mxbai-embed-de-large-v1).
 
   
 

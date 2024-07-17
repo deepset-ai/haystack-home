@@ -65,60 +65,6 @@
         width: 2.25rem;
       }
     }
-
-    // Orbit section
-    .orbit {
-      .orbit-stats-js {
-        margin-top: 2.5rem;
-
-        ul {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 0.5rem;
-          justify-items: start;
-
-          @include sm {
-            grid-template-columns: repeat(4, 1fr);
-          }
-
-          @include lg {
-            grid-template-columns: repeat(6, 1fr);
-          }
-        }
-        
-        li {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          flex-shrink: 0;
-          gap: 0.5rem;
-          width: 100%;
-          max-width: 7.5rem;
-          overflow: hidden;
-
-          img {
-            width: 4rem;
-            height: 4rem;
-            // border: 0.125rem solid var(--color-light-grey);
-            border-radius: 100%;
-            object-fit: cover;
-            overflow: hidden;
-            flex-shrink: 0;
-
-            @include md {
-              width: 5rem;
-              height: 5rem;
-            }
-
-          }
-
-          p {
-            text-align: center;
-            font-size: var(--text-base);
-          }
-        }
-      }
-    }
   }
 
   // Github section

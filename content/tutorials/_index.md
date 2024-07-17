@@ -1,7 +1,7 @@
 ---
 layout: tutorials
-featured_image: /images/tutorials.png
-images: ["/images/tutorials.png"]
+featured_image: /images/tutorial_walkthrough_thumbnail.png
+images: ["/images/tutorial_walkthrough_thumbnail.png"]
 header: dark
 footer: dark
 title: Tutorials & Walkthroughs

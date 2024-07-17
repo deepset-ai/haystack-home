@@ -59,6 +59,23 @@
       }
     }
   }
+
+  iframe {
+    display: block;
+    margin: var(--sm-text-spacing) auto;
+  }
+}
+
+.guide-content{
+
+  .description{
+    color: var(--color-dark-grey)
+  }
+
+  table {
+    font-size: var(--text-small);
+  }
+    
 }
 
 .blog-post-header {

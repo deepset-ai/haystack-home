@@ -121,7 +121,6 @@
           </div>
         </article>
 
-        {{ if not .Params.guide }}
         {{/* Stars/contribute sidebar */}}
         <aside class="right-sidebar">
           {{ partial "github-stars-button" . }}
@@ -142,27 +141,6 @@
             >
           </div>
         </aside>
-        {{ else}}
-        <aside class="right-sidebar">
-          {{ partial "github-stars-button" . }}
-          <div class="sidebar-buttons">
-            <a
-              href="https://github.com/deepset-ai/haystack-tutorials"
-              class="btn"
-              target="_blank"
-              rel="noopener"
-              >Edit on Github Bilge</a
-            >
-            <a
-              href="https://github.com/deepset-ai/haystack/discussions"
-              class="btn"
-              target="_blank"
-              rel="noopener"
-              >Start a Discussion!</a
-            >
-          </div>
-        </aside>
-        {{ end }}
       </div>
     </div>
   </div>

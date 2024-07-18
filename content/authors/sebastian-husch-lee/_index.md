@@ -2,7 +2,7 @@
 layout: author
 title: Sebastian Husch Lee
 name: Sebastian Husch Lee
-slug: sebastian-lee
+slug: sebastian-husch-lee
 position: Solution Engineering Tech Lead
 image: /images/authors/sebastian-lee.png
 socials:

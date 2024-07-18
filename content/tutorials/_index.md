@@ -1,11 +1,11 @@
 ---
 layout: tutorials
-featured_image: /images/tutorials.png
-images: ["/images/tutorials.png"]
+featured_image: /images/tutorial_walkthrough_thumbnail.png
+images: ["/images/tutorial_walkthrough_thumbnail.png"]
 header: dark
 footer: dark
-title: Tutorials
-description: Learn how to use Haystack with our tutorials.
+title: Tutorials & Walkthroughs
+description: Learn how to use Haystack with our tutorials and full walkthroughs.
 
 subtitle: |
   Whether you're a beginner or an experienced user, these tutorials will walk you through Haystack features and functionalities making it easy for you to understand and implement them.

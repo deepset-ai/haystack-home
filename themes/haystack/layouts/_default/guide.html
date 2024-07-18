@@ -1,0 +1,75 @@
+{{/* Blog post */}}
+{{ define "main" }}
+  <div class="container">
+    <div class="inner inner-top">
+      <div class="blog-post">
+        {{/* Sidebar */}}
+        <aside class="toc-sidebar blog-post-sidebar">
+          {{/* Authors */}}
+          {{ if .Params.authors }}
+            {{ partial "blog-post-authors" . }}
+          {{ end }}
+
+          {{/* Toc */}}
+          {{if .Params.toc}}
+            <span class="toc-heading">Table of contents</span>
+            {{ .TableOfContents }}
+          {{ end }}
+        </aside>
+
+        <article class="blog-post-content guide-content">
+          {{/* Blog post header */}}
+          <div class="blog-post-header">
+            <div class="featured-image-wrapper">
+                <figure>
+                    {{/* Featured image */}}
+                    {{ if .Params.featured_image }}
+                    <div class="featured-image">
+                        <img
+                        src="{{.Permalink}}{{ .Params.featured_image }}"
+                        alt="{{ .Params.alt_image }}"
+                        />
+                    </div>
+                    
+                    {{ end }}
+                    {{ if .Params.featured_image_caption}}
+                    <figcaption>{{.Params.featured_image_caption | markdownify}}</figcaption>
+                    {{ end }}
+                </figure>
+            </div>
+            <div class="blog-post-title">
+              {{/*  Tags  */}}
+              <div class="blog-post-tags">
+                {{ range .Params.tags }}
+                  <a class="tag" href="/blog/tags/{{ urlize . }}">
+                    {{ . }}
+                  </a>
+                {{ end }}
+              </div>
+              
+              {{/* Title */}}
+              {{ with .Params.title }}
+              <h1> Guide: {{.}} </h1>
+              <br>
+            {{ end }}
+
+              {{/* Description */}}
+              <p>{{ .Params.description }}</p>
+
+              {{/* Date */}}
+              {{ with .Params.date }}
+                <span class="article-date">
+                  {{ . | time.Format ":date_long" }}
+                </span>
+              {{ end }}
+            </div>
+          </div>
+
+          {{/* Blog post content */}}
+          {{ .Content }}
+
+        </article>
+      </div>
+    </div>
+  </div>
+{{ end }}

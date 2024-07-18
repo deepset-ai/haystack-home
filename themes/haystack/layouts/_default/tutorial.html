@@ -7,9 +7,17 @@
         {{ partial "tutorial-sidebar" . }}
 
         {{/* Tutorial */}}
-        <article class="article-content">
-          {{ with .Params.title }}
-            <h1> Tutorial: {{.}} </h1>
+        <article class="article-content {{with .Params.guide}} blog-post-content guide-content{{end}}">
+          {{ $title := .Params.title}}
+         
+          {{ if .Params.guide}}
+            <h1> Walkthrough: {{ $title }} </h1>
+          
+            {{/* Description */}}
+            <p class="description">{{ .Params.description }}</p>
+          
+          {{ else }}
+            <h1> Tutorial: {{ $title }} </h1>
             <br>
           {{ end }}
           

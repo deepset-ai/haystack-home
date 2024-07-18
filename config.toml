@@ -29,7 +29,7 @@ paginatePath = "/"
 
 [security]
   [security.funcs]
-    getenv = ["^HUGO_", "ORBIT_API_KEY", "GITHUB_ACCESS_TOKEN", "GOOGLE_TAG_ANALYTICS", "DC_API_KEY", "DC_WORKSPACE_NAME", "DC_PIPELINE_NAME"]
+    getenv = ["^HUGO_", "GITHUB_ACCESS_TOKEN", "GOOGLE_TAG_ANALYTICS", "DC_API_KEY", "DC_WORKSPACE_NAME", "DC_PIPELINE_NAME"]
 
 [markup]
   # Code blocks
@@ -118,7 +118,7 @@ paginatePath = "/"
   weight = 2
 
 [[menu.main]]
-  name = '📚 Tutorials'
+  name = '📚 Tutorials & Walkthroughs'
   url = '/tutorials'
   parent = 'learn'
   weight = 1

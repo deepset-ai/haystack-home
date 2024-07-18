@@ -1,9 +1,9 @@
 ---
 layout: author
-title: Sebastian Lee
-name: Sebastian Lee
-slug: sebastian-lee
-position: Applied NLP Engineer
+title: Sebastian Husch Lee
+name: Sebastian Husch Lee
+slug: sebastian-husch-lee
+position: Solution Engineering Tech Lead
 image: /images/authors/sebastian-lee.png
 socials:
   author_page:

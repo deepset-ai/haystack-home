@@ -3,7 +3,7 @@ layout: blog-post
 title: 'Mixedbread  🤝 deepset: Announcing our New German/English Embedding Model'
 description: Learn about the new open-source German/English embedding model by deepset and Mixedbread
 featured_image: thumbnail.png
-images: ["blog/announcing-our-new-german-embedding-model/thumbnail.pnf"]
+images: ["blog/announcing-our-new-german-embedding-model/thumbnail.png"]
 toc: True
 date: 2024-07-18
 last_updated:  2024-07-18
@@ -24,7 +24,7 @@ Our model is based on [intfloat/multilingual-e5-large](https://huggingface.co/in
 |multilingual-e5-large|50.5|❌|❌|
 |jina-embeddings-v2-base-de|50.0|✅|✅|
 |Commercial Models|
-|Cohere Multilingual v3| *52.4* |✅|❌|
+|Cohere Multilingual v3| *52.4* |✅|-|
 
 
 > To learn more and get a deeper dive into benchmarks on real-world data, [read our full announcement article with Mixedbread](https://www.mixedbread.ai/blog/deepset-mxbai-embed-de-large-v1).

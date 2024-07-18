@@ -22,7 +22,7 @@ Our model is based on [intfloat/multilingual-e5-large](https://huggingface.co/in
 |-|-|-|-|
 |**deepset-mxbai-embed-de-large-v1**|**51.7**|✅|✅|
 |multilingual-e5-large|50.5|❌|❌|
-|jina-embeddings-v2-base-de|50.0|✅|✅|
+|jina-embeddings-v2-base-de|50.0|✅|❌|
 |Commercial Models|
 |Cohere Multilingual v3| *52.4* |✅|-|
 

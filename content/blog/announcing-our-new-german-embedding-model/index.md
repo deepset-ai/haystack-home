@@ -27,7 +27,7 @@ Our model is based on [intfloat/multilingual-e5-large](https://huggingface.co/in
 |Cohere Multilingual v3| *52.4* |✅|-|
 
 
-> To learn more and get a deeper dive into benchmarks on real-world data, [read our full announcement article with Mixedbread](https://www.mixedbread.ai/blog/deepset-mxbai-embed-de-large-v1).
+> To learn more and get a deeper dive into benchmarks on real-world data, [read our full announcement article with Mixedbread](https://www.mixedbread.ai/blog/deepset-mxbai-embed-de-large-v1). You can find an overview of the benchmarks in this [spreadsheet](https://docs.google.com/spreadsheets/d/1RIwLk7Ldy5CI03ckqJuOE2BJTYzP4JbVqP6Rz3WO1kw/edit?usp=sharing).
 
 ## Storage and Inference Efficiency 
 

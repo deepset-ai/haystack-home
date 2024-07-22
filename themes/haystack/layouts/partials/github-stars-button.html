@@ -1,21 +1,7 @@
 {{/* Github stars button */}}
 
-{{ $accessToken := getenv "GITHUB_ACCESS_TOKEN" }}
-{{ $starCount := 0 }}
-
-{{ with $accessToken }}
-{{/* Authorization */}}
-{{ $auth := (dict "Authorization" (printf "Bearer %s" $accessToken)) }}
-
-{{/* Fetch Stargazer count */}}
-{{ $starsData := getJSON "https://api.github.com/repos/deepset-ai/haystack" $auth }}
-{{/* Format number to K (2000 -> 2k) */}}
-{{ $starCount = (div $starsData.stargazers_count 1000) | lang.FormatNumber 1 }}
-{{ $starCount = printf (print $starCount "%s") "k"}}
-{{ end }}
-
 {{/* Button */}}
 <a class="github-stars-btn" href="https://github.com/deepset-ai/haystack" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 32 30" fill="none">
   <path d="M15.5556 0C6.96111 0 0 6.88228 0 15.3794C0 22.1848 4.45278 27.9328 10.6361 29.9706C11.4139 30.1052 11.7056 29.6438 11.7056 29.2401C11.7056 28.8748 11.6861 27.6637 11.6861 26.3757C7.77778 27.087 6.76667 25.4337 6.45556 24.5686C6.28056 24.1264 5.52222 22.7615 4.86111 22.3963C4.31667 22.1079 3.53889 21.3966 4.84167 21.3774C6.06667 21.3582 6.94167 22.4924 7.23333 22.9538C8.63333 25.2799 10.8694 24.6263 11.7639 24.2226C11.9 23.2229 12.3083 22.5501 12.7556 22.1656C9.29444 21.7811 5.67778 20.4546 5.67778 14.572C5.67778 12.8995 6.28056 11.5153 7.27222 10.4388C7.11667 10.0543 6.57222 8.4779 7.42778 6.36323C7.42778 6.36323 8.73056 5.95952 11.7056 7.93962C12.95 7.59358 14.2722 7.42056 15.5944 7.42056C16.9167 7.42056 18.2389 7.59358 19.4833 7.93962C22.4583 5.9403 23.7611 6.36323 23.7611 6.36323C24.6167 8.4779 24.0722 10.0543 23.9167 10.4388C24.9083 11.5153 25.5111 12.8803 25.5111 14.572C25.5111 20.4738 21.875 21.7811 18.4139 22.1656C18.9778 22.6462 19.4639 23.5689 19.4639 25.0108C19.4639 27.0678 19.4444 28.721 19.4444 29.2401C19.4444 29.6438 19.7361 30.1244 20.5139 29.9706C23.602 28.9399 26.2853 26.9777 28.1864 24.3603C30.0874 21.7428 31.1103 18.6018 31.1111 15.3794C31.1111 6.88228 24.15 0 15.5556 0Z" fill="#2B2F55"/>
 </svg>
-  Stars <span class="separator">|</span><span class="github-stars-js">{{ $starCount }}</span></a>
+  Stars <span class="separator">|</span><span class="github-stars-js">{{ partial "loader" . }}</span></a>

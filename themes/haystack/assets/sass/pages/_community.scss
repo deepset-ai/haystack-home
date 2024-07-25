@@ -94,6 +94,22 @@
           font-size: var(--text-small);
         }
       }
+
+      .github-stars-js {
+        min-width: 8.75rem;
+        min-height: 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .github-contributors-js {
+        min-width: 6.5rem;
+        min-height: 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 }

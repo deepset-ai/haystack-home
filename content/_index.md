@@ -28,7 +28,7 @@ hero:
 
   CTA:
     link: https://www.deepset.ai/deepset-cloud
-    text: Looking for a managed solution to accelerate your time to value?
+    text: Extend Haystack with deepset Cloud, our development platform for faster building, easier iteration, and one-click deployment of your most mission-critical AI applications.
     logo: /images/logos/deepset-cloud.svg
 
 # Logo garden

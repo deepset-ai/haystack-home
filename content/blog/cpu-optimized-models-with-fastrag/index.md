@@ -35,9 +35,9 @@ One such extension is [Optimum Intel](https://github.com/huggingface/optimum-int
 
 ## Optimization Process: Quantization
 
-The optimization process involves quantizing the model using a calibration dataset, and leveraging an optimized backend like IPEX for Intel Xeon CPUs. Quantization reduces the model size by converting weights and activations from floating-point (e.g., 32-bit) to lower-bit representations (e.g., 8-bit integers). This makes models **smaller**, **faster**, and **more cost-efficient,** with negligible loss in accuracy. Benchmark results of [BGE-large](https://huggingface.co/BAAI/bge-large-en-v1.5) demonstrate a potential **10x speed-up** in the indexing process when using the `int8` variant of the model.
+The optimization process involves quantizing the model using a calibration dataset, and leveraging an optimized backend like IPEX for Intel Xeon CPUs. Quantization reduces the model size by converting weights and activations from floating-point (e.g., 32-bit) to lower-bit representations (e.g., 8-bit integers). This makes models **smaller**, **faster**, and **more cost-efficient**, with negligible loss in accuracy. Benchmark results of [BGE-large](https://huggingface.co/BAAI/bge-large-en-v1.5) demonstrate a potential **10x speed-up** in the indexing process when using the `int8` variant of the model.
 
-![Throughput comparison of int8 and FP32 variants of the BGE-large model with varying batch sizes (sequence length=256) on a Gen 4 Xeon CPU with 56 Cores (1 Socket)](pure-benchmarks.png#medium "Throughput comparison of int8 and FP32 variants of the BGE-large model with varying batch sizes (sequence length=256) on a Gen 4 Xeon CPU with 56 Cores (1 Socket)")
+![Throughput comparison of int8 and FP32 variants of the BGE-large model with varying batch sizes (sequence length=256) on a Gen 4 Xeon CPU (8480+) with 56 Cores (1 Socket)](pure-benchmarks.png#medium "Throughput comparison of int8 and FP32 variants of the BGE-large model with varying batch sizes (sequence length=256) on a Gen 4 Xeon CPU (8480+) with 56 Cores (1 Socket)")
 
 > Note that the benchmark results focus solely on the time spent in the encoding process of the BGE-large model variants. Time taken for tokenization is excluded from these measurements to provide a clearer comparison of the models’ encoding efficiency.
 > 
@@ -115,8 +115,14 @@ BATCH_SIZE_LIST = [1, 4, 8, 16, 32, 64, 128, 256]
 
 for BATCH_SIZE in BATCH_SIZE_LIST:
     print("Running with BATCH_SIZE:", BATCH_SIZE)
-    ipex_doc_embedder = IPEXSentenceTransformersDocumentEmbedder(model="Intel/bge-large-en-v1.5-rag-int8-static", batch_size=BATCH_SIZE, max_seq_length=256, padding="max_length")
-    haystack_doc_embedder = SentenceTransformersDocumentEmbedder(model="BAAI/bge-large-en-v1.5", batch_size=BATCH_SIZE)
+    ipex_doc_embedder = IPEXSentenceTransformersDocumentEmbedder(
+            model="Intel/bge-large-en-v1.5-rag-int8-static", 
+            batch_size=BATCH_SIZE
+        )
+    haystack_doc_embedder = SentenceTransformersDocumentEmbedder(
+            model="BAAI/bge-large-en-v1.5", 
+            batch_size=BATCH_SIZE
+        )
 
     ipex_doc_embedder.warm_up()
     haystack_doc_embedder.warm_up()
@@ -138,7 +144,7 @@ for BATCH_SIZE in BATCH_SIZE_LIST:
 
 ```
 
-The runtime results indicate that using the setup of fastRAG’s components, as demonstrated in the script above, leads to **5.25x to 9.3x speed-ups** in the embedding process when running on a single socket of a **Gen 4 Xeon CPU** and using 56 cores. We can also translate that to throughput (higher is better) and see the differences in speed-ups as well.
+The runtime results indicate that using the setup of fastRAG’s components, as demonstrated in the script above, leads to **5.25x to 9.3x speed-ups** in the embedding process when running on a single socket of a **Gen 4 Xeon CPU (8480+)** and using 56 cores. We can also translate that to throughput (higher is better) and see the differences in speed-ups as well.
 
 
 > 💡 The difference in speedups compared to the benchmark presented previously is due to the extra processing done in Haystack components, mainly, the tokenization process which was excluded in the previous benchmark.
@@ -218,7 +224,8 @@ We create a simple RAG prompt template:
 from haystack.components.builders import PromptBuilder
 
 template = """
-You are a helpful AI assistant. You are given contexts and a question. You must answer the question using the information given in the context.
+You are a helpful AI assistant. You are given contexts and a question. 
+You must answer the question using the information given in the context.
 
 Context:
 {% for document in documents %}
@@ -269,11 +276,13 @@ pipe.connect("prompt_builder", "llm")
 Let’s try the pipeline with a real question:
 
 ```python
-question = "What does Rhodes Statue look like?"
+question = 'What does Rhodes Statue look like?'
 
-response = pipe.run({"embedder": {"text": question}, "reranker": {"query": question}, "prompt_builder": {"question": question}})
+response = pipe.run({'embedder': {'text': question},
+                    'reranker': {'query': question},
+                    'prompt_builder': {'question': question}})
 
-print(response["llm"]["replies"][0])
+print(response['llm']['replies'][0])
 
 >>> The statue was a Colossus of Rhodes, a statue of the Greek sun god Helios that stood in the city of Rhodes and was one of the Seven Wonders of the Ancient World. It is said to have stood about 100 feet (30 meters) tall, making it the tallest statue of its time. The statue was built by Chares of Lindos between 280 and 240 BC. It was destroyed by an earthquake in 226
 ```

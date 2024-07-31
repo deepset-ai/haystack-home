@@ -46,7 +46,7 @@ The optimization process involves quantizing the model using a calibration datas
 
 ## Components
 
-[fastRAG](https://haystack.deepset.ai/integrations/fastrag) is supported as an integration in Haystack, extending Haystack’s document and text embedders with IPEX support. In addition, fastRAG includes two Bi-encoder similarity rankers:
+[fastRAG](https://haystack.deepset.ai/integrations/fastrag) is supported as an integration to Haystack, extending Haystack’s document and text embedders with IPEX support. In addition, fastRAG includes two Bi-encoder similarity rankers:
 
 - [IPEXSentenceTransformersDocumentEmbedder](https://github.com/IntelLabs/fastRAG/blob/main/fastrag/embedders/ipex_embedder.py#L97) and [IPEXSentenceTransformersTextEmbedder](https://github.com/IntelLabs/fastRAG/blob/main/fastrag/embedders/ipex_embedder.py#L109) - Embedder components that use an `int8` quantized embedding models via IPEX, and can embed `Document` and text inputs.
 - [BiEncoderSimilarityRanker](https://github.com/IntelLabs/fastRAG/blob/main/fastrag/rankers/bi_encoder_ranker.py#L11) - A bi-encoder similarity ranker that re-orders a list of documents given a query and an embedder. Bi-encoder models are used to encode documents and queries independently and are more efficient than cross-encoders.

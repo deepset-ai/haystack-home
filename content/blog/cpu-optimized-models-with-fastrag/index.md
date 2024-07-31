@@ -5,7 +5,7 @@ description: Discover how to use optimized embedding models on CPUs to reduce la
 featured_image: thumbnail.png
 featured_image_caption: A RAG pipeline with fastRAG and Haystack
 alt_image: A RAG pipeline with fastRAG and Haystack
-images: ["blog/cpu-optimized-models-with-fastrag.png"]
+images: ["blog/cpu-optimized-models-with-fastrag/thumbnail.png"]
 toc: True
 date: 2024-07-31
 last_updated: 2024-07-31
@@ -15,7 +15,7 @@ authors:
 tags: ["Integration", "Embeddings", "Retrieval"]
 ---
 
-One of the main and critical components of a RAG pipeline is the embedding process, which forms the foundation for efficient information retrieval by transforming raw text into machine-readable vector representations. Embedding models encode textual data into dense vectors, capturing semantic and contextual meaning. These models are used to create embeddings for both queries (for retrieval) and documents (for indexing and reranking). Therefore, optimizing these models through quantization could improve our RAG application by providing:
+One of the main and critical components of a retrieval augmented generation (RAG) pipeline is the embedding process, which forms the foundation for efficient information retrieval by transforming raw text into machine-readable vector representations. Embedding models encode textual data into dense vectors, capturing semantic and contextual meaning. These models are used to create embeddings for both queries (for retrieval) and documents (for indexing and reranking). Therefore, optimizing these models through quantization could improve our RAG application by providing:
 
 - ***Higher throughput***: useful for reducing the time needed for creating or updating your vectors store.
 - ***Lower latency***: improves real-time experience as creating query embeddings and re-ranking of documents are done online per user input.
@@ -25,13 +25,13 @@ This is where specialized frameworks, such as [fastRAG](https://github.com/Intel
 
 ## fastRAG: Intel Labs’ Framework for Efficient RAG
 
-fastRAG is a research framework developed by Intel Labs for efficient and optimized retrieval augmented generative (RAG) pipelines. It incorporates state-of-the-art large language models (LLMs) and information retrieval capabilities. fastRAG is fully compatible with Haystack and includes novel and efficient retrieval augmented generation (RAG) modules designed for efficient deployment on Intel hardware, including client and server CPUs (Xeon) and the [Intel Gaudi AI accelerator](https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi.html).
+fastRAG is a research framework developed by Intel Labs for efficient and optimized RAG pipelines. It incorporates state-of-the-art large language models (LLMs) and information retrieval capabilities. fastRAG is fully compatible with Haystack and includes novel and efficient RAG modules designed for efficient deployment on Intel hardware, including client and server CPUs (Xeon) and the [Intel Gaudi AI accelerator](https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi.html).
 
 The fastRAG [GitHub repository](https://github.com/IntelLabs/fastRAG) provides extensive documentation on each component available in the framework, comprehensive examples, and easy installation instructions for optimized backends. The framework utilizes optimized extensions to popular deep learning frameworks such as PyTorch.
 
 One such extension is [Optimum Intel](https://github.com/huggingface/optimum-intel), an open-source library that extends the Hugging Face Transformers library and takes advantage of Intel® Advanced Vector Extensions 512 (Intel® AVX-512), Vector Neural Network Instructions (VNNI), and Intel® Advanced Matrix Extensions (Intel® AMX) on Intel CPUs to accelerate models. AMX accelerated inference is introduced in PyTorch 2.0 and the [Intel Extension for PyTorch (IPEX)](https://github.com/intel/intel-extension-for-pytorch).
 
-**Intel** and **deepset** are key members in [**Open Platform for Enterprise AI (OPEA)**](https://opea.dev/), a project recently announced by [**LF AI & Data Foundation**](https://lfaidata.foundation/). OPEA aims to accelerate secure, cost-effective generative AI (GenAI) deployments for businesses by driving interoperability across a diverse and heterogeneous ecosystem, starting with retrieval-augmented generation (RAG).
+**Intel** and **deepset** are key members in [**Open Platform for Enterprise AI (OPEA)**](https://opea.dev/), a project recently announced by [**LF AI & Data Foundation**](https://lfaidata.foundation/). OPEA aims to accelerate secure, cost-effective generative AI (GenAI) deployments for businesses by driving interoperability across a diverse and heterogeneous ecosystem, starting with RAG.
 
 ## Optimization Process: Quantization
 
@@ -46,27 +46,33 @@ The optimization process involves quantizing the model using a calibration datas
 
 ## Components
 
-fastRAG extended Haystack’s Document and Text embedder by adding IPEX support. In addition, fastRAG includes two Bi-encoder similarity rankers:
+[fastRAG](https://haystack.deepset.ai/integrations/fastrag) is supported as an integration in Haystack, extending Haystack’s document and text embedders with IPEX support. In addition, fastRAG includes two Bi-encoder similarity rankers:
 
 - [IPEXSentenceTransformersDocumentEmbedder](https://github.com/IntelLabs/fastRAG/blob/main/fastrag/embedders/ipex_embedder.py#L97) and [IPEXSentenceTransformersTextEmbedder](https://github.com/IntelLabs/fastRAG/blob/main/fastrag/embedders/ipex_embedder.py#L109) - Embedder components that use an `int8` quantized embedding models via IPEX, and can embed `Document` and text inputs.
 - [BiEncoderSimilarityRanker](https://github.com/IntelLabs/fastRAG/blob/main/fastrag/rankers/bi_encoder_ranker.py#L11) - A bi-encoder similarity ranker that re-orders a list of documents given a query and an embedder. Bi-encoder models are used to encode documents and queries independently and are more efficient than cross-encoders.
 - [IPEXBiEncoderSimilarityRanker](https://github.com/IntelLabs/fastRAG/blob/main/fastrag/rankers/ipex_bi_encoder_ranker.py#L5) - An IPEX-based [BiEncoderSimilarityRanker](https://github.com/IntelLabs/fastRAG/blob/main/fastrag/rankers/bi_encoder_ranker.py#L11) to be used with an `int8` quantized embedding model.
 
+See the full list of fastRAG components [here](https://haystack.deepset.ai/integrations/fastrag#-components).
+
 ## Same Accuracy, 9x Faster
 
 Maintaining competitive retrieval accuracy is important when optimizing the models. We evaluated the impact of optimization (quantization and calibration) on performance using the Rerank and Retrieval sub-tasks of MTEB with three BGE bi-encoder embedding models. For the [BGE-large](https://huggingface.co/Intel/bge-large-en-v1.5-rag-int8-static) model, the optimization process marginally altered performance compared to the original model, as shown in the table.
+
+<div class="styled-table">
 
 |  | int8 | FP32 | %diff |
 | --- | --- | --- | --- |
 | Reranking | 0.5997 | 0.6003 | -0.108% |
 | Retrieval | 0.5346 | 0.5429 | -1.53% |
 
+</div>
+
 Results for other BGE models can be found [here](https://huggingface.co/blog/intel-fast-embedding).
 
 Let's compare encoding random texts as passages using two different models: 
 
-- `BAAI/bge-large-en-v1.5` (`fp32`) with Haystack's `SentenceTransformersDocumentEmbedder`
-- `Intel/bge-large-en-v1.5-rag-int8-static` (`int8`) with fastRAG's `IPEXSentenceTransformersDocumentEmbedder`
+- [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) (`fp32`) with Haystack's [`SentenceTransformersDocumentEmbedder`](https://docs.haystack.deepset.ai/docs/sentencetransformersdocumentembedder)
+- [Intel/bge-large-en-v1.5-rag-int8-static](https://huggingface.co/Intel/bge-large-en-v1.5-rag-int8-static) (`int8`) with fastRAG's [`IPEXSentenceTransformersDocumentEmbedder`](https://github.com/IntelLabs/fastRAG/blob/main/fastrag/embedders/ipex_embedder.py#L97)
 
 The script below creates random passages, each passage translates into 256 tokens once encoded with the tokenizer, and encodes 16384 passages using the same model in both `fp32` and `int8` variants.
 
@@ -161,7 +167,7 @@ pip install fastrag[intel]
 
 ### Indexing Data
 
-We will start with initializing an in-memory data store and loading the document embedder component from fastRAG. The `IPEXSentenceTransformersDocumentEmbedder` can be used just like any other document embedder in Haystack.
+We will start with initializing an in-memory data store and loading the document embedder component from fastRAG. The `IPEXSentenceTransformersDocumentEmbedder` can be seamlessly integrated into a Haystack pipeline, just like any other component.
 
 ```python
 from haystack import Document

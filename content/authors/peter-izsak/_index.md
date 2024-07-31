@@ -3,7 +3,7 @@ layout: author
 title: Peter Izsak
 name: Peter Izsak
 slug: peter-izsak
-position: Research Scientist and Team Lead
+position: Research Scientist and Team Lead @IntelLabs
 image: /images/authors/peter-izsak.jpg
 socials:
   author_page:

@@ -16,7 +16,7 @@ tags: ["Embeddings","Retrieval"]
 
 It's 2024 and yet, most models today are still primarily geared towards English speaking markets. Today, [deepset](https://deepset.ai) and [Mixedbread](https://www.mixedbread.ai/) are jointly announcing our latest contribution towards changing that landscape: A new open-source German/English embedding model - [deepset-mxbai-embed-de-large-v1](https://huggingface.co/mixedbread-ai/deepset-mxbai-embed-de-large-v1).
 
-Our model is based on [intfloat/multilingual-e5-large](https://huggingface.co/intfloat/multilingual-e5-large) and was fine-tuned on 30+ million pairs of German data for retrieval tasks. On the [NDCG](https://www.evidentlyai.com/ranking-metrics/ndcg-metric)@10 metric, which compares the list of retrieval results against an ideally ordered list of expected results, our model not only sets a new standard for open-source German embedding models but is also competitive with commercial alternatives.  
+Our model is based on [intfloat/multilingual-e5-large](https://huggingface.co/intfloat/multilingual-e5-large) and was fine-tuned on 30+ million pairs of German data for retrieval tasks. On the [NDCG](https://www.evidentlyai.com/ranking-metrics/ndcg-metric)@10 metric, which compares the list of retrieval results against an ideally ordered list of expected results, our model not only sets a new standard for open-source German embedding models but is also competitive with commercial alternatives. 
 
 |Model|Avg. Performance (NDCG@10)|Binary Support|MRL Support|
 |-|-|-|-|
@@ -26,6 +26,7 @@ Our model is based on [intfloat/multilingual-e5-large](https://huggingface.co/in
 |Commercial Models|
 |Cohere Multilingual v3| *52.4* |✅|-|
 
+Nvidia enabled this work by providing cutting-edge computational resources. All training and evaluation was done on a **Nvidia DGX with 8xA100**, sponsored by Nvidia. We are extremely grateful for their contribution to this project.
 
 > To learn more and get a deeper dive into benchmarks on real-world data, [read our full announcement article with Mixedbread](https://www.mixedbread.ai/blog/deepset-mxbai-embed-de-large-v1). You can find an overview of the benchmarks in this [spreadsheet](https://docs.google.com/spreadsheets/d/1RIwLk7Ldy5CI03ckqJuOE2BJTYzP4JbVqP6Rz3WO1kw/edit?usp=sharing).
 

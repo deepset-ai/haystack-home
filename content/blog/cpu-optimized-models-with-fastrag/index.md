@@ -7,8 +7,8 @@ featured_image_caption: A RAG pipeline with fastRAG and Haystack
 alt_image: A RAG pipeline with fastRAG and Haystack
 images: ["blog/cpu-optimized-models-with-fastrag/thumbnail.png"]
 toc: True
-date: 2024-07-31
-last_updated: 2024-07-31
+date: 2024-08-01
+last_updated: 2024-08-01
 authors:
   - Peter Izsak
   - Bilge Yucel

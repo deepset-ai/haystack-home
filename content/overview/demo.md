@@ -2,18 +2,43 @@
 layout: overview
 header: dark
 footer: dark
-title: Demo
+title: Demos
 description: Check out our live demo with Haystack.
 weight: 3
-toc: false
+toc: true
 aliases: [quick-demo]
-hidden: true
 ---
 
-<!-- <video autoplay loop muted playsinline poster="/images/haystack-demo-poster.jpg" class="responsive"><source src="/images/haystack-demo-short.mp4" type="video/mp4"></video> -->
+Check out demos built with Haystack!
 
-<video autoplay loop muted playsinline poster="/images/haystack-demo-poster.jpg" class="responsive"><source src="/images/haystack-demo-short.webm" type="video/webm"></video>
+## AutoQuizzer
 
-Try out our Explore The World live demo! Ask any question on countries or capital cities and let Haystack return the answers to you.
+<video autoplay loop muted playsinline poster="/images/haystack-demo-poster.jpg" class="responsive"><source src="/images/autoquizzer-demo.mp4" type="video/mp4"></video>
 
-{{< button url="https://haystack-demo.deepset.ai/" text="Haystack Demo" color="green">}}
+Try out our **AutoQuizzer** demo built with **Haystack** and **Llama 3 8B Instruct**! Generate a quiz from a URL, play the quiz, or let the LLM play it.
+
+{{< button url="https://huggingface.co/spaces/deepset/autoquizzer" text="🤗 AutoQuizzer HF Space" color="green">}}
+
+## Other Demos
+
+Here are some demos built with Haystack for various use cases:
+
+<!-- * [Hacker News Post Summaries 🧡](https://huggingface.co/spaces/Tuana/hackernews-summaries)
+* [Should I Follow on Mastodon? 🐤](https://huggingface.co/spaces/deepset/should-i-follow)
+* [Captionate 📸](https://huggingface.co/spaces/bilgeyucel/captionate)
+* [Fact Checking 🎸 Rocks!](https://huggingface.co/spaces/anakin87/fact-checking-rocks)
+* [Search All Docs 🔎](https://huggingface.co/spaces/deepset/search-all-the-docs) -->
+
+<div class="styled-table demo">
+
+|Demo |Description|
+|--|--|
+|[Hacker News Post Summaries 🧡](https://huggingface.co/spaces/Tuana/hackernews-summaries)|Get the summaries of latest top Hacker News posts|
+|[Should I Follow on Mastodon? 🐤](https://huggingface.co/spaces/deepset/should-i-follow) |Check what a user has been posting about lately on Mastodon|
+|[Captionate 📸](https://huggingface.co/spaces/bilgeyucel/captionate)                     |Generate Instagrammable captions for your images|
+|[Fact Checking 🎸 Rocks!](https://huggingface.co/spaces/anakin87/fact-checking-rocks)    |Let AI do fact checking for a rock music statement|
+|[Search All Docs 🔎](https://huggingface.co/spaces/deepset/search-all-the-docs)    | RAG for DocArray, Streamlit, Jinja, Pandas, Elasticsearch and NumPy docs|
+</div>
+
+Discover more Haystack demos in the [haystack-demos](https://github.com/deepset-ai/haystack-demos) repository.
+

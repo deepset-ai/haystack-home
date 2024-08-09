@@ -6,6 +6,7 @@ title: Roadmap
 description: Check out what's next for the Haystack project in our Roadmap.
 weight: 4
 aliases: [/overview/roadmap]
+hidden: true
 ---
 
 We believe open-source is more than open-source code. It's about the collaboration, transparency, and trust.

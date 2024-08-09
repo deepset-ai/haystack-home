@@ -118,7 +118,7 @@ paginatePath = "/"
   weight = 2
 
 [[menu.main]]
-  name = 'Demo'
+  name = 'Demos'
   url = '/overview/demo'
   parent = 'overview'
   weight = 3

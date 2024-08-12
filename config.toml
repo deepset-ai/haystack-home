@@ -118,6 +118,12 @@ paginatePath = "/"
   weight = 2
 
 [[menu.main]]
+  name = 'Demos'
+  url = '/overview/demo'
+  parent = 'overview'
+  weight = 3
+
+[[menu.main]]
   name = '📚 Tutorials & Walkthroughs'
   url = '/tutorials'
   parent = 'learn'

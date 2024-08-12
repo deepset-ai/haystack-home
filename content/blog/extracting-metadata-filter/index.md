@@ -19,7 +19,7 @@ cookbook: extracting_metadata_filters_from_a_user_query.ipynb
 >
 > 1️⃣ Extract Metadata from Queries to Improve Retrieval
 >
-> 2️⃣ [Query Expansion](blog/query-expansion)
+> 2️⃣ [Query Expansion](/blog/query-expansion)
 >
 > 3️⃣ Query Decomposition 🔜
 >

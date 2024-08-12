@@ -15,6 +15,8 @@ tags: ["Community"]
 
 We have some good news. After getting many requests for a visual editor to create AI workflows from our community, we're excited to announce the launch of deepset Studio – a visual programming interface for Haystack.
 
+<video autoplay loop muted playsinline poster="/images/studio-image.png" class="responsive"><source src="/images/studio.mp4" type="video/mp4"></video>
+
 ## What is deepset Studio?
 
 deepset Studio is a tool that will help you visually construct AI workflows. It comes with a suite of components that provide the fundamental steps of building any AI application, that you can drag, drop and connect to design your own use case. If you’re already a Haystack user, this will be very familiar to you. You can use all of the [core Haystack components](https://docs.haystack.deepset.ai/reference/audio-api) and connect them the same way you would in code.

@@ -3,7 +3,7 @@ layout: overview
 header: dark
 footer: dark
 title: Demos
-description: Check out our live demo with Haystack.
+description: Check out demos with Haystack.
 weight: 3
 toc: true
 aliases: [quick-demo]
@@ -15,7 +15,7 @@ Check out demos built with Haystack!
 
 <video autoplay loop muted playsinline poster="/images/autoquizzer-demo-image.png" class="responsive"><source src="/images/autoquizzer-demo.mp4" type="video/mp4"></video>
 
-Try out our **AutoQuizzer** demo built with **Haystack** and **Llama 3 8B Instruct**! Generate a quiz from a URL, play the quiz, or let the LLM play it.
+Try out our **AutoQuizzer** demo built with **Haystack** and **Llama 3 8B Instruct**! Generate a quiz from a URL, solve the quiz, or let the LLM play it.
 
 {{< button url="https://huggingface.co/spaces/deepset/autoquizzer" text="🤗 AutoQuizzer HF Space" color="green">}}
 

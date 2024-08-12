@@ -104,6 +104,13 @@ paginatePath = "/"
   url = '/'
   weight = 7
 
+[[menu.main]]
+  identifier = 'studio'
+  name = 'Studio'
+  url = 'https://landing.deepset.ai/deepset-studio-waitlist'
+  weight = 8
+  params = { tag = "Waitlist" }
+
 # Overview children
 [[menu.main]]
   name = 'What is Haystack?'

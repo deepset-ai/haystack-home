@@ -78,7 +78,7 @@ paginatePath = "/"
   name = 'Learn'
   url = '/'
   weight = 3
-  params = { tag = "2.0" }
+  params = { tag = "New" }
 
 [[menu.main]]
   identifier = 'integrations'
@@ -134,13 +134,20 @@ paginatePath = "/"
   name = '📚 Tutorials & Walkthroughs'
   url = '/tutorials'
   parent = 'learn'
-  weight = 1
+  weight = 2
 
 [[menu.main]]
   name = '🧑‍🍳 Cookbooks'
   url = 'https://github.com/deepset-ai/haystack-cookbook'
   parent = 'learn'
-  weight = 2
+  weight = 3
+
+[[menu.main]]
+  name = '🚀 DeepLearning.AI'
+  url = 'https://www.deeplearning.ai/short-courses/building-ai-application-with-haystack/'
+  parent = 'learn'
+  weight = 1
+  params = { tag = "Waitlist" }
 
 # Resources children
 [[menu.main]]

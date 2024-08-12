@@ -9,8 +9,9 @@
     {{/*  Header  */}}
     {{ partial "header" . }}
 
-    <!-- {{/* Announcement Bar */}}
-     {{ if not (or (eq .Params.Layout "advent") (eq .Params.Layout "advent-challenge")) }}
+    {{/* Announcement Bar */}}
+    {{ partial "announcement" . }}
+     <!-- {{ if not (or (eq .Params.Layout "advent") (eq .Params.Layout "advent-challenge")) }}
       {{ partial "announcement" . }}
     {{ end}} -->
 

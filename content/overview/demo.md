@@ -13,7 +13,7 @@ Check out demos built with Haystack!
 
 ## AutoQuizzer
 
-<video autoplay loop muted playsinline poster="/images/haystack-demo-poster.jpg" class="responsive"><source src="/images/autoquizzer-demo.mp4" type="video/mp4"></video>
+<video autoplay loop muted playsinline poster="/images/autoquizzer-demo-image.png" class="responsive"><source src="/images/autoquizzer-demo.mp4" type="video/mp4"></video>
 
 Try out our **AutoQuizzer** demo built with **Haystack** and **Llama 3 8B Instruct**! Generate a quiz from a URL, play the quiz, or let the LLM play it.
 

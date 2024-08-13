@@ -54,7 +54,7 @@ Haystack uses two primary concepts to help you build fully functional and custom
 
 ### Components
 
-At the core of Haystack are its [components](https://docs.haystack.deepset.ai/docs/components_overview—fundamental) building blocks that can perform tasks like [document retrieval](https://docs.haystack.deepset.ai/docs/retrievers), [text generation](https://docs.haystack.deepset.ai/docs/generators), or [creating embeddings](https://docs.haystack.deepset.ai/docs/embedders). A single component is already quite powerful. It can manage local language models or communicate with a hosted model through an API.
+At the core of Haystack are its [components](https://docs.haystack.deepset.ai/docs/components_overview#components) building blocks that can perform tasks like [document retrieval](https://docs.haystack.deepset.ai/docs/retrievers), [text generation](https://docs.haystack.deepset.ai/docs/generators), or [creating embeddings](https://docs.haystack.deepset.ai/docs/embedders). A single component is already quite powerful. It can manage local language models or communicate with a hosted model through an API.
 
 While Haystack offers a bunch of components you can use out of the box, it also lets you create your own [custom components](https://docs.haystack.deepset.ai/docs/custom-components) — as easy as writing a Python class. Explore the [collection of integrations](https://haystack.deepset.ai/integrations) that includes custom components developed by our partners and community, which you can freely use.
 

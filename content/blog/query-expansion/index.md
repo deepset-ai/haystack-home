@@ -74,7 +74,7 @@ class QueryExpander:
     @component.output_types(queries=List[str])
     def run(self, query: str, number: int = 5):
         result = self.pipeline.run({'builder': {'query': query, 'number': number}})
-        expanded_query = eval(result['llm']['replies'][0]) + [query]
+        expanded_query = json.loads(result['llm']['replies'][0]) + [query]
         return {"queries": list(expanded_query)}
 ```
 

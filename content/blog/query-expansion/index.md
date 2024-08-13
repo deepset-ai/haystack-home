@@ -19,7 +19,7 @@ However, retrieval is also in turn dependent on the query that it receives. Ther
 
 In this article, we’ll walk you through a very simple yet effective technique that allows us to make sure we are retrieving more of, and more relevant bits of context to a given query: query expansion.
 
-> TL;DR: Query expansion increases the number of results, so it increases recall (vs precision). In general, BM25 favors precision while embedding retrieval favors recall (See this [explanation by Nils Remiers](https://github.com/UKPLab/sentence-transformers/issues/22#issuecomment-529387645)). So, it makes sense to use BM25+query expansion to increase recall in cases where you want to rely on keyword search.
+> TL;DR: Query expansion increases the number of results, so it increases recall (vs precision). In general, BM25 favors precision while embedding retrieval favors recall (See this [explanation by Nils Reimers](https://github.com/UKPLab/sentence-transformers/issues/22#issuecomment-529387645)). So, it makes sense to use BM25+query expansion to increase recall in cases where you want to rely on keyword search.
 > 
 
 ## Query Expansion

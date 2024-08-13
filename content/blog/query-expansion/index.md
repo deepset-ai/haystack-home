@@ -111,7 +111,7 @@ documents = [
 ]
 ```
 
-When asking to retrieve the top 3 documents to the query "climate change” using the `InMemoryBM25Retriever` (so, we’re doing keyword search) here’s what we get as our top 3 candites:
+When asking to retrieve the top 3 documents to the query "climate change” using the `InMemoryBM25Retriever` (so, we’re doing keyword search) here’s what we get as our top 3 candidates:
 
 ```
 'Air travel is one of the core contributors to climate change.'

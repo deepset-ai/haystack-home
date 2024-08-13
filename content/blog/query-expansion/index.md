@@ -5,8 +5,8 @@ description: Expand keyword queries to improve recall and provide more context t
 featured_image: thumbnail.png
 images: ["blog/query-expansion/thumbnail.png"]
 toc: True
-date: 2024-08-12
-last_updated: 2024-08-12
+date: 2024-08-14
+last_updated: 2024-08-14
 authors:
   - Tuana Celik
 tags: ["Retrieval", "RAG", "Advanced Use Cases"]

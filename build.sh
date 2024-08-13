@@ -17,7 +17,7 @@ cp ./haystack-tutorials/tutorials/*.ipynb ./static/downloads
 ls ./static/downloads
 
 rm -rf haystack-integrations
-git clone --filter=tree:0 https://github.com/deepset-ai/haystack-integrations.git
+git clone --filter=tree:0 --branch arize https://github.com/deepset-ai/haystack-integrations.git
 cp ./haystack-integrations/integrations/*.md ./content/integrations
 
 rm -rf haystack-advent

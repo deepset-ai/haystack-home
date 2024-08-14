@@ -53,14 +53,17 @@ class QueryExpander:
           self.query_expansion_prompt = """
           You are part of an information system that processes users queries.
           You expand a given query into {{ number }} queries that are similar in meaning.
-          Use a structure like the following example to expand the given query into multiple queries that are similar in meaning.
-          ###
-          Example Query 1: "climate change effects"
+          
+          Structure:
+          Follow the structure shown below in examples to generate expanded queries.
+          Examples:
+          1. Example Query 1: "climate change effects"
           Example Expanded Queries: ["impact of climate change", "consequences of global warming", "effects of environmental changes"]
-          ###
-          Example Query 2: ""machine learning algorithms""
+          
+          2. Example Query 2: ""machine learning algorithms""
           Example Expanded Queries: ["neural networks", "clustering", "supervised learning", "deep learning"]
-          ###
+          
+          Your Task:
           Query: "{{query}}"
           Example Expanded Queries:
           """

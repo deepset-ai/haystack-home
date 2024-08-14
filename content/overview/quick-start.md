@@ -34,7 +34,7 @@ Run the following **Quickstart** or the equivalent **Corresponding Pipeline** be
 {{< tab tabName="Quickstart: Ready-Made Template" >}}
 First, install Haystack:
 ```bash
-pip install haystack-ai
+pip install haystack-ai trafilatura
 ```
 
 ```python

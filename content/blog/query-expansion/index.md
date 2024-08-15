@@ -13,6 +13,16 @@ tags: ["Retrieval", "RAG", "Advanced Use Cases"]
 cookbook: query-expansion.ipynb
 ---
 
+> This is part one of the **Advanced Use Cases** series:
+>
+> 1️⃣ [Extract Metadata from Queries to Improve Retrieval](/blog/extracting-metadata-filter)
+>
+> 2️⃣ **Query Expansion**
+>
+> 3️⃣ Query Decomposition 🔜
+>
+> 4️⃣ Automatic Metadata Enrichment 🔜
+
 The quality of RAG (retrieval augmented generation) highly depends on the quality of the first step in the process: retrieval. The generation step can only be as good as the context its working on, which it will receive as a result of a retrieval step.
 
 However, retrieval is also in turn dependent on the query that it receives. There are multiple types of retrieval: keyword based, semantic search (embedding) based, hybrid, or even in some cases simply based on the results of a query to an API (for example, the results of websearch and so on). But at the end of the day, in the majority of cases, there’s a human behind a keyboard typing a query, and humans are not guaranteed to produce good quality queries for the results they intend to get.

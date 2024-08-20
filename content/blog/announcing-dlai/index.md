@@ -2,7 +2,7 @@
 layout: blog-post
 title: Announcing Our New Short Course with DeepLearning.AI
 description: Enroll to "Building AI Applications with Haystack"
-featured_image: thumbnail.jpg
+featured_image: thumbnail.png
 images: ["blog/announcing-dlai/thumbnail.png"]
 toc: True
 date: 2024-08-20

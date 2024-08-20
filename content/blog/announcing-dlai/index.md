@@ -12,7 +12,7 @@ authors:
 tags: ["Community", "RAG"]
 ---	
 
-[DeepLearning.A](http://DeepLearning.AU)I and Andrew Ng hold a special place in many AI/ML engineers careers and development. For many engineers, they’ve played a pivotal role into breaking into AI, or extending their knowledge and capabilities by teaching about core concepts and technologies at the right time. So, we’re incredibly happy to announce that we’re launching our first short course with them - “Building AI Applications with Haystack”
+[DeepLearning.AI](http://deeplearning.ai/) and Andrew Ng hold a special place in many AI/ML engineers careers and development. For many engineers, they’ve played a pivotal role into breaking into AI, or extending their knowledge and capabilities by teaching about core concepts and technologies at the right time. So, we’re incredibly happy to announce that we’re launching our first short course with them - “Building AI Applications with Haystack”
 
 [video with Andrey Ng]
 
@@ -32,8 +32,6 @@ It's been an absolute pleasure for me to create this with the Haystack team and 
 
 ### Follow us
 
-[Haystack on Twitter](https://x.com/Haystack_AI)
-
-[Haystack on YouTube](https://www.youtube.com/@haystack_ai)
-
-[Join our Discord](https://discord.com/invite/VBpFzsgRVF)
+- [Haystack on Twitter](https://x.com/Haystack_AI)
+- [Haystack on YouTube](https://www.youtube.com/@haystack_ai)
+- [Join our Discord](https://discord.com/invite/VBpFzsgRVF)

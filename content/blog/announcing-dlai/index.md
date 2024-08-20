@@ -16,6 +16,8 @@ tags: ["Community", "RAG"]
 
 [video with Andrey Ng]
 
+[**🚀 Enroll now**](https://www.deeplearning.ai/short-courses/building-ai-applications-with-haystack/)
+
 ## What you’ll learn
 
 This course is designed with a bottom up approach, starting by teaching you about the building blocks of generative AI applications. Throughout the course, you’ll start to design and customize your own retrieval-augmented generative (RAG) pipelines, you’ll learn how to extend Haystack with custom capabilities for your own generative AI use case, you’ll even implement a simple self-reflecting agent and end the course by creating a full chat agent with function calling.
@@ -26,9 +28,7 @@ If you’re new to AI, this course is a great way to start learning about the ba
 
 If you’re not new to AI, this course is a great way to get started with Haystack as a tool for you to make your GenAI use cases come to life. 
 
-t's been an absolute pleasure for me to create this with the Haystack team and the [DeepLearning.AI](http://deeplearning.ai/) team. I. I’d love to hear what you think, and if you take the course and end up with questions, please join me for an [AMA session on September 10th](https://landing.deepset.ai/webinar-haystack-ama-session-deeplearning).
-
-[**🚀 Enroll now**](https://www.deeplearning.ai/short-courses/building-ai-applications-with-haystack/)
+It's been an absolute pleasure for me to create this with the Haystack team and the [DeepLearning.AI](http://deeplearning.ai/) team. I. I’d love to hear what you think, and if you take the course and end up with questions, please join me for an [AMA session on September 10th](https://landing.deepset.ai/webinar-haystack-ama-session-deeplearning).
 
 ### Follow us
 

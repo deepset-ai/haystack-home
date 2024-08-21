@@ -144,10 +144,10 @@ paginatePath = "/"
 
 [[menu.main]]
   name = '🚀 DeepLearning.AI'
-  url = 'https://www.deeplearning.ai/short-courses/building-ai-application-with-haystack/'
+  url = 'https://www.deeplearning.ai/short-courses/building-ai-applications-with-haystack/'
   parent = 'learn'
   weight = 1
-  params = { tag = "Waitlist" }
+  params = { tag = "Enroll" }
 
 # Resources children
 [[menu.main]]

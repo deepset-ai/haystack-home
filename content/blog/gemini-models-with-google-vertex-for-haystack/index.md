@@ -17,7 +17,7 @@ cookbook: vertexai-gemini-examples.ipynb
 ---	
 
 
-In this article, we will introduce you to the new Google Vertex AI Integration for Haystack 2.0-Beta. While this integration introduces several new components to the Haystack eco-system (feel free to explore the full integration repo!), we’d like to start by showcasing two components in particular: the [`VertexAIGeminiGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/vertexaigeminigenerator) and the [`VertexAIGeminiChatGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/vertexaigeminichatgenerator), using the `gemini-pro` and `gemini-pro-vision` models.
+In this article, we will introduce you to the new Google Vertex AI Integration for Haystack 2.0-Beta. While this integration introduces several new components to the Haystack eco-system (feel free to explore the full integration repo!), we’d like to start by showcasing two components in particular: the [`VertexAIGeminiGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/vertexaigeminigenerator) and the [`VertexAIGeminiChatGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/vertexaigeminichatgenerator), using the `gemini-pro` and `gemini-1.5-flash` models.
 
 > 💚 _You can run the example code showcased in this article in the accompanying_ _[Colab Notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/vertexai-gemini-examples.ipynb)_
 
@@ -27,7 +27,7 @@ The great news is, to authenticate for access to the Gemini models, you will onl
 
 ## VertexAIGeminiGenerator for Question Answering on Images
 
-The new `VertexAIGeminiGenerator` component allows you to query Gemini models such as `gemini-pro` and `gemini-pro-vision`. In this example, let’s use the latter, allowing us to also make use of images in our queries.
+The new `VertexAIGeminiGenerator` component allows you to query Gemini models such as `gemini-pro` and `gemini-1.5-flash`. In this example, let’s use the latter, allowing us to also make use of images in our queries.
 
 To get started, you will need to install Haystack and the `google-vertex-haystack` the integration:
 
@@ -41,14 +41,14 @@ Just like any other [generator component in Haystack 2.0-Beta](https://docs.hays
 ```python
 from haystack_integrations.components.generators.google_vertex import VertexAIGeminiGenerator
 
-gemini = VertexAIGeminiGenerator(model="gemini-pro-vision", project_id='YOUR-GCP-PROJECT-ID')
+gemini = VertexAIGeminiGenerator(model="gemini-1.5-flash", project_id='YOUR-GCP-PROJECT-ID')
 gemini.run(parts = ["What is the most interesting thing you know?"])
 
 ```
 
 ### Querying with Images
 
-Next, let’s make use of the flexibility of `parts` and pass in some images alongside a question too. In the example below, we are providing 4 images containing robots, and asking `gemini-pro-vision` what it can tell us about them.
+Next, let’s make use of the flexibility of `parts` and pass in some images alongside a question too. In the example below, we are providing 4 images containing robots, and asking `gemini-1.5-flash` what it can tell us about them.
 
 ![Pictures of 4 robots](robots.png)
 
@@ -143,7 +143,7 @@ res["replies"][0].content
 
 ## Building a Full Retrieval-Augmented Generative Pipeline
 
-Alongside the individual use of the new Gemini components above, you can of course also use them in full [Haystack pipelines](https://docs.haystack.deepset.ai/v2.0/docs/pipelines). Here is an example of a RAG pipeline that does question-answering on webpages using the [`LinkContentFetcher`](https://docs.haystack.deepset.ai/v2.0/docs/linkcontentfetcher) and the `VertexAIGeminiGenerator` using the `gemini-pro-vision` model 👇
+Alongside the individual use of the new Gemini components above, you can of course also use them in full [Haystack pipelines](https://docs.haystack.deepset.ai/v2.0/docs/pipelines). Here is an example of a RAG pipeline that does question-answering on webpages using the [`LinkContentFetcher`](https://docs.haystack.deepset.ai/v2.0/docs/linkcontentfetcher) and the `VertexAIGeminiGenerator` using the `gemini-1.5-flash` model 👇
 
 > As we are working on the full release of Haystack 2.0, components that are currently available in the Beta release are mostly focused on text. So, truly multi-modal applications as full Haystack pipelines is not yet possible. We are creating components that can easily handle other medias like images, audio, and video and will be back with examples soon!
 
@@ -160,7 +160,7 @@ fetcher = LinkContentFetcher()
 converter = HTMLToDocument()
 document_splitter = DocumentSplitter(split_by="word", split_length=50)
 similarity_ranker = TransformersSimilarityRanker(top_k=3)
-gemini = VertexAIGeminiGenerator(model="gemini-pro-vision", project_id=project_id)
+gemini = VertexAIGeminiGenerator(model="gemini-1.5-flash", project_id=project_id)
 
 prompt_template = """
 According to these documents:

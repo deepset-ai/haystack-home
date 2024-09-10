@@ -131,6 +131,12 @@ paginatePath = "/"
   weight = 3
 
 [[menu.main]]
+  name = 'deepset Careers'
+  url = "https://www.deepset.ai/jobs"
+  parent = 'overview'
+  weight = 4
+
+[[menu.main]]
   name = '📚 Tutorials & Walkthroughs'
   url = '/tutorials'
   parent = 'learn'

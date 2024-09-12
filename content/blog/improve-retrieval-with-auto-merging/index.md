@@ -5,8 +5,8 @@ description: Learn about the Hierarchical Document Splitter and Auto-Merging to 
 featured_image: thumbnail.png
 images: ["blog/improve-retrieval-with-auto-merging/thumbnail.png"]
 toc: True
-date: 2024-09-11
-last_updated:  2024-09-11
+date: 2024-09-12
+last_updated:  2024-09-12
 cookbook: auto_merging_retriever.ipynb
 authors:
   - David Batista

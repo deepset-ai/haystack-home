@@ -24,7 +24,7 @@
           <li>
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>
-                <summary class="accordion-title">
+                <summary class="cookbook-accordion-title">
                   <span>
                     {{ .Params.title }}
                   </span>
@@ -38,7 +38,7 @@
               </details>
             {{ else }}
               <a
-                class="cookbook-card"
+                class="cookbook-accordion-title"
                 href="{{ .RelPermalink }}"
               >
                 <span>

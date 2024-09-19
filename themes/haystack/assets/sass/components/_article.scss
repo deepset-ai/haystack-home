@@ -190,9 +190,11 @@
       gap: 1.25rem;
     }
 
-    .cookbook-card {
+    .cookbook-accordion-title {
       font-size: var(--text-smaller);
       font-weight: var(--font-weight-base);
+      user-select: none;
+      cursor: pointer;
     }
 
     .accordion-title {

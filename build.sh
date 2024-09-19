@@ -22,10 +22,10 @@ cd haystack-cookbook
 echo "Installing requirements for haystack-cookbook..."
 python3 -m ensurepip --upgrade
 python3 -m pip install -r requirements.txt
-echo "Generating markdown files into ./content/cookbooks..."
-python3 scripts/generate_markdowns.py --output ../content/cookbooks
+echo "Generating markdown files into ./content/cookbook..."
+python3 scripts/generate_markdowns.py --output ../content/cookbook
 cd ..
-ls ./content/cookbooks
+ls ./content/
 mkdir ./static/downloads
 echo "Copying notebook files into ./static/downloads..."
 cp ./haystack-cookbook/notebooks/*.ipynb ./static/downloads

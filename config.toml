@@ -143,8 +143,8 @@ paginatePath = "/"
   weight = 2
 
 [[menu.main]]
-  name = '🧑‍🍳 Cookbooks'
-  url = '/cookbooks'
+  name = '🧑‍🍳 Cookbook'
+  url = '/cookbook'
   parent = 'learn'
   weight = 3
 

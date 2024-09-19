@@ -2,7 +2,7 @@
 <aside class="toc-sidebar {{if .Params.guide}} blog-post-sidebar {{ end }}">
   <div class="accordions">
     {{ $currentPage := . }}
-    {{ $cookbooks := where (.GetPage "/cookbooks").Pages "Params.hidden" "!=" true  }}
+    {{ $cookbooks := where (.GetPage "/cookbook").Pages "Params.hidden" "!=" true  }}
 
     {{ $topics := slice}}
     {{ range $cookbooks }}

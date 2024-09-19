@@ -70,9 +70,8 @@
                 <div class="select-wrapper">
                   <label for="sort">Sort By:</label>
                   <select name="sort" id="sort-select" class="fixed" onchange="filterAndSort();">
-                    <option value="tags">Tags</option>
-                    <option value="updated">Last Updated</option>
                     <option value="created">Newest</option>
+                    <option value="updated">Last Updated</option>
                   </select>
                 </div>
             </div>
@@ -86,8 +85,11 @@
             {{/*
               Sort the notebooks to show first the featured, then the new ones,
               then ones with neither, and the outdated at the bottom.
+              This is the default sorting logic used when the page is loaded the first time.
+              If you change this change also the filter reset.
             */}}
             {{ $sorted := $cookbooks}}
+            {{ $sorted = sort $sorted "Params.created_at" "desc" }}
             {{ $sorted = sort $sorted "Params.new" "desc" }}
             {{ $sorted = sort $sorted "Params.featured" "desc" }}
             {{ $sorted = sort $sorted "Params.outdated" "asc" }}
@@ -156,26 +158,22 @@
 
       {{/*  Sorting  */}}
       if (selectedSort === "created" || selectedSort === "updated") {
-        cookbooks = cookbooks.sort((a, b) => {
-          const aFeatured = a.dataset.featured ? 1 : -1;
-          const bFeatured = b.dataset.featured ? 1 : -1;
-          if (aFeatured !== bFeatured) {
-            return bFeatured - aFeatured;
+        {{/*
+          This is the default sorting logic used when the page is loaded the first time.
+          If you change this change it also above.
+        */}}
+        cookbooks.sort((a, b) => {
+          if (a.dataset.outdated !== b.dataset.outdated) {
+              return a.dataset.outdated - b.dataset.outdated;
           }
-
-          const aDate = new Date(a.dataset[selectedSort]);
-          const bDate = new Date(b.dataset[selectedSort]);
-          return bDate - aDate;
+          if (a.dataset.featured !== b.dataset.featured) {
+              return b.dataset.featured - a.dataset.featured;
+          }
+          if (a.dataset.new !== b.dataset.new) {
+              return b.dataset.new - a.dataset.new;
+          }
+          return new Date(b.dataset[selectedSort]) - new Date(a.dataset[selectedSort]);
         });
-      } else if (selectedSort === "tags") {
-        {/*
-          Sort the notebooks to show first the featured, then the new ones,
-          then ones with neither, and the outdated at the bottom.
-          This is the default when opening the page.
-        */}
-        cookbooks.sort((a, b) => a.outdated - b.outdated);
-        cookbooks.sort((a, b) => b.new - a.new);
-        cookbooks.sort((a, b) => b.featured - a.featured);
       }
 
       {{/*  Update section title  */}}
@@ -192,7 +190,7 @@
 
     const resetFilters = () => {
       document.querySelector("#topic-select").value = "all";
-      document.querySelector("#sort-select").value = "tags";
+      document.querySelector("#sort-select").value = "created";
       document.querySelector("#search").value = "";
       filterAndSort();
     }

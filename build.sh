@@ -16,6 +16,21 @@ echo "Copying notebook files into ./static/downloads..."
 cp ./haystack-tutorials/tutorials/*.ipynb ./static/downloads
 ls ./static/downloads
 
+rm -rf haystack-cookbook
+git clone --filter=tree:0 https://github.com/deepset-ai/haystack-cookbook.git
+cd haystack-cookbook
+echo "Installing requirements for haystack-cookbook..."
+python3 -m ensurepip --upgrade
+python3 -m pip install -r requirements.txt
+echo "Generating markdown files into ./content/cookbooks..."
+python3 scripts/generate_markdowns.py --output ../content/cookbooks
+cd ..
+ls ./content/cookbooks
+mkdir ./static/downloads
+echo "Copying notebook files into ./static/downloads..."
+cp ./haystack-cookbook/notebooks/*.ipynb ./static/downloads
+ls ./static/downloads
+
 rm -rf haystack-integrations
 git clone --filter=tree:0 https://github.com/deepset-ai/haystack-integrations.git
 cp ./haystack-integrations/integrations/*.md ./content/integrations

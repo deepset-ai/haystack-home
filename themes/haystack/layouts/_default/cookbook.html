@@ -13,16 +13,23 @@
 
           <div class="button-container">
             {{/*  Experimental discussion button  */}}
-            {{ with .Params.discussion }}
+            {{ if .Params.discuss }}
               <a
-                href="{{ . }}"
+                href="{{ .Params.discuss }}"
                 class="btn btn-green experimental-btn"
                 target="_blank"
                 rel="noopener"
               >
                 🧑‍🔬 Discuss Experimental Feature
               </a>
+            {{ else if .Params.experimental }}
+              <a
+                class="btn btn-green experimental-btn"
+              >
+                🧑‍🔬 Experimental Feature
+              </a>
             {{ end }}
+
 
             {{/* Colab button */}}
             {{ with .Params.colab }}
@@ -133,7 +140,7 @@
               rel="noopener"
               >Edit on Github</a
             >
-            {{ if not .Params.discussion }}
+            {{ if not .Params.discuss }}
             <a
               href="https://github.com/deepset-ai/haystack/discussions"
               class="btn"

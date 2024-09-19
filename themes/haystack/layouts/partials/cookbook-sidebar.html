@@ -1,0 +1,55 @@
+{{/*  Tutorial page sidebar  */}}
+<aside class="toc-sidebar {{if .Params.guide}} blog-post-sidebar {{ end }}">
+  <div class="accordions">
+    {{ $currentPage := . }}
+    {{ $cookbooks := where (.GetPage "/cookbooks").Pages "Params.hidden" "!=" true  }}
+
+    {{ $topics := slice}}
+    {{ range $cookbooks }}
+      {{ range .Params.topics }}
+        {{ $topics = $topics | append . }}
+      {{ end }}
+    {{ end }}
+
+    {{ range sort (uniq ($topics)) }}
+      <details
+        class="accordion-js"
+        {{ if in $currentPage.Params.topics . }}open{{ end }}
+      >
+        <summary class="accordion-title">
+          <div class="accordion-title-child">{{ . }}</div>
+        </summary>
+        <ul class="content" role="list">
+          {{ range where $cookbooks "Params.topics" "intersect" (slice .) }}
+          <li>
+            {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
+              <details class="accordion-js accordion-child" open>
+                <summary class="accordion-title">
+                  <span>
+                    {{ .Params.title }}
+                  </span>
+                </summary>
+                {{if .Params.toc }}
+                  <div class="content">
+                    {{/* Page TOC */}}
+                    {{ .TableOfContents }}
+                  </div>
+                {{ end }}
+              </details>
+            {{ else }}
+              <a
+                class="cookbook-card"
+                href="{{ .RelPermalink }}"
+              >
+                <span>
+                  {{ .Params.title }}
+                </span>
+              </a>
+            {{ end }}
+          </li>
+          {{ end }}
+        </ul>
+      </details>
+    {{ end }}
+  </div>
+</aside>

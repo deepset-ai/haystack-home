@@ -262,6 +262,16 @@
     color: var(--color-white);
   }
 
+  &.new {
+    background-color: var(--color-bg-yellow);
+    color: var(--color-dark-blue);
+  }
+
+  &.topic {
+    background-color: var(--color-bg-red);
+    color: var(--color-white);
+  }
+
   &.guide {
     background-color: var(--color-purple);
     color: var(--color-white);

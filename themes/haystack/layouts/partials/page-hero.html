@@ -1,4 +1,4 @@
-{{/* Hero used in the Tutorials, Blog, and Author pages */}}
+{{/* Hero used in the Tutorials, Cookbooks, Blog, and Author pages */}}
 <div class="page-hero">
   <div class="container container-padded">
     <section class="hero-heading">
@@ -12,7 +12,7 @@
       {{ end }}
     </section>
 
-    {{ if or (eq .Type "integrations") (eq .Type "tutorials") }}
+    {{ if or (eq .Type "integrations") (eq .Type "tutorials") (eq .Type "cookbooks") }}
         {{ partial "contribute-button" . }}
     {{ end }}
   </div>

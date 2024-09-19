@@ -46,6 +46,11 @@ haystack-tutorials
 content/tutorials
 !content/tutorials/_index.md
 
+# Cookbook files are pulled at build time
+haystack-cookbook
+content/cookbook
+!content/cookbook/_index.md
+
 haystack-integrations
 content/integrations/*.md
 !content/integrations/_index.md

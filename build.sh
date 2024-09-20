@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf haystack-tutorials
-git clone --filter=tree:0 https://github.com/deepset-ai/haystack-tutorials.git
+git clone --depth=1 https://github.com/deepset-ai/haystack-tutorials.git
 
 cd haystack-tutorials
 echo "Installing requirements for haystack-tutorials..."
@@ -17,7 +17,7 @@ cp ./haystack-tutorials/tutorials/*.ipynb ./static/downloads
 ls ./static/downloads
 
 rm -rf haystack-cookbook
-git clone --filter=tree:0 https://github.com/deepset-ai/haystack-cookbook.git
+git clone --depth=1 https://github.com/deepset-ai/haystack-cookbook.git
 cd haystack-cookbook
 echo "Installing requirements for haystack-cookbook..."
 python3 -m ensurepip --upgrade
@@ -32,11 +32,11 @@ cp ./haystack-cookbook/notebooks/*.ipynb ./static/downloads
 ls ./static/downloads
 
 rm -rf haystack-integrations
-git clone --filter=tree:0 https://github.com/deepset-ai/haystack-integrations.git
+git clone --depth=1 https://github.com/deepset-ai/haystack-integrations.git
 cp ./haystack-integrations/integrations/*.md ./content/integrations
 
 rm -rf haystack-advent
-git clone --filter=tree:0 https://$GITHUB_USER_NAME:$GH_HAYSTACK_HOME_PAT@github.com/deepset-ai/advent-of-haystack.git haystack-advent
+git clone --depth=1 https://$GITHUB_USER_NAME:$GH_HAYSTACK_HOME_PAT@github.com/deepset-ai/advent-of-haystack.git haystack-advent
 cp -R ./haystack-advent/challenges/* ./content/advent-of-haystack
 
 npm install

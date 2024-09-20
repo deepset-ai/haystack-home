@@ -1,7 +1,7 @@
 ---
 layout: cookbooks
-featured_image: /images/cookbook_thumbnail.png
-images: ["/images/cookbook_thumbnail.png"]
+featured_image: /images/cookbook-thumbnail.png
+images: ["/images/cookbook-thumbnail.png"]
 header: dark
 footer: dark
 title: 🧑‍🍳 Cookbook

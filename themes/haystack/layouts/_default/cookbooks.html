@@ -1,0 +1,199 @@
+{{/* Cookbooks page */}}
+{{ define "main" }}
+  {{ $cookbooks := where .Data.Pages "Params.hidden" "!=" true }}
+  <div class="grid-page">
+    {{/* Hero */}}
+    {{ partial "page-hero" . }}
+
+    <div class="grid-page-content">
+      <div class="container container-padded">
+        <div class="inner inner-top">
+          {{/* Section title */}}
+          <div class="title-container">
+            <h2 class="section-title">
+              {{ len $cookbooks }} cookbooks
+            </h2>
+          </div>
+
+          {{/* Sorting options / Filters */}}
+          <div class="grid-page-options">
+            <div class="filters">
+              {{/* Search */}}
+              <div class="search-wrapper">
+                <input
+                  id="search"
+                  type="text"
+                  placeholder="Search"
+                  oninput="filterAndSort();"
+                />
+                <div class="search-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M19.3187 18.0273L13.232 11.9406C14.1766 10.7195 14.6875 9.22656 14.6875 7.65625C14.6875 5.77656 13.9539 4.01406 12.6273 2.68516C11.3008 1.35625 9.53359 0.625 7.65625 0.625C5.77891 0.625 4.01172 1.35859 2.68516 2.68516C1.35625 4.01172 0.625 5.77656 0.625 7.65625C0.625 9.53359 1.35859 11.3008 2.68516 12.6273C4.01172 13.9562 5.77656 14.6875 7.65625 14.6875C9.22656 14.6875 10.7172 14.1766 11.9383 13.2344L18.025 19.3187C18.0428 19.3366 18.064 19.3508 18.0874 19.3604C18.1107 19.3701 18.1357 19.3751 18.1609 19.3751C18.1862 19.3751 18.2112 19.3701 18.2345 19.3604C18.2578 19.3508 18.279 19.3366 18.2969 19.3187L19.3187 18.2992C19.3366 18.2814 19.3508 18.2602 19.3604 18.2369C19.3701 18.2135 19.3751 18.1885 19.3751 18.1633C19.3751 18.138 19.3701 18.113 19.3604 18.0897C19.3508 18.0664 19.3366 18.0452 19.3187 18.0273ZM11.3688 11.3688C10.375 12.3602 9.05781 12.9062 7.65625 12.9062C6.25469 12.9062 4.9375 12.3602 3.94375 11.3688C2.95234 10.375 2.40625 9.05781 2.40625 7.65625C2.40625 6.25469 2.95234 4.93516 3.94375 3.94375C4.9375 2.95234 6.25469 2.40625 7.65625 2.40625C9.05781 2.40625 10.3773 2.95 11.3688 3.94375C12.3602 4.9375 12.9062 6.25469 12.9062 7.65625C12.9062 9.05781 12.3602 10.3773 11.3688 11.3688Z"
+                      fill="#2B2F55"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              {{/* Topics filter */}}
+              <div class="select-wrapper">
+                <select id="topic-select" onchange="filterAndSort();">
+                  <option value="all">All topics</option>
+                  {{ $topics := slice}}
+                  {{ range $cookbooks }}
+                    {{ range .Params.topics }}
+                      {{ $topics = $topics | append . }}
+                    {{ end }}
+                  {{ end }}
+
+                  {{ range sort (uniq ($topics)) }}
+                  <option value="{{ . }}">{{ . }}</option>
+                  {{ end }}
+                </select>
+              </div>
+
+              {{/* Reset filters btn */}}
+              <button class="reset-filters-btn reset-filters-desktop" onclick="resetFilters();">
+                Reset filters
+              </button>
+            </div>
+
+            <div>
+              {{/* Sorting */}}
+                <div class="select-wrapper">
+                  <label for="sort">Sort By:</label>
+                  <select name="sort" id="sort-select" class="fixed" onchange="filterAndSort();">
+                    <option value="created">Newest</option>
+                    <option value="updated">Last Updated</option>
+                  </select>
+                </div>
+            </div>
+            <button class="reset-filters-btn reset-filters-mobile" onclick="resetFilters();">
+              Reset filters
+            </button>
+          </div>
+
+          {{/* Cookbooks grid */}}
+          <div class="grid-page-grid">
+            {{/*
+              Sort the notebooks to show first the featured, then the new ones,
+              then ones with neither, and the outdated at the bottom.
+              This is the default sorting logic used when the page is loaded the first time.
+              If you change this change also the filter reset.
+            */}}
+            {{ $sorted := $cookbooks}}
+            {{ $sorted = sort $sorted "Params.created_at" "desc" }}
+            {{ $sorted = sort $sorted "Params.new" "desc" }}
+            {{ $sorted = sort $sorted "Params.featured" "desc" }}
+            {{ $sorted = sort $sorted "Params.outdated" "asc" }}
+
+            {{ range $sorted  }}
+              {{ partial "cookbook-card" . }}
+            {{ end }}
+          </div>
+
+          {{/* Footer */}}
+          <div class="grid-page-footer">
+            <div class="text-section">
+              <h2>{{ .Params.contribute.title }}</h2>
+              <p>
+                {{ .Params.contribute.text }}
+              </p>
+            </div>
+
+            {{/* Contribute btn */}}
+            <div class="button-section">
+              {{ partial "contribute-button" . }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ partial "tutorial-search-modal" . }}
+  </div>
+
+  <script>
+    {{/*  Get the cookbooks  */}}
+    const cookbooksCards = Array.from(
+      document.querySelectorAll(".grid-page-card")
+    );
+
+    const heroTitle = document.querySelector(".page-hero h1")
+
+    {{/*  Filter and sort  */}}
+    const filterAndSort = () => {
+      let cookbooks = [...cookbooksCards]
+      {{/*  Get selected filter, sort, and task options   */}}
+      const selectedTopic = document.querySelector("#topic-select").value;
+      const selectedSort = document.querySelector("#sort-select").value;
+      const searchTerm = document.querySelector("#search").value;
+
+      {{/*  Filter by topic  */}}
+      if (selectedTopic !== "all") {
+        {{/*
+          We recover the topics from the data-topics field set in cookbook-card.html.
+          That's not the best as we get back a string, so we don't filter with the
+          EXACT topic. e.g Selecting "RAG" will also show cookbooks for "Multilingual RAG".
+          Though it's good enough so 👍.
+        */}}
+        cookbooks = cookbooks.filter(c => c.dataset.topics.includes(selectedTopic))
+      }
+
+      {{/*  Filter by search  */}}
+      if (searchTerm) {
+        const searchTermsArray = searchTerm.toLowerCase().split(" ").filter(term => term);
+
+        cookbooks = cookbooks.filter(i => {
+          let text = i.innerText.toLowerCase();
+          return searchTermsArray.every(term => text.includes(term));
+        });
+      }
+
+      {{/*  Sorting  */}}
+      if (selectedSort === "created" || selectedSort === "updated") {
+        {{/*
+          This is the default sorting logic used when the page is loaded the first time.
+          If you change this change it also above.
+        */}}
+        cookbooks.sort((a, b) => {
+          if (a.dataset.outdated !== b.dataset.outdated) {
+              return a.dataset.outdated - b.dataset.outdated;
+          }
+          if (a.dataset.featured !== b.dataset.featured) {
+              return b.dataset.featured - a.dataset.featured;
+          }
+          if (a.dataset.new !== b.dataset.new) {
+              return b.dataset.new - a.dataset.new;
+          }
+          return new Date(b.dataset[selectedSort]) - new Date(a.dataset[selectedSort]);
+        });
+      }
+
+      {{/*  Update section title  */}}
+      document.querySelector(".section-title").innerHTML = `${cookbooks.length} cookbook${cookbooks.length!==1 ? "s":""}`
+
+      {{/*  Update the banner and hero title tag  */}}
+
+      document.querySelector(".grid-page-grid").innerHTML = ""
+      cookbooks.forEach((e) =>
+        document.querySelector(".grid-page-grid").appendChild(e)
+      );
+    }
+
+
+    const resetFilters = () => {
+      document.querySelector("#topic-select").value = "all";
+      document.querySelector("#sort-select").value = "created";
+      document.querySelector("#search").value = "";
+      filterAndSort();
+    }
+
+  </script>
+{{ end }}

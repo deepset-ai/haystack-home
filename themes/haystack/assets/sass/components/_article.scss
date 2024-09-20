@@ -75,7 +75,6 @@
   table {
     font-size: var(--text-small);
   }
-    
 }
 
 .blog-post-header {
@@ -187,6 +186,17 @@
       gap: 1.5rem;
     }
 
+    .accordion-js .content {
+      gap: 1.25rem;
+    }
+
+    .cookbook-accordion-title {
+      font-size: var(--text-smaller);
+      font-weight: var(--font-weight-base);
+      user-select: none;
+      cursor: pointer;
+    }
+
     .accordion-title {
       display: flex;
       gap: 0.25rem;
@@ -196,7 +206,7 @@
       outline: none;
       font-size: var(--text-body);
       font-weight: var(--font-weight-heading);
-      color: var(--color-medium-grey);
+      color: var(--color-dark-grey);
       user-select: none;
       cursor: pointer;
       transition: opacity var(--transition-fast) var(--ease);

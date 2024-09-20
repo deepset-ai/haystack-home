@@ -21,7 +21,7 @@
           <li>
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>
-                <summary class="accordion-title">
+                <summary class="tutorial-accordion-title">
                   <span>
                     {{ .Params.title }}
                   </span>
@@ -35,7 +35,7 @@
               </details>
             {{ else }}
               <a
-                class="tutorial-card category-{{ lower .Params.category }}"
+                class="tutorial-accordion-title"
                 href="{{ .RelPermalink }}"
               >
                 <span>
@@ -61,7 +61,7 @@
           <li>
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>
-                <summary class="accordion-title">
+                <summary class="tutorial-accordion-title">
                   <span>
                     {{ .Params.title }}
                   </span>
@@ -75,7 +75,7 @@
               </details>
             {{ else }}
               <a
-                class="tutorial-card category-{{ lower .Params.category }}"
+                class="tutorial-accordion-title"
                 href="{{ .RelPermalink }}"
               >
                 <span>
@@ -101,12 +101,12 @@
           <li>
             {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
               <details class="accordion-js accordion-child" open>
-                <summary class="accordion-title">
+                <summary class="tutorial-accordion-title">
                   <span>
                     {{ .Params.title }}
                   </span>
                 </summary>
-                
+
                 {{if .Params.toc}}
                   <div class="content">
                     {{/* Page TOC */}}
@@ -116,7 +116,7 @@
               </details>
             {{ else }}
               <a
-                class="tutorial-card category-{{ lower .Params.category }}"
+                class="tutorial-accordion-title"
                 href="{{ .RelPermalink }}"
               >
                 <span>

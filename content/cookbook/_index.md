@@ -4,7 +4,7 @@ featured_image: /images/cookbook_thumbnail.png
 images: ["/images/cookbook_thumbnail.png"]
 header: dark
 footer: dark
-title: Cookbook
+title: 🧑‍🍳 Cookbook
 description: A collection of example notebooks using Haystack
 
 subtitle: |

@@ -5,7 +5,7 @@ images: ["/images/cookbook-thumbnail.png"]
 header: dark
 footer: dark
 title: 🧑‍🍳 Cookbook
-description: A collection of example notebooks using Haystack
+description: A collection of AI use cases and demos
 
 subtitle: |
   You can use these examples as guidelines on how to make use of different model providers, vector databases, retrieval techniques and more with Haystack. Most of them showcase a specific, small demo.

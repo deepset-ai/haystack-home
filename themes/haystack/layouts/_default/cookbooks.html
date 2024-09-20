@@ -11,7 +11,7 @@
           {{/* Section title */}}
           <div class="title-container">
             <h2 class="section-title">
-              {{ len $cookbooks }} cookbooks
+              {{ len $cookbooks }} recipes
             </h2>
           </div>
 
@@ -177,7 +177,7 @@
       }
 
       {{/*  Update section title  */}}
-      document.querySelector(".section-title").innerHTML = `${cookbooks.length} cookbook${cookbooks.length!==1 ? "s":""}`
+      document.querySelector(".section-title").innerHTML = `${cookbooks.length} recipe${cookbooks.length!==1 ? "s":""}`
 
       {{/*  Update the banner and hero title tag  */}}
 

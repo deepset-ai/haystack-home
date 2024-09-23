@@ -55,7 +55,7 @@ print(result["llm"]["replies"][0])
 {{< tab tabName="Corresponding Pipeline"  >}}
 First, install Haystack:
 ```bash
-pip install haystack-ai
+pip install haystack-ai trafilatura
 ```
 
 ```python

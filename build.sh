@@ -17,7 +17,7 @@ cp ./haystack-tutorials/tutorials/*.ipynb ./static/downloads
 ls ./static/downloads
 
 rm -rf haystack-cookbook
-git clone --depth=1 https://github.com/deepset-ai/haystack-cookbook.git
+git clone --depth=1 --branch show-output-cells-in-website https://github.com/deepset-ai/haystack-cookbook.git
 cd haystack-cookbook
 echo "Installing requirements for haystack-cookbook..."
 python3 -m ensurepip --upgrade

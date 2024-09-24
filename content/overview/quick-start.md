@@ -55,7 +55,7 @@ print(result["llm"]["replies"][0])
 {{< tab tabName="Corresponding Pipeline"  >}}
 First, install Haystack:
 ```bash
-pip install haystack-ai
+pip install haystack-ai trafilatura
 ```
 
 ```python
@@ -133,7 +133,8 @@ from haystack import Pipeline, PredefinedPipeline
 import urllib.request
 
 os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
-urllib.request.urlretrieve("https://www.gutenberg.org/cache/epub/7785/pg7785.txt", "davinci.txt")  
+urllib.request.urlretrieve("https://archive.org/stream/leonardodavinci00brocrich/leonardodavinci00brocrich_djvu.txt",
+                           "davinci.txt")  
 
 indexing_pipeline =  Pipeline.from_template(PredefinedPipeline.INDEXING)
 indexing_pipeline.run(data={"sources": ["davinci.txt"]})
@@ -167,7 +168,8 @@ from haystack.components.builders import PromptBuilder
 from haystack.components.generators import OpenAIGenerator
 
 os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
-urllib.request.urlretrieve("https://www.gutenberg.org/cache/epub/7785/pg7785.txt", "davinci.txt")  
+urllib.request.urlretrieve("https://archive.org/stream/leonardodavinci00brocrich/leonardodavinci00brocrich_djvu.txt",
+                           "davinci.txt")    
 
 document_store = InMemoryDocumentStore()
 

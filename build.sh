@@ -1,7 +1,11 @@
 #!/bin/bash
 
 rm -rf haystack-tutorials
-git clone --depth=1 https://github.com/deepset-ai/haystack-tutorials.git
+# We fetch the whole repo cause we want to use some info from the
+# history, like creation date and last modified date of a notebook.
+# If we fetch we depth 1 we don't get correct dates, and if we fetch with
+# --filter=tree:0 the process runs slower than cloning the whole repo.
+git clone https://github.com/deepset-ai/haystack-tutorials.git
 
 cd haystack-tutorials
 echo "Installing requirements for haystack-tutorials..."
@@ -17,7 +21,11 @@ cp ./haystack-tutorials/tutorials/*.ipynb ./static/downloads
 ls ./static/downloads
 
 rm -rf haystack-cookbook
-git clone --depth=1 https://github.com/deepset-ai/haystack-cookbook.git
+# We fetch the whole repo cause we want to use some info from the
+# history, like creation date and last modified date of a notebook.
+# If we fetch we depth 1 we don't get correct dates, and if we fetch with
+# --filter=tree:0 the process runs slower than cloning the whole repo.
+git clone https://github.com/deepset-ai/haystack-cookbook.git
 cd haystack-cookbook
 echo "Installing requirements for haystack-cookbook..."
 python3 -m ensurepip --upgrade

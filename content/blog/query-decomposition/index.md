@@ -107,8 +107,9 @@ print(result["llm"]["structured_reply"])
 
 This produces the following `Questions`
 
-```bash
-questions=[Question(question='How many siblings does Jamie have?', answer=None), Question(question='How many siblings does Sansa have?', answer=None)]
+```
+questions=[Question(question='How many siblings does Jamie have?', answer=None), 
+           Question(question='How many siblings does Sansa have?', answer=None)]
 ```
 
 Now, we have to fill in these empty `answer` fields. For this step, we need to have a separate prompt, and we also use 2 custom components:
@@ -171,9 +172,9 @@ result = query_decomposition_pipeline.run({"prompt":{"question": question},
 print(result["query_resolver_llm"]["structured_reply"])
 ```
 
-```bash
+```
 questions=[Question(question='How many siblings does Jamie have?', answer='2 (Cersei Lannister, Tyrion Lannister)'), 
-					 Question(question='How many siblings does Sansa have?', answer='5 (Robb Stark, Arya Stark, Bran Stark, Rickon Stark, Jon Snow)')]
+           Question(question='How many siblings does Sansa have?', answer='5 (Robb Stark, Arya Stark, Bran Stark, Rickon Stark, Jon Snow)')]
 ```
 
 ## Reasoning About the Final Answer
@@ -228,7 +229,7 @@ print("\nSo the original query is answered as follows:\n")
 print(result["reasoning_llm"]["replies"][0])
 ```
 
-Drum roll please:
+🥁 Drum roll please:
 
 ```
 The original query was split and resolved:

@@ -37,7 +37,7 @@ This method ensures that we are:
 1. retrieving the relevant context for each sub question.
 2. reasoning about the final answer given each answer based on the contexts retrieved for each sub question.
 
-In this article, I’ll be going through some key steps that allow you to achieve this. You can find the full working example and code in the linked recipe from our [cookbook](https://haystack.deepset.ai/cookbook). Here, I’ll only show the most relevant parts of the code.
+In this article, I’ll be going through some key steps that allow you to achieve this. You can find the full working example and code in the linked recipe from our [cookbook](/cookbook). Here, I’ll only show the most relevant parts of the code.
 
 > 🚀 I’m sneaking something extra into this article. I saw the opportunity to try out the structured output functionality (currently in beta) by OpenAI to create this example. For this step, I extended the OpenAIGenerator in Haystack to be able to work with Pydantic schemas. More on this in the next step.
 

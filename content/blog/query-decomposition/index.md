@@ -250,6 +250,6 @@ Final Answer: Sansa has more siblings than Jaime.
 
 ## Wrapping up
 
-Given the right instructions, LLMs are good at breaking down taskss. Query decomposition is a great way we can make sure we do that for questions that are multiple questions in disguise.
+Given the right instructions, LLMs are good at breaking down tasks. Query decomposition is a great way we can make sure we do that for questions that are multiple questions in disguise.
 
 In this article, you learned how to implement this technique with a twist 🙂 Let us know what you think about using structured outputs for these sorts of use cases. And check out the [Haystack experimental repo](https://github.com/deepset-ai/haystack-experimental?tab=readme-ov-file#experiments-catalog) to see what new features we’re working on.

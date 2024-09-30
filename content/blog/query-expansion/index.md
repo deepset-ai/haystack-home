@@ -19,7 +19,7 @@ cookbook: query-expansion.ipynb
 >
 > 2️⃣ **Query Expansion**
 >
-> 3️⃣ Query Decomposition 🔜
+> 3️⃣ [Query Decomposition](/blog/query-decomposition)
 >
 > 4️⃣ Automatic Metadata Enrichment 🔜
 

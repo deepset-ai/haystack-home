@@ -17,11 +17,11 @@ cookbook: extracting_metadata_filters_from_a_user_query.ipynb
 
 > This is part one of the **Advanced Use Cases** series:
 >
-> 1️⃣ Extract Metadata from Queries to Improve Retrieval
+> 1️⃣ **Extract Metadata from Queries to Improve Retrieval**
 >
 > 2️⃣ [Query Expansion](/blog/query-expansion)
 >
-> 3️⃣ Query Decomposition 🔜
+> 3️⃣ [Query Decomposition](/blog/query-decomposition)
 >
 > 4️⃣ Automatic Metadata Enrichment 🔜
 

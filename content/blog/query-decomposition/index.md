@@ -5,8 +5,8 @@ description: Decompose queries that are multiples in disguise and have an LLM re
 featured_image: thumbnail.png
 images: ["blog/query-decomposition/thumbnail.png"]
 toc: True
-date: 2024-09-27
-last_updated: 2024-09-27
+date: 2024-09-30
+last_updated: 2024-09-30
 authors:
   - Tuana Celik
 tags: ["Retrieval", "RAG", "Advanced Use Cases"]
@@ -25,12 +25,12 @@ cookbook: query_decomposition.ipynb
 
 Sometimes a single question is multiple questions in disguise. For example: “Did Microsoft or Google make more money last year?”. To get to the correct answer for this seemingly simple question, we actually have to break it down: “How much money did Google make last year?” and “How much money did Microsoft make last year?”. Only if we know the answer to these 2 questions can we reason about the final answer.
 
-This is where query decomposition comes in. This is a technique for AI applications that are meant to answer questions (like retrieval augmented generation or chat) that follows a simple approach:
+This is where query decomposition comes in. This is a technique for retrieval augmented generation (RAG) based AI applications that follows a simple approach:
 
 1. Decompose the original question into smaller questions that can be answered independently to each other. Let’s call these ‘sub questions’ here on out. 
-2. Reason about the final answer to the original question, based on the answer to the sub questions.
+2. Reason about the final answer to the original question, based on each sub-answer.
 
-While for many query/dataset combinations, this may not be required, for some, it very well may be. At the end of the day, often 1 query results in 1 retrieval step. If within that one single retrieval step we are unable to have the retriever return *both* the money Microsoft made last year *and* Google, then the system will struggle to produce an accurate final response.
+While for many query/dataset combinations, this may not be required, for some, it very well may be. At the end of the day, often one query results in one retrieval step. If within that one single retrieval step we are unable to have the retriever return *both* the money Microsoft made last year *and* Google, then the system will struggle to produce an accurate final response.
 
 This method ensures that we are:
 
@@ -65,9 +65,6 @@ The structure is simple, we have `Questions` made up of a list of `Question`. Ea
 Next up, we need to get an LLM to decompose a question and produce multiple questions. Here, we will start making use of our `Questions` schema.
 
 ```python
-from haystack import Pipeline
-from haystack.components.builders import PromptBuilder
-
 splitter_prompt = """
 You are a helpful assistant that prepares queries that will be sent to a search component.
 Sometimes, these queries are very complex.
@@ -105,14 +102,14 @@ result = query_decomposition_pipeline.run({"prompt":{"question": question}})
 print(result["llm"]["structured_reply"])
 ```
 
-This produces the following `Questions`
+This produces the following `Questions` (`List[Question]`)
 
 ```
 questions=[Question(question='How many siblings does Jamie have?', answer=None), 
            Question(question='How many siblings does Sansa have?', answer=None)]
 ```
 
-Now, we have to fill in these empty `answer` fields. For this step, we need to have a separate prompt, and we also use 2 custom components:
+Now, we have to fill in the `answer` fields. For this step, we need to have a separate prompt and two custom components:
 
 - The `CohereMultiTextEmbedder` which can take multiple questions rather than a single one like the `CohereTextEmbedder`.
 - The `MultiQueryInMemoryEmbeddingRetriever` which can again, take multiple questions and their embeddings, returning `question_context_pairs`. Each pair contains the `question` and `documents` that are relevant to that question.
@@ -167,13 +164,13 @@ Running this pipeline with the original question “Who has more siblings, Jamie
 ```python
 question = "Who has more siblings, Jamie or Sansa?"
 result = query_decomposition_pipeline.run({"prompt":{"question": question},
-															             "multi_query_prompt": {"question": question}})
+                                           "multi_query_prompt": {"question": question}})
 
 print(result["query_resolver_llm"]["structured_reply"])
 ```
 
 ```
-questions=[Question(question='How many siblings does Jamie have?', answer='2 (Cersei Lannister, Tyrion Lannister)'), 
+questions=[Question(question='How many siblings does Jamie have?', answer='2 (Cersei Lannister, Tyrion Lannister)'),
            Question(question='How many siblings does Sansa have?', answer='5 (Robb Stark, Arya Stark, Bran Stark, Rickon Stark, Jon Snow)')]
 ```
 
@@ -188,7 +185,7 @@ reasoning_template = """
 You are a helpful assistant that can answer complex queries.
 Here is the original question you were asked: {{question}}
 
-You have split this question up into simpler questoins that can be answered in
+You have split this question up into simpler questions that can be answered in
 isolation.
 Here are the questions and answers that you've generated
 {% for pair in question_answer_pair %}
@@ -203,7 +200,7 @@ Final Answer:
 resoning_prompt = PromptBuilder(reasoning_template)
 ```
 
-To be able to augment this prompt with the question answer pairs, we will have to extend our previous pipeline and connect the `structured_reply` from the last LLM, to the `question_answer_pair` input of this prompt.
+To be able to augment this prompt with the question answer pairs, we will have to extend our previous pipeline and connect the `structured_reply` from the previous LLM, to the `question_answer_pair` input of this prompt.
 
 ```python
 query_decomposition_pipeline.add_component("reasoning_prompt", PromptBuilder(reasoning_template))
@@ -218,18 +215,19 @@ Now, let’s run this final pipeline and see what results we get:
 ```python
 question = "Who has more siblings, Jamie or Sansa?"
 result = query_decomposition_pipeline.run({"prompt":{"question": question},
-															             "multi_query_prompt": {"question": question},
-															             "reasoning_prompt": {"question": question}},
-															             include_outputs_from=["query_resolver_llm"])
+                                           "multi_query_prompt": {"question": question},
+                                           "reasoning_prompt": {"question": question}},
+                                           include_outputs_from=["query_resolver_llm"])
 
 print("The original query was split and resolved:\n")
+
 for pair in result["query_resolver_llm"]["structured_reply"].questions:
   print(pair)
 print("\nSo the original query is answered as follows:\n")
 print(result["reasoning_llm"]["replies"][0])
 ```
 
-🥁 Drum roll please:
+🥁 Drum roll please:
 
 ```
 The original query was split and resolved:
@@ -252,6 +250,6 @@ Final Answer: Sansa has more siblings than Jaime.
 
 ## Wrapping up
 
-LLMs are great at reasoning, and most of the time, we simply have to make sure we are giving the right context in our instructions. Query decomposition is a great way we can make sure we do that for questions that are multiple questions in disguise.
+Given the right instructions, LLMs are good at breaking down taskss. Query decomposition is a great way we can make sure we do that for questions that are multiple questions in disguise.
 
 In this article, you learned how to implement this technique with a twist 🙂 Let us know what you think about using structured outputs for these sorts of use cases. And check out the [Haystack experimental repo](https://github.com/deepset-ai/haystack-experimental?tab=readme-ov-file#experiments-catalog) to see what new features we’re working on.

@@ -45,7 +45,7 @@ We will also have a free version of the Studio available to you which will come 
 
 - Today, we are **opening up the [waitlist to get access to Studio](https://landing.deepset.ai/deepset-studio-waitlist).**
 - We will start giving **access to people as of the first week of September**.
-- Studio will be **available to everyone early October.**
+- Studio will be **available to everyone by the end of November.**
 - Once you we start granting access to Studio, we will also create a dedicated channel in the [Haystack Discord server](https://discord.com/invite/VBpFzsgRVF) for users of the Open Access version. We’d love to hear your feedback, and will do our best to help you use Studio 🧡
 
 ### **Within deepset Cloud**

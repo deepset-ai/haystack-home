@@ -9,7 +9,7 @@ cookbook: enhanced_rag_with_nvidia_nim_rankers.ipynb
 authors:
   - Rita Fernandes Neves
   - Bilge Yucel
-tags: ["Integrations", "Haystack 2.0"]
+tags: ["Retrieval", "RAG", "Evaluation"]
 ---	
 
 In Retrieval-Augmented Generation (RAG) applications, the quality of the retrieved documents plays a critical role in delivering accurate and meaningful responses. But what happens when embedding similarity is not enough to get an accurate ordering of the reference documents? This is where **ranking** comes into play.

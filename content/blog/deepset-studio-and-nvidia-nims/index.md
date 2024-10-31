@@ -49,7 +49,7 @@ An often overlooked but essential step in building an effective RAG application 
 
 Most RAG applications revolve around two core pipelines: Indexing and RAG. Fig. 1 shows a high-level overview of the two pipelines using haystack and NVIDIA NIMs. We will be using [Qdrant](https://qdrant.tech/) as the vector database in this article but can be replaced with any other.
 
-![Fig. 1 - Haystack Indexing and RAG pipelines with NVIDIA NIMs.](pipelines.png)
+![Fig. 1 - Haystack Indexing and RAG pipelines with NVIDIA NIMs.](pipelines.png "Fig. 1 - Haystack Indexing and RAG pipelines with NVIDIA NIMs.")
 
 In the following sections, we’ll break down each pipeline in detail and guide you through building them using [deepset Studio](https://haystack.deepset.ai/blog/announcing-studio).
 
@@ -68,7 +68,7 @@ This pipeline involves indexing a PDF file into a vector database (here [Qdrant]
 
 We can configure each of these components individually and connect them together in the deepset Studio to build the indexing pipeline. Fig. 2 shows the final visual design of the built indexing pipeline in the deepset Studio.
 
-![Fig. 2 - End-to-end visual design of the indexing pipeline in the deepset Studio.](indexing.png)
+![Fig. 2 - End-to-end visual design of the indexing pipeline in the deepset Studio.](indexing.png "Fig. 2 - End-to-end visual design of the indexing pipeline in the deepset Studio.")
 
 ### RAG Pipeline
 
@@ -78,23 +78,23 @@ In most use cases, RAG pipelines consist of three to four components. In this ar
 
 -   Text Embedder: This component embeds incoming user queries using the same embedding model employed during the data indexing pipeline.  For this, we’ll use the [`NvidiaTextEmbedder`](https://docs.haystack.deepset.ai/docs/nvidiatextembedder), which we configured to leverage a NVIDIA-hosted [NVIDIA NeMo Retriever Text Embedding NIM](https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/overview.html) from the NVIDIA API Catalog ([nvidia/nv-embedqa-e5-v5](https://build.nvidia.com/nvidia/nv-embedqa-e5-v5)). To set this up, you will need to provide the model's [api_url](https://build.nvidia.com/snowflake/arctic-embed-l?snippet_tab=Python) and [NVIDIA_API_KEY](https://org.ngc.nvidia.com/setup/personal-keys) as shown in Fig. 3.
 
-![Fig. 3 - NvidiaTextEmbedder Configuration in the deepset Studio.](text-embedder.png)
+![Fig. 3 - NvidiaTextEmbedder Configuration in the deepset Studio.](text-embedder.png "Fig. 3 - NvidiaTextEmbedder Configuration in the deepset Studio.")
 
 -   Retriever: In this case, we will use the [`QdrantEmbeddingRetriever`](https://docs.haystack.deepset.ai/docs/qdrantembeddingretriever), which takes the query embedding from the previous component and retrieves the most relevant documents from the Qdrant database. Fig. 4 shows the configuration of this component in the deepset Studio.
 
-![Fig. 4 - QdrantEmbeddingRetriever Configuration in the deepset Studio.](retriever.png)
+![Fig. 4 - QdrantEmbeddingRetriever Configuration in the deepset Studio.](retriever.png "Fig. 4 - QdrantEmbeddingRetriever Configuration in the deepset Studio.")
 
 -   Prompt Construction Component: This component is responsible for creating the instruction (prompt) that will be sent to a large language model (LLM), representing the 'augmentation' step. In Haystack, this is handled by the [`PromptBuilder`](https://docs.haystack.deepset.ai/docs/promptbuilder). It allows you to create a prompt template using [Jinja](https://jinja.palletsprojects.com/en) and dynamically detects inputs based on the template's contents. For our use case, we have developed a prompt template shown in Fig. 5 using PromptBuilder in the deepset Studio, which expects query and documents as input.
 
-![Fig. 5 - PromtBuilder Configuration in the deepset Studio.](prompt.png)
+![Fig. 5 - PromtBuilder Configuration in the deepset Studio.](prompt.png "Fig. 5 - PromtBuilder Configuration in the deepset Studio.") 
 
 -   LLM Component: Finally, we will add a LLM component that receives our final augmented prompt and generates a response. In this example, we will use the [llama-3_1-70b-instruct](https://build.nvidia.com/meta/llama-3_1-70b-instruct) NIM from the [NVIDIA API Catalog](https://build.nvidia.com/nim). In this case, we use the [`NvidiaGenerator`](https://docs.haystack.deepset.ai/docs/nvidiagenerator) from Haystack and configure it to use the meta/llama-3.1-70b-instruct model. Fig. 6 shows the configuration of this component in the deepset Studio.
     
-![Fig. 6 - NvidiaGenerator Configuration in the deepset Studio.](generator.png)
+![Fig. 6 - NvidiaGenerator Configuration in the deepset Studio.](generator.png "Fig. 6 - NvidiaGenerator Configuration in the deepset Studio.")
 
 As you can see, each of these individual components expects certain inputs, and produces various outputs. You can learn more about the pipeline architecture and how components are connected [here](https://docs.haystack.deepset.ai/docs/creating-pipelines). We can now connect them in deepset Studio to create the final RAG pipeline as shown in Fig. 7.
 
-![Fig. 7 - Full RAG Pipeline built visually in the deepset Studio.](rag.png)
+![Fig. 7 - Full RAG Pipeline built visually in the deepset Studio.](rag.png "Fig. 7 - Full RAG Pipeline built visually in the deepset Studio.")
 
 ### Use Self-hosted NIMs for the Pipelines
 
@@ -125,7 +125,7 @@ You can follow the same deployment procedure for the embedding models with the [
 
 Once the NIMs are deployed, whether through Docker or Kubernetes, simply update the api_url in each of the embedding and LLM components in the pipelines to point to your self-hosted NIM URL (example: [http://your_server_ip_address:8000/v1/](http://your_server_ip_address:8000/v1/)), as illustrated in Fig. 8 for the [NvidiaGenerator](https://docs.haystack.deepset.ai/docs/nvidiagenerator) i.e. LLM component.
 
-![Fig. 8 - NvidiaGenerator Configuration for self-hosted NIM in the deepset Studio.](generator-2.png)
+![Fig. 8 - NvidiaGenerator Configuration for self-hosted NIM in the deepset Studio.](generator-2.png "Fig. 8 - NvidiaGenerator Configuration for self-hosted NIM in the deepset Studio.")
 
 ### Export Pipelines and Deploy RAG Application
 
@@ -136,7 +136,7 @@ After building the final layout of our application in deepset Studio, we can exp
     
 Fig. 9 shows an example of exporting the RAG pipeline in the deepset Studio in Python format.
 
-![Fig. 9 - Example showing export of RAG Pipeline in the deepset Studio in Python format.](export.png)
+![Fig. 9 - Example showing export of RAG Pipeline in the deepset Studio in Python format.](export.png "Fig. 9 - Example showing export of RAG Pipeline in the deepset Studio in Python format.")
 
 Following Python code snippet shows the exported code of the RAG pipeline from the deepset Studio.
 

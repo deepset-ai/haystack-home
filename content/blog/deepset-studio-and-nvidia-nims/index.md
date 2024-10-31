@@ -10,7 +10,7 @@ authors:
   - Tuana Celik
   - Anshul Jindal
   - Meriem Bendris
-tags: ["Community"]
+tags: ["Integrations", "RAG"]
 ---	
 
 In our [previous article](https://haystack.deepset.ai/blog/haystack-nvidia-nim-rag-guide), we explored how to build and deploy two key AI pipelines in a Retrieval Augmented Generation (RAG) application using Haystack and NVIDIA NIMs:

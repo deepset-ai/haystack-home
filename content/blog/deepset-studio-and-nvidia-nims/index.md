@@ -4,8 +4,8 @@ title: 'Design Haystack AI Applications Visually with deepset Studio & NVIDIA NI
 featured_image: thumbnail.png
 images: ["blog/deepset-studio-and-nvidia-nims/thumbnail.png"]
 toc: True
-date: 2024-11-1
-last_updated:  2024-11-1
+date: 2024-11-01
+last_updated:  2024-11-01
 authors:
   - Tuana Celik
   - Anshul Jindal

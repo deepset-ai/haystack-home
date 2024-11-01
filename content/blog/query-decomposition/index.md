@@ -21,7 +21,7 @@ cookbook: query_decomposition.ipynb
 >
 > 3️⃣ **Query Decomposition**
 >
-> 4️⃣ Automatic Metadata Enrichment 🔜
+> 4️⃣ [Automated Metadata Enrichment](/cookbook/metadata_enrichment)
 
 Sometimes a single question is multiple questions in disguise. For example: “Did Microsoft or Google make more money last year?”. To get to the correct answer for this seemingly simple question, we actually have to break it down: “How much money did Google make last year?” and “How much money did Microsoft make last year?”. Only if we know the answer to these 2 questions can we reason about the final answer.
 

@@ -149,6 +149,12 @@ paginatePath = "/"
   weight = 3
 
 [[menu.main]]
+  name = '🧪 Experiments'
+  url = 'https://github.com/deepset-ai/haystack-experimental'
+  parent = 'learn'
+  weight = 4
+
+[[menu.main]]
   name = '🚀 DeepLearning.AI'
   url = 'https://www.deeplearning.ai/short-courses/building-ai-applications-with-haystack/'
   parent = 'learn'

@@ -6,13 +6,13 @@ featured_image: thumbnail.png
 alt_image: "Title text 'Building a Multimodal Nutrition Agent' above logos of fastRAG and Haystack, with two nutrition label images in the foreground and a nutritionist figure standing behind"
 images: ["blog/multimodal-nutrition-agent/thumbnail.png"]
 toc: True
-date: 2024-11-06
-last_updated: 2024-11-06
+date: 2024-11-07
+last_updated: 2024-11-07
 authors:
   - Moshe Berchansky
   - Bilge Yucel
 tags: ["Agent", "Multimodality"]
-cookbook: multimodal_nutrition_agent_with_fastrag_haystack.ipynb
+cookbook: multimodal_agent_with_fastrag_haystack.ipynb
 ---
 
 In artificial intelligence, **multimodal agents** are becoming increasingly popular for their ability to understand and integrate multiple types of input, such as text and images. In this article, we’ll show you how to build a multimodal agent that can interpret both text and image data, like **nutrition fact labels** on food items, to answer practical questions such as "How much protein is in yogurt?"

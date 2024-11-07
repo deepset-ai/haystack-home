@@ -147,7 +147,7 @@ from fastrag.agents.tools.tools import DocWithImageHaystackQueryTool
 
 nutrition_tool = DocWithImageHaystackQueryTool(
     name="nutrition_tool",
-    description="useful for when you need to retrieve nutrition fact image of packaged food. It can give information about one food type per query",
+    description="useful for when you need to retrieve nutrition fact image of packaged food. It can give information about one food type per query. Pass the food name as input",
     pipeline_or_yaml_file=retrieval_pipeline
 )
 ```
@@ -228,22 +228,23 @@ You are designed to help with a variety of multimodal tasks and can perform mult
 ## Tools
 
 You have access to a wide variety of tools. You are responsible for using the tools in any sequence you deem appropriate to complete the task at hand.
-This may require breaking the task into subtasks and using different tools to complete each subtask.
+Break the task into subtasks and iterate to complete each subtask.
 
 You have access to the following tools:
 {tool_names_with_descriptions}
 
 ## Output Format
 
-If you need to make a tool call, your responses should follow this structure instead:
+If you need to make a tool call, your responses should follow this structure:
 
 Thought: [your reasoning process, decide whether you need a tool or not]
 Tool: [tool name]
 Tool Input: [the input to the tool, in a JSON format representing the kwargs (e.g. {{"input": "hello world"}})]
 Observation: [tool response]
-Final Answer: [final answer to the human user's question after observation]
 
-If you have enough information to answer the question without using any more tools, you MUST finish with "Final Answer:" and respond in the following format:
+Based on the tool response, you need decide whether you need another more information. If so, make another tool call with the same structure.
+
+If you have enough information to answer the question without using any more tools, you MUST give your answer to the user question with "Final Answer:" and respond in the following format:
 
 Thought: [your reasoning process, decide whether you need a tool or not]
 Final Answer: [final answer to the human user's question after observation]
@@ -273,12 +274,12 @@ multimodal_agent = Agent(
 Our agent is now ready! Let’s start interacting with it. We can begin by asking a question about a food’s nutrition information:
 
 ```python
-agent_response = multimodal_agent.run("What is protein bar's protein percentage?")
+agent_response = multimodal_agent.run("What is the fat content of the protein bar?")
 print(agent_response["transcript"])
 ```
 
 ```bash
-Thought: I need to find the protein percentage of a protein bar.
+Thought: I need to find out the fat content of a protein bar.
 Tool: nutrition_tool
 Tool Input: {{"input": "protein bar"}}
 Observation:
@@ -286,11 +287,44 @@ Observation:
 Image: <|image_
 This image shows: Protein bar with chocolate peanut butter nutrition facts per bar (50g)
 
-Thought:Thought: I have found the protein percentage of the protein bar.
-Final Answer: The protein bar contains 28% protein.
+Thought:Thought: I have found the fat content of the protein bar.
+Final Answer: The fat content of the protein bar is 8 grams.
 ```
 
-The answer is "The protein bar contains 28% protein," and it's correct! You can verify the answer by viewing the image in [this link](https://m.media-amazon.com/images/I/71nh-zRJCSL.jpg).
+The answer is "The fat content of the protein bar is 8 grams." and it's correct! You can verify the answer by viewing the image in [this link](https://m.media-amazon.com/images/I/71nh-zRJCSL.jpg).
+
+Now, let's try a more complex query that requires multi-hop reasoning.
+
+```python
+agent_response = multimodal_agent.run("Which one has more protein, protein bar or yogurt?")
+print(agent_response["transcript"])
+```
+
+```bash
+Thought: I need to compare the protein content of a protein bar and yogurt.
+Tool: nutrition_tool
+Tool Input: {{"input": "protein bar"}}
+Observation:
+Observation: I have already used this Tool with this Tool Input. I will use the information I already have to respond.
+Thought:Thought: I need to find out the protein content of yogurt.
+Tool: nutrition_tool
+Tool Input: {{"input": "yogurt"}}
+Observation:
+Observation: 
+Image: <|image_
+This image shows: Greek style yoghurt nutrition facts per serving
+
+Thought:Thought: I have found the protein content of yogurt.
+Final Answer: The protein content of yogurt is 18 grams per cup.
+
+Comparing the two:
+- Protein bar: 14 grams
+- Yogurt: 18 grams
+
+Thought: The yogurt has more protein than the protein bar.
+Final Answer: Yogurt has more protein than the protein bar.
+```
+Since the information about the protein bar is already stored in memory, the agent doesn't need to make an additional tool call for it. Instead, it processes the previously retrieved image to find the protein amount.
 
 ## Conclusion
 

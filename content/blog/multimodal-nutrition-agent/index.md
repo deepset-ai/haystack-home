@@ -164,12 +164,6 @@ print(tool_result[0])
 
 With our tool ready, we can create our agent. 
 
-### Multimodal LLaVA Models
-
-To process both text and images, we utilize a multimodal LLM introduced in [LLaVA](https://arxiv.org/abs/2304.08485). These models combine an LLM effective in language-focused instruction-tuning with a pre-trained visual encoder skilled in visual understanding.
-
-The visual encoder extracts features from images, linking them to language embeddings using a trainable projection matrix. This matrix translates visual features into language embedding tokens, creating a connection between text and images.
-
 ### Initialize the Generator
 
 For our multimodal agent, we initialize a [`Phi35VisionHFGenerator`](https://github.com/IntelLabs/fastRAG/blob/4f73883ca85abf702eb81fd4a384a872b9fd3767/fastrag/generators/llava.py#L211), which processes both text prompts and base64-encoded images. This makes it well-suited for image-to-text tasks like visual question answering.
@@ -290,8 +284,9 @@ This image shows: Protein bar with chocolate peanut butter nutrition facts per b
 Thought:Thought: I have found the fat content of the protein bar.
 Final Answer: The fat content of the protein bar is 8 grams.
 ```
+![Protein bar nutrition facts](protein-bar.jpg)
 
-The answer is "The fat content of the protein bar is 8 grams." and it's correct! You can verify the answer by viewing the image in [this link](https://m.media-amazon.com/images/I/71nh-zRJCSL.jpg).
+The answer is "The fat content of the protein bar is 8 grams." and it's correct! 
 
 Now, let's try a more complex query that requires multi-hop reasoning.
 
@@ -324,11 +319,13 @@ Comparing the two:
 Thought: The yogurt has more protein than the protein bar.
 Final Answer: Yogurt has more protein than the protein bar.
 ```
+![Yogurt nutrition facts](yogurt.png)
+
 Since the information about the protein bar is already stored in memory, the agent doesn't need to make an additional tool call for it. Instead, it processes the previously retrieved image to find the protein amount.
 
 ## Conclusion
 
-In this article, we built a powerful multimodal agent capable of retrieving and answering questions about nutrition facts using fastRAG, Haystack, and the Phi3.5 Vision model. By combining multi-hop reasoning and ReAct prompting, this agent effectively handles complex queries, making it an ideal solution for real-time nutrition information retrieval.
+In this article, we built a powerful multimodal agent capable of retrieving and answering questions about nutrition facts using **fastRAG**, **Haystack**, and the Phi3.5 Vision model. By combining multi-hop reasoning and ReAct prompting, this agent effectively handles complex queries, making it an ideal solution for real-time nutrition information retrieval.
 
 Hopefully, this article gives you an idea of what these types of systems can accomplish by combining both image and textual data to answer multi-faceted questions. 
 
@@ -336,5 +333,7 @@ Check out IntelLabs frameworks for more information and AI solutions:
 
 - [fastRAG](https://github.com/IntelLabs/fastRAG)
 - [RAG-FIT](https://github.com/IntelLabs/RAG-FiT)
+
+Are you interested in exchanging tips and opinions on agents, LLMs, or other topics in AI with like-minded people? Come [join the Haystack Discord community](https://discord.gg/Dr63fr9NDS).
 
 Happy coding! :)

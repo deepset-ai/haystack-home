@@ -10,8 +10,12 @@ hero:
   title: The Production-Ready<br/> Open Source AI Framework
   buttons:
     - buttonText: pip install haystack-ai
-    - buttonText: Get Started
+    - buttonText: Get Started with Haystack
+      buttonColor: green
       url: /overview/quick-start/
+    - buttonText: Get Started with Studio
+      buttonColor: blue
+      url: https://landing.deepset.ai/deepset-studio-waitlist?utm_campaign=2408%20-%20Campaign%20-%20Studio%20Launch&utm_source=haystack&utm_medium=website
 
   features:
     - title: Highly<br> customizable

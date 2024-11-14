@@ -104,8 +104,7 @@
           }
         }
 
-        .green-button {
-          background-color: var(--color-green);
+        .button {
           color: var(--color-white);
           display: flex;
           align-items: center;
@@ -127,6 +126,14 @@
               transform: translateX(0.25rem);
             }
           }
+        }
+
+        .green {
+          background-color: var(--color-green);
+        }
+
+        .blue {
+          background-color: var(--color-blue);
         }
 
         // .github-stars-btn {

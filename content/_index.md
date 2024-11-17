@@ -30,6 +30,25 @@ hero:
       highlightedText: Get your application in front of the world.
       text: Haystack 2.0 is built from the ground-up with production in mind. Our pipelines are fully serializable and perfect for K8s native workflows. Logging and monitoring integrations give you the transparency you need. Our deployment guides walk you through full-scale deployments on all clouds and on-prem.
 
+  studio:
+    title: Build even faster with Studio (free)
+    media: # Choose one
+      image: /images/cookbook-thumbnail.png
+      # video: /images/studio.mp4
+      # youtubeVideoId: Hns424sFY7s
+    bulletPoints:
+      - Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur.
+      - Lorem ipsum dolor sit amet, consectetur adipiscing.
+      - Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur.
+    buttons:
+      - buttonText: Learn more
+        buttonColor: dark-blue
+        url: /
+
+      - buttonText: Start building
+        buttonColor: green
+        url: /
+
   CTA:
     link: https://www.deepset.ai/deepset-cloud
     text: Learn how to extend Haystack with deepset Cloud for faster building, easier iteration and instant deployment.

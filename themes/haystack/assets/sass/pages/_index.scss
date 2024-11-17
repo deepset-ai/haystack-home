@@ -73,9 +73,17 @@
         flex-direction: column;
         align-items: center;
         gap: 1.25rem;
+
+        >div {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1.25rem;
+        }
         
         a, button {
-          width: 100%;
+          // width: 100%;
           text-decoration: none;
           font-weight: 800;
           padding: 0.6875rem 1rem;
@@ -134,6 +142,13 @@
 
         .blue {
           background-color: var(--color-blue);
+
+          &:hover {
+            background-color: rgba(
+              $color: #{var(--color-blue-rgb)},
+              $alpha: 0.9
+            );
+          }
         }
 
         // .github-stars-btn {

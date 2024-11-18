@@ -33,8 +33,9 @@ hero:
   studio:
     title: Build even faster with Studio (free)
     media: # Choose one
-      image: /images/cookbook-thumbnail.png
-      # video: /images/studio.mp4
+      # image: /images/cookbook-thumbnail.png
+      # video: /images/deepset-studio-demo.mp4
+      video: /images/studio.mp4
       # youtubeVideoId: Hns424sFY7s
     bulletPoints:
       - Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur.
@@ -43,11 +44,11 @@ hero:
     buttons:
       - buttonText: Learn more
         buttonColor: dark-blue
-        url: /
+        url: https://www.deepset.ai/deepset-studio
 
       - buttonText: Start building
         buttonColor: green
-        url: /
+        url: https://landing.deepset.ai/deepset-studio-waitlist?utm_campaign=2408%20-%20Campaign%20-%20Studio%20Launch&utm_source=haystack&utm_medium=website
 
   CTA:
     link: https://www.deepset.ai/deepset-cloud

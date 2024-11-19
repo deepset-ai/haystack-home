@@ -71,7 +71,7 @@
               {{ if .media.image }}
                 <img src="{{ .media.image }}" alt="{{ .title }}" />
               {{ else if .media.video }}
-                <video controls autoplay>
+                <video controls autoplay loop muted playsinline>
                   <source src="{{ .media.video }}" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>

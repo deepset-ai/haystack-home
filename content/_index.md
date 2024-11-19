@@ -31,17 +31,19 @@ hero:
       text: Haystack 2.0 is built from the ground-up with production in mind. Our pipelines are fully serializable and perfect for K8s native workflows. Logging and monitoring integrations give you the transparency you need. Our deployment guides walk you through full-scale deployments on all clouds and on-prem.
 
   studio:
-    title: Build even faster with Studio (free)
+    # title: "deepset Studio: Your Development Environment for Haystack"
+    title: Build Haystack apps faster with deepset Studio
     media: # Choose one
       # image: /images/cookbook-thumbnail.png
       # video: /images/deepset-studio-demo.mp4
       video: /images/studio.mp4
       # youtubeVideoId: Hns424sFY7s
-    bulletPoints:
+    bulletPoints: 
       - Drag, drop, and construct Haystack pipelines
       - Bring your own files or connect your database
       - Deploy on deepset Cloud or export pipelines locally
       - Test, debug and share your prototype
+      - Free and open to everyone
     buttons:
       - buttonText: Learn more
         buttonColor: dark-blue

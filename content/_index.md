@@ -38,16 +38,17 @@ hero:
       video: /images/studio.mp4
       # youtubeVideoId: Hns424sFY7s
     bulletPoints:
-      - Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur.
-      - Lorem ipsum dolor sit amet, consectetur adipiscing.
-      - Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur.
+      - Drag, drop, and construct Haystack pipelines
+      - Bring your own files or connect your database
+      - Deploy on deepset Cloud or export pipelines locally
+      - Test, debug and share your prototype
     buttons:
       - buttonText: Learn more
         buttonColor: dark-blue
         url: https://www.deepset.ai/deepset-studio
 
       - buttonText: Start building
-        buttonColor: green
+        buttonColor: blue
         url: https://landing.deepset.ai/deepset-studio-waitlist?utm_campaign=2408%20-%20Campaign%20-%20Studio%20Launch&utm_source=haystack&utm_medium=website
 
   CTA:

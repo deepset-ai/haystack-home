@@ -45,7 +45,7 @@ NIM microservices are available for popular AI foundation models, including LLM 
 
 An often overlooked but essential step in building an effective RAG application is [data preparation and context embedding](https://www.deepset.ai/blog/preprocessing-rag) - a process that can be quite time-consuming. Before diving into decisions about which LLM to use or how we augment a prompt, it's critical to first focus on embedding and storing your documents (especially if you're not relying on external APIs for data retrieval).
 
-Most RAG applications revolve around two core pipelines: **Indexing** and **RAG**. Fig. 1 shows a high-level overview of the two pipelines using haystack and NVIDIA NIM. We will be using [Qdrant](https://qdrant.tech/) as the vector database in this article but it can be replaced with any other. 
+Most RAG applications revolve around two core pipelines: **Indexing** and **RAG**. Fig. 1 shows a high-level overview of the two pipelines using Haystack and NVIDIA NIM. We will be using [Qdrant](https://qdrant.tech/) as the vector database in this article but it can be replaced with any other. 
 
 ![Fig. 1 - Haystack Indexing and RAG pipelines with NVIDIA NIM microservices.](pipelines.png "Fig. 1 - Haystack Indexing and RAG pipelines with NVIDIA NIM microservices.")
 
@@ -74,7 +74,7 @@ After you’ve completed the data preparation steps, you can move on to implemen
   
 In most use cases, RAG pipelines consist of three to four components. In this article, we’ll be using the following components for building the RAG pipeline:
 
--   **Text Embedder**: This component embeds incoming user queries using the same embedding model employed during the data indexing pipeline. For this, we’ll use the[`NvidiaTextEmbedder` component](https://docs.haystack.deepset.ai/docs/nvidiatextembedder), which we configured to leverage a NVIDIA-hosted [NVIDIA NeMo Retriever text embedding NIM microservice](https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/overview.html) from the NVIDIA API Catalog ([nvidia/nv-embedqa-e5-v5](https://build.nvidia.com/nvidia/nv-embedqa-e5-v5)). To set this up, you will need to provide the model's [api_url](https://build.nvidia.com/snowflake/arctic-embed-l?snippet_tab=Python) and an [NVIDIA_API_KEY](https://org.ngc.nvidia.com/setup/personal-keys) as shown in Fig. 3.
+-   **Text Embedder**: This component embeds incoming user queries using the same embedding model employed during the data indexing pipeline. For this, we’ll use the[`NvidiaTextEmbedder` component](https://docs.haystack.deepset.ai/docs/nvidiatextembedder), which we configured to leverage an NVIDIA-hosted [NVIDIA NeMo Retriever text embedding NIM microservice](https://docs.nvidia.com/nim/nemo-retriever/text-embedding/latest/overview.html) from the NVIDIA API Catalog ([nvidia/nv-embedqa-e5-v5](https://build.nvidia.com/nvidia/nv-embedqa-e5-v5)). To set this up, you will need to provide the model's [api_url](https://build.nvidia.com/snowflake/arctic-embed-l?snippet_tab=Python) and an [NVIDIA_API_KEY](https://org.ngc.nvidia.com/setup/personal-keys) as shown in Fig. 3.
 
 ![Fig. 3 - NvidiaTextEmbedder configuration in the deepset Studio.](text-embedder.png "Fig. 3 - NVIDIATextEmbedder configuration in the deepset Studio.")
 
@@ -86,11 +86,11 @@ In most use cases, RAG pipelines consist of three to four components. In this ar
 
 ![Fig. 5 - PromtBuilder configuration in the deepset Studio.](prompt.png "Fig. 5 - PromtBuilder Configuration in the deepset Studio.") 
 
--   **LLM Component**: Finally, we will add a LLM component that receives our final augmented prompt and generates a response. In this example, we will use the [llama-3_1-70b-instruct](https://build.nvidia.com/meta/llama-3_1-70b-instruct) NIM microservice from the [NVIDIA API catalog](https://build.nvidia.com/nim). In this case, we use the [`NvidiaGenerator`](https://docs.haystack.deepset.ai/docs/nvidiagenerator) component from Haystack and configure it to use the `meta/llama-3.1-70b-instruct` model. Fig. 6 shows the configuration of this component in the deepset Studio.
+-   **LLM Component**: Finally, we will add an LLM component that receives our final augmented prompt and generates a response. In this example, we will use the [llama-3_1-70b-instruct](https://build.nvidia.com/meta/llama-3_1-70b-instruct) NIM microservice from the [NVIDIA API catalog](https://build.nvidia.com/nim). In this case, we use the [`NvidiaGenerator`](https://docs.haystack.deepset.ai/docs/nvidiagenerator) component from Haystack and configure it to use the `meta/llama-3.1-70b-instruct` model. Fig. 6 shows the configuration of this component in the deepset Studio.
     
 ![Fig. 6 - NvidiaGenerator configuration in the deepset Studio.](generator.png "Fig. 6 - NvidiaGenerator configuration in the deepset Studio.")
 
-As you can see, each of these individual components expects certain inputs, and produces various outputs. You can learn more about the pipeline architecture and how components are connected [here](https://docs.haystack.deepset.ai/docs/creating-pipelines). We can now connect them in deepset Studio to create the final RAG pipeline as shown in Fig. 7.
+As you can see, each of these individual components expects certain inputs, and produces various outputs. You can learn more about the pipeline architecture and how components are connected [here](https://docs.haystack.deepset.ai/docs/creating-pipelines). We can now connect them in deepset Studio to create the final RAG pipeline, as shown in Fig. 7.
 
 ![Fig. 7 - Full RAG Pipeline built visually in the deepset Studio.](rag.png "Fig. 7 - Full RAG pipeline built visually in the deepset Studio.")
 

@@ -67,4 +67,4 @@ We’re actively working to make Studio even more versatile. Here’s a glimpse 
 
 **deepset Studio is free and open to everyone!** [Sign up](https://landing.deepset.ai/deepset-studio-signup) today to start exploring and creating with Studio. Whether you’re building simple RAG workflows or architecting complex AI systems, Studio offers the tools you need to get started. Learn more about Studio on [deepset blog](https://www.deepset.ai/blog/introducing-deepset-studio-visual-ai-builder).
 
-**Need help or have feedback?** Join the dedicated `#deepset-studio` channel on our [Haystack Discord server](https://discord.com/invite/VBpFzsgRVF). Our team and community are happy to hear your thoughts. 🧡
+**Need help or have feedback?** Join the dedicated `#deepset-studio` channel on our [Haystack Discord server](https://discord.gg/Dr63fr9NDS). Our team and community are happy to hear your thoughts. 🧡

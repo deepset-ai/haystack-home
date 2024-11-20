@@ -1,70 +1,70 @@
 ---
 layout: blog-post
-title: 'Announcing Studio: A Visual Programming Editor to Create AI Workflows'
-description: Build AI workflows with our new visual programming interface for Haystack
+title: 'Announcing Studio: Your AI Development Environment for Haystack'
+description: Build, deploy, and test Haystack pipelines with ease
 featured_image: thumbnail.png
 images: ["blog/announcing-studio/thumbnail.png"]
 toc: True
-date: 2024-08-12
-last_updated:  2024-08-12
+date: 2024-11-20
+last_updated:  2024-11-20
 authors:
   - Malte Pietsch
-  - Tuana Celik
+  - Bilge Yucel
 tags: ["Community"]
 ---	
 
-We have some good news. After getting many requests for a visual editor to create AI workflows from our community, we're excited to announce the launch of deepset Studio – a visual programming interface for Haystack.
+We’re thrilled to announce an exciting new addition to the Haystack ecosystem: **deepset Studio**! After countless requests from our community for a visual editor to create AI workflows and invaluable feedback during the beta phase, we’re officially launching deepset Studio, a powerful tool for visually building, deploying, and managing Haystack pipelines.
 
-<video autoplay loop muted playsinline poster="/images/studio-image.png" class="responsive"><source src="/images/studio.mp4" type="video/mp4"></video>
+<video autoplay loop muted playsinline poster="/images/studio-image.png" width="700" height="398" class="responsive"><source src="/images/studio.mp4" type="video/mp4"></video>
 
 ## What is deepset Studio?
 
-deepset Studio is a tool that will help you visually construct AI workflows. It comes with a suite of components that provide the fundamental steps of building any AI application, that you can drag, drop and connect to design your own use case. If you’re already a Haystack user, this will be very familiar to you. You can use all of the [core Haystack components](https://docs.haystack.deepset.ai/reference/audio-api) and connect them the same way you would in code.
+**deepset Studio** is the community version of deepset Cloud, the enterprise offering from the creators of Haystack. It allows users to visually construct and deploy Haystack AI [pipelines](https://docs.haystack.deepset.ai/docs/pipelines) for free. With an intuitive drag-and-drop interface, Studio simplifies the process of designing AI applications by combining Haystack’s core and core-integration [components](https://docs.haystack.deepset.ai/docs/components). Learn more about Studio [here](https://www.deepset.ai/blog/introducing-deepset-studio-visual-ai-builder). 
 
-### Composable AI
+If you're a Haystack user, you'll feel right at home. You can visually connect the same components you use in code - streamlining your workflow and reducing development time.
 
-‘Composable AI’ or ‘Compound AI’ are terms that we commonly see being used to describe the approach to building and designing AI applications. The reason for that is simple: most AI applications/workflows are made up of smaller tasks working together. Think of RAG (retrieval augmented generation) for example. To achieve RAG, we actually have 3 main steps:
+> 💡 Learn the basics of Haystack in our tutorial: [Creating Your First QA Pipeline with Retrieval-Augmentation](https://haystack.deepset.ai/tutorials/27_first_rag_pipeline).
+> 
 
-- Retrieval: Where we retrieve the most relevant context to the users query.
-- Augmenting the prompt: Where we add this context into a prompt (instruction) that we will eventually send to an LLM.
-- Generation: Where we send the augmented prompt to an LLM and ask for it to generate a response.
+### Why “Composable AI” Matters
 
-As you may imagine, as the use case or requirements get more complex, the number of tasks that our workflow should cover can significantly increase. 
+AI workflows are rarely monolithic. Instead, they’re built as **modular systems** where smaller tasks work together to achieve a larger goal, an approach often referred to as **Composable AI** or **Compound AI**.
 
-Our new Studio will allow you to architect these use cases away from the code editor, and export your final pipeline architecture as a YAML pipeline definition, or (eventually) as Python code.
+Take **Retrieval-Augmented Generation (RAG)** as an example. A RAG application consists of:
 
-## How and When can I Use It?
+1. Retrieval: Fetching the most relevant context for a query.
+2. Augmentation: Embedding the retrieved context into a prompt for the LLM.
+3. Generation: Using the prompt to generate a response with an LLM.
 
-deepset Studio will be provided as two versions:
+As workflows grow in complexity, the number of tasks and components increases, making it harder to manage the entire system. With Studio, you can architect these use cases visually, test, and deploy workflows, simplifying the process and reducing overhead.
 
-### **Open Access**
+## Key Features
 
-We will also have a free version of the Studio available to you which will come along with the full selection of Haystack components. In this version, you will be able construct and export your pipelines. While deepset Studio is built for Haystack, an open source AI framework, it is not currently open source.
+With deepset Studio, you can:
 
-**Timeline**
+- **Build visually**: Drag, drop, and connect components to create custom pipelines.
+- **Use a built-in vector database**: Leverage OpenSearch or connect to your preferred instance (Weaviate, Qdrant, ElasticSearch, or Pinecone).
+- **Start quickly**: Use your own files or explore the sample files available in deepset Cloud.
+- **Leverage pipeline templates**:  Take advantage of pre-built pipeline templates for common use cases such as Retrieval Augmented Generation (RAG).
+- **Collaborate seamlessly**: Invite people to your workspace and collaborate with others at every stage of the process.
+- **Experiment with custom components**: Initial support for [integrating your own components](https://docs.cloud.deepset.ai/docs/create-a-custom-component) into pipelines.
+- **Deploy with ease**: Host Haystack pipelines on deepset Cloud infrastructure for free.
+- **Test and share**: Test pipelines in the Playground and share prototypes with stakeholders.
+- **Export pipelines**: Export your pipeline as a YAML definition or Python code to run locally or customize further.
 
-- Today, we are **opening up the [waitlist to get access to Studio](https://landing.deepset.ai/deepset-studio-waitlist).**
-- We will start giving **access to people as of the first week of September**.
-- Studio will be **available to everyone by the end of November.**
-- Once you we start granting access to Studio, we will also create a dedicated channel in the [Haystack Discord server](https://discord.com/invite/VBpFzsgRVF) for users of the Open Access version. We’d love to hear your feedback, and will do our best to help you use Studio 🧡
+> 💡 **Want to dive deeper?** Check out our blog post: [Design Haystack AI Applications Visually with deepset Studio & NVIDIA NIMs](https://www.notion.so/Haystack-Blog-Update-13ee210b37c4802db43cfbc71b0395b1?pvs=21) to learn how to build your first indexing and RAG pipeline with Studio.
 
-### **Within deepset Cloud**
+<video autoplay loop muted playsinline poster="/images/studio-image.png" width="700" height="398" class="responsive"><source src="/images/studio-playground.mp4" type="video/mp4"></video>
 
-deepset Studio is natively integrated within deepset Cloud and with todays launch, customers automatically have beta access. It is the default mechanism for designing and editing pipelines in deepset Cloud. Pipelines constructed with Studio from within deepset Cloud can automatically be deployed from within the platform as well
+### Coming soon
 
-### What’s coming next?
+We’re actively working to make Studio even more versatile. Here’s a glimpse of what’s coming soon:
 
-Our initial release of deepset Studio in September covers the basics:
+- **Enhanced custom component support**: Seamlessly bring your own integrations alongside Haystack's core suite.
+- **Extended database options**: Support for more storage solutions.
 
-- You can drag and drop haystack core components and core-integration components.
-- You can connect them and construct a full [pipeline](https://docs.haystack.deepset.ai/docs/pipelines).
-- You will be able to export them as [YAML pipeline definitions](https://docs.haystack.deepset.ai/docs/serialization).
+## Open Access: Start Using Studio Today!
 
-**What’s coming after the first release?**
+**deepset Studio is free and open to everyone!** [Sign up](https://landing.deepset.ai/deepset-studio-signup) today to start exploring and creating with Studio. Whether you’re building simple RAG workflows or architecting complex AI systems, Studio offers the tools you need to get started.
 
-Once Studio becomes generally available:
-
-- We will add support for custom components. Meaning you will be able to bring your own integrations on top of having full access to our default suite of Haystack components.
-- You will be able to export pipelines to Python
-
-[**Join the waitlist to be one of the first to get access 🎉**](https://landing.deepset.ai/deepset-studio-waitlist)
+**Need help or have feedback?** Join the dedicated `#deepset-studio` channel on our [Haystack Discord server](https://discord.com/invite/VBpFzsgRVF). Our team and community are here to assist and hear your thoughts. 🧡

@@ -3,7 +3,6 @@ layout: author
 title: Tilde Thurium
 name: Tilde Thurium
 slug: tilde-thurium
-position: Senior Developer Advocate
 image: /images/authors/tilde-thurium.png
 socials:
   author_page:

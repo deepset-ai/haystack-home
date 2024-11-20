@@ -48,7 +48,7 @@ With deepset Studio, you can:
 - **Leverage pipeline templates**:  Take advantage of pre-built pipeline templates for common use cases such as Retrieval Augmented Generation (RAG).
 - **Collaborate seamlessly**: Invite people to your workspace and collaborate with others at every stage of the process.
 - **Experiment with custom components**: Initial support for [integrating your own components](https://docs.cloud.deepset.ai/docs/create-a-custom-component) into pipelines.
-- **Deploy with ease**: Host Haystack pipelines on deepset Cloud infrastructure for free.
+- **Deploy with ease**: Host Haystack pipelines on deepset Cloud infrastructure.
 - **Test and share**: Test pipelines in the Playground and share prototypes with stakeholders.
 - **Export pipelines**: Export your pipeline as a YAML definition or Python code to run locally or customize further.
 

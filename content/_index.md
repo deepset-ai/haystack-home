@@ -105,7 +105,7 @@ community:
     title: Join our Discord
     text: Our community on Discord is for everyone interested in NLP, using Haystack or even just getting started!
     ctaText: GET STARTED
-    url: https://discord.com/invite/VBpFzsgRVF
+    url: https://discord.com/invite/xYvH6drSmA
   newsletter:
     title: Sign up for<br> Haystack updates
     text: Stay tuned for the latest Haystack community news and events.

@@ -23,4 +23,4 @@ In addition to providing a space for our community to access high-quality NLP co
 
 So, whether you are a seasoned NLP expert or just starting your journey, we invite you to check out our new blog. We are excited to hear your feedback and to continue growing our community together. 🙌
 
-Do you have questions? Join our [Discord community](https://discord.com/invite/VBpFzsgRVF)!
+Do you have questions? Join our [Discord community](https://discord.com/invite/xYvH6drSmA)!

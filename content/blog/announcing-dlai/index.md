@@ -34,4 +34,4 @@ It's been an absolute pleasure for me to create this with the Haystack team and 
 
 - [Haystack on Twitter](https://x.com/Haystack_AI)
 - [Haystack on YouTube](https://www.youtube.com/@haystack_ai)
-- [Join our Discord](https://discord.com/invite/VBpFzsgRVF)
+- [Join our Discord](https://discord.com/invite/xYvH6drSmA)

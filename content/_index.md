@@ -10,8 +10,12 @@ hero:
   title: The Production-Ready<br/> Open Source AI Framework
   buttons:
     - buttonText: pip install haystack-ai
-    - buttonText: Get Started
+    - buttonText: Get Started with Haystack
+      buttonColor: green
       url: /overview/quick-start/
+    - buttonText: Get Started with Studio
+      buttonColor: blue
+      url: https://landing.deepset.ai/deepset-studio-signup
 
   features:
     - title: Highly<br> customizable
@@ -25,6 +29,29 @@ hero:
     - title: Production is where it gets real
       highlightedText: Get your application in front of the world.
       text: Haystack 2.0 is built from the ground-up with production in mind. Our pipelines are fully serializable and perfect for K8s native workflows. Logging and monitoring integrations give you the transparency you need. Our deployment guides walk you through full-scale deployments on all clouds and on-prem.
+
+  studio:
+    # title: "deepset Studio: Your Development Environment for Haystack"
+    title: Build Haystack apps faster with deepset Studio
+    media: # Choose one
+      # image: /images/cookbook-thumbnail.png
+      # video: /images/deepset-studio-demo.mp4
+      video: /images/studio.mp4
+      # youtubeVideoId: Hns424sFY7s
+    bulletPoints: 
+      - Drag, drop, and construct Haystack pipelines
+      - Bring your own files or connect your database
+      - Deploy on deepset Cloud or export pipelines locally
+      - Test, debug, and share your prototype
+      - Free and open to everyone
+    buttons:
+      - buttonText: Learn more
+        buttonColor: dark-blue
+        url: https://www.deepset.ai/blog/introducing-deepset-studio-visual-ai-builder
+
+      - buttonText: Start building
+        buttonColor: blue
+        url: https://landing.deepset.ai/deepset-studio-signup
 
   CTA:
     link: https://www.deepset.ai/deepset-cloud

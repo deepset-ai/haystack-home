@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-title: 'Announcing Studio: Your AI Development Environment for Haystack'
+title: 'Announcing Studio: Your Development Environment for Haystack'
 description: Build, deploy, and test Haystack pipelines with ease
 featured_image: thumbnail.png
 images: ["blog/announcing-studio/thumbnail.png"]
@@ -19,7 +19,7 @@ We’re thrilled to announce an exciting new addition to the Haystack ecosystem:
 
 ## What is deepset Studio?
 
-**deepset Studio** is the community version of deepset Cloud, the enterprise offering from the creators of Haystack. It allows users to visually construct and deploy Haystack AI [pipelines](https://docs.haystack.deepset.ai/docs/pipelines) for free. With an intuitive drag-and-drop interface, Studio simplifies the process of designing AI applications by combining Haystack’s core and core-integration [components](https://docs.haystack.deepset.ai/docs/components). Learn more about Studio [here](https://www.deepset.ai/blog/introducing-deepset-studio-visual-ai-builder). 
+**deepset Studio** is the community version of deepset Cloud, the enterprise offering from the creators of Haystack. It allows users to visually construct and deploy Haystack [pipelines](https://docs.haystack.deepset.ai/docs/pipelines) for free. With an intuitive drag-and-drop interface, Studio simplifies the process of designing AI applications by combining Haystack’s core and core-integration [components](https://docs.haystack.deepset.ai/docs/components). 
 
 If you're a Haystack user, you'll feel right at home. You can visually connect the same components you use in code - streamlining your workflow and reducing development time.
 
@@ -52,7 +52,7 @@ With deepset Studio, you can:
 - **Test and share**: Test pipelines in the Playground and share prototypes with stakeholders.
 - **Export pipelines**: Export your pipeline as a YAML definition or Python code to run locally or customize further.
 
-> 💡 **Want to dive deeper?** Check out our blog post: [Design Haystack AI Applications Visually with deepset Studio & NVIDIA NIMs](https://www.notion.so/Haystack-Blog-Update-13ee210b37c4802db43cfbc71b0395b1?pvs=21) to learn how to build your first indexing and RAG pipeline with Studio.
+> 💡 **Want to dive deeper?** Check out our blog post: [Design Haystack AI Applications Visually with deepset Studio & NVIDIA NIMs](https://haystack.deepset.ai/blog/deepset-studio-and-nvidia-nims) to learn how to build your first indexing and RAG pipeline with Studio.
 
 <video autoplay loop muted playsinline poster="/images/studio-image.png" width="700" height="398" class="responsive"><source src="/images/studio-playground.mp4" type="video/mp4"></video>
 
@@ -65,6 +65,6 @@ We’re actively working to make Studio even more versatile. Here’s a glimpse 
 
 ## Open Access: Start Using Studio Today!
 
-**deepset Studio is free and open to everyone!** [Sign up](https://landing.deepset.ai/deepset-studio-signup) today to start exploring and creating with Studio. Whether you’re building simple RAG workflows or architecting complex AI systems, Studio offers the tools you need to get started.
+**deepset Studio is free and open to everyone!** [Sign up](https://landing.deepset.ai/deepset-studio-signup) today to start exploring and creating with Studio. Whether you’re building simple RAG workflows or architecting complex AI systems, Studio offers the tools you need to get started. Learn more about Studio on [deepset blog](https://www.deepset.ai/blog/introducing-deepset-studio-visual-ai-builder).
 
-**Need help or have feedback?** Join the dedicated `#deepset-studio` channel on our [Haystack Discord server](https://discord.com/invite/VBpFzsgRVF). Our team and community are here to assist and hear your thoughts. 🧡
+**Need help or have feedback?** Join the dedicated `#deepset-studio` channel on our [Haystack Discord server](https://discord.com/invite/VBpFzsgRVF). Our team and community are happy to hear your thoughts. 🧡

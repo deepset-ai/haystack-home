@@ -3,7 +3,6 @@ layout: author
 title: Tuana Çelik
 name: Tuana Celik
 slug: tuana-celik
-position: Developer Relations Lead
 image: /images/authors/tuana-celik.jpg
 socials:
   author_page:

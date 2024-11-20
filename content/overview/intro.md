@@ -76,11 +76,11 @@ Haystack is for everyone looking to build AI apps — LLM enthusiasts and newbie
 
 ## Our community
 
-At the heart of Haystack is the vibrant open source community that thrives on the diverse backgrounds and skill sets of its members. We value collaboration greatly and encourage our users to shape Haystack actively through [GitHub](https://github.com/deepset-ai/haystack) contributions. Our [Discord server](https://discord.com/invite/VBpFzsgRVF) is a space where community members can connect, seek help, and learn from each other.
+At the heart of Haystack is the vibrant open source community that thrives on the diverse backgrounds and skill sets of its members. We value collaboration greatly and encourage our users to shape Haystack actively through [GitHub](https://github.com/deepset-ai/haystack) contributions. Our [Discord server](https://discord.com/invite/xYvH6drSmA) is a space where community members can connect, seek help, and learn from each other.
 
 We also organize [live online and in-person events](https://lu.ma/haystack), webinars, and office hours, which are an opportunity to learn and grow.
 
-💬 [Join Discord](https://discord.com/invite/VBpFzsgRVF)
+💬 [Join Discord](https://discord.com/invite/xYvH6drSmA)
 
 💌 Sign up for our [monthly email newsletter](https://landing.deepset.ai/haystack-community-updates)
 

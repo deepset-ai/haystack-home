@@ -18,7 +18,7 @@ hero:
       icon: /images/icons/discord.svg
       buttons:
         - buttonText: Join Discord
-          url: https://discord.com/invite/VBpFzsgRVF
+          url: https://discord.com/invite/xYvH6drSmA
     newsletter:
       title: Sign up for community updates
       icon: /images/icons/email.svg

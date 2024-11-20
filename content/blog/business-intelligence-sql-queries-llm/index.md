@@ -237,4 +237,4 @@ It's really hard to create a general-purpose SQL model – most success stories 
 
 A robust evaluation that still allows you to move quickly is essential to making progress. If your organization has good data management practices in place, you're likely to be more successful in your text-to-SQL efforts.
   
-Interested in moving beyond the AI hype and using LLMs where they can add real value? Check out our [Haystack repo](https://github.com/deepset-ai/haystack) on GitHub and [join us on Discord](https://discord.com/invite/VBpFzsgRVF)!
+Interested in moving beyond the AI hype and using LLMs where they can add real value? Check out our [Haystack repo](https://github.com/deepset-ai/haystack) on GitHub and [join us on Discord](https://discord.com/invite/xYvH6drSmA)!

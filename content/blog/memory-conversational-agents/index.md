@@ -259,4 +259,4 @@ Our OSS framework Haystack comes with all the tools needed to build state-of-the
 
   
 
-To see what other people are building with Haystack, or if you need help with your own projects, [join our server on Discord](https://discord.com/invite/VBpFzsgRVF). It’s a friendly community managed by our Devrel advocates, where you can meet others with an interest in NLP.
+To see what other people are building with Haystack, or if you need help with your own projects, [join our server on Discord](https://discord.com/invite/xYvH6drSmA). It’s a friendly community managed by our Devrel advocates, where you can meet others with an interest in NLP.

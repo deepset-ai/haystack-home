@@ -150,7 +150,7 @@ And, as always, keep an eye out on our [blog](https://haystack.deepset.ai/blog) 
 
 Stay up-to-date with Haystack:
 
--   [Discord](https://discord.com/invite/VBpFzsgRVF)
+-   [Discord](https://discord.com/invite/xYvH6drSmA)
 -   [Subscribe to our newsletter](https://landing.deepset.ai/haystack-community-updates)
 -   [Twitter](https://twitter.com/Haystack_AI)
 -   [GitHub](https://github.com/deepset-ai/haystack)

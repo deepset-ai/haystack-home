@@ -28,7 +28,7 @@ You can get all the details about the latest projects and the programming langua
 
 ## Before you apply
 
-It's considered good practice to establish contact with and work alongside organisations and mentors way ahead of your application. Doing so will greatly increase your chances of being accepted. You can reach out to the Haystack core contributors through [Github](https://github.com/deepset-ai/haystack/discussions/new/choose) or by [joining our Discord server](https://discord.com/invite/VBpFzsgRVF).
+It's considered good practice to establish contact with and work alongside organisations and mentors way ahead of your application. Doing so will greatly increase your chances of being accepted. You can reach out to the Haystack core contributors through [Github](https://github.com/deepset-ai/haystack/discussions/new/choose) or by [joining our Discord server](https://discord.com/invite/xYvH6drSmA).
 
 Please read the [Google Summer of Code student guide](https://google.github.io/gsocguides/student/), it contains a lot of helpful information about the program and about participating as a student.
 

@@ -273,4 +273,4 @@ Generative QA, extractive QA, translation, summarization and much, much more: wi
 
 Our application-focused approach to NLP provides you with the modular building blocks to set up your own system in the shortest amount of time. Check out the  [Haystack repository](https://github.com/deepset-ai/haystack)  to learn more, or have a look at our  [documentation](https://docs.haystack.deepset.ai/docs).
 
-Want to chat about GPT-3, search engines, and all things NLP?  [Join our Discord](https://discord.com/invite/VBpFzsgRVF)!
+Want to chat about GPT-3, search engines, and all things NLP?  [Join our Discord](https://discord.com/invite/xYvH6drSmA)!

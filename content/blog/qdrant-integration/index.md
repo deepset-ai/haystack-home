@@ -99,4 +99,4 @@ Once you have initialized the document store, you can write your documents using
 document_store.write_documents(docs)
 ```
 
-That's it! For more examples and documentation on using Qdrant with Haystack, refer to the [qdrant-haystack](https://github.com/qdrant/qdrant-haystack) GitHub repository, and if you have any questions, join Haystack community on [Discord](https://discord.com/invite/VBpFzsgRVF).
+That's it! For more examples and documentation on using Qdrant with Haystack, refer to the [qdrant-haystack](https://github.com/qdrant/qdrant-haystack) GitHub repository, and if you have any questions, join Haystack community on [Discord](https://discord.com/invite/xYvH6drSmA).

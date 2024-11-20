@@ -108,4 +108,4 @@ For a hands-on experience with hybrid retrieval, check out this [tutorial from N
 
   
 
-[Join our friendly Discord community](https://discord.com/invite/VBpFzsgRVF) for help with questions regarding Haystack and open source NLP in general, as well as interesting discussions around the latest LLMs. Let’s build something amazing! 🚀
+[Join our friendly Discord community](https://discord.com/invite/xYvH6drSmA) for help with questions regarding Haystack and open source NLP in general, as well as interesting discussions around the latest LLMs. Let’s build something amazing! 🚀

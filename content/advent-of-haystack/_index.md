@@ -4,7 +4,7 @@ title: Advent of Haystack
 featured_image: /images/advent-meta-image.png
 images: ["/images/advent-meta-image.png"]
 description: '10 Haystack challenges'
-discuss: https://github.com/deepset-ai/haystack/discussions/6441
+discuss: https://github.com/deepset-ai/haystack/discussions/8579
 
 hero:
   title: Advent of Haystack

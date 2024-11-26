@@ -6,8 +6,8 @@ featured_image: thumbnail.png
 alt_image: "An illustration featuring a dark navy blue background with a hexagonal honeycomb pattern outlined in gold. The bold, golden text 'CREATE A SWARM OF AGENTS' is centered at the top. Below the text, a group of cute, cartoon-style bees with large, expressive eyes and bright yellow-and-black stripes are flying in various directions, symbolizing collaboration and teamwork."
 images: ["blog/swarm-of-agents/thumbnail.png"]
 toc: True
-date: 2024-11-25
-last_updated: 2024-11-25
+date: 2024-11-26
+last_updated: 2024-11-26
 authors:
   - Stefano Fiorucci
 tags: ["Agent", "Function Calling"]

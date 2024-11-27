@@ -4,7 +4,7 @@ title: Santa's Self-Reflecting Gift Agent 🎁
 description: For this challenge, you must help Santa create a pipeline that can suggest and optimize gift selections through self-reflection using MongoDB Atlas Vector Store.
 day: 9
 door_text: Santa's Self-Reflecting Gift Agent 🎁
-discuss: https://github.com/deepset-ai/haystack/discussions/6441
+discuss: https://github.com/deepset-ai/haystack/discussions/8579
 submit: https://forms.gle/fmVF7pWKjVxXusKT7
 featured_image: /images/advent-day-nine.png
 images: ["/images/advent-day-nine.png"]

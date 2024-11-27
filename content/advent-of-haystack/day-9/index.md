@@ -5,7 +5,7 @@ description: For this challenge, you must help Santa create a pipeline that can 
 day: 9
 door_text: Santa's Self-Reflecting Gift Agent 🎁
 discuss: https://github.com/deepset-ai/haystack/discussions/6441
-submit: submission-url
+submit: https://forms.gle/fmVF7pWKjVxXusKT7
 featured_image: /images/advent-day-nine.png
 images: ["/images/advent-day-nine.png"]
 draft: false

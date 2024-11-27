@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Log node version
+node -v
+
 rm -rf haystack-tutorials
 # We fetch the whole repo cause we want to use some info from the
 # history, like creation date and last modified date of a notebook.

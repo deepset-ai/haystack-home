@@ -8,7 +8,7 @@ discuss: https://github.com/deepset-ai/haystack/discussions/8579
 submit: https://forms.gle/rZwvBc8zubrm8pzM6
 featured_image: /images/advent-day-one.png
 images: ["/images/advent-day-one.png"]
-draft: true
+draft: false
 ---
 
 # Day 1: Fetching Holiday Wisdom for Santa 📖

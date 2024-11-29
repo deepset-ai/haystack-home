@@ -8,7 +8,7 @@ discuss: https://github.com/deepset-ai/haystack/discussions/8579
 submit: https://forms.gle/7hPrPa6qfu83Vfzn6
 featured_image: /images/advent-day-two.png
 images: ["/images/advent-day-two.png"]
-draft: true
+draft: false
 ---
 
 # 🎄 Day 2: Help the Elves Find What They've Lost

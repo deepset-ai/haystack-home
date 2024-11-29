@@ -19,7 +19,7 @@ Santa Claus realized his centuries-old tradition of spreading joy was missing so
 
 He called an emergency meeting with tech-savvy Elf David, who had been itching for a project beyond sleigh upgrades. Together, they decided to build a Retrieval-Augmented Generation (RAG) system using Haystack, which Elf David had previously used to streamline toy inventory tracking. This time, they connected it to the BBC News feed to create a personal RAG assistant for Santa.
 
-“One last thing,” Santa added, “I’ve heard about advanced retrieval methods. Use multi-query retrieval to improve recall—I want the most relevant answers!”
+“One last thing,” Santa added, “I know about advanced retrieval methods. Use multi-query retrieval to improve recall—I want the most relevant answers!”
 
 Now, it's your challenge to help Elf David create custom components for multi-query retrieval in the RAG pipeline.
 

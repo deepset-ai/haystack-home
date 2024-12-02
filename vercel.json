@@ -131,6 +131,11 @@
       "source": "/blog/authors",
       "destination": "/blog",
       "permanent": true
+    },
+    {
+      "source": "blog/deepset-studio-and-nvidia-nims",
+      "destination": "blog/deepset-studio-and-nvidia-nim",
+      "permanent": true
     }
   ],
 

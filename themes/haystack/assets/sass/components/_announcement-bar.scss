@@ -22,4 +22,8 @@
       transform: translateX(0.25rem);
     }
   }
+
+  &.green {
+    background-color: var(--color-green);
+  }
 }

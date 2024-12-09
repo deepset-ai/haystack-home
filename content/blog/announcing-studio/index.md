@@ -62,8 +62,8 @@ We’re actively working to make Studio even more versatile. Here’s a glimpse 
 - **Enhanced custom component support**: Seamlessly bring your own integrations alongside Haystack's core suite.
 - **Extended database options**: Support for more storage solutions.
 
-## Open Access: Start Using Studio Today!
+## Open Access: Start Using Studio!
 
-**deepset Studio is free and open to everyone!** [Sign up](https://landing.deepset.ai/deepset-studio-signup) today to start exploring and creating with Studio. Whether you’re building simple RAG workflows or architecting complex AI systems, Studio offers the tools you need to get started. Learn more about Studio on [deepset blog](https://www.deepset.ai/blog/introducing-deepset-studio-visual-ai-builder).
+**deepset Studio is free and open to everyone!** [Sign up](https://landing.deepset.ai/deepset-studio-signup) today to start exploring and creating with Studio, and you'll receive an email in the next 24 hours with account setup instructions. Whether you’re building simple RAG workflows or architecting complex AI systems, Studio offers the tools you need to get started. Learn more about Studio on [deepset blog](https://www.deepset.ai/blog/introducing-deepset-studio-visual-ai-builder).
 
 **Need help or have feedback?** Join the dedicated `#deepset-studio` channel on our [Haystack Discord server](https://discord.gg/Dr63fr9NDS). Our team and community are happy to hear your thoughts. 🧡

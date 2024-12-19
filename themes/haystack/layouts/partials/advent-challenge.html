@@ -11,6 +11,11 @@
                 {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Submit" "url" . "color" "green" "icon"
                 "submit")}}
             {{ end }}
+
+            {{ if .Params.solution }}
+                {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Solution" "url" .Params.solution_url "color" "yellow" "icon"
+                "star")}}
+            {{ end }}
         </div>
 
         <article class="challenge-content">

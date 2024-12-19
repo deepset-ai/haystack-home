@@ -147,6 +147,22 @@ button.nav-toggle-close {
       );
     }
   }
+
+  &.btn-yellow {
+    background-color: rgba($color: #{var(--color-yellow-rgb)}, $alpha: 1);
+    color: var(--color-white);
+
+    svg {
+      fill: var(--color-white);
+    }
+
+    &:hover {
+      background-color: rgba(
+        $color: #{var(--color-yellow-rgb)},
+        $alpha: 0.9
+      );
+    }
+  }
 }
 
 // Arrow buttons

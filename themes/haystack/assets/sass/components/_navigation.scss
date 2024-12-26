@@ -165,6 +165,12 @@
             visibility: hidden;
           }
         }
+
+        // dropdown menu tags
+        .menu-item-tag {
+          top: -1rem;
+          right: -1rem;
+        }
       }
 
       // Show dropdown menu on hover

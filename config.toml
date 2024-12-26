@@ -105,9 +105,9 @@ paginatePath = "/"
   weight = 7
 
 [[menu.main]]
-  identifier = 'studio'
-  name = 'Studio'
-  url = 'https://landing.deepset.ai/deepset-studio-signup'
+  identifier = 'deepset'
+  name = 'deepset'
+  url = '/'
   weight = 8
   params = { tag = "New" }
 
@@ -129,12 +129,6 @@ paginatePath = "/"
   url = '/overview/demo'
   parent = 'overview'
   weight = 3
-
-[[menu.main]]
-  name = 'deepset Careers'
-  url = "https://www.deepset.ai/jobs"
-  parent = 'overview'
-  weight = 4
 
 [[menu.main]]
   name = '📚 Tutorials & Walkthroughs'
@@ -179,4 +173,67 @@ paginatePath = "/"
   url = '/nlp-resources'
   parent = 'resources'
   weight = 4
+
+# deepset children
+[[menu.main]]
+  name = 'deepset '
+  url = 'https://www.deepset.ai/'
+  parent = 'deepset'
+  weight = 1
+
+[[menu.main]]
+  name = 'Careers'
+  url = "https://www.deepset.ai/jobs"
+  parent = 'deepset'
+  weight = 4 
+
+[[menu.main]]
+  name = 'deepset Studio'
+  url = 'https://landing.deepset.ai/deepset-studio-signup'
+  parent = 'deepset'
+  weight = 2
+  params = { tag = "Sign up" }
+
+# Community children
+[[menu.main]]
+  name = 'Events & Livestreams'
+  url = "https://lu.ma/haystack"
+  parent = 'community'
+  weight = 1 
+
+[[menu.main]]
+  name = 'Discord'
+  url = 'https://discord.gg/Dr63fr9NDS'
+  parent = 'community'
+  weight = 2
+
+[[menu.main]]
+  name = 'GitHub'
+  url = 'https://github.com/deepset-ai/haystack'
+  parent = 'community'
+  weight = 3
+
+[[menu.main]]
+  name = 'YouTube'
+  url = "https://www.youtube.com/@haystack_ai"
+  parent = 'community'
+  weight = 4 
+
+[[menu.main]]
+  name = 'X (Twitter)'
+  url = "https://x.com/Haystack_AI"
+  parent = 'community'
+  weight = 5
+
+[[menu.main]]
+  name = 'Newsletter'
+  url = "https://landing.deepset.ai/haystack-community-updates"
+  parent = 'community'
+  weight = 6  
+
+[[menu.main]]
+  name = 'Open NLP Group'
+  url = "https://www.meetup.com/open-nlp-meetup/"
+  parent = 'community'
+  weight = 7 
 

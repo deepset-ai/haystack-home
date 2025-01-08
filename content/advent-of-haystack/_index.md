@@ -9,13 +9,11 @@ discuss: https://github.com/deepset-ai/haystack/discussions/8579
 hero:
   title: Advent of Haystack
   text: |
-    Welcome back to another year of Haystack challenges 
+    Explore Haystack with Weaviate, AssemblyAI, NVIDIA, Arize AI, and MongoDB through 10 challenges! 🎉
+  
+    💙 Thank you for your interest in the Advent of Haystack 2024. 
+  
+    While submissions are now closed, solutions are available on each challenge page throughout January.
 
-    with 10 challenges in the month of December 🎉
-
-    DEADLINE IS EXTENDED! Complete and submit all challenges by _**January 6**_ for a chance to win gift cards, swag, and more! 🎁 
-    
-    Learn more in [Announcing Advent of Haystack 2024](https://haystack.deepset.ai/blog/announcing-advent-2024/) 
-    
-    🔔 Solutions will be available on the challenge pages on January 6 🔔
+    [Sign up](https://landing.deepset.ai/haystack-community-updates) for the Haystack newsletter to stay updated on upcoming events. See you next year! 👋 
 ---

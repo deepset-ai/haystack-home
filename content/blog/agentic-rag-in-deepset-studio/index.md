@@ -5,8 +5,8 @@ description: Use deepset Studio to build an agentic Haystack pipeline with a fal
 featured_image: thumbnail.png
 images: ["blog/agentic-rag-in-deepset-studio/thumbnail.png"]
 toc: True
-date: 2025-01-13
-last_updated:  2025-01-13
+date: 2025-01-14
+last_updated:  2025-01-14
 authors:
   - Bilge Yucel
 tags: ["Agent", "deepset Studio", "Advanced Use Cases"]

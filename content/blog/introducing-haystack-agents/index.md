@@ -151,4 +151,4 @@ agent = Agent(prompt_node=prompt_node)
 agent.add_tool(my_qa_tool)
 ```
 
-We’re very excited to see how you use Agents and Tools in Haystack, and we can’t wait to start adding more capabilities and usability improvements. Join us on [Discord](https://discord.com/invite/VBpFzsgRVF) or follow the activity in the [Haystack repo](https://github.com/deepset-ai/haystack) to see what's next for Haystack and the Agent
+We’re very excited to see how you use Agents and Tools in Haystack, and we can’t wait to start adding more capabilities and usability improvements. Join us on [Discord](https://discord.com/invite/xYvH6drSmA) or follow the activity in the [Haystack repo](https://github.com/deepset-ai/haystack) to see what's next for Haystack and the Agent

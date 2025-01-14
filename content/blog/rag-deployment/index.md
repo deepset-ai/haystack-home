@@ -144,4 +144,4 @@ It’s one thing to offer prototyping with LLMs, and quite another to provide al
 [Haystack](https://github.com/deepset-ai/haystack) is the framework for AI engineers and data scientists to build and deploy production-ready systems powered by the latest in AI.
 
   
-Are you interested in learning more about building advanced systems with LLMs to solve real-world use cases? Perhaps you’re even working on building and deploying your own custom RAG system? We’d love to hear from you – [join the Haystack Discord](https://discord.com/invite/VBpFzsgRVF), where we talk about LLMs, retrieval augmentation, and much, much more.
+Are you interested in learning more about building advanced systems with LLMs to solve real-world use cases? Perhaps you’re even working on building and deploying your own custom RAG system? We’d love to hear from you – [join the Haystack Discord](https://discord.com/invite/xYvH6drSmA), where we talk about LLMs, retrieval augmentation, and much, much more.

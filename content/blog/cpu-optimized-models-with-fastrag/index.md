@@ -291,4 +291,4 @@ print(response['llm']['replies'][0])
 
 In this short blog, we've highlighted the significant advantages of CPU-optimized embedding models in terms of accuracy and performance, demonstrating how seamlessly these components can be incorporated into your Haystack pipeline. At the forefront of these advancements is fastRAG, a research library dedicated to integrating Intel-based optimizations into Haystack.
 
-The fastRAG team provides in-depth information on the quantization process and extensive benchmarking conducted on 4th Gen Xeon processors. To dive deep into the optimizations, read this detailed [blog post](https://huggingface.co/blog/intel-fast-embedding) and join our [Discord community](https://discord.com/invite/VBpFzsgRVF) to explore Haystack.
+The fastRAG team provides in-depth information on the quantization process and extensive benchmarking conducted on 4th Gen Xeon processors. To dive deep into the optimizations, read this detailed [blog post](https://huggingface.co/blog/intel-fast-embedding) and join our [Discord community](https://discord.com/invite/xYvH6drSmA) to explore Haystack.

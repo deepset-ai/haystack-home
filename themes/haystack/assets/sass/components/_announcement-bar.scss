@@ -1,7 +1,7 @@
 .announcement-bar {
   display: block;
   width: 100%;
-  background-color: var(--color-green);
+  background-color: var(--color-blue);
   color: var(--color-white);
   text-decoration: none;
   padding: 0.25rem 0;
@@ -21,5 +21,13 @@
     .arrow {
       transform: translateX(0.25rem);
     }
+  }
+
+  &.green {
+    background-color: var(--color-green);
+  }
+
+  &.red {
+    background-color: #9a080a;
   }
 }

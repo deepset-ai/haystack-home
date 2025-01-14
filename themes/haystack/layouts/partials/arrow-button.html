@@ -37,6 +37,10 @@
           <svg fill="none" viewBox="0 0 24 24" style="width: 1.5rem;margin-left:0.5rem;margin-bottom:0.15rem;" xmlns="http://www.w3.org/2000/svg"><g fill="#fff"><path d="m12.7071 4.29289c-.3905-.39052-1.0237-.39052-1.4142 0l-3.00001 3c-.39052.39053-.39052 1.02369 0 1.41422.39053.39052 1.02369.39052 1.41422 0l1.29289-1.2929v7.58579c0 .5523.4477 1 1 1s1-.4477 1-1v-7.58579l1.2929 1.2929c.3905.39052 1.0237.39052 1.4142 0 .3905-.39053.3905-1.02369 0-1.41422z"></path><path d="m4 14c.55228 0 1 .4477 1 1v1c0 1.1477.85228 2 2 2h10c1.1477 0 2-.8523 2-2v-1c0-.5523.4477-1 1-1s1 .4477 1 1v1c0 2.2523-1.7477 4-4 4h-10c-2.25228 0-4-1.7477-4-4v-1c0-.5523.44772-1 1-1z"></path></g></svg>
         {{ end }}
 
+        {{ if eq . "star" }}
+          <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 512 512" style="margin-left:0.5rem;margin-bottom:0.15rem;width: 1.5rem;"><path d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160Z" style="fill:none;stroke:#fff;stroke-linejoin:round;stroke-width:32px;"/></svg>
+        {{ end }}
+
       {{ end }}
       <div class="text-wrapper">
         {{ .text }}

@@ -124,7 +124,7 @@ from haystack.dataclasses import ChatMessage
 
 gemini_chat = VertexAIGeminiChatGenerator(model="gemini-pro", project_id='YOUR-GCP-PROJECT-ID', tools=[tool])
 
-messages = [ChatMessage.from_user(content = "What is the temperature in celsius in Berlin?")]
+messages = [ChatMessage.from_user("What is the temperature in celsius in Berlin?")]
 res = gemini_chat.run(messages=messages)
 res["replies"]
 
@@ -133,11 +133,11 @@ res["replies"]
 With the response we get from this interaction, we can call the function `get_current_weather` and proceed with our chat:
 
 ```python
-weather = get_current_weather(**res["replies"][0].content)
-messages += res["replies"] + [ChatMessage.from_function(content=weather, name="get_current_weather")]
+weather = get_current_weather(**json.loads(res["replies"][0].text))
+messages += res["replies"] + [ChatMessage.from_function(weather, name="get_current_weather")]
 
 res = gemini_chat.run(messages = messages)
-res["replies"][0].content
+res["replies"][0].text
 
 ```
 

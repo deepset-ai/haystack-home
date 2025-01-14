@@ -13,21 +13,28 @@
 
         {{/* Buttons */}}
         <div class="hero-button-container">
-          {{ range $index, $element := .Params.hero.buttons }}
-            {{ if eq $index 0 }}
-              <button class="white-button" onclick="navigator.clipboard.writeText(this.innerText); document.getElementById('tick').style.stroke = 'black'">{{$element.buttonText}}
-                <svg width="30" height="20" viewBox="0 0 24 23" fill="none">
-                  <path d="m 16,4 c 0.93,0 1.395,0 1.7765,0.10222 1.0352,0.2774 1.8439,1.08605 2.1213,2.12132 C 20,6.60504 20,7.07003 20,8 v 9.2 c 0,1.6802 0,2.5202 -0.327,3.162 -0.2876,0.5645 -0.7465,1.0234 -1.311,1.311 C 17.7202,22 16.8802,22 15.2,22 H 8.8 C 7.11984,22 6.27976,22 5.63803,21.673 5.07354,21.3854 4.6146,20.9265 4.32698,20.362 4,19.7202 4,18.8802 4,17.2 V 8 C 4,7.07003 4,6.60504 4.10222,6.22354 4.37962,5.18827 5.18827,4.37962 6.22354,4.10222 6.60504,4 7.07003,4 8,4 m 1.6,2 h 4.8 C 14.9601,6 15.2401,6 15.454,5.89101 15.6422,5.79513 15.7951,5.64215 15.891,5.45399 16,5.24008 16,4.96005 16,4.4 V 3.6 C 16,3.03995 16,2.75992 15.891,2.54601 15.7951,2.35785 15.6422,2.20487 15.454,2.10899 15.2401,2 14.9601,2 14.4,2 H 9.6 C 9.03995,2 8.75992,2 8.54601,2.10899 8.35785,2.20487 8.20487,2.35785 8.10899,2.54601 8,2.75992 8,3.03995 8,3.6 V 4.4 C 8,4.96005 8,5.24008 8.10899,5.45399 8.20487,5.64215 8.35785,5.79513 8.54601,5.89101 8.75992,6 9.03995,6 9.6,6 Z" stroke="black" id="board" />  
-                  <path d="M 9.0000002,15 11,17 15.5,12.5" stroke="white" id="tick" />
-                </svg></button>
-            {{ else if eq $index 1 }}
-              <a href="{{$element.url}}" class="green-button">{{$element.buttonText}}
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 15 12" fill="none">
-                <path d="M8.61373 0.929565L13.4237 5.73953M13.4237 5.73953L8.61373 10.5495M13.4237 5.73953H0.196289"
-                  stroke="white" stroke-width="1.80374" />
+          {{ with index .Params.hero.buttons 0 }}
+            <button class="white-button" onclick="navigator.clipboard.writeText(this.innerText); document.getElementById('tick').style.stroke = 'black'">{{.buttonText}}
+              <svg width="30" height="20" viewBox="0 0 24 23" fill="none">
+                <path d="m 16,4 c 0.93,0 1.395,0 1.7765,0.10222 1.0352,0.2774 1.8439,1.08605 2.1213,2.12132 C 20,6.60504 20,7.07003 20,8 v 9.2 c 0,1.6802 0,2.5202 -0.327,3.162 -0.2876,0.5645 -0.7465,1.0234 -1.311,1.311 C 17.7202,22 16.8802,22 15.2,22 H 8.8 C 7.11984,22 6.27976,22 5.63803,21.673 5.07354,21.3854 4.6146,20.9265 4.32698,20.362 4,19.7202 4,18.8802 4,17.2 V 8 C 4,7.07003 4,6.60504 4.10222,6.22354 4.37962,5.18827 5.18827,4.37962 6.22354,4.10222 6.60504,4 7.07003,4 8,4 m 1.6,2 h 4.8 C 14.9601,6 15.2401,6 15.454,5.89101 15.6422,5.79513 15.7951,5.64215 15.891,5.45399 16,5.24008 16,4.96005 16,4.4 V 3.6 C 16,3.03995 16,2.75992 15.891,2.54601 15.7951,2.35785 15.6422,2.20487 15.454,2.10899 15.2401,2 14.9601,2 14.4,2 H 9.6 C 9.03995,2 8.75992,2 8.54601,2.10899 8.35785,2.20487 8.20487,2.35785 8.10899,2.54601 8,2.75992 8,3.03995 8,3.6 V 4.4 C 8,4.96005 8,5.24008 8.10899,5.45399 8.20487,5.64215 8.35785,5.79513 8.54601,5.89101 8.75992,6 9.03995,6 9.6,6 Z" stroke="black" id="board" />  
+                <path d="M 9.0000002,15 11,17 15.5,12.5" stroke="white" id="tick" />
               </svg>
-            {{ end }}</a>
+            </button>
           {{ end }}
+
+          <div>
+            {{ range $index, $button := .Params.hero.buttons }}
+              {{ if gt $index 0 }}
+                <a href="{{ $button.url }}" class="button {{ $button.buttonColor }}">{{ $button.buttonText }}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 15 12" fill="none">
+                    <path d="M8.61373 0.929565L13.4237 5.73953M13.4237 5.73953L8.61373 10.5495M13.4237 5.73953H0.196289" 
+                      stroke="white" stroke-width="1.80374" />
+                  </svg>
+                </a>
+              {{ end }}
+            {{ end }}
+          </div>
+
         </div>
 
         {{/* GitHub stars */}}
@@ -53,6 +60,45 @@
         </div>
         {{ end }}
       </div>
+
+      {{/*  Studio CTA  */}}
+      {{ with .Params.hero.studio }}
+        <div class="hero-studio">
+          <h2>{{ .title }}</h2>
+
+          <div class="inner-container">
+            <div class="media-container">
+              {{ if .media.image }}
+                <img src="{{ .media.image }}" alt="{{ .title }}" />
+              {{ else if .media.video }}
+                <video controls autoplay loop muted playsinline>
+                  <source src="{{ .media.video }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              {{ else if .media.youtubeVideoId }}
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ .media.youtubeVideoId }}"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+              {{ end }}
+            </div>
+
+            <div class="content-container">
+              <ul>
+                {{ range .bulletPoints }}
+                <li>{{ . }}</li>
+                {{ end }}
+              </ul>
+
+              <div class="buttons">
+                {{ range .buttons }}
+                  {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url "color" .buttonColor) }}
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{ end }}
 
       <a class="hero-cta" href="{{ .Params.hero.cta.link }}">
         <div class="inner-container">

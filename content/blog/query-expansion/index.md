@@ -21,7 +21,7 @@ cookbook: query-expansion.ipynb
 >
 > 3️⃣ [Query Decomposition](/blog/query-decomposition)
 >
-> 4️⃣ Automatic Metadata Enrichment 🔜
+> 4️⃣ [Automated Metadata Enrichment](/cookbook/metadata_enrichment)
 
 The quality of RAG (retrieval augmented generation) highly depends on the quality of the first step in the process: retrieval. The generation step can only be as good as the context its working on, which it will receive as a result of a retrieval step.
 

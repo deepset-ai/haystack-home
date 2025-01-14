@@ -23,7 +23,7 @@ cookbook: extracting_metadata_filters_from_a_user_query.ipynb
 >
 > 3️⃣ [Query Decomposition](/blog/query-decomposition)
 >
-> 4️⃣ Automatic Metadata Enrichment 🔜
+> 4️⃣ [Automated Metadata Enrichment](/cookbook/metadata_enrichment)
 
 
 In Retrieval-Augmented Generation (RAG) applications, the retrieval step, which provides relevant context to your large language model (LLM), is vital for generating high-quality responses. There are possible ways of improving retrieval and **metadata filtering** is one of the easiest ways. [Metadata filtering](https://docs.haystack.deepset.ai/docs/metadata-filtering), the approach of limiting the search space based on some concrete metadata,  can really enhance the quality of the retrieved documents. Here are some advantages of using metadata filtering:

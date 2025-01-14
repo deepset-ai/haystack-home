@@ -14,7 +14,7 @@ hero:
   discordText: Join Haystack community on Discord
   discordButton:
     text: Join Discord
-    url: https://discord.com/invite/VBpFzsgRVF
+    url: https://discord.com/invite/xYvH6drSmA
   image: /images/happy-hacktoberfest.png
   image2: /images/hacktoberfest-2.png
 

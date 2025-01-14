@@ -69,4 +69,4 @@ document_embedder = MixedbreadAIDocumentEmbedder(model="mixedbread-ai/deepset-mx
 
 Like our influential [German BERT model](https://www.deepset.ai/german-bert), we hope that this state-of-the-art model will enable the German-speaking AI community to build innovative products in the field of retrieval-augmented generation (RAG) and beyond!
 
-Join our [Discord community](https://discord.com/invite/VBpFzsgRVF) to explore Haystack.
+Join our [Discord community](https://discord.com/invite/xYvH6drSmA) to explore Haystack.

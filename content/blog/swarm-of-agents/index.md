@@ -26,7 +26,7 @@ In this article, we'll introduce the core concepts of Swarm (Routines and Handof
 
 ## Starting simple: building an Assistant
 
-*In this article we'll be using [`haystack-experimental`](https://github.com/deepset-ai/haystack-experimental?tab=readme-ov-file#experiments-catalog) components. Feel free to [join the discussion for these experimental components](https://github.com/deepset-ai/haystack-experimental/discussions/98).*
+*In this article we'll be using Haystack support for Tools. Check out the [documentation](https://docs.haystack.deepset.ai/docs/tool) for more details.*
 
 The first step toward building an Agent is creating an Assistant: think of it of Chat Language Model + a system prompt.
 
@@ -37,8 +37,8 @@ We can implement this as a lightweight dataclass with three parameters:
 - instructions (these will constitute the system message)
 
 ```python
-from haystack_experimental.components import OpenAIChatGenerator
-from haystack_experimental.dataclasses import ChatMessage
+from haystack.components.generators.chat import OpenAIChatGenerator
+from haystack.dataclasses import ChatMessage
 
 @dataclass
 class Assistant:
@@ -137,6 +137,8 @@ Let's see how we can transform our Assistant into a Tool Calling Agent that can 
     - If the last message role is `tool`, it continues running to handle tool execution and its responses.
 
 ```python
+from haystack.tools import create_tool_from_function
+
 @dataclass
 class ToolCallingAgent:
     name: str = "ToolCallingAgent"
@@ -146,7 +148,7 @@ class ToolCallingAgent:
 
     def __post_init__(self):
         self._system_message = ChatMessage.from_system(self.instructions)
-        self.tools = [Tool.from_function(fun) for fun in self.functions] if self.functions else None
+        self.tools = [create_tool_from_function(fun) for fun in self.functions] if self.functions else None
         self._tool_invoker = ToolInvoker(tools=self.tools, raise_on_failure=False) if self.tools else None
 
     def run(self, messages: list[ChatMessage]) -> Tuple[str, list[ChatMessage]]:
@@ -275,7 +277,7 @@ class SwarmAgent:
 
     def __post_init__(self):
         self._system_message = ChatMessage.from_system(self.instructions)
-        self.tools = [Tool.from_function(fun) for fun in self.functions] if self.functions else None
+        self.tools = [create_tool_from_function(fun) for fun in self.functions] if self.functions else None
         self._tool_invoker = ToolInvoker(tools=self.tools, raise_on_failure=False) if self.tools else None
 
     def run(self, messages: list[ChatMessage]) -> Tuple[str, list[ChatMessage]]:

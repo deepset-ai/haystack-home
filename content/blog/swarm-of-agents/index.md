@@ -137,6 +137,8 @@ Let's see how we can transform our Assistant into a Tool Calling Agent that can 
     - If the last message role is `tool`, it continues running to handle tool execution and its responses.
 
 ```python
+from haystack.tools import create_tool_from_function
+
 @dataclass
 class ToolCallingAgent:
     name: str = "ToolCallingAgent"

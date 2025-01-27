@@ -177,7 +177,8 @@
   // align-self: flex-start;
 
   .blog-card-image {
-    height: 12.5rem;
+    // height: 12.5rem;
+    aspect-ratio: 16/9;
 
     > img {
       width: 100%;
@@ -275,7 +276,7 @@
 
   .blog-card-image {
     // min-height: 25rem;
-    height: 18rem;
+    // height: 18rem;
     position: relative;
 
     @include lg {

@@ -23,7 +23,7 @@ Decoupling your application from specific models or APIs gives you the freedom t
 
 Alongside `DeepSeek-R1`, the release includes six distilled models, ranging from 1.5B to 70B parameters, built from `DeepSeek-R1` based on `Qwen` and `Llama`. Impressively, the distilled 32B and 70B models rival the performance of `OpenAI-o1-mini`. By open-sourcing `DeepSeek-R1-Zero`, `DeepSeek-R1`, and the complete suite of distilled models, the creators have made a powerful contribution to the research community, fostering innovation and accessibility in AI development 💙
 
-![benchmark.png](benchmark.png#medium "Benchmark Performance of DeepSeek-R1, [source](https://github.com/deepseek-ai/DeepSeek-R1/blob/main/DeepSeek_R1.pdf)")
+![](benchmark.png#medium "Benchmark Performance of DeepSeek-R1")
 
 Learn more about DeepSeek-R1 in [this paper](https://github.com/deepseek-ai/DeepSeek-R1/blob/main/DeepSeek_R1.pdf).
 

@@ -31,7 +31,7 @@ Learn more about DeepSeek-R1 in [this paper](https://github.com/deepseek-ai/Deep
 ## Test DeepSeek-R1 yourself
 `DeepSeek-R1` can be seamlessly integrated with Haystack. To illustrate the potential of `DeepSeek-R1`, try out [this demo](https://r1-demo.deepset.ai/) using `DeepSeek-R1` within the Haystack and deepset ecosystem. In the demo, you can compare `DeepSeek-R1` with Open AI’s new reasoning model, `o1`, to see which of these two models sets the bar for accuracy, performance, and efficiency. 
 
-![demo.png](demo.png#medium "Compare DeepSeek-R1 and OpenAI's o1 in the deepset demo")
+!["demo ui"](demo.gif "Compare DeepSeek-R1 and OpenAI's o1 in the deepset demo")
 
 If you'd like to use `DeepSeek-R1` in your Haystack applications, you can run inference using [OpenAIChatGenerator](https://docs.haystack.deepset.ai/docs/openaichatgenerator) with [Together AI](https://www.together.ai/). 
 

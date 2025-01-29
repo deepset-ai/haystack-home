@@ -13,13 +13,13 @@ tags: ["RAG", "LLM"]
 ---	
 
 
-The latest from **DeepSeek** confirms an essential truth about AI: there won’t be one model or provider to rule them all. As the field evolves, it's evident that diverse models bring unique strengths, making a model-agnostic approach vital for developers and organizations alike. Whether you're building agentic systems, Retrieval-Augmented Generation (RAG) architectures, search or other architectures, a model-agnostic design unlocks flexibility, scalability, and long-term success 🔐
+The latest release from **DeepSeek** confirms an essential truth about AI: there won’t be one model or provider to rule them all. As the field evolves, it's evident that diverse models bring unique strengths, making a model-agnostic approach vital for developers and organizations alike. Whether you're building agentic systems, Retrieval-Augmented Generation (RAG) architectures, search or other architectures, a model-agnostic design unlocks flexibility, scalability, and long-term success 🔐
 
 ### Stay Flexible with a Model-Agnostic Approach
 Decoupling your application from specific models or APIs gives you the freedom to adapt as AI evolves. A model-agnostic approach lets you choose the best tool for the job—whether it’s generating human-like text, answering complex questions, or handling domain-specific analysis. Through Haystack's modular architecture, you can easily test, swap, or integrate new models as they emerge, all without rearchitecting your entire AI system. This flexibility ensures you stay ahead of advancements, fine-tune for industry needs, and maintain optimal performance without being locked into a single provider ecosystem.
 
 ## DeepSeek-R1: Open-Source AI with Cutting-Edge Reasoning 
-`DeepSeek-R1` is the latest latest large language model by DeepSeek, designed for high-level reasoning tasks. Achieving performance comparable to `OpenAI-o1-1217` on reasoning tasks, it stands out as a reliable choice for advanced AI applications. This release marks a major step forward in open-source AI, offering researchers and developers the flexibility to distill, deploy, and commercialize models under the permissive MIT license.  
+`DeepSeek-R1` is the latest large language model by DeepSeek, designed for high-level reasoning tasks. Achieving performance comparable to `OpenAI-o1-1217` on reasoning tasks, it stands out as a reliable choice for advanced AI applications. This release marks a major step forward in open-source AI, offering researchers and developers the flexibility to distill, deploy, and commercialize models under the permissive MIT license.  
 
 Alongside `DeepSeek-R1`, the release includes six distilled models, ranging from 1.5B to 70B parameters, built from `DeepSeek-R1` based on `Qwen` and `Llama`. Impressively, the distilled 32B and 70B models rival the performance of `OpenAI-o1-mini`. By open-sourcing `DeepSeek-R1-Zero`, `DeepSeek-R1`, and the complete suite of distilled models, the creators have made a powerful contribution to the research community, fostering innovation and accessibility in AI development 💙
 
@@ -55,6 +55,6 @@ Find a full example in this [tutorial](https://colab.research.google.com/drive/1
 
 ## Conclusion
 
-AI is evolving fast, and DeepSeek-R1 proves that no single model fits all use cases. A model-agnostic approach lets you plug in the best tool for the job and with modular systems, you can experiment, optimize, and stay ahead as new models emerge. Whether you're building agents, intelligent search systems, or RAG architectures, the ability to seamlessly switch between models ensures long-term scalability and success. 
+AI is evolving fast, and DeepSeek-R1 proves that no single model fits all use cases. A model-agnostic approach lets you plug in the best tool for the job, and with modular systems, you can experiment, optimize, and stay ahead as new models emerge. Whether you're building agents, intelligent search systems, or RAG architectures, the ability to seamlessly switch between models ensures long-term scalability and success. 
 
-We’d love to see what you build! Try out the notebook, adapt it for your needs, and share your results with us on [LinkedIn](https://www.linkedin.com/company/deepset-ai/) or [Discord](https://discord.gg/Dr63fr9NDS) or submit your Haystack story through [this form](https://forms.gle/UU2Yz6TfJ4Kssk5u7).
+We’d love to see what you build! Try out the notebook, adapt it to your needs, and share your results with us on [LinkedIn](https://www.linkedin.com/company/deepset-ai/) or [Discord](https://discord.gg/Dr63fr9NDS). You can also submit your Haystack story through [this form](https://forms.gle/UU2Yz6TfJ4Kssk5u7).

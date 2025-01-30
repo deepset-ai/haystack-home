@@ -17,11 +17,9 @@ cookbook: vertexai-gemini-examples.ipynb
 ---	
 
 
-In this article, we will introduce you to the new Google Vertex AI Integration for Haystack 2.0-Beta. While this integration introduces several new components to the Haystack eco-system (feel free to explore the full integration repo!), we’d like to start by showcasing two components in particular: the [`VertexAIGeminiGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/vertexaigeminigenerator) and the [`VertexAIGeminiChatGenerator`](https://docs.haystack.deepset.ai/v2.0/docs/vertexaigeminichatgenerator), using the `gemini-pro` and `gemini-1.5-flash` models.
+In this article, we will introduce you to the new Google Vertex AI Integration for Haystack. While this integration introduces several new components to the Haystack eco-system (feel free to explore the full integration repo!), we’d like to start by showcasing two components in particular: the [`VertexAIGeminiGenerator`](https://docs.haystack.deepset.ai/docs/vertexaigeminigenerator) and the [`VertexAIGeminiChatGenerator`](https://docs.haystack.deepset.ai/docs/vertexaigeminichatgenerator), using the `gemini-pro` and `gemini-1.5-flash` models.
 
-> 💚 _You can run the example code showcased in this article in the accompanying_ _[Colab Notebook](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/vertexai-gemini-examples.ipynb)_
-
-> **PSA:** This integration, its documentation pages and resources are going through some final refinements. So more resources will follow!
+> 💚 _You can run the example code showcased in this article in the accompanying_ _[Notebook](https://haystack.deepset.ai/cookbook/vertexai-gemini-examples)_
 
 The great news is, to authenticate for access to the Gemini models, you will only need to do a Google authentication in the Colab (instructions in the Colab)
 
@@ -84,36 +82,23 @@ For this section, we will be using the new `VertexAIGeminiChatGenerator` compone
 For demonstration purposes, we're simply creating a `get_current_weather` function that returns an object which will _always_ tell us it's 'Sunny, and 21.8 degrees'.. If it's Celsius, that's a good day! ☀️
 
 ```python
-def get_current_weather(location: str, unit: str = "celsius"):
+from typing import Annotated
+
+def get_current_weather(
+    location: Annotated[str, "The city for which to get the weather, e.g. 'San Francisco'"] = "Munich",
+    unit: Annotated[str, "The unit for the temperature, e.g. 'celsius'"] = "celsius",
+):
   return {"weather": "sunny", "temperature": 21.8, "unit": unit}
 
 ```
 
-Next, we have to create a `FunctionDeclaration` which will be used to _explain_ the function to Gemini.
+Next, we transform the function into a Haystack [`Tool`](https://docs.haystack.deepset.ai/docs/tool) object.
+The description of the parameteres (provided using `Annotated`) will be included in the schema of the tool.
 
 ```python
-from vertexai.preview.generative_models import Tool, FunctionDeclaration
+from haystack.tools import create_tool_from_function
 
-get_current_weather_func = FunctionDeclaration(
-    name="get_current_weather",
-    description="Get the current weather in a given location",
-    parameters={
-        "type": "object",
-        "properties": {
-            "location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"},
-            "unit": {
-                "type": "string",
-                "enum": [
-                    "celsius",
-                    "fahrenheit",
-                ],
-            },
-        },
-        "required": ["location"],
-    },
-)
-tool = Tool([get_current_weather_func])
-
+weather_tool = create_tool_from_function(get_current_weather)
 ```
 
 We can use this tool with the `VertexAIGeminiChatGenerator` and ask it to tell us how the function should be called to answer the question “What is the temperature in celsius in Berlin?”:
@@ -122,19 +107,23 @@ We can use this tool with the `VertexAIGeminiChatGenerator` and ask it to tell u
 from haystack_integrations.components.generators.google_vertex import VertexAIGeminiChatGenerator
 from haystack.dataclasses import ChatMessage
 
-gemini_chat = VertexAIGeminiChatGenerator(model="gemini-pro", project_id='YOUR-GCP-PROJECT-ID', tools=[tool])
+gemini_chat = VertexAIGeminiChatGenerator(model="gemini-pro", project_id='YOUR-GCP-PROJECT-ID', tools=[weather_tool])
 
-messages = [ChatMessage.from_user("What is the temperature in celsius in Berlin?")]
-res = gemini_chat.run(messages=messages)
-res["replies"]
+user_message = [ChatMessage.from_user("What is the temperature in celsius in Berlin?")]
+replies = gemini_chat.run(messages=user_message)["replies"]
+replies
 
 ```
 
-With the response we get from this interaction, we can call the function `get_current_weather` and proceed with our chat:
+With the response we get from this interaction, we can call the function `get_current_weather` using the [`ToolInvoker` component](https://docs.haystack.deepset.ai/docs/toolinvoker) and proceed with our chat:
 
 ```python
-weather = get_current_weather(**json.loads(res["replies"][0].text))
-messages += res["replies"] + [ChatMessage.from_function(weather, name="get_current_weather")]
+from haystack.components.tools import ToolInvoker
+
+tool_invoker = ToolInvoker(tools=[weather_tool])
+tool_messages = tool_invoker.run(messages=replies)["tool_messages"]
+
+messages = user_message + replies + tool_messages
 
 res = gemini_chat.run(messages = messages)
 res["replies"][0].text

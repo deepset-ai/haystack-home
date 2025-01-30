@@ -17,9 +17,9 @@ cookbook: vertexai-gemini-examples.ipynb
 ---	
 
 
-In this article, we will introduce you to the new Google Vertex AI Integration for Haystack 2.0-Beta. While this integration introduces several new components to the Haystack eco-system (feel free to explore the full integration repo!), we’d like to start by showcasing two components in particular: the [`VertexAIGeminiGenerator`](https://docs.haystack.deepset.ai/docs/vertexaigeminigenerator) and the [`VertexAIGeminiChatGenerator`](https://docs.haystack.deepset.ai/docs/vertexaigeminichatgenerator), using the `gemini-pro` and `gemini-1.5-flash` models.
+In this article, we will introduce you to the new Google Vertex AI Integration for Haystack. While this integration introduces several new components to the Haystack eco-system (feel free to explore the full integration repo!), we’d like to start by showcasing two components in particular: the [`VertexAIGeminiGenerator`](https://docs.haystack.deepset.ai/docs/vertexaigeminigenerator) and the [`VertexAIGeminiChatGenerator`](https://docs.haystack.deepset.ai/docs/vertexaigeminichatgenerator), using the `gemini-pro` and `gemini-1.5-flash` models.
 
-> 💚 _You can run the example code showcased in this article in the accompanying_ _[Notebook]([https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/vertexai-gemini-examples.ipynb](https://haystack.deepset.ai/cookbook/vertexai-gemini-examples))_
+> 💚 _You can run the example code showcased in this article in the accompanying_ _[Notebook](https://haystack.deepset.ai/cookbook/vertexai-gemini-examples)_
 
 The great news is, to authenticate for access to the Gemini models, you will only need to do a Google authentication in the Colab (instructions in the Colab)
 

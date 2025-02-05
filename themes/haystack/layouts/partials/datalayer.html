@@ -1,8 +1,14 @@
-<script>
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        'event': 'virtualPageview',
-        'pageUrl': '{{ .Permalink }}',
-        'pageTitle': '{{ .Title }}'
-    });
+<script type="text/javascript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("consent", "default", {
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    ad_storage: "denied",
+    analytics_storage: "denied",
+    wait_for_update: 500
+  });
+  gtag("set", "ads_data_redaction", true);
 </script>

@@ -15,7 +15,7 @@ hero:
       url: /overview/quick-start/
     - buttonText: Get Started with Studio
       buttonColor: blue
-      url: https://landing.deepset.ai/deepset-studio-signup
+      url: https://www.deepset.ai/deepset-studio
 
   features:
     - title: Highly<br> customizable
@@ -41,7 +41,7 @@ hero:
     bulletPoints: 
       - Drag, drop, and construct Haystack pipelines
       - Bring your own files or connect your database
-      - Deploy on deepset Cloud or export pipelines locally
+      - Deploy on deepset or export pipelines locally
       - Test, debug, and share your prototype
       - Free and open to everyone
     buttons:
@@ -51,7 +51,7 @@ hero:
 
       - buttonText: Start building
         buttonColor: blue
-        url: https://landing.deepset.ai/deepset-studio-signup
+        url: https://www.deepset.ai/deepset-studio
 
   CTA:
     link: https://www.deepset.ai/deepset-cloud
@@ -118,7 +118,7 @@ community:
       videoId: Dy-n_yC3Cto
 
     - title: "Adding Tools to Agentic Pipelines & Other Experimental Features"
-      videoId: QWx3OzW2Pvo&
+      videoId: QWx3OzW2Pvo
 
     - title: "How to Train a DE-licious Embedding Model"
       videoId: 3zpv4qpNy8I

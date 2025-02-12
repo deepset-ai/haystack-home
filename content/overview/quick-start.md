@@ -9,7 +9,7 @@ toc: true
 aliases: [get-started]
 ---
 
-Haystack is an open-source Python framework that helps developers build LLM-powered custom applications. In March 2024, we released Haystack 2.0, a significant update. For more information on Haystack 2.0, you can also read the [announcement post](https://haystack.deepset.ai/blog/haystack-2-release).
+Haystack is an open-source AI framework to build custom production-grade LLM applications such as AI agents, powerful RAG applications, and scalable search systems.  
 
 ## Installation
 
@@ -25,34 +25,13 @@ For more details, refer to our documentation.
 
 ## Ask Questions to a Webpage
 
-This is a very simple pipeline that can answer questions about the contents of a webpage. It uses GPT-3.5-Turbo with the `OpenAIGenerator`.
+This is a very simple pipeline that can answer questions about the contents of a webpage. It uses `gpt-4o-mini` with the `OpenAIGenerator`.
 
 Run the following **Quickstart** or the equivalent **Corresponding Pipeline** below. See the pipeline visualized in **Pipeline Graph**.
 
 {{< tabs totalTabs="3">}}
 
-{{< tab tabName="Quickstart: Ready-Made Template" >}}
-First, install Haystack:
-```bash
-pip install haystack-ai trafilatura
-```
-
-```python
-import os
-from haystack import Pipeline, PredefinedPipeline
-
-os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
-
-pipeline = Pipeline.from_template(PredefinedPipeline.CHAT_WITH_WEBSITE)
-result = pipeline.run({
-    "fetcher": {"urls": ["https://haystack.deepset.ai/overview/quick-start"]},
-    "prompt": {"query": "Which components do I need for a RAG pipeline?"}}
-)
-print(result["llm"]["replies"][0])
-```
-{{< /tab  >}}
-
-{{< tab tabName="Corresponding Pipeline"  >}}
+{{< tab tabName="Quickstart: Chat with Website Pipeline"  >}}
 First, install Haystack:
 ```bash
 pip install haystack-ai trafilatura
@@ -107,11 +86,32 @@ print(result["llm"]["replies"][0])
 </div>
 {{< /tab  >}}
 
+{{< tab tabName="Ready-Made Template" >}}
+First, install Haystack:
+```bash
+pip install haystack-ai trafilatura
+```
+
+```python
+import os
+from haystack import Pipeline, PredefinedPipeline
+
+os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
+
+pipeline = Pipeline.from_template(PredefinedPipeline.CHAT_WITH_WEBSITE)
+result = pipeline.run({
+    "fetcher": {"urls": ["https://haystack.deepset.ai/overview/quick-start"]},
+    "prompt": {"query": "Which components do I need for a RAG pipeline?"}}
+)
+print(result["llm"]["replies"][0])
+```
+{{< /tab  >}}
+
 {{< /tabs >}}
 
 ## Build Your First RAG Pipeline
 
-To build modern search pipelines with LLMs, you need two things: powerful components and an easy way to put them together. The Haystack pipeline is built for this purpose and enables you to design and scale your interactions with LLMs. Learn how to create pipelines [here](https://docs.haystack.deepset.ai/docs/creating-pipelines).
+To build modern LLM-based applications, you need two things: powerful components and an easy way to put them together. The Haystack pipeline is built for this purpose and enables you to design and scale your interactions with LLMs. Learn how to create pipelines [here](https://docs.haystack.deepset.ai/docs/creating-pipelines).
 
 By connecting three components, a [Retriever](https://docs.haystack.deepset.ai/docs/retrievers), a [PromptBuilder](https://docs.haystack.deepset.ai/docs/promptbuilder) and a [Generator](https://docs.haystack.deepset.ai/docs/generators), you can build your first Retrieval Augmented Generation (RAG) pipeline with Haystack.
 
@@ -119,35 +119,7 @@ Try out how Haystack answers questions about the given documents using the **RAG
 
 {{< tabs totalTabs="3">}}
 
-{{< tab tabName="Quickstart: Ready-Made Template"  >}}
-Install Haystack:
-
-```bash
-pip install haystack-ai 
-```
-
-```python
-import os
-
-from haystack import Pipeline, PredefinedPipeline
-import urllib.request
-
-os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
-urllib.request.urlretrieve("https://archive.org/stream/leonardodavinci00brocrich/leonardodavinci00brocrich_djvu.txt",
-                           "davinci.txt")  
-
-indexing_pipeline =  Pipeline.from_template(PredefinedPipeline.INDEXING)
-indexing_pipeline.run(data={"sources": ["davinci.txt"]})
-
-rag_pipeline =  Pipeline.from_template(PredefinedPipeline.RAG)
-
-query = "How old was he when he died?"
-result = rag_pipeline.run(data={"prompt_builder": {"query":query}, "text_embedder": {"text": query}})
-print(result["llm"]["replies"][0])
-```
-{{< /tab  >}}
-
-{{< tab tabName="Corresponding Pipeline"  >}}
+{{< tab tabName="Basic RAG Pipeline with Indexing"  >}}
 Install Haystack:
 
 ```bash
@@ -220,7 +192,35 @@ print(result["llm"]["replies"][0])
 ```
 {{< /tab  >}}
 
-{{< tab tabName="Pipeline Graph"  >}}
+{{< tab tabName="Ready-Made Template"  >}}
+Install Haystack:
+
+```bash
+pip install haystack-ai 
+```
+
+```python
+import os
+
+from haystack import Pipeline, PredefinedPipeline
+import urllib.request
+
+os.environ["OPENAI_API_KEY"] = "Your OpenAI API Key"
+urllib.request.urlretrieve("https://archive.org/stream/leonardodavinci00brocrich/leonardodavinci00brocrich_djvu.txt",
+                           "davinci.txt")  
+
+indexing_pipeline =  Pipeline.from_template(PredefinedPipeline.INDEXING)
+indexing_pipeline.run(data={"sources": ["davinci.txt"]})
+
+rag_pipeline =  Pipeline.from_template(PredefinedPipeline.RAG)
+
+query = "How old was he when he died?"
+result = rag_pipeline.run(data={"prompt_builder": {"query":query}, "text_embedder": {"text": query}})
+print(result["llm"]["replies"][0])
+```
+{{< /tab  >}}
+
+{{< tab tabName="Pipeline Graphs"  >}}
 <div class="row" style="display:flex">
   <div class="column" style="margin:15px auto" >
     <p>Indexing Pipeline</p>
@@ -235,6 +235,6 @@ print(result["llm"]["replies"][0])
 
 {{< /tabs >}}
 
-For a hands-on guide on how to build your first RAG Pipeline with Haystack 2.0, see our tutorial.
+For a hands-on guide on how to build your first RAG Pipeline with Haystack, see our tutorial.
 
 {{< button url="https://haystack.deepset.ai/tutorials/27_first_rag_pipeline" text="Tutorial: Creating a RAG Pipeline" color="green">}}

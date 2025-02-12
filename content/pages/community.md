@@ -9,7 +9,7 @@ aliases: [/community/join]
 # Hero
 hero:
   headline: Join the Haystack Community
-  text: Haystack is fully open source. Our community is made up of NLP researchers, enthusiasts, engineers and people who are interested in semantic search. Join us!
+  text: Haystack is fully open source. Our community is made up of AI Engineers, NLP researchers, data scientists, enthusiasts and people who are interested in building with LLMs. Join us!
 
   # Discord / newsletter
   community:
@@ -74,15 +74,33 @@ hero:
 #       url: https://hubs.li/Q01Xr4GB0
 #       buttonText: Register
 
+eventsSection:
+  anchor: events
+  title: Upcoming Events
+  text: Join us in our upcoming in-person or online events 💙
+  buttonText: See the upcoming events
+  url: https://lu.ma/haystack
+
+livestreamsSection:
+  anchor: livestreams
+  title: Haystack Livestreams
+  text: Learn about the latest features of Haystack, new LLMs, open source tools, and different architectures for various use cases in our livestreams. 
+  buttonText: Check all past livestreams
+  url: https://www.youtube.com/@haystack_ai
+  videos:
+    - Dy-n_yC3Cto
+    - QWx3OzW2Pvo
+    - 3zpv4qpNy8I
+    - F5VQvf5tx_g
+
 # Open NLP Meetup section
 meetupSection:
   anchor: meetup
   title: The Open NLP Meetup
   text: The Open NLP Group is more than just high-quality talks from industry and research perspectives. It’s also the place to meet other NLP enthusiasts and to discuss and share ideas on how to integrate NLP techniques into your applications. We get together every three months and we welcome people from all kinds of backgrounds to join.
-  buttonText: Join Meetup
+  buttonText: Join the Open NLP Group
   url: https://www.meetup.com/open-nlp-meetup/
   videos:
     - XlJQkvk7hww
     - bQmd80BGGsw
-    - 62jfDcCuJbY
 ---

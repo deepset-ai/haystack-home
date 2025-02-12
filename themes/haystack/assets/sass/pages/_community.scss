@@ -115,15 +115,53 @@
 }
 
 // Upcoming Events section
-.community-events {
-  background-color: var(--color-bg-dark-grey);
+.upcoming-events {
+  h2 {
+    font-size: var(--h1-size);
+    margin-bottom: 2rem;
+    color: var(--color-dark-blue);
+  }
+
+  a.btn {
+    margin-top: 1rem;
+  }
+
+  .luma-embed {
+    margin: 2rem 0;
+  }
+}
+
+// Haystack livestreams
+.community-livestreams {
+  background-color: var(--color-bg-light-grey);
+
+  .video-grid {
+    margin-top: 2rem;
+
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+
+    .video {
+      min-height: 18rem;
+      iframe {
+        min-height: inherit;
+      }
+    }
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  a.btn {
+    margin-top: 1rem;
+  }
 
   h2 {
     font-size: var(--h1-size);
     margin-bottom: 2rem;
     color: var(--color-dark-blue);
-
-   
   }
 
   .events-container {
@@ -191,7 +229,8 @@
 
 // Open NLP Meetup section
 .community-meetup {
-  background-color: var(--color-bg-light-grey);
+  background-color: var(--color-bg-dark-grey);
+
   h2 {
     font-size: var(--h1-size);
     margin-bottom: 1rem;

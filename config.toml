@@ -183,57 +183,13 @@ paginatePath = "/"
 
 [[menu.main]]
   name = 'Careers'
-  url = "https://www.deepset.ai/jobs"
+  url = "https://www.deepset.ai/careers"
   parent = 'deepset'
   weight = 4 
 
 [[menu.main]]
   name = 'deepset Studio'
-  url = 'https://landing.deepset.ai/deepset-studio-signup'
+  url = 'https://www.deepset.ai/deepset-studio'
   parent = 'deepset'
   weight = 2
   params = { tag = "Sign up" }
-
-# Community children
-[[menu.main]]
-  name = 'Events & Livestreams'
-  url = "https://lu.ma/haystack"
-  parent = 'community'
-  weight = 1 
-
-[[menu.main]]
-  name = 'Discord'
-  url = 'https://discord.gg/Dr63fr9NDS'
-  parent = 'community'
-  weight = 2
-
-[[menu.main]]
-  name = 'GitHub'
-  url = 'https://github.com/deepset-ai/haystack'
-  parent = 'community'
-  weight = 3
-
-[[menu.main]]
-  name = 'YouTube'
-  url = "https://www.youtube.com/@haystack_ai"
-  parent = 'community'
-  weight = 4 
-
-[[menu.main]]
-  name = 'X (Twitter)'
-  url = "https://x.com/Haystack_AI"
-  parent = 'community'
-  weight = 5
-
-[[menu.main]]
-  name = 'Newsletter'
-  url = "https://landing.deepset.ai/haystack-community-updates"
-  parent = 'community'
-  weight = 6  
-
-[[menu.main]]
-  name = 'Open NLP Group'
-  url = "https://www.meetup.com/open-nlp-meetup/"
-  parent = 'community'
-  weight = 7 
-

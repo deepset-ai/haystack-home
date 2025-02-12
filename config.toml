@@ -105,9 +105,9 @@ paginatePath = "/"
   weight = 7
 
 [[menu.main]]
-  identifier = 'studio'
-  name = 'Studio'
-  url = 'https://landing.deepset.ai/deepset-studio-signup'
+  identifier = 'deepset'
+  name = 'deepset'
+  url = '/'
   weight = 8
   params = { tag = "New" }
 
@@ -129,12 +129,6 @@ paginatePath = "/"
   url = '/overview/demo'
   parent = 'overview'
   weight = 3
-
-[[menu.main]]
-  name = 'deepset Careers'
-  url = "https://www.deepset.ai/jobs"
-  parent = 'overview'
-  weight = 4
 
 [[menu.main]]
   name = '📚 Tutorials & Walkthroughs'
@@ -180,3 +174,22 @@ paginatePath = "/"
   parent = 'resources'
   weight = 4
 
+# deepset children
+[[menu.main]]
+  name = 'deepset '
+  url = 'https://www.deepset.ai/'
+  parent = 'deepset'
+  weight = 1
+
+[[menu.main]]
+  name = 'Careers'
+  url = "https://www.deepset.ai/careers"
+  parent = 'deepset'
+  weight = 4 
+
+[[menu.main]]
+  name = 'deepset Studio'
+  url = 'https://www.deepset.ai/deepset-studio'
+  parent = 'deepset'
+  weight = 2
+  params = { tag = "Sign up" }

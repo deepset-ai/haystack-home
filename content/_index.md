@@ -15,7 +15,7 @@ hero:
       url: /overview/quick-start/
     - buttonText: Get Started with Studio
       buttonColor: blue
-      url: https://landing.deepset.ai/deepset-studio-signup
+      url: https://www.deepset.ai/deepset-studio
 
   features:
     - title: Highly<br> customizable
@@ -41,7 +41,7 @@ hero:
     bulletPoints: 
       - Drag, drop, and construct Haystack pipelines
       - Bring your own files or connect your database
-      - Deploy on deepset Cloud or export pipelines locally
+      - Deploy on deepset or export pipelines locally
       - Test, debug, and share your prototype
       - Free and open to everyone
     buttons:
@@ -51,7 +51,7 @@ hero:
 
       - buttonText: Start building
         buttonColor: blue
-        url: https://landing.deepset.ai/deepset-studio-signup
+        url: https://www.deepset.ai/deepset-studio
 
   CTA:
     link: https://www.deepset.ai/deepset-cloud
@@ -114,13 +114,13 @@ community:
     successMessage: Thanks! You'll soon receive a confirmation email 📧
 
   communityTalks:
-    - title: "AWS Summit Berlin 2023: Building Generative AI Applications on AWS featuring deepset"
-      videoId: Hns424sFY7s
+    - title: "Evaluating AI with Haystack"
+      videoId: Dy-n_yC3Cto
 
-    - title: Building Applications with LLM-Based Agents
-      videoId: 1NPcnlqPf2U
+    - title: "Adding Tools to Agentic Pipelines & Other Experimental Features"
+      videoId: QWx3OzW2Pvo
 
-    - title: "Open NLP Meetup #13: Hosting LLM Apps @ Scale with Haystack, Titan ML & Jina AI"
-      videoId: CWSn-9s955g
+    - title: "How to Train a DE-licious Embedding Model"
+      videoId: 3zpv4qpNy8I
       
 ---

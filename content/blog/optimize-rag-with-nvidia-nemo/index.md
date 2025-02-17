@@ -2,8 +2,8 @@
 layout: single
 title: Optimize RAG Applications with Document Reranking Using Haystack With NVIDIA NeMo Retriever
 toc: True
-date: 2025-01-14
-last_updated: 2025-01-14
+date: 2025-02-17
+last_updated: 2025-02-17
 authors:
   - Rita Fernandes Neves
   - Bilge Yucel
@@ -51,19 +51,19 @@ To measure how well the reranking model is ordering document chunks, we can use 
 
 |  | Recall@5 (Single Hit) | Recall@5 (Multi Hit) | Precision@5 | MRR@5 | NDCG@5 |
 | --- | --- | --- | --- | --- | --- |
-| Retriever (top_k=100) | 0.784 | 0.605 | 0.609 | 0.628 | 0.548 |
-| Ranker (top_k=5) | 0.862 | 0.703 | 0.673 | 0.689 | 0.628 |
-| Ranker Improvement | 7.80% | 9.80% | 6.43% | 6.08% | 7.95%  |
+| Retriever (top_k=100) | 0.818 | 0.650 | 0.635 | 0.652 | 0.584 |
+| Ranker (top_k=5) | 0.884 | 0.718 | 0.692 | 0.708 | 0.643 |
+| Ranker Improvement | 6.60% | 6.80% | 5.69% | 5.59% | 5.90%  |
 
 </div>
 
-*Table 1 - Evaluation scores of retrieval and reranking over the small subset of the [HotpotQA dataset](https://huggingface.co/datasets/hotpotqa/hotpot_qa). For evaluation, following NVIDIA NeMo Retriever microservices were used: `nvidia/nv-embedqa-e5-v5`, for retrieval and `nvidia/nv-rerankqa-mistral-4b-v3`, for ranking.* 
+*Table 1 - Evaluation scores of retrieval and reranking over the small subset of the [HotpotQA dataset](https://huggingface.co/datasets/hotpotqa/hotpot_qa). For evaluation, following NVIDIA NeMo Retriever microservices were used: `nvidia/llama-3.2-nv-embedqa-1b-v2`, for retrieval and `nvidia/llama-3.2-nv-rerankqa-1b-v2`, for ranking.* 
 
 
 The table reveals the impact of adding a reranker to enhance retrieval output:
 
-- **Recall Improvements**: The reranker improves Recall@5 for both single-hit and multi-hit, with multi-hit recall seeing the highest boost (+9.80%). This improvement is crucial when multiple relevant documents are needed for comprehensive context, as the reranker successfully surfaces more relevant documents within the top results.
-- **Reranking Quality**: Metrics like MRR@5 and NDCG@5 indicate a significant improvement in reranking performance. The rise in MRR (+6.08%) suggests that relevant documents appear earlier, while the NDCG increase (+7.95%) indicates better overall ranking quality, making it easier to retrieve relevant information from the top of the results.
+- **Recall Improvements**: The reranker improves Recall@5 for both single-hit and multi-hit, with multi-hit recall seeing the highest boost (+6.80%). This improvement is crucial when multiple relevant documents are needed for comprehensive context, as the reranker successfully surfaces more relevant documents within the top results.
+- **Reranking Quality**: Metrics like MRR@5 and NDCG@5 indicate a significant improvement in reranking performance. The rise in MRR (+5.59%) suggests that relevant documents appear earlier, while the NDCG increase (+5.99%) indicates better overall ranking quality, making it easier to retrieve relevant information from the top of the results.
 
 In summary, this analysis shows that the reranking model significantly enhances both retrieval and ranking metrics, underscoring its value in surfacing relevant content effectively within the RAG pipeline.
 
@@ -99,7 +99,7 @@ To integrate NVIDIA NIM, you can either access pre-trained models using the NVID
 
 ### Enhanced Retrieval
 
-For retrieval, initialize the NeMo Retriever microservices, `NvidiaRanker` with `nvidia/nv-rerankqa-mistral-4b-v3` model and the `NvidiaTextEmbedder`. We’ll set the `top_k` value for retriever to 30 and for reranker to 5. Thus, we’ll retrieve 30 docs but only pass the 5 most relevant documents as context to the LLM. 
+For retrieval, initialize the NeMo Retriever microservices, `NvidiaRanker` with `nvidia/llama-3.2-nv-rerankqa-1b-v2` model and the `NvidiaTextEmbedder`. We’ll set the `top_k` value for retriever to 30 and for reranker to 5. Thus, we’ll retrieve 30 docs but only pass the 5 most relevant documents as context to the LLM. 
 
 ```python
 from haystack_integrations.components.embedders.nvidia import NvidiaTextEmbedder
@@ -107,12 +107,12 @@ from haystack_integrations.components.generators.nvidia import NvidiaGenerator
 from haystack_integrations.components.rankers.nvidia import NvidiaRanker
 from haystack.components.retrievers import InMemoryEmbeddingRetriever
 
-embedder = NvidiaTextEmbedder(model="nvidia/nv-embedqa-e5-v5",
+embedder = NvidiaTextEmbedder(model="nvidia/llama-3.2-nv-embedqa-1b-v2",
                               api_url="https://integrate.api.nvidia.com/v1")
 
 retriever = InMemoryEmbeddingRetriever(document_store=document_store, top_k=30)
 reranker = NvidiaRanker(
-    model="nvidia/nv-rerankqa-mistral-4b-v3",
+    model="nvidia/llama-3.2-nv-rerankqa-1b-v2",
     top_k=5
 )
 ```
@@ -202,7 +202,7 @@ Answer:
 """
 
 rag = Pipeline()
-rag.add_component("embedder", NvidiaTextEmbedder(model="nvidia/nv-embedqa-e5-v5",
+rag.add_component("embedder", NvidiaTextEmbedder(model="nvidia/llama-3.2-nv-embedqa-1b-v2",
                               api_url="https://integrate.api.nvidia.com/v1"))
 rag.add_component("retriever", InMemoryEmbeddingRetriever(document_store=document_store, top_k=5))
 rag.add_component("prompt_builder", PromptBuilder(template=prompt))
@@ -243,6 +243,6 @@ The basic pipeline’s response is "*The answer is Brooklyn.*" which is mentione
 
 In this blog post, we explored the significant impact of adding a reranking model to a RAG pipeline. When using only retrieval, the documents returned may broadly match the query based on embedding similarity, but without guaranteed ordering for contextual relevance. This can lead to responses that lack specificity, as shown in the basic RAG pipeline example where the answer “Brooklyn” was returned instead of the correct “Greenwich Village, New York City” due to suboptimal document ranking.
 
-By integrating the NeMo Retriever `nvidia/nv-rerankqa-mistral-4b-v3` model using the `NvidiaRanker`, the enhanced RAG pipeline prioritized the most contextually appropriate documents, improving the overall precision of the response. With the reranking, metrics like Recall@5 (Multi Hit) and MRR@5 showed marked improvements, indicating that relevant documents not only appeared within the top results more frequently but were also positioned earlier in the list, enhancing the LLM's access to high-quality context for accurate generation.
+By integrating the NeMo Retriever `nvidia/llama-3.2-nv-rerankqa-1b-v2` model using the `NvidiaRanker`, the enhanced RAG pipeline prioritized the most contextually appropriate documents, improving the overall precision of the response. With the reranking, metrics like Recall@5 (Multi Hit) and NDCG@5 showed marked improvements, indicating that relevant documents not only appeared within the top results more frequently but were also positioned earlier in the list, enhancing the LLM's access to high-quality context for accurate generation.
 
 In summary, by adding NeMo Retriever reranking capabilities built with [NVIDIA NIM](https://build.nvidia.com/), RAG pipelines achieve better document ordering, more relevant context, and increased response accuracy—demonstrating the essential role of rankers in building robust, real-world RAG applications.

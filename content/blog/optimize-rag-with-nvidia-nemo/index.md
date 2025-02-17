@@ -168,7 +168,7 @@ enhanced_rag.connect("prompt_builder", "generator")
 To test our pipeline, we’ll use questions from the [HotpotQA dataset](https://huggingface.co/datasets/hotpotqa/hotpot_qa):
 
 ```python
-question = "The director of the romantic comedy 'Big Stone Gap' is based in what New York city?"
+question = "A medieval fortress in Dirleton, East Lothian, Scotland borders on the south side of what coastal area?" # correct answer is "Yellowcraig"
 
 enhanced_rag.run({
     "embedder": {"text": question},
@@ -178,16 +178,16 @@ enhanced_rag.run({
 ```
 
 ```bash
-{'embedder': {'meta': {'usage': {'prompt_tokens': 23, 'total_tokens': 23}}},
- 'generator': {'replies': ["The director of the romantic comedy 'Big Stone Gap', Adriana Trigiani, is based in Greenwich Village, New York City."],
+{'embedder': {'meta': {'usage': {'prompt_tokens': 26, 'total_tokens': 26}}},
+ 'generator': {'replies': ['The answer is Yellowcraig. According to the context, Dirleton Castle borders on the south side of the Yellowcraig coastal area.'],
   'meta': [{'role': 'assistant',
-    'usage': {'prompt_tokens': 380,
-     'total_tokens': 408,
-     'completion_tokens': 28},
+    'usage': {'prompt_tokens': 503,
+     'total_tokens': 532,
+     'completion_tokens': 29},
     'finish_reason': 'stop'}]}}
 ```
 
-For the question, the enhanced pipeline’s response is “*The director of the romantic comedy 'Big Stone Gap', Adriana Trigiani, is based in Greenwich Village, New York City.*”. Let’s now create a basic RAG pipeline without ranking and compare the results.
+For the question, the enhanced pipeline’s response is “*The answer is Yellowcraig. According to the context, Dirleton Castle borders on the south side of the Yellowcraig coastal area.*”. Let’s now create a basic RAG pipeline without ranking and compare the results.
 
 ## Basic RAG Pipeline without Reranking
 
@@ -219,7 +219,7 @@ rag.connect("prompt_builder", "generator")
 ```
 
 ```python
-question = "The director of the romantic comedy 'Big Stone Gap' is based in what New York city?" # answer is "Greenwich Village, New York City"
+question = "A medieval fortress in Dirleton, East Lothian, Scotland borders on the south side of what coastal area?" # correct answer is "Yellowcraig"
 
 rag.run({
     "embedder": {"text": question},
@@ -228,16 +228,16 @@ rag.run({
 ```
 
 ```bash
-{'embedder': {'meta': {'usage': {'prompt_tokens': 23, 'total_tokens': 23}}},
- 'generator': {'replies': ['The answer is Brooklyn.'],
+{'embedder': {'meta': {'usage': {'prompt_tokens': 26, 'total_tokens': 26}}},
+ 'generator': {'replies': ['The Firth of Forth.'],
   'meta': [{'role': 'assistant',
-    'usage': {'prompt_tokens': 473,
-     'total_tokens': 479,
-     'completion_tokens': 6},
+    'usage': {'prompt_tokens': 488,
+     'total_tokens': 496,
+     'completion_tokens': 8},
     'finish_reason': 'stop'}]}}
 ```
 
-The basic pipeline’s response is "*The answer is Brooklyn.*" which is mentioned in the context but isn’t the correct answer. This shows that the retriever isn’t enough to retrieve the most relevant documents, supporting the improvements in the recall with ranker.
+The basic pipeline’s response is "*The Firth of Forth.*" which is mentioned in the context but isn’t the correct answer. This shows that the retriever isn’t enough to retrieve the most relevant documents, supporting the improvements in the recall with ranker.
 
 ## Conclusion
 

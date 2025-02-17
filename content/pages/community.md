@@ -13,20 +13,31 @@ hero:
 
   # Discord / newsletter
   community:
-    discord:
-      title: Join our community
+    - title: Join our community
       icon: /images/icons/discord.svg
       buttons:
         - buttonText: Join Discord
           url: https://discord.com/invite/xYvH6drSmA
-    newsletter:
-      title: Sign up for community updates
-      icon: /images/icons/email.svg
-      inputPlaceholder: Email address...
-      buttonText: Submit
+
+    - title: Share Your Haystack Story
+      icon: /images/icons/star.svg
+      buttons:
+        - buttonText: Submit
+          color: yellow
+          url: https://forms.gle/f3HrtBkgHcKYS4AB8
+
+    # - title: Subscribe to Haystack Updates
+    #   icon: /images/icons/email.svg
+    #   buttons:
+    #     - buttonText: Join Discord
+    #       url: https://landing.deepset.ai/haystack-community-updates
   
   # Social links
   socials:
+
+    - title: Github
+      url: https://github.com/deepset-ai/haystack
+      icon: /images/icons/github.svg
 
     - title: Hugging Face
       url: https://huggingface.co/deepset

@@ -12,23 +12,27 @@
 
             
             <div class="community-cards">
-              {{/* Discord card */}}
+              {{ with .community}}
+              {{/* Cards */}}
+              {{ range . }}
               <div class="discord-card">
-                <img src="{{ .community.discord.icon }}" alt="Discord" />
-                <h3>{{ .community.discord.title }}</h3>
-                {{ with .community.discord.text}}
-                  <p>{{ . }}</p>
+                <img src="{{ .icon }}" alt="Discord" />
+                <h3>{{ .title }}</h3>
+                {{ with .text}}
+                  <p>{{ .text }}</p>
                 {{ end }}
                 <div class="button-container">
-                  {{ range .community.discord.buttons }}
-                    {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url) }}
+                  {{ range .buttons }}
+                    {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url "color" .color) }}
                   {{ end }}
                 </div>
               </div>
+              {{ end }}
+              {{ end }}
               
               {{/* Github section */}}
               {{ with .github}}
-                {{/* Title / buttons */}}
+                <!-- {{/* Title / buttons */}}
                 <div class="text-section discord-card">
                   <img src="{{ .icon }}" alt="Github" />
                   
@@ -39,7 +43,7 @@
                     {{ partial "arrow-button" (dict "context" . "type" "link" "text" .buttonText "url" .url "color" "grey") }}
                     {{ end }}
                   </div>
-                </div>
+                </div> -->
                 {{/* Stars / contributors */}}
                 <div class="community-github">
                   {{ partial "github-stats.html" . }}

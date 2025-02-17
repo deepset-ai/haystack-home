@@ -75,7 +75,7 @@ pipeline.add_component("llm", llm)
 
 pipeline.connect("fetcher.streams", "converter.sources")
 pipeline.connect("converter.documents", "prompt.documents")
-pipeline.connect("prompt.prompt", "llm.prompt")
+pipeline.connect("prompt.prompt", "llm")
 
 result = pipeline.run({"fetcher": {"urls": ["https://haystack.deepset.ai/overview/quick-start"]},
               "prompt": {"query": "Which components do I need for a RAG pipeline?"}})
@@ -180,7 +180,8 @@ rag_pipeline.connect("prompt_builder", "llm")
 
 query = "How old was Leonardo when he died?"
 result = rag_pipeline.run(data={"prompt_builder": {"query":query}, "text_embedder": {"text": query}})
-print(result["llm"]["replies"][0])
+
+print(result["llm"]["replies"][0].text)
 ```
 {{< /tab  >}}
 

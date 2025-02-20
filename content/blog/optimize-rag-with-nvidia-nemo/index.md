@@ -52,8 +52,8 @@ To measure how well the reranking model is ordering document chunks, we can use 
 |  | Recall@5 (Single Hit) | Recall@5 (Multi Hit) | Precision@5 | MRR@5 | NDCG@5 |
 | --- | --- | --- | --- | --- | --- |
 | Retriever (top_k=100) | 0.818 | 0.650 | 0.635 | 0.652 | 0.584 |
-| Ranker (top_k=5) | 0.884 | 0.718 | 0.692 | 0.708 | 0.643 |
-| Ranker Improvement | 6.60% | 6.80% | 5.69% | 5.59% | 5.90%  |
+| Reranker (top_k=5) | 0.884 | 0.718 | 0.692 | 0.708 | 0.643 |
+| Reranker Improvement | 6.60% | 6.80% | 5.69% | 5.59% | 5.90%  |
 
 </div>
 
@@ -65,7 +65,7 @@ The table reveals the impact of adding a reranker to enhance retrieval output:
 - **Recall Improvements**: The reranker improves Recall@5 for both single-hit and multi-hit, with multi-hit recall seeing the highest boost (+6.80%). This improvement is crucial when multiple relevant documents are needed for comprehensive context, as the reranker successfully surfaces more relevant documents within the top results.
 - **Reranking Quality**: Metrics like MRR@5 and NDCG@5 indicate a significant improvement in reranking performance. The rise in MRR (+5.59%) suggests that relevant documents appear earlier, while the NDCG increase (+5.90%) indicates better overall ranking quality, making it easier to retrieve relevant information from the top of the results.
 
-In summary, this analysis shows that the reranking model significantly enhances both retrieval and ranking metrics, underscoring its value in surfacing relevant content effectively within the RAG pipeline.
+In summary, this analysis shows that the reranking model significantly enhances both retrieval and reranking metrics, underscoring its value in surfacing relevant content effectively within the RAG pipeline.
 
 > For detailed code used in this evaluation, check out [Cookbook: Evaluate Reranking-Enhanced Retrieval Pipelines](https://colab.research.google.com/drive/1KMBC4lx4yl2kjJGXwnlEJpd9TtVpmkRX?usp=sharing)
 > 
@@ -153,13 +153,13 @@ from haystack import Pipeline
 enhanced_rag = Pipeline()
 enhanced_rag.add_component("embedder", embedder)
 enhanced_rag.add_component("retriever", retriever)
-enhanced_rag.add_component("ranker", ranker)
+enhanced_rag.add_component("reranker", reranker)
 enhanced_rag.add_component("prompt_builder", prompt_builder)
 enhanced_rag.add_component("generator", generator)
 
 enhanced_rag.connect("embedder.embedding", "retriever.query_embedding")
-enhanced_rag.connect("retriever", "ranker")
-enhanced_rag.connect("ranker.documents", "prompt_builder.documents")
+enhanced_rag.connect("retriever", "reranker")
+enhanced_rag.connect("reranker.documents", "prompt_builder.documents")
 enhanced_rag.connect("prompt_builder", "generator")
 ```
 
@@ -172,7 +172,7 @@ question = "A medieval fortress in Dirleton, East Lothian, Scotland borders on t
 
 enhanced_rag.run({
     "embedder": {"text": question},
-    "ranker": {"query": question}, 
+    "reranker": {"query": question}, 
     "prompt_builder": {"query": question}
 })
 ```
@@ -237,7 +237,7 @@ rag.run({
     'finish_reason': 'stop'}]}}
 ```
 
-The basic pipeline’s response is "*The Firth of Forth.*" which is mentioned in the context but isn’t the correct answer. This shows that the retriever isn’t enough to retrieve the most relevant documents, supporting the improvements in the recall with ranker.
+The basic pipeline’s response is "*The Firth of Forth.*" which is mentioned in the context but isn’t the correct answer. This shows that the retriever isn’t enough to retrieve the most relevant documents, supporting the improvements in the recall with reranker.
 
 ## Conclusion
 
@@ -245,4 +245,4 @@ In this blog post, we explored the significant impact of adding a reranking mode
 
 By integrating the NeMo Retriever `nvidia/llama-3.2-nv-rerankqa-1b-v2` model using the `NvidiaRanker`, the enhanced RAG pipeline prioritized the most contextually appropriate documents, improving the overall precision of the response. With the reranking, metrics like **Recall@5 (Multi Hit)** and **NDCG@5** showed marked improvements, indicating that relevant documents not only appeared within the top results more frequently but were also positioned earlier in the list, enhancing the LLM's access to high-quality context for accurate generation.
 
-In summary, by adding NeMo Retriever reranking capabilities built with [NVIDIA NIM](https://build.nvidia.com/), RAG pipelines achieve better document ordering, more relevant context, and increased response accuracy—demonstrating the essential role of rankers in building robust, real-world RAG applications. 
+In summary, by adding NeMo Retriever reranking capabilities built with [NVIDIA NIM](https://build.nvidia.com/), RAG pipelines achieve better document ordering, more relevant context, and increased response accuracy—demonstrating the essential role of rerankers in building robust, real-world RAG applications. 

@@ -30,11 +30,11 @@ While all of these seem relevant to the topic of REST APIs, the document with sp
 
 ## Why Reranking is Crucial in RAG Systems
 
-Adding a reranking component to a RAG pipeline enhances both **recall** (retrieving relevant documents) and **precision** (selecting the most relevant ones). The ranker, typically using a fine-tuned **LLM**, reorders retrieved document chunks to ensure the most relevant ones appear at the top, making the retrieval process not only faster but also more accurate.
+Adding a reranking component to a RAG pipeline enhances both **recall** (retrieving relevant documents) and **precision** (selecting the most relevant ones). The reranker, typically using a fine-tuned **LLM**, reorders retrieved document chunks to ensure the most relevant ones appear at the top, making the retrieval process more accurate.
 
-By prioritizing the right documents, ranking increases the likelihood of providing the LLM with the best context, which improves the quality of generated responses. For example, in an application where the user seeks specific technical information, the **reranking model ensures that highly relevant content appears first**, preventing less helpful results from diluting the response quality. This is particularly important when the LLM providing the response has a limited context window or when we aim to optimize its inference process for speed and cost-efficiency.
+By prioritizing the right documents, reranking increases the likelihood of providing the LLM with the best context, which improves the quality of generated responses. For example, in an application where the user seeks specific technical information, the **reranking model ensures that highly relevant content appears first**, preventing less helpful results from diluting the response quality. This is particularly important when the LLM providing the response has a limited context window or when we aim to optimize its inference process for speed and cost-efficiency.
 
-Ranking is especially valuable in **hybrid retrieval** setups, where chunks come from different datastores or from various retrieval methods (e.g., sparse, dense, or keyword-based). Each method may rank relevance differently, but ranking brings consistency regardless of the retrieval method. In hybrid setups, it ensures that the final set of documents provided to the LLM reflects the true semantic relevance to the query, rather than being dominated by a single retrieval method’s biases.
+Reranking is especially valuable in **hybrid retrieval** setups, where chunks come from different datastores or from various retrieval methods (e.g., sparse, dense, or keyword-based). Each method may rank relevance differently, but reranking brings consistency regardless of the retrieval method. In hybrid setups, it ensures that the final set of documents provided to the LLM reflects the true semantic relevance to the query, rather than being dominated by a single retrieval method’s biases.
 
 ### Evaluation Metrics for Retrieval and Reranking
 
@@ -42,7 +42,7 @@ Depending on the purpose, many metrics, such as [semantic answer similarity](htt
 
 - Retrieval performance:
 
-To measure the retrieval's success, we can use recall. **Recall** reflects how successful the retrieval operation was, checking how many ground truth documents were retrieved. Single-hit recall indicates how often at least one relevant document is retrieved within the results, and multi-hit recall measures how often all relevant documents appear in the top results.
+**Recall** reflects how successful the retrieval operation was, checking how many ground truth documents were retrieved. Single-hit recall indicates how often at least one relevant document is retrieved within the results, and multi-hit recall measures how often all relevant documents appear in the top results.
 
 - Reranking performance:
 
@@ -57,13 +57,13 @@ To measure how well the reranking model is ordering document chunks, we can use 
 
 </div>
 
-*Table 1 - Evaluation scores of retrieval and reranking over the small subset of the [HotpotQA dataset](https://huggingface.co/datasets/hotpotqa/hotpot_qa). For evaluation, following NVIDIA NeMo Retriever microservices were used: `nvidia/llama-3.2-nv-embedqa-1b-v2`, for retrieval and `nvidia/llama-3.2-nv-rerankqa-1b-v2`, for ranking.* 
+*Table 1 - Evaluation scores of retrieval and reranking over the small subset of the [HotpotQA dataset](https://huggingface.co/datasets/hotpotqa/hotpot_qa). For evaluation, the following NVIDIA NeMo Retriever microservices were used: [`nvidia/llama-3.2-nv-embedqa-1b-v2`](https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-embedqa-1b-v2), for retrieval and [`nvidia/llama-3.2-nv-rerankqa-1b-v2`](https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2), for reranking.* 
 
 
 The table reveals the impact of adding a reranker to enhance retrieval output:
 
 - **Recall Improvements**: The reranker improves Recall@5 for both single-hit and multi-hit, with multi-hit recall seeing the highest boost (+6.80%). This improvement is crucial when multiple relevant documents are needed for comprehensive context, as the reranker successfully surfaces more relevant documents within the top results.
-- **Reranking Quality**: Metrics like MRR@5 and NDCG@5 indicate a significant improvement in reranking performance. The rise in MRR (+5.59%) suggests that relevant documents appear earlier, while the NDCG increase (+5.99%) indicates better overall ranking quality, making it easier to retrieve relevant information from the top of the results.
+- **Reranking Quality**: Metrics like MRR@5 and NDCG@5 indicate a significant improvement in reranking performance. The rise in MRR (+5.59%) suggests that relevant documents appear earlier, while the NDCG increase (+5.90%) indicates better overall ranking quality, making it easier to retrieve relevant information from the top of the results.
 
 In summary, this analysis shows that the reranking model significantly enhances both retrieval and ranking metrics, underscoring its value in surfacing relevant content effectively within the RAG pipeline.
 
@@ -99,7 +99,7 @@ To integrate NVIDIA NIM, you can either access pre-trained models using the NVID
 
 ### Enhanced Retrieval
 
-For retrieval, initialize the NeMo Retriever microservices, `NvidiaRanker` with `nvidia/llama-3.2-nv-rerankqa-1b-v2` model and the `NvidiaTextEmbedder`. We’ll set the `top_k` value for retriever to 30 and for reranker to 5. Thus, we’ll retrieve 30 docs but only pass the 5 most relevant documents as context to the LLM. 
+For retrieval, initialize the NeMo Retriever microservices, `NvidiaRanker` with [`nvidia/llama-3.2-nv-rerankqa-1b-v2`](https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-rerankqa-1b-v2) model and the `NvidiaTextEmbedder` with [`nvidia/llama-3.2-nv-embedqa-1b-v2`](https://docs.api.nvidia.com/nim/reference/nvidia-llama-3_2-nv-embedqa-1b-v2). We’ll set the `top_k` value for retriever to 30 and for reranker to 5. Thus, we’ll retrieve 30 docs but only pass the 5 most relevant documents as context to the LLM. 
 
 ```python
 from haystack_integrations.components.embedders.nvidia import NvidiaTextEmbedder
@@ -187,7 +187,7 @@ enhanced_rag.run({
     'finish_reason': 'stop'}]}}
 ```
 
-For the question, the enhanced pipeline’s response is “*The answer is Yellowcraig. According to the context, Dirleton Castle borders on the south side of the Yellowcraig coastal area.*”. Let’s now create a basic RAG pipeline without ranking and compare the results.
+For the question, the enhanced pipeline’s response is “*The answer is Yellowcraig. According to the context, Dirleton Castle borders on the south side of the Yellowcraig coastal area.*”. Let’s now create a basic RAG pipeline without reranking and compare the results.
 
 ## Basic RAG Pipeline without Reranking
 

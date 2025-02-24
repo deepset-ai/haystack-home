@@ -75,6 +75,9 @@ logos:
     - image:
         url: /images/logos/intel-dark.svg
         alt: Intel
+    - image:
+        url: /images/logos/comcast.svg
+        alt: Comcast
 
 # Use Cases
 useCases:

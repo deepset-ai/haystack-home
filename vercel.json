@@ -131,6 +131,11 @@
       "source": "/blog/authors",
       "destination": "/blog",
       "permanent": true
+    },
+    {
+      "source": "/integrations/(azure-translator|basic-agent-memory|chainlit|document-threshold|entailment-checker|faiss-document-store|lemmatize|newspaper3k|readmedocs-fetcher|text2speech)",
+      "destination": "/integrations",
+      "permanent": true
     }
   ],
 

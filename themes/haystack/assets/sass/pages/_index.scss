@@ -362,7 +362,6 @@
 
     p {
       font-size: 1.3125rem;
-      font-weight: var(--font-weight-extra-bold);
       color: var(--color-dark-blue);
       line-height: 120%;
       padding-bottom: 1.875rem;
@@ -378,10 +377,12 @@
     .logo-container {
       flex-shrink: 0;
       margin-top: 1.875rem;
+      width: 10.375rem;
 
       @include md {
         margin-top: 0;
         padding: 0 1.75rem 1rem 1.75rem;
+        width: 15.1875rem;
       }
 
       @include lg {

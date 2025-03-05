@@ -54,9 +54,9 @@ hero:
         url: https://www.deepset.ai/deepset-studio
 
   CTA:
-    link: https://www.deepset.ai/deepset-cloud
-    text: Learn how to extend Haystack with deepset Cloud for faster building, easier iteration and instant deployment.
-    logo: /images/logos/deepset-cloud.svg
+    link: https://www.deepset.ai/products-and-services/deepset-ai-platform
+    text: Learn how to extend Haystack with deepset AI Platform for faster building, easier iteration and instant deployment.
+    logo: /images/logos/deepset-blue.png
 
 # Logo garden
 logos:
@@ -117,13 +117,13 @@ community:
     successMessage: Thanks! You'll soon receive a confirmation email 📧
 
   communityTalks:
+    - title: "Breaking Down DeepSeek-R1"
+      videoId: 4HvosulBp7I
+
     - title: "Evaluating AI with Haystack"
       videoId: Dy-n_yC3Cto
 
     - title: "Adding Tools to Agentic Pipelines & Other Experimental Features"
       videoId: QWx3OzW2Pvo
-
-    - title: "How to Train a DE-licious Embedding Model"
-      videoId: 3zpv4qpNy8I
       
 ---

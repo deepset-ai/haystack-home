@@ -44,10 +44,10 @@
         {{/* Legal links (desktop) */}}
         <div class="footer-legal desktop" role="list" aria-label="Legal pages">
           <small class="copyright">{{ print "© " $currentYear " deepset GmbH. All rights reserved." }}</small>
-
+          <a href="#" onClick="UC_UI.showSecondLayer();" aria-label="Open privacy settings">Privacy Settings</a>
           <a
             target="_self"
-            href="https://www.deepset.ai/privacy"
+            href="https://www.deepset.ai/privacy-policy"
             aria-label="Go to the Privacy page"
             >Privacy</a
           >
@@ -257,9 +257,10 @@
         {{/* Legal links (mobile) */}}
         <div class="footer-legal mobile" role="list" aria-label="Legal pages">
           <div class="legal-links">
+            <a href="#" onClick="UC_UI.showSecondLayer();">Privacy Settings</a>
             <a
             target="_self"
-            href="https://www.deepset.ai/privacy"
+            href="https://www.deepset.ai/privacy-policy"
             aria-label="Go to the Privacy page"
             >Privacy</a
           >

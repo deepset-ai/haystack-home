@@ -15,6 +15,15 @@
         height: 3rem;
       }
     }
+
+    .site-title > img {
+      display: block;
+      height: 2.5rem;
+
+      @include md {
+        height: 3rem;
+      }
+    }
   }
 }
 

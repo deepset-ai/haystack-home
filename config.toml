@@ -72,7 +72,6 @@ paginatePath = "/"
   weight = 2
   params = { tag = "2.0" }
 
-
 [[menu.main]]
   identifier = 'learn'
   name = 'Learn'
@@ -97,12 +96,6 @@ paginatePath = "/"
   name = 'Community'
   url = '/community'
   weight = 6
-
-[[menu.main]]
-  identifier = 'resources'
-  name = 'Resources'
-  url = '/'
-  weight = 7
 
 [[menu.main]]
   identifier = 'deepset'
@@ -130,6 +123,14 @@ paginatePath = "/"
   parent = 'overview'
   weight = 3
 
+# Learn children
+[[menu.main]]
+  name = '🚀 DeepLearning.AI'
+  url = 'https://www.deeplearning.ai/short-courses/building-ai-applications-with-haystack/'
+  parent = 'learn'
+  weight = 1
+  params = { tag = "Enroll" }
+
 [[menu.main]]
   name = '📚 Tutorials & Walkthroughs'
   url = '/tutorials'
@@ -149,30 +150,10 @@ paginatePath = "/"
   weight = 4
 
 [[menu.main]]
-  name = '🚀 DeepLearning.AI'
-  url = 'https://www.deeplearning.ai/short-courses/building-ai-applications-with-haystack/'
-  parent = 'learn'
-  weight = 1
-  params = { tag = "Enroll" }
-
-# Resources children
-[[menu.main]]
-  name = 'Release Notes'
+  name = '⭐️ Release Notes'
   url = '/release-notes'
-  parent = 'resources'
-  weight = 1
-
-[[menu.main]]
-  name = 'deepset Blog'
-  url = 'https://www.deepset.ai/blog'
-  parent = 'resources'
-  weight = 2
-
-[[menu.main]]
-  name = 'NLP Resources'
-  url = '/nlp-resources'
-  parent = 'resources'
-  weight = 4
+  parent = 'learn'
+  weight = 5
 
 # deepset children
 [[menu.main]]
@@ -182,14 +163,20 @@ paginatePath = "/"
   weight = 1
 
 [[menu.main]]
-  name = 'Careers'
-  url = "https://www.deepset.ai/careers"
-  parent = 'deepset'
-  weight = 4 
-
-[[menu.main]]
   name = 'deepset Studio'
   url = 'https://www.deepset.ai/deepset-studio'
   parent = 'deepset'
   weight = 2
   params = { tag = "Sign up" }
+
+[[menu.main]]
+  name = 'deepset Blog'
+  url = 'https://www.deepset.ai/blog'
+  parent = 'deepset'
+  weight = 3
+
+[[menu.main]]
+  name = 'Careers'
+  url = "https://www.deepset.ai/careers"
+  parent = 'deepset'
+  weight = 4 

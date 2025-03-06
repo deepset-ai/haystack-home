@@ -1,5 +1,29 @@
 @font-face {
   font-display: swap;
+  font-family: "Haffer";
+  font-weight: 400;
+  src: url("../fonts/HafferRegular/font.woff2") format("woff2"),
+    url("../fonts/HafferRegular/font.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Haffer";
+  font-weight: 500;
+  src: url("../fonts/HafferMedium/font.woff2") format("woff2"),
+    url("../fonts/HafferMedium/font.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Haffer";
+  font-weight: 600;
+  src: url("../fonts/HafferBold/font.woff2") format("woff2"),
+    url("../fonts/HafferBold/font.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
   font-family: "GreycliffCF";
   font-weight: 400;
   src: url("../fonts/GreycliffCFMedium/font.woff2") format("woff2"),

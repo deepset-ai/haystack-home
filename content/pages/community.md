@@ -99,10 +99,10 @@ livestreamsSection:
   buttonText: Check all past livestreams
   url: https://www.youtube.com/@haystack_ai
   videos:
+    - 4HvosulBp7I
     - Dy-n_yC3Cto
     - QWx3OzW2Pvo
     - 3zpv4qpNy8I
-    - F5VQvf5tx_g
 
 # Open NLP Meetup section
 meetupSection:
@@ -112,6 +112,6 @@ meetupSection:
   buttonText: Join the Open NLP Group
   url: https://www.meetup.com/open-nlp-meetup/
   videos:
-    - XlJQkvk7hww
-    - bQmd80BGGsw
+    - g4UJG6eIF4I
+    - 1PEDRat0M24
 ---

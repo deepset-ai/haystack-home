@@ -168,7 +168,7 @@
   display: flex;
   flex-direction: column;
 
-  // Logo
+  // Logo SVG
   a.footer-deepset-logo svg {
     width: 10.375rem;
 
@@ -187,6 +187,15 @@
       circle {
         fill: var(--color-light-grey);
       }
+    }
+  }
+
+  // Logo PNG
+  a.footer-deepset-logo img {
+    width: 10.375rem;
+
+    @include md {
+      width: 15.1875rem;
     }
   }
 

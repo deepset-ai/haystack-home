@@ -70,7 +70,6 @@ paginatePath = "/"
   name = 'Documentation'
   url = 'https://docs.haystack.deepset.ai/docs'
   weight = 2
-  params = { tag = "2.0" }
 
 [[menu.main]]
   identifier = 'learn'

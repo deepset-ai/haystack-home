@@ -11,7 +11,7 @@ last_updated:  2024-01-17
 cookbook: amazon_bedrock_for_documentation_qa.ipynb
 authors:
   - Bilge Yucel
-tags: ["Generative AI", "LLM", "Haystack 2.0", "Integration", "Question Answering"]
+tags: ["Generative AI", "LLM", "Integration", "Question Answering"]
 ---
 
 [Amazon Bedrock](https://aws.amazon.com/bedrock/) is a fully managed service that provides high-performing foundation models from leading AI startups and Amazon through a single API. You can choose from various foundation models to find the one best suited for your use case. 

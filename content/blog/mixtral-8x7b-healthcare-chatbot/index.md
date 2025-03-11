@@ -10,7 +10,7 @@ date: 2024-01-02
 last_updated:  2024-01-02
 authors:
   - Tilde Thurium
-tags: ["RAG", "LLM", "Haystack 2.0"]
+tags: ["RAG", "LLM"]
 ---
 
 Unfortunately, countless people around the world have inadequate access to healthcare. I’m lucky to have health insurance and good medical providers taking care of me. However, I still want to educate myself before walking into a doctor’s office.

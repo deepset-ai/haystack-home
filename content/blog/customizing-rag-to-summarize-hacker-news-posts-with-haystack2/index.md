@@ -1,16 +1,16 @@
 ---
 layout: blog-post
-title: Customizing RAG Pipelines to Summarize Latest Hacker News Posts with Haystack 2.0 Preview
+title: Customizing RAG Pipelines to Summarize Latest Hacker News Posts
 description: Take a look at how we are changing Haystack for advanced LLM pipelines, with an example that uses a custom component to fetch the latest Hacker News posts
 featured_image: thumbnail.png
 images: ["blog/customizing-rag-to-summarize-hacker-news-posts-with-haystack2/thumbnail.png"]
-featured_image_caption: Customizing RAG Pipelines to Summarize Latest Hacker News Posts with Haystack 2.0
+featured_image_caption: Customizing RAG Pipelines to Summarize Latest Hacker News Posts
 toc: True
 date: 2023-09-22
 last_updated:  2023-12-05
 authors:
   - Tuana Celik
-tags: ["RAG", "Haystack 2.0", "LLM"]
+tags: ["RAG", "LLM"]
 cookbook: hackernews-custom-component-rag.ipynb
 ---	
 
@@ -18,7 +18,7 @@ Over the last few months, the team at [deepset](https://deepset.ai) has been wor
 > Update: we released Haystack 2.0-Beta on December 4th 2023, the code in this article has been updated to work with this new release.
 
 
-In this article, I’ll cover two major concepts in Haystack 2.0.
+In this article, I’ll cover two major concepts in Haystack
 
 -   **Components:** These are the smallest building blocks in Haystack. They are meant to cover one simple task. As well as using components available in the core Haystack project, it will be easier than ever in 2.0, to create your own custom components.
 -   **Pipelines:** These are made by connecting components to each other. Pipelines in 2.0 are more flexible than ever and enable you various new connection patterns between your components.

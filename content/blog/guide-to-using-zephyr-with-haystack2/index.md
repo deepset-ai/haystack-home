@@ -11,7 +11,7 @@ last_updated: 2023-12-05
 authors:
   - Stefano Fiorucci
   - Tuana Celik
-tags: ["Haystack 2.0", "LLM", "Open Source"]
+tags: ["LLM", "Open Source"]
 cookbook: zephyr-7b-beta-for-rag.ipynb
 ---
 

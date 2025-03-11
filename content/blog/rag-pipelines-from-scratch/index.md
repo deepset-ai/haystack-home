@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 title: "RAG Pipelines From Scratch"
-description: "Let's build a simple RAG Pipeline with Haystack 2.0 by just connecting three components: a Retriever, a PromptBuilder and a Generator."
+description: "Let's build a simple RAG Pipeline with Haystack by just connecting three components: a Retriever, a PromptBuilder and a Generator."
 featured_image: thumbnail.png
 featured_image_caption: "The Republic of Rose Island"
 images: ["blog/rag-pipelines-from-scratch/thumbnail.png"]
@@ -11,7 +11,7 @@ date: 2023-11-21
 last_updated:  2023-11-21
 authors:
   - Sara Zanzottera
-tags: ["Haystack 2.0", "RAG"]
+tags: ["RAG"]
 canonical_url: https://www.zansara.dev/posts/2023-10-27-haystack-series-rag/
 ---	
 

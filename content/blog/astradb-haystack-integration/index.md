@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 title: Announcing the Astra DB Haystack Integration
-description: Learn how to use the new Astra DB integrations for Haystack 2.0 in your RAG pipelines.
+description: Learn how to use the new Astra DB integrations with Haystack in your RAG pipelines.
 featured_image: thumbnail.png
 images: ["blog/astradb-haystack-integration/thumbnail.png"]
 alt_image: The logos for Haystack and Astra DB hang out on a blue background in front of some people tending to pipelines, and inexplicably a giant lightbulb.
@@ -10,7 +10,7 @@ date: 2024-01-19
 last_updated:  2024-01-19
 authors:
   - Tilde Thurium
-tags: ["Embeddings", "Haystack 2.0", "Vector Databases"]
+tags: ["Embeddings", "Vector Databases"]
 cookbook: astradb_haystack_integration.ipynb
 ---
 The Haystack extension family is growing so fast, it's hard to keep up! Our latest addition is the Astra DB extension by [Datastax](https://datastax.com/). It's an open source package that helps you use Astra DB as a vector database for your Haystack pipelines.

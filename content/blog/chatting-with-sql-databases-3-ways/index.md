@@ -9,7 +9,7 @@ date: 2024-04-22
 last_updated:  2024-04-22
 authors:
   - Tuana Celik
-tags: ["SQL", "Haystack 2.0", "Function Calling"]
+tags: ["SQL", "Function Calling"]
 cookbook: chat_with_SQL_3_ways.ipynb
 ---
 
@@ -147,7 +147,7 @@ print(result["sql_querier"]["results"][0])
 
 Next, let’s add a simple improvement. What if the provided `question` is unrelated? It’s better if we skip it, rather than querying the database with a SQL query that’s going to result in an error. 
 
-For this step, I used the `[ConditionalRouter](https://docs.haystack.deepset.ai/docs/conditionalrouter)` that comes with Haystack 2.0.
+For this step, I used the `[ConditionalRouter](https://docs.haystack.deepset.ai/docs/conditionalrouter)`.
 
 To start with, let’s have an LLM reply with `no_answer` if the provided question cannot be answered with the SQL table we have:
 

@@ -20,15 +20,15 @@ hero:
   features:
     - title: Highly<br> customizable
       highlightedText: Don’t just use Haystack, build on top of it.
-      text: The flexible components and pipelines architecture allows you to build around your own specifications and use-cases. Whether you’re building a simple retrieval-augmented generation (RAG) app or a complex architecture with many moving parts.
+      text: The flexible components and pipelines architecture allows you to build around your own specifications and use-cases. Whether you’re building a simple retrieval-augmented generation (RAG) app or a complex agentic pipeline with many moving parts.
 
     - title: Build with leading LLM providers and AI tools
       highlightedText: Have the freedom of choice.
-      text: Thanks to our partnerships with many leading LLM providers, vector databases, and AI tools such as OpenAI, Mistral, Weaviate, Pinecone and so much more
+      text: Thanks to our partnerships with many leading LLM providers, vector databases, and AI tools such as OpenAI, Anthropic, Mistral, Weaviate, Pinecone and so much more
 
     - title: Production is where it gets real
       highlightedText: Get your application in front of the world.
-      text: Haystack 2.0 is built from the ground-up with production in mind. Our pipelines are fully serializable and perfect for K8s native workflows. Logging and monitoring integrations give you the transparency you need. Our deployment guides walk you through full-scale deployments on all clouds and on-prem.
+      text: Haystack is built with production in mind. Pipelines are fully serializable and perfect for K8s native workflows. Logging and monitoring integrations give you the transparency you need. Deployment guides walk you through full-scale deployments on all clouds and on-prem.
 
   studio:
     # title: "deepset Studio: Your Development Environment for Haystack"

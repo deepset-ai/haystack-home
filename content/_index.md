@@ -24,7 +24,7 @@ hero:
 
     - title: Build with leading LLM providers and AI tools
       highlightedText: Have the freedom of choice.
-      text: Thanks to our partnerships with many leading LLM providers, vector databases, and AI tools such as OpenAI, Anthropic, Mistral, Weaviate, Pinecone and so much more
+      text: Thanks to our partnerships with leading LLM providers, vector databases, and AI tools such as OpenAI, Anthropic, Mistral, Weaviate, Pinecone and so many more
 
     - title: Production is where it gets real
       highlightedText: Get your application in front of the world.

@@ -165,10 +165,6 @@
         align-items: center;
         gap: 0.25rem;
 
-        &.version {
-          background-color: var(--color-yellow);
-        }
-
         .icon {
           flex-shrink: 0;
           display: flex;

@@ -10,7 +10,7 @@ date: 2023-12-11
 last_updated:  2023-12-11
 authors:
   - Tuana Celik
-tags: ["Open Source", "Community", "Haystack 2.0", "Model Training", "MLOps", "LLM"]
+tags: ["Open Source", "Community", "Model Training", "MLOps", "LLM"]
 ---
 
 

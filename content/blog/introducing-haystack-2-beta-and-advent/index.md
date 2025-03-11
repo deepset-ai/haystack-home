@@ -11,7 +11,7 @@ last_updated:  2023-12-04
 authors:
   - Tuana Celik
   - Massimiliano Pippi
-tags: ["Open Source", "Community", "Haystack 2.0"]
+tags: ["Open Source", "Community"]
 ---
 
 Today, we are really happy to announce that we have released [Haystack 2.0-Beta](https://github.com/deepset-ai/haystack/releases/tag/v2.0.0-beta.1), alongside our first-ever [Advent of Haystack](https://haystack.deepset.ai/advent-of-haystack): a set of 10 challenges that we will publish throughout the month of December, each introducing the features and design of Haystack 2.0-Beta.

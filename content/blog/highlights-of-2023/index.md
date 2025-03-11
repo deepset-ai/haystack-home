@@ -11,7 +11,7 @@ date: 2024-01-05
 last_updated:  2024-01-05
 authors:
   - Bilge Yucel
-tags: ["Open Source", "Haystack 2.0", "Community"]
+tags: ["Open Source", "Community"]
 ---	
 
 > *This post was originally shared through the Haystack newsletter. [Subscribe now](https://landing.deepset.ai/haystack-community-updates) to stay in the loop on all things Haystack, including the latest updates, new features, captivating content, and upcoming exciting events!* 🗞️

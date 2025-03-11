@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-title: 'Using Jina Embeddings v2 with Haystack 2.0 pipelines to summarize legal documents'
+title: 'Using Jina Embeddings v2 with Haystack pipelines to summarize legal documents'
 description: Learn how to use the Jina v2 Embedding models in a RAG pipeline with our new Haystack integration.
 featured_image: thumbnail.png
 images: ["blog/using-jina-embeddings-haystack/thumbnail.png"]

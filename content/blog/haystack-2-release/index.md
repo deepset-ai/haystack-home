@@ -10,7 +10,7 @@ last_updated: 2024-03-11
 authors:
   - Massimiliano Pippi
   - Tuana Celik
-tags: ["Haystack 2.0", "Open Source"]
+tags: ["Community", "Open Source"]
 ---
 
 

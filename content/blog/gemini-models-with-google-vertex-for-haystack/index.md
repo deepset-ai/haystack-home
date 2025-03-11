@@ -12,7 +12,7 @@ authors:
   - Tuana Celik
   - Tilde Thurium
   - Silvano Cerza
-tags: ["RAG", "Haystack 2.0", "LLM"]
+tags: ["RAG", "LLM"]
 cookbook: vertexai-gemini-examples.ipynb
 ---	
 
@@ -192,8 +192,8 @@ for answer in result["gemini"]["replies"]:
 
 ```
 
-Now you've seen some of what Gemini can do, as well as how to integrate it with Haystack 2.0-Beta 🫶 If you want to learn more:
+Now you've seen some of what Gemini can do, as well as how to integrate it with Haystack 🫶 If you want to learn more:
 
--   Check out the Haystack 2.0 [docs](https://docs.haystack.deepset.ai/v2.0/docs) or [tutorials](https://haystack.deepset.ai/tutorials)
+-   Check out the Haystack [docs](https://docs.haystack.deepset.ai/docs) or [tutorials](https://haystack.deepset.ai/tutorials)
 -   Try out the [Gemini quickstart colab from Google](https://colab.research.google.com/github/google/generative-ai-docs/blob/main/site/en/tutorials/python_quickstart.ipynb#scrollTo=IqFXdgDFRvlU)
 -   Participate in the [Advent of Haystack](https://haystack.deepset.ai/advent-of-haystack)

@@ -13,7 +13,7 @@ authors:
   - Meriem Bendris
   - Tuana Celik
   - Tilde Thurium
-tags: ["Integrations", "Haystack 2.0"]
+tags: ["Integrations"]
 ---	
 
 Retrieval-augmented generation (RAG) systems combine generative AI with information retrieval for contextualized answer generation. Building reliable and performant RAG applications at scale is challenging. In this blog, we show how to use Haystack and NVIDIA NIM to create a RAG solution which is easy to deploy/maintain, standardized and enterprise-ready, that can run on-prem as well as on cloud native environments. This recipe is applicable in the cloud, on-premise or even in air-gapped environments.

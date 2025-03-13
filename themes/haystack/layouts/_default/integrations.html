@@ -118,7 +118,6 @@
       let integrations = [...integrationCards]
       const selectedType = document.querySelector("#type-select").value;
       const selectedMaintainer = document.querySelector("#maintainer-select").value;
-      const selectedVersion = document.querySelector("#version-select").value;
       const searchTerm = document.querySelector("#search").value;
 
       {{/*  Filter by type / maintainer  */}}
@@ -137,10 +136,6 @@
         });
       }
 
-      {{/*  Filter by version  */}}
-      if (selectedVersion === "2.0") {
-        integrations = integrations.filter(t => t.dataset.version === "Haystack 2.0")
-      }
 
       {{/*  Update section title  */}}
       document.querySelector(".section-title").innerHTML = `${integrations.length} ${selectedType === "all" ? "Total" : selectedType} Integration${integrations.length === 1 ? "":"s"}`
@@ -150,15 +145,14 @@
         document.querySelector(".grid-page-grid").appendChild(e)
       );
 
-      updateURL(selectedType, selectedMaintainer, selectedVersion, searchTerm);
+      updateURL(selectedType, selectedMaintainer, searchTerm);
       resizeGridItems()
     }
 
-    const updateURL = (type, maintainer, version, search) => {
+    const updateURL = (type, maintainer, search) => {
       const params = new URLSearchParams();
       if (search) params.set('search', search);
       if (type !== 'all') params.set('type', type);
-      if (version !== 'all') params.set('version', version);
       if (maintainer !== 'all') params.set('maintainer', maintainer);
     
       if (params.toString() === '') {
@@ -173,12 +167,10 @@
       
       const search = params.get('search') || '';
       const type = params.get('type') || 'all';
-      const version = params.get('version') || 'all';
       const maintainer = params.get('maintainer') || 'all';
     
       document.querySelector("#search").value = search;
       document.querySelector("#type-select").value = type;
-      document.querySelector("#version-select").value = version;
       document.querySelector("#maintainer-select").value = maintainer;
     
       filterAndSort();
@@ -187,7 +179,6 @@
     const resetFilters = () => {
       document.querySelector("#type-select").value = "all";
       document.querySelector("#maintainer-select").value = "all";
-      document.querySelector("#version-select").value = "all";
       document.querySelector("#search").value = "";
       filterAndSort();
     }

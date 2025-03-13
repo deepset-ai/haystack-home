@@ -1,0 +1,63 @@
+.release-notes-page {
+  background-color: var(--color-bg-light-grey);
+}
+
+.release-notes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include sm {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include lg {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+.release-notes-card {
+  background-color: var(--color-white);
+  overflow: hidden;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: box-shadow var(--transition-fast) var(--ease);
+
+  .release-notes-card-image {
+    aspect-ratio: 16/9;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .release-notes-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+
+    h2 {
+      font-size: var(--h4-size);
+      font-weight: var(--font-weight-heading);
+    }
+
+    p {
+      color: var(--color-dark-blue);
+      font-size: var(--text-base);
+    }
+
+    .date {
+      color: var(--color-dark-grey);
+      font-size: var(--text-base);
+    }
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 0px 2px #43ab9d,
+      0px 0px 8px 4px rgba(67, 171, 157, 0.32);
+  }
+}

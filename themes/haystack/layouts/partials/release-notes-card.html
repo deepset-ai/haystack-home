@@ -1,0 +1,23 @@
+<a href="{{ .RelPermalink }}" class="release-notes-card">
+  {{/* Image */}}
+  <div class="release-notes-card-image">
+    {{ if .Params.image }}
+      <img src="{{.Permalink}}{{ .Params.image }}" alt="{{ .Params.title }}" loading="lazy" />
+    {{ else }}
+      <img src="/images/release-notes.png" alt="{{ .Params.title }}" loading="lazy" />
+    {{ end }}
+  </div>
+
+  {{/* Content */}}
+  <div class="release-notes-card-content">
+
+    {{/* Title */}}
+    <h2>{{ .Params.title }}</h2>
+
+    {{/* Description */}}
+    <p>{{ .Params.description }}</p>
+
+    {{/* Date */}}
+    <span class="date">{{ .Params.date | time.Format ":date_long" }}</span>
+  </div>
+</a>

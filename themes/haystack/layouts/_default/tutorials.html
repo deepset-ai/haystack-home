@@ -152,19 +152,11 @@
       {{/*  Get selected filter, sort, and task options   */}}
       const selectedLevel = document.querySelector("#level-select").value;
       const selectedSort = document.querySelector("#sort-select").value;
-      const selectedVersion = document.querySelector("#version-select").value;
       const searchTerm = document.querySelector("#search").value;
 
       {{/*  Filter by level  */}}
       if (selectedLevel !== "all") {
         tutorials = tutorials.filter(t => t.dataset.level === selectedLevel)
-      }
-
-      {{/*  Filter by version  */}}
-      if (selectedVersion === "2.0") {
-        tutorials = tutorials.filter(t => t.dataset.haystack_2)
-      } else {
-        tutorials = tutorials.filter(t => !t.dataset.haystack_2)
       }
 
       {{/*  Filter by search  */}}
@@ -196,28 +188,31 @@
       {{/*  Update section title  */}}
       document.querySelector(".section-title").innerHTML = `${tutorials.length} tutorials & walkthroughs for <span>${selectedLevel}</span> level${selectedLevel==="all" ? "s":""}`
 
-      {{/*  Update the banner and hero title tag  */}}
-      if (selectedVersion === "1.0") {
-        banner.classList.remove("v2")
-        banner.children[0].innerHTML= `Looking for 2.0 tutorials? Check out <span>here</span>`
-        heroTitle.innerHTML = `Tutorials`
-      } else {
-        banner.classList.add("v2")
-        banner.children[0].innerHTML= `Looking for tutorials working with 1.x? Check out <span>here</span>`
-        heroTitle.innerHTML = `Tutorials & Walkthroughs<span class="tag">2.0</span>`
-      }
-
       document.querySelector(".grid-page-grid").innerHTML = ""
       tutorials.forEach((e) =>
         document.querySelector(".grid-page-grid").appendChild(e)
       );
 
-      updateURL(selectedVersion);
+      updateURL();
     }
 
-    const updateURL = (version) => {
+    const updateURL = () => {
       const params = new URLSearchParams();
-      if (version && version !== "2.0") params.set('v', version);
+
+      const levelValue = document.querySelector("#level-select").value;
+      if (levelValue !== "all") {
+        params.set('level', levelValue);
+      }
+      
+      const sortValue = document.querySelector("#sort-select").value;
+      if (sortValue !== "level") {
+        params.set('sort', sortValue);
+      }
+      
+      const searchValue = document.querySelector("#search").value;
+      if (searchValue) {
+        params.set('search', searchValue);
+      }
     
       if (params.toString() === '') {
         history.replaceState(null, '', window.location.pathname);
@@ -228,9 +223,22 @@
 
     const setFiltersFromParams = () => {
       const params = new URLSearchParams(window.location.search);
+
+      const levelParam = params.get("level");
+      if (levelParam) {
+        document.querySelector("#level-select").value = levelParam;
+      }
       
-      const version = params.get('v') || '2.0';
-      document.querySelector("#version-select").value = version;
+      const sortParam = params.get("sort");
+      if (sortParam) {
+        document.querySelector("#sort-select").value = sortParam;
+      }
+      
+      const searchParam = params.get("search");
+      if (searchParam) {
+        document.querySelector("#search").value = searchParam;
+      }
+      
     
       filterAndSort();
     }
@@ -238,20 +246,9 @@
     const resetFilters = () => {
       document.querySelector("#level-select").value = "all";
       document.querySelector("#sort-select").value = "level";
-      document.querySelector("#version-select").value = "2.0";
       document.querySelector("#search").value = "";
       filterAndSort();
     }
-
-    {{/*  Version toggle for banner  */}}
-    const toggleVersion = () => {
-      const versionSelect = document.querySelector("#version-select");
-      versionSelect.value = versionSelect.value === "2.0" ? "1.0" : "2.0";
-
-      filterAndSort();
-    }
-
-    document.querySelector(".tutorials-banner").onclick = toggleVersion;
 
     {{/*  Modal  */}}
     {{/*  const searchModalContainer = document.querySelector(".search-modal-container");

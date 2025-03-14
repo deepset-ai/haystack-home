@@ -27,6 +27,19 @@
   overflow: hidden;
 }
 
+.article-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+
+  .arrow-button {
+    margin-top: 0;
+  }
+}
+
 .blog-post-content {
   overflow: hidden;
 

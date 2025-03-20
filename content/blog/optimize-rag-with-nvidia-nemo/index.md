@@ -2,8 +2,8 @@
 layout: single
 title: Optimize RAG Applications with Document Reranking Using Haystack With NVIDIA NeMo Retriever
 toc: True
-date: 2025-02-17
-last_updated: 2025-02-17
+date: 2025-03-20
+last_updated: 2025-03-20
 authors:
   - Rita Fernandes Neves
   - Bilge Yucel

@@ -22,8 +22,6 @@ Auto-merging retrieval is a technique we can use if the parent document is likel
 
 ## Haystack Components
 
-> In this article I’ll be using [`haystack-experimental`](https://github.com/deepset-ai/haystack-experimental?tab=readme-ov-file#experiments-catalog) components. Feel free to [join the discussion for these experimental components](https://github.com/deepset-ai/haystack-experimental/discussions/78).
-
 Haystack implements the Auto-Merging Retrieval with two components:
 
 - [`HierarchicalDocumentSplitter`](https://docs.haystack.deepset.ai/reference/hierarchical-document-splitter): splits a Document into multiple Document objects of different block sizes, building a hierarchical tree structure where each smaller block is a child of a previous larger block. The `init` method expects three parameters:
@@ -40,7 +38,7 @@ Let's see a simple example of how the `AutoMergingRetriever` works. In this exam
 
 ```python
     from haystack import Document
-    from haystack_experimental.components.splitters import HierarchicalDocumentSplitter
+    from haystack.components.preprocessors import HierarchicalDocumentSplitter
 
     docs = [Document(content="The monarch of the wild blue yonder rises from the eastern side of the horizon.")]
     splitter = HierarchicalDocumentSplitter(block_sizes={10, 3}, split_overlap=0, split_by="word")
@@ -94,7 +92,7 @@ Let's see it in practice. We index the parent documents, by selecting the ones w
 Let's now initialize the `AutoMergingRetriever` with parent document store and a parent threshold of 0.5, meaning that if at least 50% of the leaf documents below the same parent match the query, the retriever will return the parent instead of the leaf documents which matched the user query. If we query the document store with a single leaf document, the retriever will return the same leaf document.
 
 ```python
-    from haystack_experimental.components.retrievers import AutoMergingRetriever
+    from haystack.components.retrievers import AutoMergingRetriever
 
     retriever = AutoMergingRetriever(document_store=parent_docs_store, threshold=0.5)
     retriever.run(matched_leaf_documents=[docs['documents'][4]])
@@ -158,7 +156,7 @@ from typing import Tuple
 from haystack.document_stores.in_memory import InMemoryDocumentStore
 from haystack.document_stores.types import DuplicatePolicy
 
-from haystack_experimental.components.splitters import HierarchicalDocumentSplitter
+from haystack.components.preprocessors import HierarchicalDocumentSplitter
 
 def indexing(documents: List[Document]) -> Tuple[InMemoryDocumentStore, InMemoryDocumentStore]:
     splitter = HierarchicalDocumentSplitter(block_sizes={10, 5}, split_overlap=0, split_by="sentence")
@@ -184,7 +182,7 @@ Now that we have our document stores let’s construct a querying pipeline, cons
 ```python
 from haystack import Pipeline
 from haystack.components.retrievers import InMemoryBM25Retriever
-from haystack_experimental.components.retrievers import AutoMergingRetriever
+from haystack.components.retrievers import AutoMergingRetriever
 
 def querying_pipeline(leaf_doc_store: InMemoryDocumentStore, parent_doc_store: InMemoryDocumentStore, threshold: float = 0.6):
     pipeline = Pipeline()
@@ -269,5 +267,3 @@ since at least 60% of the leaf documents of each of those documents matched the 
 ## Conclusion
 
 In this tutorial we saw how the `AutoMergingRetriever` works. One important aspect of the `AutoMergingRetriever` implementation in Haystack is that it requires the documents to be split using the `HierarchicalDocumentSplitter`. Another aspect to notice as we saw, is that the `AutoMergingRetriever` should be used in conjunction with other base `Retrievers` allowing for a more flexible retrieval system.
-
-The features discussed in this article come from our `haystack-experimantal` package and we have [an ongoing Discussion](https://github.com/deepset-ai/haystack-experimental/discussions/78) about them. Please try out the cookbook and tell us what you think!

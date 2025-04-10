@@ -92,7 +92,7 @@ Let's see it in practice. We index the parent documents, by selecting the ones w
 Let's now initialize the `AutoMergingRetriever` with parent document store and a parent threshold of 0.5, meaning that if at least 50% of the leaf documents below the same parent match the query, the retriever will return the parent instead of the leaf documents which matched the user query. If we query the document store with a single leaf document, the retriever will return the same leaf document.
 
 ```python
-    from haystack_experimental.components.retrievers import AutoMergingRetriever
+    from haystack.components.retrievers import AutoMergingRetriever
 
     retriever = AutoMergingRetriever(document_store=parent_docs_store, threshold=0.5)
     retriever.run(matched_leaf_documents=[docs['documents'][4]])
@@ -156,7 +156,7 @@ from typing import Tuple
 from haystack.document_stores.in_memory import InMemoryDocumentStore
 from haystack.document_stores.types import DuplicatePolicy
 
-from haystack_experimental.components.splitters import HierarchicalDocumentSplitter
+from haystack.components.preprocessors import HierarchicalDocumentSplitter
 
 def indexing(documents: List[Document]) -> Tuple[InMemoryDocumentStore, InMemoryDocumentStore]:
     splitter = HierarchicalDocumentSplitter(block_sizes={10, 5}, split_overlap=0, split_by="sentence")

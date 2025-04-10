@@ -22,7 +22,7 @@ Auto-merging retrieval is a technique we can use if the parent document is likel
 
 ## Haystack Components
 
-> Haystack implements the Auto-Merging Retrieval with two components:
+Haystack implements the Auto-Merging Retrieval with two components:
 
 - [`HierarchicalDocumentSplitter`](https://docs.haystack.deepset.ai/reference/hierarchical-document-splitter): splits a Document into multiple Document objects of different block sizes, building a hierarchical tree structure where each smaller block is a child of a previous larger block. The `init` method expects three parameters:
     - `block_sizes`: Set of block sizes to split the document into. The blocks are split in descending order. So, `block_sizes` of {20, 5} would mean that each ‘parent’ split would be of length max 20, and and each of its children would be of length max 5.

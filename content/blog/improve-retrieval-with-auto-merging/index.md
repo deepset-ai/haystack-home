@@ -38,7 +38,7 @@ Let's see a simple example of how the `AutoMergingRetriever` works. In this exam
 
 ```python
     from haystack import Document
-    from haystack.components.proprocessers import HierarchicalDocumentSplitter
+    from haystack.components.preprocessors import HierarchicalDocumentSplitter
 
     docs = [Document(content="The monarch of the wild blue yonder rises from the eastern side of the horizon.")]
     splitter = HierarchicalDocumentSplitter(block_sizes={10, 3}, split_overlap=0, split_by="word")

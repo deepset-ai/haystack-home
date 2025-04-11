@@ -1,7 +1,7 @@
 ---
 layout: advent-challenge
-title: 🌸 Spring Into Haystack 🌸
-description: Sprout an Agent with Haystack & MCP
+title: Spring Into Haystack
+description: Sprout an Agent with Haystack & MCP 🌱 
 discuss: https://github.com/deepset-ai/haystack/discussions/8579
 submit: https://forms.gle/VbyhQrKz1niyzBmGA
 featured_image: /images/spring-into-haystack-meta.png

@@ -2,7 +2,7 @@
 layout: spring-into-haystack
 title: 🌸 Spring Into Haystack 🌸
 featured_image: /images/spring-into-haystack-meta.png
-images: ["/spring-into-haystack-meta.png"]
+images: ["/images/spring-into-haystack-meta.png"]
 description: Sprout an Agent with Haystack & MCP
 discuss: https://github.com/deepset-ai/haystack/discussions/8579
 

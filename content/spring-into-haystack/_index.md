@@ -13,5 +13,5 @@ hero:
       
       ...just like spring itself! 🌼
 
-      Join the challenge and submit your solution by **May 15, 2025**!
+      Join the challenge, submit your solution by **May 15, 2025** and get your official "Spring Into Haystack" certificate!
 ---

@@ -154,6 +154,37 @@
   text-align: center;
   position: relative;
 
+  &.spring {
+    background-color: #c7f5f1;
+    background-image: url("/images/spring-bg.png");
+    background-repeat: repeat;
+
+    .spring-logo {
+      position: absolute;
+      left: 0;
+      bottom: -3.5rem;
+      left: 1rem;
+      width: 100%;
+      max-width: 7rem;
+      pointer-events: none;
+      user-select: none;
+
+      @include sm {
+        display: none;
+      }
+
+      @include md {
+        display: block;
+      }
+
+      @include lg {
+        max-width: 10rem;
+        bottom: -5rem;
+        left: 2rem;
+      }
+    }
+  }
+
   .container {
     position: relative;
     display: flex;
@@ -166,6 +197,18 @@
     .hero-content {
       position: relative;
       z-index: 1;
+
+      &.spring {
+        background-color: #c7f5f1;
+        padding: 3%;
+        border-radius: 1rem;
+        border: 3px solid pink;
+
+        h1,
+        p {
+        color: #494e7f;
+        }
+      }
 
       @include md {
         width: 60%;

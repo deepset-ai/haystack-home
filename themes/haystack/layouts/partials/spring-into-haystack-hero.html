@@ -1,0 +1,15 @@
+{{ $springPage := .Site.GetPage "/spring-into-haystack" }}
+
+<div class="advent-hero spring">
+  <div class="container">
+    <img class="spring-logo" src="/images/spring-into-haystack-logo.png" alt="">
+    <div class="hero-content spring">
+      
+      <h1>{{ $springPage.Params.hero.title }}</h1>
+
+      <div>
+        {{ $springPage.Params.hero.text | markdownify }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@
 layout: advent-challenge
 title: Spring into Haystack
 description: Sprout an Agent with Haystack & MCP 🌱 
-discuss: https://github.com/deepset-ai/haystack/discussions/8579
+discuss: https://github.com/deepset-ai/haystack/discussions/9236
 submit: https://forms.gle/VbyhQrKz1niyzBmGA
 featured_image: /images/spring-into-haystack-meta.png
 images: ["/images/spring-into-haystack-meta.png"]
@@ -45,8 +45,8 @@ You’re going to create a **tool-calling Haystack Agent** that acts as an **MCP
 Getting started is easy:
 1. **Fork** the [deepset-ai/spring-into-haystack](https://github.com/deepset-ai/spring-into-haystack) repo on GitHub
 2. **Fill in the missing pieces** to build your MCP-connected Agent
-3. **Push your code** to your forked repo
-4. **Submit the link** so we can see your creation in full bloom!
+3. **Push your code** to your repo
+4. **Submit your solution** so we can see your creation in full bloom!
 
 ---
 

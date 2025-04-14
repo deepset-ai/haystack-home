@@ -12,6 +12,7 @@ hero:
       Create something fresh with Haystack this season. 
       
       From budding newcomers to green-thumbed pros, every gardener of Agents and pipelines is welcome. This is your chance to cultivate something elegant, useful, and powerful...just like spring itself! 🌼
-
+      <br>
+      <br>
       Join the challenge, submit your solution by **May 15, 2025**, and earn your official “Spring into Haystack” certificate!
 ---

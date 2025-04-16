@@ -146,6 +146,46 @@
       "source": "/tutorials/(02_finetune_a_model_on_your_data|09_dpr_training|10_knowledge_graph|15_tableqa|16_document_classifier_at_index_time|17_audio|18_gpl|19_text_to_image_search_pipeline_with_multimodal_retriever|20_using_haystack_with_rest_api|25_customizing_agent)",
       "destination": "/tutorials",
       "permanent": true
+    },
+    {
+      "source": "/tutorials/(01_basic_qa_pipeline|03_scalable_qa_system|04_faq_style_qa|06_better_retrieval_via_embedding_retrieval|07_rag_generator|11_pipelines|12_lfqa|13_question_generation|21_customizing_promptnode|22_pipeline_with_promptnode)",
+      "destination": "/tutorials/27_first_rag_pipeline",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/08_preprocessing",
+      "destination": "/tutorials/30_file_type_preprocessing_index_pipeline",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/14_query_classifier",
+      "destination": "/tutorials/32_classifying_documents_and_queries_by_language",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/26_hybrid_retrieval",
+      "destination": "/tutorials/33_hybrid_retrieval",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/05_evaluation",
+      "destination": "/tutorials/35_evaluating_rag_pipelines",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/24_building_chat_app",
+      "destination": "/tutorials/40_building_chat_application_with_function_calling",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/14_query_classifier",
+      "destination": "/tutorials/41_query_classification_with_transformerstextrouter_and_transformerszeroshottextrouter",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/23_answering_multihop_questions_with_agents",
+      "destination": "/tutorials/43_building_a_tool_calling_agent",
+      "permanent": true
     }
   ],
 

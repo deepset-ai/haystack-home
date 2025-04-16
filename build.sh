@@ -5,7 +5,7 @@ rm -rf haystack-tutorials
 # history, like creation date and last modified date of a notebook.
 # If we fetch we depth 1 we don't get correct dates, and if we fetch with
 # --filter=tree:0 the process runs slower than cloning the whole repo.
-git clone https://github.com/deepset-ai/haystack-tutorials.git
+git clone --single-branch --branch 1.x-eol https://github.com/deepset-ai/haystack-tutorials.git
 
 cd haystack-tutorials
 echo "Installing requirements for haystack-tutorials..."

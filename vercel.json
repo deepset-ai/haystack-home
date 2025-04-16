@@ -141,6 +141,11 @@
       "source": "/cookbook/rag_eval_harness",
       "destination": "/cookbook",
       "permanent": true
+    },
+    {
+      "source": "/tutorials/(02_finetune_a_model_on_your_data|09_dpr_training|10_knowledge_graph|15_tableqa|16_document_classifier_at_index_time|17_audio|18_gpl|19_text_to_image_search_pipeline_with_multimodal_retriever|20_using_haystack_with_rest_api|25_customizing_agent)",
+      "destination": "/tutorials",
+      "permanent": true
     }
   ],
 

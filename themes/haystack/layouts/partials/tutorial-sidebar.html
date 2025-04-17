@@ -2,7 +2,7 @@
 <aside class="toc-sidebar {{if .Params.guide}} blog-post-sidebar {{ end }}">
   <div class="accordions">
     {{ $currentPage := . }}
-    {{ $tutorials := where (where (.GetPage "/tutorials").Pages "Params.hidden" "!=" true) "Params.haystack_2" true }}
+    {{ $tutorials := where (.GetPage "/tutorials").Pages "Params.hidden" "!=" true }}
     {{/* Toc */}}
     {{if .Params.guide}}
       <span class="toc-heading">Table of contents</span>

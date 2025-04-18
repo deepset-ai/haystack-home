@@ -133,12 +133,12 @@
       "permanent": true
     },
     {
-      "source": "/integrations/(azure-translator|basic-agent-memory|chainlit|document-threshold|entailment-checker|faiss-document-store|lemmatize|newspaper3k|readmedocs-fetcher|text2speech)",
+      "source": "/integrations/(azure-translator|basic-agent-memory|chainlit|document-threshold|entailment-checker|faiss-document-store|gradient|lemmatize|newspaper3k|readmedocs-fetcher|text2speech)",
       "destination": "/integrations",
       "permanent": true
     },
     {
-      "source": "/cookbook/rag_eval_harness",
+      "source": "/cookbook/(gradient-embeders-and-generators-for-notion-rag|rag_eval_harness)",
       "destination": "/cookbook",
       "permanent": true
     },

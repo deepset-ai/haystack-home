@@ -19,7 +19,7 @@ paginatePath = "/"
 # Defaults used for opengraph metadata if none are specified for the page
 [params]
   title = "Haystack"
-  description = "Haystack is an open-source framework for building search systems that work intelligently over large document collections."
+  description = "Create agentic, compound AI systems using Haystack’s modular and customizable building blocks, built for real-world, production-ready applications."
   images = ["/images/haystack-ogimage.png"]
 
 [permalinks]

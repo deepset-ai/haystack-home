@@ -31,6 +31,14 @@ paginatePath = "/"
   [security.funcs]
     getenv = ["^HUGO_", "GOOGLE_TAG_ANALYTICS", "DC_API_KEY", "DC_WORKSPACE_NAME", "DC_PIPELINE_NAME"]
 
+[outputFormats.TXT]
+  mediaType = "text/plain"
+  baseName = "llms"
+  isPlainText = true
+
+[outputs]
+  home = ["HTML", "RSS", "TXT"]
+
 [markup]
   # Code blocks
   [markup.highlight]

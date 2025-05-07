@@ -1,0 +1,10 @@
+# {{ .Site.Title }}
+
+> {{ .Site.Params.description }}
+
+## Content
+{{ range $type := .Site.Params.front_page_content }}
+### {{ title $type }}
+
+{{ range (where $.Site.RegularPages "Type" $type) }}- [{{ .Title }}]({{ .Permalink }}index.md): Published {{ .Date.Format "2006-01-02" }}
+{{ end }}{{ end }}

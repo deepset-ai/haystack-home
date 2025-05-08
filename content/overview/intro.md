@@ -3,7 +3,7 @@ layout: overview
 header: dark
 footer: dark
 title: What is Haystack?
-description: Haystack is an open source framework for building production-ready LLM applications, retrieval-augmented generative pipelines and state-of-the-art search systems that work intelligently over large document collections.
+desciption: Haystack is an open-source AI orchestration framework built by deepset that empowers Python developers to build real-world, compound, agentic LLM applications.
 weight: 1
 toc: true
 ---

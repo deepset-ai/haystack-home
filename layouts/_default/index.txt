@@ -1,0 +1,35 @@
+# Haystack
+
+> Haystack is an end-to-end framework for building powerful and production-ready AI applications with Large Language Models (LLMs). It enables developers to create custom pipelines for agents, retrieval-augmented generation (RAG), question answering (QA), semantic document search, and more. Haystack's modular architecture allows integration of various technologies from Amazon Bedrock, Langfuse, Qdrant, Elasticsearch, Pgvector, Hugging Face Transformers, and more.
+
+Key features include:
+- Built-in support for agents and RAG
+- Modular component system for building custom AI workflows, including custom components
+- Flexible pipeline architecture for complex data flows
+- Integration with various LLM providers and open-source projects
+- Support for multiple data modalities beyond text, including image and audio processing
+Installation of Haystack: `pip install haystack-ai`
+Installation of integrations: `pip install <provider>-haystack`, for example `pip install amazon-bedrock-haystack` or `pip install qdrant-haystack`
+
+## Docs
+- [Concepts Overview](https://docs.haystack.deepset.ai/docs/components_overview): Brief introduction to the most important concepts, including Components, Pipelines, Document Stores.
+- [Pipelines](https://docs.haystack.deepset.ai/docs/pipelines): Guide to creating and managing pipelines
+- [Components](https://docs.haystack.deepset.ai/docs/components): Guide to using ready-made components and creating custom components
+- [Agents](https://docs.haystack.deepset.ai/docs/agents): Guide to agents and tool-calling
+- [Integrations Overview](https://haystack.deepset.ai/integrations): List of all integrations
+- [API Reference](https://docs.haystack.deepset.ai/reference/pipeline-api#pipeline): API reference for Pipeline and AsyncPipeline
+
+## Examples
+- [Tutorial on QA Pipeline with RAG](https://haystack.deepset.ai/tutorials/27_first_rag_pipeline): Step-by-step guide to building a QA system with RAG
+- [Tutorial on Tool-Calling Agents](https://haystack.deepset.ai/tutorials/43_building_a_tool_calling_agent): Step-by-step guide to building a tool-calling agent
+- [Tutorial on Preprocessing](https://haystack.deepset.ai/tutorials/30_file_type_preprocessing_index_pipeline): Preprocessing different file types in an indexing pipeline
+
+## Optional
+- [Haystack GitHub Repository](https://github.com/deepset-ai/haystack): Source code for Haystack
+- [haystack-experimental GitHub Repository](https://github.com/deepset-ai/haystack-experimental): Source code for haystack-experimental features
+- [haystack-core-integrations GitHub Repository](https://github.com/deepset-ai/haystack-core-integrations): Source code for haystack-core-integrations, such as Amazon Bedrock
+- [hayhooks GitHub Repository](https://github.com/deepset-ai/hayhooks): Source code for Hayhooks, making it easy to deploy and serve Haystack pipelines as REST APIs
+- [Tutorials & Walkthroughs](https://haystack.deepset.ai/tutorials): Collection of tutorials
+- [Cookbook](https://haystack.deepset.ai/cookbook): Collection of use cases
+- [Migration Guide](https://docs.haystack.deepset.ai/docs/migration): Describes differences between Haystack 1.x and Haystack 2.x versions and how to migrate
+

@@ -13,8 +13,7 @@ Installation of integrations: `pip install <provider>-haystack`, for example `pi
 
 ## Docs
 - [Concepts Overview](https://docs.haystack.deepset.ai/docs/components_overview): Brief introduction to the most important concepts, including Components, Pipelines, Document Stores.
-https://docs.haystack.deepset.ai/docs/pipelines
-- [Pipelines](https://docs.haystack.deepset.ai/reference/pipeline-api): Guide to creating and managing pipelines
+- [Pipelines](https://docs.haystack.deepset.ai/docs/pipelines): Guide to creating and managing pipelines
 - [Components](https://docs.haystack.deepset.ai/docs/components): Guide to using ready-made components and creating custom components
 - [Agents](https://docs.haystack.deepset.ai/docs/agents): Guide to agents and tool-calling
 - [Integrations Overview](https://haystack.deepset.ai/integrations): List of all integrations
@@ -27,7 +26,7 @@ https://docs.haystack.deepset.ai/docs/pipelines
 
 ## Optional
 - [Haystack GitHub Repository](https://github.com/deepset-ai/haystack): Source code for Haystack
-- [haystack-experimental GitHub Repository](https://github.com/deepset-ai/haystack): Source code for haystack-experimental features
+- [haystack-experimental GitHub Repository](https://github.com/deepset-ai/haystack-experimental): Source code for haystack-experimental features
 - [haystack-core-integrations GitHub Repository](https://github.com/deepset-ai/haystack-core-integrations): Source code for haystack-core-integrations, such as Amazon Bedrock
 - [hayhooks GitHub Repository](https://github.com/deepset-ai/hayhooks): Source code for Hayhooks, making it easy to deploy and serve Haystack pipelines as REST APIs
 - [Tutorials & Walkthroughs](https://haystack.deepset.ai/tutorials): Collection of tutorials

@@ -32,3 +32,4 @@ Installation of integrations: `pip install <provider>-haystack`, for example `pi
 - [Tutorials & Walkthroughs](https://haystack.deepset.ai/tutorials): Collection of tutorials
 - [Cookbook](https://haystack.deepset.ai/cookbook): Collection of use cases
 - [Migration Guide](https://docs.haystack.deepset.ai/docs/migration): Describes differences between Haystack 1.x and Haystack 2.x versions and how to migrate
+

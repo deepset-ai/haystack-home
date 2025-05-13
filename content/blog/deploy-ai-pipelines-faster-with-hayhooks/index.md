@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 title: Deploy AI Pipelines Faster with Hayhooks
-description: Turn any Haystack pipeline into a production-ready REST API or expose it as an MCP server with full customization and minimal code
+description: Turn Haystack pipelines into a production-ready REST APIs or expose them as MCP tools with full customization and minimal code
 featured_image: thumbnail.png
 images: ["blog/deploy-ai-pipelines-faster-with-hayhooks/thumbnail.png"]
 toc: True

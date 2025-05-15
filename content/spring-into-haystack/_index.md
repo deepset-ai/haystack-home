@@ -9,10 +9,14 @@ discuss: https://github.com/deepset-ai/haystack/discussions/9236
 hero:
   title: 🌸 Spring into Haystack 🌸
   text: |
-      Create something fresh with Haystack this season. 
+      💙 Thank you for your interest in Spring into Haystack!
+
+      Submissions are now closed, but don’t let that stop you! 
       
-      From budding newcomers to green-thumbed pros, every gardener of Agents and pipelines is welcome. This is your chance to cultivate something elegant, useful, and powerful...just like spring itself! 🌼
+      You're still welcome to follow the instructions below and build your own Haystack AI Agent that integrates with MCP servers.
       <br>
       <br>
-      Join the challenge, submit your solution by **May 15, 2025**, and earn your official “Spring into Haystack” certificate!
+      [Sign up for the Haystack newsletter](https://landing.deepset.ai/haystack-community-updates) and stay in the loop for future events.
+      
+      See you at the next event! 👋
 ---

@@ -138,7 +138,7 @@
       "permanent": true
     },
     {
-      "source": "/cookbook/(gradient-embeders-and-generators-for-notion-rag|rag_eval_harness)",
+      "source": "/cookbook/(gradient-embeders-and-generators-for-notion-rag|rag_eval_harness|concurrent_tasks)",
       "destination": "/cookbook",
       "permanent": true
     },

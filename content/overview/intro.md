@@ -3,97 +3,74 @@ layout: overview
 header: dark
 footer: dark
 title: What is Haystack?
-description: Haystack is an open source framework for building production-ready LLM applications, retrieval-augmented generative pipelines and state-of-the-art search systems that work intelligently over large document collections.
+desciption: Haystack is an open-source AI orchestration framework built by deepset that empowers Python developers to build real-world, compound, agentic LLM applications.
 weight: 1
 toc: true
 ---
 
-Haystack is an open source framework for building production-ready *LLM applications*, *retrieval-augmented generative pipelines* and *state-of-the-art search systems* that work intelligently over large document collections. It lets you quickly try out the latest AI models while being flexible and easy to use. Our inspiring community of users and builders has helped shape Haystack into the modular, intuitive, complete framework it is today. 
+[Haystack](https://github.com/deepset-ai/haystack) is an open-source AI orchestration framework built by [deepset](https://www.deepset.ai/) that empowers Python developers to build **real-world, compound, agentic LLM applications**.
 
-## Building with Haystack
+Whether you’re building **autonomous agents**, **multi-modal apps**, or **scalable RAG systems**, Haystack gives you the tools to go from idea to production with ease. Its powerful, modular architecture helps you try out state-of-the-art methods, customize deeply when needed, and stay in control of your stack.
 
-Haystack offers comprehensive tooling for developing state-of-the-art AI systems that use LLMs. 
+Backed by an inspiring [community](https://haystack.deepset.ai/community) of developers, Haystack has evolved into a **complete and intuitive framework** for LLM-based development.
 
-- Use models hosted on platforms like [Hugging Face](https://haystack.deepset.ai/integrations/huggingface), [OpenAI](https://haystack.deepset.ai/integrations/openai), [Cohere](https://haystack.deepset.ai/integrations/cohere), [Mistral](https://haystack.deepset.ai/integrations/mistral), [and more](https://haystack.deepset.ai/integrations?type=Model+Provider).
-- Use models deployed on [SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html), [Bedrock](https://haystack.deepset.ai/integrations/amazon-bedrock), [Azure](https://haystack.deepset.ai/integrations/azure)…
-- Take advantage of our document stores: [OpenSearch](https://haystack.deepset.ai/integrations/opensearch-document-store/), [Pinecone](https://haystack.deepset.ai/integrations/pinecone-document-store), [Weaviate](https://haystack.deepset.ai/integrations/weaviate-document-store), [QDrant](https://haystack.deepset.ai/integrations/qdrant-document-store) [and more](https://haystack.deepset.ai/integrations?type=Document+Store).
-- Our growing [ecosystem of community integrations](https://haystack.deepset.ai/integrations) provide tooling for [evaluation](https://haystack.deepset.ai/integrations?type=Evaluation+Framework), [monitoring](https://haystack.deepset.ai/integrations?type=Monitoring+Tool), [data ingestion](https://haystack.deepset.ai/integrations?type=Data+Ingestion) and every layer of your LLM application.
+```bash
+pip install -U haystack-ai
+```
 
-{{< img src="/images/model_providers.png" alt="Model Providers" styling="centered" width="800">}}
+📘 Want to learn more how to use Haystack? [Check out the docs](https://docs.haystack.deepset.ai/docs/intro)
 
-Some examples of what you can build include:
+## Who is Haystack For?
 
-- **Advanced RAG** on your own data source, powered by the latest retrieval and generation techniques
-- **Chatbots and agents** powered by cutting-edge generative models like GPT-4, that can even call external functions and services
-- **Generative multi-modal question answering** on a knowledge base containing mixed types of information: images, text, audio, and tables
-- **Information extraction** from documents to populate your database or build a knowledge graph
+Haystack is for builders of all kinds—whether you’re prototyping your first Gen AI app or deploying sophisticated systems at scale. If you know a bit of Python, you’re ready to start.
 
-This is just a small subset of the kinds of systems that can be created in Haystack.
+You can build directly in Python, visually with [deepset Studio](https://www.deepset.ai/deepset-studio), or scale up with enterprise-grade infrastructure on the [deepset AI Platform](https://www.deepset.ai/products-and-services/deepset-ai-platform). Whatever your level or need, Haystack gives you the power to build, experiment, and launch faster.
 
-## End to end functionality for your LLM project
+## Why Developers Love Haystack
 
-A successful LLM project requires more than just the language models. As an end-to-end framework, Haystack assists you in building your system every step of the way:
+Built for production from day one, Haystack is the leading open-source framework for building reliable, flexible, and composable LLM applications from first prototype to full-scale deployment. 
 
-- Seamless inclusion of models from Hugging Face or other providers into your pipeline
-- Integrate data sources for retrieval augmentation, [from anywhere on the web](https://docs.haystack.deepset.ai/v2.0/docs/linkcontentfetcher)
-- Advanced dynamic templates for LLM prompting via the Jinja2 templating language
-- [Cleaning and preprocessing functions](https://docs.haystack.deepset.ai/v2.0/docs/documentcleaner) for various data formats and sources
-- [Integrates with your preferred document store](https://docs.haystack.deepset.ai/docs/document_store): keep your GenAI apps up-to-date with Haystack’s indexing pipelines that help you prepare and maintain your data
-- [Specialized evaluation tools](https://docs.haystack.deepset.ai/v2.0/docs/model-based-evaluation) that use different metrics to evaluate the entire system or its individual components
-- [Hayhooks module](https://docs.haystack.deepset.ai/v2.0/docs/hayhooks) to serve Haystack Pipelines through HTTP endpoints
-- A customizable [logging system](https://docs.haystack.deepset.ai/v2.0/docs/logging) that supports structured logging and tracing correlation out of the box.
-- [Code instrumentation collecting spans and traces](https://docs.haystack.deepset.ai/v2.0/docs/tracing) in strategic points of the execution path, with support for Open Telemetry and Datadog already in place
+Here’s why developers choose Haystack:
 
-But that’s not all: [metadata filtering](https://docs.haystack.deepset.ai/v2.0/docs/model-based-evaluation), [device management for locally running models](https://docs.haystack.deepset.ai/v2.0/docs/device-management), even advanced RAG techniques like [Hypothetical Document Embedding (HyDE)](https://docs.haystack.deepset.ai/v2.0/docs/hypothetical-document-embeddings-hyde). Whatever your AI heart desires, you’re likely to find it in Haystack. And if not? We’ll build it together.
+- **Build flexible pipelines** using Haystack’s built-in components like retrievers, generators, rankers, agent, or [create your own](https://docs.haystack.deepset.ai/docs/custom-components).
+- **Customize with full control** by [adding loops and branches to your pipeline](https://docs.haystack.deepset.ai/docs/pipelines), and tailor data flow to fit your use case.
+- **Integrate smoothly** with [model providers, vector databases, and AI tools](https://haystack.deepset.ai/integrations) in a modular, swappable architecture
+- **Deploy effortlessly** and serve your pipelines as REST APIs or as an MCP Server using with [Hayhooks](https://github.com/deepset-ai/hayhooks).
+- **Monitor and optimize** using built-in [tracing](https://docs.haystack.deepset.ai/docs/tracing), [logging](https://docs.haystack.deepset.ai/docs/logging), and [evaluation](https://docs.haystack.deepset.ai/docs/evaluation) tools for full observability.
+- **Rely on robust engineering** with clean architecture, careful dependency management, and a [breaking change policy](https://docs.haystack.deepset.ai/docs/breaking-change-policy) that ensures no bad surprises.
 
-{{< img src="/images/rest.png" alt="Rest API" styling="centered" width="800" quality="100">}}
+Whether it’s **agent workflows, retrieval over millions of docs, text-to-SQL or** **PDF parsing,** Haystack scales with your idea without scaling your complexity.
 
-## Building blocks
+## The deepset Ecosystem
 
-Haystack uses two primary concepts to help you build fully functional and customized end-to-end GenAI systems.
+At deepset, we’re building the tools to make LLMs truly usable in production—open source and beyond.
 
-### Components
+- [Haystack](https://github.com/deepset-ai/haystack) → Our core framework for LLM orchestration, launched in 2020 and now at v2.
+- [deepset Studio](https://www.deepset.ai/deepset-studio) → A free visual interface for building pipelines, experimenting with data, and deploying apps faster.
+- [deepset AI Platform](https://www.deepset.ai/products-and-services/deepset-ai-platform) → An enterprise-ready platform for teams running Gen AI apps in production, with security, governance, and scalability built in.
 
-At the core of Haystack are its [components](https://docs.haystack.deepset.ai/docs/components_overview#components) building blocks that can perform tasks like [document retrieval](https://docs.haystack.deepset.ai/docs/retrievers), [text generation](https://docs.haystack.deepset.ai/docs/generators), or [creating embeddings](https://docs.haystack.deepset.ai/docs/embedders). A single component is already quite powerful. It can manage local language models or communicate with a hosted model through an API.
+Recognized as a [2024 Gartner Cool Vendor in AI Engineering](https://landing.deepset.ai/deepset-recognized-as-a-gartner-cool-vendor), we’re proud to serve the community and enterprises alike.
 
-While Haystack offers a bunch of components you can use out of the box, it also lets you create your own [custom components](https://docs.haystack.deepset.ai/docs/custom-components) — as easy as writing a Python class. Explore the [collection of integrations](https://haystack.deepset.ai/integrations) that includes custom components developed by our partners and community, which you can freely use.
+## Haystack Community
 
-You can connect components together to build *pipelines*, which are the foundation of LLM application architecture in Haystack.
+Behind Haystack is a global community of makers, researchers, and tinkerers who believe in the power of open-source collaboration. From first-time contributors to core developers, our community brings a rich mix of backgrounds, interests, and skills.
 
-### Pipelines
+We’d love to have you involved:
 
-[Pipelines](https://docs.haystack.deepset.ai/docs/pipelines) are powerful abstractions that allow you to define the flow of data through your LLM application. They consist of *components*.
+- 🤝 Connect with others and ask questions on [Discord](https://discord.com/invite/xYvH6drSmA)
+- 🧑‍💻 Contribute to the project on [GitHub](https://github.com/deepset-ai/haystack)
+- 🎙️ Join us at [live events, webinars, and office hours](https://lu.ma/haystack)
+- 📺 Catch talks and tutorials on [YouTube](https://www.youtube.com/@haystack_ai)
+- 🐘 Follow along on [X (Twitter)](https://x.com/Haystack_AI) or [Mastodon](https://fosstodon.org/@haystack_ai)
+- 💌 Get our latest news in your inbox via the [Haystack newsletter](https://landing.deepset.ai/haystack-community-updates)
 
- As a developer, you have complete control over how you arrange the components in a pipeline. Pipelines can branch out, join, and also cycle back to another component. You can compose Haystack pipelines that can retry, loop back, and potentially even run continuously as a service. 
+## Enter the Haystack Universe
 
-Pipelines are essentially graphs, or even multigraphs. A single component with multiple outputs can connect to another single component with multiple inputs or to multiple components, thanks to the flexibility of pipelines.
+There are so many ways to start building:
 
-To get you started, Haystack offers many [example pipelines](https://github.com/deepset-ai/haystack-cookbook) for different use cases: indexing, agentic chat, RAG, extractive QA, function calling, web search and more.
-
-## Who’s it for?
-
-Haystack is for everyone looking to build AI apps — LLM enthusiasts and newbies alike. You don’t need to understand how the models work under the hood. All you need is some basic knowledge of Python to dive right in.
-
-## Our community
-
-At the heart of Haystack is the vibrant open source community that thrives on the diverse backgrounds and skill sets of its members. We value collaboration greatly and encourage our users to shape Haystack actively through [GitHub](https://github.com/deepset-ai/haystack) contributions. Our [Discord server](https://discord.com/invite/xYvH6drSmA) is a space where community members can connect, seek help, and learn from each other.
-
-We also organize [live online and in-person events](https://lu.ma/haystack), webinars, and office hours, which are an opportunity to learn and grow.
-
-💬 [Join Discord](https://discord.com/invite/xYvH6drSmA)
-
-💌 Sign up for our [monthly email newsletter](https://landing.deepset.ai/haystack-community-updates)
-
-🎥 Subscribe to [the Haystack YouTube channel](https://www.youtube.com/@haystack_ai)
-
-🐘 Follow us on [Twitter](https://x.com/Haystack_AI[) or [Mastodon](https://fosstodon.org/@haystack_ai)
-
-📆 [Subscribe to our lu.ma calendar](https://lu.ma/haystack) to stay informed about events
-
-## Enter the Haystack universe
-
-- Start building with [cookbooks](https://github.com/deepset-ai/haystack-cookbook) in Colab notebooks
-- Learn interactively via [tutorials](https://haystack.deepset.ai/tutorials)
-- Have a look at the [documentation](https://docs.haystack.deepset.ai/)
-- Read and contribute to our [blog](https://haystack.deepset.ai/blog)
-- Visit our [GitHub repo](https://github.com/deepset-ai/haystack)
+- Start building with [tutorials](https://haystack.deepset.ai/tutorials)
+- Follow use case examples in [cookbook](https://haystack.deepset.ai/cookbook)
+- Learn with the [DeepLearning.AI course](https://www.deeplearning.ai/short-courses/building-ai-applications-with-haystack/)
+- Check out [integrations](https://haystack.deepset.ai/integrations)
+- Explore cutting-edge features in [Haystack Experimental](https://docs.haystack.deepset.ai/docs/experimental-package)
+- Read our [blog](https://haystack.deepset.ai/blog) and [docs](https://docs.haystack.deepset.ai/docs/intro)

@@ -1,4 +1,15 @@
-# 🚀 Building a HackerNews Fetching & Summarization Pipeline with Haystack and OPEA
+---
+layout: blog-post
+title: Building a HackerNews Fetching & Summarization Pipeline with Haystack and OPEA
+images: ["blog/opea-integration/ai.jpg"]
+toc: True
+date: 2025-06-05
+last_updated: 2025-06-05
+authors:
+  - Daniel Fleischer
+canonical_url: https://www.deepset.ai/blog/opea-integration
+tags: ["LLM", "RAG"]
+---
 
 Welcome to this step-by-step tutorial where we'll build a simple Retrieval-Augmented Generation (RAG) pipeline using Haystack. We'll fetch the newest Hacker News posts, feed them to a lightweight LLM endpoint (OPEAGenerator), and generate concise one-sentence summaries (based on this [tutorial](https://haystack.deepset.ai/cookbook/hackernews-custom-component-rag)). Let's dive in! 🎉
 
@@ -18,7 +29,6 @@ Welcome to this step-by-step tutorial where we'll build a simple Retrieval-Augme
 
 ---
 
-![AI](./ai.jpg "OPEA")
 
 ## 1. Introduction & Motivation
 

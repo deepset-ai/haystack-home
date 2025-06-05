@@ -2,6 +2,7 @@
 layout: blog-post
 title: Building a HackerNews Fetching & Summarization Pipeline with Haystack and OPEA
 images: ["blog/opea-integration/ai.jpg"]
+featured_image: ai.jpg
 toc: True
 date: 2025-06-05
 last_updated: 2025-06-05
@@ -17,15 +18,15 @@ Welcome to this step-by-step tutorial where we'll build a simple Retrieval-Augme
 
 ## 📖 Table of Contents
 
-1. Introduction & Motivation
-2. Prerequisites
-3. Building the News Fetcher
-4. Integrating the LLM (OPEAGenerator)
-5. Crafting the Prompt
-6. Assembling the Pipeline
-7. Running the Pipeline
-8. Results
-9. Conclusion
+1. [Introduction & Motivation](#1-introduction--motivation)
+2. [Prerequisites](#2-prerequisites)
+3. [Building the News Fetcher](#3-building-the-news-fetcher)
+4. [Integrating the LLM (OPEAGenerator)](#4-integrating-the-llm-opeagenerator)
+5. [Crafting the Prompt](#5-crafting-the-prompt)
+6. [Assembling the Pipeline](#6-assembling-the-pipeline)
+7. [Running the Pipeline](#7-running-the-pipeline)
+8. [Results](#8-results)
+9. [Conclusion](#9-conclusion)
 
 ---
 

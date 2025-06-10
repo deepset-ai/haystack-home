@@ -1,38 +1,20 @@
 ---
 layout: blog-post
-title: Building a HackerNews Fetching & Summarization Pipeline with Haystack and OPEA
+title: Summarize Hacker News Posts with Haystack & OPEA
+description: Build a RAG pipeline to fetch live Hacker News posts and summarize them with a local LLM endpoint
 images: ["blog/opea-integration/ai.jpg"]
 featured_image: ai.jpg
 toc: True
-date: 2025-06-05
-last_updated: 2025-06-05
+date: 2025-06-10
+last_updated: 2025-06-10
 authors:
   - Daniel Fleischer
-canonical_url: https://www.deepset.ai/blog/opea-integration
 tags: ["LLM", "RAG"]
 ---
 
-Welcome to this step-by-step tutorial where we'll build a simple Retrieval-Augmented Generation (RAG) pipeline using Haystack. We'll fetch the newest Hacker News posts, feed them to a lightweight LLM endpoint (OPEAGenerator), and generate concise one-sentence summaries (based on this [tutorial](https://haystack.deepset.ai/cookbook/hackernews-custom-component-rag)). Let's dive in! 🎉
-
----
-
-## 📖 Table of Contents
-
-1. [Introduction & Motivation](#1-introduction--motivation)
-2. [Prerequisites](#2-prerequisites)
-3. [Building the News Fetcher](#3-building-the-news-fetcher)
-4. [Integrating the LLM (OPEAGenerator)](#4-integrating-the-llm-opeagenerator)
-5. [Crafting the Prompt](#5-crafting-the-prompt)
-6. [Assembling the Pipeline](#6-assembling-the-pipeline)
-7. [Running the Pipeline](#7-running-the-pipeline)
-8. [Results](#8-results)
-9. [Conclusion](#9-conclusion)
-
----
-
+Welcome to this step-by-step tutorial where we'll build a simple Retrieval-Augmented Generation (RAG) pipeline using Haystack and [OPEA](https://haystack.deepset.ai/integrations/opea). We'll fetch the newest Hacker News posts, feed them to a lightweight LLM endpoint (`OPEAGenerator`), and generate concise one-sentence summaries (based on this [notebook](https://haystack.deepset.ai/cookbook/hackernews-custom-component-rag)). Let's dive in! 🎉
 
 ## 1. Introduction & Motivation
-
 
 In modern GenAI applications, having a flexible, performant, and scalable platform is essential. [OPEA](https://opea-project.github.io/latest/introduction/index.html) (Open Platform for Enterprise AI) is an open, model-agnostic framework for building and operating composable GenAI solutions. It provides:
 
@@ -40,16 +22,13 @@ In modern GenAI applications, having a flexible, performant, and scalable platfo
 - HTTP-based inference with multi-model support (open- and closed-source)
 - Advanced features like batching, streaming, auto-scaling, routing via gateways, and unified observability
 
-In this demo, we'll use OPEA LLM endpoint in a Haystack pipeline, giving you:
+In this demo, we'll use an OPEA LLM endpoint in a Haystack pipeline, giving you:
 
 - Instant HTTP access to any hosted model.
 - Seamless switching from small prototypes to production-grade RAG solutions.
 
+In this tutorial, we'll build a simple RAG pipeline that fetches the newest Hacker News posts, sends them to a local OPEA endpoint running a `Qwen/Qwen2.5-7B-Instruct` demo model, and produces concise one-sentence summaries. Of course, you can replace our example model with any other OPEA-served model, making this pattern both lightweight for prototyping and powerful for real-world deployments. Let's get started! 🚀
 
-In this tutorial we'll build a simple RAG pipeline that fetches the newest Hacker News posts, sends them to a local OPEA endpoint running a Qwen/Qwen2.5-7B-Instruct demo model, and produces concise one-sentence summaries. Of course you can replace our toy model with any other OPEA-served model—making this pattern both lightweight for prototyping and powerful for real-world deployments. Let's get started! 🚀
-
-
----
 
 ## 2. Prerequisites
 
@@ -59,17 +38,14 @@ Make sure you have:
 - Install dependencies: `pip install haystack-ai haystack-opea newspaper3k lxml[html_clean]`
 - A running OPEA endpoint at <http://localhost:9000/v1> (or your own)
 
-> [!NOTE]
+> **NOTE:**
 > As a reference, here is a [Docker Compose](./compose.yaml) recipe to get you started.
 > OPEA LLM service can be configured to use a variety of model serving backends like TGI, vLLM, ollama, OVMS... and offers validated runtime settings for good performance on various hardware's including Intel Gaudi.
-> In this example it creates an OPEA LLM service with a TGI backend.
+> In this example, it creates an OPEA LLM service with a TGI backend.
 > The code is based on [OPEA LLM example](https://github.com/opea-project/GenAIComps/blob/main/comps/llms/deployment/docker_compose/compose_text-generation.yaml)
 > and [OPEA TGI example](https://github.com/opea-project/GenAIComps/blob/main/comps/third_parties/tgi/deployment/docker_compose/compose.yaml).
 >
 > To run, call `LLM_MODEL_ID=Qwen/Qwen2.5-7B-Instruct docker compose up`.
-
-
----
 
 ## 3. Building the News Fetcher
 
@@ -122,11 +98,9 @@ class HackernewsNewestFetcher():
     return {"documents": docs}
 ```
 
----
-
 ## 4. Integrating the LLM (OPEAGenerator)
 
-We use the `OPEAGenerator` to call our LLM over HTTP. Here we point to a local endpoint serving the `Qwen/Qwen2.5-7B-Instruct` model:
+We use the `OPEAGenerator` to call our LLM over HTTP. Here, we point to a local endpoint serving the `Qwen/Qwen2.5-7B-Instruct` model:
 
 ```python
 from haystack_opea import OPEAGenerator
@@ -137,8 +111,6 @@ llm = OPEAGenerator(
     model_arguments={"max_tokens": 2000}    # Generation settings
 )
 ```
-
----
 
 ##  5. Crafting the Prompt
 
@@ -165,9 +137,7 @@ Posts:
 prompt_builder = PromptBuilder(template=prompt_template)
 ```
 
----
-
-## 6. Assembling the Pipeline
+## 6. Building the Pipeline
 
 We wire up the components in a `Pipeline`:
 
@@ -192,8 +162,6 @@ pipe.show()                    # Interactive usage
 pipe.draw(pipeline.png)        # Plotting to file
 ```
 
----
-
 ## 7. Running the Pipeline
 
 Fetch and summarize the top 2 newest Hacker News posts:
@@ -202,8 +170,6 @@ Fetch and summarize the top 2 newest Hacker News posts:
 result = pipe.run(data={"hackernews_fetcher": {"last_k": 2}})
 print(result['llm']['replies'][0])
 ```
-
----
 
 ## 8. Results
 
@@ -218,8 +184,6 @@ The European Commission's new ProtectEU security strategy proposes enhanced tool
 ```
 
 Beautiful, concise summaries in seconds! ✨
-
----
 
 ## 9. Conclusion
 

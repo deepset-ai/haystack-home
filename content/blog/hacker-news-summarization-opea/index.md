@@ -42,8 +42,9 @@ Make sure you have:
 > As a reference, here is a [Docker Compose](./compose.yaml) recipe to get you started.
 > OPEA LLM service can be configured to use a variety of model serving backends like TGI, vLLM, ollama, OVMS... and offers validated runtime settings for good performance on various hardware's including Intel Gaudi.
 > In this example, it creates an OPEA LLM service with a TGI backend.
+> See the documentation for [LLM Generation](https://github.com/opea-project/GenAIComps/tree/main/comps/llms/src/text-generation).
 > The code is based on [OPEA LLM example](https://github.com/opea-project/GenAIComps/blob/main/comps/llms/deployment/docker_compose/compose_text-generation.yaml)
-> and [OPEA TGI example](https://github.com/opea-project/GenAIComps/blob/main/comps/third_parties/tgi/deployment/docker_compose/compose.yaml).
+> and [OPEA TGI example](https://github.com/opea-project/GenAIComps/blob/main/comps/third_parties/tgi/deployment/docker_compose/compose.yaml). 
 >
 > To run, call `LLM_MODEL_ID=Qwen/Qwen2.5-7B-Instruct docker compose up`.
 

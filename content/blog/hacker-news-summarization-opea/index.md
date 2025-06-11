@@ -2,8 +2,8 @@
 layout: blog-post
 title: Summarize Hacker News Posts with Haystack & OPEA
 description: Build a RAG pipeline to fetch live Hacker News posts and summarize them with a local LLM endpoint
-images: ["blog/opea-integration/illustration.png"]
-featured_image: illustration.png
+images: ["blog/opea-integration/thumbnail.png"]
+featured_image: thumbnail.png
 toc: True
 date: 2025-06-10
 last_updated: 2025-06-10
@@ -39,7 +39,7 @@ Make sure you have:
 - A running OPEA endpoint at <http://localhost:9000/v1> (or your own)
 
 > **NOTE:**
-> As a reference, here is a [Docker Compose](./compose.yaml) recipe to get you started.
+> As a reference, here is a [Docker Compose](https://haystack.deepset.ai/blog/hacker-news-summarization-opea/compose.yaml) recipe to get you started.
 > OPEA LLM service can be configured to use a variety of model serving backends like TGI, vLLM, ollama, OVMS... and offers validated runtime settings for good performance on various hardware's including Intel Gaudi.
 > In this example, it creates an OPEA LLM service with a TGI backend.
 > See the documentation for [LLM Generation](https://github.com/opea-project/GenAIComps/tree/main/comps/llms/src/text-generation).

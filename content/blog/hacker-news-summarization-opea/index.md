@@ -2,8 +2,8 @@
 layout: blog-post
 title: Summarize Hacker News Posts with Haystack & OPEA
 description: Build a RAG pipeline to fetch live Hacker News posts and summarize them with a local LLM endpoint
-images: ["blog/opea-integration/ai.jpg"]
-featured_image: ai.jpg
+images: ["blog/opea-integration/illustration.png"]
+featured_image: illustration.png
 toc: True
 date: 2025-06-10
 last_updated: 2025-06-10

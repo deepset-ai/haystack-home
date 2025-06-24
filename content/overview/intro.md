@@ -46,7 +46,7 @@ Whether it’s **agent workflows, retrieval over millions of docs, text-to-SQL o
 At deepset, we’re building the tools to make LLMs truly usable in production—open source and beyond.
 
 - [Haystack](https://github.com/deepset-ai/haystack) → Our core framework for LLM orchestration, launched in 2020 and now at v2.
-- [deepset Studio](https://www.deepset.ai/deepset-studio) → A free visual interface for building pipelines, experimenting with data, and deploying apps faster.
+- [deepset Studio](https://www.deepset.ai/deepset-studio) → A free visual interface for building pipelines, experimenting with data, and deploying apps for development.
 - [deepset AI Platform](https://www.deepset.ai/products-and-services/deepset-ai-platform) → An enterprise-ready platform for teams running Gen AI apps in production, with security, governance, and scalability built in.
 
 Recognized as a [2024 Gartner Cool Vendor in AI Engineering](https://landing.deepset.ai/deepset-recognized-as-a-gartner-cool-vendor), we’re proud to serve the community and enterprises alike.

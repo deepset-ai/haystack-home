@@ -25,32 +25,33 @@ For more details, refer to our documentation.
 
 ## Prerequisites
 
-You need an [OpenAI API Key](https://platform.openai.com/api-keys) and a [SerperDev API Key](https://serper.dev/api-key)
+To run the example, you'll need:
 
-```python
-import os
+* A [SerperDev API Key](https://serper.dev/api-key) for web search
+* Credentials for the model provider of your choice (e.g. OpenAI, Anthropic, Gemini, Amazon Bedrock)
 
-os.environ["OPENAI_API_KEY"] = "<YOUR OPENAI API KEY>"
-os.environ["SERPERDEV_API_KEY"] = "<YOUR SERPERDEV API KEY>"
-```
 
 ## 🤖 Basic Agent with Haystack
 
 You can build a working agent in just a few lines with the [Agent](https://docs.haystack.deepset.ai/docs/agent) component. It takes in a user question, decides whether to use a tool (like web search), and returns a response without manual routing.
 
-Below is a minimal example using [SerperDevWebSearch](https://docs.haystack.deepset.ai/docs/serperdevwebsearch) component as a tool and OpenAI's `gpt-4o-mini` chat model with [OpenAIChatGenerator](https://docs.haystack.deepset.ai/docs/openaichatgenerator):
+Below is a minimal example using [SerperDevWebSearch](https://docs.haystack.deepset.ai/docs/serperdevwebsearch) component as a tool with different models:
 
 {{< tabs totalTabs="5">}}
 
 {{< tab tabName="OpenAI"  >}}
 
-
 ```python
+import os
+
 from haystack.components.agents import Agent
 from haystack.components.generators.chat import OpenAIChatGenerator
 from haystack.dataclasses import ChatMessage
 from haystack.tools import ComponentTool
 from haystack.components.websearch import SerperDevWebSearch
+
+os.environ["OPENAI_API_KEY"] = "<YOUR OPENAI API KEY>"
+os.environ["SERPERDEV_API_KEY"] = "<YOUR SERPERDEV API KEY>"
 
 search_tool = ComponentTool(component=SerperDevWebSearch())
 
@@ -170,12 +171,11 @@ print(result['last_message'].text)
 
 {{< tab tabName="More Providers" >}}
 <div class="row">
-    <p>Haystack supports more models from providers like Cohere, Hugging Face, Meta, Mistral, Ollama, and many more, including local and cloud-hosted options.</p>
+    <p>Haystack supports more models from providers like <b>Cohere</b>, <b>Hugging Face</b>, <b>Meta</b>, <b>Mistral</b>, <b>Ollama</b>, and <b>many more</b>, including local and cloud-hosted options.</p>
 → <a href="https://docs.haystack.deepset.ai/docs/generators">Browse the full list of supported models and chat generators in the docs.</a>
 </div>
+
 {{< /tab  >}}
-
-
 
 {{< /tabs >}}
 

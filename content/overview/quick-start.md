@@ -40,6 +40,11 @@ You can build a working agent in just a few lines with the [Agent](https://docs.
 
 Below is a minimal example using [SerperDevWebSearch](https://docs.haystack.deepset.ai/docs/serperdevwebsearch) component as a tool and OpenAI's `gpt-4o-mini` chat model with [OpenAIChatGenerator](https://docs.haystack.deepset.ai/docs/openaichatgenerator):
 
+{{< tabs totalTabs="5">}}
+
+{{< tab tabName="OpenAI"  >}}
+
+
 ```python
 from haystack.components.agents import Agent
 from haystack.components.generators.chat import OpenAIChatGenerator
@@ -59,6 +64,120 @@ result = basic_agent.run(messages=[ChatMessage.from_user("When was the first ver
 
 print(result['last_message'].text)
 ```
+{{< /tab  >}}
+
+
+{{< tab tabName="Anthropic"  >}}
+Install [Antropic x Haystack integration](https://haystack.deepset.ai/integrations/anthropic):
+
+```bash
+pip install anthropic-haystack
+```
+
+```python
+import os
+
+from haystack.components.agents import Agent
+from haystack_integrations.components.generators.anthropic import AnthropicChatGenerator
+from haystack.dataclasses import ChatMessage
+from haystack.tools import ComponentTool
+from haystack.components.websearch import SerperDevWebSearch
+
+os.environ["ANTHROPIC_API_KEY"] = "<YOUR ANTHROPIC API KEY>"
+os.environ["SERPERDEV_API_KEY"] = "<YOUR SERPERDEV API KEY>"
+
+search_tool = ComponentTool(component=SerperDevWebSearch())
+
+basic_agent = Agent(
+    chat_generator=AnthropicChatGenerator(model="claude-3-7-sonnet-latest"),
+    system_prompt="You are a helpful web agent.",
+    tools=[search_tool],
+)
+
+result = basic_agent.run(messages=[ChatMessage.from_user("When was the first version of Haystack released?")])
+
+print(result['last_message'].text)
+```
+{{< /tab  >}}
+
+{{< tab tabName="Amazon Bedrock"  >}}
+Install [Amazon Bedrock x Haystack integration](https://haystack.deepset.ai/integrations/amazon-bedrock):
+
+```bash
+pip install amazon-bedrock-haystack
+```
+
+```python
+import os
+
+from haystack.components.agents import Agent
+from haystack_integrations.components.generators.amazon_bedrock import AmazonBedrockChatGenerator
+from haystack.dataclasses import ChatMessage
+from haystack.tools import ComponentTool
+from haystack.components.websearch import SerperDevWebSearch
+
+os.environ["AWS_ACCESS_KEY_ID"] = "<YOUR AWS ACCESS KEY>"
+os.environ["AWS_SECRET_ACCESS_KEY"] = "<YOUR SECRET ACCESS KEY>"
+os.environ["AWS_DEFAULT_REGION"] = "<AWS REGION>"
+os.environ["SERPERDEV_API_KEY"] = "<YOUR SERPERDEV API KEY>"
+
+search_tool = ComponentTool(component=SerperDevWebSearch())
+
+basic_agent = Agent(
+    chat_generator=AmazonBedrockChatGenerator(model="mistral.mistral-large-2402-v1:0"),
+    system_prompt="You are a helpful web agent.",
+    tools=[search_tool],
+)
+
+result = basic_agent.run(messages=[ChatMessage.from_user("When was the first version of Haystack released?")])
+
+print(result['last_message'].text)
+```
+{{< /tab  >}}
+
+{{< tab tabName="Google Gemini"  >}}
+Install [Google Gen AI x Haystack integration](https://haystack.deepset.ai/integrations/google-genai):
+
+```bash
+pip install google-genai-haystack
+```
+
+```python
+import os
+
+from haystack.components.agents import Agent
+from haystack_integrations.components.generators.amazon_bedrock import AmazonBedrockChatGenerator
+from haystack.dataclasses import ChatMessage
+from haystack.tools import ComponentTool
+from haystack.components.websearch import SerperDevWebSearch
+
+os.environ["GOOGLE_API_KEY"] = "<YOUR GOOGLE API KEY>"
+os.environ["SERPERDEV_API_KEY"] = "<YOUR SERPERDEV API KEY>"
+
+search_tool = ComponentTool(component=SerperDevWebSearch())
+
+basic_agent = Agent(
+    chat_generator=GoogleGenAIChatGenerator(model="gemini-2.5-flash"),
+    system_prompt="You are a helpful web agent.",
+    tools=[search_tool],
+)
+
+result = basic_agent.run(messages=[ChatMessage.from_user("When was the first version of Haystack released?")])
+
+print(result['last_message'].text)
+```
+{{< /tab  >}}
+
+{{< tab tabName="More Providers" >}}
+<div class="row">
+    <p>Haystack supports more models from providers like Cohere, Hugging Face, Meta, Mistral, Ollama, and many more, including local and cloud-hosted options.</p>
+→ <a href="https://docs.haystack.deepset.ai/docs/generators">Browse the full list of supported models and chat generators in the docs.</a>
+</div>
+{{< /tab  >}}
+
+
+
+{{< /tabs >}}
 
 ## ⚙️ Advanced Agent Configurations
 

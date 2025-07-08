@@ -42,56 +42,14 @@ Query expansion is a technique where we take the user query, and generate a cert
 
 This helps improve retrieval results, and in turn the quality of RAG results in cases where:
 
-- The user query is vague or badly formed.
-- In cases of keyword based retrieval, it also allows you to cover your bases with queries of similar meaning or synonyms.
+- The user query is vague or poorly formed.
+- In cases of keyword-based retrieval, it also allows you to cover your bases with queries of similar meaning or synonyms.
 
 Take ‘global warming’ as an example, query expansion would allow us to make sure we’re also doing keyword search for ‘climate change’ or similar queries.
 
 ![Query expansion](query-expansion.png)
 
-Let’s start by building a simple `QueryExpander`. This component is using an OpenAI model (`gpt-3.5-turbo` in this case) to generate a certain `number` of additional queries:
-
-```python
-@component
-class QueryExpander:
-
-    def __init__(self, prompt: Optional[str] = None, model: str = "gpt-3.5-turbo"):
-
-        self.query_expansion_prompt = prompt
-        self.model = model
-        if prompt == None:
-          self.query_expansion_prompt = """
-          You are part of an information system that processes users queries.
-          You expand a given query into {{ number }} queries that are similar in meaning.
-          
-          Structure:
-          Follow the structure shown below in examples to generate expanded queries.
-          Examples:
-          1. Example Query 1: "climate change effects"
-          Example Expanded Queries: ["impact of climate change", "consequences of global warming", "effects of environmental changes"]
-          
-          2. Example Query 2: ""machine learning algorithms""
-          Example Expanded Queries: ["neural networks", "clustering", "supervised learning", "deep learning"]
-          
-          Your Task:
-          Query: "{{query}}"
-          Example Expanded Queries:
-          """
-        builder = PromptBuilder(self.query_expansion_prompt)
-        llm = OpenAIGenerator(model = self.model)
-        self.pipeline = Pipeline()
-        self.pipeline.add_component(name="builder", instance=builder)
-        self.pipeline.add_component(name="llm", instance=llm)
-        self.pipeline.connect("builder", "llm")
-
-    @component.output_types(queries=List[str])
-    def run(self, query: str, number: int = 5):
-        result = self.pipeline.run({'builder': {'query': query, 'number': number}})
-        expanded_query = json.loads(result['llm']['replies'][0]) + [query]
-        return {"queries": list(expanded_query)}
-```
-
-To replicate the example user query and expanded queries as you see above, you would run the component as follows:
+Let’s start by importing the experimental `QueryExpander` component. This component is using an OpenAI model (`gpt-4o-mini` in this case) to generate a certain `number` of additional queries that are similar to the original user query. It returns queries, which include the original query plus the generated similar ones:
 
 ```python
 expander = QueryExpander()
@@ -110,7 +68,7 @@ This would result in the component returning `queries` that include the original
 
 ## Retrieval With Query Expansion
 
-Let’s take a look at what happens if we use query expansion as a step in our retrieval pipeline. Let’s look at this through a very simple and small demo. To this end, I used some dummy data. Here’s the list of `documents` I used:
+Let’s look at what happens if we use query expansion as a step in our retrieval pipeline. Let’s look at this through a very simple and small demo. To this end, I used some dummy data. Here’s the list of `documents` I used:
 
 ```
 documents = [

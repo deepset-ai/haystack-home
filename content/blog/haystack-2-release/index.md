@@ -132,7 +132,6 @@ Haystack 2.0 is being released with a few evaluation framework integrations in p
 
 -   [Ragas](https://haystack.deepset.ai/integrations/ragas)
 -   [DeepEval](https://haystack.deepset.ai/integrations/deepeval)
--   [UpTrain](https://haystack.deepset.ai/integrations/uptrain)
 
 Along with a [guide to model-based evaluation](https://docs.haystack.deepset.ai/v2.0/docs/model-based-evaluation).
 

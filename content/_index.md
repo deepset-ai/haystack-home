@@ -62,7 +62,7 @@ hero:
     logo: /images/logos/deepset-blue.png
   
   enterprise:
-    link: https://www.deepset.ai/products-and-services/deepset-ai-platform
+    link: https://www.deepset.ai/products-and-services/haystack-enterprise
     text: Get expert support, enterprise-grade pipeline templates and deployment guides for cloud and on-prem with Haystack Enterprise.
     logo: /images/logos/haystack.png
 

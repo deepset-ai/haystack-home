@@ -97,7 +97,9 @@
   display: none;
 
   @include lg {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
   }
 
   li, li .button-wrapper {
@@ -110,7 +112,7 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: flex-end;
-    gap: 2rem;
+    gap: 1.5rem;
 
     // Dropdown menu parent
     li.dropdown-menu {
@@ -185,14 +187,26 @@
 
     // Prevent last dropdown menu from going out of page container
     @media (max-width: 1350px) {
-      li.dropdown-menu:last-of-type {
-        ul.sub-menu {
-          left: unset;
-          transform: unset;
-          right: 0%;
-        }
+      li.dropdown-menu{
+        flex-wrap: wrap;
       }
     }
+  }
+}
+
+.nav-button-container {
+  display: flex;
+  gap: 1rem;
+
+  .arrow-button {
+    .text-wrapper {
+      font-size: var(--text-small);
+      font-weight: 300;
+    }
+  }
+
+  @media (max-width: 1350px){
+    display: none;
   }
 }
 

@@ -5,8 +5,8 @@ description: A Faster Way to Build and Scale Production-Grade AI Apps
 featured_image: thumbnail.png
 images: ["blog/announcing-haystack-enterprise/thumbnail.png"]
 toc: True
-date: 2025-07-30
-last_updated:  2025-07-30
+date: 2025-08-01
+last_updated:  2025-08-01
 authors:
   - Bilge Yucel
 tags: ["Community"]

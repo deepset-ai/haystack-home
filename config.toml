@@ -99,12 +99,6 @@ paginatePath = "/"
   weight = 5
 
 [[menu.main]]
-  identifier = 'community'
-  name = 'Community'
-  url = '/community'
-  weight = 6
-
-[[menu.main]]
   identifier = 'deepset'
   name = 'deepset'
   url = '/'
@@ -129,6 +123,13 @@ paginatePath = "/"
   url = '/overview/demo'
   parent = 'overview'
   weight = 3
+
+[[menu.main]]
+  name = 'Haystack Enterprise'
+  url = 'https://www.deepset.ai/products-and-services/haystack-enterprise'
+  parent = 'overview'
+  weight = 4
+  params = { tag = "Contact us!" }
 
 # Learn children
 [[menu.main]]

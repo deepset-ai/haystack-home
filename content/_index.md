@@ -16,6 +16,9 @@ hero:
     - buttonText: Get Started with Studio
       buttonColor: blue
       url: https://www.deepset.ai/deepset-studio
+    - buttonText: Get Enterprise Support
+      buttonColor: light-green
+      url: https://www.deepset.ai/products-and-services/haystack-enterprise
 
   features:
     - title: Highly<br> customizable
@@ -57,6 +60,11 @@ hero:
     link: https://www.deepset.ai/products-and-services/deepset-ai-platform
     text: Learn how to extend Haystack with deepset AI Platform for faster building, easier iteration and instant deployment.
     logo: /images/logos/deepset-blue.png
+  
+  enterprise:
+    link: https://www.deepset.ai/products-and-services/haystack-enterprise
+    text: Get expert support, enterprise-grade pipeline templates and deployment guides for cloud and on-prem with Haystack Enterprise.
+    logo: /images/logos/haystack.png
 
 # Logo garden
 logos:

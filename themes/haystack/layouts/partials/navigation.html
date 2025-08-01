@@ -87,8 +87,13 @@
         </li>
       {{ end }}
     {{ end }}
-
-    {{/* Get started button */}}
-    {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Get Started" "url" "/overview/quick-start" "color" "green") }}
   </ul>
 </nav>
+
+<div class="nav-button-container">
+  {{/* Enterprise button */}}
+    {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Get Enterprise Support" "url" "https://www.deepset.ai/products-and-services/haystack-enterprise" "color" "light-green") }}
+  {{/* Get started button */}}
+    {{ partial "arrow-button" (dict "context" . "type" "link" "text" "Get Started" "url" "/overview/quick-start" "color" "green") }}
+</div>
+

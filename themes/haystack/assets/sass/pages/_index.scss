@@ -80,6 +80,7 @@
           flex-wrap: wrap;
           justify-content: center;
           gap: 1.25rem;
+          max-width: 800px;
         }
         
         a, button {
@@ -140,12 +141,32 @@
           background-color: var(--color-green);
         }
 
-        .blue {
-          background-color: var(--color-blue);
+        // replicating btn-light-green
+        .light-green {
+          color: #181818;
+          background-color: var(--color-light-green);
+          border: 1px solid #181818;
+
+          svg {
+            path {
+              stroke: #181818;
+            }
+          }
 
           &:hover {
             background-color: rgba(
-              $color: #{var(--color-blue-rgb)},
+              $color: #d3deff,
+              $alpha: 0.9
+            );
+          }
+        }
+
+        .blue {
+           background-color: var(--color-blue);
+
+          &:hover {
+            background-color: rgba(
+              $color: #1f49d4,
               $alpha: 0.9
             );
           }

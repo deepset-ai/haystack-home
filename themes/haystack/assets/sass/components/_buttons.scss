@@ -87,6 +87,25 @@ button.nav-toggle-close {
     }
   }
 
+  &.btn-light-green {
+  color: #181818;
+  background-color: var(--color-light-green);
+  border: 1px solid #181818;
+
+  svg {
+    path {
+      fill: #181818;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(
+      $color: #d3deff,
+      $alpha: 0.9
+    );
+  }
+  }
+
   &.btn-blue {
     background-color: rgba($color: #{var(--color-blue-rgb)}, $alpha: 1);
     color: var(--color-white);

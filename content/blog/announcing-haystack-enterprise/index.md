@@ -26,7 +26,7 @@ For developers building with Haystack, speed, reliability, and support are essen
     Get expert help with private email support and dedicated consultation hours.
 * **Curated pipeline templates for faster developement**  
     Deploy out-of-the-box templates for advanced RAG pipelines, agentic workflows, and multimodal applications with built-in [Hayhooks](https://github.com/deepset-ai/hayhooks) and **Open WebUI** support, ready to go.
-* **Helm charts and guides for secure, one-command deployments**   
+* **Helm chart and guides for secure deployments**   
     Run Haystack securely across Kubernetes clusters on AWS, Azure, GCP, or on-prem, backed by best setup, scaling, and upgrade practices.
 * **Early access to enterprise-grade features**      
     Take advantage of capabilities like prompt injection countermeasures and other security-oriented features ahead of broader release.

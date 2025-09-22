@@ -1,33 +1,35 @@
 ---
 layout: blog-post
-title: 'How Telus Built an Agentic Chatbot with Haystack to Transform Trade Promotions Workflows'
-description: See how Telus give users unprecedented access to their data with safety in mind
+title: 'How TAC Built an Agentic Chatbot with Haystack to Transform Trade Promotions Workflows'
+description: See how TELUS Agriculture & Consumer Goods (TAC) gives users unprecedented access to their data with safety in mind
 featured_image: thumbnail.png
 images: ["blog/telus-user/thumbnail.png"]
 toc: True
-date: 2025-09-04
-last_updated:  2025-09-04
+date: 2025-09-23
+last_updated:  2025-09-23
 authors:
   - Bilge Yucel
   - Kelsey Sorrels
 tags: ["User Story"]
 ---	
 
-When a leading company like **Telus**, a global communications and technology powerhouse with a strong presence in agriculture and consumer goods, turns to AI to streamline complex processes, it’s worth taking a closer look.
+When a leading company like **TELUS Agriculture & Consumer Goods (TAC)**, with a strong presence in agriculture and consumer goods, turns to AI to streamline complex processes, it’s worth taking a closer look.
 
-[Telus Agriculture & Consumer Goods](https://www.telus.com/agcg/en) helps businesses optimize everything from supply chains to retail operations. One of their latest innovations: an **agentic chatbot powered by Haystack** that simplifies the way users interact with their trade promotions platform.
+[**TELUS Agriculture & Consumer Goods**](https://www.telus.com/agcg/en) helps businesses optimize everything from supply chains to retail operations. One of their latest innovations: an **agentic chatbot powered by Haystack** that simplifies how users interact with their trade promotions platform.
 
 We sat down with the team behind this project to learn how they built it, why they chose [Haystack](https://github.com/deepset-ai/haystack), and what advice they have for other teams looking to implement Retrieval-Augmented Generation (RAG) and agent-based AI solutions in production.
 
 ## The Challenge: Simplifying Complex Workflows
 
-The team’s mission was clear: **give users instant, intelligent access to their data** without requiring them to dig through documentation or request SQL queries from developers.
+The team’s mission was clear: **give users instant, intelligent access to their data** without requiring them to dig through documentation or rely solely on the existing UI. 
 
-Previously, users had to navigate dense manuals and wait for SQL reports to be prepared: a process that slowed down decision-making and made even simple questions a hassle.
+TAC’s trade promotions platform is where large consumer goods companies manage the **sales incentives and agreements** they set up with retailers and distributors. Think of discounts, special in-store displays, or seasonal promotions. The platform helps teams **plan, track, and measure** the impact of these promotions across products, customers, and time periods.
 
-The chatbot changes all of this. Instead of manually searching through documents or filing tickets for SQL help, users can now ask questions conversationally and get real-time answers. Whether it’s a one-off question about trade promotions or a request for deeper insights, the system delivers immediate results. No waiting, no back-and-forth with development teams.
+Previously, users had to navigate dense manuals to find the information they needed about promotions. This slowed down decision-making and made even simple questions difficult to answer quickly.
 
-As the team put it, this was about **“giving users unprecedented access to their data”** while removing the bottlenecks of traditional reporting systems
+The chatbot changes all of this. Instead of manually searching documentation or waiting for new reporting features, users can now ask questions conversationally and get real-time answers. For example, someone managing promotions for a product can quickly check which campaigns are running, how much has been spent, or what results have been achieved — and share that information across their organization. Whether it’s a one-off question or a request for deeper insights, the system delivers immediate results.
+
+As the team put it, this was about **“giving users unprecedented access to their data”** while removing the bottlenecks of traditional reporting systems.
 
 ## Choosing Haystack: From Exploration to Production
 
@@ -38,7 +40,7 @@ Haystack quickly stood out.
 > “_Haystack checked all the boxes and was easy to get up and running. Switching to Haystack gave us exactly what we needed._” says Kelsey.
 > 
 
-The team had some experience with other frameworks, but Haystack’s flexibility, modular design and ease of use allowed them to build a proof of concept almost immediately, earning early buy-in and helping them **move fast from experimentation to production**.
+The team had some experience with other frameworks, but Haystack’s flexibility, modular design, and ease of use allowed them to build a proof of concept almost immediately, earning early buy-in and helping them **move fast from experimentation to production**.
  
 ## The Technical Architecture: From Pipelines to Agents
 
@@ -49,7 +51,7 @@ The first version of the system used a [**pipeline-based architecture**](https:/
 
 A *topic router* decided which workflow to trigger. However, this setup quickly proved **too rigid** for real-world use.
 
-The solution was to move to an **agent-based architecture**. Instead of isolated pipelines, the team wrapped each capability, the RAG workflow and the SQL pipeline, into separate *tools* that an agent could call dynamically. 
+The solution was to move to an **agent-based architecture**. Instead of isolated pipelines, the team wrapped each capability—the RAG workflow and the SQL pipeline—into separate *tools* that an agent could call dynamically. 
 
 Switching to an agent-based model was a game-changer. With [Haystack Agents](https://docs.haystack.deepset.ai/docs/agents), the system gained the ability to:
 
@@ -60,7 +62,7 @@ Switching to an agent-based model was a game-changer. With [Haystack Agents](htt
 ### Key Components of the Solution
 
 - **Knowledge Base Tool**: Ingests user documentation (HTML → searchable documents)
-- **SQL Tool**: Generates queries with metadata awareness, using MS SQL + SQL Alchemy
+- **SQL Tool**: Generates queries with metadata awareness, using MS SQL + SQL Alchemy. This tool enables end users to both get data faster and access datasets that may not have been easily reachable before.
 - **Observability & Monitoring**:
     - OTEL (OpenTelemetry) for observability
     - Langfuse + Sentry for monitoring and debugging
@@ -78,9 +80,11 @@ To track performance, the team focuses on three main signals: **latency**, **acc
 
 Tool and LLM response times are monitored with [Langfuse](https://haystack.deepset.ai/integrations/langfuse), while accuracy initially relied on human-in-the-loop evaluation before moving toward automated benchmarking. Feedback from early users guides iterative improvements and feature priorities.
 
+The **knowledge base bot** was deployed to production this month, while the **SQL-generation bot** is scheduled for later this year. As adoption grows, the team expects to share more impact stories around productivity gains and user adoption.
+
 ## Lessons Learned & Advice for Other Teams
 
-The top advice from the team is to start small with a minimal vertical slice of functionality
+The top advice from the team is to start small with a minimal vertical slice of functionality.
 
 > “_Starting small gave us confidence_” says Kelsey. “_Our first proof of concept was simple: two pipelines with topic routing, shown through a Gradio demo. But it proved the value and helped us scale up with certainty._”
 > 
@@ -91,14 +95,14 @@ More advice for anyone considering a similar project:
 - **Use agents** for flexibility rather than hardcoded pipelines
 - **Automate evaluation** to speed up iteration cycles
 
-## What’s Next for Telus
+## What’s Next
 
-The journey doesn’t stop here. Telus plans to **automate data ingestion** processes, build an [**AI-based evaluation framework**](https://haystack.deepset.ai/integrations?type=Evaluation+Framework) to score chatbot responses, and even **white-label the application** for other use cases across the organization.
+The journey doesn’t stop here. TAC plans to **automate data ingestion** processes, build an [**AI-based evaluation framework**](https://haystack.deepset.ai/integrations?type=Evaluation+Framework) to score chatbot responses, and even **white-label the application** for other use cases across the organization.
 
-> “_We see this as a template for the future,_” says Kelsey. “_Our goal is to bring this capability to more workflows across Telus, including internal documentation and SQL tooling._”
+> “_We see this as a template for the future,_” says Kelsey. “_Our goal is to bring this capability to more workflows across TELUS Agriculture & Consumer Goods, including internal documentation and SQL tooling._”
 
 ## Share Your Story with Us
 
-The Telus team’s journey shows what’s possible when innovative teams combine **Haystack** with real-world challenges. From streamlining SQL workflows to instant access to documentation, they turned a complex problem into a powerful, production-ready solution. [Get started with Haystack](https://haystack.deepset.ai/overview/quick-start) and build reliable, production-ready AI applications for your own team.
+The TAC team’s journey shows what’s possible when innovative teams combine **Haystack** with real-world challenges. From streamlining SQL workflows to instant access to documentation, they turned a complex problem into a powerful, production-ready solution. [Get started with Haystack](https://haystack.deepset.ai/overview/quick-start) and build reliable, production-ready AI applications for your own team.
 
 We know there are many more stories like this out there. If your team has built something exciting with Haystack, whether it’s a chatbot, a retrieval system, an agent, or an AI-powered internal tool, [get in touch with us](https://forms.gle/fdyPcC165he6pQkc7). We’d love to feature your work and share how you’re shaping the future with Haystack.

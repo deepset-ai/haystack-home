@@ -1,0 +1,19 @@
+---
+title: Haystack 2.18.1
+description: Release notes for Haystack 2.18.1
+toc: True
+date: 2025-09-29
+last_updated: 2025-09-29
+tags: ["Release Notes"]
+link: https://github.com/deepset-ai/haystack/releases/tag/v2.18.1
+---
+
+## ⚡️ Enhancement Notes
+
+-   Added <span class="title-ref">tools</span> to agent run parameters to enhance the agent's flexibility. Users can now choose a subset of tools for the agent at runtime by providing a list of tool names, or supply an entirely new set by passing Tool objects or a Toolset.
+
+## 🐛 Bug Fixes
+
+-   Fix Agent <span class="title-ref">run_async</span> method to correctly handle async streaming callbacks. This previously triggered errors due to a bug.
+-   Prevent duplication of the last assistant message in the chat history when initializing from an <span class="title-ref">AgentSnapshot</span>.
+-   We were setting response_format to None in OpenAIChatGenerator by default which doesn't follow the API spec. We now omit the variable if response_format is not passed by the user.

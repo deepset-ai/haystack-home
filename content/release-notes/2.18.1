@@ -14,6 +14,6 @@ link: https://github.com/deepset-ai/haystack/releases/tag/v2.18.1
 
 ## 🐛 Bug Fixes
 
--   Fix Agent <span class="title-ref">run_async</span> method to correctly handle async streaming callbacks. This previously triggered errors due to a bug.
--   Prevent duplication of the last assistant message in the chat history when initializing from an <span class="title-ref">AgentSnapshot</span>.
--   We were setting response_format to None in OpenAIChatGenerator by default which doesn't follow the API spec. We now omit the variable if response_format is not passed by the user.
+-   Fix Agent `run_async` method to correctly handle async streaming callbacks. This previously triggered errors due to a bug.
+-   Prevent duplication of the last assistant message in the chat history when initializing from an `AgentSnapshot`.
+-   We were setting `response_format` to `None` in `OpenAIChatGenerator` by default which doesn't follow the API spec. We now omit the variable if `response_format` is not passed by the user.

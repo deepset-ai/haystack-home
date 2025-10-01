@@ -5,8 +5,8 @@ description: See how TELUS Agriculture & Consumer Goods (TAC) gives users unprec
 featured_image: thumbnail.png
 images: ["blog/telus-user/thumbnail.png"]
 toc: True
-date: 2025-09-23
-last_updated:  2025-09-23
+date: 2025-10-02
+last_updated:  2025-10-02
 authors:
   - Bilge Yucel
   - Kelsey Sorrels

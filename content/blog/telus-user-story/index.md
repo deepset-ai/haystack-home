@@ -5,8 +5,8 @@ description: See how TELUS Agriculture & Consumer Goods (TAC) gives users unprec
 featured_image: thumbnail.png
 images: ["blog/telus-user/thumbnail.png"]
 toc: True
-date: 2025-10-02
-last_updated:  2025-10-02
+date: 2025-10-06
+last_updated:  2025-10-06
 authors:
   - Bilge Yucel
   - Kelsey Sorrels
@@ -15,7 +15,7 @@ tags: ["User Story"]
 
 When a leading company like **TELUS Agriculture & Consumer Goods (TAC)**, with a strong presence in agriculture and consumer goods, turns to AI to streamline complex processes, it’s worth taking a closer look.
 
-[**TELUS Agriculture & Consumer Goods**](https://www.telus.com/agcg/en) helps businesses optimize everything from supply chains to retail operations. One of their latest innovations: an **agentic chatbot powered by Haystack** that simplifies how users interact with their trade promotions platform.
+[TELUS Agriculture & Consumer Goods](https://www.telus.com/agcg/en) helps businesses optimize everything from supply chains to retail operations. One of their latest innovations: an **agentic chatbot powered by Haystack** that simplifies how users interact with their trade promotions platform.
 
 We sat down with the team behind this project to learn how they built it, why they chose [Haystack](https://github.com/deepset-ai/haystack), and what advice they have for other teams looking to implement Retrieval-Augmented Generation (RAG) and agent-based AI solutions in production.
 
@@ -44,7 +44,7 @@ The team had some experience with other frameworks, but Haystack’s flexibility
  
 ## The Technical Architecture: From Pipelines to Agents
 
-The first version of the system used a [**pipeline-based architecture**](https://docs.haystack.deepset.ai/docs/pipelines) with two separate workflows:
+The first version of the system used a [pipeline-based architecture](https://docs.haystack.deepset.ai/docs/pipelines) with two separate workflows:
 
 - One workflow handled **knowledge base queries** via RAG after ingesting user documentation and converting it from raw HTML into a searchable format
 - Another generated SQL queries from user inputs using metadata and schema descriptions, then executed them on the SQL database
@@ -97,7 +97,7 @@ More advice for anyone considering a similar project:
 
 ## What’s Next
 
-The journey doesn’t stop here. TAC plans to **automate data ingestion** processes, build an [**AI-based evaluation framework**](https://haystack.deepset.ai/integrations?type=Evaluation+Framework) to score chatbot responses, and even **white-label the application** for other use cases across the organization.
+The journey doesn’t stop here. TAC plans to **automate data ingestion** processes, build an [AI-based evaluation framework](https://haystack.deepset.ai/integrations?type=Evaluation+Framework) to score chatbot responses, and even **white-label the application** for other use cases across the organization.
 
 > “_We see this as a template for the future,_” says Kelsey. “_Our goal is to bring this capability to more workflows across TELUS Agriculture & Consumer Goods, including internal documentation and SQL tooling._”
 

@@ -3,7 +3,7 @@ layout: blog-post
 title: 'How TAC Built an Agentic Chatbot with Haystack to Transform Trade Promotions Workflows'
 description: See how TELUS Agriculture & Consumer Goods (TAC) gives users unprecedented access to their data with safety in mind
 featured_image: thumbnail.png
-images: ["blog/telus-user/thumbnail.png"]
+images: ["blog/telus-user-story/thumbnail.png"]
 toc: True
 date: 2025-10-06
 last_updated:  2025-10-06

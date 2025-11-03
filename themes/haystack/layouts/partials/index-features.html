@@ -1,17 +1,51 @@
-{{/*  Homepage Features section  */}}
-<section class="index-features" {{ if .Params.features.anchor }} id="{{ .Params.features.anchor }}" {{ end }}>
-  <div class="container">
-    <div class="inner">
-      {{/* Feature items */}}
-      <div class="feature-items">
-        {{ range .Params.features.featureItems }}
-          <div class="feature-item">
-            <img src="{{ .icon }}" alt="{{ .title }}" />
-            <h3>{{ .title }}</h3>
-            <p>{{ .text }}</p>
-          </div>
-        {{ end }}
+<div class="index-features">
+  <div class="index-features-cards">
+    <div class="container">
+      <h2>{{ .Params.hero.features.title | safeHTML }}</h2>
+    </div>
+
+    <div class="splide feature-slider" aria-label="Feature Slider">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {{ range .Params.hero.features.items }}
+          <li class="splide__slide feature-slide">
+            <div class="feature-item">
+              <img src="{{ .icon }}" alt="" />
+              <h3>{{ .title | safeHTML }}</h3>
+              <p>{{ .text | markdownify }}</p>
+            </div>
+          </li>
+          {{ end }}
+        </ul>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const featureSlider = new Splide(".feature-slider", {
+      perPage: 3,
+      perMove: 1,
+      flickMaxPages: 1,
+      arrows: false,
+      pagination: false,
+      drag: true,
+      padding: { right: "10%" },
+      flickMaxPages: 1,
+
+      breakpoints: {
+        1280: {
+          perPage: 3,
+        },
+        1024: {
+          perPage: 2,
+        },
+        624: {
+          perPage: 1,
+        },
+      },
+    });
+    featureSlider.mount();
+  });
+</script>

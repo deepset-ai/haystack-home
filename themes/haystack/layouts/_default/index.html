@@ -1,6 +1,8 @@
 {{/* Homepage */}}
 {{ define "main" }}
 {{ partial "index-hero" . }}
+{{ partial "index-features" . }}
+{{ partial "index-comparison" . }}
 {{ partial "index-logos" . }}
 {{ partial "index-usecases" . }}
 {{ partial "index-community" . }}
@@ -10,4 +12,6 @@
 
 {{ $splidejs := resources.Get "/js/splide.min.js" }}
 <script src="{{ $splidejs.RelPermalink }}"></script>
+{{ $splidejsAutoscroll := resources.Get "/js/splide-extension-auto-scroll.min.js" }}
+<script src="{{ $splidejsAutoscroll.RelPermalink }}"></script>
 {{ end }}

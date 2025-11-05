@@ -17,7 +17,13 @@
         <h3>{{ .title }}</h3>
 
         <div class="text">
-          {{ .text | markdownify  }}
+          {{ .text | markdownify }}
+        </div>
+
+        <div class="btn-container">
+          {{ partial "arrow-button" (dict "context" . "type" "link" "text" .button.text "url" .button.url
+          "color" .button.color) }}
+
         </div>
       </div>
       {{ end }}

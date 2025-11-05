@@ -4,48 +4,17 @@
       <h2>{{ .Params.hero.features.title | safeHTML }}</h2>
     </div>
 
-    <div class="splide feature-slider" aria-label="Feature Slider">
-      <div class="splide__track">
-        <ul class="splide__list">
-          {{ range .Params.hero.features.items }}
-          <li class="splide__slide feature-slide">
-            <div class="feature-item">
-              <img src="{{ .icon }}" alt="" />
-              <h3>{{ .title | safeHTML }}</h3>
-              <p>{{ .text | markdownify }}</p>
-            </div>
-          </li>
-          {{ end }}
-        </ul>
+    <div class="container">
+
+      <div class="feature-grid">
+        {{ range .Params.hero.features.items }}
+        <div class="feature-item">
+          <img src="{{ .icon }}" alt="" />
+          <h3>{{ .title | safeHTML }}</h3>
+          <p>{{ .text | markdownify }}</p>
+        </div>
+        {{ end }}
       </div>
     </div>
   </div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const featureSlider = new Splide(".feature-slider", {
-      perPage: 3,
-      perMove: 1,
-      flickMaxPages: 1,
-      arrows: false,
-      pagination: false,
-      drag: true,
-      padding: { right: "10%" },
-      flickMaxPages: 1,
-
-      breakpoints: {
-        1280: {
-          perPage: 3,
-        },
-        1024: {
-          perPage: 2,
-        },
-        624: {
-          perPage: 1,
-        },
-      },
-    });
-    featureSlider.mount();
-  });
-</script>

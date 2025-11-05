@@ -82,6 +82,10 @@ comparison:
       title: AI Orchestration Framework
       text: |
         Open Source AI framework for building production-ready, LLM-powered agents and applications, on your own or with Community support.
+      button:
+        text: Start with Haystack
+        color: "green"
+        url: "/"
       
     - image: /images/haystack-enterprise.png
       title: AI Orchestration Framework Enterprise edition
@@ -91,6 +95,10 @@ comparison:
         - Private, secure support
         - Templates & guides
         - Flexible expansions
+      button:
+        text: Get Enterprise Support
+        color: "green"
+        url: "/"
     
     - image: /images/deepset-ai-platform.png
       title: AI Development Platform
@@ -104,6 +112,10 @@ comparison:
         - Access and Resource Management
 
         Try deepset AI Platform for free: ‍[Sign up for deepset Studio](https://deepset-c915ca.webflow.io/deepset-studio)
+      button:
+        text: Try deepset AI Platform for free
+        color: "deepset-blue"
+        url: "/"
 
 # Logo garden
 logos:

@@ -32,6 +32,12 @@ hero:
       - image:
           url: /images/logos/accenture.png
           alt: Accenture
+      - image:
+          url: /images/logos/nos.png
+          alt: NOS
+      - image:
+          url: /images/logos/zeit-online.png
+          alt: Zeit Online
 
     row2:
       - image:

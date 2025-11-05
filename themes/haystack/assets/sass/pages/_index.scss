@@ -434,16 +434,13 @@
     .logo-slide {
       background-color: var(--color-bg-dark-blue);
       border-radius: 0.1875rem;
-      padding: 1.25rem;
-      // margin-left: 0.25rem;
-      width: 14rem;
-      height: 6.25rem;
+      padding: 0.5rem;
       display: flex;
       justify-content: center;
       align-items: center;
 
       img {
-        max-width: 7rem;
+        max-width: 8.5rem;
         max-height: 4.5rem;
         object-fit: contain;
       }

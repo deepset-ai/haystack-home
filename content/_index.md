@@ -7,36 +7,45 @@ description: Create agentic, compound AI systems using Haystack’s modular and 
 
 # Hero
 hero:
-  title: The Production-Ready<br/> Open Source AI Framework
+  title: The Production-Ready<br/> Agentic AI Framework
   buttons:
     - buttonText: pip install haystack-ai
     - buttonText: Get Started with Haystack
       buttonColor: green
       url: /overview/quick-start/
-    - buttonText: Get Started with Studio
-      buttonColor: blue
-      url: https://www.deepset.ai/deepset-studio
-    - buttonText: Get Enterprise Support
-      buttonColor: light-green
-      url: https://www.deepset.ai/products-and-services/haystack-enterprise
+    # - buttonText: Get Started with Studio
+    #   buttonColor: blue
+    #   url: https://www.deepset.ai/deepset-studio
+    # - buttonText: Get Enterprise Support
+    #   buttonColor: light-green
+    #   url: https://www.deepset.ai/products-and-services/haystack-enterprise
 
   logos:
-    title: "Used by Leading Enterprises Everywhere"
+    title: "Haystack Sets the Standard for Agentic AI Across Industries"
     row1:
       - image:
-          url: /images/logos/deepset.png
-          alt: Deepset
+          url: /images/logos/telus.png
+          alt: Telus Agriculture and Consumer Goods
       - image:
-          url: /images/logos/deepset.png
-          alt: Deepset
+          url: /images/logos/lufthansa.png
+          alt: Lufthansa Industry Solutions
+      - image:
+          url: /images/logos/accenture.png
+          alt: Accenture
 
     row2:
       - image:
-          url: /images/logos/deepset.png
-          alt: Deepset
+          url: /images/logos/airbus.png
+          alt: Airbus
       - image:
-          url: /images/logos/deepset.png
-          alt: Deepset
+          url: /images/logos/aws.png
+          alt: AWS
+      - image:
+          url: /images/logos/nvidia.png
+          alt: NVIDIA
+      - image:
+          url: /images/logos/comcast.png
+          alt: Comcast
 
   features:
     title: Why Teams Choose Haystack for their AI Workflows
@@ -79,43 +88,41 @@ comparison:
   subtitle: "From open source to enterprise: tools for every step of your AI journey"
   items:
     - image: /images/haystack-standard.png
-      title: AI Orchestration Framework
+      title: Haystack, AI Orchestration Framework
       text: |
         Open Source AI framework for building production-ready, LLM-powered agents and applications, on your own or with Community support.
       button:
         text: Start with Haystack
         color: "green"
-        url: "/"
+        url: "/overview/quick-start"
       
     - image: /images/haystack-enterprise.png
-      title: AI Orchestration Framework Enterprise edition
+      title: Haystack Enterprise
       text: |
-        Enterprise-support for the Haystack framework, with exclusive access to:
-
-        - Private, secure support
-        - Templates & guides
-        - Flexible expansions
+        Enterprise-support for the Haystack framework, with exclusive access to: 
+        
+        - Private, secure engineering support
+        - Best practices templates & deployment guides
+        - Access to flexible services
+        - Flexible pricing based on company size
       button:
         text: Get Enterprise Support
         color: "green"
-        url: "/"
+        url: "https://www.deepset.ai/products-and-services/haystack-enterprise"
     
     - image: /images/deepset-ai-platform.png
       title: AI Development Platform
       text: |
         Sovereign AI Engineering toolset built on Haystack to accelerate and scale AI use cases with:
 
-        - Visual pipeline editor
-        - Developer tooling
+        - Visual pipeline editor and developer tooling
         - Multi-pipeline experimentation at scale
         - Elastic Infrastructure (SaaS or On-Prem)
-        - Access and Resource Management
-
-        Try deepset AI Platform for free: ‍[Sign up for deepset Studio](https://deepset-c915ca.webflow.io/deepset-studio)
+        - Unified Access and Resource Management
       button:
-        text: Try deepset AI Platform for free
+        text: Try deepset AI Platform for free with Studio
         color: "deepset-blue"
-        url: "/"
+        url: "https://www.deepset.ai/deepset-studio"
 
 # Logo garden
 logos:

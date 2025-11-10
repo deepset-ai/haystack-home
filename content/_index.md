@@ -32,14 +32,12 @@ hero:
       - image:
           url: /images/logos/accenture.png
           alt: Accenture
+      # - image:
+      #     url: /images/logos/nos.png
+      #     alt: NOS
       - image:
-          url: /images/logos/nos.png
-          alt: NOS
-      - image:
-          url: /images/logos/zeit-online.png
-          alt: Zeit Online
-
-    row2:
+          url: /images/logos/nvidia.png
+          alt: NVIDIA
       - image:
           url: /images/logos/airbus.png
           alt: Airbus
@@ -47,11 +45,24 @@ hero:
           url: /images/logos/aws.png
           alt: AWS
       - image:
-          url: /images/logos/nvidia.png
-          alt: NVIDIA
-      - image:
           url: /images/logos/comcast.png
           alt: Comcast
+      - image:
+          url: /images/logos/zeit-online.png
+          alt: Zeit Online
+    # row2:
+    #   - image:
+    #       url: /images/logos/airbus.png
+    #       alt: Airbus
+    #   - image:
+    #       url: /images/logos/aws.png
+    #       alt: AWS
+    #   - image:
+    #       url: /images/logos/nvidia.png
+    #       alt: NVIDIA
+    #   - image:
+    #       url: /images/logos/comcast.png
+    #       alt: Comcast
 
   features:
     title: Why Teams Choose Haystack for their AI Workflows

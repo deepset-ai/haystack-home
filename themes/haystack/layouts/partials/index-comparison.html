@@ -1,0 +1,32 @@
+<div class="index-comparison">
+  <div class="heading">
+    <div class="container">
+      <h2>{{ .Params.comparison.title }}</h2>
+      <h3>{{ .Params.comparison.subtitle }}</h3>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="comparison-cards">
+      {{ range .Params.comparison.items }}
+      <div class="comparison-card">
+        <div class="comparison-image">
+          <img src="{{ .image }}" alt="{{ .title }}" />
+        </div>
+
+        <h3>{{ .title }}</h3>
+
+        <div class="text">
+          {{ .text | markdownify }}
+        </div>
+
+        <div class="btn-container">
+          {{ partial "arrow-button" (dict "context" . "type" "link" "text" .button.text "url" .button.url
+          "color" .button.color) }}
+
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>

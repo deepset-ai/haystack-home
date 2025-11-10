@@ -7,64 +7,139 @@ description: Create agentic, compound AI systems using Haystack’s modular and 
 
 # Hero
 hero:
-  title: The Production-Ready<br/> Open Source AI Framework
+  title: The Production-Ready<br/> Agentic AI Framework
   buttons:
     - buttonText: pip install haystack-ai
     - buttonText: Get Started with Haystack
       buttonColor: green
       url: /overview/quick-start/
-    - buttonText: Get Started with Studio
-      buttonColor: blue
-      url: https://www.deepset.ai/deepset-studio
-    - buttonText: Get Enterprise Support
-      buttonColor: light-green
-      url: https://www.deepset.ai/products-and-services/haystack-enterprise
+    # - buttonText: Get Started with Studio
+    #   buttonColor: blue
+    #   url: https://www.deepset.ai/deepset-studio
+    # - buttonText: Get Enterprise Support
+    #   buttonColor: light-green
+    #   url: https://www.deepset.ai/products-and-services/haystack-enterprise
+
+  logos:
+    title: "Haystack Sets the Standard for Agentic AI Across Industries"
+    row1:
+      - image:
+          url: /images/logos/telus.png
+          alt: Telus Agriculture and Consumer Goods
+      - image:
+          url: /images/logos/lufthansa.png
+          alt: Lufthansa Industry Solutions
+      - image:
+          url: /images/logos/accenture.png
+          alt: Accenture
+      # - image:
+      #     url: /images/logos/nos.png
+      #     alt: NOS
+      - image:
+          url: /images/logos/nvidia.png
+          alt: NVIDIA
+      - image:
+          url: /images/logos/airbus.png
+          alt: Airbus
+      - image:
+          url: /images/logos/aws.png
+          alt: AWS
+      - image:
+          url: /images/logos/comcast.png
+          alt: Comcast
+      - image:
+          url: /images/logos/zeit-online.png
+          alt: Zeit Online
+    # row2:
+    #   - image:
+    #       url: /images/logos/airbus.png
+    #       alt: Airbus
+    #   - image:
+    #       url: /images/logos/aws.png
+    #       alt: AWS
+    #   - image:
+    #       url: /images/logos/nvidia.png
+    #       alt: NVIDIA
+    #   - image:
+    #       url: /images/logos/comcast.png
+    #       alt: Comcast
 
   features:
-    - title: Highly<br> customizable
-      highlightedText: Don’t just use Haystack, build on top of it.
-      text: The flexible components and pipelines architecture allows you to build around your own specifications and use-cases. Whether you’re building a simple retrieval-augmented generation (RAG) app or a complex agentic pipeline with many moving parts.
+    title: Why Teams Choose Haystack for their AI Workflows
+    items:
+      - title: Build Transparent, Customizable AI Systems
+        icon: /images/icons/star-icon.svg
+        text: |
+          Orchestrate every step of your AI agent, from retrieval to reasoning to tool use.
 
-    - title: Build with leading LLM providers and AI tools
-      highlightedText: Have the freedom of choice.
-      text: Thanks to our partnerships with leading LLM providers, vector databases, and AI tools such as OpenAI, Anthropic, Mistral, Weaviate, Pinecone and so many more
+          Haystack’s modular framework gives you full visibility to inspect, debug, and optimize every decision your AI makes.
 
-    - title: Production is where it gets real
-      highlightedText: Get your application in front of the world.
-      text: Haystack is built with production in mind. Pipelines are fully serializable and perfect for K8s native workflows. Logging and monitoring integrations give you the transparency you need. Deployment guides walk you through full-scale deployments on all clouds and on-prem.
+      - title: Integrate Freely with Your AI Stack
+        icon: /images/icons/bot.svg
+        text: |
+          Connect to OpenAI, Anthropic, Mistral, Hugging Face, Weaviate, Pinecone, Elasticsearch, and more with no vendor lock-in.
 
-  studio:
-    # title: "deepset Studio: Your Development Environment for Haystack"
-    title: Build Haystack apps faster with deepset Studio
-    media: # Choose one
-      # image: /images/cookbook-thumbnail.png
-      # video: /images/deepset-studio-demo.mp4
-      video: /images/studio.mp4
-      # youtubeVideoId: Hns424sFY7s
-    bulletPoints: 
-      - Drag, drop, and construct Haystack pipelines
-      - Bring your own files or connect your database
-      - Deploy on deepset or export pipelines locally
-      - Test, debug, and share your prototype
-      - Free and open to everyone
-    buttons:
-      - buttonText: Learn more
-        buttonColor: dark-blue
-        url: https://www.deepset.ai/blog/introducing-deepset-studio-visual-ai-builder
+          Haystack’s open architecture lets you mix and match components to fit your workflow.
 
-      - buttonText: Start building
-        buttonColor: blue
-        url: https://www.deepset.ai/deepset-studio
+      - title: Develop and Deploy Faster
+        icon: /images/icons/develop.svg
+        text: |
+          Move from prototype to production using the same composable building blocks.
+
+          Haystack lets you go from a proof-of-concept to a full production system with unified tooling for building, testing, and shipping your AI use cases.
+
+      - title: Operate at Enterprise Scale
+        icon: /images/icons/enterprise.svg
+        text: |
+          Run production workloads across any environment with built-in reliability and observability.
+
+          Haystack Pipelines are serializable, cloud-agnostic, and Kubernetes-ready, with logging, monitoring, and deployment guides to support you.
 
   CTA:
     link: https://www.deepset.ai/products-and-services/deepset-ai-platform
     text: Learn how to extend Haystack with deepset AI Platform for faster building, easier iteration and instant deployment.
     logo: /images/logos/deepset-blue.png
-  
-  enterprise:
-    link: https://www.deepset.ai/products-and-services/haystack-enterprise
-    text: Get expert support, enterprise-grade pipeline templates and deployment guides for cloud and on-prem with Haystack Enterprise.
-    logo: /images/logos/haystack.png
+
+comparison:
+  title: Build and Scale with the Haystack Ecosystem
+  subtitle: "From open source to enterprise: tools for every step of your AI journey"
+  items:
+    - image: /images/haystack-standard.png
+      title: Haystack, AI Orchestration Framework
+      text: |
+        Open Source AI framework for building production-ready, LLM-powered agents and applications, on your own or with Community support.
+      button:
+        text: Start with Haystack
+        color: "green"
+        url: "/overview/quick-start"
+      
+    - image: /images/haystack-enterprise.png
+      title: Haystack Enterprise
+      text: |
+        Enterprise-support for the Haystack framework, with exclusive access to: 
+        
+        - Private, secure engineering support
+        - Best practices templates & deployment guides
+        - Access to flexible services
+        - Flexible pricing based on company size
+      button:
+        text: Get Enterprise Support
+        color: "green"
+        url: "https://www.deepset.ai/products-and-services/haystack-enterprise"
+    
+    - image: /images/deepset-ai-platform.png
+      title: AI Development Platform
+      text: |
+        Sovereign AI Engineering toolset built on Haystack to accelerate and scale AI use cases with:
+
+        - Visual pipeline editor and developer tooling
+        - Multi-pipeline experimentation at scale
+        - Elastic Infrastructure (SaaS or On-Prem)
+        - Unified Access and Resource Management
+      button:
+        text: Try deepset AI Platform for free with Studio
+        color: "deepset-blue"
+        url: "https://www.deepset.ai/deepset-studio"
 
 # Logo garden
 logos:
@@ -133,5 +208,4 @@ community:
 
     - title: "Adding Tools to Agentic Pipelines & Other Experimental Features"
       videoId: QWx3OzW2Pvo
-      
 ---

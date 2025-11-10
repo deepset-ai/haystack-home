@@ -1,0 +1,56 @@
+<div class="logo-marquee">
+  <div class="container container-padded">
+    <h2>
+      {{ .Params.hero.logos.title | safeHTML }}
+    </h2>
+  </div>
+  
+  <div class="splide logo-slider row1" aria-label="Logo Slider">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {{ range .Params.hero.logos.row1 }}
+        <li class="splide__slide logo-slide">
+          <img src="{{ .image.url }}" alt="{{ .image.alt }}" />
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+
+  <div class="splide logo-slider row2" aria-label="Logo Slider">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {{ range .Params.hero.logos.row2 }}
+        <li class="splide__slide logo-slide">
+          <img src="{{ .image.url }}" alt="{{ .image.alt }}" />
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const config = {
+      type: "loop",
+      fixedWidth: "224px",
+      fixedHeight: "100px",
+      gap: "4px",
+      arrows: false,
+      pagination: false,
+      drag: false,
+      autoScroll: {
+        speed: 0.5,
+        pauseOnHover: false,
+        pauseOnFocus: false
+      },
+    }
+
+    const splide_row1 = new Splide(".logo-slider.row1", config);
+    splide_row1.mount(window.splide.Extensions);
+
+    const splide_row2 = new Splide(".logo-slider.row2", { ...config, autoScroll: { ...config.autoScroll, speed: -0.5 } });
+    splide_row2.mount(window.splide.Extensions);
+  });
+</script>

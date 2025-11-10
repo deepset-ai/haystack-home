@@ -1,17 +1,20 @@
-{{/*  Homepage Features section  */}}
-<section class="index-features" {{ if .Params.features.anchor }} id="{{ .Params.features.anchor }}" {{ end }}>
-  <div class="container">
-    <div class="inner">
-      {{/* Feature items */}}
-      <div class="feature-items">
-        {{ range .Params.features.featureItems }}
-          <div class="feature-item">
-            <img src="{{ .icon }}" alt="{{ .title }}" />
-            <h3>{{ .title }}</h3>
-            <p>{{ .text }}</p>
-          </div>
+<div class="index-features">
+  <div class="index-features-cards">
+    <div class="container">
+      <h2>{{ .Params.hero.features.title | safeHTML }}</h2>
+    </div>
+
+    <div class="container">
+
+      <div class="feature-grid">
+        {{ range .Params.hero.features.items }}
+        <div class="feature-item">
+          <img src="{{ .icon }}" alt="" />
+          <h3>{{ .title | safeHTML }}</h3>
+          <p>{{ .text | markdownify }}</p>
+        </div>
         {{ end }}
       </div>
     </div>
   </div>
-</section>
+</div>

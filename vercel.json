@@ -133,7 +133,7 @@
       "permanent": true
     },
     {
-      "source": "/integrations/(azure-translator|basic-agent-memory|chainlit|document-threshold|entailment-checker|faiss-document-store|gradient|lemmatize|newspaper3k|readmedocs-fetcher|text2speech|uptrain)",
+      "source": "/integrations/(azure-translator|basic-agent-memory|chainlit|document-threshold|entailment-checker|faiss-document-store|gradient|lemmatize|marqo-document-store|newspaper3k|readmedocs-fetcher|text2speech|uptrain)",
       "destination": "/integrations",
       "permanent": true
     },

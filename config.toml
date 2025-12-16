@@ -123,13 +123,6 @@ paginatePath = "/"
   parent = 'overview'
   weight = 3
 
-[[menu.main]]
-  name = 'Haystack Enterprise'
-  url = 'https://www.deepset.ai/products-and-services/haystack-enterprise'
-  parent = 'overview'
-  weight = 4
-  params = { tag = "Contact us!" }
-
 # Learn children
 [[menu.main]]
   name = '📚 Tutorials & Walkthroughs'
@@ -170,20 +163,20 @@ paginatePath = "/"
 
 # deepset children
 [[menu.main]]
-  name = 'deepset '
+  name = 'Haystack Enterprise'
   url = 'https://www.deepset.ai/'
   parent = 'deepset'
   weight = 1
 
 [[menu.main]]
-  name = 'deepset Studio'
+  name = 'Haystack Enterprise Trial'
   url = 'https://www.deepset.ai/deepset-studio'
   parent = 'deepset'
   weight = 2
   params = { tag = "Sign up" }
 
 [[menu.main]]
-  name = 'deepset Blog'
+  name = 'Haystack Enterprise Blog'
   url = 'https://www.deepset.ai/blog'
   parent = 'deepset'
   weight = 3

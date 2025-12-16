@@ -353,8 +353,8 @@
       transition: all var(--transition-fast) var(--ease);
 
       &:hover {
-        border: 2px solid var(--color-yellow);
-        color: var(--color-blue);
+        border: 2px solid var(--color-deepset-blue);
+        color: var(--color-deepset-blue);
         filter: var(--shadow-filter);
       }
     }

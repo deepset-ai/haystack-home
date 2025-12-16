@@ -85,7 +85,7 @@
     }
 
     &:hover {
-      box-shadow: 0px 0px 0px 2px #43ab9d,
+      box-shadow: 0px 0px 0px 2px var(--color-deepset-blue),
         0px 0px 8px 4px rgba(67, 171, 157, 0.32);
     }
   }
@@ -107,7 +107,7 @@
     }
 
     &:hover {
-      box-shadow: 0px 0px 0px 2px #FFC55C,
+      box-shadow: 0px 0px 0px 2px var(--color-deepset-blue),
         0px 0px 8px 4px rgba(67, 171, 157, 0.32);
     }
   }
@@ -254,7 +254,7 @@
   gap: 0.25rem;
 
   &.featured {
-    background-color: var(--color-green);
+    background-color: var(--color-deepset-blue);
     color: var(--color-white);
   }
 
@@ -280,10 +280,6 @@
   &.outdated {
     background-color: var(--color-dark-blue);
     color: var(--color-white);
-  }
-
-  &.haystack-2 {
-    background-color: var(--color-yellow);
   }
 
   .icon {

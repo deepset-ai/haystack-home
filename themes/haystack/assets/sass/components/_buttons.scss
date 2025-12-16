@@ -74,51 +74,6 @@ button.nav-toggle-close {
   user-select: none;
   transition: background-color var(--transition-fast) var(--ease);
 
-  &.btn-green {
-    background-color: rgba($color: #{var(--color-green-rgb)}, $alpha: 1);
-    color: var(--color-white);
-
-    svg {
-      fill: var(--color-white);
-    }
-
-    &:hover {
-      background-color: rgba($color: #{var(--color-green-rgb)}, $alpha: 0.9);
-    }
-  }
-
-  &.btn-light-green {
-  color: #181818;
-  background-color: var(--color-light-green);
-  border: 1px solid #181818;
-
-  svg {
-    path {
-      fill: #181818;
-    }
-  }
-
-  &:hover {
-    background-color: rgba(
-      $color: #d3deff,
-      $alpha: 0.9
-    );
-  }
-  }
-
-  &.btn-blue {
-    background-color: rgba($color: #{var(--color-blue-rgb)}, $alpha: 1);
-    color: var(--color-white);
-
-    svg {
-      fill: var(--color-white);
-    }
-
-    &:hover {
-      background-color: rgba($color: #{var(--color-blue-rgb)}, $alpha: 0.9);
-    }
-  }
-
   &.btn-dark-blue {
     background-color: rgba($color: #{var(--color-dark-blue-rgb)}, $alpha: 1);
     color: var(--color-white);
@@ -400,6 +355,10 @@ button.nav-toggle-close {
 .download-btn > svg {
   width: 1.2rem;
   margin-bottom: 0.25rem;
+  
+  path {
+    fill: var(--color-white);
+  }
 }
 
 // button container

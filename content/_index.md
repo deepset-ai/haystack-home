@@ -7,18 +7,12 @@ description: Create agentic, compound AI systems using Haystack’s modular and 
 
 # Hero
 hero:
-  title: The Production-Ready<br/> Agentic AI Framework
+  title: The Open Source AI Framework <br/>for Production Ready <br/> RAG & Agents
   buttons:
     - buttonText: pip install haystack-ai
     - buttonText: Get Started with Haystack
-      buttonColor: green
+      buttonColor: blue
       url: /overview/quick-start/
-    # - buttonText: Get Started with Studio
-    #   buttonColor: blue
-    #   url: https://www.deepset.ai/deepset-studio
-    # - buttonText: Get Enterprise Support
-    #   buttonColor: light-green
-    #   url: https://www.deepset.ai/products-and-services/haystack-enterprise
 
   logos:
     title: "Haystack Sets the Standard for Agentic AI Across Industries"
@@ -110,7 +104,7 @@ comparison:
         Open Source AI framework for building production-ready, LLM-powered agents and applications, on your own or with Community support.
       button:
         text: Start with Haystack
-        color: "green"
+        color: "deepset-blue"
         url: "/overview/quick-start"
       
     - image: /images/haystack-enterprise.png
@@ -124,7 +118,7 @@ comparison:
         - Flexible pricing based on company size
       button:
         text: Get Enterprise Support
-        color: "green"
+        color: "deepset-blue"
         url: "https://www.deepset.ai/products-and-services/haystack-enterprise"
     
     - image: /images/deepset-ai-platform.png

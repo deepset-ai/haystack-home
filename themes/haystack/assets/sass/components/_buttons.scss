@@ -91,18 +91,19 @@ button.nav-toggle-close {
   }
 
   &.btn-light-blue {
-    background-color: rgba($color: #{var(--color-light-blue-rgb)}, $alpha: 1);
-    color: var(--color-white);
+    background-color: rgba($color: #{var(--color-white)}, $alpha: 1);
+    color: var(--color-dark-blue);
+    border: 2px solid var(--color-dark-blue);
+    transition: all var(--transition-fast) var(--ease);
 
     svg {
-      fill: var(--color-white);
+      fill: var(--color-dark-blue);
     }
 
     &:hover {
-      background-color: rgba(
-        $color: #{var(--color-dark-blue-rgb)},
-        $alpha: 0.9
-      );
+      border: 2px solid var(--color-deepset-blue);
+        color: var(--color-deepset-blue);
+        filter: var(--shadow-filter);
     }
   }
 
@@ -275,7 +276,7 @@ button.nav-toggle-close {
 
 .copy-code-button:hover,
 .copy-code-button:focus {
-  border: 2px solid var(--color-yellow);
+  border: 2px solid var(--color-deepset-blue);
   color: var(--color-dark-blue);
 
   opacity: 1;
@@ -355,7 +356,7 @@ button.nav-toggle-close {
 .download-btn > svg {
   width: 1.2rem;
   margin-bottom: 0.25rem;
-  
+
   path {
     fill: var(--color-white);
   }

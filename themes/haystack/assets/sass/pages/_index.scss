@@ -8,20 +8,69 @@
 .index-hero {
   position: relative;
   background: #f8f8f8;
-  background-image: url("/images/white-hero-left.svg"),
-    url("/images/white-hero-right.svg");
-  background-position: left -100% top -50%, right 50% top 360px;
-  background-repeat: no-repeat, no-repeat;
 
-  @include md {
-  background-image: url("/images/white-hero-left.svg"),
-    url("/images/white-hero-right.svg");
-    background-position: left -100% top -50%, right 50% top 360px;
+  .bg-images {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    
+    .left-image {
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      transform: translateX(-50%) translateY(50%);
+
+      @include sm {
+        width: 300px;
+        height: 300px;
+      }
+
+      @include md {
+        width: 350px;
+        height: 350px;
+      }
+      @include lg {
+        width: 450px;
+        height: 450px;
+        transform: translateX(-50%) translateY(30%);
+      }
+
+    }
+    
+    .right-image {
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      right: 0;
+      transform: translateX(50%) translateY(50%);
+
+      @include sm {
+        width: 300px;
+        height: 300px;
+      }
+
+      @include md {
+        width: 350px;
+        height: 350px;
+      }
+      @include lg {
+        width: 450px;
+        height: 450px;
+        transform: translateX(50%) translateY(30%);
+      }
+    }
+
+    .background-gradient {
+      position: absolute; 
+      width:100%; 
+      height: calc(100% - 100px);
+      background: #FFFFFF; 
+      background: radial-gradient(circle, rgba(110, 144, 255, 1) -100%, rgba(248, 248, 248, 1) 80%);
+    }
+
   }
 
-  @include lg {
-    background-position: left -250px top 35%, right -250px top 35%;
-  }
 
   .hero-inner {
     width: 100%;
@@ -59,7 +108,7 @@
 
         @include lg {
           letter-spacing: 1.523px;
-          font-size: 3.5rem;
+          font-size: 4rem;
         }
       }
 

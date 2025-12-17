@@ -289,9 +289,10 @@ button.nav-toggle-close {
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: #8a8a8a;
+  color: var(--color-dark-blue);
   font-weight: var(--font-weight-heading);
   font-size: var(--text-base);
+  transition: fill var(--transition-fast) var(--ease);
 
   @include md {
     font-size: 1.1875rem;
@@ -300,7 +301,6 @@ button.nav-toggle-close {
   svg {
     width: 1.9375rem;
     flex-shrink: 0;
-    transition: fill var(--transition-fast) var(--ease);
   }
 
   > svg:first-of-type {
@@ -308,10 +308,10 @@ button.nav-toggle-close {
   }
 
   &:hover {
-    color: var(--color-dark-blue);
+    color: var(--color-deepset-blue);
 
-    svg {
-      fill: var(--color-dark-blue);
+    path {
+      fill: var(--color-deepset-blue);
     }
   }
 

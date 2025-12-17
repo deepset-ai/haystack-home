@@ -98,7 +98,7 @@ comparison:
   title: Build and Scale with the Haystack Ecosystem
   subtitle: "From open source to enterprise: tools for every step of your AI journey"
   items:
-    - image: /images/haystack-standard.png
+    - image: /images/haystack-oss.png
       title: Haystack, AI Orchestration Framework
       text: |
         Open Source AI framework for building production-ready, LLM-powered agents and applications, on your own or with Community support.
@@ -107,7 +107,7 @@ comparison:
         color: "deepset-blue"
         url: "/overview/quick-start"
       
-    - image: /images/haystack-enterprise.png
+    - image: /images/haystack-enterprise-starter.png
       title: Haystack Enterprise
       text: |
         Enterprise-support for the Haystack framework, with exclusive access to: 
@@ -121,7 +121,7 @@ comparison:
         color: "deepset-blue"
         url: "https://www.deepset.ai/products-and-services/haystack-enterprise"
     
-    - image: /images/deepset-ai-platform.png
+    - image: /images/haystack-enterprise-platform.png
       title: AI Development Platform
       text: |
         Sovereign AI Engineering toolset built on Haystack to accelerate and scale AI use cases with:
@@ -131,7 +131,7 @@ comparison:
         - Elastic Infrastructure (SaaS or On-Prem)
         - Unified Access and Resource Management
       button:
-        text: Try deepset AI Platform for free with Studio
+        text: Try Haystack Enterprise Platform for free
         color: "deepset-blue"
         url: "https://www.deepset.ai/deepset-studio"
 

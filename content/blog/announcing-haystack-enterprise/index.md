@@ -16,7 +16,7 @@ tags: ["Community"]
 
 We’ve had a front-row seat to these challenges. Across GitHub threads, meetups, community calls, and production deployments, developers have consistently asked for engineering support and hands-on guidance to **build for their use case**, **accelerate deployment**, **improve observability**, and **scale infrastructure with confidence**. These aren’t just feature requests; they reflect the real-world friction points of teams building AI products that actually ship.
 
-We’ve tackled many of these problems ourselves while building for customers on the [deepset AI Platform](https://www.deepset.ai/products-and-services/deepset-ai-platform). Now, we want to make that experience more accessible to the broader Haystack community.
+We’ve tackled many of these problems ourselves while building for customers on the [Haystack Enterprise Platform](https://www.deepset.ai/products-and-services/deepset-ai-platform). Now, we want to make that experience more accessible to the broader Haystack community.
 
 That’s why we’re introducing **Haystack Enterprise** today. It adds secure support, best practices, and professional services availability for organizations scaling up their Haystack pipelines. ⬇️
 

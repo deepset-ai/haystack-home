@@ -1,7 +1,7 @@
 ---
 layout: blog-post
-title: 'Haystack Ecosystem: One Name for Building, Running, and Scaling AI'
-description: A Faster Way to Build and Scale Production-Grade AI Apps
+title: 'Haystack Ecosystem: One Name, One Product Family, One Look'
+description: One unified Haystack ecosystem, from open source to enterprise-scale AI systems.
 featured_image: thumbnail.png
 images: ["blog/announcing-haystack-ecosystem/thumbnail.png"]
 toc: True

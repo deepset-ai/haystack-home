@@ -108,7 +108,7 @@ comparison:
         url: "/overview/quick-start"
       
     - image: /images/haystack-enterprise-starter.png
-      title: Haystack Enterprise
+      title: Enterprise Support
       text: |
         Enterprise-support for the Haystack framework, with exclusive access to: 
         
@@ -122,14 +122,14 @@ comparison:
         url: "https://www.deepset.ai/products-and-services/haystack-enterprise"
     
     - image: /images/haystack-enterprise-platform.png
-      title: AI Development Platform
+      title: AI Orchestration Platform
       text: |
-        Sovereign AI Engineering toolset built on Haystack to accelerate and scale AI use cases with:
+        Sovereign AI toolset built on Haystack to accelerate and scale AI use cases with:
 
-        - Visual pipeline editor and developer tooling
-        - Multi-pipeline experimentation at scale
-        - Elastic Infrastructure (SaaS or On-Prem)
-        - Unified Access and Resource Management
+        - Visual, code-aligned pipeline design
+        - Data, retrieval, and testing workflows
+        - Secure access controls and auditability
+        - Scalable cloud or on-prem deployment
       button:
         text: Try Haystack Enterprise Platform for free
         color: "deepset-blue"

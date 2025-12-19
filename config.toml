@@ -99,7 +99,7 @@ paginatePath = "/"
   weight = 5
 
 [[menu.main]]
-  identifier = 'deepset'
+  identifier = 'haystack-enterprise'
   name = 'Haystack Enterprise'
   url = '/'
   weight = 8
@@ -161,28 +161,28 @@ paginatePath = "/"
   parent = 'learn'
   weight = 6
 
-# deepset children
-[[menu.main]]
-  name = 'Haystack Enterprise'
-  url = 'https://www.deepset.ai/'
-  parent = 'deepset'
-  weight = 1
-
+# Haystack Enterprise children
 [[menu.main]]
   name = 'Haystack Enterprise Trial'
   url = 'https://www.deepset.ai/deepset-studio'
-  parent = 'deepset'
-  weight = 2
+  parent = 'haystack-enterprise'
+  weight = 1
   params = { tag = "Sign up" }
+
+[[menu.main]]
+  name = 'Haystack Enterprise Platform'
+  url = 'https://www.deepset.ai/products-and-services/deepset-ai-platform'
+  parent = 'haystack-enterprise'
+  weight = 2
 
 [[menu.main]]
   name = 'Haystack Enterprise Blog'
   url = 'https://www.deepset.ai/blog'
-  parent = 'deepset'
+  parent = 'haystack-enterprise'
   weight = 3
 
 [[menu.main]]
   name = 'Careers'
   url = "https://www.deepset.ai/careers"
-  parent = 'deepset'
+  parent = 'haystack-enterprise'
   weight = 4 

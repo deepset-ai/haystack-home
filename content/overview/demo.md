@@ -17,7 +17,7 @@ Check out demos built with Haystack!
 
 Try out our **AutoQuizzer** demo built with **Haystack** and **Llama 3 8B Instruct**! Generate a quiz from a URL, solve the quiz, or let the LLM play it.
 
-{{< button url="https://huggingface.co/spaces/deepset/autoquizzer" text="🤗 AutoQuizzer HF Space" color="green">}}
+{{< button url="https://huggingface.co/spaces/deepset/autoquizzer" text="🤗 AutoQuizzer HF Space" color="deepset-blue">}}
 
 ## Other Demos
 

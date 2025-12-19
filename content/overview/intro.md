@@ -3,7 +3,7 @@ layout: overview
 header: dark
 footer: dark
 title: What is Haystack?
-desciption: Haystack is an open-source AI orchestration framework built by deepset that empowers Python developers to build real-world, compound, agentic LLM applications.
+desciption: Create agentic, compound AI systems using Haystack’s modular and customizable building blocks, built for real-world, production-ready applications.
 weight: 1
 toc: true
 ---
@@ -22,9 +22,9 @@ pip install -U haystack-ai
 
 ## Who is Haystack For?
 
-Haystack is for builders of all kinds—whether you’re prototyping your first Gen AI app or deploying sophisticated systems at scale. If you know a bit of Python, you’re ready to start.
+Haystack is for builders of all kinds—whether you’re prototyping your first AI application or deploying sophisticated systems at scale. If you know a bit of Python, you’re ready to start.
 
-You can build directly in Python, visually with [deepset Studio](https://www.deepset.ai/deepset-studio), or scale up with enterprise-grade infrastructure on the [deepset AI Platform](https://www.deepset.ai/products-and-services/deepset-ai-platform). Whatever your level or need, Haystack gives you the power to build, experiment, and launch faster.
+You can build directly in Python or scale up with enterprise-grade infrastructure on the [Haystack Enterprise Platform](https://www.deepset.ai/products-and-services/deepset-ai-platform). Whatever your level or need, Haystack gives you the power to build, experiment, and launch faster.
 
 ## Why Developers Love Haystack
 
@@ -41,14 +41,14 @@ Here’s why developers choose Haystack:
 
 Whether it’s **agent workflows, retrieval over millions of docs, text-to-SQL or** **PDF parsing,** Haystack scales with your idea without scaling your complexity.
 
-## The deepset Ecosystem
+## The Haystack Ecosystem
 
-At deepset, we’re building the tools to make LLMs truly usable in production—open source and beyond.
+We’re building the tools to make LLMs truly usable in production—open source and beyond.
 
 - [Haystack](https://github.com/deepset-ai/haystack) → Our core framework for AI orchestration, launched in 2020.
-- [Haystack Enterprise](https://www.deepset.ai/products-and-services/haystack-enterprise) → Expert support, advanced pipeline templates, deployment guides, and early access features for teams needing more support and guidance.
-- [deepset Studio](https://www.deepset.ai/deepset-studio) → A free visual interface for building pipelines, experimenting with data, and deploying apps for development.
-- [deepset AI Platform](https://www.deepset.ai/products-and-services/deepset-ai-platform) → An enterprise-ready platform for teams running Gen AI apps in production, with security, governance, and scalability built in.
+- [Haystack Enterprise Starter](https://www.deepset.ai/products-and-services/haystack-enterprise) → Expert support, advanced pipeline templates, deployment guides, and early access features for teams needing more support and guidance.
+- [Haystack Enterprise Platform](https://www.deepset.ai/products-and-services/deepset-ai-platform) → An enterprise-ready platform for teams running Gen AI apps in production, with security, governance, and scalability built in.
+- [Haystack Enterprise Platform Trial](https://www.deepset.ai/deepset-studio) → A free visual interface for building pipelines, experimenting with data, and deploying apps for development.
 
 Recognized as a [2024 Gartner Cool Vendor in AI Engineering](https://landing.deepset.ai/deepset-recognized-as-a-gartner-cool-vendor), we’re proud to serve the community and enterprises alike.
 
@@ -65,13 +65,13 @@ We’d love to have you involved:
 - 🐘 Follow along on [X (Twitter)](https://x.com/Haystack_AI) or [Mastodon](https://fosstodon.org/@haystack_ai)
 - 💌 Get our latest news in your inbox via the [Haystack newsletter](https://landing.deepset.ai/haystack-community-updates)
 
-## Enter the Haystack Universe
+## Enter the Haystack Open Source Universe
 
 There are so many ways to start building:
 
 - Start building with [tutorials](https://haystack.deepset.ai/tutorials)
 - Follow use case examples in [cookbook](https://haystack.deepset.ai/cookbook)
-- Learn with the [DeepLearning.AI course](https://www.deeplearning.ai/short-courses/building-ai-applications-with-haystack/)
+- Learn with the [DeepLearning.AI](https://www.deeplearning.ai/short-courses/building-ai-applications-with-haystack/) or [DataCamp](https://app.datacamp.com/learn/courses/building-ai-agents-with-haystack) courses
 - Check out [integrations](https://haystack.deepset.ai/integrations)
 - Explore cutting-edge features in [Haystack Experimental](https://docs.haystack.deepset.ai/docs/experimental-package)
 - Read our [blog](https://haystack.deepset.ai/blog) and [docs](https://docs.haystack.deepset.ai/docs/intro)

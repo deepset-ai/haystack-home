@@ -21,7 +21,7 @@ pip install haystack-ai
 
 For more details, refer to our documentation.
 
-{{< button url="https://docs.haystack.deepset.ai/docs/installation" text="Docs: Installation" color="green">}}
+{{< button url="https://docs.haystack.deepset.ai/docs/installation" text="Docs: Installation" color="deepset-blue">}}
 
 ## Prerequisites
 
@@ -251,7 +251,7 @@ With just a few lines of configuration, your agent becomes **more transparent, s
 
 For a hands-on guide on how to create an **tool-calling agent** that can use both _components_ and _pipelines_ as tools, see our tutorial.
 
-{{< button url="https://haystack.deepset.ai/tutorials/43_building_a_tool_calling_agent" text="Tutorial: Build a Tool-Calling Agent" color="green">}}
+{{< button url="https://haystack.deepset.ai/tutorials/43_building_a_tool_calling_agent" text="Tutorial: Build a Tool-Calling Agent" color="deepset-blue">}}
 
 ## Next Steps
 

@@ -74,51 +74,6 @@ button.nav-toggle-close {
   user-select: none;
   transition: background-color var(--transition-fast) var(--ease);
 
-  &.btn-green {
-    background-color: rgba($color: #{var(--color-green-rgb)}, $alpha: 1);
-    color: var(--color-white);
-
-    svg {
-      fill: var(--color-white);
-    }
-
-    &:hover {
-      background-color: rgba($color: #{var(--color-green-rgb)}, $alpha: 0.9);
-    }
-  }
-
-  &.btn-light-green {
-  color: #181818;
-  background-color: var(--color-light-green);
-  border: 1px solid #181818;
-
-  svg {
-    path {
-      fill: #181818;
-    }
-  }
-
-  &:hover {
-    background-color: rgba(
-      $color: #d3deff,
-      $alpha: 0.9
-    );
-  }
-  }
-
-  &.btn-blue {
-    background-color: rgba($color: #{var(--color-blue-rgb)}, $alpha: 1);
-    color: var(--color-white);
-
-    svg {
-      fill: var(--color-white);
-    }
-
-    &:hover {
-      background-color: rgba($color: #{var(--color-blue-rgb)}, $alpha: 0.9);
-    }
-  }
-
   &.btn-dark-blue {
     background-color: rgba($color: #{var(--color-dark-blue-rgb)}, $alpha: 1);
     color: var(--color-white);
@@ -136,18 +91,19 @@ button.nav-toggle-close {
   }
 
   &.btn-light-blue {
-    background-color: rgba($color: #{var(--color-light-blue-rgb)}, $alpha: 1);
-    color: var(--color-white);
+    background-color: rgba($color: #{var(--color-white)}, $alpha: 1);
+    color: var(--color-dark-blue);
+    border: 2px solid var(--color-dark-blue);
+    transition: all var(--transition-fast) var(--ease);
 
     svg {
-      fill: var(--color-white);
+      fill: var(--color-dark-blue);
     }
 
     &:hover {
-      background-color: rgba(
-        $color: #{var(--color-dark-blue-rgb)},
-        $alpha: 0.9
-      );
+      border: 2px solid var(--color-deepset-blue);
+        color: var(--color-deepset-blue);
+        filter: var(--shadow-filter);
     }
   }
 
@@ -320,7 +276,7 @@ button.nav-toggle-close {
 
 .copy-code-button:hover,
 .copy-code-button:focus {
-  border: 2px solid var(--color-yellow);
+  border: 2px solid var(--color-deepset-blue);
   color: var(--color-dark-blue);
 
   opacity: 1;
@@ -333,9 +289,10 @@ button.nav-toggle-close {
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: #8a8a8a;
+  color: var(--color-dark-blue);
   font-weight: var(--font-weight-heading);
   font-size: var(--text-base);
+  transition: fill var(--transition-fast) var(--ease);
 
   @include md {
     font-size: 1.1875rem;
@@ -344,7 +301,6 @@ button.nav-toggle-close {
   svg {
     width: 1.9375rem;
     flex-shrink: 0;
-    transition: fill var(--transition-fast) var(--ease);
   }
 
   > svg:first-of-type {
@@ -352,10 +308,10 @@ button.nav-toggle-close {
   }
 
   &:hover {
-    color: var(--color-dark-blue);
+    color: var(--color-deepset-blue);
 
-    svg {
-      fill: var(--color-dark-blue);
+    path {
+      fill: var(--color-deepset-blue);
     }
   }
 
@@ -400,6 +356,10 @@ button.nav-toggle-close {
 .download-btn > svg {
   width: 1.2rem;
   margin-bottom: 0.25rem;
+
+  path {
+    fill: var(--color-white);
+  }
 }
 
 // button container

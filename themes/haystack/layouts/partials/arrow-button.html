@@ -1,5 +1,5 @@
 {{ if eq .type "link" }}
-  <a class="btn {{ with .color }}btn-{{ . }}{{ else }}btn-green{{ end }} arrow-button" href="{{ .url }}" {{ if strings.HasPrefix .url "http" }} target="_blank" rel="noopener"{{ end }}>
+  <a class="btn {{ with .color }}btn-{{ . }}{{ else }}btn-deepset-blue{{ end }} arrow-button" href="{{ .url }}" {{ if strings.HasPrefix .url "http" }} target="_blank" rel="noopener"{{ end }}>
     <div class="button-wrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@
 {{ end }}
 
 {{ if eq .type "submitButton" }}
-  <button type="submit" class="btn {{ with .color }}btn-{{ . }}{{ else }}btn-green{{ end }} arrow-button" disabled>
+  <button type="submit" class="btn {{ with .color }}btn-{{ . }}{{ else }}btn-deepset-blue{{ end }} arrow-button" disabled>
     <div class="button-wrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"

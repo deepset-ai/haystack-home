@@ -7,21 +7,70 @@
  */
 .index-hero {
   position: relative;
-  background-color: #f8f8f8;
-  background-image: url("/images/hero-bg-image1-mobile.svg"),
-    url("/images/hero-bg-image2-mobile.svg");
-  background-position: left top -185px, right top 210px;
-  background-repeat: no-repeat, no-repeat;
+  background: #f8f8f8;
 
-  @include md {
-    background-image: url("/images/hero-bg-image1.svg"),
-      url("/images/hero-bg-image2.svg");
-    background-position: left -220px top -50px, right -140px top 360px;
+  .bg-images {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    
+    .left-image {
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      transform: translateX(-50%) translateY(50%);
+
+      @include sm {
+        width: 300px;
+        height: 300px;
+      }
+
+      @include md {
+        width: 350px;
+        height: 350px;
+      }
+      @include lg {
+        width: 450px;
+        height: 450px;
+        transform: translateX(-50%) translateY(30%);
+      }
+
+    }
+    
+    .right-image {
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      right: 0;
+      transform: translateX(50%) translateY(50%);
+
+      @include sm {
+        width: 300px;
+        height: 300px;
+      }
+
+      @include md {
+        width: 350px;
+        height: 350px;
+      }
+      @include lg {
+        width: 450px;
+        height: 450px;
+        transform: translateX(50%) translateY(30%);
+      }
+    }
+
+    .background-gradient {
+      position: absolute; 
+      width:100%; 
+      height: calc(100% - 100px);
+      background: #FFFFFF; 
+      background: radial-gradient(circle, rgba(110, 144, 255, 1) -100%, rgba(248, 248, 248, 1) 80%);
+    }
+
   }
 
-  @include lg {
-    background-position: left top, right top 360px;
-  }
 
   .hero-inner {
     width: 100%;
@@ -59,7 +108,7 @@
 
         @include lg {
           letter-spacing: 1.523px;
-          font-size: 4.75rem;
+          font-size: 4rem;
         }
       }
 
@@ -156,7 +205,7 @@
         }
 
         .blue {
-          background-color: var(--color-blue);
+          background-color: var(--color-deepset-blue);
 
           &:hover {
             background-color: rgba($color: #1f49d4, $alpha: 0.9);
@@ -809,7 +858,7 @@
   }
 
   .discord-card {
-    background-color: var(--color-green);
+    background-color: var(--color-dark-blue);
     h3,
     p {
       color: var(--color-white);

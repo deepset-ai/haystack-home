@@ -7,18 +7,12 @@ description: Create agentic, compound AI systems using Haystack’s modular and 
 
 # Hero
 hero:
-  title: The Production-Ready<br/> Agentic AI Framework
+  title: The Open Source AI Framework <br/>for Production Ready <br/> RAG & Agents
   buttons:
     - buttonText: pip install haystack-ai
     - buttonText: Get Started with Haystack
-      buttonColor: green
+      buttonColor: blue
       url: /overview/quick-start/
-    # - buttonText: Get Started with Studio
-    #   buttonColor: blue
-    #   url: https://www.deepset.ai/deepset-studio
-    # - buttonText: Get Enterprise Support
-    #   buttonColor: light-green
-    #   url: https://www.deepset.ai/products-and-services/haystack-enterprise
 
   logos:
     title: "Haystack Sets the Standard for Agentic AI Across Industries"
@@ -104,17 +98,17 @@ comparison:
   title: Build and Scale with the Haystack Ecosystem
   subtitle: "From open source to enterprise: tools for every step of your AI journey"
   items:
-    - image: /images/haystack-standard.png
+    - image: /images/haystack-oss.png
       title: Haystack, AI Orchestration Framework
       text: |
         Open Source AI framework for building production-ready, LLM-powered agents and applications, on your own or with Community support.
       button:
         text: Start with Haystack
-        color: "green"
+        color: "deepset-blue"
         url: "/overview/quick-start"
       
-    - image: /images/haystack-enterprise.png
-      title: Haystack Enterprise
+    - image: /images/haystack-enterprise-starter.png
+      title: Enterprise Support
       text: |
         Enterprise-support for the Haystack framework, with exclusive access to: 
         
@@ -124,20 +118,20 @@ comparison:
         - Flexible pricing based on company size
       button:
         text: Get Enterprise Support
-        color: "green"
+        color: "deepset-blue"
         url: "https://www.deepset.ai/products-and-services/haystack-enterprise"
     
-    - image: /images/deepset-ai-platform.png
-      title: AI Development Platform
+    - image: /images/haystack-enterprise-platform.png
+      title: AI Orchestration Platform
       text: |
-        Sovereign AI Engineering toolset built on Haystack to accelerate and scale AI use cases with:
+        Sovereign AI toolset built on Haystack to accelerate and scale AI use cases with:
 
-        - Visual pipeline editor and developer tooling
-        - Multi-pipeline experimentation at scale
-        - Elastic Infrastructure (SaaS or On-Prem)
-        - Unified Access and Resource Management
+        - Visual, code-aligned pipeline design
+        - Data, retrieval, and testing workflows
+        - Secure access controls and auditability
+        - Scalable cloud or on-prem deployment
       button:
-        text: Try deepset AI Platform for free with Studio
+        text: Try Haystack Enterprise Platform for free
         color: "deepset-blue"
         url: "https://www.deepset.ai/deepset-studio"
 
@@ -167,8 +161,14 @@ useCases:
   anchor: use-cases
   title: Haystack Use Cases
   items:
+    - title: Advanced<br> RAG
+      text: Build highly performant RAG pipelines with a multitude of retrieval and generation strategies. From hybrid retrieval to self-correction loops, Haystack has got you covered.
+      icon: /images/icons/use-case-1.svg
+    - title: Agentic<br> Pipelines
+      text: All our LLM generators come with a standard function-calling interface so that your LLM can leverage tools to achieve more. Our pipeline architecture provides branching and looping to support complex agent workflows.
+      icon: /images/icons/use-case-4.svg
     - title: Multimodal<br> AI
-      text: Architect a next generation AI app around all modalities, not just text. Haystack can do tasks like image generation, image captioning and audio transcription too.
+      text: Architect a next generation AI app around all modalities, not just text. Haystack can do tasks like image processing, image generation, and audio transcription too.
       icon: /images/icons/use-case-1.svg
     - title: Conversational<br> AI
       text: All of our generators provide a standardized chat interface so that you can focus on building the perfect bot for your users.
@@ -176,12 +176,6 @@ useCases:
     - title: Content<br> Generation
       text: The flexibility and composability of Haystack’s prompt flow is unparalleled. Leverage our Jinja-2 templates and build a content generation engine that exactly matches your workflow.
       icon: /images/icons/use-case-3.svg
-    - title: Agentic<br> Pipelines
-      text: All our LLM generators come with a standard function-calling interface so that your LLM can leverage tools to achieve more. Our pipeline architecture provides branching and looping to support complex agent workflows.
-      icon: /images/icons/use-case-4.svg
-    - title: Advanced<br> RAG
-      text: Build highly performant RAG pipelines with a multitude of retrieval and generation strategies. From hybrid retrieval to self-correction loops, Haystack has got you covered.
-      icon: /images/icons/use-case-1.svg
 
 # Community
 community:

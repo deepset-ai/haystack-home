@@ -100,7 +100,7 @@ paginatePath = "/"
 
 [[menu.main]]
   identifier = 'deepset'
-  name = 'deepset'
+  name = 'Haystack Enterprise'
   url = '/'
   weight = 8
 

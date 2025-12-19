@@ -14,7 +14,7 @@ tags: ["Community"]
 
 We’re making some naming and visual updates at deepset to better reflect the role Haystack already plays as a framework, a community, and the foundation of our enterprise platform.
 
-If you’re already building with Haystack, nothing is changing in how you build or run applications. This update is about clarity—making the Haystack ecosystem easier to understand, easier to navigate, and centered around a single open foundation.
+If you’re already building with Haystack, nothing is changing in how you build or run applications. This update is about clarity, making the Haystack ecosystem easier to understand, easier to navigate, and centered around a single open foundation.
 
 ## The Open Source to Enterprise Story of Haystack
 
@@ -40,7 +40,7 @@ The updated logo reflects Haystack’s role in building complete AI systems. It 
 
 ## The Haystack Product Family
 
-The Haystack product family supports teams across the full lifecycle of enterprise AI adoption—from development to production and organization-wide scale. It includes the **Haystack Framework**, **Haystack Enterprise Starter**, and **Haystack Enterprise Platform**. 
+The Haystack product family supports teams across the full lifecycle of enterprise AI adoption, from development to production and organization-wide scale. It includes the **Haystack Framework**, **Haystack Enterprise Starter**, and **Haystack Enterprise Platform**. 
 These are layers teams can grow into as their use of Haystack matures.
 
 ### What Is Haystack?
@@ -89,6 +89,6 @@ Built on Haystack’s open-source foundation and shaped by real-world production
 
 With these changes, Haystack is easier to understand, easier to navigate, and easier to adopt across the product family.
 
-This evolution reflects how Haystack is used in practice today—as an open, modular foundation for development and the core of a platform supporting production AI systems ranging from retrieval-based pipelines to agent-based workflows.
+This evolution reflects how Haystack is used in practice today, as an open, modular foundation for development and the core of a platform supporting production AI systems ranging from retrieval-based pipelines to agent-based workflows.
 
-We’ll keep building Haystack together with the community, customers, and partners—focused on transparent, debuggable, production-grade AI systems teams can trust and evolve over time.
+We’ll keep building Haystack together with the community, customers, and partners, focused on transparent, debuggable, production-grade AI systems teams can trust and evolve over time.

@@ -34,7 +34,7 @@ This isn’t just a change in appearance. It reflects how Haystack is used today
 
 Haystack is no longer only a framework, it’s the foundation across everything we ship. Haystack Open Source, Haystack Enterprise Starter, and Haystack Enterprise Platform now share a consistent look, reflecting their place within a single Haystack family.
 
-The updated logo reflects Haystack’s role in building complete AI systems. It aligns with how Haystack is used today—bringing agents, retrieval, pipelines, and operational concerns together while staying true to its core values of openness, clarity and structure.
+The updated logo reflects Haystack’s role in building complete AI systems. It aligns with how Haystack is used today, bringing agents, retrieval, pipelines, and operational concerns together while staying true to its core values of openness, clarity and structure.
 
 ![](haystack-logos.png#medium)
 
@@ -49,7 +49,7 @@ If you’re new to **Haystack**, it’s an open-source AI orchestration framewor
 
 It provides a modular pipeline architecture with a rich ecosystem of integrations, while preserving full flexibility to add custom components and external tools, including those from MCP servers. With robust documentation and production-ready capabilities such as serialization, logging, and well-defined APIs, Haystack supports reliable deployment across both cloud and on-premise environments.
 
-Haystack is designed to help teams move from experimentation to production without sacrificing control or architectural clarity—and is already used in production by many teams today.
+Haystack is designed to help teams move from experimentation to production without sacrificing control or architectural clarity and is already used in production by many teams today.
 
 ### What Is Haystack Enterprise Starter?
 

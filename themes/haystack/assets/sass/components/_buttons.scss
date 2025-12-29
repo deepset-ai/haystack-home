@@ -337,6 +337,7 @@ button.nav-toggle-close {
 .colab-btn,
 .download-btn,
 .experimental-btn,
+.github-repo-btn,
 .github-btn {
   gap: 0.5rem;
   // margin-top: var(--sm-text-spacing);
@@ -359,6 +360,24 @@ button.nav-toggle-close {
 
   path {
     fill: var(--color-white);
+  }
+}
+
+// Github repo button
+.github-repo-btn {
+  svg {
+    width: 1.2rem;
+    margin-bottom: 0.25rem;
+
+    path {
+      fill: var(--color-dark-blue);
+    }
+  }
+
+  &:hover {
+    svg path {
+      fill: var(--color-deepset-blue);
+    }
   }
 }
 

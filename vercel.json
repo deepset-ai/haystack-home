@@ -185,7 +185,12 @@
     {
       "source": "/tutorials/(23_answering_multihop_questions_with_agents|multihop-qa-with-agents)",
       "destination": "/tutorials/43_building_a_tool_calling_agent",
-      "permanent": true
+      "permanent": true 
+    }, 
+    {
+      "source": "/tutorials/28_structured_output_with_loop",
+      "destination": "/tutorials/28_structured_output_with_openai",
+      "permanent": true 
     }
   ],
 

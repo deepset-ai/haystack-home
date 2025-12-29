@@ -22,6 +22,9 @@ The tutorials are maintained in the [`haystack-tutorials` repository](https://gi
 2. Create a PR on the `haystack-tutorials` repository
 3. When merged, your changes will reflect on the Haystack website after the next deployment
 
+### Add a Redirect for a Content
+All redirects are stored in `vercel.json`, under `redirects`. Use this field for all redirects including tutorials, cookbook, blog content, except for documentation. 
+
 ### Shortcodes
 
 You can use Hugo shortcodes in markdown to call various built-in or custom templates.

@@ -191,6 +191,11 @@
       "source": "/tutorials/28_structured_output_with_loop",
       "destination": "/tutorials/28_structured_output_with_openai",
       "permanent": true 
+    },
+    {
+      "source": "/cookbook/conversational_rag_using_memory",
+      "destination": "/tutorials/48_conversational_rag",
+      "permanent": true 
     }
   ],
 

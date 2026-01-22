@@ -9,10 +9,12 @@ git clone https://github.com/deepset-ai/haystack-tutorials.git
 
 cd haystack-tutorials
 echo "Installing requirements for haystack-tutorials..."
-python3 -m ensurepip --upgrade
-python3 -m pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 echo "Generating markdown files into ./content/tutorials..."
 python3 scripts/generate_markdowns.py --index index.toml --notebooks all --output ../content/tutorials
+deactivate
 cd ..
 ls ./content/tutorials
 mkdir ./static/downloads
@@ -28,10 +30,12 @@ rm -rf haystack-cookbook
 git clone https://github.com/deepset-ai/haystack-cookbook.git
 cd haystack-cookbook
 echo "Installing requirements for haystack-cookbook..."
-python3 -m ensurepip --upgrade
-python3 -m pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 echo "Generating markdown files into ./content/cookbook..."
 python3 scripts/generate_markdowns.py --output ../content/cookbook
+deactivate
 cd ..
 ls ./content/
 mkdir ./static/downloads

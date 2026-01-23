@@ -147,7 +147,7 @@ pip install google-genai-haystack
 import os
 
 from haystack.components.agents import Agent
-from haystack_integrations.components.generators.amazon_bedrock import AmazonBedrockChatGenerator
+from haystack_integrations.components.generators.google_genai import GoogleGenAIChatGenerator
 from haystack.dataclasses import ChatMessage
 from haystack.tools import ComponentTool
 from haystack.components.websearch import SerperDevWebSearch

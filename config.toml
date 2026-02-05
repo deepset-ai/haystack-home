@@ -4,8 +4,9 @@ title = 'Haystack'
 theme = "haystack"
 
 
-paginate = 10
-paginatePath = "/"
+[pagination]
+  pagerSize = 10
+  path = "/"
 
 [taxonomies]
   author = "authors"

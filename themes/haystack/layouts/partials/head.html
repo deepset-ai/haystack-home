@@ -16,7 +16,7 @@
   {{ partial "opengraph" . }}
 
   {{/* Stylesheet */}}
-  {{ $style := resources.Get "/sass/main.scss" | resources.ToCSS | resources.PostCSS  (dict "config" "./postcss.config.js") |
+  {{ $style := resources.Get "/sass/main.scss" | css.Sass | css.PostCSS (dict "config" "./postcss.config.js") |
     resources.Minify | resources.Fingerprint
   }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}" />

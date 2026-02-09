@@ -12,7 +12,9 @@
       {{ end }}
     </section>
 
-    {{ if or (eq .Type "integrations") (eq .Type "tutorials") (eq .Type "cookbook") }}
+    {{ if eq .Type "integrations" }}
+        {{ partial "integrations-button" . }}
+    {{ else if or (eq .Type "tutorials") (eq .Type "cookbook") }}
         {{ partial "contribute-button" . }}
     {{ end }}
   </div>

@@ -143,7 +143,7 @@
       "permanent": true
     },
     {
-      "source": "/tutorials/(02_finetune_a_model_on_your_data|fine-tuning-a-model|09_dpr_training|train-dpr|10_knowledge_graph|knowledge-graph|15_tableqa|table-qa|16_document_classifier_at_index_time|doc-class-index|17_audio|audio|18_gpl|gpl|19_text_to_image_search_pipeline_with_multimodal_retriever|multimodal|20_using_haystack_with_rest_api|using-haystack-with-rest-api|25_customizing_agent|customizing-agent)",
+      "source": "/tutorials/(02_finetune_a_model_on_your_data|fine-tuning-a-model|09_dpr_training|train-dpr|10_knowledge_graph|knowledge-graph|15_tableqa|table-qa|16_document_classifier_at_index_time|doc-class-index|17_audio|audio|18_gpl|gpl|19_text_to_image_search_pipeline_with_multimodal_retriever|multimodal|20_using_haystack_with_rest_api|using-haystack-with-rest-api|25_customizing_agent|customizing-agent|37_simplifying_pipeline_inputs_with_multiplexer)",
       "destination": "/tutorials",
       "permanent": true
     },
@@ -195,11 +195,6 @@
     {
       "source": "/cookbook/conversational_rag_using_memory",
       "destination": "/tutorials/48_conversational_rag",
-      "permanent": true 
-    }, 
-    {
-      "source": "/tutorials/37_simplifying_pipeline_inputs_with_multiplexer",
-      "destination": "/tutorials",
       "permanent": true 
     }
   ],

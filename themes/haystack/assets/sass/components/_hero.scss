@@ -35,6 +35,15 @@
     p {
       color: var(--color-white);
     }
+
+    a {
+      color: var(--color-purple-350);
+      transition: color var(--transition-fast) var(--ease);
+
+      &:hover {
+        color: var(--color-blue);
+      }
+    }
   }
 
   .hero-author {

@@ -6,9 +6,13 @@ title: 🧩 Integrations
 description: Learn how to use Haystack with other technologies.
 
 subtitle: |
-  The Haystack ecosystem integrates with many other technologies, such as vector databases, model providers and custom components created by the community. 
-  
-  Here you can explore our integrations, which may be maintained by deepset, or submitted by the community.
+  The Haystack ecosystem integrates with many technologies, including vector databases, model providers, monitoring tools, and community-built custom components.
+
+  Integrations are maintained by deepset or the community. Want to contribute to integration pages? You can propose changes or add new integrations [here](https://github.com/deepset-ai/haystack-integrations).
+
+hero:
+  text: Request an Integration
+  url: https://forms.gle/AAPLFLhn3juqs3TC8
   
 contribute:
   title: Want to contribute an integration?

@@ -1,0 +1,6 @@
+<a class="btn btn-deepset-blue integrations-btn" href="{{ .Params.hero.url }}"
+    {{ if strings.HasPrefix .Params.hero.url "http" }}
+        target="_blank" rel="noopener"
+    {{ end }}>
+    {{ .Params.hero.text }}
+</a>

@@ -3,7 +3,7 @@ layout: index
 header: dark
 footer: light
 title: Haystack
-description: Create agentic, compound AI systems using Haystack’s modular and customizable building blocks, built for real-world, production-ready applications.
+description: Create agentic, context engineered AI systems using Haystack’s modular and customizable building blocks, built for real-world, production-ready applications.
 
 # Hero
 hero:

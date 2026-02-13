@@ -3,7 +3,7 @@ layout: overview
 header: dark
 footer: dark
 title: What is Haystack?
-desciption: Create agentic, context engineered systems using Haystack’s modular and customizable building blocks, built for real-world, production-ready applications.
+desciption: Create agentic, context engineered AI systems using Haystack’s modular and customizable building blocks, built for real-world, production-ready applications.
 weight: 1
 toc: true
 ---

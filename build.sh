@@ -53,6 +53,11 @@ if [ -n "${GH_HAYSTACK_HOME_PAT:-}" ]; then
   cp -R ./haystack-advent/challenges/* ./content/advent-of-haystack
 fi
 
+echo "Installing requirements for social image generation..."
+pip3 install -r scripts/social-images/requirements.txt -q
+echo "Generating social preview images..."
+python3 scripts/social-images/generate.py
+
 npm install
 
 # Use "localhost" if VERCEL_URL is not set

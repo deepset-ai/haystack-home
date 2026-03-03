@@ -27,6 +27,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from typing import Optional
 
 import frontmatter
 import yaml
@@ -156,10 +157,10 @@ def process_file(md_path: Path, config: dict, dry_run: bool) -> bool:
     return True
 
 
-def collect_files(content_type: str | None, single_file: Path | None) -> list[Path]:
+def collect_files(content_type: Optional[str], single_file: Optional[Path]) -> list:
     """Return the list of markdown files to process."""
     if single_file:
-        return [single_file]
+        return [single_file.resolve()]
 
     content_root = REPO_ROOT / "content"
     if content_type:

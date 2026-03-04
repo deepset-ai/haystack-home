@@ -207,10 +207,10 @@ templates:
         max_height: 330.8
       description:
         font: scripts/social-images/fonts/HafferRegular.ttf
-        size: 46
+        size: 38
         color: "#fefefe"
         gravity: NorthWest
         anchor: title
-        gap: 25
+        gap: 35
         max_width: 824.8
         max_height: 330.8

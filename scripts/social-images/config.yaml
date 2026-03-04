@@ -10,11 +10,11 @@
 #
 # Field options:
 #   font       - path to a TTF file (relative to the repo root)
-#   size       - font size in points
+#   size       - font size in points (matches Canva pt values; rendered at 96 DPI)
 #   color      - hex color string
 #   gravity    - ImageMagick gravity: NorthWest, North, NorthEast, West, Center,
 #                East, SouthWest, South, SouthEast
-#   x, y       - pixel offset from the gravity anchor
+#   left, top  - pixel offset from the gravity anchor
 #   max_width  - caption box width in pixels (controls line wrapping)
 #   max_height - caption box height in pixels (text is clipped if it overflows)
 
@@ -28,8 +28,8 @@ templates:
         size: 72
         color: "#fefefd"
         gravity: NorthWest
-        x: 100
-        y: 200
+        left: 100
+        top: 200
         max_width: 900
         max_height: 300
       description:
@@ -37,8 +37,8 @@ templates:
         size: 36
         color: "#d9d9d9"
         gravity: NorthWest
-        x: 100
-        y: 520
+        left: 100
+        top: 520
         max_width: 900
         max_height: 120
 
@@ -51,8 +51,8 @@ templates:
         size: 80
         color: "#fefefd"
         gravity: NorthWest
-        x: 100
-        y: 220
+        left: 100
+        top: 220
         max_width: 860
         max_height: 220
       description:
@@ -60,8 +60,8 @@ templates:
         size: 38
         color: "#d9d9d9"
         gravity: NorthWest
-        x: 100
-        y: 480
+        left: 100
+        top: 480
         max_width: 860
         max_height: 120
 
@@ -74,8 +74,8 @@ templates:
         size: 72
         color: "#fefefd"
         gravity: NorthWest
-        x: 100
-        y: 200
+        left: 100
+        top: 200
         max_width: 900
         max_height: 300
       description:
@@ -83,8 +83,8 @@ templates:
         size: 36
         color: "#d9d9d9"
         gravity: NorthWest
-        x: 100
-        y: 520
+        left: 100
+        top: 520
         max_width: 900
         max_height: 120
 
@@ -97,8 +97,8 @@ templates:
         size: 72
         color: "#fefefd"
         gravity: NorthWest
-        x: 100
-        y: 200
+        left: 100
+        top: 200
         max_width: 900
         max_height: 300
       description:
@@ -106,8 +106,8 @@ templates:
         size: 36
         color: "#d9d9d9"
         gravity: NorthWest
-        x: 100
-        y: 520
+        left: 100
+        top: 520
         max_width: 900
         max_height: 120
 
@@ -120,8 +120,8 @@ templates:
         size: 72
         color: "#fefefd"
         gravity: NorthWest
-        x: 100
-        y: 200
+        left: 100
+        top: 200
         max_width: 900
         max_height: 300
       description:
@@ -129,8 +129,8 @@ templates:
         size: 36
         color: "#d9d9d9"
         gravity: NorthWest
-        x: 100
-        y: 520
+        left: 100
+        top: 520
         max_width: 900
         max_height: 120
 
@@ -139,23 +139,23 @@ templates:
     output_dir: static/images/social/cookbook
     fields:
       title:
-        font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
-        size: 72
+        font: scripts/social-images/fonts/HafferBold.ttf
+        size: 46
         color: "#fefefd"
         gravity: NorthWest
-        x: 100
-        y: 200
-        max_width: 900
-        max_height: 300
-      description:
-        font: scripts/social-images/fonts/HafferRegular.ttf
-        size: 36
-        color: "#d9d9d9"
-        gravity: NorthWest
-        x: 100
-        y: 520
-        max_width: 900
-        max_height: 120
+        left: 182.5
+        top: 327.5
+        max_width: 824.8
+        max_height: 330.8
+      # description:
+      #   font: scripts/social-images/fonts/HafferRegular.ttf
+      #   size: 36
+      #   color: "#d9d9d9"
+      #   gravity: NorthWest
+      #   left: 100
+      #   top: 520
+      #   max_width: 900
+      #   max_height: 120
 
   integrations:
     template: scripts/social-images/templates/integrations.png
@@ -166,8 +166,8 @@ templates:
         size: 72
         color: "#fefefd"
         gravity: NorthWest
-        x: 100
-        y: 200
+        left: 100
+        top: 200
         max_width: 900
         max_height: 300
       description:
@@ -175,8 +175,8 @@ templates:
         size: 36
         color: "#d9d9d9"
         gravity: NorthWest
-        x: 100
-        y: 520
+        left: 100
+        top: 520
         max_width: 900
         max_height: 120
 
@@ -189,8 +189,8 @@ templates:
         size: 72
         color: "#fefefd"
         gravity: NorthWest
-        x: 100
-        y: 200
+        left: 100
+        top: 200
         max_width: 900
         max_height: 300
       description:
@@ -198,7 +198,7 @@ templates:
         size: 36
         color: "#d9d9d9"
         gravity: NorthWest
-        x: 100
-        y: 520
+        left: 100
+        top: 520
         max_width: 900
         max_height: 120

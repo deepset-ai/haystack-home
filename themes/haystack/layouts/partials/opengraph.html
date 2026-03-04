@@ -48,13 +48,16 @@
   "
 />
 
-{{- $slug := .File.ContentBaseName -}}
-{{- if or (eq $slug "index") (eq $slug "_index") -}}
-  {{- $slug = path.Base (strings.TrimSuffix .File.Dir "/") -}}
+{{- $slug := "" -}}
+{{- with .File -}}
+  {{- $slug = .ContentBaseName -}}
+  {{- if or (eq $slug "index") (eq $slug "_index") -}}
+    {{- $slug = path.Base (strings.TrimSuffix .Dir "/") -}}
+  {{- end -}}
 {{- end -}}
 {{- $socialImageStatic := printf "static/images/social/%s/%s.png" .Type $slug -}}
 {{- $socialImageURL := printf "/images/social/%s/%s.png" .Type $slug -}}
-{{- $hasSocialImage := os.FileExists $socialImageStatic -}}
+{{- $hasSocialImage := and $slug (os.FileExists $socialImageStatic) -}}
 
 {{- if $.Params.images -}}
   {{- range first 6 $.Params.images }}

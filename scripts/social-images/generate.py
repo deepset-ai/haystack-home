@@ -26,6 +26,7 @@ import argparse
 import shutil
 import subprocess
 import sys
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
@@ -36,193 +37,306 @@ REPO_ROOT = Path(__file__).parent.parent.parent
 CONFIG_FILE = Path(__file__).parent / "config.yaml"
 
 
-def load_config():
-    with open(CONFIG_FILE) as f:
-        return yaml.safe_load(f)["templates"]
+@dataclass
+class FieldConfig:
+    font: str
+    size: int
+    color: str
+    gravity: str
+    max_width: float
+    max_height: float
+    left: float = 0.0
+    top: float = 0.0
+    anchor: Optional[str] = None
+    gap: float = 0.0
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "FieldConfig":
+        return cls(
+            font=data["font"],
+            size=data["size"],
+            color=data["color"],
+            gravity=data["gravity"],
+            max_width=data["max_width"],
+            max_height=data["max_height"],
+            left=data.get("left", 0.0),
+            top=data.get("top", 0.0),
+            anchor=data.get("anchor"),
+            gap=data.get("gap", 0.0),
+        )
 
 
-def detect_content_type(md_path: Path) -> str:
-    """Infer content type from the file's path relative to content/."""
-    try:
-        rel = md_path.relative_to(REPO_ROOT / "content")
-    except ValueError:
-        return "fallback"
-    return rel.parts[0]  # first directory under content/
+@dataclass
+class TemplateConfig:
+    template: str
+    output_dir: str
+    fields: dict = field(default_factory=dict)
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "TemplateConfig":
+        return cls(
+            template=data["template"],
+            output_dir=data["output_dir"],
+            fields={
+                name: FieldConfig.from_dict(cfg)
+                for name, cfg in (data.get("fields") or {}).items()
+            },
+        )
 
 
-def derive_slug(md_path: Path) -> str:
-    """
-    For  content/blog/my-post/index.md   →  my-post
-    For  content/release-notes/2.25.0.md →  2.25.0
-    For  content/tutorials/_index.md     →  tutorials
-    """
-    if md_path.name in ("index.md", "_index.md"):
-        return md_path.parent.name
-    return md_path.stem
+class Config:
+    def __init__(self, config_file: Path):
+        with open(config_file) as f:
+            raw = yaml.safe_load(f)["templates"]
+        self._templates: dict[str, TemplateConfig] = {
+            name: TemplateConfig.from_dict(data) for name, data in raw.items()
+        }
+
+    def resolve(self, content_type: str) -> Optional[TemplateConfig]:
+        return self._templates.get(content_type) or self._templates.get("fallback")
+
+    @property
+    def fallback(self) -> Optional[TemplateConfig]:
+        return self._templates.get("fallback")
 
 
-def measure_text_height(font: str, size: int, max_width: float, max_height: float, text: str) -> int:
-    """Return the rendered height of caption text in pixels (trimmed content only)."""
-    safe_text = text.replace("\\", "\\\\").replace("'", "\\'")
-    result = subprocess.run([
-        "convert", "-density", "96",
-        "-background", "none", "-fill", "black",
-        "-font", font, "-pointsize", str(size),
-        "-size", f"{int(max_width)}x{int(max_height)}",
-        f"caption:{safe_text}",
-        "-trim", "-format", "%h\n", "info:",
-    ], capture_output=True, text=True, check=True)
-    return int(result.stdout.strip())
+@dataclass
+class ContentFile:
+    md_path: Path
+    content_type: str
+    slug: str
+    title: str
+    description: str
+
+    @classmethod
+    def load(cls, md_path: Path, repo_root: Path) -> "ContentFile":
+        content_type = cls._detect_type(md_path, repo_root)
+        slug = cls._derive_slug(md_path)
+        post = frontmatter.load(str(md_path))
+        return cls(
+            md_path=md_path,
+            content_type=content_type,
+            slug=slug,
+            title=post.get("title") or post.get("name") or "",
+            description=post.get("description") or "",
+        )
+
+    @property
+    def text_values(self) -> dict[str, str]:
+        return {"title": self.title, "description": self.description}
+
+    @staticmethod
+    def _detect_type(md_path: Path, repo_root: Path) -> str:
+        try:
+            rel = md_path.relative_to(repo_root / "content")
+        except ValueError:
+            return "fallback"
+        return rel.parts[0]
+
+    @staticmethod
+    def _derive_slug(md_path: Path) -> str:
+        if md_path.name in ("index.md", "_index.md"):
+            return md_path.parent.name
+        return md_path.stem
 
 
-def build_imagemagick_cmd(
-    template_path: Path, fields: dict, text_values: dict, output_path: Path
-) -> list[str]:
-    """
-    Build an ImageMagick `convert` command that composites one caption layer
-    per configured field onto the template image.
+class ImageCompositor:
+    def __init__(self, repo_root: Path):
+        self._repo_root = repo_root
 
-    Uses ImageMagick's `caption:` type which handles automatic word-wrapping
-    within the specified -size box.
+    def measure_text_height(self, field_cfg: FieldConfig, text: str) -> int:
+        """Return the rendered height of caption text in pixels (trimmed content only)."""
+        safe_text = text.replace("\\", "\\\\").replace("'", "\\'")
+        result = subprocess.run([
+            "convert", "-density", "96",
+            "-background", "none", "-fill", "black",
+            "-font", str(self._repo_root / field_cfg.font),
+            "-pointsize", str(field_cfg.size),
+            "-size", f"{int(field_cfg.max_width)}x{int(field_cfg.max_height)}",
+            f"caption:{safe_text}",
+            "-trim", "-format", "%h\n", "info:",
+        ], capture_output=True, text=True, check=True)
+        return int(result.stdout.strip())
 
-    Fields may use `anchor: <other_field>` and `gap: <px>` instead of a fixed
-    `top` value — the top edge is then computed as:
-      anchor_field.top + rendered_height_of_anchor_text + gap
-    """
-    # Pre-pass: measure any field that is used as an anchor target.
-    measured_heights: dict[str, int] = {}
-    for field_cfg in fields.values():
-        anchor = field_cfg.get("anchor")
-        if anchor and anchor not in measured_heights and anchor in fields:
-            anchor_cfg = fields[anchor]
-            anchor_text = text_values.get(anchor, "")
-            if anchor_text:
-                anchor_text = anchor_text.replace("\\n", "\n")
-                measured_heights[anchor] = measure_text_height(
-                    str(REPO_ROOT / anchor_cfg["font"]),
-                    anchor_cfg["size"],
-                    anchor_cfg["max_width"],
-                    anchor_cfg["max_height"],
-                    anchor_text,
-                )
+    def build_command(
+        self,
+        template_path: Path,
+        fields: dict[str, FieldConfig],
+        text_values: dict[str, str],
+        output_path: Path,
+    ) -> list[str]:
+        """
+        Build an ImageMagick `convert` command that composites one caption layer
+        per configured field onto the template image.
 
-    cmd = ["convert", "-density", "96", str(template_path)]
+        Fields may use `anchor` and `gap` instead of a fixed `top` value — the
+        top edge is then computed as anchor_field.top + rendered_height + gap.
+        """
+        measured_heights = self._measure_anchors(fields, text_values)
+        cmd = ["convert", "-density", "96", str(template_path)]
 
-    for field_name, field_cfg in fields.items():
-        text = text_values.get(field_name, "")
-        if not text:
-            continue
+        for field_name, field_cfg in fields.items():
+            text = text_values.get(field_name, "")
+            if not text:
+                continue
+            x, y = self._resolve_position(field_cfg, fields, measured_heights)
+            cmd += self._field_args(field_cfg, text, x, y)
 
-        font = str(REPO_ROOT / field_cfg["font"])
-        size = field_cfg["size"]
-        color = field_cfg["color"]
-        gravity = field_cfg["gravity"]
-        max_width = field_cfg["max_width"]
-        max_height = field_cfg["max_height"]
+        cmd.append(str(output_path))
+        return cmd
 
-        anchor = field_cfg.get("anchor")
-        if anchor and anchor in fields:
-            x = field_cfg.get("left", fields[anchor].get("left", 0))
-            y = fields[anchor]["top"] + measured_heights.get(anchor, 0) + field_cfg.get("gap", 0)
+    def composite(
+        self,
+        template_path: Path,
+        fields: dict[str, FieldConfig],
+        text_values: dict[str, str],
+        output_path: Path,
+    ) -> None:
+        """Run ImageMagick. Raises FileNotFoundError or CalledProcessError on failure."""
+        cmd = self.build_command(template_path, fields, text_values, output_path)
+        subprocess.run(cmd, check=True, capture_output=True, text=True)
+
+    def _measure_anchors(
+        self, fields: dict[str, FieldConfig], text_values: dict[str, str]
+    ) -> dict[str, int]:
+        measured: dict[str, int] = {}
+        for field_cfg in fields.values():
+            anchor_name = field_cfg.anchor
+            if anchor_name and anchor_name not in measured and anchor_name in fields:
+                anchor_field = fields[anchor_name]
+                anchor_text = text_values.get(anchor_name, "").replace("\\n", "\n")
+                if anchor_text:
+                    measured[anchor_name] = self.measure_text_height(anchor_field, anchor_text)
+        return measured
+
+    def _resolve_position(
+        self,
+        field_cfg: FieldConfig,
+        all_fields: dict[str, FieldConfig],
+        measured_heights: dict[str, int],
+    ) -> tuple[float, float]:
+        if field_cfg.anchor and field_cfg.anchor in all_fields:
+            anchor_field = all_fields[field_cfg.anchor]
+            x = field_cfg.left if field_cfg.left else anchor_field.left
+            y = anchor_field.top + measured_heights.get(field_cfg.anchor, 0) + field_cfg.gap
         else:
-            x = field_cfg["left"]
-            y = field_cfg["top"]
+            x, y = field_cfg.left, field_cfg.top
+        return x, y
 
+    def _field_args(
+        self, field_cfg: FieldConfig, text: str, x: float, y: float
+    ) -> list[str]:
         text = text.replace("\\n", "\n")
         safe_text = text.replace("\\", "\\\\").replace("'", "\\'")
-
-        cmd += [
-            "(",
-            "-background", "none",
-            "-fill", color,
-            "-font", font,
-            "-pointsize", str(size),
-            "-size", f"{max_width}x{max_height}",
+        return [
+            "(", "-background", "none",
+            "-fill", field_cfg.color,
+            "-font", str(self._repo_root / field_cfg.font),
+            "-pointsize", str(field_cfg.size),
+            "-size", f"{int(field_cfg.max_width)}x{int(field_cfg.max_height)}",
             f"caption:{safe_text}",
-            ")",
-            "-gravity", gravity,
-            "-geometry", f"+{x}+{y}",
-            "-composite",
+            ")", "-gravity", field_cfg.gravity,
+            "-geometry", f"+{int(x)}+{int(y)}", "-composite",
         ]
 
-    cmd.append(str(output_path))
-    return cmd
 
+class FileProcessor:
+    def __init__(self, config: Config, compositor: ImageCompositor, repo_root: Path):
+        self._config = config
+        self._compositor = compositor
+        self._repo_root = repo_root
 
-def process_file(md_path: Path, config: dict, dry_run: bool) -> bool:
-    """Process a single content file. Returns True on success."""
-    content_type = detect_content_type(md_path)
-    template_cfg = config.get(content_type) or config.get("fallback")
+    def process(self, md_path: Path, dry_run: bool) -> bool:
+        """Process a single content file. Returns True on success or skip."""
+        content_file = ContentFile.load(md_path, self._repo_root)
 
-    if not template_cfg:
-        print(f"  error {md_path}: no template config and no fallback defined in config.yaml")
-        return False
+        base_cfg = self._config.resolve(content_file.content_type)
+        if not base_cfg:
+            print(f"  error {md_path}: no template config and no fallback defined in config.yaml")
+            return False
 
-    template_path = REPO_ROOT / template_cfg["template"]
-    if not template_path.exists():
-        fallback_cfg = config.get("fallback")
-        fallback_path = REPO_ROOT / fallback_cfg["template"] if fallback_cfg else None
-        if fallback_path and fallback_path.exists():
-            print(f"  warn  {md_path}: template not found, using fallback")
-            template_path = fallback_path
-            template_cfg = dict(fallback_cfg, fields=template_cfg.get("fields") or fallback_cfg["fields"])
-        else:
-            print(f"  skip  {md_path}: template not found at {template_path}")
+        resolution = self._resolve_template(content_file, base_cfg)
+        if resolution is None:
+            # Template missing with no fallback — skip message already printed
             return True
 
-    slug = derive_slug(md_path)
-    output_dir = REPO_ROOT / (config.get(content_type) or config.get("fallback"))["output_dir"]
-    output_path = output_dir / f"{slug}.png"
+        template_path, template_cfg = resolution
+        output_dir = self._repo_root / template_cfg.output_dir
+        output_path = output_dir / f"{content_file.slug}.png"
 
-    post = frontmatter.load(str(md_path))
-    text_values = {
-        "title": post.get("title") or post.get("name") or "",
-        "description": post.get("description") or "",
-    }
+        if dry_run:
+            self._print_dry_run(content_file, output_path)
+            return True
 
-    if dry_run:
-        print(f"  dry   {md_path}")
-        print(f"        type={content_type}  slug={slug}")
-        print(f"        output={output_path}")
-        for field, text in text_values.items():
-            preview = (text[:60] + "…") if len(text) > 60 else text
-            print(f"        {field}: {preview!r}")
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            self._compositor.composite(
+                template_path, template_cfg.fields, content_file.text_values, output_path
+            )
+        except FileNotFoundError:
+            print("  error: ImageMagick `convert` not found. Install with: brew install imagemagick")
+            return False
+        except subprocess.CalledProcessError as exc:
+            print(f"  error {md_path}: ImageMagick failed\n{exc.stderr.strip()}")
+            return False
+
+        print(f"  ok    {output_path}")
         return True
 
-    output_dir.mkdir(parents=True, exist_ok=True)
+    def _resolve_template(
+        self, content_file: ContentFile, template_cfg: TemplateConfig
+    ) -> Optional[tuple[Path, TemplateConfig]]:
+        template_path = self._repo_root / template_cfg.template
+        if template_path.exists():
+            return template_path, template_cfg
 
-    cmd = build_imagemagick_cmd(template_path, template_cfg["fields"], text_values, output_path)
+        fallback = self._config.fallback
+        if fallback:
+            fallback_path = self._repo_root / fallback.template
+            if fallback_path.exists():
+                print(f"  warn  {content_file.md_path}: template not found, using fallback")
+                merged = TemplateConfig(
+                    template=fallback.template,
+                    output_dir=template_cfg.output_dir,
+                    fields=template_cfg.fields or fallback.fields,
+                )
+                return fallback_path, merged
 
-    try:
-        subprocess.run(cmd, check=True, capture_output=True, text=True)
-    except FileNotFoundError:
-        print("  error: ImageMagick `convert` not found. Install with: brew install imagemagick")
-        return False
-    except subprocess.CalledProcessError as exc:
-        print(f"  error {md_path}: ImageMagick failed\n{exc.stderr.strip()}")
-        return False
+        print(f"  skip  {content_file.md_path}: template not found at {template_path}")
+        return None
 
-    print(f"  ok    {output_path}")
-    return True
+    def _print_dry_run(self, content_file: ContentFile, output_path: Path) -> None:
+        print(f"  dry   {content_file.md_path}")
+        print(f"        type={content_file.content_type}  slug={content_file.slug}")
+        print(f"        output={output_path}")
+        for field_name, text in content_file.text_values.items():
+            preview = (text[:60] + "…") if len(text) > 60 else text
+            print(f"        {field_name}: {preview!r}")
 
 
-def collect_files(content_type: Optional[str], single_file: Optional[Path]) -> list:
-    """Return the list of markdown files to process."""
-    if single_file:
-        return [single_file.resolve()]
+class FileCollector:
+    def __init__(self, repo_root: Path):
+        self._repo_root = repo_root
 
-    content_root = REPO_ROOT / "content"
-    if content_type:
-        dirs = [content_root / content_type]
-    else:
-        dirs = [d for d in content_root.iterdir() if d.is_dir()]
+    def collect(
+        self,
+        content_type: Optional[str] = None,
+        single_file: Optional[Path] = None,
+    ) -> list[Path]:
+        if single_file:
+            return [single_file.resolve()]
 
-    files = []
-    for d in dirs:
-        if d.exists():
-            files.extend(d.rglob("*.md"))
+        content_root = self._repo_root / "content"
+        if content_type:
+            dirs = [content_root / content_type]
+        else:
+            dirs = [d for d in content_root.iterdir() if d.is_dir()]
 
-    return sorted(files)
+        files: list[Path] = []
+        for d in dirs:
+            if d.exists():
+                files.extend(d.rglob("*.md"))
+        return sorted(files)
 
 
 def main():
@@ -253,9 +367,12 @@ def main():
         print("Install with:  brew install imagemagick")
         sys.exit(1)
 
-    config = load_config()
-    files = collect_files(args.type, args.file)
+    config = Config(CONFIG_FILE)
+    collector = FileCollector(REPO_ROOT)
+    compositor = ImageCompositor(REPO_ROOT)
+    processor = FileProcessor(config, compositor, REPO_ROOT)
 
+    files = collector.collect(args.type, args.file)
     if not files:
         print("No matching content files found.")
         sys.exit(0)
@@ -264,8 +381,7 @@ def main():
     ok = 0
     failed = 0
     for md_path in files:
-        success = process_file(md_path, config, args.dry_run)
-        if success:
+        if processor.process(md_path, args.dry_run):
             ok += 1
         else:
             failed += 1

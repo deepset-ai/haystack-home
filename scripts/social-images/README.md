@@ -61,8 +61,8 @@ templates:
         size: 72           # font size in points
         color: "#fefefd"
         gravity: NorthWest # ImageMagick anchor: NorthWest, Center, South, etc.
-        x: 100             # pixel offset from the gravity anchor
-        y: 200
+        left: 100          # pixel offset from the gravity anchor (horizontal)
+        top: 200           # pixel offset from the gravity anchor (vertical)
         max_width: 900     # text wraps within this box width
         max_height: 300    # text is clipped beyond this height
       description:

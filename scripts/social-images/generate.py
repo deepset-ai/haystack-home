@@ -61,6 +61,20 @@ def derive_slug(md_path: Path) -> str:
     return md_path.stem
 
 
+def measure_text_height(font: str, size: int, max_width: float, max_height: float, text: str) -> int:
+    """Return the rendered height of caption text in pixels (trimmed content only)."""
+    safe_text = text.replace("\\", "\\\\").replace("'", "\\'")
+    result = subprocess.run([
+        "convert", "-density", "96",
+        "-background", "none", "-fill", "black",
+        "-font", font, "-pointsize", str(size),
+        "-size", f"{int(max_width)}x{int(max_height)}",
+        f"caption:{safe_text}",
+        "-trim", "-format", "%h\n", "info:",
+    ], capture_output=True, text=True, check=True)
+    return int(result.stdout.strip())
+
+
 def build_imagemagick_cmd(
     template_path: Path, fields: dict, text_values: dict, output_path: Path
 ) -> list[str]:
@@ -70,7 +84,28 @@ def build_imagemagick_cmd(
 
     Uses ImageMagick's `caption:` type which handles automatic word-wrapping
     within the specified -size box.
+
+    Fields may use `anchor: <other_field>` and `gap: <px>` instead of a fixed
+    `top` value — the top edge is then computed as:
+      anchor_field.top + rendered_height_of_anchor_text + gap
     """
+    # Pre-pass: measure any field that is used as an anchor target.
+    measured_heights: dict[str, int] = {}
+    for field_cfg in fields.values():
+        anchor = field_cfg.get("anchor")
+        if anchor and anchor not in measured_heights and anchor in fields:
+            anchor_cfg = fields[anchor]
+            anchor_text = text_values.get(anchor, "")
+            if anchor_text:
+                anchor_text = anchor_text.replace("\\n", "\n")
+                measured_heights[anchor] = measure_text_height(
+                    str(REPO_ROOT / anchor_cfg["font"]),
+                    anchor_cfg["size"],
+                    anchor_cfg["max_width"],
+                    anchor_cfg["max_height"],
+                    anchor_text,
+                )
+
     cmd = ["convert", "-density", "96", str(template_path)]
 
     for field_name, field_cfg in fields.items():
@@ -82,10 +117,16 @@ def build_imagemagick_cmd(
         size = field_cfg["size"]
         color = field_cfg["color"]
         gravity = field_cfg["gravity"]
-        x = field_cfg["left"]
-        y = field_cfg["top"]
         max_width = field_cfg["max_width"]
         max_height = field_cfg["max_height"]
+
+        anchor = field_cfg.get("anchor")
+        if anchor and anchor in fields:
+            x = field_cfg.get("left", fields[anchor].get("left", 0))
+            y = fields[anchor]["top"] + measured_heights.get(anchor, 0) + field_cfg.get("gap", 0)
+        else:
+            x = field_cfg["left"]
+            y = field_cfg["top"]
 
         text = text.replace("\\n", "\n")
         safe_text = text.replace("\\", "\\\\").replace("'", "\\'")

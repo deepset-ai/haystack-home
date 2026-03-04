@@ -71,7 +71,7 @@ def build_imagemagick_cmd(
     Uses ImageMagick's `caption:` type which handles automatic word-wrapping
     within the specified -size box.
     """
-    cmd = ["convert", str(template_path)]
+    cmd = ["convert", "-density", "96", str(template_path)]
 
     for field_name, field_cfg in fields.items():
         text = text_values.get(field_name, "")
@@ -82,11 +82,12 @@ def build_imagemagick_cmd(
         size = field_cfg["size"]
         color = field_cfg["color"]
         gravity = field_cfg["gravity"]
-        x = field_cfg["x"]
-        y = field_cfg["y"]
+        x = field_cfg["left"]
+        y = field_cfg["top"]
         max_width = field_cfg["max_width"]
         max_height = field_cfg["max_height"]
 
+        text = text.replace("\\n", "\n")
         safe_text = text.replace("\\", "\\\\").replace("'", "\\'")
 
         cmd += [
@@ -118,11 +119,18 @@ def process_file(md_path: Path, config: dict, dry_run: bool) -> bool:
 
     template_path = REPO_ROOT / template_cfg["template"]
     if not template_path.exists():
-        print(f"  skip  {md_path}: template not found at {template_path}")
-        return True
+        fallback_cfg = config.get("fallback")
+        fallback_path = REPO_ROOT / fallback_cfg["template"] if fallback_cfg else None
+        if fallback_path and fallback_path.exists():
+            print(f"  warn  {md_path}: template not found, using fallback")
+            template_path = fallback_path
+            template_cfg = dict(fallback_cfg, fields=template_cfg.get("fields") or fallback_cfg["fields"])
+        else:
+            print(f"  skip  {md_path}: template not found at {template_path}")
+            return True
 
     slug = derive_slug(md_path)
-    output_dir = REPO_ROOT / template_cfg["output_dir"]
+    output_dir = REPO_ROOT / (config.get(content_type) or config.get("fallback"))["output_dir"]
     output_path = output_dir / f"{slug}.png"
 
     post = frontmatter.load(str(md_path))

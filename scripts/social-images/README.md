@@ -66,8 +66,39 @@ templates:
         max_width: 900     # text wraps within this box width
         max_height: 300    # text is clipped beyond this height
       description:
-        ...
+        font: scripts/social-images/fonts/HafferRegular.ttf
+        size: 36
+        color: "#d9d9d9"
+        gravity: NorthWest
+        left: 100
+        anchor: title      # position below the rendered bottom of the title field
+        gap: 20            # extra pixels of padding after the title
+        max_width: 900     # text wraps within this box width
+        max_height: 120    # text is clipped beyond this height
 ```
+
+**Field reference:**
+
+| Key | Required | Description |
+|---|---|---|
+| `font` | yes | Path to a TTF file (relative to repo root) |
+| `size` | yes | Font size in points (matches Canva pt values at 96 DPI) |
+| `color` | yes | Hex color string |
+| `gravity` | yes | ImageMagick reference corner: `NorthWest`, `Center`, `South`, etc. |
+| `left` | yes* | Horizontal pixel offset from the gravity anchor (*defaults to anchor's `left` when `anchor` is set) |
+| `top` | yes* | Vertical pixel offset from the gravity anchor (*not needed when `anchor` is set) |
+| `max_width` | yes | Caption box width in pixels (controls line wrapping) |
+| `max_height` | yes | Caption box height in pixels (text is clipped if it overflows) |
+| `anchor` | no | Name of another field; positions this field's top below that field's rendered bottom edge |
+| `gap` | no | Extra pixels of padding below the anchor field (default: 0) |
+
+**Dynamic positioning with `anchor`:** when set, the canvas position is computed so that exactly `gap` pixels of visual space appear between the anchor's last text pixel and this field's first text pixel:
+
+```
+canvas_top = anchor_field.top + anchor_bottom_offset + gap - this_field_top_offset
+```
+
+`gap: 0` means the two text blocks touch with no overlap and no extra space. Both offsets are measured from each field's own caption canvas using ImageMagick's trim geometry.
 
 Available fonts (in `scripts/social-images/fonts/`):
 

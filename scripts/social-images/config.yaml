@@ -1,0 +1,216 @@
+# Social image generation configuration.
+#
+# Each key under `templates` maps to a content type inferred from the file path
+# (e.g. content/blog/ → "blog").  If a content type has no entry here, the
+# "fallback" template is used.
+#
+# Field keys are arbitrary — they must match a front-matter key that the script
+# knows how to read (title, description).  The script skips a field silently if
+# the front-matter value is empty.
+#
+# Field options:
+#   font       - path to a TTF file (relative to the repo root)
+#   size       - font size in points (matches Canva pt values; rendered at 96 DPI)
+#   color      - hex color string
+#   gravity    - ImageMagick gravity: NorthWest, North, NorthEast, West, Center,
+#                East, SouthWest, South, SouthEast
+#   left       - pixel offset from the gravity anchor (horizontal; required unless anchor is
+#                set, in which case it defaults to the anchor field's left value)
+#   top        - pixel offset from the gravity anchor (vertical; required unless anchor is set)
+#   max_width  - caption box width in pixels (controls line wrapping)
+#   max_height - caption box height in pixels (text is clipped if it overflows)
+#   anchor     - (optional) name of another field whose rendered bottom edge
+#                determines this field's top; replaces top
+#   gap        - (optional) extra pixels of padding below the anchor (default 0)
+
+templates:
+  blog:
+    template: scripts/social-images/templates/blog.png
+    output_dir: static/images/social/blog
+    fields:
+      # title:
+      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
+      #   size: 72
+      #   color: "#fefefd"
+      #   gravity: NorthWest
+      #   left: 100
+      #   top: 200
+      #   max_width: 900
+      #   max_height: 300
+      # description:
+      #   font: scripts/social-images/fonts/HafferRegular.ttf
+      #   size: 36
+      #   color: "#d9d9d9"
+      #   gravity: NorthWest
+      #   left: 100
+      #   anchor: title
+      #   gap: 20
+      #   max_width: 900
+      #   max_height: 120
+
+  release-notes:
+    template: scripts/social-images/templates/release-notes.png
+    output_dir: static/images/social/release-notes
+    fields:
+      # title:
+      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
+      #   size: 80
+      #   color: "#fefefd"
+      #   gravity: NorthWest
+      #   left: 100
+      #   top: 220
+      #   max_width: 860
+      #   max_height: 220
+      # description:
+      #   font: scripts/social-images/fonts/HafferRegular.ttf
+      #   size: 38
+      #   color: "#d9d9d9"
+      #   gravity: NorthWest
+      #   left: 100
+      #   anchor: title
+      #   gap: 20
+      #   max_width: 860
+      #   max_height: 120
+
+  overview:
+    template: scripts/social-images/templates/overview.png
+    output_dir: static/images/social/overview
+    fields:
+      # title:
+      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
+      #   size: 72
+      #   color: "#fefefd"
+      #   gravity: NorthWest
+      #   left: 100
+      #   top: 200
+      #   max_width: 900
+      #   max_height: 300
+      # description:
+      #   font: scripts/social-images/fonts/HafferRegular.ttf
+      #   size: 36
+      #   color: "#d9d9d9"
+      #   gravity: NorthWest
+      #   left: 100
+      #   anchor: title
+      #   gap: 20
+      #   max_width: 900
+      #   max_height: 120
+
+  pages:
+    template: scripts/social-images/templates/fallback.png
+    output_dir: static/images/social/pages
+    fields:
+      # title:
+      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
+      #   size: 72
+      #   color: "#fefefd"
+      #   gravity: NorthWest
+      #   left: 100
+      #   top: 200
+      #   max_width: 900
+      #   max_height: 300
+      # description:
+      #   font: scripts/social-images/fonts/HafferRegular.ttf
+      #   size: 36
+      #   color: "#d9d9d9"
+      #   gravity: NorthWest
+      #   left: 100
+      #   anchor: title
+      #   gap: 20
+      #   max_width: 900
+      #   max_height: 120
+
+  tutorials:
+    template: scripts/social-images/templates/tutorials.png
+    output_dir: static/images/social/tutorials
+    fields:
+      # title:
+      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
+      #   size: 72
+      #   color: "#fefefd"
+      #   gravity: NorthWest
+      #   left: 100
+      #   top: 200
+      #   max_width: 900
+      #   max_height: 300
+      # description:
+      #   font: scripts/social-images/fonts/HafferRegular.ttf
+      #   size: 36
+      #   color: "#d9d9d9"
+      #   gravity: NorthWest
+      #   left: 100
+      #   anchor: title
+      #   gap: 20
+      #   max_width: 900
+      #   max_height: 120
+
+  cookbook:
+    template: scripts/social-images/templates/tutorials.png
+    output_dir: static/images/social/cookbook
+    fields:
+      # title:
+      #   font: scripts/social-images/fonts/HafferBold.ttf
+      #   size: 46
+      #   color: "#fefefd"
+      #   gravity: NorthWest
+      #   left: 182.5
+      #   top: 327.5
+      #   max_width: 824.8
+      #   max_height: 330.8
+      # description:
+      #   font: scripts/social-images/fonts/HafferRegular.ttf
+      #   size: 36
+      #   color: "#d9d9d9"
+      #   gravity: NorthWest
+      #   left: 100
+      #   anchor: title
+      #   gap: 20
+      #   max_width: 900
+      #   max_height: 120
+
+  integrations:
+    template: scripts/social-images/templates/integrations.png
+    output_dir: static/images/social/integrations
+    fields:
+      # title:
+      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
+      #   size: 72
+      #   color: "#fefefd"
+      #   gravity: NorthWest
+      #   left: 100
+      #   top: 200
+      #   max_width: 900
+      #   max_height: 300
+      # description:
+      #   font: scripts/social-images/fonts/HafferRegular.ttf
+      #   size: 36
+      #   color: "#d9d9d9"
+      #   gravity: NorthWest
+      #   left: 100
+      #   anchor: title
+      #   gap: 20
+      #   max_width: 900
+      #   max_height: 120
+
+  fallback:
+    template: scripts/social-images/templates/fallback.png
+    output_dir: static/images/social
+    fields:
+      title:
+        font: scripts/social-images/fonts/HafferBold.ttf
+        size: 46
+        color: "#fefefe"
+        gravity: NorthWest
+        left: 182.5
+        top: 327.5
+        max_width: 824.8
+        max_height: 330.8
+      description:
+        font: scripts/social-images/fonts/HafferRegular.ttf
+        size: 38
+        color: "#fefefe"
+        gravity: NorthWest
+        anchor: title
+        gap: 35
+        max_width: 824.8
+        max_height: 330.8

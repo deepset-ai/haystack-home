@@ -5,8 +5,8 @@ description: Build multimodal search systems in Haystack using Gemini Embedding 
 featured_image: thumbnail.png
 images: ["blog/multimodal-embeddings-gemini-haystack/thumbnail.png"]
 toc: True
-date: 2026-01-10
-last_updated:  2026-01-10
+date: 2026-03-10
+last_updated:  2026-03-10
 authors:
   - Bilge Yucel
 tags: ["Multimodality", "Embeddings"]

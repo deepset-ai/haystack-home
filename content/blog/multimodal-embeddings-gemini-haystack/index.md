@@ -109,7 +109,7 @@ for doc in result["documents"]:
 
 In production applications, embeddings can be stored in search engines such as [Qdrant](https://haystack.deepset.ai/integrations/qdrant-document-store),  [Elasticsearch](https://haystack.deepset.ai/integrations/elasticsearch-document-store) or [OpenSearch](https://haystack.deepset.ai/integrations/opensearch-document-store).
 
-## Multimodal Embeddings in Haystack
+## Multimodal Embeddings
 
 Haystack also provides **Day-0 support for multimodal embeddings** with the new [`GoogleGenAIMultimodalDocumentEmbedder`](https://docs.haystack.deepset.ai/docs/googlegenaimultimodaldocumentembedder) component.
 
@@ -180,7 +180,7 @@ With multimodal embeddings, you can build applications such as:
     
 - **Cross-modal retrieval**
     
-    Search one type of media using another modality. For example, search a video database using the text query *“golden retriever playing in snow”*, or upload a photo of a monument to retrieve relevant articles describing it.
+    Search one type of media using another modality. For example, upload a photo of a monument to retrieve relevant articles describing it.
     
 - **Multimodal RAG systems**
     
@@ -191,7 +191,7 @@ With multimodal embeddings, you can build applications such as:
     Recommend videos or images based on textual descriptions.
     
 
-To learn more about working with multimodal data in Haystack, check out the tutorial on [**Creating Vision + Text RAG Pipelines**](https://haystack.deepset.ai/tutorials/46_multimodal_rag).
+To learn more about working with multimodal data in Haystack, check out the tutorial on [Creating Vision + Text RAG Pipelines](https://haystack.deepset.ai/tutorials/46_multimodal_rag).
 
 ## What’s Next
 

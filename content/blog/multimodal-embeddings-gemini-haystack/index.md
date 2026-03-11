@@ -95,7 +95,10 @@ embedding_retriever = InMemoryEmbeddingRetriever(document_store=document_store)
 query = "animal that communicates with whistles and barks"
 text_embedder = GoogleGenAITextEmbedder(
     model="gemini-embedding-2-preview", 
-    config={"task_type": "RETRIEVAL_QUERY"}
+    config={
+            "task_type": "RETRIEVAL_QUERY",
+			"output_dimensionality": 768 
+          }
 )
 query_embedding = text_embedder.run(query)["embedding"]
 

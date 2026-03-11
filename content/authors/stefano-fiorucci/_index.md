@@ -3,7 +3,7 @@ layout: author
 title: Stefano Fiorucci
 name: Stefano Fiorucci
 slug: stefano-fiorucci
-position: NLP Engineer
+position: AI/Software Engineer
 image: /images/authors/stefano-fiorucci.png
 socials:
   author_page:

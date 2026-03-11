@@ -9,6 +9,7 @@ date: 2026-03-10
 last_updated:  2026-03-10
 authors:
   - Bilge Yucel
+  - Stefano Fiorucci
 tags: ["Multimodality", "Embeddings"]
 ---	
 
@@ -24,7 +25,7 @@ Let’s take a closer look.
 
 Gemini Embedding 2 is Google’s **first fully multimodal embedding model**, built on the Gemini architecture. It can map **text, images, video, audio, and PDFs into a single unified vector space**, enabling cross-modal comparison and retrieval using a shared semantic representation.
 
-For example, a **text query can retrieve relevant images**, an **audio clip can match a document**, or a **video segment can be retrieved using text search**. This unified representation makes it easier to build multimodal ****applications like image search, recommendation systems, and RAG.
+For example, a **text query can retrieve relevant images**, an **audio clip can match a document**, or a **video segment can be retrieved using text search**. This unified representation makes it easier to build multimodal applications like image search, recommendation systems, and RAG.
 
 The model supports **100+ languages** and allows developers to choose flexible embedding sizes using **Matryoshka Representation Learning (MRL)**. Depending on the trade-off between storage and accuracy, you can select embedding dimensions up to **3072**, with commonly recommended sizes being **768**, **1536**, or **3072 (default)**.
 

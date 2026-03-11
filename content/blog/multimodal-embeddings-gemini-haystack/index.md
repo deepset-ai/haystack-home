@@ -69,7 +69,7 @@ docs = [
     Document(content="Dolphins are highly intelligent marine mammals known for their playful behavior and complex communication. They live in social groups called pods and use echolocation to navigate and locate prey in the ocean."),
     Document(content="Owls are nocturnal birds of prey with excellent night vision and silent flight. They hunt small mammals, insects, and other birds, relying on their sharp talons and keen hearing to detect prey in darkness."),
     Document(content="Red pandas are small mammals native to the eastern Himalayas and southwestern China. They have reddish-brown fur, bushy tails, and spend most of their time in trees. Their diet mainly consists of bamboo, though they may also eat fruits and insects."),
-    Document(content="Octopuses are highly intelligent sea creatures with eight arms lined with suckers. They are known for their ability to change color and texture to camouflage with their surroundings, helping them avoid predators and ambush prey."),
+    Document(content="Kangaroos are large marsupials native to Australia and are famous for their powerful hind legs, large feet, and strong tails that help them balance while hopping. Female kangaroos carry and nurture their young, called joeys, in a pouch. They typically live in open grasslands and forests and often move in groups called mobs."),
 ]
 
 doc_embedder = GoogleGenAIDocumentEmbedder(
@@ -77,7 +77,7 @@ doc_embedder = GoogleGenAIDocumentEmbedder(
     batch_size=5, 
     config={
 		    "task_type": "RETRIEVAL_DOCUMENT",
-		    "output_dimensionality": 768 
+		    "output_dimensionality": 768 # flexible embedding sizes using MRL
 		}
 )
 docs_with_embeddings = doc_embedder.run(docs)
@@ -97,7 +97,7 @@ text_embedder = GoogleGenAITextEmbedder(
     model="gemini-embedding-2-preview", 
     config={
             "task_type": "RETRIEVAL_QUERY",
-			"output_dimensionality": 768 
+			"output_dimensionality": 768 # flexible embedding sizes using MRL
           }
 )
 query_embedding = text_embedder.run(query)["embedding"]
@@ -129,13 +129,16 @@ docs = [
     Document(meta={"file_path": "kangaroo.mp4"}),
     Document(meta={"file_path": "tiger.jpg"}),
     Document(meta={"file_path": "sample.pdf"}),
-    Document(meta={"file_path": "dog.jpg"}),
+    Document(meta={"file_path": "kangaroo.jpg"}),
     Document(meta={"file_path": "cat.jpg"})
 ]
 
 doc_multimodal_embedder = GoogleGenAIMultimodalDocumentEmbedder(
     model="gemini-embedding-2-preview", 
-    config={"task_type": "RETRIEVAL_DOCUMENT"}
+    config={
+        "task_type": "RETRIEVAL_DOCUMENT", 
+        "output_dimensionality": 768 # flexible embedding sizes using MRL
+        }
 )
 docs_with_embeddings = doc_multimodal_embedder.run(docs)
 document_store.write_documents(docs_with_embeddings["documents"])
@@ -158,16 +161,19 @@ To perform image-to-text search, you first embed your **text documents during in
 Example:
 
 ```python
-image_doc = Document(meta={"file_path": "dog.jpg"})
+image_doc = Document(meta={"file_path": "another_kangaroo.jpg"})
 image_embedder = GoogleGenAIMultimodalDocumentEmbedder(
     model="gemini-embedding-2-preview", 
-    config={"task_type": "RETRIEVAL_QUERY"}
+    config={
+        "task_type": "RETRIEVAL_QUERY",
+        "output_dimensionality": 768 # flexible embedding sizes using MRL
+        }
 )
 
 # Create the embedding for the image
 image_embedding = image_embedder.run([image_doc])["documents"][0].embedding
 
-# Find the most semantically similar documents in the vector database
+# Find the most semantically similar texts, images, audio, video and PDFs in the vector database
 results = embedding_retriever.run(query_embedding=image_embedding, top_k=3)["documents"]
 
 for doc in results:

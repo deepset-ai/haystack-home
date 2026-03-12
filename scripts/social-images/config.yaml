@@ -1,0 +1,172 @@
+# Social image generation configuration.
+#
+# Each key under `templates` maps to a content type inferred from the file path
+# (e.g. content/blog/ → "blog").  If a content type has no entry here, the
+# "fallback" template is used.
+#
+# Field keys are arbitrary — they must match a front-matter key that the script
+# knows how to read (title, description).  The script skips a field silently if
+# the front-matter value is empty.
+#
+# Field options:
+#   font       - path to a TTF file (relative to the repo root)
+#   size       - font size in points (matches Canva pt values; rendered at 96 DPI)
+#   color      - hex color string
+#   gravity    - ImageMagick gravity: NorthWest, North, NorthEast, West, Center,
+#                East, SouthWest, South, SouthEast
+#   left       - pixel offset from the gravity anchor (horizontal; required unless anchor is
+#                set, in which case it defaults to the anchor field's left value)
+#   top        - pixel offset from the gravity anchor (vertical; required unless anchor is set)
+#   max_width  - caption box width in pixels (controls line wrapping)
+#   max_height - caption box height in pixels (text is clipped if it overflows)
+#   anchor     - (optional) name of another field whose rendered bottom edge
+#                determines this field's top; replaces top
+#   gap        - (optional) extra pixels of padding below the anchor (default 0)
+
+templates:
+  blog:
+    template: scripts/social-images/templates/blog.png
+    fields:
+      title:
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
+      description:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        anchor: title
+        gap: 15
+        max_width: 830
+        max_height: 165
+      authors:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#242747"
+        gravity: NorthWest
+        top: 527
+        left: 66
+        max_width: 830
+        max_height: 50
+
+  cookbook:
+    template: scripts/social-images/templates/cookbook.png
+    fields:
+      title:
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
+      description:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        anchor: title
+        gap: 15
+        max_width: 830
+        max_height: 165
+
+  integrations:
+    template: scripts/social-images/templates/integration.png
+    fields:
+      title:
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
+      description:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        anchor: title
+        gap: 15
+        max_width: 830
+        max_height: 165
+
+  release-notes:
+    template: scripts/social-images/templates/release-notes.png
+    fields:
+      title:
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
+      description:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        anchor: title
+        gap: 15
+        max_width: 830
+        max_height: 165
+
+  tutorials:
+    template: scripts/social-images/templates/tutorials.png
+    fields:
+      title:
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
+      description:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        anchor: title
+        gap: 15
+        max_width: 830
+        max_height: 165
+
+  fallback:
+    template: scripts/social-images/templates/fallback.png
+    fields:
+      title:
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
+      description:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        anchor: title
+        gap: 15
+        max_width: 830
+        max_height: 165

@@ -188,7 +188,7 @@ templates:
         gravity: NorthWest
         left: 66
         anchor: title
-        gap: 0
+        gap: 15
         max_width: 830
         max_height: 165
 

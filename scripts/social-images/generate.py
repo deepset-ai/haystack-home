@@ -303,7 +303,7 @@ class FileProcessor:
         except ValueError:
             return path
 
-    def process(self, md_path: Path, dry_run: bool) -> bool:
+    def process(self, md_path: Path, dry_run: bool, force: bool = False) -> bool:
         """Process a single content file. Returns True on success or skip."""
         content_file = ContentFile.load(md_path, self._repo_root)
 
@@ -323,6 +323,10 @@ class FileProcessor:
 
         if dry_run:
             self._print_dry_run(content_file, output_path)
+            return True
+
+        if output_path.exists() and not force:
+            print(f"  skip  {self._rel(md_path)}  (already exists, use --force to regenerate)")
             return True
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -417,6 +421,11 @@ def main():
         action="store_true",
         help="Print what would be generated without writing any files.",
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Regenerate images even if the output file already exists.",
+    )
     args = parser.parse_args()
 
     if not shutil.which("magick"):
@@ -438,7 +447,7 @@ def main():
     ok = 0
     failed = 0
     for md_path in files:
-        if processor.process(md_path, args.dry_run):
+        if processor.process(md_path, args.dry_run, args.force):
             ok += 1
         else:
             failed += 1

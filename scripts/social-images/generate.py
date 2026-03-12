@@ -27,7 +27,7 @@ import re
 import shutil
 import subprocess
 import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Optional
 
@@ -108,6 +108,7 @@ class ContentFile:
     slug: str
     title: str
     description: str
+    _metadata: dict = field(default_factory=dict)
 
     @classmethod
     def load(cls, md_path: Path, repo_root: Path) -> "ContentFile":
@@ -120,11 +121,20 @@ class ContentFile:
             slug=slug,
             title=post.get("title") or post.get("name") or "",
             description=post.get("description") or "",
+            _metadata=dict(post.metadata),
         )
 
     @property
     def text_values(self) -> dict[str, str]:
-        return {"title": self.title, "description": self.description}
+        result: dict[str, str] = {"title": self.title, "description": self.description}
+        for key, value in self._metadata.items():
+            if key in result:
+                continue
+            if isinstance(value, list):
+                result[key] = ", ".join(str(v) for v in value)
+            elif value is not None:
+                result[key] = str(value)
+        return result
 
     @staticmethod
     def _detect_type(md_path: Path, repo_root: Path) -> str:
@@ -168,6 +178,26 @@ class ImageCompositor:
             return int(m.group(2)) + int(m.group(1))
         return int(result.stdout.strip())
 
+    def fit_font_size(self, field_cfg: FieldConfig, text: str) -> int:
+        """Binary-search for the largest font size where text fits within max_height.
+
+        The size in field_cfg is treated as the maximum; returns a value in [1, size].
+        Measurement uses an unconstrained height so ImageMagick clipping cannot mask overflow.
+        """
+        # Remove the height constraint so the bounding box reflects true text height.
+        unconstrained = replace(field_cfg, max_height=10_000)
+        lo, hi = 1, field_cfg.size
+        best = lo
+        while lo <= hi:
+            mid = (lo + hi) // 2
+            height = self.measure_text_height(replace(unconstrained, size=mid), text)
+            if height <= field_cfg.max_height:
+                best = mid
+                lo = mid + 1
+            else:
+                hi = mid - 1
+        return best
+
     def build_command(
         self,
         template_path: Path,
@@ -181,15 +211,26 @@ class ImageCompositor:
 
         Fields may use `anchor` and `gap` instead of a fixed `top` value — the
         top edge is then computed as anchor_field.top + rendered_height + gap.
+
+        Font sizes are treated as maximums: each field's size is reduced as needed
+        so the full text always fits within max_height.
         """
-        measured_heights = self._measure_anchors(fields, text_values)
+        effective_fields = {
+            name: (
+                replace(cfg, size=self.fit_font_size(cfg, text_values[name].replace("\\n", "\n")))
+                if text_values.get(name)
+                else cfg
+            )
+            for name, cfg in fields.items()
+        }
+        measured_heights = self._measure_anchors(effective_fields, text_values)
         cmd = ["magick", "-density", "96", str(template_path)]
 
-        for field_name, field_cfg in fields.items():
+        for field_name, field_cfg in effective_fields.items():
             text = text_values.get(field_name, "")
             if not text:
                 continue
-            x, y = self._resolve_position(field_cfg, fields, measured_heights)
+            x, y = self._resolve_position(field_cfg, effective_fields, measured_heights)
             cmd += self._field_args(field_cfg, text, x, y)
 
         cmd.append(str(output_path))

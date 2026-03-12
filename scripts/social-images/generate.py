@@ -297,13 +297,19 @@ class FileProcessor:
         self._compositor = compositor
         self._repo_root = repo_root
 
+    def _rel(self, path: Path) -> Path:
+        try:
+            return path.relative_to(self._repo_root)
+        except ValueError:
+            return path
+
     def process(self, md_path: Path, dry_run: bool) -> bool:
         """Process a single content file. Returns True on success or skip."""
         content_file = ContentFile.load(md_path, self._repo_root)
 
         base_cfg = self._config.resolve(content_file.content_type)
         if not base_cfg:
-            print(f"  error {md_path}: no template config and no fallback defined in config.yaml")
+            print(f"  error {self._rel(md_path)}: no template config and no fallback defined in config.yaml")
             return False
 
         resolution = self._resolve_template(content_file, base_cfg)
@@ -328,10 +334,10 @@ class FileProcessor:
             print("  error: ImageMagick `convert` not found. Install with: brew install imagemagick")
             return False
         except subprocess.CalledProcessError as exc:
-            print(f"  error {md_path}: ImageMagick failed\n{exc.stderr.strip()}")
+            print(f"  error {self._rel(md_path)}: ImageMagick failed\n{exc.stderr.strip()}")
             return False
 
-        print(f"  ok    {md_path}  →  {output_path}")
+        print(f"  ok    {self._rel(md_path)}  →  {self._rel(output_path)}")
         return True
 
     def _resolve_template(
@@ -345,7 +351,7 @@ class FileProcessor:
         if fallback:
             fallback_path = self._repo_root / fallback.template
             if fallback_path.exists():
-                print(f"  warn  {content_file.md_path}: template not found, using fallback")
+                print(f"  warn  {self._rel(content_file.md_path)}: template not found, using fallback")
                 merged = TemplateConfig(
                     template=fallback.template,
                     output_dir=template_cfg.output_dir,
@@ -353,13 +359,13 @@ class FileProcessor:
                 )
                 return fallback_path, merged
 
-        print(f"  skip  {content_file.md_path}: template not found at {template_path}")
+        print(f"  skip  {self._rel(content_file.md_path)}: template not found at {self._rel(template_path)}")
         return None
 
     def _print_dry_run(self, content_file: ContentFile, output_path: Path) -> None:
-        print(f"  dry   {content_file.md_path}")
+        print(f"  dry   {self._rel(content_file.md_path)}")
         print(f"        type={content_file.content_type}  slug={content_file.slug}")
-        print(f"        output={output_path}")
+        print(f"        output={self._rel(output_path)}")
         for field_name, text in content_file.text_values.items():
             preview = (text[:60] + "…") if len(text) > 60 else text
             print(f"        {field_name}: {preview!r}")

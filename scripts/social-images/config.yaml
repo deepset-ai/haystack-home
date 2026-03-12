@@ -26,7 +26,6 @@
 templates:
   blog:
     template: scripts/social-images/templates/blog.png
-    output_dir: static/images/social/blog
     fields:
       title:
         font: scripts/social-images/fonts/Inter-Bold.ttf
@@ -59,7 +58,6 @@ templates:
 
   cookbook:
     template: scripts/social-images/templates/cookbook.png
-    output_dir: static/images/social/cookbook
     fields:
       title:
         font: scripts/social-images/fonts/Inter-Bold.ttf
@@ -83,7 +81,6 @@ templates:
 
   integrations:
     template: scripts/social-images/templates/integration.png
-    output_dir: static/images/social/integrations
     fields:
       title:
         font: scripts/social-images/fonts/Inter-Bold.ttf
@@ -107,7 +104,6 @@ templates:
 
   release-notes:
     template: scripts/social-images/templates/release-notes.png
-    output_dir: static/images/social/release-notes
     fields:
       title:
         font: scripts/social-images/fonts/Inter-Bold.ttf
@@ -131,7 +127,6 @@ templates:
 
   tutorials:
     template: scripts/social-images/templates/tutorials.png
-    output_dir: static/images/social/tutorials
     fields:
       title:
         font: scripts/social-images/fonts/Inter-Bold.ttf
@@ -155,7 +150,6 @@ templates:
 
   fallback:
     template: scripts/social-images/templates/fallback.png
-    output_dir: static/images/social
     fields:
       title:
         font: scripts/social-images/fonts/Inter-Bold.ttf

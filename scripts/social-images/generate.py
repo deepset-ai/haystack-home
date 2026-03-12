@@ -70,14 +70,12 @@ class FieldConfig:
 @dataclass
 class TemplateConfig:
     template: str
-    output_dir: str
     fields: dict = field(default_factory=dict)
 
     @classmethod
     def from_dict(cls, data: dict) -> "TemplateConfig":
         return cls(
             template=data["template"],
-            output_dir=data["output_dir"],
             fields={
                 name: FieldConfig.from_dict(cfg)
                 for name, cfg in (data.get("fields") or {}).items()
@@ -318,7 +316,7 @@ class FileProcessor:
             return True
 
         template_path, template_cfg = resolution
-        output_dir = self._repo_root / template_cfg.output_dir
+        output_dir = self._repo_root / "static/images/social" / content_file.content_type
         output_path = output_dir / f"{content_file.slug}.png"
 
         if dry_run:
@@ -358,7 +356,6 @@ class FileProcessor:
                 print(f"  warn  {self._rel(content_file.md_path)}: template not found, using fallback")
                 merged = TemplateConfig(
                     template=fallback.template,
-                    output_dir=template_cfg.output_dir,
                     fields=template_cfg.fields or fallback.fields,
                 )
                 return fallback_path, merged

@@ -169,28 +169,28 @@ templates:
       #   max_height: 120
 
   integrations:
-    template: scripts/social-images/templates/integrations.png
+    template: scripts/social-images/templates/integration.png
     output_dir: static/images/social/integrations
     fields:
-      # title:
-      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
-      #   size: 72
-      #   color: "#fefefd"
-      #   gravity: NorthWest
-      #   left: 100
-      #   top: 200
-      #   max_width: 900
-      #   max_height: 300
-      # description:
-      #   font: scripts/social-images/fonts/HafferRegular.ttf
-      #   size: 36
-      #   color: "#d9d9d9"
-      #   gravity: NorthWest
-      #   left: 100
-      #   anchor: title
-      #   gap: 20
-      #   max_width: 900
-      #   max_height: 120
+      title:
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
+      description:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        anchor: title
+        gap: 0
+        max_width: 830
+        max_height: 165
 
   fallback:
     template: scripts/social-images/templates/fallback.png

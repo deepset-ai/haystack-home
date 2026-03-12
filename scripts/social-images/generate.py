@@ -23,6 +23,7 @@ Dependencies:
 """
 
 import argparse
+import re
 import shutil
 import subprocess
 import sys
@@ -145,17 +146,26 @@ class ImageCompositor:
         self._repo_root = repo_root
 
     def measure_text_height(self, field_cfg: FieldConfig, text: str) -> int:
-        """Return the rendered height of caption text in pixels (trimmed content only)."""
+        """Return the pixel distance from the caption box top to the bottom of rendered text.
+
+        Uses ImageMagick's %@ bounding-box format (WxH+X+Y) and returns Y+H so that
+        the result accounts for any top padding the caption renderer adds above the glyphs.
+        """
         safe_text = text.replace("\\", "\\\\").replace("'", "\\'")
         result = subprocess.run([
-            "convert", "-density", "96",
+            "magick", "-density", "96",
             "-background", "none", "-fill", "black",
             "-font", str(self._repo_root / field_cfg.font),
             "-pointsize", str(field_cfg.size),
             "-size", f"{int(field_cfg.max_width)}x{int(field_cfg.max_height)}",
             f"caption:{safe_text}",
-            "-trim", "-format", "%h\n", "info:",
+            "-format", "%@\n", "info:",
         ], capture_output=True, text=True, check=True)
+        # %@ returns "WxH+X+Y" — Y is top offset of text, H is glyph height.
+        # Y + H is the bottom edge of the text relative to the caption box top.
+        m = re.match(r"\d+x(\d+)\+\d+\+(\d+)", result.stdout.strip())
+        if m:
+            return int(m.group(2)) + int(m.group(1))
         return int(result.stdout.strip())
 
     def build_command(
@@ -173,7 +183,7 @@ class ImageCompositor:
         top edge is then computed as anchor_field.top + rendered_height + gap.
         """
         measured_heights = self._measure_anchors(fields, text_values)
-        cmd = ["convert", "-density", "96", str(template_path)]
+        cmd = ["magick", "-density", "96", str(template_path)]
 
         for field_name, field_cfg in fields.items():
             text = text_values.get(field_name, "")
@@ -362,8 +372,8 @@ def main():
     )
     args = parser.parse_args()
 
-    if not shutil.which("convert"):
-        print("Error: ImageMagick `convert` command not found.")
+    if not shutil.which("magick"):
+        print("Error: ImageMagick `magick` command not found.")
         print("Install with:  brew install imagemagick")
         sys.exit(1)
 

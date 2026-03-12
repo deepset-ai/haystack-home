@@ -106,6 +106,7 @@ Available fonts (in `scripts/social-images/fonts/`):
 - `GreycliffCFBold.ttf`, `GreycliffCFDemiBold.ttf`, `GreycliffCFMedium.ttf`
 - `HafferBold.ttf`, `HafferMedium.ttf`, `HafferRegular.ttf` — body text
 - `CourierPrimeBold.ttf`, `CourierPrimeRegular.ttf` — monospace
+- `Inter-Regular.ttf`, `Inter-Bold.ttf` — Inter (v4.1)
 
 ## How Hugo picks up the images
 

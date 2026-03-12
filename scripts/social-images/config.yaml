@@ -57,129 +57,81 @@ templates:
         max_width: 830
         max_height: 50
 
-  release-notes:
-    template: scripts/social-images/templates/release-notes.png
-    output_dir: static/images/social/release-notes
-    fields:
-      # title:
-      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
-      #   size: 80
-      #   color: "#fefefd"
-      #   gravity: NorthWest
-      #   left: 100
-      #   top: 220
-      #   max_width: 860
-      #   max_height: 220
-      # description:
-      #   font: scripts/social-images/fonts/HafferRegular.ttf
-      #   size: 38
-      #   color: "#d9d9d9"
-      #   gravity: NorthWest
-      #   left: 100
-      #   anchor: title
-      #   gap: 20
-      #   max_width: 860
-      #   max_height: 120
-
-  overview:
-    template: scripts/social-images/templates/overview.png
-    output_dir: static/images/social/overview
-    fields:
-      # title:
-      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
-      #   size: 72
-      #   color: "#fefefd"
-      #   gravity: NorthWest
-      #   left: 100
-      #   top: 200
-      #   max_width: 900
-      #   max_height: 300
-      # description:
-      #   font: scripts/social-images/fonts/HafferRegular.ttf
-      #   size: 36
-      #   color: "#d9d9d9"
-      #   gravity: NorthWest
-      #   left: 100
-      #   anchor: title
-      #   gap: 20
-      #   max_width: 900
-      #   max_height: 120
-
-  pages:
-    template: scripts/social-images/templates/fallback.png
-    output_dir: static/images/social/pages
-    fields:
-      # title:
-      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
-      #   size: 72
-      #   color: "#fefefd"
-      #   gravity: NorthWest
-      #   left: 100
-      #   top: 200
-      #   max_width: 900
-      #   max_height: 300
-      # description:
-      #   font: scripts/social-images/fonts/HafferRegular.ttf
-      #   size: 36
-      #   color: "#d9d9d9"
-      #   gravity: NorthWest
-      #   left: 100
-      #   anchor: title
-      #   gap: 20
-      #   max_width: 900
-      #   max_height: 120
-
-  tutorials:
-    template: scripts/social-images/templates/tutorials.png
-    output_dir: static/images/social/tutorials
-    fields:
-      # title:
-      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
-      #   size: 72
-      #   color: "#fefefd"
-      #   gravity: NorthWest
-      #   left: 100
-      #   top: 200
-      #   max_width: 900
-      #   max_height: 300
-      # description:
-      #   font: scripts/social-images/fonts/HafferRegular.ttf
-      #   size: 36
-      #   color: "#d9d9d9"
-      #   gravity: NorthWest
-      #   left: 100
-      #   anchor: title
-      #   gap: 20
-      #   max_width: 900
-      #   max_height: 120
-
   cookbook:
-    template: scripts/social-images/templates/tutorials.png
+    template: scripts/social-images/templates/cookbook.png
     output_dir: static/images/social/cookbook
     fields:
-      # title:
-      #   font: scripts/social-images/fonts/HafferBold.ttf
-      #   size: 46
-      #   color: "#fefefd"
-      #   gravity: NorthWest
-      #   left: 182.5
-      #   top: 327.5
-      #   max_width: 824.8
-      #   max_height: 330.8
-      # description:
-      #   font: scripts/social-images/fonts/HafferRegular.ttf
-      #   size: 36
-      #   color: "#d9d9d9"
-      #   gravity: NorthWest
-      #   left: 100
-      #   anchor: title
-      #   gap: 20
-      #   max_width: 900
-      #   max_height: 120
+      title:
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
+      description:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        anchor: title
+        gap: 15
+        max_width: 830
+        max_height: 165
 
   integrations:
     template: scripts/social-images/templates/integration.png
     output_dir: static/images/social/integrations
+    fields:
+      title:
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
+      description:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        anchor: title
+        gap: 15
+        max_width: 830
+        max_height: 165
+
+  release-notes:
+    template: scripts/social-images/templates/release-notes.png
+    output_dir: static/images/social/release-notes
+    fields:
+      title:
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
+      description:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        anchor: title
+        gap: 15
+        max_width: 830
+        max_height: 165
+
+  tutorials:
+    template: scripts/social-images/templates/tutorials.png
+    output_dir: static/images/social/tutorials
     fields:
       title:
         font: scripts/social-images/fonts/Inter-Bold.ttf
@@ -206,20 +158,21 @@ templates:
     output_dir: static/images/social
     fields:
       title:
-        font: scripts/social-images/fonts/HafferBold.ttf
-        size: 46
-        color: "#fefefe"
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
         gravity: NorthWest
-        left: 182.5
-        top: 327.5
-        max_width: 824.8
-        max_height: 330.8
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
       description:
-        font: scripts/social-images/fonts/HafferRegular.ttf
-        size: 38
-        color: "#fefefe"
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
         gravity: NorthWest
+        left: 66
         anchor: title
-        gap: 35
-        max_width: 824.8
-        max_height: 330.8
+        gap: 15
+        max_width: 830
+        max_height: 165

@@ -28,25 +28,34 @@ templates:
     template: scripts/social-images/templates/blog.png
     output_dir: static/images/social/blog
     fields:
-      # title:
-      #   font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
-      #   size: 72
-      #   color: "#fefefd"
-      #   gravity: NorthWest
-      #   left: 100
-      #   top: 200
-      #   max_width: 900
-      #   max_height: 300
-      # description:
-      #   font: scripts/social-images/fonts/HafferRegular.ttf
-      #   size: 36
-      #   color: "#d9d9d9"
-      #   gravity: NorthWest
-      #   left: 100
-      #   anchor: title
-      #   gap: 20
-      #   max_width: 900
-      #   max_height: 120
+      title:
+        font: scripts/social-images/fonts/Inter-Bold.ttf
+        size: 48
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        top: 232
+        max_width: 830
+        max_height: 165
+      description:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
+        gravity: NorthWest
+        left: 66
+        anchor: title
+        gap: 15
+        max_width: 830
+        max_height: 165
+      authors:
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#242747"
+        gravity: NorthWest
+        top: 527
+        left: 66
+        max_width: 830
+        max_height: 50
 
   release-notes:
     template: scripts/social-images/templates/release-notes.png

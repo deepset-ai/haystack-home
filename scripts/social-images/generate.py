@@ -331,7 +331,7 @@ class FileProcessor:
             print(f"  error {md_path}: ImageMagick failed\n{exc.stderr.strip()}")
             return False
 
-        print(f"  ok    {output_path}")
+        print(f"  ok    {md_path}  →  {output_path}")
         return True
 
     def _resolve_template(

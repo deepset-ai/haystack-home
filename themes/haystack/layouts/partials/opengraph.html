@@ -55,8 +55,8 @@
     {{- $slug = path.Base (strings.TrimSuffix .Dir "/") -}}
   {{- end -}}
 {{- end -}}
-{{- $socialImageStatic := printf "static/images/social/%s/%s.png" .Type $slug -}}
-{{- $socialImageURL := printf "/images/social/%s/%s.png" .Type $slug -}}
+{{- $socialImageStatic := printf "static/images/social/%s/%s.png" .Section $slug -}}
+{{- $socialImageURL := printf "/images/social/%s/%s.png" .Section $slug -}}
 {{- $hasSocialImage := and $slug (os.FileExists $socialImageStatic) -}}
 
 {{- if $.Params.images -}}

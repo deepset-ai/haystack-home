@@ -158,8 +158,13 @@ class ImageCompositor:
 
         Uses ImageMagick's %@ bounding-box format (WxH+X+Y) and returns Y+H so that
         the result accounts for any top padding the caption renderer adds above the glyphs.
+        The last character is replaced with "g" before measuring so the bounding box always
+        includes a descender, giving consistent heights regardless of actual last-line content.
         """
-        safe_text = text.replace("\\", "\\\\").replace("'", "\\'")
+        # Replace the last character with "g" so the bounding box always includes
+        # a descender, giving consistent heights regardless of actual last-line content.
+        normalized = text[:-1] + "g" if text else text
+        safe_text = normalized.replace("\\", "\\\\").replace("'", "\\'")
         result = subprocess.run([
             "magick", "-density", "96",
             "-background", "none", "-fill", "black",

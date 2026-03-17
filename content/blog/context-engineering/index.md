@@ -32,7 +32,7 @@ Today's leading models offer context windows that would have seemed impossibly l
 
 <!-- TODO: 1-2 sentences interpreting the visual: "At step 1 the context is small. By step N it may include the original task, every tool call, every result, every model response, and any retrieved documents - all concatenated and re-fed on every iteration." -->
 
-The difference from one-shot prompting is stark. A single prompt is small, hand-crafted, and fully under control. An agentic system operates in a loop - reasoning, calling tools, receiving results, and repeating, potentially dozens of times. Because LLMs are stateless, every iteration re-sends the entire accumulated history from scratch. The context isn't a fixed input, bur more of a growing log, and managing that growth is what context engineering is about.
+The difference from one-shot prompting is stark. A single prompt is small, hand-crafted, and fully under control. An agentic system operates in a loop - reasoning, calling tools, receiving results, and repeating, potentially dozens of times. Because LLMs are stateless, every iteration re-sends the entire accumulated history from scratch. The context isn't a fixed input, but more of a growing log, and managing that growth is what context engineering is about.
 
 ### When less is more
 
@@ -87,13 +87,13 @@ When you create an agent in Haystack, much of the context is assembled automatic
 
 ## Strategies for managing context growth
 
-Context explosion is not inevitable. Once you understand what's filling the window, you can start making choices about what actually needs to be there. There are several proven techniques for keeping context dhort without sacrificing quality.
+Context explosion is not inevitable. Once you understand what's filling the window, you can start making choices about what actually needs to be there. There are several proven techniques for keeping context short without sacrificing quality.
 
 ### Summarisation and compaction
 
 As a conversation grows, the raw message history becomes the biggest consumer of context. Compaction addresses this by periodically replacing the accumulated history with a condensed summary - retaining the essential facts and decisions while discarding the verbatim back-and-forth. The agent continues with a much shorter context, and the summary is updated with each new turn.
 
-This pattern is well-established in practice. Popular coding agents context compaction feature works exactly this way: when the context approaches its limit, it summarises the conversation so far and continues from the summary rather than truncating or failing.
+This pattern is well-established in practice. Popular coding agents' context compaction feature works exactly this way: when the context approaches its limit, it summarises the conversation so far and continues from the summary rather than truncating or failing.
 
 <!-- TODO: Add a short Haystack code example -->
 

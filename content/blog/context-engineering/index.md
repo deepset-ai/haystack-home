@@ -75,10 +75,25 @@ We've already touched on some of the components that fill an agent's context win
 
 ## Building a Haystack agent
 
-<!-- TODO: Add a short working Haystack agent example using the Agent component with a system prompt and one or two tools. -->
-
 ```python
-# TODO: Add working Haystack agent code here
+from haystack.components.agents import Agent
+from haystack_integrations.components.generators.anthropic import AnthropicChatGenerator
+from haystack.dataclasses import ChatMessage
+from haystack.tools import tool
+
+@tool
+def get_weather(city: str) -> str:
+    """Get the current weather for a city."""
+    return f"It's sunny and 22°C in {city}."
+
+agent = Agent(
+    chat_generator=AnthropicChatGenerator(),
+    system_prompt="You are a helpful assistant.",
+    tools=[get_weather],
+)
+
+result = agent.run(messages=[ChatMessage.from_user("What's the weather in Paris?")])
+print(result["last_message"].text)
 ```
 
 When you create an agent in Haystack, much of the context is assembled automatically. Tool descriptions are serialised and injected into the prompt under the hood - you define a tool once, and the framework ensures the model receives everything it needs to call it: the name, description, and parameter schema. The same applies to conversation history, which is maintained across turns without any manual concatenation. The context you see in your code is just the surface, but the model receives considerably more on every call.
@@ -89,19 +104,44 @@ When you create an agent in Haystack, much of the context is assembled automatic
 
 Context explosion is not inevitable. Once you understand what's filling the window, you can start making choices about what actually needs to be there. There are several proven techniques for keeping context short without sacrificing quality.
 
-### Summarisation and compaction
-
-As a conversation grows, the raw message history becomes the biggest consumer of context. Compaction addresses this by periodically replacing the accumulated history with a condensed summary - retaining the essential facts and decisions while discarding the verbatim back-and-forth. The agent continues with a much shorter context, and the summary is updated with each new turn.
-
-This pattern is well-established in practice. Popular coding agents' context compaction feature works exactly this way: when the context approaches its limit, it summarises the conversation so far and continues from the summary rather than truncating or failing.
-
-<!-- TODO: Add a short Haystack code example -->
-
 ### Delegation to subagents
 
 Another way to keep context small is to never let it grow large in the first place. Instead of one agent accumulating the full history of a complex task, you can split the work across specialised subagents - each one receiving only the slice of context relevant to its job. The orchestrator maintains a thin, high-level context, while the worker agents get focused, task-specific contexts. The total token count across the system may be similar, but no single model call is burdened with everything at once. For a practical example of this pattern in Haystack, see [Building a Swarm of Agents](/blog/swarm-of-agents/).
 
-<!-- TODO: Add a short Haystack code example -->
+```python
+from haystack.components.agents import Agent
+from haystack_integrations.components.generators.anthropic import AnthropicChatGenerator
+from haystack.dataclasses import ChatMessage
+from haystack.tools import tool
+
+@tool
+def search_web(query: str) -> str:
+    """Search the web for up-to-date information on a topic."""
+    return f"Search results for '{query}': ..."
+
+# Worker agent: only receives context relevant to its task
+researcher = Agent(
+    chat_generator=AnthropicChatGenerator(),
+    system_prompt="You are a research assistant. Answer questions concisely.",
+    tools=[search_web],
+)
+
+@tool
+def delegate_research(query: str) -> str:
+    """Delegate a research question to a specialised agent."""
+    result = researcher.run(messages=[ChatMessage.from_user(query)])
+    return result["last_message"].text
+
+# Orchestrator: only sees compact summaries from worker agents
+orchestrator = Agent(
+    chat_generator=AnthropicChatGenerator(),
+    system_prompt="Break down tasks and delegate them to specialised agents.",
+    tools=[delegate_research],
+)
+
+result = orchestrator.run(messages=[ChatMessage.from_user("Compare quantum and classical computing.")])
+print(result["last_message"].text)
+```
 
 ### Improving retrieval quality
 
@@ -109,7 +149,82 @@ In RAG pipelines, retrieval quality directly determines how many tokens land in 
 
 A related problem is redundancy: when retrieved passages are near-duplicates, the model sees the same information repeated multiple times without gaining anything new. This is why **diversity** matters as much as relevance - a set of chunks that each cover a different facet of the question is far more efficient than a set of very similar top matches. Techniques like [hybrid retrieval](/blog/hybrid-retrieval/), [HyDE](/blog/optimizing-retrieval-with-hyde/), [query decomposition](/blog/query-decomposition/), and [auto-merging retrieval](/blog/improve-retrieval-with-auto-merging/) all help surface results that are both more relevant and more varied.
 
-<!-- TODO: Add a short Haystack code example -->
+```python
+from haystack import Pipeline
+from haystack.components.embedders import SentenceTransformersTextEmbedder
+from haystack.components.rankers import TransformersSimilarityRanker
+from haystack.components.retrievers import InMemoryEmbeddingRetriever
+from haystack.document_stores.in_memory import InMemoryDocumentStore
+
+document_store = InMemoryDocumentStore()
+
+rag = Pipeline()
+rag.add_component("embedder", SentenceTransformersTextEmbedder())
+# Retrieve 10 candidates, then rerank to the 3 most relevant
+rag.add_component("retriever", InMemoryEmbeddingRetriever(document_store, top_k=10))
+rag.add_component("ranker", TransformersSimilarityRanker(top_k=3))
+
+rag.connect("embedder.embedding", "retriever.query_embedding")
+rag.connect("retriever.documents", "ranker.documents")
+
+result = rag.run({
+    "embedder": {"text": "climate change"},
+    "ranker": {"query": "climate change"},
+})
+# result["ranker"]["documents"] now contains at most 3 highly relevant chunks
+```
+
+### Summarisation and compaction
+
+As a conversation grows, the raw message history becomes the biggest consumer of context. Compaction addresses this by periodically replacing the accumulated history with a condensed summary - retaining the essential facts and decisions while discarding the verbatim back-and-forth. The agent continues with a much shorter context, and the summary is updated with each new turn.
+
+This pattern is well-established in practice. Popular coding agents' context compaction feature works exactly this way: when the context approaches its limit, it summarises the conversation so far and continues from the summary rather than truncating or failing.
+
+```python
+from haystack.components.agents import Agent
+from haystack.components.builders import ChatPromptBuilder
+from haystack_integrations.components.generators.anthropic import AnthropicChatGenerator
+from haystack.dataclasses import ChatMessage
+from haystack.tools import tool
+
+@tool
+def get_current_date() -> str:
+    """Return today's date."""
+    from datetime import date
+    return date.today().isoformat()
+
+compactor = ChatPromptBuilder(template=[
+    ChatMessage.from_user(
+        "Summarise the key facts from the conversation below in 3-5 bullet points.\n\n{{ history }}"
+    )
+])
+summariser = AnthropicChatGenerator()
+
+def compact_history(messages: list[ChatMessage]) -> list[ChatMessage]:
+    history_text = "\n".join(f"{m.role}: {m.text}" for m in messages if m.text)
+    prompt = compactor.run(template_variables={"history": history_text})["prompt"]
+    summary = summariser.run(messages=prompt)["replies"][0].text
+    return [ChatMessage.from_system(f"Conversation so far (summary):\n{summary}")]
+
+agent = Agent(
+    chat_generator=AnthropicChatGenerator(),
+    system_prompt="You are a helpful assistant.",
+    tools=[get_current_date],
+)
+
+# Simulate a growing conversation history
+messages = [ChatMessage.from_user("What day is it today?")]
+result = agent.run(messages=messages)
+messages = result["messages"]
+
+# Compact the history when it grows too long
+if len(messages) > 3:
+    messages = compact_history(messages)
+
+# Continue the conversation with a compacted history
+result = agent.run(messages=messages + [ChatMessage.from_user("What month are we in?")])
+print(result["last_message"].text)
+```
 
 ### SearchableToolset
 
@@ -119,7 +234,7 @@ Tool definitions can be a surprisingly large slice of the context window, especi
 
 ```python
 from haystack.components.agents import Agent
-from haystack.components.generators.chat import OpenAIChatGenerator
+from haystack_integrations.components.generators.anthropic import AnthropicChatGenerator
 from haystack.dataclasses import ChatMessage
 from haystack.tools import Tool, SearchableToolset
 
@@ -131,7 +246,7 @@ catalog = [
 ]
 toolset = SearchableToolset(catalog=catalog)
 
-agent = Agent(chat_generator=OpenAIChatGenerator(), tools=toolset)
+agent = Agent(chat_generator=AnthropicChatGenerator(), tools=toolset)
 
 # The agent is initially provided only with the search_tools tool
 # and will use it to find relevant tools on demand.

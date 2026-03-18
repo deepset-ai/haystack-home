@@ -64,12 +64,9 @@ We've already touched on some of the components that fill an agent's context win
 
 ### What the context actually looks like
 
-<!-- TODO: Embed the Claude Code `/context` command screenshot. Add caption: "Claude Code's /context command breaks down where tokens are being spent - system prompt, tools, conversation history, and files. Most agentic frameworks don't surface this; they should." -->
+![Claude Code's /context command breaks down where tokens are being spent - system prompt, tools, conversation history, and files.](context-breakdown.png)
 
-![Context breakdown visualisation](todo-context-breakdown.png)
-<!-- Source: https://www.reddit.com/r/ClaudeAI/comments/1mvwrs8/new_context_command_in_claude_code_v1086/ -->
-
-<!-- Knowing exactly where your tokens go makes it possible to identify which component is responsible for a bloated context and whether the cost is justified. Without this visibility, optimisation is guesswork. Tools like Claude Code already surface this breakdown natively - ideally, Haystack pipelines would expose the same level of per-component token accounting, and it is something we are actively thinking about. -->
+The screenshot above shows Claude Code's `/context` command, which breaks down exactly where tokens are being spent: system prompt, tool definitions, conversation history, open files, etc. Knowing this makes it possible to identify which component is responsible for a bloated context and whether that cost is justified. With this visibility, optimisation is a bit easier.
 
 ---
 

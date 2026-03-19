@@ -2,9 +2,9 @@
 layout: blog-post
 title: "Context Engineering for Agentic Systems: What Goes Into Your Agent's Mind"
 description: A practical introduction to context engineering - what fills the LLM context window in agentic systems, why it matters, and how to keep it under control.
-featured_image: todo.png
-featured_image_caption: TODO
-images: ["blog/context-engineering/todo.png"]
+featured_image: thumbnail.png
+featured_image_caption: The context window of an agentic system is not a blank slate - it is filled by many components, each competing for the model's attention.
+images: ["blog/context-engineering/thumbnail.png", "blog/context-engineering/context-growth.png", "blog/context-engineering/context-breakdown.png"]
 toc: True
 date: 2026-03-17
 last_updated: 2026-03-17
@@ -27,10 +27,9 @@ Training knowledge is fixed. We can't update it without retraining, and we can't
 
 Today's leading models offer context windows that would have seemed impossibly large just a few years ago - millions of tokens, enough to fit entire codebases, legal contracts, or a stack of research papers in a single prompt. Yet in practice, agentic systems burn through these limits surprisingly fast. A system prompt, a set of tool definitions, a few retrieved documents, and a handful of conversation turns can easily consume tens of thousands of tokens before the agent has done anything meaningful. And even when the hard limit isn't reached, performance often degrades long before it is - the model starts losing track of earlier instructions, repeating itself, or missing relevant details buried under layers of accumulated context.
 
-![Context window growth over time](todo-context-growth.png)
-<!-- TODO: Replace todo-context-growth.png with the actual visual. Source: https://cursor.com/learn/context#context-limits -->
+![Context window growth over time](context-growth.png)
 
-<!-- TODO: 1-2 sentences interpreting the visual: "At step 1 the context is small. By step N it may include the original task, every tool call, every result, every model response, and any retrieved documents - all concatenated and re-fed on every iteration." -->
+At step 1, the context holds little more than the user's task. By step N, it has grown to include every tool call, every result, every model response, and any retrieved documents - all concatenated and re-sent from scratch on every iteration.
 
 The difference from one-shot prompting is stark. A single prompt is small, hand-crafted, and fully under control. An agentic system operates in a loop - reasoning, calling tools, receiving results, and repeating, potentially dozens of times. Because LLMs are stateless, every iteration re-sends the entire accumulated history from scratch. The context isn't a fixed input, but more of a growing log, and managing that growth is what context engineering is about.
 
@@ -54,13 +53,11 @@ We've already touched on some of the components that fill an agent's context win
 - **Conversation history** - the full back-and-forth between user and agent across the current session.
 - **Memory** - retrieved facts from past sessions or external knowledge stores. See also: [Good Listener: How Memory Enables Conversational Agents](/blog/memory-conversational-agents/).
 - **Retrieval output** - documents or chunks returned by a RAG pipeline. Each retrieved chunk adds tokens.
-- **Tool definitions** - every tool the model *could* call must be described in the context (name, description, parameters schema). With MCP toolsets, this can easily balloon into hundreds of tool descriptions. <!-- TODO: Consider referencing MCP here once we have a related post. -->
+- **Tool definitions** - every tool the model *could* call must be described in the context (name, description, parameters schema). With MCP toolsets, this can easily balloon into hundreds of tool descriptions.
 - **Tool call results** - the output of previously executed tools, so the model can reason over them.
 - **Few-shot examples** - demonstration input/output pairs used to guide model behaviour.
 
 > **The iceberg effect.** A user sees a single answer. Behind the scenes, the model may have received 50,000 tokens or more on that one turn - a system prompt (perhaps 10k tokens), tool definitions (5k), retrieved documents (20k), and accumulated conversation history (15k). The answer is the tip, while the context is everything below the surface.
-
-<!-- TODO: Add an iceberg illustration here to accompany the callout above. -->
 
 ### What the context actually looks like
 

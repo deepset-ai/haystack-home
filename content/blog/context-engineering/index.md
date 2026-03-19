@@ -9,7 +9,7 @@ toc: True
 date: 2026-03-17
 last_updated: 2026-03-17
 authors:
-  - Kacper Łukawski
+  - Kacper Lukawski
 canonical_url: https://www.deepset.ai/blog/context-engineering
 tags: ["Agent", "LLM", "Prompting", "Context Engineering"]
 ---
@@ -35,7 +35,7 @@ The difference from one-shot prompting is stark. A single prompt is small, hand-
 
 ### When less is more
 
-Transformers work by letting every token attend to every other token in the context. This is what makes them so powerful at integrating information - but it also means the model's capacity is spread across all tokens simultaneously. Think of it as an **attention budget**: every new token you introduce depletes it by some amount, regardless of whether that token is useful or not.
+Transformers work by letting every token attend to every other token in the context. This is what makes them so powerful at integrating information - but it also means the model's capacity is spread across all tokens simultaneously. Think of it as an **[attention budget](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)**: every new token you introduce depletes it by some amount, regardless of whether that token is useful or not.
 
 The practical consequence is that irrelevant or redundant content doesn't just waste space - it actively competes with the information that actually matters. A critical instruction buried under pages of tool outputs may receive less attention than if it had been sent alone. [Research from Anthropic](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) confirms this: models remain capable at longer contexts but show reduced precision for information retrieval and long-range reasoning compared to shorter ones. A million-token context window is not a free pass to include everything - it's a budget, and every token you add is a trade-off.
 

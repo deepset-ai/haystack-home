@@ -175,7 +175,7 @@
       }
     }
 
-    .integration-card-maintainer {
+    .integration-card-badges {
       position: absolute;
       top: 0.5rem;
       right: 0.5rem;
@@ -185,34 +185,63 @@
       align-items: flex-end;
       z-index: 999;
 
-      .maintainer-icon {
+      .integration-card-maintainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-end;
+
+        .maintainer-icon {
+          background-color: var(--color-white);
+          padding: 0.6rem;
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 999px;
+          display: flex;
+          justify-items: center;
+          align-items: center;
+
+          > svg {
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        .maintainer-text {
+          display: none;
+        }
+
+        &:hover {
+          .maintainer-text {
+            display: block;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.25rem;
+            white-space: nowrap;
+            background-color: var(--color-bg-light-grey);
+            font-size: 0.75rem;
+            color: var(--color-dark-blue);
+            border-radius: 999px;
+            padding: 0.25rem 0.5rem;
+          }
+        }
+      }
+
+      .integration-card-mcp {
         background-color: var(--color-white);
-        padding: 0.6rem;
         width: 2.5rem;
         height: 2.5rem;
         border-radius: 999px;
         display: flex;
-        justify-items: center;
+        justify-content: center;
         align-items: center;
 
-        > svg {
-          width: 100%;
-          height: auto;
-        }
-      }
-
-      .maintainer-text {
-        display: none;
-      }
-
-      &:hover {
-        .maintainer-text {
-          display: block;
-          background-color: var(--color-bg-light-grey);
-          font-size: 0.75rem;
+        span {
+          font-size: 0.6rem;
+          font-weight: 800;
           color: var(--color-dark-blue);
-          border-radius: 999px;
-          padding: 0.25rem 0.5rem;
         }
       }
     }

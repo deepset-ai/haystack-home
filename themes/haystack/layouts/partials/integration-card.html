@@ -51,13 +51,23 @@
     </div>
   </div>
 
-  {{/* Maintainer */}}
-  {{ if eq $maintainer "deepset" }}
-    <div class="integration-card-maintainer">
-      <div class="maintainer-icon">
-        <img src="/images/logos/deepset-blue-mark.png" alt="logo">
+  {{/* Badges */}}
+  <div class="integration-card-badges">
+    {{/* Maintainer */}}
+    {{ if eq $maintainer "deepset" }}
+      <div class="integration-card-maintainer">
+        <div class="maintainer-icon">
+          <img src="/images/logos/deepset-blue-mark.png" alt="logo">
+        </div>
+        <span class="maintainer-text">Maintained by deepset</span>
       </div>
-      <span class="maintainer-text">Maintained by deepset</span>
-    </div>
-  {{ end }}
+    {{ end }}
+
+    {{/* MCP */}}
+    {{ if .Params.mcp }}
+      <div class="integration-card-mcp">
+        <span>MCP</span>
+      </div>
+    {{ end }}
+  </div>
 </a>

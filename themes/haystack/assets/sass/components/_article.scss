@@ -694,11 +694,18 @@ blockquote {
   }
 }
 
+// Integrations tags wrapper
+.integration-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 // Integrations tag
 .integration-tag {
   display: inline-flex;
   align-items: center;
-  align-self: flex-start;
   gap: 0.4rem;
   background-color: var(--color-white);
   padding: 0.5rem 0.75rem;
@@ -717,9 +724,18 @@ blockquote {
 
   &.integration-tag-page {
     border: 0.25rem solid var(--color-dark-blue);
-    margin-bottom: 1rem;
+
 
     span {
+      font-size: 1rem;
+    }
+  }
+
+  &.integration-tag-mcp {
+    border: 0.25rem solid var(--color-green);
+
+    span {
+      color: var(--color-green);
       font-size: 1rem;
     }
   }

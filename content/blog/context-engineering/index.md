@@ -25,13 +25,13 @@ An LLM has exactly two sources of information when generating a response:
 
 Training knowledge is fixed. We can't update it without retraining, and we can't know exactly what the model does or doesn't know. Context is the lever we actually have. Everything a model knows about the current task, the current user, the tools available to it, and the world right now has to come through the context window.
 
-Today's leading models offer context windows that would have seemed impossibly large just a few years ago - millions of tokens, enough to fit entire codebases, legal contracts, or a stack of research papers in a single prompt. Yet in practice, agentic systems burn through these limits surprisingly fast. A system prompt, a set of tool definitions, a few retrieved documents, and a handful of conversation turns can easily consume tens of thousands of tokens before the agent has done anything meaningful. And even when the hard limit isn't reached, performance often degrades long before it is - the model starts losing track of earlier instructions, repeating itself, or missing relevant details buried under layers of accumulated context.
+Today's leading models offer context windows that would have seemed impossibly large just a few years ago - millions of tokens, enough to fit entire codebases, legal contracts, or a stack of research papers in a single prompt. Yet in practice, agentic systems burn through these limits surprisingly fast. A system prompt, a set of tool definitions, all tool calls and results, a few retrieved documents, and a handful of conversation turns can easily consume tens of thousands of tokens before the agent has done anything meaningful. And even when the hard limit isn't reached, performance often degrades long before it is - the model starts losing track of earlier instructions, repeating itself, or missing relevant details buried under layers of accumulated context.
 
 ![Context window growth over time](context-growth.png)
 
 At step 1, the context holds little more than the user's task. By step N, it has grown to include every tool call, every result, every model response, and any retrieved documents - all concatenated and re-sent from scratch on every iteration.
 
-The difference from one-shot prompting is stark. A single prompt is small, hand-crafted, and fully under control. An agentic system operates in a loop - reasoning, calling tools, receiving results, and repeating, potentially dozens of times. Because LLMs are stateless, every iteration re-sends the entire accumulated history from scratch. The context isn't a fixed input, but more of a growing log, and managing that growth is what context engineering is about.
+The difference from one-shot prompting is stark. A single prompt is small, hand-crafted, and fully under control. An agentic system operates in a loop - reasoning, calling tools, receiving results, and repeating, potentially dozens of times. Because LLMs are stateless, every iteration re-sends the entire accumulated history from scratch. The context isn't a fixed input, but more of a growing log, and context engineering is about managing that growth.
 
 ### When less is more
 
@@ -120,11 +120,14 @@ researcher = Agent(
     tools=[search_web],
 )
 
-@tool
-def delegate_research(query: str) -> str:
-    """Delegate a research question to a specialised agent."""
-    result = researcher.run(messages=[ChatMessage.from_user(query)])
-    return result["last_message"].text
+from haystack.tools import ComponentTool
+
+delegate_research = ComponentTool(
+    component=researcher,
+    name="delegate_research",
+    description="Delegate a research question to a specialised agent.",
+    outputs_to_string={"source": "last_message"},
+)
 
 # Orchestrator: only sees compact summaries from worker agents
 orchestrator = Agent(
@@ -220,7 +223,7 @@ result = agent.run(messages=messages + [ChatMessage.from_user("What month are we
 print(result["last_message"].text)
 ```
 
-### SearchableToolset
+### Adding only relevant tools to the context
 
 Tool definitions can be a surprisingly large slice of the context window, especially when connecting to MCP servers that expose dozens or hundreds of tools. Listing every tool upfront means the model receives all those descriptions on every single call, regardless of which tool is actually needed.
 

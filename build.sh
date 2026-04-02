@@ -51,6 +51,11 @@ rm -rf haystack-advent
 git clone --depth=1 https://$GITHUB_USER_NAME:$GH_HAYSTACK_HOME_PAT@github.com/deepset-ai/advent-of-haystack.git haystack-advent
 cp -R ./haystack-advent/challenges/* ./content/advent-of-haystack
 
+echo "Installing requirements for social image generation..."
+pip3 install -r scripts/social-images/requirements.txt -q
+echo "Generating social preview images..."
+python3 scripts/social-images/generate.py
+
 npm install
 
 # Use "localhost" if VERCEL_URL is not set

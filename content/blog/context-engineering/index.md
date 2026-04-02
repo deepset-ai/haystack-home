@@ -23,7 +23,7 @@ An LLM has exactly two sources of information when generating a response:
 - **Internal state ("knowledge")** - what was baked in during training. It is static, potentially stale, and opaque to the developer.
 - **Context ("prompt")** - everything provided at inference time. That's the only thing we can actively control.
 
-Training knowledge is fixed. We can't update it without retraining, and we can't know exactly what the model does or doesn't know. Context is the lever we actually have. Everything a model knows about the current task, the current user, the tools available to it, and the world right now has to come through the context window.
+Training knowledge is fixed. We can't update it without retraining, and we can't know exactly what the model does or doesn't know - though most providers publish a **knowledge cutoff date** in their model cards or documentation, which tells you the point beyond which the model has no awareness of world events. Context is the lever we actually have. Everything a model knows about the current task, the current user, the tools available to it, and the world right now has to come through the context window.
 
 Today's leading models offer context windows that would have seemed impossibly large just a few years ago - millions of tokens, enough to fit entire codebases, legal contracts, or a stack of research papers in a single prompt. Yet in practice, agentic systems burn through these limits surprisingly fast. A system prompt, a set of tool definitions, all tool calls and results, a few retrieved documents, and a handful of conversation turns can easily consume tens of thousands of tokens before the agent has done anything meaningful. And even when the hard limit isn't reached, performance often degrades long before it is - the model starts losing track of earlier instructions, repeating itself, or missing relevant details buried under layers of accumulated context.
 
@@ -170,6 +170,8 @@ result = rag.run({
 })
 # result["ranker"]["documents"] now contains at most 3 highly relevant chunks
 ```
+
+> **Coming up in the series:** Retrieval quality deserves a post of its own. The next article will go deep on techniques for surfacing more relevant, more diverse results - so your RAG pipelines put more important tokens in front of the model.
 
 ### Summarisation and compaction
 

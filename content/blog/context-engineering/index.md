@@ -100,7 +100,7 @@ Context explosion is not inevitable. Once you understand what's filling the wind
 
 ### Delegation to subagents
 
-Another way to keep context small is to never let it grow large in the first place. Instead of one agent accumulating the full history of a complex task, you can split the work across specialised subagents - each one receiving only the slice of context relevant to its job. The orchestrator maintains a thin, high-level context, while the worker agents get focused, task-specific contexts. The total token count across the system may be similar, but no single model call is burdened with everything at once. For a practical example of this pattern in Haystack, see [Building a Swarm of Agents](/blog/swarm-of-agents/).
+Another way to keep context small is to never let it grow large in the first place. Instead of one agent accumulating the full history of a complex task, you can split the work across specialised subagents - each one receiving only the slice of context relevant to its job. The orchestrator maintains a thin, high-level context, while the worker agents get focused, task-specific contexts. The total token count across the system may be similar, but no single model call is burdened with everything at once. For a practical example of this pattern in Haystack, see [Building a Swarm of Agents](/blog/swarm-of-agents/) or the [Creating a Multi-Agent System with Haystack](https://haystack.deepset.ai/tutorials/45_creating_a_multi_agent_system) tutorial.
 
 ```python
 from haystack.components.agents import Agent

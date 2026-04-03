@@ -4,7 +4,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.12",
-    "axios": "^0.27.2",
+    "axios": "^0.30.3",
     "parse-link-header": "^2.0.0",
     "postcss-cli": "^10.0.0",
     "prettier": "^2.7.1",

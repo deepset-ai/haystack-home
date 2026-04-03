@@ -180,11 +180,16 @@ As a conversation grows, the raw message history becomes the biggest consumer of
 This pattern is well-established in practice. Popular coding agents' context compaction feature works exactly this way: when the context approaches its limit, it summarises the conversation so far and continues from the summary rather than truncating or failing.
 
 ```python
+from haystack import Pipeline
+from haystack.core.component import component
 from haystack.components.agents import Agent
 from haystack.components.builders import ChatPromptBuilder
 from haystack_integrations.components.generators.anthropic import AnthropicChatGenerator
 from haystack.dataclasses import ChatMessage
 from haystack.tools import tool
+from haystack_experimental.chat_message_stores.in_memory import InMemoryChatMessageStore
+from haystack_experimental.components.retrievers import ChatMessageRetriever
+from haystack_experimental.components.writers import ChatMessageWriter
 
 @tool
 def get_current_date() -> str:
@@ -192,37 +197,77 @@ def get_current_date() -> str:
     from datetime import date
     return date.today().isoformat()
 
-compactor = ChatPromptBuilder(template=[
-    ChatMessage.from_user(
-        "Summarise the key facts from the conversation below in 3-5 bullet points.\n\n{{ history }}"
+@component
+class HistoryCompactor:
+    def __init__(self, threshold: int = 3):
+        self.threshold = threshold
+        self.compactor = ChatPromptBuilder(
+            template=[
+                ChatMessage.from_user(
+                    "Summarise the key facts from the conversation below in "
+                    "3-5 bullet points.\n\n"
+                    "{{ history }}"
+                )
+            ],
+            required_variables=["history"],
+        )
+        self.summariser = AnthropicChatGenerator(model="claude-haiku-4-5-20251001")
+
+    @component.output_types(messages=list[ChatMessage])
+    def run(self, messages: list[ChatMessage]) -> dict:
+        if len(messages) <= self.threshold:
+            return {"messages": messages}
+        history_text = "\n".join(f"{m.role}: {m.text}" for m in messages if m.text)
+        prompt = self.compactor.run(template_variables={"history": history_text})["prompt"]
+        summary = self.summariser.run(messages=prompt)["replies"][0].text
+        # The output message has to be a user message, as our chat 
+        # generator cannot work with just system/assistant messages
+        return {
+            "messages": [
+                ChatMessage.from_user(f"Conversation so far (summary):\n{summary}")
+            ]
+        }
+
+# skip_system_messages=False so the compacted summary (a system message) is persisted
+message_store = InMemoryChatMessageStore(skip_system_messages=False)
+
+pipeline = Pipeline()
+pipeline.add_component("message_retriever", ChatMessageRetriever(message_store))
+pipeline.add_component("compactor", HistoryCompactor(threshold=3))
+pipeline.add_component(
+    "agent", 
+    Agent(
+        chat_generator=AnthropicChatGenerator(model="claude-haiku-4-5-20251001"),
+        system_prompt="You are a helpful assistant.",
+        tools=[get_current_date],
     )
-])
-summariser = AnthropicChatGenerator()
-
-def compact_history(messages: list[ChatMessage]) -> list[ChatMessage]:
-    history_text = "\n".join(f"{m.role}: {m.text}" for m in messages if m.text)
-    prompt = compactor.run(template_variables={"history": history_text})["prompt"]
-    summary = summariser.run(messages=prompt)["replies"][0].text
-    return [ChatMessage.from_system(f"Conversation so far (summary):\n{summary}")]
-
-agent = Agent(
-    chat_generator=AnthropicChatGenerator(),
-    system_prompt="You are a helpful assistant.",
-    tools=[get_current_date],
 )
+pipeline.add_component("message_writer", ChatMessageWriter(message_store))
 
-# Simulate a growing conversation history
-messages = [ChatMessage.from_user("What day is it today?")]
-result = agent.run(messages=messages)
-messages = result["messages"]
+pipeline.connect("message_retriever.messages", "compactor.messages")
+pipeline.connect("compactor.messages", "agent.messages")
+pipeline.connect("agent.messages", "message_writer.messages")
 
-# Compact the history when it grows too long
-if len(messages) > 3:
-    messages = compact_history(messages)
+chat_history_id = "session_1"
 
-# Continue the conversation with a compacted history
-result = agent.run(messages=messages + [ChatMessage.from_user("What month are we in?")])
-print(result["last_message"].text)
+# First turn
+pipeline.run({
+    "message_retriever": {
+        "current_messages": [ChatMessage.from_user("What day is it today?")],
+        "chat_history_id": chat_history_id,
+    },
+    "message_writer": {"chat_history_id": chat_history_id},
+})
+
+# Second turn - history is retrieved, compacted if needed, and stored back automatically
+result = pipeline.run({
+    "message_retriever": {
+        "current_messages": [ChatMessage.from_user("What month are we in?")],
+        "chat_history_id": chat_history_id,
+    },
+    "message_writer": {"chat_history_id": chat_history_id},
+})
+print(result["agent"]["last_message"].text)
 ```
 
 ### Adding only relevant tools to the context

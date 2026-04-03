@@ -35,7 +35,7 @@ The difference from one-shot prompting is stark. A single prompt is small, hand-
 
 ### When less is more
 
-Transformers work by letting every token attend to every other token in the context. This is what makes them so powerful at integrating information - but it also means the model's capacity is spread across all tokens simultaneously. Think of it as an **[attention budget](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)**: every new token you introduce depletes it by some amount, regardless of whether that token is useful or not.
+Transformers architecture behind the LLMs work by letting every token attend to every other token in the context. This is what makes them so powerful at integrating information - but it also means the model's capacity is spread across all tokens simultaneously. Think of it as an **attention budget**: every new token you introduce depletes it by some amount, regardless of whether that token is useful or not.
 
 The practical consequence is that irrelevant or redundant content doesn't just waste space - it actively competes with the information that actually matters. A critical instruction buried under pages of tool outputs may receive less attention than if it had been sent alone. [Research from Anthropic](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) confirms this: models remain capable at longer contexts but show reduced precision for information retrieval and long-range reasoning compared to shorter ones. A million-token context window is not a free pass to include everything - it's a budget, and every token you add is a trade-off.
 
@@ -52,9 +52,9 @@ We've already touched on some of the components that fill an agent's context win
 - **System prompt** - standing instructions, persona, constraints, output format. Usually fixed but can be large.
 - **Conversation history** - the full back-and-forth between user and agent across the current session.
 - **Memory** - retrieved facts from past sessions or external knowledge stores. See also: [Good Listener: How Memory Enables Conversational Agents](/blog/memory-conversational-agents/).
-- **Retrieval output** - documents or chunks returned by a RAG pipeline. Each retrieved chunk adds tokens.
+- **Retrieval output** - documents or chunks fetched proactively by a RAG pipeline, before the model acts. This data arrives in context as part of the input to the model, not as a consequence of something the model decided to do.
 - **Tool definitions** - every tool the model *could* call must be described in the context (name, description, parameters schema). With MCP toolsets, this can easily balloon into hundreds of tool descriptions.
-- **Tool call results** - the output of previously executed tools, so the model can reason over them.
+- **Tool call results** - the output of tools the model itself chose to invoke. Unlike retrieval output, these arrive mid-session as a consequence of the model's actions. They can be surprisingly large: a `read_file` returning a 500-line source file, a web search returning multiple scraped pages, or a database query returning hundreds of rows — and each result stays in context for the remainder of the session.
 - **Few-shot examples** - demonstration input/output pairs used to guide model behaviour.
 
 > **The iceberg effect.** A user sees a single answer. Behind the scenes, the model may have received 50,000 tokens or more on that one turn - a system prompt (perhaps 10k tokens), tool definitions (5k), retrieved documents (20k), and accumulated conversation history (15k). The answer is the tip, while the context is everything below the surface.

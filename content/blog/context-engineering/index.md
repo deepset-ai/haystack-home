@@ -301,7 +301,6 @@ An agent's intermediate reasoning - the chain of thoughts it builds up while wor
 
 This keeps the context lean: rather than carrying the full trace of every intermediate thought, the agent holds a minimal working state and queries its own notes on demand. The pattern is especially useful for long-horizon tasks where the reasoning chain would otherwise grow without bound, and it has the side effect of making the agent's thinking inspectable and debuggable from outside the model.
 
----
 
 ## What's coming next in this series
 

@@ -6,8 +6,8 @@ featured_image: thumbnail.png
 featured_image_caption: The context window of an agentic system is not a blank slate - it is filled by many components, each competing for the model's attention.
 images: ["blog/context-engineering/thumbnail.png", "blog/context-engineering/context-growth.png", "blog/context-engineering/context-breakdown.png"]
 toc: True
-date: 2026-03-17
-last_updated: 2026-03-17
+date: 2026-04-20
+last_updated: 2026-04-20
 authors:
   - Kacper Lukawski
 canonical_url: https://www.deepset.ai/blog/context-engineering

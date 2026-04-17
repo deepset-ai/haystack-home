@@ -43,7 +43,6 @@ The practical consequence is that irrelevant or redundant content doesn't just w
 
 Most hosted LLMs charge per input token, which means every byte of context has a price tag. A single call with a 50,000-token context costs roughly 50× more than one with 1,000 tokens - and in an agentic loop that runs dozens of iterations, that multiplier compounds with every step. Context management is therefore not just a quality concern but a cost concern: a bloated context window can turn a cheap pipeline into an expensive one without producing any better answers.
 
----
 
 ## What fills the context window in an agentic system
 

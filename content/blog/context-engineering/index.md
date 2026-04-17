@@ -51,7 +51,7 @@ We've already touched on some of the components that fill an agent's context win
 
 - **System prompt** - standing instructions, persona, constraints, output format. Usually fixed but can be large.
 - **Conversation history** - the full back-and-forth between user and agent across the current session.
-- **Memory** - retrieved facts from past sessions or external knowledge stores. See also: [Good Listener: How Memory Enables Conversational Agents](/blog/memory-conversational-agents/).
+- **Memory** - retrieved facts from past sessions or external knowledge stores. See also: [Using Mem0 Memory Store with Haystack Agents](https://haystack.deepset.ai/cookbook/memory_store_mem0).
 - **Retrieval output** - documents or chunks fetched proactively by a RAG pipeline, before the model acts. This data arrives in context as part of the input to the model, not as a consequence of something the model decided to do.
 - **Tool definitions** - every tool the model *could* call must be described in the context (name, description, parameters schema). With MCP toolsets, this can easily balloon into hundreds of tool descriptions.
 - **Tool call results** - the output of tools the model itself chose to invoke. Unlike retrieval output, these arrive mid-session as a consequence of the model's actions. They can be surprisingly large: a read file operation returning a 500-line source file, a web search returning multiple scraped pages, or a database query returning hundreds of rows - and each result stays in context for the remainder of the session.

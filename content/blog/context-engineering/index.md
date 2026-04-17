@@ -10,7 +10,6 @@ date: 2026-04-20
 last_updated: 2026-04-20
 authors:
   - Kacper Lukawski
-canonical_url: https://www.deepset.ai/blog/context-engineering
 tags: ["Agent", "LLM", "Prompting", "Context Engineering"]
 ---
 

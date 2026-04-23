@@ -1,6 +1,16 @@
-<a class="btn btn-deepset-blue integrations-btn" href="{{ .Params.hero.url }}"
-    {{ if strings.HasPrefix .Params.hero.url "http" }}
-        target="_blank" rel="noopener"
-    {{ end }}>
-    {{ .Params.hero.text }}
-</a>
+<div class="integrations-hero-buttons">
+  <a class="btn btn-deepset-blue integrations-btn" href="{{ .Params.hero.url }}"
+      {{ if strings.HasPrefix .Params.hero.url "http" }}
+          target="_blank" rel="noopener"
+      {{ end }}>
+      {{ .Params.hero.text }}
+  </a>
+  {{ with .Params.hero.contributeUrl }}
+    <a class="btn btn-deepset-blue contribute-btn" href="{{ . }}"
+        {{ if strings.HasPrefix . "http" }}
+            target="_blank" rel="noopener"
+        {{ end }}>
+      {{ $.Params.hero.contributeText | default "Contribute an integration" }}
+    </a>
+  {{ end }}
+</div>

@@ -21,6 +21,11 @@
       </div>
       {{ with $.Params.perks }}{{ with .note }}
       <p class="perks-note">{{ . }}</p>
+      {{ end }}
+      {{ with .button }}
+      <div class="perks-cta">
+        {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
+      </div>
       {{ end }}{{ end }}
     </div>
   </div>

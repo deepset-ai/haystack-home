@@ -9,6 +9,9 @@
         {{ with .button }}
           {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
         {{ end }}
+        {{ with .note }}
+        <p class="hero-note">{{ . }}</p>
+        {{ end }}
       </div>
     </div>
   </div>

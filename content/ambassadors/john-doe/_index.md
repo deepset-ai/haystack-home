@@ -27,4 +27,5 @@ contributions:
   - title: "Building RAG Apps — Community Talk"
     url: "#"
     type: talk
+draft: true
 ---

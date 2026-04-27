@@ -1,0 +1,18 @@
+{{/* FAQ section */}}
+{{ with .Params.faq }}
+<section class="ambassador-faq">
+  <div class="container container-padded">
+    <div class="inner">
+      <h2>{{ .title }}</h2>
+      <div class="ambassador-faq-list">
+        {{ range .items }}
+        <div class="faq-item">
+          <h3>{{ .question }}</h3>
+          <p>{{ .answer }}</p>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

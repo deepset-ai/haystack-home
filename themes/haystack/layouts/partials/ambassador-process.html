@@ -1,0 +1,21 @@
+{{/* Application process steps */}}
+{{ with .Params.process }}
+<section class="ambassador-process">
+  <div class="container container-padded">
+    <div class="inner">
+      <h2>{{ .title }}</h2>
+      <div class="ambassador-process-steps">
+        {{ range .steps }}
+        <div class="process-step">
+          <div class="process-step-number">{{ .number }}</div>
+          <div class="process-step-content">
+            <h3>{{ .title }}</h3>
+            <p>{{ .text }}</p>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

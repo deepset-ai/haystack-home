@@ -100,6 +100,12 @@ theme = "haystack"
   weight = 5
 
 [[menu.main]]
+  identifier = 'ambassadors'
+  name = 'Ambassadors'
+  url = '/ambassadors'
+  weight = 6
+
+[[menu.main]]
   identifier = 'haystack-enterprise'
   name = 'Haystack Enterprise'
   url = '/'

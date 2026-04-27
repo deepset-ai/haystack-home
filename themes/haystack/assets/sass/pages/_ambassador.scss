@@ -1,0 +1,461 @@
+// Ambassador Program page
+
+// ─── Hero ────────────────────────────────────────────────────────────────────
+
+.ambassador-hero {
+  background-color: var(--color-bg-dark-blue);
+  color: var(--color-white);
+
+  .ambassador-hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 52rem;
+
+    h1 {
+      color: var(--color-white);
+    }
+
+    p {
+      font-size: var(--text-body);
+      color: var(--color-white);
+      opacity: 0.9;
+    }
+  }
+}
+
+// ─── Requirements & Status ────────────────────────────────────────────────────
+
+.ambassador-requirements {
+  .ambassador-requirements-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+
+    @include md {
+      grid-template-columns: 1fr;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+
+      img {
+        width: 1.25rem;
+        flex-shrink: 0;
+        margin-top: 0.15rem;
+      }
+
+      span {
+        font-size: var(--text-body);
+      }
+    }
+  }
+
+  .requirements-note {
+    margin-top: 1.5rem;
+    font-size: var(--text-base);
+    color: var(--color-medium-grey);
+    font-style: italic;
+  }
+
+  .status-legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .status-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .status-dot {
+      width: 0.875rem;
+      height: 0.875rem;
+      border-radius: 999px;
+      flex-shrink: 0;
+      margin-top: 0.3rem;
+    }
+
+    .status-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      strong {
+        font-size: var(--text-base);
+        font-weight: var(--font-weight-extra-bold);
+        color: var(--color-dark-blue);
+      }
+
+      p {
+        margin: 0;
+        font-size: var(--text-base);
+        color: var(--color-medium-grey);
+      }
+    }
+
+    &.status-active .status-dot {
+      background-color: var(--color-green);
+    }
+
+    &.status-at-risk .status-dot {
+      background-color: var(--color-yellow);
+    }
+
+    &.status-alumni .status-dot {
+      background-color: var(--color-medium-grey);
+    }
+  }
+}
+
+// ─── Perks ────────────────────────────────────────────────────────────────────
+
+.ambassador-perks {
+  background-color: var(--color-bg-light-grey);
+
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .ambassador-perks-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @include sm {
+      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    }
+  }
+
+  .perks-note {
+    margin-top: 1.5rem;
+    font-size: var(--text-base);
+    color: var(--color-medium-grey);
+    font-style: italic;
+  }
+
+  .ambassador-perk-card {
+    background-color: var(--color-white);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    border-radius: 0.5rem;
+    transition: box-shadow var(--transition-fast) var(--ease);
+
+    &:hover {
+      box-shadow: 0px 0px 0px 2px var(--color-deepset-blue),
+        0px 0px 8px 4px rgba(67, 171, 157, 0.32);
+    }
+
+    .perk-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    h3 {
+      font-size: var(--h4-size);
+      color: var(--color-dark-blue);
+    }
+
+    p {
+      font-size: var(--text-base);
+      color: var(--color-medium-grey);
+      margin: 0;
+    }
+  }
+}
+
+// ─── Ambassador Grid ─────────────────────────────────────────────────────────
+
+.ambassador-grid-section {
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .ambassador-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @include sm {
+      grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    }
+  }
+}
+
+.ambassador-card {
+  background-color: var(--color-white);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--color-light-grey);
+  transition: box-shadow var(--transition-fast) var(--ease);
+
+  &:hover {
+    box-shadow: 0px 0px 0px 2px var(--color-deepset-blue),
+      0px 0px 8px 4px rgba(67, 171, 157, 0.2);
+  }
+
+  .ambassador-card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .ambassador-avatar {
+    flex-shrink: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 999px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .ambassador-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg-dark-blue);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-extra-bold);
+    text-transform: uppercase;
+  }
+
+  .ambassador-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    h3 {
+      font-size: var(--h4-size);
+      color: var(--color-dark-blue);
+      margin: 0;
+    }
+
+    .ambassador-location {
+      font-size: var(--text-base);
+      color: var(--color-medium-grey);
+    }
+  }
+
+  .ambassador-bio {
+    font-size: var(--text-base);
+    color: var(--color-medium-grey);
+    margin: 0;
+  }
+
+  .ambassador-interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .ambassador-contributions {
+    border-top: 1px solid var(--color-light-grey);
+    padding-top: 0.75rem;
+
+    .contributions-label {
+      font-size: var(--text-label);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-medium-grey);
+      font-weight: var(--font-weight-extra-bold);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+
+    li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+
+      a {
+        font-size: var(--text-base);
+        color: var(--color-deepset-blue);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .contribution-type {
+        font-size: var(--text-label);
+        color: var(--color-medium-grey);
+        text-transform: capitalize;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .ambassador-socials {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+
+    a {
+      display: flex;
+      align-items: center;
+      opacity: 0.6;
+      transition: opacity var(--transition-fast) var(--ease);
+
+      &:hover {
+        opacity: 1;
+      }
+
+      img {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+  }
+}
+
+// Status badge on card
+.ambassador-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-extra-bold);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+
+  &::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+
+  &.status-active {
+    background-color: var(--color-light-green);
+    color: var(--color-dark-blue);
+
+    &::before {
+      background-color: var(--color-green);
+    }
+  }
+
+  &.status-at-risk {
+    background-color: var(--color-bg-yellow);
+    color: var(--color-dark-blue);
+
+    &::before {
+      background-color: var(--color-yellow);
+    }
+  }
+
+  &.status-alumni {
+    background-color: var(--color-bg-light-grey);
+    color: var(--color-medium-grey);
+
+    &::before {
+      background-color: var(--color-medium-grey);
+    }
+  }
+}
+
+// ─── Empty State ─────────────────────────────────────────────────────────────
+
+.ambassador-empty-state {
+  display: flex;
+  justify-content: center;
+
+  .ambassador-empty-card {
+    background-color: var(--color-bg-light-grey);
+    border-radius: 0.5rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 32rem;
+    width: 100%;
+
+    p {
+      font-size: var(--text-body);
+      color: var(--color-medium-grey);
+      margin: 0;
+    }
+  }
+}
+
+// ─── Apply CTA ────────────────────────────────────────────────────────────────
+
+.ambassador-apply {
+  background-color: var(--color-bg-light-grey);
+
+  .ambassador-apply-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    max-width: 52rem;
+
+    h2 {
+      color: var(--color-dark-blue);
+    }
+
+    p {
+      font-size: var(--text-body);
+      margin: 0;
+    }
+
+    .apply-note {
+      font-size: var(--text-base);
+      opacity: 0.7;
+      font-style: italic;
+    }
+  }
+}

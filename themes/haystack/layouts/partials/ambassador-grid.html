@@ -1,0 +1,24 @@
+{{/* Ambassador listing grid — hidden entirely when no ambassadors */}}
+{{ with .Params.ambassadors }}
+  {{/* Collect non-draft pages */}}
+  {{ $ambassadors := where $.Pages "Draft" false }}
+  {{ $active := where $ambassadors "Params.status" "active" }}
+  {{ $atRisk := where $ambassadors "Params.status" "at-risk" }}
+  {{ $alumni := where $ambassadors "Params.status" "alumni" }}
+  {{ $all := $active | append $atRisk | append $alumni }}
+
+  {{ if $all }}
+  <section class="ambassador-grid-section">
+    <div class="container container-padded">
+      <div class="inner">
+        <h2>{{ .title }}</h2>
+        <div class="ambassador-grid">
+          {{ range $all }}
+            {{ partial "ambassador-card" . }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+{{ end }}

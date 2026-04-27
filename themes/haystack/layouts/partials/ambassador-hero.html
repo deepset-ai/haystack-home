@@ -1,0 +1,16 @@
+{{/* Ambassador program hero */}}
+{{ with .Params.hero }}
+<section class="ambassador-hero">
+  <div class="container container-padded">
+    <div class="inner inner-top">
+      <div class="ambassador-hero-content">
+        <h1>{{ .headline }}</h1>
+        <p>{{ .text }}</p>
+        {{ with .button }}
+          {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

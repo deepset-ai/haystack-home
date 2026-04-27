@@ -1,0 +1,19 @@
+{{/* Apply CTA section */}}
+{{ with .Params.apply }}
+<section class="ambassador-apply" {{ with .anchor }}id="{{ . }}"{{ end }}>
+  <div class="container container-padded">
+    <div class="inner">
+      <div class="ambassador-apply-content">
+        <h2>{{ .title }}</h2>
+        <p>{{ .text }}</p>
+        {{ with .note }}
+        <p class="apply-note">{{ . }}</p>
+        {{ end }}
+        {{ with .button }}
+          {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

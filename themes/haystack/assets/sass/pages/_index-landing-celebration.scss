@@ -1,0 +1,21 @@
+.index-landing-celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 5; // below main nav overlays (typically higher), above hero background layers
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.index-landing-celebration__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .index-landing-celebration {
+    display: none;
+  }
+}

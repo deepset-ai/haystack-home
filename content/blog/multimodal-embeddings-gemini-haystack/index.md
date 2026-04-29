@@ -15,7 +15,7 @@ tags: ["Multimodality", "Embeddings"]
 
 Embeddings are the backbone of modern AI applications, from semantic search and recommendation systems to Retrieval-Augmented Generation (RAG). However, most embedding models operate in a single modality, typically focusing only on textual data.
 
-Google has introduced **Gemini Embedding 2**, a **fully multimodal embedding model** that maps **text, images, video, audio, and PDFs into a shared vector space**. This means you can search across different types of data using a **single embedding model**: `gemini-embedding-2-preview`.
+Google has introduced **Gemini Embedding 2**, a **fully multimodal embedding model** that maps **text, images, video, audio, and PDFs into a shared vector space**. This means you can search across different types of data using a **single embedding model**: `gemini-embedding-2`.
 
 Even better, **Haystack supports Gemini Embedding 2 from Day 0**. Through the [Google GenAI x Haystack integration](https://haystack.deepset.ai/integrations/google-genai), you can immediately start using the model in your Haystack applications for both **text and multimodal embeddings**.
 
@@ -73,10 +73,10 @@ docs = [
 ]
 
 doc_embedder = GoogleGenAIDocumentEmbedder(
-    model="gemini-embedding-2-preview", 
+    model="gemini-embedding-2", 
     batch_size=5, 
+    prefix="title: none | text: " # https://ai.google.dev/gemini-api/docs/embeddings#task-types
     config={
-		    "task_type": "RETRIEVAL_DOCUMENT",
 		    "output_dimensionality": 768 # flexible embedding sizes using MRL
 		}
 )
@@ -94,11 +94,11 @@ embedding_retriever = InMemoryEmbeddingRetriever(document_store=document_store)
 
 query = "animal that communicates with whistles and barks"
 text_embedder = GoogleGenAITextEmbedder(
-    model="gemini-embedding-2-preview", 
+    model="gemini-embedding-2", 
+    prefix="task: search result | query: " # https://ai.google.dev/gemini-api/docs/embeddings#task-types
     config={
-            "task_type": "RETRIEVAL_QUERY",
-			"output_dimensionality": 768 # flexible embedding sizes using MRL
-          }
+		    "output_dimensionality": 768 # flexible embedding sizes using MRL
+		}
 )
 query_embedding = text_embedder.run(query)["embedding"]
 
@@ -134,9 +134,8 @@ docs = [
 ]
 
 doc_multimodal_embedder = GoogleGenAIMultimodalDocumentEmbedder(
-    model="gemini-embedding-2-preview", 
+    model="gemini-embedding-2", 
     config={
-        "task_type": "RETRIEVAL_DOCUMENT", 
         "output_dimensionality": 768 # flexible embedding sizes using MRL
         }
 )
@@ -163,9 +162,8 @@ Example:
 ```python
 image_doc = Document(meta={"file_path": "another_kangaroo.jpg"})
 image_embedder = GoogleGenAIMultimodalDocumentEmbedder(
-    model="gemini-embedding-2-preview", 
+    model="gemini-embedding-2", 
     config={
-        "task_type": "RETRIEVAL_QUERY",
         "output_dimensionality": 768 # flexible embedding sizes using MRL
         }
 )

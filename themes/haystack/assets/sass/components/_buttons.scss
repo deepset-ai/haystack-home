@@ -288,6 +288,7 @@ button.nav-toggle-close {
   align-self: flex-start;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
   text-decoration: none;
   color: var(--color-dark-blue);
   font-weight: var(--font-weight-heading);
@@ -331,6 +332,15 @@ button.nav-toggle-close {
 
   .github-stars-js {
     min-width: 3.125rem;
+  }
+
+  .github-stars-fireworks-canvas {
+    position: absolute;
+    inset: -1.5rem;
+    width: calc(100% + 3rem);
+    height: calc(100% + 3rem);
+    pointer-events: none;
+    z-index: 1;
   }
 }
 

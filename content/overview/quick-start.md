@@ -27,7 +27,7 @@ For more details, refer to our documentation.
 
 To run the example, you'll need:
 
-* A [SerperDev API Key](https://serper.dev/api-key) for web search
+* A [SerperDev API Key](https://serper.dev/api-keys) for web search
 * Credentials for the model provider of your choice (e.g. OpenAI, Anthropic, Gemini, Amazon Bedrock)
 
 

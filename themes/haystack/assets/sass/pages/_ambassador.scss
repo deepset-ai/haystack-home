@@ -555,6 +555,95 @@
   }
 }
 
+// ─── Modal ────────────────────────────────────────────────────────────────────
+
+.ambassador-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast) var(--ease);
+
+  @include md {
+    align-items: center;
+    padding: 2rem;
+  }
+
+  &.is-open {
+    pointer-events: auto;
+    opacity: 1;
+
+    .ambassador-modal-dialog {
+      transform: translateY(0);
+    }
+  }
+}
+
+.ambassador-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(43, 47, 85, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.ambassador-modal-dialog {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-white);
+  border-radius: 0.75rem;
+  width: 100%;
+  max-width: 42rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(1.5rem);
+  transition: transform var(--transition-fast) var(--ease);
+  box-shadow: var(--box-shadow);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.ambassador-modal-close {
+  position: sticky;
+  top: 1rem;
+  float: right;
+  margin: 1rem 1rem -2.5rem 0;
+  z-index: 2;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-medium-grey);
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  transition: color var(--transition-fast) var(--ease);
+
+  &:hover {
+    color: var(--color-dark-blue);
+  }
+}
+
+.ambassador-modal-content {
+  padding: 2rem;
+
+  @include md {
+    padding: 2.5rem;
+  }
+}
+
+// Prevent body scroll when modal is open
+body.modal-open {
+  overflow: hidden;
+}
+
 // ─── FAQ ──────────────────────────────────────────────────────────────────────
 
 .ambassador-faq {

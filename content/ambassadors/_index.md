@@ -10,7 +10,7 @@ hero:
   text: "The Ambassador Program supports developers already building, teaching, and contributing to the Haystack ecosystem – helping them go further with direct access, visibility, and backing from our team."
   button:
     text: "Apply Now"
-    url: "#apply"
+    url: "#ambassador-modal"
   secondaryButton:
     text: "See How It Works"
     url: "#process"
@@ -27,7 +27,7 @@ requirements:
   note: "We welcome people with different strengths - builders, public speakers, writers, educators, and community helpers. What matters most is that you're actively contributing to the Haystack ecosystem and want to help others build real-world AI systems. We also aim to represent communities across different regions and backgrounds."
   button:
     text: "Apply Now"
-    url: "#apply"
+    url: "#ambassador-modal"
 
 status:
   title: "Ambassador Status"
@@ -47,7 +47,7 @@ perks:
   note: "This isn't an exhaustive list - it's just a starting point. If you have an idea for how we can support your work, bring it up. We'd rather find something that actually helps than stick to a fixed menu."
   button:
     text: "Apply Now"
-    url: "#apply"
+    url: "#ambassador-modal"
 
 ambassadors:
   title: "Meet Our Ambassadors"
@@ -69,7 +69,7 @@ process:
       text: "Once accepted, you'll join a private channel, meet the team, and work directly with us on how to best support and scale your contributions."
   button:
     text: "Apply Now"
-    url: "#apply"
+    url: "#ambassador-modal"
 
 faq:
   title: "Common Questions"
@@ -88,7 +88,7 @@ faq:
       answer: "None. The program is free - we provide support, not the other way around."
   button:
     text: "Apply Now"
-    url: "#apply"
+    url: "#ambassador-modal"
 
 apply:
   anchor: apply
@@ -96,5 +96,5 @@ apply:
   text: "If you're already building with Haystack and want the recognition and backing to go further - we'd love to hear from you."
   button:
     text: "Apply Now"
-    url: "#"
+    url: "#ambassador-modal"
 ---

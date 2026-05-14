@@ -1,15 +1,15 @@
 ---
-title: "Sara Chen"
-location: "Singapore"
+title: "Priya Sharma"
+location: "Bangalore, India"
 status: active
 tier: 1
 joined: "2025-Q2"
 image: /images/ambassadors/placeholder.svg
-bio: "ML engineer building production RAG systems. Writes about retrieval, evaluation, and the messy gap between demos and real deployments."
+bio: "ML engineer building production RAG systems for enterprise search. Writes about evaluation, hybrid retrieval, and getting Haystack into prod."
 interests:
   - "RAG"
   - "Evaluation"
-  - "Open Source"
+  - "Enterprise AI"
 socials:
   - name: GitHub
     url: "https://github.com/"
@@ -17,14 +17,17 @@ socials:
   - name: LinkedIn
     url: "https://linkedin.com/in/"
     icon: /images/icons/linkedin-dark.svg
+  - name: Twitter
+    url: "https://twitter.com/"
+    icon: /images/icons/twitter-dark.svg
   - name: Discord
     url: "https://discord.com/users/"
     icon: /images/icons/discord.svg
 contributions:
-  - title: "Why Your RAG Pipeline Fails in Production"
+  - title: "Evaluating Retrieval Quality in Production RAG"
     url: "#"
     type: blog
-  - title: "Evaluating Haystack Pipelines End-to-End"
+  - title: "Hybrid Search with Haystack — PyCon India"
     url: "#"
-    type: tutorial
+    type: talk
 ---

@@ -1,4 +1,4 @@
-{{/* Perks grid — reads from content/ambassador-perks/ */}}
+{{/* Perks grid - reads from content/ambassador-perks/ */}}
 {{ $perks := where site.RegularPages "Section" "ambassador-perks" }}
 {{ $perks = sort $perks ".Params.weight" }}
 {{ if $perks }}

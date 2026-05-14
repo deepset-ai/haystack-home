@@ -1,15 +1,15 @@
 ---
-title: "Miguel Torres"
-location: "Mexico City, Mexico"
+title: "James Okafor"
+location: "Lagos, Nigeria"
 status: active
 tier: 1
-joined: "2025-Q3"
+joined: "2025-Q4"
 image: /images/ambassadors/placeholder.svg
-bio: "Developer advocate and community organizer. Runs local AI meetups and helps Spanish-speaking developers get started with open-source LLM tooling."
+bio: "Software engineer and educator helping African developers build with open-source LLM tooling. Active on Discord and running community workshops."
 interests:
-  - "Community Building"
+  - "Education"
+  - "Community Help"
   - "Public Speaking"
-  - "LLM Tooling"
 socials:
   - name: GitHub
     url: "https://github.com/"
@@ -21,10 +21,10 @@ socials:
     url: "https://discord.com/users/"
     icon: /images/icons/discord.svg
 contributions:
-  - title: "Introducción a Haystack — México AI Meetup"
+  - title: "Building AI Applications with Haystack — Lagos Workshop"
     url: "#"
     type: talk
-  - title: "Building Your First Pipeline with Haystack 2.0"
+  - title: "Getting Started with Open-Source LLM Pipelines"
     url: "#"
     type: tutorial
 ---

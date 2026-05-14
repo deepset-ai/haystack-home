@@ -20,7 +20,7 @@ contributions:
   - title: "Getting Started with Haystack Pipelines"
     url: "#"
     type: blog
-  - title: "Building RAG Apps — Community Talk"
+  - title: "Building RAG Apps - Community Talk"
     url: "#"
     type: talk
 draft: true

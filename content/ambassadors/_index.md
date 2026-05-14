@@ -20,9 +20,9 @@ requirements:
   title: "Is This You?"
   items:
     - "You've been active in the Haystack community for at least 6 months"
-    - "You've shared your work publicly — blog posts, talks, tutorials, Discord discussions, or real-world projects"
-    - "You contribute regularly — not occasionally or one-off"
-    - "You're building or thinking about real-world RAG and agentic systems — not just demos — and are interested in how AI moves into production"
+    - "You've shared your work publicly - blog posts, talks, tutorials, Discord discussions, or real-world projects"
+    - "You contribute regularly - not occasionally or one-off"
+    - "You're building or thinking about real-world RAG and agentic systems - not just demos - and are interested in how AI moves into production"
     - "You care about open-source AI, are passionate about Haystack, and enjoy helping others"
   note: "We welcome people with different strengths - builders, public speakers, writers, educators, and community helpers. What matters most is that you're actively contributing to the Haystack ecosystem and want to help others build real-world AI systems. We also aim to represent communities across different regions and backgrounds."
   button:
@@ -93,7 +93,7 @@ faq:
 apply:
   anchor: apply
   title: "Apply Now"
-  text: "If you're already building with Haystack and want the recognition and backing to go further — we'd love to hear from you."
+  text: "If you're already building with Haystack and want the recognition and backing to go further - we'd love to hear from you."
   button:
     text: "Apply Now"
     url: "#"

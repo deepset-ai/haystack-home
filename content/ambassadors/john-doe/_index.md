@@ -20,6 +20,9 @@ socials:
   - name: LinkedIn
     url: "https://linkedin.com/in/"
     icon: /images/icons/linkedin-dark.svg
+  - name: Discord
+    url: "https://discord.com/users/"
+    icon: /images/icons/discord.svg
 contributions:
   - title: "Getting Started with Haystack Pipelines"
     url: "#"
@@ -27,5 +30,4 @@ contributions:
   - title: "Building RAG Apps — Community Talk"
     url: "#"
     type: talk
-draft: true
 ---

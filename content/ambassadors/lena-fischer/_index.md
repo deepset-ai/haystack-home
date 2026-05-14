@@ -1,14 +1,14 @@
 ---
-title: "Sara Chen"
-location: "Singapore"
+title: "Lena Fischer"
+location: "Munich, Germany"
 status: active
 tier: 1
-joined: "2025-Q2"
+joined: "2025-Q3"
 image: /images/ambassadors/placeholder.svg
-bio: "ML engineer building production RAG systems. Writes about retrieval, evaluation, and the messy gap between demos and real deployments."
+bio: "Data scientist and meetup organizer. Runs the Munich AI Builders group and helps developers cross the gap from prototype to production."
 interests:
-  - "RAG"
-  - "Evaluation"
+  - "Community Building"
+  - "Agentic Systems"
   - "Open Source"
 socials:
   - name: GitHub
@@ -21,10 +21,10 @@ socials:
     url: "https://discord.com/users/"
     icon: /images/icons/discord.svg
 contributions:
-  - title: "Why Your RAG Pipeline Fails in Production"
+  - title: "Agentic Pipelines with Haystack — Munich AI Meetup"
     url: "#"
-    type: blog
-  - title: "Evaluating Haystack Pipelines End-to-End"
+    type: talk
+  - title: "From Prototype to Production with Haystack 2.0"
     url: "#"
     type: tutorial
 ---

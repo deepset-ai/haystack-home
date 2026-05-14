@@ -4,6 +4,11 @@
 
 .ambassador-hero {
   background-color: var(--color-bg-dark-blue);
+  background-image:
+    linear-gradient(rgba(10, 20, 48, 0.72), rgba(10, 20, 48, 0.72)),
+    url('/images/ambassadors/unconference-london.webp');
+  background-size: cover;
+  background-position: center;
   color: var(--color-white);
 
   .ambassador-hero-content {

@@ -18,6 +18,11 @@
           {{ with .note }}
           <p class="requirements-note">{{ . }}</p>
           {{ end }}
+          {{ with .button }}
+          <div class="requirements-cta">
+            {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
+          </div>
+          {{ end }}
         </div>
 
 

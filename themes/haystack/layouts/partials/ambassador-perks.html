@@ -5,7 +5,7 @@
 <section class="ambassador-perks">
   <div class="container container-padded">
     <div class="inner">
-      <h2>Ambassador Perks</h2>
+      <h2>{{ with $.Params.perks }}{{ with .title }}{{ . }}{{ else }}Ambassador Perks{{ end }}{{ else }}Ambassador Perks{{ end }}</h2>
       <div class="ambassador-perks-grid grid-page-grid">
         {{ range $perks }}
         <div class="grid-page-card ambassador-perk-card">

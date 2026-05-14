@@ -11,6 +11,9 @@ hero:
   button:
     text: "Apply Now"
     url: "#apply"
+  secondaryButton:
+    text: "See How It Works"
+    url: "#process"
   note: "Free to join · No exclusivity required"
 
 requirements:
@@ -22,6 +25,9 @@ requirements:
     - "You're building or thinking about real-world RAG and agentic systems — not just demos — and are interested in how AI moves into production"
     - "You care about open-source AI, are passionate about Haystack, and enjoy helping others"
   note: "We welcome people with different strengths - builders, public speakers, writers, educators, and community helpers. What matters most is that you're actively contributing to the Haystack ecosystem and want to help others build real-world AI systems. We also aim to represent communities across different regions and backgrounds."
+  button:
+    text: "Apply Now"
+    url: "#apply"
 
 status:
   title: "Ambassador Status"
@@ -37,6 +43,7 @@ status:
       description: "Taking a break. All past contributions remain credited and listed here. Re-applying is always welcome."
 
 perks:
+  title: "What You Get"
   note: "This isn't an exhaustive list - it's just a starting point. If you have an idea for how we can support your work, bring it up. We'd rather find something that actually helps than stick to a fixed menu."
   button:
     text: "Apply Now"
@@ -47,6 +54,7 @@ ambassadors:
   emptyText: "No ambassadors yet - be the first to apply!"
 
 process:
+  anchor: process
   title: "How It Works"
   subtitle: "A simple process to join a group of builders contributing to real-world AI systems with Haystack."
   steps:
@@ -59,6 +67,9 @@ process:
     - number: 3
       title: "Get Onboarded"
       text: "Once accepted, you'll join a private channel, meet the team, and work directly with us on how to best support and scale your contributions."
+  button:
+    text: "Apply Now"
+    url: "#apply"
 
 faq:
   title: "Common Questions"
@@ -75,11 +86,14 @@ faq:
       answer: "Geography isn't a barrier. Haystack users are everywhere - and there are opportunities to grow the community in many places. Whether that's online or in your local ecosystem, we want to support people building and connecting others around the world."
     - question: "Is there any cost to join?"
       answer: "None. The program is free - we provide support, not the other way around."
+  button:
+    text: "Apply Now"
+    url: "#apply"
 
 apply:
   anchor: apply
-  title: "Think You're a Fit?"
-  text: "If you're already contributing to the Haystack community and want recognition and support for your work, we'd love to hear from you. Just tell us what you've been building."
+  title: "Apply Now"
+  text: "If you're already building with Haystack and want the recognition and backing to go further — we'd love to hear from you."
   button:
     text: "Apply Now"
     url: "#"

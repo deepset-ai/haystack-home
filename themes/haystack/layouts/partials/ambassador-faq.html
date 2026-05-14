@@ -12,6 +12,11 @@
         </div>
         {{ end }}
       </div>
+      {{ with .button }}
+      <div class="faq-cta">
+        {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
+      </div>
+      {{ end }}
     </div>
   </div>
 </section>

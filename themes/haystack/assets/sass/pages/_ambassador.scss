@@ -27,6 +27,18 @@
       opacity: 0.9;
     }
 
+    .hero-secondary-link {
+      font-size: var(--text-base);
+      color: var(--color-white);
+      opacity: 0.75;
+      text-decoration: none;
+      transition: opacity var(--transition-fast) var(--ease);
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
     .hero-note {
       font-size: var(--text-base);
       color: var(--color-white);
@@ -83,6 +95,10 @@
     font-size: var(--text-base);
     color: var(--color-medium-grey);
     font-style: italic;
+  }
+
+  .requirements-cta {
+    margin-top: 2rem;
   }
 
   .status-legend {
@@ -496,6 +512,10 @@
     margin-bottom: 2rem;
   }
 
+  .process-cta {
+    margin-top: 2rem;
+  }
+
   .ambassador-process-steps {
     display: grid;
     grid-template-columns: 1fr;
@@ -555,6 +575,10 @@
     @include sm {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
+
+  .faq-cta {
+    margin-top: 2rem;
   }
 
   .faq-item {

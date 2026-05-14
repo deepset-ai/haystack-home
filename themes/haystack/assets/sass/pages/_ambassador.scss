@@ -208,6 +208,8 @@
 // ─── Ambassador Grid ─────────────────────────────────────────────────────────
 
 .ambassador-grid-section {
+  background-color: var(--color-bg-light-grey);
+
   .inner {
     padding-top: 2rem;
   }
@@ -535,7 +537,6 @@
 // ─── FAQ ──────────────────────────────────────────────────────────────────────
 
 .ambassador-faq {
-  background-color: var(--color-bg-light-grey);
 
   h2 {
     margin-bottom: 2rem;

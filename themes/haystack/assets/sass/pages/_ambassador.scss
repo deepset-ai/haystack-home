@@ -208,6 +208,10 @@
 // ─── Ambassador Grid ─────────────────────────────────────────────────────────
 
 .ambassador-grid-section {
+  .inner {
+    padding-top: 2rem;
+  }
+
   h2 {
     margin-bottom: 1.5rem;
   }
@@ -475,6 +479,13 @@
 
 .ambassador-process {
   h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .process-subtitle {
+    font-size: var(--text-body);
+    color: var(--color-medium-grey);
+    margin-top: 0;
     margin-bottom: 2rem;
   }
 

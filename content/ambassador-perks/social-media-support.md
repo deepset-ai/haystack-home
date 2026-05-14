@@ -1,6 +1,6 @@
 ---
-title: "Building Your Personal Brand"
-description: "We amplify your posts, talks, and tutorials through Haystack's social channels to get your work in front of more people."
+title: "Amplify Your Work"
+description: "We amplify your work, posts, talks, and tutorials through Haystack's channels and programs to help your work reach more builders."
 icon: /images/icons/twitter.svg
 weight: 5
 ---

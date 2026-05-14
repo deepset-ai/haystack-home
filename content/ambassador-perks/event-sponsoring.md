@@ -1,6 +1,6 @@
 ---
-title: "Event Support"
-description: "We support events you organize or speak at - from local meetups to conference talks. Reach out and we'll work something out."
+title: "Support for Talks, Workshops, and Meetups"
+description: "Running a meetup or speaking at a conference? We'll support you — from local events to larger stages."
 icon: /images/icons/enterprise.svg
 weight: 3
 ---

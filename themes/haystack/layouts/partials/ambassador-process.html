@@ -4,6 +4,7 @@
   <div class="container container-padded">
     <div class="inner">
       <h2>{{ .title }}</h2>
+      {{ with .subtitle }}<p class="process-subtitle">{{ . }}</p>{{ end }}
       <div class="ambassador-process-steps">
         {{ range .steps }}
         <div class="process-step">

@@ -1,6 +1,6 @@
 ---
-title: "Direct Line to the Engineering Team"
-description: "Direct access to the Haystack core team for questions, early previews, and feedback on your work."
+title: "Collaborate with the Haystack Core Team"
+description: "Get direct access to the Haystack engineers — from early previews to feedback on what you're building."
 icon: /images/icons/discord.svg
 weight: 2
 ---

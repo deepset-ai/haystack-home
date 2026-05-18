@@ -1,6 +1,4 @@
-{{/* Ambassador listing grid - hidden entirely when no ambassadors */}}
 {{ with .Params.ambassadors }}
-  {{/* Collect non-draft pages */}}
   {{ $ambassadors := where $.Pages "Draft" false }}
   {{ $active := where $ambassadors "Params.status" "active" }}
   {{ $atRisk := where $ambassadors "Params.status" "at-risk" }}

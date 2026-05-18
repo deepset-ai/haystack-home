@@ -1,5 +1,24 @@
 // Ambassador Program page
 
+// Tighter inner padding for all ambassador sections (global --inner-padding is too large)
+.ambassador-hero,
+.ambassador-requirements,
+.ambassador-perks,
+.ambassador-process,
+.ambassador-grid-section,
+.ambassador-faq,
+.ambassador-apply {
+  .inner {
+    @include sm {
+      padding: 4rem 0;
+    }
+
+    @include lg {
+      padding: 5rem 0;
+    }
+  }
+}
+
 // ─── Hero ────────────────────────────────────────────────────────────────────
 
 .ambassador-hero {
@@ -231,10 +250,6 @@
 .ambassador-grid-section {
   background-color: var(--color-bg-light-grey);
 
-  .inner {
-    padding-top: 2rem;
-  }
-
   h2 {
     margin-bottom: 1.5rem;
   }
@@ -247,6 +262,12 @@
     @include sm {
       grid-template-columns: repeat(3, 1fr);
     }
+  }
+
+  .ambassador-grid-empty {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    padding-bottom: 1rem;
   }
 }
 
@@ -647,6 +668,7 @@ body.modal-open {
 // ─── FAQ ──────────────────────────────────────────────────────────────────────
 
 .ambassador-faq {
+  background-color: var(--color-bg-light-orange);
 
   h2 {
     margin-bottom: 2rem;

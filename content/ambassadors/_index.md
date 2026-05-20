@@ -22,7 +22,7 @@ requirements:
     - "You've been active in the Haystack community for at least 6 months"
     - "You've shared your work publicly - blog posts, talks, tutorials, Discord discussions, or real-world projects"
     - "You contribute regularly - not occasionally or one-off"
-    - "You're building or thinking about real-world RAG and agentic systems - not just demos - and are interested in how AI moves into production"
+    - "You're building or thinking about real-world AI systems - not just demos - and are interested in how AI moves into production"
     - "You care about open-source AI, are passionate about Haystack, and enjoy helping others"
   note: "We welcome people with different strengths - builders, public speakers, writers, educators, and community helpers. What matters most is that you're actively contributing to the Haystack ecosystem and want to help others build real-world AI systems. We also aim to represent communities across different regions and backgrounds."
   button:
@@ -44,7 +44,7 @@ status:
 
 perks:
   title: "What You Get"
-  note: "This isn't an exhaustive list - it's just a starting point. If you have an idea for how we can support your work, bring it up. We'd rather find something that actually helps than stick to a fixed menu."
+  note: "This list is just a starting point. We're happy to adjust the scope of the program to support your work."
   button:
     text: "Apply Now"
     url: "#ambassador-modal"

@@ -125,6 +125,12 @@ theme = "haystack"
   weight = 3
 
 [[menu.main]]
+  name = 'Luma'
+  url = 'https://luma.com/haystack'
+  parent = 'community'
+  weight = 4
+
+[[menu.main]]
   identifier = 'haystack-enterprise'
   name = 'Haystack Enterprise'
   url = '/'

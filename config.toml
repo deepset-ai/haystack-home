@@ -100,6 +100,37 @@ theme = "haystack"
   weight = 5
 
 [[menu.main]]
+  identifier = 'community'
+  name = 'Community'
+  url = '/'
+  weight = 6
+
+# Community children
+[[menu.main]]
+  name = 'Ambassadors'
+  url = '/ambassadors'
+  parent = 'community'
+  weight = 1
+
+[[menu.main]]
+  name = 'Discord'
+  url = 'https://discord.com/invite/xYvH6drSmA'
+  parent = 'community'
+  weight = 2
+
+[[menu.main]]
+  name = 'GitHub'
+  url = 'https://github.com/deepset-ai/haystack'
+  parent = 'community'
+  weight = 3
+
+[[menu.main]]
+  name = 'Luma'
+  url = 'https://luma.com/haystack'
+  parent = 'community'
+  weight = 4
+
+[[menu.main]]
   identifier = 'haystack-enterprise'
   name = 'Haystack Enterprise'
   url = '/'

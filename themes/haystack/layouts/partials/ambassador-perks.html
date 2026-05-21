@@ -1,0 +1,33 @@
+{{/* Perks grid - reads from content/ambassador-perks/ */}}
+{{ $perks := where site.RegularPages "Section" "ambassador-perks" }}
+{{ $perks = sort $perks ".Params.weight" }}
+{{ if $perks }}
+<section class="ambassador-perks">
+  <div class="container container-padded">
+    <div class="inner">
+      <h2>{{ with $.Params.perks }}{{ with .title }}{{ . }}{{ else }}Ambassador Perks{{ end }}{{ else }}Ambassador Perks{{ end }}</h2>
+      <div class="ambassador-perks-grid grid-page-grid">
+        {{ range $perks }}
+        <div class="grid-page-card ambassador-perk-card">
+          {{ with .Params.icon }}
+          <div class="perk-icon">
+            <img src="{{ . }}" alt="" />
+          </div>
+          {{ end }}
+          <h3>{{ .Params.title }}</h3>
+          <p>{{ .Params.description }}</p>
+        </div>
+        {{ end }}
+      </div>
+      {{ with $.Params.perks }}{{ with .note }}
+      <p class="perks-note">{{ . }}</p>
+      {{ end }}
+      {{ with .button }}
+      <div class="perks-cta">
+        {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
+      </div>
+      {{ end }}{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,33 @@
+{{/* Requirements and status legend */}}
+{{ with .Params.requirements }}
+<section class="ambassador-requirements">
+  <div class="container container-padded">
+    <div class="inner">
+      <div class="ambassador-requirements-grid">
+
+        <div class="requirements-column">
+          <h2>{{ .title }}</h2>
+          <ul class="requirements-list">
+            {{ range .items }}
+            <li>
+              <img src="/images/icons/check.svg" alt="" />
+              <span>{{ . }}</span>
+            </li>
+            {{ end }}
+          </ul>
+          {{ with .note }}
+          <p class="requirements-note">{{ . }}</p>
+          {{ end }}
+          {{ with .button }}
+          <div class="requirements-cta">
+            {{ partial "arrow-button" (dict "context" . "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
+          </div>
+          {{ end }}
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

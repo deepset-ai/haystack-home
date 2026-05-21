@@ -1,0 +1,42 @@
+{{/* Single ambassador card */}}
+<div class="ambassador-card">
+  <div class="ambassador-cover">
+    {{ with .Params.image }}
+      <img src="{{ . }}" alt="{{ $.Params.title }}" />
+    {{ else }}
+      <span class="ambassador-cover-initial">{{ substr .Params.title 0 1 }}</span>
+    {{ end }}
+  </div>
+
+  <div class="ambassador-info">
+    <h3>{{ .Params.title }}</h3>
+    {{ with .Params.location }}
+    <span class="ambassador-location">{{ . }}</span>
+    {{ end }}
+    {{ with .Params.bio }}
+    <p class="ambassador-bio">{{ . }}</p>
+    {{ end }}
+    {{ with .Params.contributions }}
+    <div class="ambassador-contributions">
+      <span class="contributions-label">Contributions</span>
+      <ul>
+        {{ range . }}
+        <li>
+          <a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>
+          <span class="contribution-type">{{ .type }}</span>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+    {{ with .Params.socials }}
+    <div class="ambassador-socials">
+      {{ range . }}
+      <a href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ .name }}">
+        <img src="{{ .icon }}" alt="{{ .name }}" />
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</div>

@@ -29,7 +29,7 @@ comingSoon:
 #   list:
 #     - title: The Beginner's Guide to LLM Prompting
 #       description: How to engineer your natural language prompts to get the best answers from a large language model
-#       featured_image: /images/hero-bg.jpg
+#       featured_image: /images/hero-bg.png
 #       alt_image: alt
 #       date: 2023-06-15
 #       authors:
@@ -38,7 +38,7 @@ comingSoon:
 
 #     - title: The Beginner's Guide to LLM Prompting
 #       description: How to engineer your natural language prompts to get the best answers from a large language model
-#       featured_image: /images/hero-bg.jpg
+#       featured_image: /images/hero-bg.png
 #       alt_image: alt
 #       date: 2023-06-15
 #       authors:

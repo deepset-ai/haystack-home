@@ -46,9 +46,11 @@ rm -rf haystack-integrations
 git clone --depth=1 https://github.com/deepset-ai/haystack-integrations.git
 cp ./haystack-integrations/integrations/*.md ./content/integrations
 
-rm -rf haystack-advent
-git clone --depth=1 https://$GITHUB_USER_NAME:$GH_HAYSTACK_HOME_PAT@github.com/deepset-ai/advent-of-haystack.git haystack-advent
-cp -R ./haystack-advent/challenges/* ./content/advent-of-haystack
+if [ -n "${GH_HAYSTACK_HOME_PAT:-}" ]; then
+  rm -rf haystack-advent
+  git clone --depth=1 https://$GITHUB_USER_NAME:$GH_HAYSTACK_HOME_PAT@github.com/deepset-ai/advent-of-haystack.git haystack-advent
+  cp -R ./haystack-advent/challenges/* ./content/advent-of-haystack
+fi
 
 npm install
 

@@ -2,6 +2,9 @@ name: Dead Link Detection
 
 on:
   pull_request:
+  push:
+    branches:
+      - main
   schedule:
     - cron: '0 8 * * 1'  # Monday 08:00 UTC
   workflow_dispatch:
@@ -37,11 +40,17 @@ jobs:
           GH_HAYSTACK_HOME_PAT: ${{ secrets.GH_HAYSTACK_HOME_PAT }}
           # build with localhost:1313 base so absolute internal URLs resolve against local server
           SITE_URL: localhost:1313
-        run: bash build.sh
+        run: bash -euo pipefail build.sh
 
       - name: Serve built site
-        run: python3 -m http.server 1313 --directory public &
-
+        run: |
+          python3 -m http.server 1313 --directory public &
+          for i in {1..30}; do
+            curl -fsS http://localhost:1313/ >/dev/null && exit 0
+            sleep 1
+          done
+          echo "http.server did not become ready in time" >&2
+          exit 1
       - name: Check for broken links
         uses: lycheeverse/lychee-action@6da1d14f3a43098a294b7696d93d938aa8d20fc0  # v2.8.0
         with:
@@ -57,10 +66,10 @@ jobs:
             --exclude 'huggingface\.co'
             './public/**/*.html'
           output: lychee-report.md
-          fail: false  # report only — never block merge
+          fail: ${{ github.event_name != 'pull_request' }}  # don't block PRs, but fail scheduled/push runs for visibility
 
       - name: Post report as PR comment
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0  # v3.0.4
         with:
           header: dead-links

@@ -1,0 +1,47 @@
+name: Dead Link Detection
+
+on:
+  pull_request:
+  schedule:
+    - cron: '0 8 * * 1'  # Monday 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write  # required for PR comment posting
+
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
+        with:
+          python-version: '3.x'
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020  # v4
+        with:
+          node-version: '18'
+
+      - uses: peaceiris/actions-hugo@6b1ee2dcc06c9b6629a5317fa0146473914d05e1  # v3
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Generate content
+        env:
+          # GH_USER_NAME secret must exist in repo settings - maps to GITHUB_USER_NAME
+          # used by build.sh to clone the private advent-of-haystack repo
+          GITHUB_USER_NAME: ${{ secrets.GH_USER_NAME }}
+          GH_HAYSTACK_HOME_PAT: ${{ secrets.GH_HAYSTACK_HOME_PAT }}
+        run: bash build.sh
+
+      - name: Check for broken links
+        uses: marccampbell/hugo-linkcheck-action@8383346624d95f935d5f3b1aa6c01c454291c474  # v0.1.3
+        continue-on-error: true  # broken links report only - never block merge
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HUGO_ACTION_COMMENT: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+          HUGO_CONFIG: './config.toml'
+          HUGO_STARTUP_WAIT: 30

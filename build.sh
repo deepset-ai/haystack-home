@@ -44,7 +44,8 @@ cp ./haystack-cookbook/notebooks/*.ipynb ./static/downloads
 ls ./static/downloads
 
 rm -rf haystack-integrations
-git clone --depth=1 https://github.com/deepset-ai/haystack-integrations.git
+INTEGRATIONS_BRANCH="${INTEGRATIONS_BRANCH:-main}"
+git clone --depth=1 --branch "$INTEGRATIONS_BRANCH" https://github.com/deepset-ai/haystack-integrations.git
 cp ./haystack-integrations/integrations/*.md ./content/integrations
 
 rm -rf haystack-advent

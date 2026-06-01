@@ -52,6 +52,9 @@ jobs:
             --remap 'https://localhost:1313 http://localhost:1313'
             --exclude 'linkedin\.com'
             --exclude 'datacamp\.com'
+            --exclude 'openai\.com'
+            --exclude 'mistral\.ai'
+            --exclude 'huggingface\.co'
             './public/**/*.html'
           output: lychee-report.md
           fail: false  # report only — never block merge

@@ -26,7 +26,7 @@ jobs:
 
       - uses: peaceiris/actions-hugo@6b1ee2dcc06c9b6629a5317fa0146473914d05e1  # v3
         with:
-          hugo-version: 'latest'
+          hugo-version: '0.155.2'
           extended: true
 
       - name: Generate content

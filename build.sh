@@ -38,7 +38,6 @@ python3 scripts/generate_markdowns.py --output ../content/cookbook
 deactivate
 cd ..
 ls ./content/
-mkdir ./static/downloads
 echo "Copying notebook files into ./static/downloads..."
 cp ./haystack-cookbook/notebooks/*.ipynb ./static/downloads
 ls ./static/downloads

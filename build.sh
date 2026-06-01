@@ -39,6 +39,7 @@ deactivate
 cd ..
 ls ./content/
 echo "Copying notebook files into ./static/downloads..."
+mkdir -p ./static/downloads
 cp ./haystack-cookbook/notebooks/*.ipynb ./static/downloads
 ls ./static/downloads
 

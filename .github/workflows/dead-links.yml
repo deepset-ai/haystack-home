@@ -59,7 +59,16 @@ jobs:
             exit 0
           fi
 
-          changed_md=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} \
+          git fetch --depth=1 origin ${{ github.event.pull_request.base.sha }}
+
+          # Rename or delete → inbound links from other pages may be broken → full check
+          if git diff --name-status FETCH_HEAD HEAD \
+              | grep -qE '^[DR][0-9]*\s.*content/.*\.md'; then
+            echo "targets=./public/**/*.html" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          changed_md=$(git diff --name-only --diff-filter=AM FETCH_HEAD HEAD \
             | grep '^content/.*\.md$' || true)
 
           if [[ -z "$changed_md" ]]; then

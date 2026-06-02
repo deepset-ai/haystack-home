@@ -46,6 +46,7 @@ ls ./static/downloads
 rm -rf haystack-integrations
 INTEGRATIONS_REPO="${INTEGRATIONS_REPO:-https://github.com/deepset-ai/haystack-integrations.git}"
 INTEGRATIONS_BRANCH="${INTEGRATIONS_BRANCH:-main}"
+echo "Cloning haystack-integrations from ${INTEGRATIONS_REPO} (branch: ${INTEGRATIONS_BRANCH})..."
 git clone --depth=1 --branch "$INTEGRATIONS_BRANCH" "$INTEGRATIONS_REPO"
 cp ./haystack-integrations/integrations/*.md ./content/integrations
 

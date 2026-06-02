@@ -44,10 +44,7 @@ cp ./haystack-cookbook/notebooks/*.ipynb ./static/downloads
 ls ./static/downloads
 
 rm -rf haystack-integrations
-INTEGRATIONS_REPO="${INTEGRATIONS_REPO:-https://github.com/deepset-ai/haystack-integrations.git}"
-INTEGRATIONS_BRANCH="${INTEGRATIONS_BRANCH:-main}"
-echo "Cloning haystack-integrations from ${INTEGRATIONS_REPO} (branch: ${INTEGRATIONS_BRANCH})..."
-git clone --depth=1 --branch "$INTEGRATIONS_BRANCH" "$INTEGRATIONS_REPO"
+git clone --depth=1 https://github.com/deepset-ai/haystack-integrations.git
 cp ./haystack-integrations/integrations/*.md ./content/integrations
 
 if [ -n "${GH_HAYSTACK_HOME_PAT:-}" ]; then

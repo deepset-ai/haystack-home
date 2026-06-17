@@ -3,8 +3,8 @@ layout: author
 title: Bilge Yücel
 name: Bilge Yucel
 slug: bilge-yucel
-position: DevRel Engineer
-image: /images/authors/bilge-yucel.jpg
+position: Sr. DevRel Engineer
+image: /images/authors/bilge-yucel.png
 socials:
   author_page:
     - name: LinkedIn

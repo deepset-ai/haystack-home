@@ -5,8 +5,8 @@ description: "Learn three practical ways to use MCP with Haystack: connect agent
 featured_image: thumbnail.png
 images: ["blog/mcp-with-haystack/thumbnail.png"]
 toc: True
-date: 2026-06-17
-last_updated: 2026-06-17
+date: 2026-06-18
+last_updated: 2026-06-18
 authors:
 - Bilge Yucel
 tags: ["User Story"]
@@ -22,10 +22,12 @@ The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) is an open 
 
 An MCP setup has two sides:
 
-- **MCP servers** expose capabilities (tools, resources, prompts) over a standardized interface.
-- **MCP clients** (an LLM application, an agent, or an AI assistant like Claude Desktop, ChatGPT, or Cursor) discover those capabilities and call them at runtime.
+- **MCP servers** expose capabilities (tools, prompts, resources) over a standardized interface.
+- **MCP clients** (an LLM application, an agent, or an AI assistant like Claude Code, ChatGPT, or Cursor) discover those capabilities and call them at runtime.
 
 A "tool" in MCP terms is just a callable with a name, a description, and a JSON Schema describing its inputs. That small, standardized contract is what makes the whole ecosystem interoperable.
+
+> ⚠️ **Security note:** MCP servers may introduce security risks. Exercise caution when connecting to MCP servers to ensure they do not expose sensitive data or perform malicious or unsafe actions.
 
 ## Why MCP and Haystack are a strong combination
 
@@ -44,9 +46,11 @@ The rest of this guide covers *three* concrete approaches:
 2. Deploy any Haystack pipeline or agent as an MCP server with **Hayhooks**.
 3. Expose Haystack pipelines/agents as managed MCP tools on the **Haystack Enterprise Platform**.
 
-## Approach 1: Use MCP servers as tools in a Haystack Agent
+These approaches are not mutually exclusive. You can connect a Haystack agent to MCP servers, then expose that same agent as an MCP tool via Hayhooks or the Haystack Enterprise Platform.
 
-This is the most common entry point. You have a Haystack [`Agent`](https://docs.haystack.deepset.ai/docs/agent) and you want it to be able to call tools that live behind an MCP server. In practice, you can combine `MCPTool` and `MCPToolset` from the `mcp-haystack` integration with Haystack's `SearchableToolset` for larger catalogs.
+## Approach 1: Haystack as an MCP client  
+
+Using MCP servers as tools is the most common entry point. You have a Haystack [`Agent`](https://docs.haystack.deepset.ai/docs/agent) and you want it to be able to call tools that live behind an MCP server. In practice, you can combine `MCPTool` and `MCPToolset` from the `mcp-haystack` integration with Haystack's `SearchableToolset` for larger catalogs.
 
 ```shell
 pip install mcp-haystack
@@ -76,13 +80,16 @@ time_tool = MCPTool(
 agent = Agent(
     chat_generator=OllamaChatGenerator(model="gemma4:e4b"),
     tools=[time_tool],
-    exit_conditions=["text"],
 )
 
 response = agent.run(
     messages=[ChatMessage.from_user("What is the time in New York? Be brief.")],
 )
 print(response["last_message"].text)
+```
+Result:
+```bash
+8:42 AM Thursday (New York)
 ```
 
 > The Agent component is model-agnostic, so you can swap in any Haystack chat generator your stack supports.
@@ -100,7 +107,7 @@ tool = MCPTool(name="my_tool", server_info=server_info)
 
 `MCPToolset` connects to an MCP server and automatically discovers and loads its tools into a single, manageable unit. It is a subclass of Haystack's `Toolset`, so it plugs directly into a Chat Generator, a `ToolInvoker`, or an `Agent`.
 
-The key feature for controlling agent behavior is the `tool_names` filter, which lets you decide exactly which tools from the server your agent is allowed to use. Here is a practical example with the official filesystem MCP server:
+The key feature for controlling agent behavior is the `tool_names` filter, which lets you decide exactly which tools from the server your agent is allowed to use. Here is a practical example with the [official filesystem MCP server](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem):
 
 ```python
 # pip install mistral-haystack
@@ -128,6 +135,10 @@ response = agent.run(
 )
 print(response["last_message"].text)
 ```
+Response:
+```bash
+Here are the Markdown files in the repo root and a brief summary of each:...
+```
 
 > **Tip:** If you omit `tool_names`, the toolset loads every tool the server offers. Be careful here, exposing 20–30+ tools at once can overwhelm the LLM's tool-selection logic and degrade accuracy. Curating the tool list is one of the simplest reliability wins you can make.
  
@@ -140,44 +151,58 @@ As soon as you connect multiple MCP servers, you hit a hard problem: too many to
 Crucially, the catalog can contain `MCPTool` and `MCPToolset` instances, so you can place many MCP servers behind one searchable, context-efficient interface:
 
 ```python
-# pip install google-genai-haystack
+import os
+
 from haystack.components.agents import Agent
-from haystack.components.generators.chat import GoogleGenAIChatGenerator
 from haystack.dataclasses import ChatMessage
 from haystack.tools import SearchableToolset
-from haystack_integrations.tools.mcp import MCPToolset, StdioServerInfo
-
+from haystack.components.generators.chat import OpenAIChatGenerator
+from haystack_integrations.tools.mcp import MCPToolset, StdioServerInfo, StreamableHttpServerInfo
 # Pull tools from several MCP servers into one catalog
-time_tools = MCPToolset(
-    server_info=StdioServerInfo(command="uvx", args=["mcp-server-time"]),
-)
 fetch_tools = MCPToolset(
-    server_info=StdioServerInfo(command="npx", args=["-y", "@modelcontextprotocol/server-fetch"]),
+    server_info=StdioServerInfo(command="uvx", args=["mcp-server-fetch"]),
 )
 github_tools = MCPToolset(
-    server_info=StdioServerInfo(command="npx", args=["-y", "@modelcontextprotocol/server-github"]),
+    server_info=StreamableHttpServerInfo(
+        url="https://api.githubcopilot.com/mcp/",
+        headers={"Authorization": f"Bearer {os.environ['GITHUB_PAT']}"},
+    ),
 )
 
-catalog = [time_tools, fetch_tools, github_tools, ....]  # could be dozens of tools
-
+catalog = [fetch_tools, github_tools] # can be dozens of tools
 toolset = SearchableToolset(catalog=catalog, top_k=3, search_threshold=8)
 
 agent = Agent(
-    chat_generator=GoogleGenAIChatGenerator(model="gemini-3.5-flash"),
+    chat_generator=OpenAIChatGenerator(model="gpt-5.4-mini"),
     tools=toolset,
 )
 
 result = agent.run(
-    messages=[ChatMessage.from_user("Check recent Haystack PRs and fetch release notes for anything referenced.")]
+    messages=[
+        ChatMessage.from_user(
+            "Check the open PRs on haystack integrations repo "
+            "(deepset-ai/haystack-integrations) and create a social media post "
+            "about the most interesting ones."
+        )
+    ]
 )
+
 print(result["last_message"].text)
 ```
+Result:
+```bash
+Here’s a draft social post highlighting the most interesting open PRs in `deepset-ai/haystack-integrations`....
+```
 
-This pattern keeps the agent's prompt lean while still giving it access to a large universe of capabilities, exactly the kind of context engineering that separates a demo from a production agent. Learn more about it in [Blog Post: Context Engineering for Agentic Systems](https://haystack.deepset.ai/blog/context-engineering)
+In this setup, the [Fetch MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch) runs over stdio, while the [GitHub MCP Server](https://github.com/github/github-mcp-server) uses the official remote MCP endpoint over Streamable HTTP. If your MCP host supports OAuth, you can authenticate with that remote server without passing a PAT header manually.
 
-## Approach 2: Deploy any Haystack pipeline or agent as an MCP server with Hayhooks
+> ⚠️ **Fetch MCP caution:** The Fetch MCP Server can access local/internal IP addresses and may introduce security risk. Use it carefully to avoid exposing sensitive data.
 
-The first approach makes Haystack an MCP *client*. Now let's flip it around. [Hayhooks](https://deepset-ai.github.io/hayhooks/features/mcp-support/) is deepset's tool for serving Haystack pipelines and agents over HTTP, and it can also act as an **MCP server**. This means any Haystack application, a defined pipeline or a full agent, can be exposed as an MCP tool and connected to MCP clients like Claude, ChatGPT, Cursor, or any other agent.
+This pattern keeps the agent's prompt lean while still giving it access to a large universe of capabilities, exactly the kind of context engineering that separates a demo from a production agent. Learn more about context management in [Blog Post: Context Engineering for Agentic Systems](https://haystack.deepset.ai/blog/context-engineering)
+
+## Approach 2: Haystack as an MCP server using Hayhooks
+
+The first approach makes Haystack an MCP *client*. Now let's flip it around. [Hayhooks](https://deepset-ai.github.io/hayhooks) is deepset's tool for serving Haystack pipelines and agents over HTTP, and it can also act as an **MCP server**. This means any Haystack application, a defined pipeline or a full agent, can be exposed as an MCP tool and connected to MCP clients like Claude, ChatGPT, Cursor, or any other agent.
 
 ### Getting started
 
@@ -241,7 +266,7 @@ Once configured, you can deploy, manage, and run your Haystack pipelines directl
 
 This approach is ideal when you self-host and want full control over the infrastructure, while still getting standardized MCP access for free. Learn about the details of how to use Hayhooks as an MCP Server [here](https://deepset-ai.github.io/hayhooks/features/mcp-support).
 
-## Approach 3: Expose pipelines as managed MCP tools on the Haystack Enterprise Platform
+## Approach 3: Haystack as an MCP server using Haystack Enterprise Platform
 
 Self-hosting an MCP server works, but production MCP tools need governance: authentication, access control, scaling, and observability. The [Haystack Enterprise Platform](https://docs.cloud.deepset.ai/docs/getting-started) provides all of this as a managed service, so you can turn any deployed pipeline into an MCP tool without standing up extra infrastructure.
 
@@ -287,7 +312,7 @@ This is what the whole idea looks like end to end: one retrieval pipeline serves
 | Give a Haystack agent a curated group of tools from a server | `MCPToolset` with `tool_names` |
 | Manage a large catalog of tools without bloating context | `SearchableToolset` |
 | Self-host your pipeline/agent as an MCP server | Hayhooks (`hayhooks mcp run`) |
-| Run managed, governed, observable MCP tools in production | Haystack Enterprise Platform |
+| Run managed, governed, observable MCP tools in production | [Haystack Enterprise Platform](https://www.deepset.ai/products-and-services/haystack-enterprise-platform) |
 </div>
 
 ## MCP use cases
@@ -299,8 +324,8 @@ This is what the whole idea looks like end to end: one retrieval pipeline serves
 
 ## Conclusion
 
-MCP gives AI engineers a practical layer: consume external capabilities inside your Haystack agents, and expose your own pipelines and agents as reusable tools for any MCP-compatible client.
+MCP gives AI engineers a practical layer: consume external capabilities inside your Haystack agents, and expose your own pipelines and agents as reusable tools for any MCP-compatible client. 
 
 Use `MCPTool`, `MCPToolset`, and `SearchableToolset` when you want precise, scalable tool access inside an agent. Use **Hayhooks** or the **Haystack Enterprise Platform** when you want to publish Haystack applications for broader teams and production usage.
 
-Ready to try this pattern? Start with the [MCP get started guide](https://docs.haystack.deepset.ai/docs/mcptool), wire one tool into your agent, and iterate from there. If you want more deployment control and governance, explore [MCP tools on Haystack Enterprise](https://docs.cloud.deepset.ai/docs/use-pipeline-as-mcp-tool).
+Ready to try Haystack with MCP? Start with the [MCP get started guide](https://docs.haystack.deepset.ai/docs/mcptool), wire one tool into your agent, and iterate from there. If you want more deployment control and governance, explore [MCP tools on Haystack Enterprise Platform](https://docs.cloud.deepset.ai/docs/use-pipeline-as-mcp-tool).

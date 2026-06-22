@@ -23,44 +23,17 @@
 #                determines this field's top; replaces top
 #   gap        - (optional) extra pixels of padding below the anchor (default 0)
 
-templates:
-  blog:
-    template: scripts/social-images/templates/blog.png
-    fields:
-      title:
-        font: scripts/social-images/fonts/Inter-Bold.ttf
-        size: 48
-        color: "#2558ff"
-        gravity: NorthWest
-        left: 66
-        top: 232
-        max_width: 830
-        max_height: 165
-      description:
-        font: scripts/social-images/fonts/Inter-Regular.ttf
-        size: 20
-        color: "#2558ff"
-        gravity: NorthWest
-        left: 66
-        anchor: title
-        gap: 15
-        max_width: 830
-        max_height: 165
-      authors:
-        font: scripts/social-images/fonts/Inter-Regular.ttf
-        size: 20
-        color: "#242747"
-        gravity: NorthWest
-        top: 527
-        left: 66
-        max_width: 830
-        max_height: 50
+# Content types listed here are skipped entirely (no image generated).
+exclude:
+  - blog
+  - authors
 
+templates:
   cookbook:
     template: scripts/social-images/templates/cookbook.png
     fields:
       title:
-        font: scripts/social-images/fonts/Inter-Bold.ttf
+        font: scripts/social-images/fonts/HafferBold.ttf
         size: 48
         color: "#2558ff"
         gravity: NorthWest
@@ -80,10 +53,10 @@ templates:
         max_height: 165
 
   integrations:
-    template: scripts/social-images/templates/integration.png
+    template: scripts/social-images/templates/Integration.png
     fields:
       title:
-        font: scripts/social-images/fonts/Inter-Bold.ttf
+        font: scripts/social-images/fonts/HafferBold.ttf
         size: 48
         color: "#2558ff"
         gravity: NorthWest
@@ -106,7 +79,7 @@ templates:
     template: scripts/social-images/templates/release-notes.png
     fields:
       title:
-        font: scripts/social-images/fonts/Inter-Bold.ttf
+        font: scripts/social-images/fonts/HafferBold.ttf
         size: 48
         color: "#2558ff"
         gravity: NorthWest
@@ -129,7 +102,7 @@ templates:
     template: scripts/social-images/templates/tutorials.png
     fields:
       title:
-        font: scripts/social-images/fonts/Inter-Bold.ttf
+        font: scripts/social-images/fonts/HafferBold.ttf
         size: 48
         color: "#2558ff"
         gravity: NorthWest
@@ -152,7 +125,7 @@ templates:
     template: scripts/social-images/templates/fallback.png
     fields:
       title:
-        font: scripts/social-images/fonts/Inter-Bold.ttf
+        font: scripts/social-images/fonts/HafferBold.ttf
         size: 48
         color: "#2558ff"
         gravity: NorthWest

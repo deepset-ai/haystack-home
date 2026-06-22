@@ -37,6 +37,34 @@ import yaml
 REPO_ROOT = Path(__file__).parent.parent.parent
 CONFIG_FILE = Path(__file__).parent / "config.yaml"
 
+# Matches emoji, pictographs, ZWJ sequences, variation selectors, skin-tone modifiers,
+# regional indicators, and enclosed characters that ImageMagick cannot render.
+_EMOJI_RE = re.compile(
+    "["
+    "\U0001F600-\U0001F64F"  # emoticons
+    "\U0001F300-\U0001F5FF"  # misc symbols & pictographs
+    "\U0001F680-\U0001F6FF"  # transport & map
+    "\U0001F700-\U0001F77F"  # alchemical symbols
+    "\U0001F780-\U0001F7FF"  # geometric shapes extended
+    "\U0001F800-\U0001F8FF"  # supplemental arrows-c
+    "\U0001F900-\U0001F9FF"  # supplemental symbols & pictographs
+    "\U0001FA00-\U0001FA6F"  # chess symbols
+    "\U0001FA70-\U0001FAFF"  # symbols & pictographs extended-a
+    "\U00002702-\U000027B0"  # dingbats
+    "\U000024C2-\U0001F251"  # enclosed characters
+    "\U0001F1E0-\U0001F1FF"  # regional indicators (flags)
+    "\U0000200D"             # ZWJ
+    "\U0000FE0F"             # variation selector-16
+    "\U0001F3FB-\U0001F3FF"  # skin-tone modifiers
+    "]+",
+    flags=re.UNICODE,
+)
+
+
+def _strip_emoji(text: str) -> str:
+    """Remove emoji and related Unicode from *text*, then collapse extra whitespace."""
+    return re.sub(r" +", " ", _EMOJI_RE.sub("", text)).strip()
+
 
 @dataclass
 class FieldConfig:
@@ -86,13 +114,17 @@ class TemplateConfig:
 class Config:
     def __init__(self, config_file: Path):
         with open(config_file) as f:
-            raw = yaml.safe_load(f)["templates"]
+            doc = yaml.safe_load(f)
         self._templates: dict[str, TemplateConfig] = {
-            name: TemplateConfig.from_dict(data) for name, data in raw.items()
+            name: TemplateConfig.from_dict(data) for name, data in doc["templates"].items()
         }
+        self._exclude: set[str] = set(doc.get("exclude", []))
 
     def resolve(self, content_type: str) -> Optional[TemplateConfig]:
         return self._templates.get(content_type) or self._templates.get("fallback")
+
+    def is_excluded(self, content_type: str) -> bool:
+        return content_type in self._exclude
 
     @property
     def fallback(self) -> Optional[TemplateConfig]:
@@ -117,8 +149,8 @@ class ContentFile:
             md_path=md_path,
             content_type=content_type,
             slug=slug,
-            title=post.get("title") or post.get("name") or "",
-            description=post.get("description") or "",
+            title=_strip_emoji(post.get("title") or post.get("name") or ""),
+            description=_strip_emoji(post.get("description") or ""),
             _metadata=dict(post.metadata),
         )
 
@@ -309,6 +341,10 @@ class FileProcessor:
     def process(self, md_path: Path, dry_run: bool, force: bool = False) -> bool:
         """Process a single content file. Returns True on success or skip."""
         content_file = ContentFile.load(md_path, self._repo_root)
+
+        if self._config.is_excluded(content_file.content_type):
+            print(f"  skip  {self._rel(md_path)}  (excluded content type: {content_file.content_type})")
+            return True
 
         base_cfg = self._config.resolve(content_file.content_type)
         if not base_cfg:

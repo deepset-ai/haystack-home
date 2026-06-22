@@ -39,42 +39,47 @@ Place one PNG per content type in `scripts/social-images/templates/`:
 |---|---|
 | `blog.png` | `content/blog/` posts |
 | `release-notes.png` | `content/release-notes/` pages |
-| `overview.png` | `content/overview/` pages |
-| `tutorials.png` | `content/tutorials/` and `content/cookbook/` |
-| `integrations.png` | `content/integrations/` pages |
-| `fallback.png` | Everything else (also used by `pages/`) |
+| `tutorials.png` | `content/tutorials/` pages |
+| `cookbook.png` | `content/cookbook/` pages |
+| `Integration.png` | `content/integrations/` pages |
+| `fallback.png` | Everything else |
 
 Recommended size: **1200 × 630 px** (standard OG image ratio).
 
 ## Configuration
 
-`config.yaml` controls text placement for each template. Each content type can define multiple named fields (`title`, `description`, etc.) that map to front-matter values:
+`config.yaml` controls text placement for each template. Each content type can define multiple named fields (`title`, `description`, etc.) that map to front-matter values.
+
+Use `exclude:` to skip content types entirely (e.g. blog posts that already have their own thumbnail):
 
 ```yaml
+exclude:
+  - blog
+  - authors
+
 templates:
-  blog:
-    template: scripts/social-images/templates/blog.png
-    output_dir: static/images/social/blog
+  release-notes:
+    template: scripts/social-images/templates/release-notes.png
     fields:
       title:
-        font: scripts/social-images/fonts/GreycliffCFExtraBold.ttf
-        size: 72           # font size in points
-        color: "#fefefd"
+        font: scripts/social-images/fonts/HafferBold.ttf
+        size: 48           # font size in points
+        color: "#2558ff"
         gravity: NorthWest # ImageMagick anchor: NorthWest, Center, South, etc.
-        left: 100          # pixel offset from the gravity anchor (horizontal)
-        top: 200           # pixel offset from the gravity anchor (vertical)
-        max_width: 900     # text wraps within this box width
-        max_height: 300    # text is clipped beyond this height
+        left: 66           # pixel offset from the gravity anchor (horizontal)
+        top: 232           # pixel offset from the gravity anchor (vertical)
+        max_width: 830     # text wraps within this box width
+        max_height: 165    # text is clipped beyond this height
       description:
-        font: scripts/social-images/fonts/HafferRegular.ttf
-        size: 36
-        color: "#d9d9d9"
+        font: scripts/social-images/fonts/Inter-Regular.ttf
+        size: 20
+        color: "#2558ff"
         gravity: NorthWest
-        left: 100
+        left: 66
         anchor: title      # position below the rendered bottom of the title field
-        gap: 20            # extra pixels of padding after the title
-        max_width: 900     # text wraps within this box width
-        max_height: 120    # text is clipped beyond this height
+        gap: 15            # extra pixels of padding after the title
+        max_width: 830     # text wraps within this box width
+        max_height: 165    # text is clipped beyond this height
 ```
 
 **Field reference:**
@@ -102,11 +107,8 @@ canvas_top = anchor_field.top + anchor_bottom_offset + gap - this_field_top_offs
 
 Available fonts (in `scripts/social-images/fonts/`):
 
-- `GreycliffCFExtraBold.ttf` — headings
-- `GreycliffCFBold.ttf`, `GreycliffCFDemiBold.ttf`, `GreycliffCFMedium.ttf`
-- `HafferBold.ttf`, `HafferMedium.ttf`, `HafferRegular.ttf` — body text
-- `CourierPrimeBold.ttf`, `CourierPrimeRegular.ttf` — monospace
-- `Inter-Regular.ttf`, `Inter-Bold.ttf` — Inter (v4.1)
+- `HafferBold.ttf`, `HafferMedium.ttf`, `HafferRegular.ttf` — Haffer (headings + body)
+- `Inter-Regular.ttf` — Inter (body text)
 
 ## How Hugo picks up the images
 

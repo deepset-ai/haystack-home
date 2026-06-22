@@ -79,8 +79,8 @@ def main():
     parser.add_argument("--description", metavar="TEXT", help="Override sample description text")
     args = parser.parse_args()
 
-    if not shutil.which("convert"):
-        print("Error: ImageMagick `convert` not found. Install with: brew install imagemagick")
+    if not shutil.which("magick"):
+        print("Error: ImageMagick `magick` not found. Install with: brew install imagemagick")
         sys.exit(1)
 
     config = Config(CONFIG_FILE)
@@ -102,7 +102,7 @@ def main():
             print(f"Error: no template found at {template_path}")
             sys.exit(1)
 
-    output_dir = REPO_ROOT / template_cfg.output_dir
+    output_dir = REPO_ROOT / "static" / "images" / "social" / args.type
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / "_placement-test.png"
 

@@ -27,6 +27,7 @@
 exclude:
   - blog
   - authors
+  - ambassador-perks
 
 templates:
   cookbook:

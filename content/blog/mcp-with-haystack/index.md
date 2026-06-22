@@ -5,8 +5,8 @@ description: "Learn three practical ways to use MCP with Haystack: connect agent
 featured_image: thumbnail.png
 images: ["blog/mcp-with-haystack/thumbnail.png"]
 toc: True
-date: 2026-06-18
-last_updated: 2026-06-18
+date: 2026-06-22
+last_updated: 2026-06-22
 authors:
 - Bilge Yucel
 tags: ["User Story"]

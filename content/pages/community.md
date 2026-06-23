@@ -1,7 +1,7 @@
 ---
 layout: community
 title: Community
-description: Join the open source Haystack community.
+description: Join the open source Haystack community and contribute to NLP.
 header: dark
 footer: dark
 aliases: [/community/join]

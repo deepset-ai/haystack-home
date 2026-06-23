@@ -1,0 +1,94 @@
+name: Social Images
+
+on:
+  pull_request:
+    paths:
+      - 'content/**/*.md'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4
+        with:
+          ref: ${{ github.head_ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
+        with:
+          python-version: '3.x'
+
+      - name: Install ImageMagick
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y imagemagick
+          # Ubuntu ships ImageMagick 6 (binary: convert). generate.py expects `magick`
+          # (IM7 name). Create an alias so the script works without modification.
+          sudo ln -sf /usr/bin/convert /usr/local/bin/magick
+          magick -version
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/social-images/requirements.txt
+
+      - name: Find changed Markdown files
+        id: diff
+        run: |
+          git fetch --depth=1 origin ${{ github.event.pull_request.base.sha }}
+
+          git diff --name-only --diff-filter=AM FETCH_HEAD HEAD \
+            | grep '^content/.*\.md$' > /tmp/added_modified.txt || true
+
+          git diff --name-only --diff-filter=DR FETCH_HEAD HEAD \
+            | grep '^content/.*\.md$' > /tmp/deleted.txt || true
+
+          echo "has_added=$([ -s /tmp/added_modified.txt ] && echo 'true' || echo 'false')" >> "$GITHUB_OUTPUT"
+          echo "has_deleted=$([ -s /tmp/deleted.txt ] && echo 'true' || echo 'false')" >> "$GITHUB_OUTPUT"
+
+      - name: Generate social images for added/modified files
+        if: steps.diff.outputs.has_added == 'true'
+        run: |
+          while IFS= read -r f; do
+            echo "Generating: $f"
+            python3 scripts/social-images/generate.py --file "$f" --force
+          done < /tmp/added_modified.txt
+
+      - name: Remove orphaned images for deleted files
+        if: steps.diff.outputs.has_deleted == 'true'
+        run: |
+          while IFS= read -r f; do
+            # Mirror ContentFile._detect_type (generate.py:170): first segment after content/
+            type="${f#content/}"
+            type="${type%%/*}"
+            # Mirror ContentFile._derive_slug (generate.py:178): parent dir for index files, else stem
+            filename="$(basename "$f")"
+            if [[ "$filename" == "index.md" || "$filename" == "_index.md" ]]; then
+              slug="$(basename "$(dirname "$f")")"
+            else
+              slug="${filename%.md}"
+            fi
+            img="static/images/social/${type}/${slug}.png"
+            echo "Removing orphan: $img"
+            git rm -f --ignore-unmatch "$img"
+          done < /tmp/deleted.txt
+
+      - name: Commit and push images
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add static/images/social/
+          if git diff --cached --quiet; then
+            echo "No image changes to commit."
+          else
+            git commit -m "chore(social-images): sync images for changed content"
+            git push
+          fi
+
+      - name: Notice for fork PRs
+        if: github.event.pull_request.head.repo.full_name != github.repository
+        run: |
+          echo "::notice::Fork PR — social images not committed automatically. Run 'python3 scripts/social-images/generate.py' locally (needs ImageMagick + Python deps) or ask a maintainer to regenerate."

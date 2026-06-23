@@ -11,9 +11,11 @@ brew install imagemagick
 pip3 install -r scripts/social-images/requirements.txt
 ```
 
-## Build integration
+## CI integration
 
-`build.sh` calls `generate.py` automatically after all content (including auto-generated tutorials, cookbook, and integrations) is in place and before Hugo runs.
+`.github/workflows/social-images.yml` runs on every PR that changes a `content/**/*.md` file. It generates or removes images for the changed files and commits them back to the PR branch via `github-actions[bot]`. No local tooling required.
+
+Fork PRs emit a workflow notice instead — run `generate.py` locally or ask a maintainer.
 
 ## Local usage
 

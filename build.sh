@@ -46,6 +46,13 @@ ls ./static/downloads
 rm -rf haystack-integrations
 git clone --depth=1 https://github.com/deepset-ai/haystack-integrations.git
 cp ./haystack-integrations/integrations/*.md ./content/integrations
+mkdir -p ./static/logos
+cp -R ./haystack-integrations/logos/* ./static/logos/
+mkdir -p ./static/images
+cp -R ./haystack-integrations/images/* ./static/images/ 2>/dev/null || true
+# Rewrite deepset-owned haystack-integrations raw GitHub image URLs to local paths
+find ./content/integrations -name "*.md" -type f -exec \
+  sed -i 's~https://raw.githubusercontent.com/deepset-ai/haystack-integrations/main/images/~/images/~g' {} \;
 
 if [ -n "${GH_HAYSTACK_HOME_PAT:-}" ]; then
   rm -rf haystack-advent

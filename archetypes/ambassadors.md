@@ -8,9 +8,6 @@ location: "City, Country"
 # Status: active | at-risk | alumni
 status: active
 
-# Tier: 1 = open application, 2 = invite-only
-tier: 1
-
 # Quarter they joined, e.g. "2025-Q1"
 joined: "{{ dateFormat "2006" .Date }}-Q1"
 

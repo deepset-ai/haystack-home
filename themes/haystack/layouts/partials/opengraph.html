@@ -48,18 +48,33 @@
   "
 />
 
-{{- with $.Params.images -}}
-  {{- range first 6 . }}
+{{- $slug := "" -}}
+{{- with .File -}}
+  {{- $slug = .ContentBaseName -}}
+  {{- if or (eq $slug "index") (eq $slug "_index") -}}
+    {{- $slug = path.Base (strings.TrimSuffix .Dir "/") -}}
+  {{- end -}}
+{{- end -}}
+{{- $socialImageStatic := printf "static/images/social/%s/%s.png" .Section $slug -}}
+{{- $socialImageURL := printf "/images/social/%s/%s.png" .Section $slug -}}
+{{- $hasSocialImage := and $slug (os.FileExists $socialImageStatic) -}}
+
+{{- if $.Params.images -}}
+  {{- range first 6 $.Params.images }}
     <meta property="og:image" content="{{ . | absURL }}" />
   {{ end -}}
+{{- else if $hasSocialImage -}}
+  <meta property="og:image" content="{{ $socialImageURL | absURL }}" />
 {{- else -}}
   {{- with $.Site.Params.images }}
     <meta property="og:image" content="{{ index . 0 | absURL }}" />
   {{ end -}}
 {{- end -}}
 
-{{- with $.Params.images -}}
-  <meta name="twitter:image" content="{{ index . 0 | absURL }}" />
+{{- if $.Params.images -}}
+  <meta name="twitter:image" content="{{ index $.Params.images 0 | absURL }}" />
+{{- else if $hasSocialImage -}}
+  <meta name="twitter:image" content="{{ $socialImageURL | absURL }}" />
 {{- else -}}
   {{- with $.Site.Params.images }}
     <meta name="twitter:image" content="{{ index . 0 | absURL }}" />

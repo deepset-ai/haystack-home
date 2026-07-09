@@ -15,7 +15,7 @@
   {{/* Header / tags */}}
   <div class="integration-card-logo">
     {{ with .Params.logo }}
-      <img src="https://raw.githubusercontent.com/deepset-ai/haystack-integrations/main{{ . }}" alt="logo">
+      <img src="{{ . }}" alt="logo">
     {{ else }}
     <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.55 77.55"><defs><style>.cls-1{fill:#fff;}</style></defs><g id="Layer_1-2"><path class="cls-1" d="m65.92,0H11.63C5.21,0,0,5.21,0,11.63v54.29c0,6.42,5.21,11.63,11.63,11.63h54.29c6.42,0,11.63-5.21,11.63-11.63V11.63c0-6.42-5.21-11.63-11.63-11.63ZM28.91,57.79c-1.28,0-2.33-1.05-2.33-2.33s1.04-2.34,2.33-2.34,2.34,1.05,2.34,2.34-1.05,2.33-2.34,2.33Zm22.06,0h-4.42v-18.58h-15.43v10.75h-4.43v-13.45h.02v-1.72h-.02v-15.03h4.43v15.03h19.85v23Z"/></g></svg>
     {{ end }}

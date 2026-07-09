@@ -46,6 +46,8 @@ ls ./static/downloads
 rm -rf haystack-integrations
 git clone --depth=1 https://github.com/deepset-ai/haystack-integrations.git
 cp ./haystack-integrations/integrations/*.md ./content/integrations
+mkdir -p ./static/logos
+cp -R ./haystack-integrations/logos/* ./static/logos/
 
 if [ -n "${GH_HAYSTACK_HOME_PAT:-}" ]; then
   rm -rf haystack-advent

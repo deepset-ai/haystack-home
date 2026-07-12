@@ -1,6 +1,6 @@
 ---
 title: "Nicola Procopio"
-location: "Italy"
+location: "Vibo Valentia, Italy"
 status: active
 joined: "2026-Q3"
 image: /images/ambassadors/nicola-procopio.jpg

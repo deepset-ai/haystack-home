@@ -1,0 +1,86 @@
+{{/*
+  Launch Week hero: dark navy section with eyebrow, title, CTAs, and countdown.
+*/}}
+{{/* Find the next upcoming day for the countdown label */}}
+{{ $nextDayNum := 0 }}
+{{ $nextDayDate := "" }}
+{{ $liveCount := 0 }}
+{{ range .Params.days }}
+  {{ $metaDate := time.AsTime .date }}
+  {{ $isPreview := and hugo.IsServer $.Params.preview_live_day (eq .day (int $.Params.preview_live_day)) }}
+  {{ $isConfigured := and .published .cta.url .title }}
+  {{ $isLive := or (and $isPreview .title) (and $isConfigured (ge now $metaDate)) }}
+  {{ if $isLive }}
+    {{ $liveCount = add $liveCount 1 }}
+  {{ else if eq $nextDayNum 0 }}
+    {{ $nextDayNum = .day }}
+    {{ $nextDayDate = .date }}
+  {{ end }}
+{{ end }}
+
+{{ $countdownTarget := .Params.countdown_date }}
+{{ $showCountdown := false }}
+{{ $countdownLabel := "Kicking off in" }}
+{{ if gt $liveCount 0 }}
+  {{ if gt $nextDayNum 0 }}
+    {{ $countdownTarget = $nextDayDate }}
+    {{ $countdownLabel = printf "Day %d drops in" $nextDayNum }}
+    {{ $showCountdown = true }}
+  {{ end }}
+{{ else if lt now (time.AsTime .Params.countdown_date) }}
+  {{ $showCountdown = true }}
+{{ end }}
+
+<div class="launch-week-hero">
+  <div class="container">
+    {{ with .Params.hero.eyebrow }}<span class="eyebrow">{{ . }}</span>{{ end }}
+
+    <h1>{{ .Params.hero.title }}</h1>
+
+    <div class="hero-text">
+      {{ .Params.hero.text | markdownify }}
+    </div>
+
+    <div class="hero-actions">
+      {{ with .Params.hero.cta_primary }}
+        {{ partial "arrow-button" (dict "context" $ "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
+      {{ end }}
+      {{ with .Params.hero.cta_secondary }}
+        {{ partial "arrow-button" (dict "context" $ "type" "link" "text" .text "url" .url "color" "dark-blue") }}
+      {{ else }}
+        {{ with .Params.discuss }}
+          {{ partial "arrow-button" (dict "context" $ "type" "link" "text" "Join the discussion" "url" . "color" "dark-blue") }}
+        {{ end }}
+      {{ end }}
+    </div>
+
+    {{ if $showCountdown }}
+        <div
+          class="launch-week-countdown"
+          data-countdown-target="{{ $countdownTarget }}"
+          data-countdown-label="{{ $countdownLabel }}"
+          aria-live="polite"
+        >
+          <span class="countdown-label">{{ $countdownLabel }}</span>
+          <div class="countdown-timer">
+            <div class="countdown-segment">
+              <span class="countdown-value" data-unit="days">--</span>
+              <span class="countdown-unit">Days</span>
+            </div>
+            <div class="countdown-segment">
+              <span class="countdown-value" data-unit="hours">--</span>
+              <span class="countdown-unit">Hours</span>
+            </div>
+            <div class="countdown-segment">
+              <span class="countdown-value" data-unit="minutes">--</span>
+              <span class="countdown-unit">Minutes</span>
+            </div>
+            <div class="countdown-segment">
+              <span class="countdown-value" data-unit="seconds">--</span>
+              <span class="countdown-unit">Seconds</span>
+            </div>
+          </div>
+        </div>
+    {{ end }}
+  </div>
+</div>

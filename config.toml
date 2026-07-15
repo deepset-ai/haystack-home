@@ -124,6 +124,12 @@ theme = "haystack"
   parent = 'overview'
   weight = 3
 
+[[menu.main]]
+  name = 'Ambassadors'
+  url = '/ambassadors'
+  parent = 'overview'
+  weight = 4
+
 # Learn children
 [[menu.main]]
   name = '📚 Tutorials & Walkthroughs'

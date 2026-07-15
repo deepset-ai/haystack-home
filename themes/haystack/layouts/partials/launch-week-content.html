@@ -92,7 +92,13 @@
               {{ with $meta.features }}
                 <ul class="detail-features">
                   {{ range . }}
-                    <li>{{ . | markdownify | replaceRE "</?p>" "" | safeHTML }}</li>
+                    {{ $text := . }}
+                    {{ if reflect.IsMap . }}
+                      {{ range $k, $v := . }}
+                        {{ $text = printf "%s: %s" $k $v }}
+                      {{ end }}
+                    {{ end }}
+                    <li>{{ $text | markdownify | replaceRE "</?p>" "" | safeHTML }}</li>
                   {{ end }}
                 </ul>
               {{ end }}
@@ -148,6 +154,9 @@
         <form
           class="js-newsletter-form disabled launch-week-newsletter-form"
           aria-label="Subscribe to launch week updates"
+          data-hubspot-portal-id="{{ .hubspot_portal_id }}"
+          data-hubspot-form-id="{{ .hubspot_form_id }}"
+          data-hubspot-region="{{ .hubspot_region | default "na1" }}"
         >
           <input
             type="email"

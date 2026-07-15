@@ -1,4 +1,16 @@
 // Handles newsletter submission
+const DEFAULT_HUBSPOT_PORTAL_ID = "4561480";
+const DEFAULT_HUBSPOT_FORM_ID = "6256f9c8-3243-45a9-ac59-72b2ab077622";
+
+const hubspotSubmitUrl = (form) => {
+  const portalId = form.dataset.hubspotPortalId || DEFAULT_HUBSPOT_PORTAL_ID;
+  const formId = form.dataset.hubspotFormId || DEFAULT_HUBSPOT_FORM_ID;
+  const region = form.dataset.hubspotRegion || "na1";
+  const host = region === "eu1" ? "api.hsforms.eu" : "api.hsforms.com";
+
+  return `https://${host}/submissions/v3/integration/submit/${portalId}/${formId}`;
+};
+
 export const newsletters = () => {
   const forms = document.querySelectorAll(".js-newsletter-form");
 
@@ -21,18 +33,15 @@ export const newsletters = () => {
       // Submit
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const res = await fetch(
-          "https://api.hsforms.com/submissions/v3/integration/submit/4561480/6256f9c8-3243-45a9-ac59-72b2ab077622",
-          {
-            body: JSON.stringify({
-              fields: [{ name: "email", value: e.target.email.value }],
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-            method: "POST",
-          }
-        );
+        const res = await fetch(hubspotSubmitUrl(form), {
+          body: JSON.stringify({
+            fields: [{ name: "email", value: e.target.email.value }],
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        });
 
         const result = await res.json();
 

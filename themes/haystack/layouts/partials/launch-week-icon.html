@@ -1,0 +1,32 @@
+{{/* Named icons for launch week day cards. Set `icon` in front matter. */}}
+{{ $icon := . }}
+<svg class="launch-week-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  {{ if eq $icon "release" }}
+    <path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M5 19l2-4M19 19l-2-4M12 21v-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="12" cy="9" r="2" fill="currentColor"/>
+  {{ else if eq $icon "metadata" }}
+    <path d="M7 7h10v10H7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M10 7V5.5A1.5 1.5 0 0111.5 4h1A1.5 1.5 0 0114 5.5V7" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M9 12h6M9 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="17" cy="17" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M17 15.5v3M15.5 17h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  {{ else if eq $icon "computer" }}
+    <rect x="3" y="5" width="18" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M8 20h8M10 17h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M8 9l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  {{ else if eq $icon "mystery" }}
+    <rect x="5" y="8" width="14" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M5 11h14" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M12 8V5.5M9.5 5.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M12 14v.01M12 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  {{ else if eq $icon "hitl" }}
+    <circle cx="9" cy="8" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M5 18c0-2.2 1.8-4 4-4s4 1.8 4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M16 10h5M18.5 7.5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M14 18c1.5-1.5 3-2 5-2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  {{ else }}
+    <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  {{ end }}
+</svg>

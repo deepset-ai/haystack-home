@@ -1,0 +1,173 @@
+{{/*
+  Launch Week body: day selector grid, detail cards with code snippets, newsletter CTA.
+  A day is "live" when `published: true`, `cta.url` and `title` are set, and
+  `days[].date` has passed (or preview_live_day is set on hugo server).
+*/}}
+<div class="launch-week-content">
+  <div class="container">
+    <div class="launch-week-week-header">
+      <h2>The week</h2>
+      <p>Click a day to focus it below</p>
+    </div>
+
+    {{ $launchWeek := . }}
+    {{ $defaultFocus := 1 }}
+    {{ if and hugo.IsServer $launchWeek.Params.preview_live_day (gt (int $launchWeek.Params.preview_live_day) 0) }}
+      {{ $defaultFocus = int $launchWeek.Params.preview_live_day }}
+    {{ else }}
+      {{ $foundLive := false }}
+      {{ range .Params.days }}
+        {{ $meta := . }}
+        {{ $metaDate := time.AsTime $meta.date }}
+        {{ $isConfigured := and $meta.published $meta.cta.url $meta.title }}
+        {{ $isLive := and $isConfigured (ge now $metaDate) }}
+        {{ if and $isLive (not $foundLive) }}
+          {{ $defaultFocus = $meta.day }}
+          {{ $foundLive = true }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    <div class="launch-week-week-grid" role="tablist" aria-label="Launch week days">
+      {{ range .Params.days }}
+        {{ $meta := . }}
+        {{ $metaDate := time.AsTime $meta.date }}
+        {{ $isPreview := and hugo.IsServer $launchWeek.Params.preview_live_day (eq $meta.day (int $launchWeek.Params.preview_live_day)) }}
+        {{ $isConfigured := and $meta.published $meta.cta.url $meta.title }}
+        {{ $isLive := or (and $isPreview $meta.title) (and $isConfigured (ge now $metaDate)) }}
+
+        <button
+          type="button"
+          class="week-day-card{{ if $isLive }} is-live{{ end }}{{ if eq $meta.day $defaultFocus }} is-active{{ end }}"
+          role="tab"
+          aria-selected="{{ if eq $meta.day $defaultFocus }}true{{ else }}false{{ end }}"
+          aria-controls="launch-week-day-{{ $meta.day }}"
+          data-day="{{ $meta.day }}"
+        >
+          {{ if $isLive }}
+            <span class="pill pill-live">Live</span>
+          {{ end }}
+          <span class="week-day-icon">
+            {{ partial "launch-week-icon" $meta.icon }}
+          </span>
+          <span class="week-day-number">Day {{ printf "%02d" $meta.day }}</span>
+          <span class="week-day-weekday">{{ $meta.weekday }}</span>
+          <span class="week-day-title">{{ $meta.title }}</span>
+          <span class="week-day-tagline">{{ $meta.tagline }}</span>
+          <span class="week-day-date">{{ $metaDate.Format "Jan 2" }}</span>
+        </button>
+      {{ end }}
+    </div>
+
+    <div class="launch-week-detail-cards">
+      {{ range .Params.days }}
+        {{ $meta := . }}
+        {{ $metaDate := time.AsTime $meta.date }}
+        {{ $isPreview := and hugo.IsServer $launchWeek.Params.preview_live_day (eq $meta.day (int $launchWeek.Params.preview_live_day)) }}
+        {{ $isConfigured := and $meta.published $meta.cta.url $meta.title }}
+        {{ $isLive := or (and $isPreview $meta.title) (and $isConfigured (ge now $metaDate)) }}
+
+        <article
+          id="launch-week-day-{{ $meta.day }}"
+          class="launch-week-detail-card{{ if $isLive }} is-live{{ end }}{{ if eq $meta.day $defaultFocus }} is-focused{{ end }}"
+          role="tabpanel"
+          data-day="{{ $meta.day }}"
+        >
+          <div class="detail-card-body">
+            <div class="detail-card-text">
+              <div class="detail-card-header">
+                <span class="detail-day-label">
+                  Day {{ printf "%02d" $meta.day }} · {{ $meta.weekday }}, {{ $metaDate.Format "Jan 2" }}
+                </span>
+                {{ if $isLive }}
+                  <span class="pill pill-live">Live</span>
+                {{ else }}
+                  <span class="pill pill-date">Coming {{ $metaDate.Format "January 2" }}</span>
+                {{ end }}
+              </div>
+
+              <h3>{{ $meta.title }}</h3>
+              <p class="detail-description">{{ $meta.description }}</p>
+
+              {{ with $meta.features }}
+                <ul class="detail-features">
+                  {{ range . }}
+                    {{ $text := . }}
+                    {{ if reflect.IsMap . }}
+                      {{ range $k, $v := . }}
+                        {{ $text = printf "%s: %s" $k $v }}
+                      {{ end }}
+                    {{ end }}
+                    <li>{{ $text | markdownify | replaceRE "</?p>" "" | safeHTML }}</li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+
+              {{ with $meta.cta }}
+                {{ if $isLive }}
+                  {{ $isExternal := or (hasPrefix .url "http://") (hasPrefix .url "https://") }}
+                  <a
+                    href="{{ .url }}"
+                    class="detail-cta"
+                    {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}
+                  >
+                    {{ .text }}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 13 14" aria-hidden="true">
+                      <path d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/>
+                    </svg>
+                  </a>
+                {{ else }}
+                  <span class="detail-cta is-disabled" aria-disabled="true">{{ .text }}</span>
+                {{ end }}
+              {{ end }}
+            </div>
+
+            {{ with $meta.code }}
+              <div class="detail-card-code{{ if not $isLive }} is-locked{{ end }}">
+                <div class="code-window">
+                  <div class="code-window-header">
+                    <span class="code-filename">{{ .filename }}</span>
+                    <button type="button" class="code-copy-button" aria-label="Copy code">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="code-content highlight">
+                    {{ highlight .snippet .language "" }}
+                  </div>
+                </div>
+              </div>
+            {{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+
+  {{ with .Params.newsletter }}
+    <div class="launch-week-newsletter" id="launch-week-newsletter">
+      <div class="container">
+        <h2>{{ .title }}</h2>
+        <p>{{ .text }}</p>
+        <form
+          class="js-newsletter-form disabled launch-week-newsletter-form"
+          aria-label="Subscribe to launch week updates"
+          data-hubspot-portal-id="{{ .hubspot_portal_id }}"
+          data-hubspot-form-id="{{ .hubspot_form_id }}"
+          data-hubspot-region="{{ .hubspot_region | default "na1" }}"
+        >
+          <input
+            type="email"
+            name="email"
+            placeholder="{{ .input_placeholder }}"
+            aria-label="Email"
+          />
+          {{ partial "arrow-button" (dict "context" $ "type" "submitButton" "text" .button_text "color" "deepset-blue") }}
+          <span class="success-message">{{ .success_message }}</span>
+        </form>
+      </div>
+    </div>
+  {{ end }}
+</div>

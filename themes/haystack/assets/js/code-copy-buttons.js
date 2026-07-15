@@ -1,6 +1,10 @@
 // Adds copy to clipboard buttons to code blocks
 
-document.addEventListener("DOMContentLoaded", addCopyButtons);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", addCopyButtons);
+} else {
+  addCopyButtons();
+}
 
 function addCopyButtons() {
   document.querySelectorAll(".highlight > pre > code").forEach(function (codeBlock) {

@@ -41,16 +41,56 @@
       {{ .Params.hero.text | markdownify }}
     </div>
 
-    <div class="hero-actions">
-      {{ with .Params.hero.cta_primary }}
-        {{ partial "arrow-button" (dict "context" $ "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
+    {{ $newsletterInHero := and .Params.newsletter (eq (.Params.newsletter.placement | default "footer") "hero") }}
+    {{ if $newsletterInHero }}
+      <div class="hero-newsletter" id="launch-week-newsletter">
+        {{ with .Params.newsletter.text }}
+          <p class="hero-newsletter-text">{{ . }}</p>
+        {{ end }}
+        {{ partial "launch-week-newsletter-form" (dict "context" $ "newsletter" .Params.newsletter "class" "launch-week-newsletter-form hero-newsletter-form") }}
+      </div>
+    {{ end }}
+
+    <div class="hero-actions{{ if $newsletterInHero }} hero-actions--with-form{{ end }}">
+      {{ if not $newsletterInHero }}
+        {{ with .Params.hero.cta_primary }}
+          {{ partial "arrow-button" (dict "context" $ "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
+        {{ end }}
+      {{ end }}
+      {{ with .Params.hero.follow }}
+        <div class="hero-socials" aria-label="Follow Haystack">
+          {{ with .linkedin }}
+            <a
+              href="{{ .url }}"
+              class="hero-social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{ .text | default "Follow on" }} LinkedIn"
+            >
+              <span class="hero-social-link-text">{{ .text | default "Follow on" }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19" role="img" aria-hidden="true" focusable="false">
+                <path d="M4.534 6.3h-3.6a.45.45 0 00-.45.45v11.7c0 .249.202.45.45.45h3.6a.45.45 0 00.45-.45V6.75a.45.45 0 00-.45-.45zM2.716 4.5a2.241 2.241 0 002.232-2.25A2.24 2.24 0 002.716 0 2.241 2.241 0 00.484 2.25c0 1.243 1 2.25 2.232 2.25zm12.619 14.4h2.7a.45.45 0 00.45-.45v-7.56c0-3.393-1.917-5.04-4.599-5.04a3.789 3.789 0 00-2.853 1.143.369.369 0 01-.648-.243.45.45 0 00-.45-.45h-2.7a.45.45 0 00-.45.45v11.7a.45.45 0 00.45.45h2.7a.45.45 0 00.45-.45V11.7a2.25 2.25 0 114.5 0v6.75a.45.45 0 00.45.45z" fill="currentColor"/>
+              </svg>
+            </a>
+          {{ end }}
+          {{ with .x }}
+            <a
+              href="{{ .url }}"
+              class="hero-social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="{{ .text | default "Follow on" }} X"
+            >
+              <span class="hero-social-link-text">{{ .text | default "Follow on" }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
+              </svg>
+            </a>
+          {{ end }}
+        </div>
       {{ end }}
       {{ with .Params.hero.cta_secondary }}
         {{ partial "arrow-button" (dict "context" $ "type" "link" "text" .text "url" .url "color" "dark-blue") }}
-      {{ else }}
-        {{ with .Params.discuss }}
-          {{ partial "arrow-button" (dict "context" $ "type" "link" "text" "Join the discussion" "url" . "color" "dark-blue") }}
-        {{ end }}
       {{ end }}
     </div>
 

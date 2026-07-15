@@ -1,0 +1,24 @@
+{{/*
+  Launch Week newsletter signup form. Used in hero and/or footer.
+  Expects dict: newsletter (params), class (optional extra class), id (optional)
+*/}}
+{{ $newsletter := .newsletter }}
+{{ $class := .class | default "launch-week-newsletter-form" }}
+{{ $id := .id }}
+<form
+  class="js-newsletter-form disabled {{ $class }}"
+  {{ with $id }}id="{{ . }}"{{ end }}
+  aria-label="Subscribe to launch week updates"
+  data-hubspot-portal-id="{{ $newsletter.hubspot_portal_id }}"
+  data-hubspot-form-id="{{ $newsletter.hubspot_form_id }}"
+  data-hubspot-region="{{ $newsletter.hubspot_region | default "na1" }}"
+>
+  <input
+    type="email"
+    name="email"
+    placeholder="{{ $newsletter.input_placeholder }}"
+    aria-label="Email"
+  />
+  {{ partial "arrow-button" (dict "context" .context "type" "submitButton" "text" $newsletter.button_text "color" "deepset-blue") }}
+  <span class="success-message">{{ $newsletter.success_message }}</span>
+</form>

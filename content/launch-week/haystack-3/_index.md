@@ -10,13 +10,17 @@ hero:
   eyebrow: "LAUNCH WEEK · JUL 20–24"
   title: Haystack 3.0 Launch Week
   text: |
-    Five days. Five drops. We ship a new piece of Haystack 3.0 every day. Stay tuned for what's next.
+    Five days. Five drops. We ship a new piece of Haystack 3.0 content every day.
   cta_primary:
     text: Get launch updates
     url: "#launch-week-newsletter"
-  cta_secondary:
-    text: Join the discussion
-    url: https://github.com/deepset-ai/haystack/discussions
+  follow:
+    linkedin:
+      text: Follow on
+      url: https://www.linkedin.com/showcase/haystack-ai-framework
+    x:
+      text: Follow on
+      url: https://x.com/Haystack_AI
 
 # Set to a day number (e.g. 2) to preview that day's live card locally.
 # Bypasses `published` and the scheduled date. Only works on `hugo server`.
@@ -29,6 +33,8 @@ hero:
 countdown_date: 2026-07-20T15:00:00+02:00
 
 newsletter:
+  # placement: hero | footer (default: footer)
+  placement: hero
   title: Don't miss a drop
   text: One email when each day goes live. No spam, just the launches.
   input_placeholder: you@company.com

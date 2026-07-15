@@ -147,27 +147,14 @@
   </div>
 
   {{ with .Params.newsletter }}
-    <div class="launch-week-newsletter" id="launch-week-newsletter">
-      <div class="container">
-        <h2>{{ .title }}</h2>
-        <p>{{ .text }}</p>
-        <form
-          class="js-newsletter-form disabled launch-week-newsletter-form"
-          aria-label="Subscribe to launch week updates"
-          data-hubspot-portal-id="{{ .hubspot_portal_id }}"
-          data-hubspot-form-id="{{ .hubspot_form_id }}"
-          data-hubspot-region="{{ .hubspot_region | default "na1" }}"
-        >
-          <input
-            type="email"
-            name="email"
-            placeholder="{{ .input_placeholder }}"
-            aria-label="Email"
-          />
-          {{ partial "arrow-button" (dict "context" $ "type" "submitButton" "text" .button_text "color" "deepset-blue") }}
-          <span class="success-message">{{ .success_message }}</span>
-        </form>
+    {{ if ne (.placement | default "footer") "hero" }}
+      <div class="launch-week-newsletter" id="launch-week-newsletter">
+        <div class="container">
+          <h2>{{ .title }}</h2>
+          <p>{{ .text }}</p>
+          {{ partial "launch-week-newsletter-form" (dict "context" $ "newsletter" .) }}
+        </div>
       </div>
-    </div>
+    {{ end }}
   {{ end }}
 </div>

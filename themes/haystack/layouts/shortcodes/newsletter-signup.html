@@ -1,0 +1,46 @@
+{{/*
+  Newsletter / email signup form for use in Markdown content.
+
+  Usage:
+    {{< newsletter-signup >}}
+    {{< newsletter-signup title="Don't miss a drop" text="One email when each day goes live." >}}
+
+  Optional params:
+    title, text, placeholder, button, success,
+    portal_id, form_id, region, id, aria_label
+*/}}
+
+{{ $title := .Get "title" | default "Don't miss a drop" }}
+{{ $text := .Get "text" }}
+{{ $placeholder := .Get "placeholder" | default "you@email.com" }}
+{{ $button := .Get "button" | default "Subscribe" }}
+{{ $success := .Get "success" | default "Thanks! You'll soon receive a confirmation email 📧" }}
+{{ $portalId := .Get "portal_id" | default "4561480" }}
+{{ $formId := .Get "form_id" | default "dc1cbdd1-6272-4d9c-b56f-130b17c02e57" }}
+{{ $region := .Get "region" | default "na1" }}
+{{ $id := .Get "id" | default "blog-newsletter" }}
+{{ $ariaLabel := .Get "aria_label" | default "Subscribe to email updates" }}
+
+<aside class="blog-newsletter-signup" id="{{ $id }}">
+  <h3>{{ $title }}</h3>
+  {{ with $text }}
+    <p>{{ . }}</p>
+  {{ end }}
+  <form
+    class="js-newsletter-form disabled blog-newsletter-signup-form"
+    aria-label="{{ $ariaLabel }}"
+    data-hubspot-portal-id="{{ $portalId }}"
+    data-hubspot-form-id="{{ $formId }}"
+    data-hubspot-region="{{ $region }}"
+  >
+    <input
+      type="email"
+      name="email"
+      placeholder="{{ $placeholder }}"
+      aria-label="Email"
+      autocomplete="email"
+    />
+    {{ partial "arrow-button" (dict "context" . "type" "submitButton" "text" $button "color" "deepset-blue") }}
+    <span class="success-message">{{ $success }}</span>
+  </form>
+</aside>

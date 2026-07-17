@@ -31,7 +31,7 @@ countdown_date: 2026-07-20T15:00:00+02:00
 newsletter:
   title: Don't miss a drop
   text: One email when each day goes live. No spam, just the launches.
-  input_placeholder: you@company.com
+  input_placeholder: you@email.com
   button_text: Subscribe
   success_message: Thanks! You'll soon receive a confirmation email 📧
   hubspot_portal_id: "4561480"

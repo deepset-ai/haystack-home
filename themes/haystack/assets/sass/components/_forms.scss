@@ -93,3 +93,73 @@
     opacity: 1;
   }
 }
+
+// Inline newsletter signup for blog / Markdown content
+.blog-newsletter-signup {
+  background-color: var(--color-bg-light-grey);
+  color: var(--color-dark-blue);
+  text-align: center;
+  border-radius: 0.75rem;
+  padding: 1.75rem 1.25rem 2rem;
+  margin: 2rem 0;
+
+  h3 {
+    color: var(--color-dark-blue);
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+  }
+
+  > p {
+    margin: 0 auto 1.25rem;
+    max-width: 28rem;
+    color: var(--color-dark-grey);
+    font-size: 0.95rem;
+  }
+
+  .blog-newsletter-signup-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    max-width: 30rem;
+    margin: 0 auto;
+
+    .arrow-button {
+      flex-shrink: 0;
+      margin-top: 0;
+      height: 2.75rem;
+    }
+
+    input[type="email"] {
+      flex: 1 1 12rem;
+      max-width: 17rem;
+      min-width: 0;
+      height: 2.75rem;
+      padding: 0 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #d0d5dd;
+      background-color: var(--color-white);
+      color: var(--color-dark-blue);
+      font-size: 1rem;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: var(--color-medium-grey);
+      }
+
+      &:focus,
+      &:hover {
+        outline: none;
+        border-color: var(--color-deepset-blue);
+        box-shadow: 0 0 0 2px rgba(var(--color-deepset-blue-rgb), 0.2);
+      }
+    }
+
+    .success-message {
+      flex-basis: 100%;
+      color: var(--color-deepset-blue);
+      font-size: 0.9rem;
+    }
+  }
+}

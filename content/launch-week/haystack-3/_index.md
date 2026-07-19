@@ -7,7 +7,7 @@ description: 5 days, 5 new things to build with. Follow along all week as we unv
 discuss: https://github.com/deepset-ai/haystack/discussions
 
 hero:
-  eyebrow: "LAUNCH WEEK · JUL 20–24"
+  eyebrow: "JULY 20–24"
   title: Haystack 3.0 Launch Week
   text: |
     Five days. Five drops. We ship a new piece of Haystack 3.0 every day. Stay tuned for what's next.

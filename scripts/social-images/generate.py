@@ -268,6 +268,7 @@ class ImageCompositor:
             x, y = self._resolve_position(field_cfg, effective_fields, measured_heights)
             cmd += self._field_args(field_cfg, text, x, y)
 
+        cmd.append("-strip")
         cmd.append(str(output_path))
         return cmd
 

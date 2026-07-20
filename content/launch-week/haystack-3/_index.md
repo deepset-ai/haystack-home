@@ -31,7 +31,7 @@ countdown_date: 2026-07-20T15:00:00+02:00
 newsletter:
   title: Don't miss a drop
   text: One email when each day goes live. No spam, just the launches.
-  input_placeholder: you@company.com
+  input_placeholder: you@email.com
   button_text: Subscribe
   success_message: Thanks! You'll soon receive a confirmation email 📧
   hubspot_portal_id: "4561480"
@@ -48,26 +48,25 @@ days:
     published: true
     icon: release
     title: Haystack 3.0
-    tagline: The release is here.
-    description: Haystack 3.0 ships a wave of agentic capabilities. One framework to build with full control and flexibility. On your stack, on your terms.
+    tagline: Agent hooks, skills, and a lighter core.
+    description: Haystack 3.0 is the release where agents move to the center of the framework.
     features:
-      - "Pre-built agents"
-      - "More capable, adaptable Agent component"
-      - "Leaner, enterprise-grade framework"
+      - "Pre-configured agents with memory, tools, and skills out of the box"
+      - "Hooks, first-class skills, and dynamic tool selection for the Agent component"
+      - "Migration guide + skill to move from 2.x to 3.0"
     cta:
       text: Read the release announcement
-      url: "#"
+      url: "/blog/haystack-3-release"
     code:
-      filename: pipeline.py
-      language: python
+      filename: terminal
+      language: shell
       snippet: |
-        # Day 1: reveal locked until July 20, 3PM CET
-        # Access denied. Try again later.
+        pip install --upgrade haystack-ai
 
-        launch_haystack_3()
-        
-    locked_title: The curtain hasn't risen yet...
-    locked_teaser: Day 1 is warming up backstage. Pop back on July 20. Haystack 3.0 is almost ready.
+        # Load the skill
+        # Start your favorite coding agent 
+
+        /haystack-v2-to-v3 Migrate Haystack code to v3
 
   - day: 2
     date: 2026-07-21T15:00:00+02:00
@@ -92,8 +91,6 @@ days:
         # Nice try, though 👀
 
         launch_week.day_2.reveal()
-    locked_title: Patience, pipeline builder...
-    locked_teaser: No peeking through the keyhole. Pop back on July 21 at 3PM CET.
 
   - day: 3
     date: 2026-07-22T15:00:00+02:00
@@ -118,8 +115,6 @@ days:
         # Access denied. Try again later.
 
         launch_week.day_3.reveal()
-    locked_title: Top secret. Very hush-hush.
-    locked_teaser: Day 3 is warming up backstage. See you Wednesday afternoon.
 
   - day: 4
     date: 2026-07-23T15:00:00+02:00
@@ -144,8 +139,6 @@ days:
         # Check back on July 23 at 3PM CET
 
         launch_week.day_4.reveal()
-    locked_title: Loading plot twist...
-    locked_teaser: Come back Thursday. The surprise is almost ready.
 
   - day: 5
     date: 2026-07-24T15:00:00+02:00
@@ -171,6 +164,4 @@ days:
         # Human-in-the-loop: please approve before we reveal the punchline.
 
         launch_week.day_5.reveal()  # status: awaiting human review
-    locked_title: Grand finale on standby.
-    locked_teaser: Worth the wait, we promise. A human read this teaser and said it's fine. See you Friday at 3PM CET.
 ---

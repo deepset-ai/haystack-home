@@ -54,7 +54,7 @@ print(result["report"])
 
 ### 2. More capable, adaptable Agent component
 
-The [Agent component](https://docs.haystack.deepset.ai/docs/agent) gained the extension points production teams kept asking for. [Hooks](https://docs.haystack.deepset.ai/docs/hooks) (`before_run`, `before_llm`, `before_tool`, `after_tool`, `on_exit`, `after_run`) let you shape agent behavior, validate inputs, enforce guardrails, and ask a human before a sensitive action without touching the agent's internals. **Skills are first-class citizens**: with [`SkillToolset`](https://docs.haystack.deepset.ai/docs/next/skilltoolset), an agent discovers skills from a `SkillStore` through progressive disclosure. The model sees only skill names and one-line descriptions until it decides to load one, keeping context lean.
+The [Agent component](https://docs.haystack.deepset.ai/docs/agent) gained the extension points production teams kept asking for. [Hooks](https://docs.haystack.deepset.ai/docs/hooks) (`before_run`, `before_llm`, `before_tool`, `after_tool`, `on_exit`, `after_run`) let you shape agent behavior, validate inputs, enforce guardrails, and ask a human before a sensitive action without touching the agent's internals. **Skills are first-class citizens**: with [`SkillToolset`](https://docs.haystack.deepset.ai/docs/skilltoolset), an agent discovers skills from a `SkillStore` through progressive disclosure. The model sees only skill names and one-line descriptions until it decides to load one, keeping context lean.
 
 **Dynamic tool selection** at runtime means the same reusable agent can serve different teams, tenants, and tasks.
 
@@ -64,7 +64,7 @@ Agents expose metadata like `token_usage`, `step_count`, and `tool_call_counts` 
 
 ### 4. A leaner, faster-moving framework
 
-The 3.0 diff removed roughly three lines of code for every one it added and we're proud of that! [Legacy Generators are gone](https://docs.haystack.deepset.ai/docs/migration#legacy-generators-removed), the [`haystack-experimental` package](https://github.com/deepset-ai/haystack-experimental) is no longer a core dependency, and [30 components now live in independently released integration packages](https://docs.haystack.deepset.ai/docs/next/migration#components-moved-to-integration-packages). The result is a smaller installation footprint, fewer transitive dependencies to audit against supply-chain attacks, and integration bug fixes that ship on their own schedule instead of waiting for the next core release.
+The 3.0 diff removed roughly three lines of code for every one it added and we're proud of that! [Legacy Generators are gone](https://docs.haystack.deepset.ai/docs/migration#legacy-generators-removed), the [`haystack-experimental` package](https://github.com/deepset-ai/haystack-experimental) is no longer a core dependency, and [30 components now live in independently released integration packages](https://docs.haystack.deepset.ai/docs/migration#components-moved-to-integration-packages). The result is a smaller installation footprint, fewer transitive dependencies to audit against supply-chain attacks, and integration bug fixes that ship on their own schedule instead of waiting for the next core release.
 
 ### 5. A core built for serving: first-class async, cleaner lifecycle, safe loading
 
@@ -74,7 +74,7 @@ The same care extends below the surface. Components get a symmetric resource lif
 
 ### 6. Prototyping and Testing without the API bill
 
-**Haystack has always been known for reliability**: we have >90% test coverage across [the core](https://github.com/deepset-ai/haystack) and [the integrations](https://github.com/deepset-ai/haystack-core-integrations#inventory), we run tests for 90+ integrations nightly, and ensure everything works so you can focus on building and shipping. To help you prototype and iterate faster and cut token costs in your own test suites, 3.0 adds **built-in mock components** (e.g. [MockChatGenerator](https://docs.haystack.deepset.ai/docs/next/mockchatgenerator)). They let you test pipelines and agents deterministically. No API keys. No network. No flaky tests.
+**Haystack has always been known for reliability**: we have >90% test coverage across [the core](https://github.com/deepset-ai/haystack) and [the integrations](https://github.com/deepset-ai/haystack-core-integrations#inventory), we run tests for 90+ integrations nightly, and ensure everything works so you can focus on building and shipping. To help you prototype and iterate faster and cut token costs in your own test suites, 3.0 adds **built-in mock components** (e.g. [MockChatGenerator](https://docs.haystack.deepset.ai/docs/mockchatgenerator)). They let you test pipelines and agents deterministically. No API keys. No network. No flaky tests.
 
 ## Migrating from Haystack 2.x
 

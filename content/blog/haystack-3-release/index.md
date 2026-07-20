@@ -5,8 +5,8 @@ description: 'A lighter core, hooks to control the agent loop, first-class skill
 featured_image: thumbnail.png
 images: ["blog/haystack-3-release/thumbnail.png"]
 toc: True
-date: 2026-07-17
-last_updated: 2026-07-17
+date: 2026-07-20
+last_updated: 2026-07-20
 authors:
   - Julian Risch
   - Bilge Yucel

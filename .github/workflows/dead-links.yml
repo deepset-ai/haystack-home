@@ -12,6 +12,7 @@ on:
 jobs:
   check-links:
     runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
     permissions:
       contents: read
       pull-requests: write

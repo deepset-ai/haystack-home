@@ -26,7 +26,7 @@ hero:
 # Countdown target shown in the hero until launch week kicks off.
 # Once days start going live, the countdown automatically switches to
 # "Day N drops in" for the next upcoming day.
-countdown_date: 2026-07-21T15:00:00+02:00
+countdown_date: 2026-07-22T15:00:00+02:00
 
 newsletter:
   title: Don't miss a drop

@@ -21,7 +21,7 @@ hero:
 # Set to a day number (e.g. 2) to preview that day's live card locally.
 # Bypasses `published` and the scheduled date. Only works on `hugo server`.
 # Remove or comment out before deploying.
-# preview_live_day: 1
+# preview_live_day: 2
 
 # Countdown target shown in the hero until launch week kicks off.
 # Once days start going live, the countdown automatically switches to
@@ -71,26 +71,41 @@ days:
   - day: 2
     date: 2026-07-21T15:00:00+02:00
     weekday: Tue
-    published: false
-    icon: mystery
-    title: TBA
-    tagline: The plot thickens on Tuesday.
-    description: Our engineers are doing final calibrations on Day 2. We can't tell you what it is yet, but we can promise it's cool.
+    published: true
+    icon: metadata
+    title: Give Your Agent a Budget 
+    tagline: and a Way to Enforce It
+    description: Turn Agent metadata into an actual budget policy, and enforce it live with hooks so an over-budget run stops before the next LLM call fire.
     features:
-      - Something agentic
-      - Engineers sworn to secrecy
-      - Worth showing up for
+      - "Built-in metadata: read `step_count`, `token_usage`, and `tool_call_counts` off any agent run"
+      - "Agent hooks: take actions `before_llm`, `before_tool`, or `after_run`"
+      - "Budget policies: implement soft and hard token limits with allow, warn, or block agent actions"
     cta:
-      text: Check back Tuesday
-      url: "#"
+      text: Building a Cost-Aware Agent with Hooks
+      url: "/cookbook/cost_aware_agent"
     code:
-      filename: day2.py
+      filename: cost_aware_agent.py
       language: python
       snippet: |
-        # Day 2: classified until July 21, 3PM CET
-        # Nice try, though 👀
+        from haystack.components.agents import Agent
+        from haystack.components.agents.state import State
+        from haystack.hooks import hook
 
-        launch_week.day_2.reveal()
+        @hook
+        def enforce_budget_before_llm(state: State) -> None:
+            decision = evaluate_agent_budget(state.data, policy)
+            if decision["action"] == "block":
+                raise RuntimeError("Hard budget exceeded")
+
+        agent = Agent(
+            chat_generator=OpenAIChatGenerator(model="gpt-4o-mini"),
+            tools=[price_lookup],
+            hooks={"before_llm": [enforce_budget_before_llm]},
+        )
+
+        result = agent.run(messages=[ChatMessage.from_user(
+            "Compare prices for laptop, keyboard, and monitor."
+        )])
 
   - day: 3
     date: 2026-07-22T15:00:00+02:00

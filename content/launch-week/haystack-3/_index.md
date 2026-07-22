@@ -21,12 +21,11 @@ hero:
 # Set to a day number (e.g. 2) to preview that day's live card locally.
 # Bypasses `published` and the scheduled date. Only works on `hugo server`.
 # Remove or comment out before deploying.
-# preview_live_day: 2
 
 # Countdown target shown in the hero until launch week kicks off.
 # Once days start going live, the countdown automatically switches to
 # "Day N drops in" for the next upcoming day.
-countdown_date: 2026-07-22T15:00:00+02:00
+countdown_date: 2026-07-23T15:00:00+02:00
 
 newsletter:
   title: Don't miss a drop
@@ -110,26 +109,45 @@ days:
   - day: 3
     date: 2026-07-22T15:00:00+02:00
     weekday: Wed
-    published: false
-    icon: mystery
-    title: TBA
-    tagline: Midweek mystery incoming.
-    description: Come back Wednesday afternoon. Something shiny is almost ready.
+    published: true
+    icon: pack
+    title: Agent Pack
+    tagline: Complex Agents, Ready to Run
+    description: 
+      Agent Pack ships pre-built, complex agents that bake in agent-building best practices, ready to run out of the box and fully configurable when you need to go deeper.
     features:
-      - Top secret. Very hush-hush.
-      - The demo works. We've checked twice.
-      - You'll know it when you see it
+      - "**Deep Research Agent**: a multi-agent system built around context engineering for deep research topic"
+      - "**Advanced RAG Agent**: a metadata-aware RAG agent that constructs its own filters to narrow retrieval"
+      - "**One line or a blueprint**: packaged behind a single `create_*` call, but the source code is public Haystack primitives you can copy and adapt"
+      - "**Fully tunable**: swap models per step, cap steps and concurrency"
     cta:
-      text: Check back Wednesday
-      url: "#"
+      text: Using Pre-Built Agents from Agent Pack
+      url: "/tutorials/50_using_pre_built_agents_from_agent_pack"
     code:
-      filename: day3.py
+      filename: deep_research_agent.py
       language: python
       snippet: |
-        # Day 3: reveal locked until July 22, 3PM CET
-        # Access denied. Try again later.
+        # pip install agent-pack-haystack 
 
-        launch_week.day_3.reveal()
+        from haystack.dataclasses import ChatMessage
+        from haystack_integrations.agent_pack import (
+            create_deep_research_agent,
+        )
+
+        research_agent = create_deep_research_agent(
+            max_subtopics=2,
+            max_concurrent_researchers=2,
+            max_researcher_steps=6,
+            max_search_results=5,
+        )
+
+        result = research_agent.run(
+            messages=[ChatMessage.from_user(
+                "What are the main techniques for managing "
+                "the context window in LLM agents?"
+            )]
+        )
+        print(result["report"])
 
   - day: 4
     date: 2026-07-23T15:00:00+02:00

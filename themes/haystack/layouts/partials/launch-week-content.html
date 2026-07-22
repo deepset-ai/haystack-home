@@ -11,19 +11,18 @@
     </div>
 
     {{ $launchWeek := . }}
+    {{/* Focus the latest live day (today's drop). preview_live_day overrides on hugo server. */}}
     {{ $defaultFocus := 1 }}
     {{ if and hugo.IsServer $launchWeek.Params.preview_live_day (gt (int $launchWeek.Params.preview_live_day) 0) }}
       {{ $defaultFocus = int $launchWeek.Params.preview_live_day }}
     {{ else }}
-      {{ $foundLive := false }}
       {{ range .Params.days }}
         {{ $meta := . }}
         {{ $metaDate := time.AsTime $meta.date }}
         {{ $isConfigured := and $meta.published $meta.cta.url $meta.title }}
         {{ $isLive := and $isConfigured (ge now $metaDate) }}
-        {{ if and $isLive (not $foundLive) }}
+        {{ if $isLive }}
           {{ $defaultFocus = $meta.day }}
-          {{ $foundLive = true }}
         {{ end }}
       {{ end }}
     {{ end }}

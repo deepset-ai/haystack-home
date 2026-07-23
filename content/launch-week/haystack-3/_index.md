@@ -174,7 +174,7 @@ days:
         from haystack.skill_stores.file_system import FileSystemSkillStore
         from haystack.tools import SkillToolset
 
-        confirmation_hook = ConfirmationHook(
+        bash_tool_confirmation_hook = ConfirmationHook(
             confirmation_strategies={
                 "bash": BlockingConfirmationStrategy(
                     AlwaysAskPolicy(), SimpleConsoleUI()

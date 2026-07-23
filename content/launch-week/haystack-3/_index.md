@@ -21,7 +21,7 @@ hero:
 # Set to a day number (e.g. 2) to preview that day's live card locally.
 # Bypasses `published` and the scheduled date. Only works on `hugo server`.
 # Remove or comment out before deploying.
-preview_live_day: 4
+# preview_live_day: 4
 
 # Countdown target shown in the hero until launch week kicks off.
 # Once days start going live, the countdown automatically switches to

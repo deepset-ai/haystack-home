@@ -21,11 +21,12 @@ hero:
 # Set to a day number (e.g. 2) to preview that day's live card locally.
 # Bypasses `published` and the scheduled date. Only works on `hugo server`.
 # Remove or comment out before deploying.
+preview_live_day: 4
 
 # Countdown target shown in the hero until launch week kicks off.
 # Once days start going live, the countdown automatically switches to
 # "Day N drops in" for the next upcoming day.
-countdown_date: 2026-07-23T15:00:00+02:00
+countdown_date: 2026-07-24T15:00:00+02:00
 
 newsletter:
   title: Don't miss a drop
@@ -152,26 +153,47 @@ days:
   - day: 4
     date: 2026-07-23T15:00:00+02:00
     weekday: Thu
-    published: false
-    icon: mystery
-    title: TBA
-    tagline: Plot twist loading...
-    description: Even we're not 100% sure what the final form looks like yet. Whatever drops Thursday afternoon, it'll be worth the wait.
+    published: true
+    icon: computer
+    title: Let Your Agent Use a Computer
+    tagline: Read a skill & run a command
+    description: A fully local agent running on Ollama that reads skills, saves tokens, and uses a real bash tool to control your machine, with a human approving every step
     features:
-      - Something unexpected is brewing
-      - Spoiler alert. It's good
-      - Surprise guaranteed
+      - "**Use Skills**: a `SkillToolset` gives the agent read-only instructions it can load on demand"
+      - "**Progressive disclosure keeps context small**: the agent only sees skill names + one-line descriptions until it decides one applies"
+      - "**Real computer use**: a custom async `bash` tool lets the agent inspect the actual machine (OS info, disk space, files)"
+      - "**Human-in-the-loop with hooks**: a `ConfirmationHook` pauses before `bash` call so no sensitive action runs without an approval"
     cta:
-      text: Check back Thursday
-      url: "#"
+      text: Computer-Use Agent with Skills
+      url: "/cookbook/computer_use_agent_with_skills"
     code:
-      filename: day4.py
+      filename: computer_use_agent.py
       language: python
       snippet: |
-        # Day 4: reveal coming soon
-        # Check back on July 23 at 3PM CET
+        from haystack.components.agents import Agent
+        from haystack.skill_stores.file_system import FileSystemSkillStore
+        from haystack.tools import SkillToolset
 
-        launch_week.day_4.reveal()
+        confirmation_hook = ConfirmationHook(
+            confirmation_strategies={
+                "bash": BlockingConfirmationStrategy(
+                    AlwaysAskPolicy(), SimpleConsoleUI()
+                )
+            }
+        )
+
+        agent = Agent(
+            chat_generator=chat_generator,
+            tools=[bash, SkillToolset(FileSystemSkillStore("skills/"))],
+            hooks={"before_tool": [bash_tool_confirmation_hook]},
+        )
+
+        result = await agent.run_async(messages=[
+            ChatMessage.from_user(
+                "Check disk space and largest files. "
+                "Make this as token-efficient as possible."
+            )
+        ])
 
   - day: 5
     date: 2026-07-24T15:00:00+02:00

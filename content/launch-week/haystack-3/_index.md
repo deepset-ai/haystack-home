@@ -11,6 +11,7 @@ hero:
   title: Haystack 3.0 Launch Week
   text: |
     Five days. Five drops. We ship a new piece of Haystack 3.0 every day. Stay tuned for what's next.
+  thank_you: Thank you for following along
   cta_primary:
     text: Get launch updates
     url: "#launch-week-newsletter"

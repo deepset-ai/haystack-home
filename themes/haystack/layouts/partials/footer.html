@@ -363,8 +363,6 @@
 
 {{/* Launch Week */}}
 {{ if eq .Params.layout "launch-week" }}
-  {{ $launchWeekCountdown := resources.Get "/js/launch-week-countdown.js" | resources.Minify | resources.Fingerprint }}
-  <script src="{{ $launchWeekCountdown.RelPermalink }}"></script>
   {{ $launchWeekDayFocus := resources.Get "/js/launch-week-day-focus.js" | resources.Minify | resources.Fingerprint }}
   <script src="{{ $launchWeekDayFocus.RelPermalink }}"></script>
   {{ $launchWeekCodeCopy := resources.Get "/js/launch-week-code-copy.js" | resources.Minify | resources.Fingerprint }}

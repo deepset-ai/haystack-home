@@ -81,54 +81,13 @@
     }
   }
 
-  .launch-week-countdown {
+  .launch-week-thank-you {
     margin: 2.25rem auto 0;
     max-width: 36rem;
-
-    .countdown-label {
-      display: block;
-      margin-bottom: 0.85rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-light-grey);
-    }
-
-    .countdown-timer {
-      display: flex;
-      justify-content: center;
-      gap: 0.65rem;
-      flex-wrap: wrap;
-    }
-
-    .countdown-segment {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 4.25rem;
-      padding: 0.85rem 1rem;
-      border-radius: 0.5rem;
-      background-color: rgba(var(--color-white-rgb), 0.06);
-      border: 1px solid rgba(var(--color-white-rgb), 0.08);
-    }
-
-    .countdown-value {
-      font-size: 1.65rem;
-      font-weight: 700;
-      line-height: 1;
-      color: var(--color-white);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .countdown-unit {
-      margin-top: 0.35rem;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-medium-grey);
-    }
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-light-grey);
   }
 }
 

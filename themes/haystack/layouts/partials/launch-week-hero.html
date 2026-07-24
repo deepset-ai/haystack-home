@@ -18,16 +18,15 @@
   {{ end }}
 {{ end }}
 
-{{ $countdownTarget := .Params.countdown_date }}
+{{ $countdownTarget := "" }}
 {{ $showCountdown := false }}
 {{ $countdownLabel := "Kicking off in" }}
-{{ if gt $liveCount 0 }}
-  {{ if gt $nextDayNum 0 }}
-    {{ $countdownTarget = $nextDayDate }}
-    {{ $countdownLabel = printf "Day %d drops in" $nextDayNum }}
-    {{ $showCountdown = true }}
-  {{ end }}
-{{ else if lt now (time.AsTime .Params.countdown_date) }}
+{{ if and (gt $liveCount 0) (gt $nextDayNum 0) }}
+  {{ $countdownTarget = $nextDayDate }}
+  {{ $countdownLabel = printf "Day %d drops in" $nextDayNum }}
+  {{ $showCountdown = true }}
+{{ else if and .Params.countdown_date (lt now (time.AsTime .Params.countdown_date)) }}
+  {{ $countdownTarget = .Params.countdown_date }}
   {{ $showCountdown = true }}
 {{ end }}
 

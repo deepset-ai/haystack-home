@@ -23,11 +23,6 @@ hero:
 # Remove or comment out before deploying.
 # preview_live_day: 4
 
-# Countdown target shown in the hero until launch week kicks off.
-# Once days start going live, the countdown automatically switches to
-# "Day N drops in" for the next upcoming day.
-countdown_date: 2026-07-24T15:00:00+02:00
-
 newsletter:
   title: Don't miss a drop
   text: One email when each day goes live. No spam, just the launches.
@@ -198,25 +193,43 @@ days:
   - day: 5
     date: 2026-07-24T15:00:00+02:00
     weekday: Fri
-    published: false
-    icon: mystery
-    title: TBA
-    tagline: Grand finale on standby.
-    description: We're saving the best slice of Haystack 3.0 for last. The grand finale drops Friday afternoon. Worth the wait, we promise. (This description is pending human approval.)
+    published: true
+    icon: hitl
+    title: Human-in-the-Loop from Terminal to Prod
+    tagline: An Agent You Can Trust With the Risky Stuff.
+    description: A Haystack Agent that pauses before sensitive actions and
+      waits for a person to approve them, right inside a real chat UI, deployed with Hayhooks
     features:
-      - Saved the best for last
-      - Humans are still in the loop.
-      - Friday afternoon. Be there.
+      - "**Asks before it acts**: for any high-stakes tool call, the agent stops and waits for a person to approve or reject it before going ahead"
+      - "**Approve it right in the chat**: Open WebUI shows the confirmation pop-up, so saying yes or no feels like part of the conversation"
+      - "**Runs as a real service**: the agent is served through
+        Hayhooks as an OpenAI-compatible endpoint, so any chat UI
+        can talk to it"
+      - "**One command to run it all**: a docker-compose file spins up the agent, the UI, and everything in between"
+
     cta:
-      text: Check back Friday
-      url: "#"
+      text: Follow the demo + video
+      url: "https://github.com/deepset-ai/hitl-hayhooks-redis-openwebui"
     code:
-      filename: day5.py
+      filename: hitl_hayhooks.py
       language: python
       snippet: |
-        # Day 5: finale drops July 24, 3PM CET
-        # Patience, young grasshopper.
-        # Human-in-the-loop: please approve before we reveal the punchline.
+        # Served via Hayhooks + Open WebUI + Redis:
+        # docker compose up -d --build
 
-        launch_week.day_5.reveal()  # status: awaiting human review
+        from haystack.components.agents import Agent
+        from haystack.hooks.human_in_the_loop import ConfirmationHook
+
+        # Only the risky tool pauses for approval —
+        confirmation_hook = ConfirmationHook(
+            confirmation_strategies={
+                "submit_feedback_to_deepset": RedisConfirmationStrategy(),
+            }
+        )
+
+        agent = Agent(
+            chat_generator=OpenAIChatGenerator(model="gpt-4o-mini"),
+            tools=[whats_new_today, search_docs, submit_feedback],
+            hooks={"before_tool": [confirmation_hook]},
+        )
 ---

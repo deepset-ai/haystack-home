@@ -114,6 +114,8 @@ jobs:
             --exclude 'mistral\.ai'
             --exclude 'huggingface\.co'
             --exclude 'deeplearning\.ai'
+            --exclude 'medium\.com'
+            --exclude 'substack\.com'
             ${{ steps.scope.outputs.targets }}
           output: lychee-report.md
           fail: ${{ github.event_name != 'pull_request' }}  # don't block PRs, but fail scheduled/push runs for visibility

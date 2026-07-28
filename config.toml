@@ -144,12 +144,6 @@ theme = "haystack"
   weight = 2
 
 [[menu.main]]
-  name = '🧪 Experiments'
-  url = 'https://github.com/deepset-ai/haystack-experimental'
-  parent = 'learn'
-  weight = 3
-
-[[menu.main]]
   name = '⭐️ Release Notes'
   url = '/release-notes'
   parent = 'learn'

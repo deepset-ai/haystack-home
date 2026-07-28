@@ -92,5 +92,4 @@ There are so many ways to start building:
 - Follow use case examples in [cookbook](https://haystack.deepset.ai/cookbook)
 - Learn with the [DeepLearning.AI](https://www.deeplearning.ai/short-courses/building-ai-applications-with-haystack/) or [DataCamp](https://app.datacamp.com/learn/courses/building-ai-agents-with-haystack) courses
 - Check out [integrations](https://haystack.deepset.ai/integrations)
-- Explore cutting-edge features in [Haystack Experimental](https://docs.haystack.deepset.ai/docs/experimental-package)
 - Read our [blog](https://haystack.deepset.ai/blog) and [docs](https://docs.haystack.deepset.ai/docs/intro)

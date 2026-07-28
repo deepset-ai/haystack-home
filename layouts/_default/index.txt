@@ -26,7 +26,6 @@ Installation of integrations: `pip install <provider>-haystack`, for example `pi
 
 ## Optional
 - [Haystack GitHub Repository](https://github.com/deepset-ai/haystack): Source code for Haystack
-- [haystack-experimental GitHub Repository](https://github.com/deepset-ai/haystack-experimental): Source code for haystack-experimental features
 - [haystack-core-integrations GitHub Repository](https://github.com/deepset-ai/haystack-core-integrations): Source code for haystack-core-integrations, such as Amazon Bedrock
 - [hayhooks GitHub Repository](https://github.com/deepset-ai/hayhooks): Source code for Hayhooks, making it easy to deploy and serve Haystack pipelines as REST APIs
 - [Tutorials & Walkthroughs](https://haystack.deepset.ai/tutorials): Collection of tutorials

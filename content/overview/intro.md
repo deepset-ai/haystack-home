@@ -65,7 +65,7 @@ We build tools that make LLM applications usable in production, from open-source
 - [Haystack Enterprise Starter](https://www.deepset.ai/products-and-services/haystack-enterprise-starter) → Expert guidance, advanced pipeline templates, deployment playbooks, and early access features for teams that want to move faster with experienced support.
 - [Haystack Enterprise Platform](hhttps://www.deepset.ai/products-and-services/haystack-enterprise-platform) → A production platform for running Gen AI applications at scale with governance, testing, observability, security controls, and infrastructure flexibility designed for real-world enterprise environments. [Try it for free](https://www.deepset.ai/haystack-enterprise-platform-trial).
 
-Recognized as a [Gartner Cool Vendor in AI Engineering](https://landing.deepset.ai/deepset-recognized-as-a-gartner-cool-vendor), we’re proud to support both the global open-source community and enterprises building mission-critical AI systems.
+Recognized as a [Gartner Cool Vendor in AI Engineering](https://www.deepset.ai/news/deepset-2024-gartner-cool-vendors-ai-engineering), we’re proud to support both the global open-source community and enterprises building mission-critical AI systems.
 
 ## Haystack Community
 

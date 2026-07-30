@@ -1,9 +1,16 @@
 {{/*
-  Launch Week hero: dark navy section with eyebrow, title, CTAs, and closing note.
+  Launch Week hero: wrap-up state with office hours card, newsletter, and socials.
 */}}
 <div class="launch-week-hero">
   <div class="container">
-    {{ with .Params.hero.eyebrow }}<span class="eyebrow">{{ . }}</span>{{ end }}
+    {{ with .Params.hero.eyebrow }}
+      <span class="eyebrow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        {{ . }}
+      </span>
+    {{ end }}
 
     <h1>{{ .Params.hero.title }}</h1>
 
@@ -11,21 +18,113 @@
       {{ .Params.hero.text | markdownify }}
     </div>
 
-    <div class="hero-actions">
-      {{ with .Params.hero.cta_primary }}
-        {{ partial "arrow-button" (dict "context" $ "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
-      {{ end }}
-      {{ with .Params.hero.cta_secondary }}
-        {{ partial "arrow-button" (dict "context" $ "type" "link" "text" .text "url" .url "color" "dark-blue") }}
-      {{ else }}
-        {{ with .Params.discuss }}
-          {{ partial "arrow-button" (dict "context" $ "type" "link" "text" "Join the discussion" "url" . "color" "dark-blue") }}
+    {{ with .Params.hero.office_hours }}
+      {{ $isLive := and .countdown_date (ge now (time.AsTime .countdown_date)) }}
+      {{ $cta := cond $isLive .live_cta .cta }}
+      <div
+        class="office-hours-card{{ if $isLive }} is-live{{ end }}"
+        {{ with .countdown_date }}data-countdown-target="{{ . }}"{{ end }}
+        {{ with .live_cta }}
+          data-live-cta-text="{{ .text }}"
+          data-live-cta-url="{{ .url }}"
         {{ end }}
-      {{ end }}
-    </div>
+      >
+        <div class="office-hours-meta">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <span class="office-hours-label">{{ .label }}</span>
+          {{ if $isLive }}
+            <span class="office-hours-live-badge">Happening now</span>
+          {{ end }}
+          <span class="office-hours-details">{{ .details }}</span>
+        </div>
 
-    <p class="launch-week-thank-you">
-      {{ with .Params.hero.thank_you }}{{ . }}{{ else }}Thank you for following along{{ end }}
-    </p>
+        {{ if and .countdown_date (not $isLive) }}
+          <div
+            class="office-hours-countdown"
+            data-countdown-target="{{ .countdown_date }}"
+            aria-live="polite"
+          >
+            <div class="countdown-segment">
+              <span class="countdown-value" data-unit="days">--</span>
+              <span class="countdown-unit">Days</span>
+            </div>
+            <span class="countdown-separator" aria-hidden="true">:</span>
+            <div class="countdown-segment">
+              <span class="countdown-value" data-unit="hours">--</span>
+              <span class="countdown-unit">Hrs</span>
+            </div>
+            <span class="countdown-separator" aria-hidden="true">:</span>
+            <div class="countdown-segment">
+              <span class="countdown-value" data-unit="minutes">--</span>
+              <span class="countdown-unit">Min</span>
+            </div>
+            <span class="countdown-separator" aria-hidden="true">:</span>
+            <div class="countdown-segment">
+              <span class="countdown-value is-live" data-unit="seconds">--</span>
+              <span class="countdown-unit">Sec</span>
+            </div>
+          </div>
+        {{ end }}
+
+        {{ with $cta }}
+          {{ partial "arrow-button" (dict "context" $ "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
+        {{ end }}
+      </div>
+    {{ end }}
+
+    {{ with .Params.hero.newsletter }}
+      <div class="launch-week-hero-newsletter" id="launch-week-newsletter">
+        <h2>{{ .title }}</h2>
+        {{ with .text }}<p>{{ . }}</p>{{ end }}
+        <form
+          class="js-newsletter-form disabled launch-week-newsletter-form"
+          aria-label="Subscribe to Haystack updates"
+        >
+          <input
+            type="email"
+            name="email"
+            placeholder="{{ .input_placeholder }}"
+            aria-label="Email"
+            autocomplete="email"
+          />
+          <button type="submit" class="newsletter-ghost-btn" disabled>{{ .button_text }}</button>
+          <span class="success-message">{{ .success_message | default "Thanks! You'll soon receive a confirmation email 📧" }}</span>
+        </form>
+      </div>
+    {{ end }}
+
+    {{ with .Params.hero.social }}
+      <div class="launch-week-hero-social-wrap">
+        <span class="launch-week-hero-social-label">Follow Haystack on</span>
+        <ul class="launch-week-hero-social" role="list" aria-label="Follow Haystack">
+          {{ range . }}
+            <li>
+              <a
+                href="{{ .url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="{{ .name }}"
+                title="{{ .name }}"
+              >
+                {{ if eq (lower .name) "linkedin" }}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19" role="img" aria-hidden="true" focusable="false">
+                    <path d="M4.534 6.3h-3.6a.45.45 0 00-.45.45v11.7c0 .249.202.45.45.45h3.6a.45.45 0 00.45-.45V6.75a.45.45 0 00-.45-.45zM2.716 4.5a2.241 2.241 0 002.232-2.25A2.24 2.24 0 002.716 0 2.241 2.241 0 00.484 2.25c0 1.243 1 2.25 2.232 2.25zm12.619 14.4h2.7a.45.45 0 00.45-.45v-7.56c0-3.393-1.917-5.04-4.599-5.04a3.789 3.789 0 00-2.853 1.143.369.369 0 01-.648-.243.45.45 0 00-.45-.45h-2.7a.45.45 0 00-.45.45v11.7a.45.45 0 00.45.45h2.7a.45.45 0 00.45-.45V11.7a2.25 2.25 0 114.5 0v6.75a.45.45 0 00.45.45z"/>
+                  </svg>
+                {{ else if or (eq (lower .name) "x") (eq (lower .name) "twitter") }}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
+                  </svg>
+                {{ end }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
   </div>
 </div>

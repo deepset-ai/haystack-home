@@ -7,36 +7,41 @@ description: 5 days, 5 new things to build with. Follow along all week as we unv
 discuss: https://github.com/deepset-ai/haystack/discussions
 
 hero:
-  eyebrow: "JULY 20–24"
-  title: Haystack 3.0 Launch Week
+  eyebrow: "JULY 20–24 · SHIPPED IN FULL"
+  title: "Haystack 3.0 Launch Week"
   text: |
-    Five days. Five drops. We ship a new piece of Haystack 3.0 every day. Stay tuned for what's next.
-  thank_you: Thank you for following along
-  cta_primary:
-    text: Get launch updates
-    url: "#launch-week-newsletter"
-  cta_secondary:
-    text: Join the discussion
-    url: https://github.com/deepset-ai/haystack/discussions
+    Haystack 3.0 is out in the wild. Thank you for following along. Next up: office hours with the people who built it.
+  office_hours:
+    label: Office Hours
+    details: "Tue, Aug 4 · 15:00 CET · 45 min"
+    countdown_date: 2026-08-04T15:00:00+02:00
+    cta:
+      text: Join us!
+      url: https://luma.com/haystack-3
+    live_cta:
+      text: Watch livestream on YouTube
+      url: https://www.youtube.com/watch?v=ooDWBlf6xes
+  newsletter:
+    title: Don't miss the next one
+    text: Launch weeks, releases and community events — before anyone else.
+    input_placeholder: you@email.com
+    button_text: Keep Me Posted
+    success_message: Thanks! You'll soon receive a confirmation email 📧
+  social:
+    - name: LinkedIn
+      url: https://www.linkedin.com/showcase/haystack-ai-framework
+    - name: X
+      url: https://x.com/Haystack_AI
 
 # Set to a day number (e.g. 2) to preview that day's live card locally.
 # Bypasses `published` and the scheduled date. Only works on `hugo server`.
 # Remove or comment out before deploying.
 # preview_live_day: 4
 
-newsletter:
-  title: Don't miss a drop
-  text: One email when each day goes live. No spam, just the launches.
-  input_placeholder: you@email.com
-  button_text: Subscribe
-  success_message: Thanks! You'll soon receive a confirmation email 📧
-  hubspot_portal_id: "4561480"
-  hubspot_form_id: "dc1cbdd1-6272-4d9c-b56f-130b17c02e57"
-  hubspot_region: na1
-
 # One entry per day. `date` controls when a day's card becomes clickable (3PM CET).
 # Set `published: true` and fill in `cta.url` when a day goes live.
 # `cta.url` can point anywhere: blog post, tutorial, cookbook, or external link.
+# Optional `video` (text + url) adds a Watch button next to the CTA when set.
 days:
   - day: 1
     date: 2026-07-20T15:00:00+02:00
@@ -77,8 +82,11 @@ days:
       - "Agent hooks: take actions `before_llm`, `before_tool`, or `after_run`"
       - "Budget policies: implement soft and hard token limits with allow, warn, or block agent actions"
     cta:
-      text: Building a Cost-Aware Agent with Hooks
+      text: Cost-Aware Agent with Hooks
       url: "/cookbook/cost_aware_agent"
+    video:
+      text: Watch the video
+      url: "https://www.youtube.com/watch?v=jnbXNaJtJpY"
     code:
       filename: cost_aware_agent.py
       language: python
@@ -162,6 +170,9 @@ days:
     cta:
       text: Computer-Use Agent with Skills
       url: "/cookbook/computer_use_agent_with_skills"
+    video:
+      text: Watch the video
+      url: "https://www.youtube.com/watch?v=vefpGVFw_e8"
     code:
       filename: computer_use_agent.py
       language: python
@@ -209,8 +220,11 @@ days:
       - "**One command to run it all**: a docker-compose file spins up the agent, the UI, and everything in between"
 
     cta:
-      text: Follow the demo + video
+      text: GitHub Repo
       url: "https://github.com/deepset-ai/hitl-hayhooks-redis-openwebui"
+    video:
+      text: Watch the video
+      url: "https://www.youtube.com/watch?v=WsGtgi8yaOo"
     code:
       filename: hitl_hayhooks.py
       language: python

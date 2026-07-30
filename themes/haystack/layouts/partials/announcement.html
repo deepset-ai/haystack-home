@@ -1,47 +1,63 @@
-<!-- <a href="https://www.deeplearning.ai/short-courses/building-ai-application-with-haystack/" class="announcement-bar">
+{{ $launchWeek := site.GetPage "/launch-week/haystack-3" }}
+{{ with $launchWeek.Params.hero.office_hours }}
+  {{ $isLive := and .countdown_date (ge now (time.AsTime .countdown_date)) }}
+  {{ $href := cond $isLive .live_cta.url .cta.url }}
+  {{ $isExternal := or (hasPrefix $href "http://") (hasPrefix $href "https://") }}
+  <a
+    href="{{ $href }}"
+    class="announcement-bar blue{{ if $isLive }} is-live{{ end }}"
+    {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}
+    {{ with .countdown_date }}data-countdown-target="{{ . }}"{{ end }}
+    {{ with .cta }}
+      data-pre-cta-text="{{ .text }}"
+      data-pre-cta-url="{{ .url }}"
+    {{ end }}
+    {{ with .live_cta }}
+      data-live-cta-text="{{ .text }}"
+      data-live-cta-url="{{ .url }}"
+    {{ end }}
+  >
     <div class="container">
-        <span><strong> Enroll in our DeepLearning AI course: Building AI Applications with Haystack</strong> 🚀</span>
-        <span>
-            <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="14px"
-        height="14px"
-        viewBox="0 0 13 14"
-        role="presentation"
-        focusable="false"
-        class="arrow"
-      >
-        <path
-          d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z"
-          fill="#fff"
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-        ></path>
-      </svg>
+      {{ if $isLive }}
+        <span class="announcement-copy announcement-copy-live">
+          <span class="announcement-live-dot" aria-hidden="true"></span>
+          <strong>Haystack 3.0 Office Hours — Happening now:</strong> {{ .live_cta.text }}
         </span>
-    </div>
-</a> -->
-
-<a href="/launch-week/haystack-3/" class="announcement-bar blue">
-  <div class="container">
-      <span>🚀 <strong>Launch Week, Day 5/5:</strong> Human-in-the-Loop from Terminal to Prod</span>
+      {{ else }}
+        <span class="announcement-copy announcement-copy-pre">
+          🚀 <strong>Haystack 3.0 Office Hours</strong>
+          <span class="announcement-countdown" aria-live="polite">
+            start in
+            <span class="announcement-countdown-value" data-unit="days">--</span><span class="announcement-countdown-unit">d</span>
+            <span class="announcement-countdown-value" data-unit="hours">--</span><span class="announcement-countdown-unit">h</span>
+            <span class="announcement-countdown-value" data-unit="minutes">--</span><span class="announcement-countdown-unit">m</span>
+            <span class="announcement-countdown-value" data-unit="seconds">--</span><span class="announcement-countdown-unit">s</span>
+          </span>
+          - {{ .cta.text }}
+        </span>
+        <span class="announcement-copy announcement-copy-live" hidden>
+          <span class="announcement-live-dot" aria-hidden="true"></span>
+          <strong>Haystack 3.0 Office Hours — Happening now:</strong> {{ .live_cta.text }}
+        </span>
+      {{ end }}
       <span>
-          <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14px"
-      height="14px"
-      viewBox="0 0 13 14"
-      role="presentation"
-      focusable="false"
-      class="arrow"
-    >
-      <path
-        d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z"
-        fill="#fff"
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-      ></path>
-    </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14px"
+          height="14px"
+          viewBox="0 0 13 14"
+          role="presentation"
+          focusable="false"
+          class="arrow"
+        >
+          <path
+            d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z"
+            fill="#fff"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
       </span>
-  </div>
-</a>
+    </div>
+  </a>
+{{ end }}

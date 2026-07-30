@@ -85,7 +85,6 @@ theme = "haystack"
   name = 'Learn'
   url = '/'
   weight = 3
-  params = { tag = "New" }
 
 [[menu.main]]
   identifier = 'integrations'
@@ -144,6 +143,13 @@ theme = "haystack"
   weight = 2
 
 [[menu.main]]
+  name = '📬 Haystack 3.0 Launch Week'
+  url = '/launch-week/haystack-3/'
+  parent = 'learn'
+  weight = 3
+  params = { tag = "New" }
+
+[[menu.main]]
   name = '⭐️ Release Notes'
   url = '/release-notes'
   parent = 'learn'
@@ -154,7 +160,6 @@ theme = "haystack"
   url = 'https://app.datacamp.com/learn/courses/building-ai-agents-with-haystack'
   parent = 'learn'
   weight = 5
-  params = { tag = "New" }
 
 [[menu.main]]
   name = '🚀 DeepLearning.AI: Building AI Applications'

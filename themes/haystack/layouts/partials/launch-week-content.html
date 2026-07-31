@@ -1,5 +1,5 @@
 {{/*
-  Launch Week body: day selector grid, detail cards with code snippets, newsletter CTA.
+  Launch Week body: day selector grid and detail cards with code snippets.
   A day is "live" when `published: true`, `cta.url` and `title` are set, and
   `days[].date` has passed (or preview_live_day is set on hugo server).
 */}}
@@ -102,23 +102,41 @@
                 </ul>
               {{ end }}
 
-              {{ with $meta.cta }}
-                {{ if $isLive }}
-                  {{ $isExternal := or (hasPrefix .url "http://") (hasPrefix .url "https://") }}
-                  <a
-                    href="{{ .url }}"
-                    class="detail-cta"
-                    {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}
-                  >
-                    {{ .text }}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 13 14" aria-hidden="true">
-                      <path d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/>
-                    </svg>
-                  </a>
-                {{ else }}
-                  <span class="detail-cta is-disabled" aria-disabled="true">{{ .text }}</span>
+              <div class="detail-actions">
+                {{ with $meta.cta }}
+                  {{ if $isLive }}
+                    {{ $isExternal := or (hasPrefix .url "http://") (hasPrefix .url "https://") }}
+                    <a
+                      href="{{ .url }}"
+                      class="detail-cta"
+                      {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}
+                    >
+                      {{ .text }}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 13 14" aria-hidden="true">
+                        <path d="M6.33.8a.43.43 0 01.61 0l5.93 6.05c.09.09.13.21.13.32 0 .11-.04.23-.13.31l-5.93 6.05a.43.43 0 01-.61 0L5.31 12.5a.44.44 0 010-.62L8.62 8.5c.05-.06.02-.15-.06-.15H.43A.44.44 0 010 7.91V6.44C0 6.2.19 6 .43 6h8.14c.08 0 .12-.09.06-.15L5.31 2.46a.44.44 0 010-.62L6.33.8z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"/>
+                      </svg>
+                    </a>
+                  {{ else }}
+                    <span class="detail-cta is-disabled" aria-disabled="true">{{ .text }}</span>
+                  {{ end }}
                 {{ end }}
-              {{ end }}
+
+                {{ with $meta.video }}
+                  {{ if and $isLive .url }}
+                    {{ $isExternal := or (hasPrefix .url "http://") (hasPrefix .url "https://") }}
+                    <a
+                      href="{{ .url }}"
+                      class="detail-cta detail-cta-video"
+                      {{ if $isExternal }}target="_blank" rel="noopener noreferrer"{{ end }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M8 5.14v14l11-7-11-7z"/>
+                      </svg>
+                      {{ with .text }}{{ . }}{{ else }}Watch the video{{ end }}
+                    </a>
+                  {{ end }}
+                {{ end }}
+              </div>
             </div>
 
             {{ with $meta.code }}
@@ -144,29 +162,4 @@
       {{ end }}
     </div>
   </div>
-
-  {{ with .Params.newsletter }}
-    <div class="launch-week-newsletter" id="launch-week-newsletter">
-      <div class="container">
-        <h2>{{ .title }}</h2>
-        <p>{{ .text }}</p>
-        <form
-          class="js-newsletter-form disabled launch-week-newsletter-form"
-          aria-label="Subscribe to launch week updates"
-          data-hubspot-portal-id="{{ .hubspot_portal_id }}"
-          data-hubspot-form-id="{{ .hubspot_form_id }}"
-          data-hubspot-region="{{ .hubspot_region | default "na1" }}"
-        >
-          <input
-            type="email"
-            name="email"
-            placeholder="{{ .input_placeholder }}"
-            aria-label="Email"
-          />
-          {{ partial "arrow-button" (dict "context" $ "type" "submitButton" "text" .button_text "color" "deepset-blue") }}
-          <span class="success-message">{{ .success_message }}</span>
-        </form>
-      </div>
-    </div>
-  {{ end }}
 </div>

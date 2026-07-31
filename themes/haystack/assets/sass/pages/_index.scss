@@ -221,7 +221,7 @@
       .hero-github-stars {
         display: flex;
         gap: 1rem;
-        margin-top: 2.25rem;
+        margin-top: 1.5rem;
       }
 
       .hero-down-arrow {
@@ -467,7 +467,7 @@
 }
 
 .logo-marquee {
-  padding-top: 5rem;
+  padding-top: 3rem;
 
   // @include md {
   //   padding-top: 7.5rem;
@@ -498,6 +498,36 @@
 
   .logo-slider.row2 {
     margin-top: 0.25rem;
+  }
+}
+
+.index-hero {
+  .index-launch-week-summary {
+    margin: 1.5rem 0 0;
+    text-align: center;
+    color: #64748b;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-left: 0.25rem;
+      color: var(--color-deepset-blue);
+      font-size: inherit;
+      font-weight: inherit;
+      text-decoration: none;
+      transition: opacity 0.15s ease;
+
+      &:hover {
+        opacity: 0.85;
+      }
+
+      svg {
+        flex-shrink: 0;
+      }
+    }
   }
 }
 

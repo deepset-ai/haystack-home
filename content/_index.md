@@ -5,9 +5,15 @@ footer: light
 title: Haystack
 description: Create agentic, context engineered AI systems using Haystack’s modular and customizable building blocks, built for real-world, production-ready applications.
 
+launch_week_summary:
+  text: "Haystack 3.0 shipped over five days."
+  cta:
+    text: See the recap
+    url: /launch-week/haystack-3/
+
 # Hero
 hero:
-  title: The Open Source AI Framework <br/>for Production Ready <br/> Agents, RAG & Context Engineering
+  title: Open-Source AI Orchestration for <br/>Production-Grade Agents <br/>
   buttons:
     - buttonText: pip install haystack-ai
     - buttonText: Get Started with Haystack

@@ -163,15 +163,6 @@
           line-height: 1.1;
         }
 
-        li.active {
-          .button-wrapper {
-            transform: none !important;
-          }
-          svg {
-            visibility: hidden;
-          }
-        }
-
         // dropdown menu tags
         .menu-item-tag {
           top: -1rem;

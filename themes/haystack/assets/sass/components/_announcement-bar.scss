@@ -26,35 +26,6 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.3rem;
-
-    &[hidden] {
-      display: none !important;
-    }
-  }
-
-  .announcement-countdown {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.15rem;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .announcement-countdown-value {
-    font-weight: 700;
-  }
-
-  .announcement-countdown-unit {
-    margin-right: 0.15rem;
-    opacity: 0.85;
-  }
-
-  .announcement-live-dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background-color: #4ade80;
-    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.55);
-    animation: office-hours-pulse 1.6s ease-out infinite;
   }
 
   .arrow {

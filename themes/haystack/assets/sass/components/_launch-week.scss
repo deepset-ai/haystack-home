@@ -124,81 +124,9 @@
     font-size: 0.78rem;
   }
 
-  .office-hours-live-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.2rem 0.55rem;
-    border-radius: 999px;
-    background-color: rgba(74, 222, 128, 0.15);
-    color: #4ade80;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-
-    &::before {
-      content: "";
-      width: 0.4rem;
-      height: 0.4rem;
-      border-radius: 50%;
-      background-color: currentColor;
-      box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
-      animation: office-hours-pulse 1.6s ease-out infinite;
-    }
-  }
-
   .office-hours-details {
     color: #94a3b8;
     font-weight: 500;
-  }
-
-  .office-hours-countdown {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
-    flex-wrap: wrap;
-  }
-
-  .countdown-segment {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 3.25rem;
-    padding: 0.5rem 0.4rem;
-    border-radius: 0.5rem;
-    background-color: rgba(var(--color-white-rgb), 0.05);
-    border: 1px solid rgba(var(--color-white-rgb), 0.08);
-  }
-
-  .countdown-value {
-    font-size: 1.35rem;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--color-white);
-    font-variant-numeric: tabular-nums;
-
-    &.is-live {
-      color: #4ade80;
-    }
-  }
-
-  .countdown-unit {
-    margin-top: 0.25rem;
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #64748b;
-  }
-
-  .countdown-separator {
-    color: rgba(var(--color-white-rgb), 0.35);
-    font-size: 1.1rem;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 0.7rem;
   }
 
   .launch-week-hero-newsletter {
@@ -331,18 +259,6 @@
         flex-shrink: 0;
       }
     }
-  }
-}
-
-@keyframes office-hours-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.55);
-  }
-  70% {
-    box-shadow: 0 0 0 0.45rem rgba(74, 222, 128, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
   }
 }
 

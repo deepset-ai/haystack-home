@@ -19,16 +19,7 @@
     </div>
 
     {{ with .Params.hero.office_hours }}
-      {{ $isLive := and .countdown_date (ge now (time.AsTime .countdown_date)) }}
-      {{ $cta := cond $isLive .live_cta .cta }}
-      <div
-        class="office-hours-card{{ if $isLive }} is-live{{ end }}"
-        {{ with .countdown_date }}data-countdown-target="{{ . }}"{{ end }}
-        {{ with .live_cta }}
-          data-live-cta-text="{{ .text }}"
-          data-live-cta-url="{{ .url }}"
-        {{ end }}
-      >
+      <div class="office-hours-card">
         <div class="office-hours-meta">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="3" y="4" width="18" height="18" rx="2"/>
@@ -37,41 +28,10 @@
             <line x1="3" y1="10" x2="21" y2="10"/>
           </svg>
           <span class="office-hours-label">{{ .label }}</span>
-          {{ if $isLive }}
-            <span class="office-hours-live-badge">Happening now</span>
-          {{ end }}
           <span class="office-hours-details">{{ .details }}</span>
         </div>
 
-        {{ if and .countdown_date (not $isLive) }}
-          <div
-            class="office-hours-countdown"
-            data-countdown-target="{{ .countdown_date }}"
-            aria-live="polite"
-          >
-            <div class="countdown-segment">
-              <span class="countdown-value" data-unit="days">--</span>
-              <span class="countdown-unit">Days</span>
-            </div>
-            <span class="countdown-separator" aria-hidden="true">:</span>
-            <div class="countdown-segment">
-              <span class="countdown-value" data-unit="hours">--</span>
-              <span class="countdown-unit">Hrs</span>
-            </div>
-            <span class="countdown-separator" aria-hidden="true">:</span>
-            <div class="countdown-segment">
-              <span class="countdown-value" data-unit="minutes">--</span>
-              <span class="countdown-unit">Min</span>
-            </div>
-            <span class="countdown-separator" aria-hidden="true">:</span>
-            <div class="countdown-segment">
-              <span class="countdown-value is-live" data-unit="seconds">--</span>
-              <span class="countdown-unit">Sec</span>
-            </div>
-          </div>
-        {{ end }}
-
-        {{ with $cta }}
+        {{ with .cta }}
           {{ partial "arrow-button" (dict "context" $ "type" "link" "text" .text "url" .url "color" "deepset-blue") }}
         {{ end }}
       </div>

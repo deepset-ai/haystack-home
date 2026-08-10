@@ -10,16 +10,12 @@ hero:
   eyebrow: "JULY 20–24 · SHIPPED IN FULL"
   title: "Haystack 3.0 Launch Week"
   text: |
-    Haystack 3.0 is out in the wild. Thank you for following along. Next up: office hours with the people who built it.
+    Haystack 3.0 is out in the wild. Thank you for following along — the office hours recording is below.
   office_hours:
     label: Office Hours
     details: "Tue, Aug 4 · 15:00 CET · 45 min"
-    countdown_date: 2026-08-04T15:00:00+02:00
     cta:
-      text: Join us!
-      url: https://luma.com/haystack-3
-    live_cta:
-      text: Watch livestream on YouTube
+      text: Watch the recording
       url: https://www.youtube.com/watch?v=ooDWBlf6xes
   newsletter:
     title: Don't miss the next one

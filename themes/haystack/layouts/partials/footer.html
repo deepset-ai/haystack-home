@@ -355,10 +355,6 @@
   <script src="{{ $tabs.RelPermalink }}"></script>
 {{ end }}
 
-{{/* Office hours countdown (announcement bar sitewide + launch week hero) */}}
-{{ $launchWeekCountdown := resources.Get "/js/launch-week-countdown.js" | resources.Minify | resources.Fingerprint }}
-<script src="{{ $launchWeekCountdown.RelPermalink }}"></script>
-
 {{/* Launch Week page extras */}}
 {{ if eq .Params.layout "launch-week" }}
   {{ $launchWeekDayFocus := resources.Get "/js/launch-week-day-focus.js" | resources.Minify | resources.Fingerprint }}

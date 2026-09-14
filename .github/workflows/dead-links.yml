@@ -113,6 +113,7 @@ jobs:
             --exclude 'openai\.com'
             --exclude 'mistral\.ai'
             --exclude 'huggingface\.co'
+            --exclude 'x\.com'
             --exclude 'deeplearning\.ai'
             --exclude 'medium\.com'
             --exclude 'substack\.com'

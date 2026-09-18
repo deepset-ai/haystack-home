@@ -739,6 +739,16 @@ blockquote {
       font-size: 1rem;
     }
   }
+
+  &.integration-tag-enterprise {
+    border: 0.25rem solid var(--color-deepset-blue);
+    color: var(--color-deepset-blue);
+
+    span {
+      color: var(--color-deepset-blue);
+      font-size: 1rem;
+    }
+  }
 }
 
 // Integration logo

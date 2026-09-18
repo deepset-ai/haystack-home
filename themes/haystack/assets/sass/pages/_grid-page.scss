@@ -115,7 +115,33 @@
   // Integration cards
   .grid-page-card.integration-card {
     position: relative;
+    overflow: hidden;
     background-color: var(--color-bg-dark-blue);
+
+    .integration-card-ribbon {
+      position: absolute;
+      top: 2rem;
+      left: -2.75rem;
+      width: 11rem;
+      transform: rotate(-45deg);
+      transform-origin: center;
+      background-color: var(--color-deepset-blue);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+
+      span {
+        display: block;
+        padding: 0.3rem 0;
+        text-align: center;
+        white-space: nowrap;
+        color: var(--color-white);
+        font-size: 0.5rem;
+        font-weight: 800;
+        line-height: 1.25;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+    }
 
     h3 {
       font-size: 1.5rem;

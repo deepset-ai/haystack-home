@@ -12,6 +12,13 @@
   data-maintainer="{{ $maintainer }}"
   {{with .Params.version}}data-version="{{ . }}"{{end}}
 >
+  {{/* Enterprise ribbon */}}
+  {{ if .Params.enterprise }}
+    <div class="integration-card-ribbon">
+      <span>Haystack Enterprise<br>Platform</span>
+    </div>
+  {{ end }}
+
   {{/* Header / tags */}}
   <div class="integration-card-logo">
     {{ with .Params.logo }}

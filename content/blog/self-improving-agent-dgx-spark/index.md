@@ -11,6 +11,7 @@ date: 2026-09-23
 last_updated: 2026-09-23
 authors:
   - Julian Risch
+  - Sebastian Husch Lee
 tags: ["Agent", "Tracing", "Monitoring", "Deployment", "Integrations", "Advanced Use Cases", "DGX Spark", "Local AI"]
 ---
 

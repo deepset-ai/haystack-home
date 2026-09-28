@@ -164,7 +164,7 @@ Recall@10 on 20 evaluation questions: 0.54 before, 0.77 after. The optimizer's r
 
 A candidate must stay above a quality floor, `max(min_quality, baseline_quality - max_quality_loss)`, and only then is it ranked by the primary objective: cost, latency or quality.
 
-Assembling the experiment against the local endpoint looks like this:
+Assembling the experiment against the local endpoint looks like this. The code is still under review, so the snippet matches [commit `15bc78075`](https://github.com/deepset-ai/haystack-core-integrations/tree/15bc78075/integrations/agent_pack) of the pull request, which is the version the experiments in this post ran on. Pull that commit to reproduce them; the merged version will differ in details.
 
 ```python
 # pip install haystack-ai agent-pack-haystack
@@ -173,7 +173,6 @@ from haystack.utils import Secret
 from haystack_integrations.agent_pack.optimization import (
     ExperimentJournal,
     HarnessOptimizationExperiment,
-    LocalRunStore,
     OptimizationObjectives,
     create_harness_optimizer_agent,
 )
@@ -192,7 +191,7 @@ optimizer_model = OpenAIChatGenerator(
 
 experiment = HarnessOptimizationExperiment(
     reference=reference_agent,
-    run_store=LocalRunStore(directory=workspace / "runs"),
+    eval_cases=eval_cases,
     evaluator=evaluator,
     pricing=pricing,
     objectives=OptimizationObjectives(min_quality=0.6, max_quality_loss=0.05, primary="quality"),

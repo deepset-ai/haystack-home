@@ -126,7 +126,7 @@ components:
   expander:
     type: haystack.components.query.query_expander.QueryExpander
     init_parameters:
-      n_expansions: 4                                                   # was 1
+      n_expansions: 4  # CHANGED --> was 1
       prompt_template: |
         You are part of an information system that processes user queries for retrieval.
         You have to expand a given query into {{ n_expansions }} queries that are
@@ -134,14 +134,14 @@ components:
 
         Examples:
         1.  Query: "climate change effects"
-            {"queries": ["impact of climate change", "consequences of global warming", "effects of environmental changes", "climate variability"]}
+            {"queries": ["impact of climate change", "consequences of global warming", "effects of environmental changes", "climate variability"]}  # CHANGED --> one example added
         # … the other two examples were extended the same way; guidelines unchanged …
 
         Your Task:
         Query: "{{ query }}"
 
         You *must* respond with a JSON object containing a "queries" array with the expanded queries.
-        Example: {"queries": ["query1", "query2", "query3", "query4"]}   # was three
+        Example: {"queries": ["query1", "query2", "query3", "query4"]}  # CHANGED --> was three
       chat_generator:
         type: haystack.components.generators.chat.openai.OpenAIChatGenerator
         init_parameters:
@@ -154,7 +154,7 @@ components:
       retriever:
         type: haystack.components.retrievers.in_memory.bm25_retriever.InMemoryBM25Retriever
         init_parameters:
-          top_k: 6                                                      # was 2
+          top_k: 6  # CHANGED --> was 2
 connections:
   - sender: expander.queries
     receiver: retriever.queries

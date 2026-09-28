@@ -3,7 +3,7 @@ layout: author
 title: Sebastian Husch Lee
 name: Sebastian Husch Lee
 slug: sebastian-husch-lee
-position: Solution Engineering Tech Lead
+position: Open Source Tech Lead
 image: /images/authors/sebastian-lee.png
 socials:
   author_page:

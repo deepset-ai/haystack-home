@@ -16,6 +16,7 @@ tags: ["Agent", "Tracing", "Monitoring", "Deployment", "Integrations", "Advanced
 ---
 
 Services at a citizens' office can benefit a lot from AI assistance. Starting from a simple chatbot that answers questions about building permits, parking fines and childcare benefits to more advanced applications where AI assists filing an application, reviewing such applications, and booking appointments: for all these tasks, AI assistance can reduce waiting times and costs, and at the same time improve the quality of the results and the overall experience.
+
 When a city rolls out such AI-assisted services, it is a great achievement. However, maintaining the services over time is just as important as the initial release. A few months after going live, the database has grown by a few thousand documents and retrieval quality dropped, the model behind it has been deprecated, and a well-meant quick fix added a tool that is never used anymore. The AI assistant still answers but the answers get worse, and nobody notices until citizens report it or until the assistant becomes unusable.
 
 Teams running AI in production know this story and the procedure is always the same: somebody opens the traces, reads what the system actually did, forms a hypothesis, changes a parameter, and reruns queries for testing. This approach works but it is slow and takes away time planned for other tasks.
@@ -46,7 +47,7 @@ All four are public checkpoints on Hugging Face. For [Nemotron](https://develope
 
 Our reference system is a Haystack [`Agent`](https://docs.haystack.deepset.ai/docs/agent) over a set of indexed documents: a synthetic corpus of 609 civil-services pages, notices and local news articles about permits, benefits, housing and mobility in Berlin, paired with multi-hop questions whose evidence documents are known. It inspects document metadata, builds a filter, runs a filtered retrieval and answers with citations. We record the runs of a small evaluation set, twenty questions with known evidence documents, exactly as they would be recorded in production.
 
-For the experiments we make it underperform on purpose, in ways we have seen real systems drift into:
+For the experiments, we make our initial agent implementation underperform on purpose, in ways we have seen real systems drift into:
 
 - the retriever's `top_k` is 1 and a filter fetch returns at most 2 documents, while every question needs at least 3;
 - the step budget is 6, so the agent is cut off and a fallback hook produces an answer without citations;
@@ -235,4 +236,4 @@ Let's go through three takeaways from that table in more detail.
 - **Self-improving agents are not magic and humans are in control.** The agent edits a sandboxed copy, every submission is scored against real data, the search always climbs from the best candidate, and applying the changes to production requires human approval.
 - **On bandwidth-bound hardware, model architecture beats total parameter count and tokens per task matter more than tokens per second.** A 30B mixture-of-experts model outruns a dense 27B by five times, and for agents the model that wastes the fewest tokens often wins.
 
-Our implementation is available open source in Haystack's [agent_pack integration](https://github.com/deepset-ai/haystack-core-integrations/tree/main/integrations/agent_pack) and you can find out more about the hardware on the [NVIDIA DGX Spark page](https://www.nvidia.com/en-us/products/workstations/dgx-spark/). We would like to thank NVIDIA for supporting us with a DGX Spark and thereby making this open source contribution possible. To follow along, star the [Haystack GitHub repository](https://github.com/deepset-ai/haystack).
+Our log-analysis agent implementation is available open source in Haystack's [agent_pack integration](https://github.com/deepset-ai/haystack-core-integrations/tree/main/integrations/agent_pack) and you can find out more about the hardware on the [NVIDIA DGX Spark page](https://www.nvidia.com/en-us/products/workstations/dgx-spark/). We would like to thank NVIDIA for supporting us with a DGX Spark and thereby making this open source contribution possible. To follow along, star the [Haystack GitHub repository](https://github.com/deepset-ai/haystack).

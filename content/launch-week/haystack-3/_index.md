@@ -10,13 +10,7 @@ hero:
   eyebrow: "JULY 20–24 · SHIPPED IN FULL"
   title: "Haystack 3.0 Launch Week"
   text: |
-    Haystack 3.0 is out in the wild. Thank you for following along — the office hours recording is below.
-  office_hours:
-    label: Office Hours
-    details: "Tue, Aug 4 · 15:00 CET · 45 min"
-    cta:
-      text: Watch the recording
-      url: https://www.youtube.com/watch?v=ooDWBlf6xes
+    Haystack 3.0 is out in the wild. Thank you for following along.
   newsletter:
     title: Don't miss the next one
     text: Launch weeks, releases and community events — before anyone else.

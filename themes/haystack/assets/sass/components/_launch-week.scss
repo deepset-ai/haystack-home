@@ -4,7 +4,7 @@
   background-color: #0a0e17;
   color: var(--color-white);
   text-align: center;
-  padding: 3rem 0 3.5rem;
+  padding: 1.5rem 0 1.75rem;
   overflow: hidden;
 
   &::before {
@@ -21,7 +21,7 @@
   }
 
   @include md {
-    padding: 4.5rem 0 5rem;
+    padding: 2rem 0 2.25rem;
   }
 
   .eyebrow {
@@ -130,7 +130,7 @@
   }
 
   .launch-week-hero-newsletter {
-    margin: 2.75rem auto 0;
+    margin: 1.5rem auto 0;
     max-width: 36rem;
 
     h2 {

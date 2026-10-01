@@ -62,7 +62,15 @@ The stage sizes come from a custom Haystack tracer that keeps per-model token us
 
 Similar to how a human would read the evidence and investigate, the agent finds that recall is too low because the retrieval path narrows too early, runs are being cut off, and one tool costs tokens without contributing. It proposes edits and measures them.
 
-On the DGX Spark, with Nemotron 3.5 Lightning both running the assistant and acting as the optimizer, this took 33 minutes for four candidates. The reference agent cited the evidence it needed for 19 percent of the questions. The first candidate raised `top_k` from 1 to 7, which doubled retrieval recall but barely moved the score, because the answers still cited nothing. The second and third added prompt instructions, one of which carried a typo in an embedded filter example that produced more tool errors and was therefore discarded. The fourth kept the working instruction, dropped the broken one, and reached 45 percent cited recall. The recommended configuration differs from the reference by five lines of system prompt and the `top_k` setting. 
+On the DGX Spark, with Nemotron 3.5 Lightning both running the assistant and acting as the optimizer, this took 33 minutes for four candidates:
+
+- **Reference agent:** cited the evidence it needed for 19 percent of the questions.
+- **First candidate:** raised `top_k` from 1 to 7. Retrieval recall doubled, but the score barely moved because the answers still cited nothing.
+- **Second and third candidates:** added prompt instructions. One of them had a typo in an embedded filter example, which caused more tool errors, so it was discarded.
+- **Fourth candidate:** kept the working instruction, dropped the broken one, and reached 45 percent cited recall.
+
+The recommended configuration differs from the reference by five lines of system prompt and the `top_k` setting.
+
 In a second experiment on a retrieval pipeline, the optimizer improved recall@10 from 0.54 to 0.77 in 43 minutes. After trying an LLM ranker twice, it finally decided against that approach and instead used query expansion. Each question became five queries against BM25 instead of two. That alone took recall@10 from 0.54 to 0.65.
 
 ## Self-improvement loop in detail

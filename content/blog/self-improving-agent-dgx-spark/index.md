@@ -45,7 +45,10 @@ All four are public checkpoints on Hugging Face. For [Nemotron](https://develope
 
 ## Traces of a Haystack Agent
 
-Our reference system is a Haystack [`Agent`](https://docs.haystack.deepset.ai/docs/agent) over a set of indexed documents: a synthetic corpus of 609 civil-services pages, notices and local news articles about permits, benefits, housing and mobility in Berlin, paired with multi-hop questions whose evidence documents are known. It inspects document metadata, builds a filter, runs a filtered retrieval and answers with citations. We record the runs of a small evaluation set, twenty questions with known evidence documents, exactly as they would be recorded in production.
+Our reference system is a Haystack [`Agent`](https://docs.haystack.deepset.ai/docs/agent) over a set of indexed documents: a synthetic corpus of 609 civil-services pages, notices and local news articles about permits, benefits, housing and mobility in Berlin, paired with multi-hop questions whose evidence documents are known. It inspects document metadata, builds a filter, runs a filtered retrieval and answers with citations. We record the runs of a small evaluation set, twenty questions with known evidence documents, exactly as they would be recorded in production. Two example questions from the evaluation set:
+
+1. Which fee will, according to two Senate Press Office for Citizen Services releases, be due immediately at filing by card or by direct debit from 1 July 2026 in place of the districts' current 14-day bank transfer window, and has been accepted at 39 euros by the finance administration despite that sum covering just around two thirds of the districts' reported processing cost, a rate the Spree Courier says the Senate adopted with a 12 euro discount for online filers?
+2. Was the Senate's 1 April 2026 announcement, reported by the Senate Press Office for Citizen Services, of two more Senior Support Points in Spandau and Lichtenberg raising the network to ten, made before the Radio Spree Local Desk's 12 March 2026 report on weekday-only opening hours and the Spree Courier's 13 March 2026 report on the confirmation of eight sites?
 
 For the experiments, we make our initial agent implementation underperform on purpose, in ways we have seen real systems drift into:
 

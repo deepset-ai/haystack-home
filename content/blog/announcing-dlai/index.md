@@ -14,7 +14,7 @@ tags: ["Community", "RAG"]
 
 [DeepLearning.AI](http://deeplearning.ai/) and Andrew Ng hold a special place in many AI/ML engineers' careers and development. For many engineers, they’ve played a pivotal role into breaking into AI, or extending their knowledge and capabilities by teaching about core concepts and technologies at the right time. So, we’re incredibly happy to announce that we’re launching our first short course with them - “Building AI Applications with Haystack”
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oluZaroQROM?si=IvZKTTLQ0FpGWrH3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+{{< youtube id="oluZaroQROM" query="si=IvZKTTLQ0FpGWrH3" width="560" height="315" >}}
 
 [**🚀 Enroll now**](https://www.deeplearning.ai/short-courses/building-ai-applications-with-haystack/)
 

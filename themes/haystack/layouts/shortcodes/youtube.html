@@ -1,0 +1,2 @@
+{{/* Consent-gated YouTube embed: {{< youtube id="abc123" query="si=xyz" width="560" height="315" >}} */}}
+{{ partial "consent-embed" (dict "service" "youtube" "id" (.Get "id") "query" (.Get "query") "width" (.Get "width") "height" (.Get "height")) }}

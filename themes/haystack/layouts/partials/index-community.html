@@ -15,16 +15,7 @@
       <div class="upcoming-events">
         <h3>Upcoming Haystack Events</h3>
         <div class="luma-embed">
-          <iframe
-                src="https://lu.ma/embed/calendar/cal-O155CdRencJk5U2/events?lt=light"
-                width="100%"
-                height="450"
-                frameborder="0"
-                style="border: 2px solid #2558ff; border-radius: 4px;"
-                allowfullscreen=""
-                aria-hidden="false"
-                tabindex="0"
-                ></iframe>
+          {{ partial "consent-embed" (dict "service" "luma" "height" "450" "width" "100%" "style" "border: 2px solid #2558ff; border-radius: 4px") }}
         </div>
       </div>
 
@@ -37,10 +28,7 @@
           {{ range .Params.community.communityTalks }}
           <div class="video-card">
             <div class="video-container">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ .videoId }}"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+              {{ partial "consent-embed" (dict "service" "youtube" "id" .videoId) }}
             </div>
 
             <div class="talks-slide-content">
@@ -63,10 +51,7 @@
         <li class="splide__slide talks-slide">
           <div class="video-card">
             <div class="video-container">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ .videoId }}"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+              {{ partial "consent-embed" (dict "service" "youtube" "id" .videoId) }}
             </div>
 
             <div class="talks-slide-content">

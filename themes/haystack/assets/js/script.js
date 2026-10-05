@@ -4,6 +4,7 @@ import { accordions } from "./accordions";
 import { newsletters } from "./newsletters";
 import { githubStats } from "./github-stats";
 import { ambassadorForm } from "./ambassador-form";
+import { consentEmbeds } from "./consent-embeds";
 
 const ready = (fn) => {
   if (document.readyState != "loading") {
@@ -18,3 +19,4 @@ ready(accordions);
 ready(newsletters);
 ready(githubStats);
 ready(ambassadorForm);
+ready(consentEmbeds);

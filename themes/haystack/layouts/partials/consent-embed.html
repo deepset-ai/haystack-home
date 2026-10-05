@@ -1,0 +1,41 @@
+{{/*
+  Consent-gated third-party embed. The iframe sits inside an inert <template>, so the browser
+  makes no request until assets/js/consent-embeds.js swaps it in (after Usercentrics consent
+  for the service, or a click on the placeholder button).
+  Params: service ("youtube" or "luma"), id (YouTube only), query (optional, no leading "?"),
+  width, height, style (optional, applied to the wrapper and the iframe).
+*/}}
+{{ $service := .service }}
+{{ $width := .width | default "100%" }}
+{{ $height := .height | default "100%" }}
+{{ $style := .style | default "" }}
+{{ $ucName := "" }}
+{{ $src := "" }}
+{{ $title := "" }}
+{{ $text := "" }}
+{{ $button := "" }}
+{{ $allow := "" }}
+{{ if eq $service "youtube" }}
+  {{ $ucName = "YouTube Video" }}
+  {{ $src = printf "https://www.youtube-nocookie.com/embed/%s" .id }}
+  {{ with .query }}{{ $src = printf "%s?%s" $src . }}{{ end }}
+  {{ $title = "YouTube video player" }}
+  {{ $text = "This video is hosted on YouTube. Loading it sets YouTube cookies." }}
+  {{ $button = "Load video" }}
+  {{ $allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" }}
+{{ else if eq $service "luma" }}
+  {{ $ucName = "Lu.ma" }}
+  {{ $src = "https://lu.ma/embed/calendar/cal-O155CdRencJk5U2/events?lt=light" }}
+  {{ $title = "Haystack events calendar" }}
+  {{ $text = "This events calendar is hosted on Lu.ma. Loading it sets Lu.ma cookies." }}
+  {{ $button = "Load events calendar" }}
+{{ end }}
+<div class="consent-embed" data-consent-service="{{ $ucName }}" style="{{ if $style }}{{ $style | safeCSS }};{{ end }}{{ if ne $height "100%" }}height: {{ $height }}px;{{ end }}{{ if ne $width "100%" }}width: {{ $width }}px;{{ end }}">
+  <template>
+    <iframe src="{{ $src }}" width="{{ $width }}" height="{{ $height }}" title="{{ $title }}" loading="lazy" frameborder="0"{{ with $allow }} allow="{{ . }}"{{ end }}{{ if eq $service "youtube" }} referrerpolicy="strict-origin-when-cross-origin"{{ end }} allowfullscreen{{ with $style }} style="{{ . | safeCSS }}"{{ end }}></iframe>
+  </template>
+  <div class="consent-embed__placeholder">
+    <p>{{ $text }}</p>
+    <button type="button" class="consent-embed__button">{{ $button }}</button>
+  </div>
+</div>

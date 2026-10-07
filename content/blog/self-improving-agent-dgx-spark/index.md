@@ -7,8 +7,8 @@ featured_image_caption: The NVIDIA DGX Spark that ran every experiment in this p
 alt_image: An NVIDIA DGX Spark, a small metallic box with a perforated front panel, standing on green grass.
 images: ["blog/self-improving-agent-dgx-spark/thumbnail.png", "blog/self-improving-agent-dgx-spark/fig1-self-improving-loop.png", "blog/self-improving-agent-dgx-spark/dense-vs-moe.png"]
 toc: True
-date: 2026-09-23
-last_updated: 2026-09-23
+date: 2026-10-07
+last_updated: 2026-10-07
 authors:
   - Julian Risch
   - Sebastian Husch Lee

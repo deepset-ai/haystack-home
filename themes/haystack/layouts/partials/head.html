@@ -3,7 +3,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>
-    {{ if eq .Params.layout "integration" }}
+    {{ if .Params.meta_title }}
+      {{ .Params.meta_title | plainify }}
+    {{ else if eq .Params.layout "integration" }}
       {{ .Params.Name | plainify }} | {{ .Site.Title }}
     {{ else }}
       {{ .Title | plainify }} | {{ .Site.Title }}

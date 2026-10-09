@@ -3,6 +3,7 @@ layout: index
 header: dark
 footer: light
 title: Haystack
+meta_title: "Haystack | Open-Source AI Framework for Production-Grade Agents"
 description: Create agentic, context engineered AI systems using Haystack’s modular and customizable building blocks, built for real-world, production-ready applications.
 
 launch_week_summary:

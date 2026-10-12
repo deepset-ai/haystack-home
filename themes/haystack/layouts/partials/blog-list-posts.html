@@ -1,0 +1,7 @@
+{{ $posts := where .Data.Pages "Params.hidden" "!=" true }}
+{{/* Append homepage to blogposts and hide it later - hack to get 1 less post on the first page, to show a
+larger featured post */}}
+{{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
+  {{ $posts = slice site.Home | append $posts }}
+{{ end }}
+{{ return $posts }}

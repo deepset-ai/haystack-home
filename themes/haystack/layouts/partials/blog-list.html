@@ -109,11 +109,8 @@
         {{ end }}
         {{/* Blog posts grid */}}
         <div class="blog-grid blog-grid-static">
-          {{/* Append homepage to blogposts and hide it later - hack to get 1 less post on the first page, to show a
-          larger featured post */}}
-          {{ if not (or (eq .Type "authors") (eq .Type "tags")) }}
-            {{ $blogPosts = slice site.Home | append $blogPosts }}
-          {{ end }}
+          {{/* Same list the canonical tag in head.html paginates, so both use one paginator */}}
+          {{ $blogPosts = partial "blog-list-posts" . }}
           {{ $paginatedBlogPosts := .Paginate $blogPosts }}
   
           {{/* Check if there is a next/previous page */}}

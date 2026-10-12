@@ -26,6 +26,15 @@
   {{/* Canonical url */}}
   {{ if .Params.canonical_url }}
     <link rel="canonical" href="{{ .Params.canonical_url }}" />
+  {{ else }}
+    {{ $canonical := .Permalink }}
+    {{/* Paginated lists: point each pager page at itself, not at page 1. Args must match the .Paginate call in the body. */}}
+    {{ if eq .Layout "release-notes" }}
+      {{ $canonical = (.Paginate .Data.Pages 12).URL | absURL }}
+    {{ else if or (eq .Layout "blog") (and (eq .Kind "term") (in (slice "authors" "tags") .Type)) }}
+      {{ $canonical = (.Paginate (partial "blog-list-posts" .)).URL | absURL }}
+    {{ end }}
+    <link rel="canonical" href="{{ $canonical | replaceRE "/$" "" }}" />
   {{ end }}
 
   {{/* Cookie management */}}

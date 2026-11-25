@@ -1,0 +1,19 @@
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="/" aria-label="Haystack home"><span class="brand-mark" aria-hidden="true"></span><strong>Haystack</strong></a>
+    <div class="nav-links">
+      {{ range site.Data.redesign_navigation.primary }}
+        {{ if .menu }}
+          <div class="nav-dropdown">
+            <button type="button" aria-haspopup="true" aria-expanded="false">{{ .label }} <span aria-hidden="true">⌄</span></button>
+            {{ partial "redesign/community-menu.html" $ }}
+          </div>
+        {{ else }}
+          <a href="{{ .url }}">{{ .label }}</a>
+        {{ end }}
+      {{ end }}
+    </div>
+    <a class="nav-cta" href="https://www.deepset.ai/request-demo">Book a Demo <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+

@@ -1,0 +1,30 @@
+primary:
+  - label: "Products & Services"
+    url: "https://www.deepset.ai/haystack-platform"
+  - label: "Community"
+    menu: community
+  - label: "Solutions"
+    url: "https://www.deepset.ai/solutions/enterprise"
+  - label: "Resources"
+    url: "https://www.deepset.ai/resources"
+  - label: "Company"
+    url: "https://www.deepset.ai/about"
+community:
+  - heading: "Get Started"
+    links:
+      - { label: "What is Haystack?", url: "/overview/intro/" }
+      - { label: "Get Started", url: "/overview/quick-start/" }
+      - { label: "Tutorials", url: "/tutorials/" }
+      - { label: "Recipes", url: "/cookbook/" }
+  - heading: "Grow"
+    links:
+      - { label: "Integrations", url: "/integrations/" }
+      - { label: "Documentation", url: "https://docs.haystack.deepset.ai/" }
+      - { label: "Release Notes", url: "/release-notes/" }
+      - { label: "Blog", url: "/blog/" }
+  - heading: "Connect"
+    links:
+      - { label: "Github", url: "https://github.com/deepset-ai/haystack" }
+      - { label: "Discord", url: "https://discord.com/invite/VBpFzsgRVF" }
+      - { label: "Events", url: "https://luma.com/haystack" }
+      - { label: "Ambassadors", url: "https://haystack.deepset.ai/community/ambassadors" }

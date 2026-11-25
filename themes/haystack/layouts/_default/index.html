@@ -1,17 +1,10 @@
-{{/* Homepage */}}
+{{/* Homepage - redesign */}}
 {{ define "main" }}
-{{ partial "index-hero" . }}
-{{ partial "index-features" . }}
-{{ partial "index-comparison" . }}
-<!-- {{ partial "index-logos" . }} -->
-{{ partial "index-usecases" . }}
-{{ partial "index-community" . }}
-
-{{ $splidecss := resources.Get "/sass/splide-core.min.css" }}
-<link rel="stylesheet" href="{{ $splidecss.RelPermalink }}" />
-
-{{ $splidejs := resources.Get "/js/splide.min.js" }}
-<script src="{{ $splidejs.RelPermalink }}"></script>
-{{ $splidejsAutoscroll := resources.Get "/js/splide-extension-auto-scroll.min.js" }}
-<script src="{{ $splidejsAutoscroll.RelPermalink }}"></script>
+{{ partial "redesign/hero.html" . }}
+{{ partial "redesign/trust.html" . }}
+{{ partial "redesign/why.html" . }}
+{{ partial "redesign/code-story.html" . }}
+{{ partial "redesign/use-cases.html" . }}
+{{ partial "redesign/community.html" . }}
+{{ partial "redesign/final-cta.html" . }}
 {{ end }}

@@ -2,32 +2,15 @@
 <html lang="en">
   {{ partial "head" . }}
 
-  {{ if .IsHome }}<body class="redesign">{{ else }}<body>{{ end }}
+  <body class="redesign">
     {{/*  Google Tag Manager  */}}
     {{ partial "gtag-body" . }}
 
-    {{ if .IsHome }}
     <a class="skip-link" href="#content">Skip to content</a>
     {{ partial "redesign/announcement.html" . }}
     {{ partial "redesign/header.html" . }}
     <main id="content">{{ block "main" . }}{{ end }}</main>
     {{ partial "redesign/footer.html" . }}
     <script src="/js/redesign-navigation.js" defer></script>
-    {{ else }}
-    {{/*  Header  */}}
-    {{ partial "header" . }}
-
-    {{/* Announcement Bar */}}
-    {{ partial "announcement" . }}
-     <!-- {{ if not (or (eq .Params.Layout "advent") (eq .Params.Layout "advent-challenge")) }}
-      {{ partial "announcement" . }}
-    {{ end}} -->
-
-    {{/*  Main  */}}
-    <main>{{ block "main" . }}{{ end }}</main>
-
-    {{/*  Footer  */}}
-    {{ partial "footer" . }}
-    {{ end }}
   </body>
 </html>

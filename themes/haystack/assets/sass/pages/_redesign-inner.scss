@@ -2,6 +2,9 @@
 // All rules scoped to body.redesign.
 body.redesign {
   --color-bg-light-grey: #fff;
+  --color-dark-grey: #6b708c; // darker for contrast on white
+  --color-dark-grey-rgb: 107, 112, 140;
+
 
   main { background: #fff; }
   .site-header { padding: 0; }
@@ -98,4 +101,15 @@ body.redesign {
       a { color: var(--blue); }
     }
   }
+
+  // ---- Detail pages
+  .article-title h1, .article-content > h1, .blog-post-content h1 {
+    font-size: clamp(2.4rem, 4.2vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -.045em;
+    font-weight: 500;
+    color: var(--navy);
+  }
+  .btn.btn-grey { background: var(--navy); }
+  .btn.btn-grey:hover { background: var(--blue); }
 }

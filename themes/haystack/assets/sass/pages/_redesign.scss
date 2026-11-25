@@ -1,6 +1,6 @@
 // Redesign (new visual look) - scoped to body.redesign so it cannot leak into inner pages.
 .redesign{--navy:#1b1d3b;--blue:#3356f1;--pale:#e5edff;--ice:#f6f7fb;--mint:#e5f5ef;--line:rgba(27,29,59,.14);
-  background:#fff;color:var(--navy);font-family:Arial,Helvetica,sans-serif;
+  background:#fff;color:var(--navy);font-family:var(--font-sans-serif);
   *{box-sizing:border-box}
   a{color:inherit;text-decoration:none}
   .skip-link{position:fixed;left:1rem;top:1rem;z-index:100;padding:.75rem 1rem;background:#fff;color:var(--navy);transform:translateY(-160%)}

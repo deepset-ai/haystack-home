@@ -112,4 +112,20 @@ body.redesign {
   }
   .btn.btn-grey { background: var(--navy); }
   .btn.btn-grey:hover { background: var(--blue); }
+
+  // ---- Card header chips (tutorials, cookbook): same pill language as .tag
+  .grid-page-card .grid-page-card-header > div {
+    font-size: .7rem;
+    line-height: 1.2;
+    color: var(--blue);
+    background: #edf1ff;
+    border-radius: 999px;
+    padding: 6px 9px;
+    text-transform: capitalize;
+    .icon svg, > svg { fill: var(--blue); path { fill: var(--blue); } }
+  }
+  .grid-page-card .grid-page-card-header > div.topic { background: #edf1ff; color: var(--blue); }
+  .grid-page-card .grid-page-card-header > div.new,
+  .grid-page-card .grid-page-card-header > div.featured { background: var(--blue); color: #fff; }
+  .grid-page-card .grid-page-card-header > div.outdated { background: var(--navy); color: #fff; }
 }

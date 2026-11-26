@@ -22,9 +22,8 @@
 
   /* Overrides for prod global element styles */
   .code-card pre,.code-card code{background:transparent;color:#eef2ff;font-family:monospace;border:0;box-shadow:none}
-  .nav-dropdown>button,.nav-links a{font-size:14px}
-  .announcement a{font-size:12px}
-  .announcement{font-size:12px}
+  .nav-dropdown>button,.nav-links>a{font-size:14px}
+  .announcement a{font-size:inherit}
   .brand,.nav-links a,.hero h1,.section-heading h2,.code-copy h2,.community h2,.final-cta h2{font-family:inherit}
   /* Mobile menu */
   .nav-actions{display:flex;align-items:center;gap:12px;justify-self:end}
@@ -51,15 +50,19 @@
   /* Match the original template: undo production resets inside redesign sections.
      :where() keeps specificity low so the template's explicit rules still win. */
   :where(h1,h2,h3,h4,h5,h6,p,li,a,button,input,select,textarea,span,div,small,strong,em,label){font-family:inherit}
-  :where(.announcement,.nav,.hero,.trust,.section,.community,.final-cta,.redesign-footer){line-height:normal;
+  :where(.announcement,.site-header,.nav,.hero,.trust,.section,.community,.final-cta,.redesign-footer){line-height:normal;
     :where(h1,h2,h3,h4,h5,h6){font-weight:700;color:inherit;letter-spacing:normal}
     :where(h1){font-size:2em;margin:.67em 0}
     :where(h2){font-size:1.5em;margin:.83em 0}
     :where(h3){font-size:1.17em;margin:1em 0}
     :where(p){font-size:16px;margin:1em 0}
-    :where(a,h3,p,button){line-height:normal}
+    :where(a,h2,h3,p,button){line-height:normal}
   }
-  .code-story .code-card pre{background:transparent!important;color:#eef2ff;margin:0;font-size:12px;line-height:1.8}
+  .code-story .code-card pre{overflow:visible;background:transparent!important;color:#eef2ff;margin:0}
   .code-story .code-card pre code{font-size:inherit;line-height:inherit;color:inherit;background:transparent;padding:0}
   .hero code,.install code,.code-story code,.code-story pre{font-family:monospace}
+  :where(a){transition:initial}
+  .case-visual:before,.case-visual:after{box-sizing:content-box}
 }
+
+html:has(body.redesign){scroll-behavior:smooth}

@@ -100,6 +100,12 @@ jobs:
             echo "targets=${targets# }" >> $GITHUB_OUTPUT
           fi
 
+      # build.sh rewrites relative images in blog-like posts to "<slug>/<file>" so
+      # they resolve against the slash-less URL served in production (Vercel has
+      # trailingSlash: false). Lychee resolves them against <slug>/index.html on
+      # disk instead, which yields <slug>/<slug>/<file> and false "file not found"
+      # errors. The second --remap collapses that duplicated slug for image files
+      # only, so genuinely missing images are still reported.
       - name: Check for broken links
         uses: lycheeverse/lychee-action@6da1d14f3a43098a294b7696d93d938aa8d20fc0  # v2.8.0
         with:
@@ -108,6 +114,7 @@ jobs:
             --root-dir ./public
             --format markdown
             --remap 'https://localhost:1313 http://localhost:1313'
+            --remap '(/public/(?:blog|advent-of-haystack|spring-into-haystack)/[^/]+)/[^/]+/([^/]+\.(?:png|jpe?g|gif|svg|webp))$ $1/$2'
             --exclude 'linkedin\.com'
             --exclude 'datacamp\.com'
             --exclude 'openai\.com'

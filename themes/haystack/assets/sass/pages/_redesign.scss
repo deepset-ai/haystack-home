@@ -50,7 +50,7 @@
   /* Match the original template: undo production resets inside redesign sections.
      :where() keeps specificity low so the template's explicit rules still win. */
   :where(h1,h2,h3,h4,h5,h6,p,li,a,button,input,select,textarea,span,div,small,strong,em,label){font-family:inherit}
-  :where(.announcement,.site-header,.nav,.hero,.trust,.section,.community,.final-cta,.redesign-footer){line-height:normal;
+  :where(.announcement,.site-header,.nav,.inner-page,.docs-shell,.hero,.trust,.section,.community,.final-cta,.redesign-footer){line-height:normal;
     :where(h1,h2,h3,h4,h5,h6){font-weight:700;color:inherit;letter-spacing:normal}
     :where(h1){font-size:2em;margin:.67em 0}
     :where(h2){font-size:1.5em;margin:.83em 0}

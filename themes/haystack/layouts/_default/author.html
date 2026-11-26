@@ -1,8 +1,8 @@
-{{/* Author page */}}
+{{/* Author page (redesign) */}}
 {{ define "main" }}
-  <div class="author-page">
-    {{ partial "page-hero" . }}
-
-    {{ partial "blog-list" . }}
+  {{ $items := where .Data.Pages "Params.hidden" "!=" true }}
+  <div class="inner-page">
+    {{ partial "redesign/inner-hero.html" (dict "crumb" "Blog / Author" "title" .Title "desc" (.Params.position | default "")) }}
+    {{ partial "redesign/catalog.html" (dict "kind" "blog" "items" $items "noun" "articles" "allLabel" "All topics" "searchLabel" "articles" "cats" (slice)) }}
   </div>
 {{ end }}

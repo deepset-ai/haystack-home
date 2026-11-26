@@ -1,0 +1,66 @@
+{{/*
+  args: kind (tutorials|cookbook|integrations|blog|releases), items (pages in display order),
+        noun (string), allLabel (string), searchLabel (string), cats (slice of strings, filter options)
+*/}}
+{{ $kind := .kind }}
+<section class="catalog" data-catalog>
+  <div class="catalog-top"><h2>{{ len .items }} {{ .noun }}</h2><span data-count>{{ len .items }} shown</span></div>
+  <div class="filters">
+    <input data-search type="search" aria-label="Search {{ .searchLabel }}" placeholder="Search {{ .searchLabel }}">
+    <select data-filter aria-label="Filter">
+      <option value="all">{{ .allLabel }}</option>
+      {{ range .cats }}<option value="{{ . | urlize }}">{{ . | humanize | title }}</option>{{ end }}
+    </select>
+    <select data-sort aria-label="Sort">
+      <option value="default">Newest first</option>
+      <option value="az">A–Z</option>
+    </select>
+  </div>
+  <div class="resource-grid">
+    {{ range $i, $p := .items }}
+      {{ $title := or $p.Params.name $p.Params.title }}
+      {{ $desc := $p.Params.description }}
+      {{ $stage := "" }}{{ $tag := "" }}{{ $meta := "" }}{{ $cats := slice }}{{ $date := "" }}
+      {{ if eq $kind "tutorials" }}
+        {{ $tag = cond ($p.Params.guide) "Full walkthrough" (cond ($p.Params.featured) "Featured" (($p.Params.level | default "tutorial") | title)) }}
+        {{ $meta = or $p.Params.completion_time (cond ($p.Params.guide) "Walkthrough" "Tutorial") }}
+        {{ $cats = slice ($p.Params.level | default "guide") }}
+        {{ $stage = $p.Params.category | default $p.Params.level | default "Guide" }}
+        {{ $date = or $p.Params.created_at "" }}
+      {{ else if eq $kind "cookbook" }}
+        {{ $topics := $p.Params.topics | default slice }}
+        {{ $tag = cond ($p.Params.new) "New" (index ($topics | append "Notebook") 0) }}
+        {{ $meta = "Notebook" }}
+        {{ $cats = $topics }}{{ $stage = index ($topics | append "Cookbook") 0 }}
+        {{ $date = or $p.Params.created_at "" }}
+      {{ else if eq $kind "integrations" }}
+        {{ $maint := "Community" }}{{ range $p.Params.authors }}{{ if eq .name "deepset" }}{{ $maint = "Maintained by deepset" }}{{ end }}{{ end }}
+        {{ $tag = $p.Params.type }}{{ $meta = $maint }}{{ $cats = slice $p.Params.type }}
+      {{ else if eq $kind "blog" }}
+        {{ $tags := $p.Params.tags | default slice }}
+        {{ $tag = cond (eq $i 0) "Latest" (index ($tags | append "Article") 0) }}
+        {{ $meta = $p.Date | time.Format ":date_long" }}{{ $cats = $tags }}{{ $date = $p.Date.Format "2006-01-02" }}
+      {{ else }}
+        {{ $v := replaceRE `[^0-9.]` "" $title }}
+        {{ $kindName := "Minor" }}
+        {{ if findRE `^\d+\.0\.0$` $v }}{{ $kindName = "Major" }}{{ else if not (findRE `\.0$` $v) }}{{ $kindName = "Patch" }}{{ end }}
+        {{ $tag = $kindName }}{{ $meta = $p.Date | time.Format ":date_long" }}{{ $cats = slice $kindName }}{{ $date = $p.Date.Format "2006-01-02" }}
+      {{ end }}
+      {{ $catKeys := slice }}{{ range $cats }}{{ $catKeys = $catKeys | append (. | urlize) }}{{ end }}
+      <a class="resource-card{{ if eq $i 0 }} feature-card{{ end }}{{ if eq $kind "integrations" }} integration-card{{ else if eq $kind "blog" }} article-card{{ else if or (eq $kind "tutorials") (eq $kind "cookbook") }} technical-card{{ end }}"
+         href="{{ $p.RelPermalink }}" data-card data-category="{{ delimit $catKeys "|" }}" data-title="{{ $title }}" data-date="{{ $date }}">
+        {{ if eq $kind "integrations" }}
+          <div class="logo-stage">{{ with $p.Params.logo }}<img src="{{ . }}" alt="{{ $title }} logo" loading="lazy">{{ else }}<img src="/images/logos/haystack.png" alt="" loading="lazy">{{ end }}</div>
+        {{ else if eq $kind "blog" }}
+          <div class="article-image"><img src="{{ with $p.Params.featured_image }}{{ $p.Permalink }}{{ . }}{{ else }}/images/hero-bg.png{{ end }}" alt="" loading="lazy"></div>
+        {{ else if or (eq $kind "tutorials") (eq $kind "cookbook") }}
+          <div class="tech-stage" aria-hidden="true"><span>{{ upper $stage }}</span><i></i><i></i><i></i></div>
+        {{ end }}
+        <div class="tags"><span class="tag">{{ $tag }}</span></div>
+        <h3>{{ $title }}</h3>
+        <p>{{ $desc }}</p>
+        <footer><span>{{ $meta }}</span><span>Explore ↗</span></footer>
+      </a>
+    {{ end }}
+  </div>
+</section>

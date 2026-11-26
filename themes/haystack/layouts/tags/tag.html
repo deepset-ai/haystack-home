@@ -1,9 +1,8 @@
-{{/* Blog tag pages */}}
+{{/* Blog tag pages (redesign) */}}
 {{ define "main" }}
-  <div>
-    {{ partial "page-hero" . }}
-
-    {{ partial "blog-list" . }}
-
+  {{ $items := where .Data.Pages "Params.hidden" "!=" true }}
+  <div class="inner-page">
+    {{ partial "redesign/inner-hero.html" (dict "crumb" "Blog / Tag" "title" .Title "desc" "Articles about Haystack, LLMs, Agents, and latest AI technologies.") }}
+    {{ partial "redesign/catalog.html" (dict "kind" "blog" "items" $items "noun" "articles" "allLabel" "All topics" "searchLabel" "articles" "cats" (slice)) }}
   </div>
 {{ end }}

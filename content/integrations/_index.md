@@ -2,6 +2,7 @@
 layout: integrations
 featured_image: /images/integrations-thumbnai.png
 images: ["/images/integrations-thumbnail.png"]
+accent: "Bring your stack."
 title: 🧩 Integrations
 description: Learn how to use Haystack with other technologies.
 

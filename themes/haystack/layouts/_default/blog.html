@@ -1,10 +1,10 @@
-{{/* Blog listing page */}}
+{{/* Blog listing (redesign) */}}
 {{ define "main" }}
-  <div class="blog-list">
-    {{/* Hero */}}
-    {{ partial "page-hero" . }}
-
-    {{ partial "blog-list" . }}
-    
+  {{ $items := where .Data.Pages "Params.hidden" "!=" true }}
+  {{ $tags := slice }}{{ range $items }}{{ range .Params.tags }}{{ $tags = $tags | append . }}{{ end }}{{ end }}
+  {{ $title := .Params.title | replaceRE "^[^A-Za-z0-9]+" "" | strings.TrimSpace }}
+  <div class="inner-page">
+    {{ partial "redesign/inner-hero.html" (dict "crumb" "Community / Blog" "title" $title "accent" .Params.accent "desc" .Params.subtitle) }}
+    {{ partial "redesign/catalog.html" (dict "kind" "blog" "items" $items "noun" "articles" "allLabel" "All topics" "searchLabel" "articles" "cats" (sort ($tags | uniq))) }}
   </div>
 {{ end }}

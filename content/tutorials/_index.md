@@ -4,6 +4,7 @@ featured_image: /images/tutorial-thumbnail.png
 images: ["/images/tutorial-thumbnail.png"]
 header: dark
 footer: dark
+accent: "Learn by building."
 title: Tutorials
 description: Learn how to use Haystack with our tutorials.
 

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" font-family="Inter, -apple-system, Helvetica, Arial, sans-serif">
+  <rect width="1200" height="420" rx="16" fill="#f5f8ff"/>
+  <text x="600" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="#0b1f4d">Adding an integration to Haystack: issue first, PR second</text>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6b8c"/></marker></defs>
+  <g stroke="#5b6b8c" stroke-width="3" fill="none" marker-end="url(#a)">
+    <path d="M250 215H292"/><path d="M522 215H564"/><path d="M794 215H836"/><path d="M1024 215H1058"/>
+  </g>
+  <g>
+    <rect x="30" y="110" width="220" height="210" rx="14" fill="#fff" stroke="#c9d6f2" stroke-width="2"/>
+    <circle cx="62" cy="142" r="16" fill="#1d4ed8"/><text x="62" y="148" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">1</text>
+    <text x="90" y="148" font-size="19" font-weight="700" fill="#0b1f4d">Open an issue</text>
+    <text x="48" y="182" font-size="15" fill="#33415f">Use the "Propose or</text>
+    <text x="48" y="203" font-size="15" fill="#33415f">discuss" issue form:</text>
+    <text x="48" y="234" font-size="15" fill="#33415f">• Discussion: nothing</text>
+    <text x="60" y="254" font-size="15" fill="#33415f">built yet, need?</text>
+    <text x="48" y="282" font-size="15" fill="#33415f">• Ready: it works</text>
+    <text x="60" y="302" font-size="15" fill="#33415f">(package + proof)</text>
+
+    <rect x="300" y="110" width="220" height="210" rx="14" fill="#fff" stroke="#c9d6f2" stroke-width="2"/>
+    <circle cx="332" cy="142" r="16" fill="#1d4ed8"/><text x="332" y="148" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">2</text>
+    <text x="360" y="148" font-size="19" font-weight="700" fill="#0b1f4d">Review</text>
+    <text x="318" y="182" font-size="15" fill="#33415f">The Haystack team checks</text>
+    <text x="318" y="203" font-size="15" fill="#33415f">the need and the proof,</text>
+    <text x="318" y="224" font-size="15" fill="#33415f">and may ask questions.</text>
+    <rect x="318" y="248" width="150" height="34" rx="17" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="393" y="271" text-anchor="middle" font-size="15" font-weight="700" fill="#166534">label: approved</text>
+
+    <rect x="570" y="110" width="220" height="210" rx="14" fill="#fff" stroke="#c9d6f2" stroke-width="2"/>
+    <circle cx="602" cy="142" r="16" fill="#1d4ed8"/><text x="602" y="148" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">3</text>
+    <text x="630" y="148" font-size="19" font-weight="700" fill="#0b1f4d">Open a PR</text>
+    <text x="588" y="182" font-size="15" fill="#33415f">Add one .md page to the</text>
+    <text x="588" y="203" font-size="15" fill="#33415f">integrations/ directory,</text>
+    <text x="588" y="224" font-size="15" fill="#33415f">based on the draft page.</text>
+    <rect x="588" y="248" width="150" height="34" rx="17" fill="#eef2ff" stroke="#1d4ed8" stroke-width="1.5"/>
+    <text x="663" y="271" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">Closes #&lt;issue&gt;</text>
+
+    <rect x="840" y="110" width="190" height="210" rx="14" fill="#fff" stroke="#c9d6f2" stroke-width="2"/>
+    <circle cx="872" cy="142" r="16" fill="#1d4ed8"/><text x="872" y="148" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">4</text>
+    <text x="900" y="148" font-size="19" font-weight="700" fill="#0b1f4d">CI check</text>
+    <text x="858" y="182" font-size="15" fill="#33415f">CI fails unless the PR</text>
+    <text x="858" y="203" font-size="15" fill="#33415f">links an issue labeled</text>
+    <text x="858" y="224" font-size="15" fill="#33415f">approved.</text>
+
+    <rect x="1062" y="110" width="118" height="210" rx="14" fill="#1d4ed8"/>
+    <circle cx="1121" cy="170" r="22" fill="#fff"/><text x="1121" y="178" text-anchor="middle" font-size="22" font-weight="700" fill="#1d4ed8">5</text>
+    <text x="1121" y="222" text-anchor="middle" font-size="19" font-weight="700" fill="#fff">Review</text>
+    <text x="1121" y="246" text-anchor="middle" font-size="19" font-weight="700" fill="#fff">&amp; merge</text>
+    <text x="1121" y="278" text-anchor="middle" font-size="14" fill="#dbe6ff">Live on the</text>
+    <text x="1121" y="297" text-anchor="middle" font-size="14" fill="#dbe6ff">site</text>
+  </g>
+  <text x="600" y="372" text-anchor="middle" font-size="16" fill="#33415f">Maintainers of an integration stay its owners. The issue is where the conversation happens before any code is reviewed.</text>
+</svg>

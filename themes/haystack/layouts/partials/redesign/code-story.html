@@ -1,0 +1,13 @@
+<section class="code-story section"><div class="code-card"><div class="code-tabs"><span class="active">pipeline.py</span><span>output.json</span><i>•••</i></div><pre><code>from haystack import Pipeline
+from haystack.components.builders import PromptBuilder
+
+pipeline = Pipeline()
+pipeline.add_component("retriever", retriever)
+pipeline.add_component("prompt", PromptBuilder(template))
+pipeline.add_component("llm", generator)
+
+pipeline.connect("retriever", "prompt.documents")
+pipeline.connect("prompt", "llm")
+
+result = pipeline.run({"query": question})</code></pre><div class="code-status"><span>● main</span><span>Python 3.12</span></div></div><div class="code-copy"><p class="kicker">Composable by default</p><h2>Your stack.<br>Your logic.<br><em>Your advantage.</em></h2><p>Haystack gives developers small, interoperable building blocks instead of a rigid platform. Compose exactly the AI system your use case needs.</p><a class="text-link" href="/overview/intro/">Explore the documentation <span aria-hidden="true">↗</span></a></div></section>
+

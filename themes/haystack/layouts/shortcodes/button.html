@@ -6,7 +6,7 @@ Usage:
 Color options: green, blue, dark-blue
 */}}
 
-{{ $url := .Get "url" }}
+{{ $url := replaceRE `^https?://haystack\.deepset\.ai(/|$)` "/" (.Get "url") }}
 {{ $text := .Get "text" }}
 {{ $color := .Get "color" }}
 

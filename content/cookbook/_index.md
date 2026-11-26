@@ -4,6 +4,7 @@ featured_image: /images/cookbook-thumbnail.png
 images: ["/images/cookbook-thumbnail.png"]
 header: dark
 footer: dark
+accent: "Recipes for real systems."
 title: 🧑‍🍳 Cookbook
 description: A collection of AI use cases and demos
 

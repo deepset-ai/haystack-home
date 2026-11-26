@@ -2,6 +2,7 @@
 layout: blog
 featured_image: /images/blog-thumbnai.png
 images: ["/images/blog-thumbnail.png"]
+accent: "Ideas from the open."
 title: Blog
 description: Explore AI, LLMs, and agents through real-world examples, and stay updated on Haystack news, community highlights, and open source projects.
 

@@ -1,2 +1,4 @@
-{{/*  Sets external links in markdown content to open in a new tab  */}}
-<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>
+{{/*  Sets external links in markdown content to open in a new tab.
+      Links to haystack.deepset.ai are rewritten to relative paths so they stay on this site.  */}}
+{{ $dest := replaceRE `^https?://haystack\.deepset\.ai(/|$)` "/" .Destination }}
+<a href="{{ $dest | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix $dest "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a>

@@ -1,0 +1,6 @@
+<div class="mega-menu">
+  {{ range site.Data.redesign_navigation.community }}
+    <section class="mega-column"><h2>{{ .heading }}</h2>{{ range .links }}<a href="{{ .url }}">{{ .label }}</a>{{ end }}</section>
+  {{ end }}
+</div>
+

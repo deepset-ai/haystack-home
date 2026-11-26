@@ -2,23 +2,16 @@
 <html lang="en">
   {{ partial "head" . }}
 
-  <body>
+  <body class="redesign">
     {{/*  Google Tag Manager  */}}
     {{ partial "gtag-body" . }}
 
-    {{/*  Header  */}}
-    {{ partial "header" . }}
-
-    {{/* Announcement Bar */}}
-    {{ partial "announcement" . }}
-     <!-- {{ if not (or (eq .Params.Layout "advent") (eq .Params.Layout "advent-challenge")) }}
-      {{ partial "announcement" . }}
-    {{ end}} -->
-
-    {{/*  Main  */}}
-    <main>{{ block "main" . }}{{ end }}</main>
-
-    {{/*  Footer  */}}
-    {{ partial "footer" . }}
+    <a class="skip-link" href="#content">Skip to content</a>
+    {{ partial "redesign/announcement.html" . }}
+    {{ partial "redesign/header.html" . }}
+    <main id="content">{{ block "main" . }}{{ end }}</main>
+    {{ partial "redesign/footer.html" . }}
+    <script src="/js/redesign-navigation.js" defer></script>
+    <script src="/js/redesign-catalog.js" defer></script>
   </body>
 </html>

@@ -1,0 +1,131 @@
+// Redesign: reskin of existing inner pages (functionality/markup untouched).
+// All rules scoped to body.redesign.
+body.redesign {
+  --color-bg-light-grey: #fff;
+  --color-dark-grey: #6b708c; // darker for contrast on white
+  --color-dark-grey-rgb: 107, 112, 140;
+
+
+  main { background: #fff; }
+  .site-header { padding: 0; }
+
+
+  // ---- Page hero (tutorials, cookbook, integrations, blog, release notes)
+  .page-hero {
+    padding: 72px 4vw 62px;
+    background: linear-gradient(135deg, #fff 45%, #eef3ff);
+    border-bottom: 1px solid var(--line);
+    > .container.container-padded { max-width: none; margin: 0; padding: 0; align-items: flex-end; }
+    .hero-heading {
+      max-width: 960px;
+      h1 {
+        font-family: inherit;
+        font-size: clamp(3.2rem, 6vw, 6rem);
+        line-height: .95;
+        letter-spacing: -.055em;
+        font-weight: 500;
+        color: var(--navy);
+        margin: 0 0 24px;
+      }
+      p { font-size: 1.15rem; line-height: 1.6; color: #616681; max-width: 620px; }
+      h1, p { color: inherit; }
+      h1 { color: var(--navy); }
+      p { color: #616681; }
+      a { color: var(--blue); }
+    }
+  }
+
+  .container.container-padded, .grid-page-content .container, .blog-list .container, #release-notes .container { max-width: none; padding-left: 4vw; padding-right: 4vw; }
+  .grid-page-content, .blog-list-content, #release-notes { background: #fff; padding-top: 52px; padding-bottom: 110px; }
+  .grid-page h2.section-title, .blog-list h2.section-title { font-size: 1.25rem; font-weight: 700; }
+
+  // ---- Filters
+  .grid-page-options .filters, .blog-sidebar {
+    background: var(--ice);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .grid-page-options .filters { padding: 18px; }
+  .search-wrapper input, .select-wrapper select {
+    border: 1px solid #ccd5ef;
+    border-radius: 7px;
+    background: #fff;
+    color: var(--navy);
+  }
+
+  // ---- Cards
+  .grid-page-card, .blog-card, .release-notes-card {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: none;
+    transition: transform .18s ease, box-shadow .18s ease;
+    &:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(27, 29, 59, .09); }
+  }
+  .grid-page-card.guide-card { background: var(--navy); }
+  .grid-page-card h3, .blog-card h2, .release-notes-card h2 { letter-spacing: -.02em; color: var(--navy); }
+  .grid-page-card p, .blog-card p, .release-notes-card p { color: #686d89; line-height: 1.55; }
+  .blog-card .date, .release-notes-card .date { color: #747994; font-size: .78rem; }
+  .blog-card-featured, .grid-page-card.featured { background: var(--pale); }
+  .blog-card-image img { object-fit: cover; }
+
+  // Integration cards: light card, tinted logo stage
+  .grid-page-card.integration-card {
+    background: #fff;
+    h3 { color: var(--navy); font-size: 1.35rem; text-align: left; }
+    p { color: #686d89; font-size: .95rem; }
+    .integration-card-logo { height: 120px; background: linear-gradient(145deg, #eef3ff, #e1e9ff); border-radius: 8px; padding: 18px; > img { mix-blend-mode: multiply; } > svg path { fill: var(--blue); } }
+    .integration-card-tags > div { color: var(--navy); }
+  }
+
+  .tag, .tag.featured, .tag.new, .tag.topic, .tag.guide {
+    font-size: .7rem;
+    color: var(--blue);
+    background: #edf1ff;
+    border-radius: 999px;
+    padding: 6px 9px;
+  }
+  .tag.featured { background: var(--blue); color: #fff; }
+
+  // ---- Pagination / buttons
+  .blog-pagination a, .btn { border-radius: 7px; }
+  .btn.btn-primary, .btn-primary, a.btn-primary { background: var(--blue); }
+
+  // ---- Overview / docs pages
+  .overview.article {
+    .toc-sidebar { border-right: 1px solid var(--line); padding-right: 28px; a, summary { color: #666b88; } }
+    .article-content {
+      h1 { font-family: inherit; font-size: clamp(3rem, 5vw, 5rem); line-height: .95; letter-spacing: -.055em; font-weight: 500; margin-bottom: 35px; color: var(--navy); }
+      h2 { font-size: 2rem; margin: 56px 0 16px; letter-spacing: -.03em; }
+      p, li { font-size: 1.05rem; line-height: 1.75; color: #555b78; }
+      a { color: var(--blue); }
+    }
+  }
+
+  // ---- Detail pages
+  .article-title h1, .article-content > h1, .blog-post-content h1 {
+    font-size: clamp(2.4rem, 4.2vw, 4rem);
+    line-height: 1.02;
+    letter-spacing: -.045em;
+    font-weight: 500;
+    color: var(--navy);
+  }
+  .btn.btn-grey { background: var(--navy); }
+  .btn.btn-grey:hover { background: var(--blue); }
+
+  // ---- Card header chips (tutorials, cookbook): same pill language as .tag
+  .grid-page-card .grid-page-card-header > div {
+    font-size: .7rem;
+    line-height: 1.2;
+    color: var(--blue);
+    background: #edf1ff;
+    border-radius: 999px;
+    padding: 6px 9px;
+    text-transform: capitalize;
+    .icon svg, > svg { fill: var(--blue); path { fill: var(--blue); } }
+  }
+  .grid-page-card .grid-page-card-header > div.topic { background: #edf1ff; color: var(--blue); }
+  .grid-page-card .grid-page-card-header > div.new,
+  .grid-page-card .grid-page-card-header > div.featured { background: var(--blue); color: #fff; }
+  .grid-page-card .grid-page-card-header > div.outdated { background: var(--navy); color: #fff; }
+}

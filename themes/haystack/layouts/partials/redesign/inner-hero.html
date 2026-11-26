@@ -1,0 +1,11 @@
+{{/* args: crumb (string), title (string), accent (string), desc (safeHTML string), actions (slice of dict url,text,primary) */}}
+<header class="inner-hero">
+  <p class="breadcrumb">{{ .crumb }}</p>
+  <div class="inner-hero-copy">
+    <h1>{{ .title }}.{{ with .accent }}<br><em>{{ . }}</em>{{ end }}</h1>
+    <div>
+      {{ with .desc }}<p>{{ . | safeHTML }}</p>{{ end }}
+      {{ with .actions }}<div class="hero-actions-inline">{{ range . }}<a class="button {{ if .primary }}button-light{{ else }}button-dark{{ end }}" href="{{ .url }}">{{ .text }} <span aria-hidden="true">↗</span></a>{{ end }}</div>{{ end }}
+    </div>
+  </div>
+</header>

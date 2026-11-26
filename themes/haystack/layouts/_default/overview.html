@@ -1,48 +1,25 @@
-{{/* Overview pages template */}}
+{{/* Overview / docs pages (redesign) */}}
 {{ define "main" }}
-  {{ $currentPage := . }}
-  <div class="container">
-    <div class="inner inner-top">
-      <div class="overview article">
-        
-        {{/* Sidebar */}}
-        <aside class="toc-sidebar">
-          <ul class="content" role="list">
-            {{ range where (where .Site.Pages "Section" "overview") "Params.hidden" "!=" true }}
-              <li>
-                {{ if (eq $currentPage.RelPermalink .RelPermalink) }}
-                  <details class="accordion-js accordion-child" open>
-                    <summary class="accordion-title">
-                      {{ .Params.title }}
-                    </summary>
-                    {{ if .Params.toc }}
-                      <div class="content">
-                        {{ .TableOfContents }}
-                      </div>
-                    {{ end }}
-                  </details>
-                {{ else }}
-                  <a
-                    class="tutorial-card category-{{ lower .Params.category }}"
-                    href="{{ .RelPermalink }}"
-                  >
-                    {{ .Params.title }}
-                  </a>
-                {{ end }}
-              </li>
-            {{ end }}
-          </ul>
-        </aside>
-
-        {{/*  Article  */}}
-        <article class="article-content">
-          <h1>{{ .Params.title }}</h1>
-          {{ .Content }}
-
-
-          {{ partial "pagination" . }}
-        </article>
-      </div>
+  {{ $current := . }}
+  <div class="inner-page">
+    <div class="docs-shell">
+      <aside class="docs-nav">
+        <strong>Overview</strong>
+        {{ range where (where .Site.Pages "Section" "overview") "Params.hidden" "!=" true }}
+          {{ if not .IsSection }}<a href="{{ .RelPermalink }}"{{ if eq $current.RelPermalink .RelPermalink }} class="active" aria-current="page"{{ end }}>{{ .Params.title }}</a>{{ end }}
+        {{ end }}
+        <a href="/tutorials/">Tutorials</a>
+        <a href="/cookbook/">Cookbook</a>
+      </aside>
+      <article class="docs-content">
+        <p class="kicker">Overview</p>
+        <h1>{{ .Params.title }}</h1>
+        {{ .Content }}
+        {{ partial "pagination" . }}
+      </article>
+      <aside class="on-page">
+        {{ if .Params.toc }}<span>On this page</span>{{ .TableOfContents }}{{ end }}
+      </aside>
     </div>
   </div>
 {{ end }}

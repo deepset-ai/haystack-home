@@ -1,14 +1,14 @@
 primary:
   - label: "Products & Services"
-    url: "https://www.deepset.ai/haystack-platform"
+    url: "/overview/intro/"
   - label: "Community"
     menu: community
   - label: "Solutions"
-    url: "https://www.deepset.ai/solutions/enterprise"
+    url: "/overview/use-cases/"
   - label: "Resources"
-    url: "https://www.deepset.ai/resources"
+    url: "/blog/"
   - label: "Company"
-    url: "https://www.deepset.ai/about"
+    url: "/ambassadors/"
 community:
   - heading: "Get Started"
     links:
@@ -19,7 +19,7 @@ community:
   - heading: "Grow"
     links:
       - { label: "Integrations", url: "/integrations/" }
-      - { label: "Documentation", url: "https://docs.haystack.deepset.ai/" }
+      - { label: "Documentation", url: "/overview/intro/" }
       - { label: "Release Notes", url: "/release-notes/" }
       - { label: "Blog", url: "/blog/" }
   - heading: "Connect"
@@ -27,4 +27,4 @@ community:
       - { label: "Github", url: "https://github.com/deepset-ai/haystack" }
       - { label: "Discord", url: "https://discord.com/invite/VBpFzsgRVF" }
       - { label: "Events", url: "https://luma.com/haystack" }
-      - { label: "Ambassadors", url: "https://haystack.deepset.ai/community/ambassadors" }
+      - { label: "Ambassadors", url: "/ambassadors/" }

@@ -1,6 +1,6 @@
 // Redesign (new visual look) - scoped to body.redesign so it cannot leak into inner pages.
 .redesign{--navy:#1b1d3b;--blue:#3356f1;--pale:#e5edff;--ice:#f6f7fb;--mint:#e5f5ef;--line:rgba(27,29,59,.14);
-  background:#fff;color:var(--navy);font-family:var(--font-sans-serif);
+  background:#fff;color:var(--navy);font-family:Arial,Helvetica,sans-serif;
   *{box-sizing:border-box}
   a{color:inherit;text-decoration:none}
   .skip-link{position:fixed;left:1rem;top:1rem;z-index:100;padding:.75rem 1rem;background:#fff;color:var(--navy);transform:translateY(-160%)}
@@ -47,4 +47,18 @@
   @media(max-width:600px){ .nav-actions{gap:8px} }
   .footer-links a{font-size:12px}
   .redesign-footer>p{font-size:13px}
+
+  /* Match the original template: undo production resets inside redesign sections.
+     :where() keeps specificity low so the template's explicit rules still win. */
+  :where(h1,h2,h3,h4,h5,h6,p,li,a,button,input,select,textarea,span,div,small,strong,em,label){font-family:inherit}
+  :where(.announcement,.nav,.hero,.trust,.section,.community,.final-cta,.redesign-footer){line-height:normal;
+    :where(h1,h2,h3,h4,h5,h6){font-weight:700;color:inherit;letter-spacing:normal}
+    :where(h1){font-size:2em;margin:.67em 0}
+    :where(h2){font-size:1.5em;margin:.83em 0}
+    :where(h3){font-size:1.17em;margin:1em 0}
+    :where(p){font-size:16px;margin:1em 0}
+    :where(a,h3,p,button){line-height:normal}
+  }
+  .code-story .code-card pre{background:transparent!important;color:#eef2ff;margin:0;font-size:12px;line-height:1.8}
+  .code-story .code-card pre code{font-size:inherit;line-height:inherit;color:inherit;background:transparent;padding:0}
 }

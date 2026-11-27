@@ -11,4 +11,10 @@
     wait_for_update: 500
   });
   gtag("set", "ads_data_redaction", true);
+  {{ if eq .Params.layout "integration" }}
+  dataLayer.push({
+    integration_enterprise: {{ if .Params.enterprise }}true{{ else }}false{{ end }},
+    integration_name: {{ .Params.name | default .Title }}
+  });
+  {{ end }}
 </script>
